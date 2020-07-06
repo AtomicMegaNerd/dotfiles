@@ -5,23 +5,25 @@ font:
     family: Noto Sans Mono
     # Style can be specified to pick a specific face.
     style: Regular
-    size: 16
 
   # The bold font face
   bold:
     family: Noto Sans Mono
     # Style can be specified to pick a specific face.
     style: Bold
-    size: 16
     
   # The italic font face
   italic:
     family: Noto Sans Mono
     # Style can be specified to pick a specific face.
     style: Italic
-    size: 16
 
-    size: 16
+  size: 12
+
+cursor:
+  style: Block
+
+
 
 # Base16 Atelier Dune 256 - alacritty color config
 # Bram de Haan (http://atelierbramdehaan.nl)
@@ -30,11 +32,11 @@ colors:
   primary:
     background: '0x20201d'
     foreground: '0xa6a28c'
-
+    
   # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
-    text: '0x20201d'
-    cursor: '0xa6a28c'
+    text: '#333333'
+    cursor: '#ffffff'
 
   # Normal colors
   normal:
@@ -65,3 +67,6 @@ colors:
     - { index: 19, color: '0x6e6b5e' }
     - { index: 20, color: '0x999580' }
     - { index: 21, color: '0xe8e4cf' }
+
+mouse_bindings:
+  - { mouse: Right, action: Paste }

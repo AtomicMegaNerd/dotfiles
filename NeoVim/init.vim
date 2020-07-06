@@ -1,4 +1,4 @@
-set nocompatible
+set encoding=utf-8
 
 " Specify a directory for plugins
 " - For Neovim: stdpath('data') . '/plugged'
@@ -48,6 +48,11 @@ set mouse=a
 
 " Turn on the gutter
 set number
+
+set autoindent
+set expandtab
+set tabstop=4
+set smarttab
 
 " Automatically run black when saving Python files
 autocmd BufWritePre *.py execute ':Black'
