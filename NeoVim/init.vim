@@ -22,7 +22,7 @@ Plug 'preservim/nerdtree'
 
 Plug 'chriskempson/base16-vim'
 
-Plug 'psf/black'
+Plug 'psf/black', { 'tag': '19.10b0' }
 
 " Syntax highlighting
 Plug 'rust-lang/rust.vim'
