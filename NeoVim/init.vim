@@ -54,6 +54,9 @@ set expandtab
 set tabstop=4
 set smarttab
 
+" Disable Markdown folding
+let g:vim_markdown_folding_disabled=1
+
 " Automatically run black when saving Python files
 autocmd BufWritePre *.py execute ':Black'
 
