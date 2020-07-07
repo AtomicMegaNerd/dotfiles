@@ -64,6 +64,15 @@ set expandtab
 set tabstop=4
 set smarttab
 
+" Rulers
+
+" Default to 80 cols
+set colorcolumn=80
+
+au Filetype rust set colorcolumn=100
+" Black likes 88
+au Filetype python set colorcolumn=88
+
 " Disable Markdown folding
 let g:vim_markdown_folding_disabled=1
 
