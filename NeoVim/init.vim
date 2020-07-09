@@ -41,6 +41,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'cespare/vim-toml'
 Plug 'stephpy/vim-yaml'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+Plug 'neovimhaskell/haskell-vim'
 
 " Initialize plugin system
 call plug#end()
