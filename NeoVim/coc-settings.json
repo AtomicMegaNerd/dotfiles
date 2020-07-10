@@ -5,5 +5,6 @@
   "python.linting.enabled": true,
   "python.formatting.provider": "black",
   "python.linting.lintOnSave": true,
-  "python.linting.pylintUseMinimalCheckers": false
+  "python.linting.pylintUseMinimalCheckers": false,
+  "suggest.noselect": false
 }
