@@ -6,6 +6,7 @@ import System.Exit
 import XMonad.Util.SpawnOnce
 import XMonad.Util.Run
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.DynamicLog
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 
@@ -32,7 +33,6 @@ myBorderWidth   = 2
 -- "windows key" is usually mod4Mask.
 --
 myModMask       = mod4Mask
-myWorkspaces = ["web", "alpha", "beta", "gamma", "code", "mail", "media"]
 
 -- The default number of workspaces (virtual screens) and their names.
 -- By default we use numeric strings, but any string may be used as a
@@ -43,7 +43,7 @@ myWorkspaces = ["web", "alpha", "beta", "gamma", "code", "mail", "media"]
 --
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
-myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
+myWorkspaces = ["alpha", "beta", "gamma", "delta"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
@@ -226,11 +226,6 @@ myEventHook = mempty
 ------------------------------------------------------------------------
 -- Status bars and logging
 
--- Perform an arbitrary action on each internal state change or X event.
--- See the 'XMonad.Hooks.DynamicLog' extension for examples.
---
-myLogHook = return ()
-
 ------------------------------------------------------------------------
 -- Startup hook
 
@@ -249,8 +244,18 @@ myStartupHook = do
 -- Run xmonad with the settings you specify. No need to modify this.
 --
 main = do
-  xmproc <- spawnPipe "xmobar /home/cdunphy/.config/xmobar/xmobar.cfg"
-  xmonad $ docks defaults
+  xmproc <- spawnPipe "xmobar /home/cdunphy/.config/xmobar/xmobar.hs"
+  xmonad $ docks defaults {
+    logHook = dynamicLogWithPP $ xmobarPP {
+        ppOutput = \x -> hPutStrLn xmproc x
+        , ppCurrent = xmobarColor "#c3e88d" "" . wrap "[" "]" -- Current workspace in xmobar
+        , ppVisible = xmobarColor "#c3e88d" ""                -- Visible but not current workspace
+        , ppHidden = xmobarColor "#82AAFF" "" . wrap "*" ""   -- Hidden workspaces in xmobar
+        , ppHiddenNoWindows = xmobarColor "#F07178" ""        -- Hidden workspaces (no windows)
+        , ppTitle = xmobarColor "#d0d0d0" "" . shorten 60     -- Title of active window in xmobar
+        , ppSep =  "<fc=#666666> | </fc>"                     -- Separators in xmobar
+    }
+  }
 
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will
@@ -277,7 +282,6 @@ defaults = def {
         layoutHook         = myLayout,
         manageHook         = myManageHook,
         handleEventHook    = myEventHook,
-        logHook            = myLogHook,
         startupHook        = myStartupHook
     }
 
