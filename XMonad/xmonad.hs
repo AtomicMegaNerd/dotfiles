@@ -50,7 +50,7 @@ myWorkspaces = ["alpha", "beta", "gamma", "delta"]
 myNormalBorderColor  = "#aaaaaa"
 myFocusedBorderColor = "#eeeeee"
 
-------------------------------------------------------------------------
+-----------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
 --
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
@@ -60,6 +60,12 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- launch dmenu
     , ((modm,               xK_p     ), spawn "dmenu_run")
+
+    -- lock screen
+    , ((modm,               xK_z     ), spawn "xscreensaver-command -lock")
+
+    -- put computer to sleep
+    , ((modm .|. shiftMask, xK_z     ), spawn "systemctl suspend")
 
     -- launch gmrun
     , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
@@ -237,7 +243,7 @@ myEventHook = mempty
 myStartupHook = do
   spawnOnce "nitrogen --restore &"
   spawnOnce "picom &"
-
+  spawnOnce "xscreensaver -no-splash &"
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
 
