@@ -35,7 +35,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
 
     -- launch dmenu
-    , ((modm,               xK_p     ), spawn "dmenu_run")
+    , ((modm,               xK_p     ), spawn "dmenu_run -fn 'Noto Sans Mono 12' -nb '#224466' -sf '#224466' -sb '#c3e88d' -nf '#c3e88d'")
 
     -- lock screen
     , ((modm,               xK_z     ), spawn "xscreensaver-command -lock")
