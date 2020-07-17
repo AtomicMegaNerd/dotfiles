@@ -38,7 +38,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_p     ), spawn "dmenu_run -p 'SuperJeb' -fn 'Noto Sans Mono:pixelsize=18' -nb '#224466' -sf '#224466' -sb '#d0d0d0' -nf '#d0d0d0'")
 
     -- lock screen
-    , ((modm,               xK_z     ), spawn "xscreensaver-command -lock")
+    , ((modm,               xK_z     ), spawn "slock")
 
     -- put computer to sleep
     , ((modm .|. shiftMask, xK_z     ), spawn "systemctl suspend")
@@ -174,8 +174,7 @@ myEventHook = mempty
 myStartupHook = do
   spawnOnce "picom &"
   spawnOnce "nitrogen --restore &"
-  spawnOnce "xscreensaver -no-splash &"
-
+  spawnOnce "xss-lock /usr/bin/slock"
 -- Run xmonad with the settings you specify.
 main = do
   xmproc <- spawnPipe "xmobar /home/cdunphy/.config/xmobar/xmobar.cfg"
