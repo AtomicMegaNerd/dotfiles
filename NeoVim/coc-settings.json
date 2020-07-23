@@ -6,5 +6,26 @@
   "python.formatting.provider": "black",
   "python.linting.lintOnSave": true,
   "python.linting.pylintUseMinimalCheckers": false,
-  "suggest.noselect": false
+  "suggest.noselect": false,
+  "languageserver": {
+    "haskell": {
+      "command": "haskell-language-server-wrapper",
+      "args": ["--lsp"],
+      "rootPatterns": [
+        "*.cabal",
+        "stack.yaml",
+        "cabal.project",
+        "package.yaml"
+      ],
+      "filetypes": [
+        "hs",
+        "lhs",
+        "haskell"
+      ],
+      "initializationOptions": {
+        "languageServerHaskell": {
+        }
+      }
+    }
+  }
 }
