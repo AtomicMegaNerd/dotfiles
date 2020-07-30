@@ -4,6 +4,7 @@ import           System.Exit
 import           XMonad
 import           XMonad.Hooks.DynamicLog
 import           XMonad.Hooks.ManageDocks
+import           XMonad.Hooks.SetWMName
 import           XMonad.Layout.Grid
 import           XMonad.Layout.LayoutModifier
 import           XMonad.Layout.Renamed        (Rename (Replace), renamed)
@@ -172,6 +173,7 @@ myEventHook = mempty
 ------------------------------------------------------------------------
 -- Startup hook
 myStartupHook = do
+  setWMName "LG3D"
   spawnOnce "picom &"
   spawnOnce "nitrogen --restore &"
   spawnOnce "xss-lock /usr/bin/slock"
