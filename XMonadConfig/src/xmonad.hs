@@ -1,16 +1,16 @@
-import XMonad
-import Data.Monoid
-import System.Exit
-import XMonad.Util.SpawnOnce
-import XMonad.Util.Run
-import XMonad.Hooks.ManageDocks
-import XMonad.Hooks.DynamicLog
-import XMonad.Layout.Spacing
-import XMonad.Layout.Grid
-import XMonad.Layout.LayoutModifier
-import XMonad.Layout.Renamed (renamed, Rename(Replace))
-import qualified XMonad.StackSet as W
-import qualified Data.Map        as M
+import qualified Data.Map                     as M
+import           Data.Monoid
+import           System.Exit
+import           XMonad
+import           XMonad.Hooks.DynamicLog
+import           XMonad.Hooks.ManageDocks
+import           XMonad.Layout.Grid
+import           XMonad.Layout.LayoutModifier
+import           XMonad.Layout.Renamed        (Rename (Replace), renamed)
+import           XMonad.Layout.Spacing
+import qualified XMonad.StackSet              as W
+import           XMonad.Util.Run
+import           XMonad.Util.SpawnOnce
 
 myTerminal      = "alacritty"
 
@@ -38,7 +38,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_p     ), spawn "dmenu_run -p 'SuperJeb' -fn 'Noto Sans Mono:pixelsize=18' -nb '#224466' -sf '#224466' -sb '#d0d0d0' -nf '#d0d0d0'")
 
     -- lock screen
-    , ((modm,               xK_z     ), spawn "slock")
+    , ((modm,               xK_z     ), spawn "loginctl lock-session")
 
     -- put computer to sleep
     , ((modm .|. shiftMask, xK_z     ), spawn "systemctl suspend")
@@ -142,7 +142,7 @@ mySpacing i = spacingRaw False (Border i i i i) True (Border i i i i) True
 
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
-myLayout = avoidStruts $ tiled ||| grid ||| mirror ||| full 
+myLayout = avoidStruts $ tiled ||| grid ||| mirror ||| full
   where
      tiled   = renamed [Replace "Tiled"] $ mySpacing 5 $ Tall nmaster delta ratio
      grid    = renamed [Replace "Grid"] $ mySpacing 5 $ Grid
@@ -175,6 +175,7 @@ myStartupHook = do
   spawnOnce "picom &"
   spawnOnce "nitrogen --restore &"
   spawnOnce "xss-lock /usr/bin/slock"
+
 -- Run xmonad with the settings you specify.
 main = do
   xmproc <- spawnPipe "xmobar /home/cdunphy/.config/xmobar/xmobar.cfg"

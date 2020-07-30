@@ -31,6 +31,7 @@ Plug 'chriskempson/base16-vim'
 
 " Code formatting
 Plug 'psf/black', { 'tag': '19.10b0' }
+Plug 'nbouscal/vim-stylish-haskell'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -122,18 +123,6 @@ nnoremap <S-Tab> <<
 " for insert mode
 inoremap <S-Tab> <C-d>
 
-" Force myself not to use the arrow keys
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
-
-" Left and right can switch buffers
-nnoremap <left> :bp<CR>
-nnoremap <right> :bn<CR>
-
 nnoremap ; :
 
 " Ctrl+c and Ctrl+j as Esc
@@ -161,6 +150,12 @@ cnoremap <C-c> <Esc>
 onoremap <C-c> <Esc>
 lnoremap <C-c> <Esc>
 tnoremap <C-c> <Esc>
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 
 
