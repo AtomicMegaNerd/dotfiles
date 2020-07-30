@@ -1,5 +1,10 @@
-# AtomicMegaNerd's Arch Linux Configs
+# AtomicMegaNerd's Linux/MacOS Configs
 
-This repository stores the dotfiles for my Arch Linux System.  Lots more
-documentation to come.
+This repository stores the dotfiles for my UNIX based systems.
 
+## Supported Apps
+
+* Alacritty
+* Fish
+* NeoVim
+* Xmonad with XMobar
