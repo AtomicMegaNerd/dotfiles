@@ -73,7 +73,10 @@ vim +PLugInstall +UpdateRemotePlugins
 
 ### Sublime Text 3
 
-Please make sure that Package Control is installed first...
+Please make sure that Package Control is installed first.  Sadly there is
+a problem where the font_size configuration will need to be different on
+Linux than on MacOS so you'll need to set a different number there unless
+you like really giant sized text on Linux.
 
 #### Mac
 
@@ -99,7 +102,7 @@ apt install nodejs npm
 ```
 
 ```bash
-cd /Users/chris/Library/Application Support/Sublime Text 3/Packages/User
+cd /home/cdunphy/.config/sublime-text-3/Packages/User
 ln -s ~/Code/Configs/dotfiles/Sublime/LSP.sublime-settings
 ln -s ~/Code/Configs/dotfiles/Sublime/Package\ Control.sublime-settings
 ln -s ~/Code/Configs/dotfiles/Sublime/Preferences.sublime-settings
@@ -124,7 +127,7 @@ cd ~/Code/Configs/dotfiles/VSCode
 #### Linux
 
 ```bash
-cd /Users/chris/Library/Application Support/Code/User
+cd /home/cdunphy/.config/Code/User
 ln -s ~/Code/Configs/dotfiles/VSCode/settings.json
 cd ~/Code/Configs/dotfiles/VSCode
 ./install-exts.sh
