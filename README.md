@@ -28,9 +28,13 @@ ln -s ~/Code/Configs/dotfiles/Alacritty/alacritty.yml
 
 ### Fish
 
+Install the base-16 shell extension for nice colors!
+
 ```bash
+git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 cd ~/.config
 ln -s ~/Code/Configs/dotfiles/fish
+base16-bright
 ```
 
 ### NeoVim
@@ -132,3 +136,9 @@ ln -s ~/Code/Configs/dotfiles/VSCode/settings.json
 cd ~/Code/Configs/dotfiles/VSCode
 ./install-exts.sh
 ```
+
+### XMonad and XMobar
+
+I am not currently using these as I switched to Pop!_OS and it's excellent
+tiling Window manager for GNOME.  However, I may come back to this at some
+point.
