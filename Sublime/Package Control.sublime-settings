@@ -1,0 +1,24 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"3024 Color Scheme",
+		"A File Icon",
+		"Anaconda",
+		"ayu",
+		"fish",
+		"Git",
+		"GitGutter",
+		"LSP",
+		"Package Control",
+		"Rust Enhanced",
+		"SideBarEnhancements",
+		"sublack",
+		"Terminal",
+		"Theme - Monokai Pro",
+		"TOML"
+	]
+}

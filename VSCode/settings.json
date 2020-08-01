@@ -1,0 +1,88 @@
+{
+    // =================================================================================
+    // AtomicMegaNerd's VSCode Settings
+    // =================================================================================
+    // =================================================================================
+    // =================================================================================
+    // Files settings
+    // Configure glob patterns for excluding files and folders.
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/.DS_Store": true,
+        "**/*.pyc": true,
+        "**/__pycache__": true
+    },
+    "files.trimTrailingWhitespace": true,
+    // Editor settings
+    // =================================================================================
+    "editor.fontFamily": "Noto Sans Mono",
+    "editor.fontLigatures": false,
+    "editor.fontSize": 17,
+    "editor.formatOnSave": true,
+    "editor.suggestSelection": "first",
+    "editor.cursorStyle": "block",
+    "editor.cursorBlinking": "blink",
+    "editor.minimap.enabled": false,
+    // Git settings
+    // =================================================================================
+    "git.confirmSync": false,
+    // Extensions settings
+    // =================================================================================
+    "extensions.ignoreRecommendations": true,
+    // Terminal settings
+    // =================================================================================
+    "terminal.integrated.fontFamily": "Noto Sans Mono",
+    "terminal.integrated.fontSize": 16,
+    // Window settings
+    // =================================================================================
+    "window.zoomLevel": 0,
+    "window.menuBarVisibility": "toggle",
+    // Workbench settings
+    // =================================================================================
+    "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
+    "workbench.colorTheme": "Monokai Pro (Filter Spectrum)",
+    "workbench.settings.editor": "json",
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.settings.useSplitJSON": true,
+    // Explorer settings
+    // =================================================================================
+    "explorer.confirmDelete": false,
+    "explorer.openEditors.visible": 0, // disables open editors
+    // Python settings
+    // =================================================================================
+    "[python]": {
+        "editor.rulers": [
+            88
+        ],
+        "editor.tabSize": 4,
+        "editor.formatOnSave": true
+    },
+    "python.formatting.provider": "black",
+    "python.linting.mypyEnabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.analysis.typeCheckingMode": "strict",
+    "python.languageServer": "Pylance",
+    // Rust settings
+    // =================================================================================
+    "[rust]": {
+        "editor.rulers": [
+            100
+        ]
+    },
+    // Markdown settings
+    // =================================================================================
+    "[markdown]": {
+        "editor.rulers": [
+            80
+        ]
+    },
+    // Haskell Settings
+    // =================================================================================
+    "haskell.formattingProvider": "stylish-haskell",
+    "haskell.enable": true,
+    // Disable tracking and telemetry
+    // =================================================================================
+    "telemetry.enableTelemetry": false
+}

@@ -1,0 +1,18 @@
+{
+	"block_caret": true,
+	"caret": "#FFFFFF",
+	"caret_stype": "blink",
+	"color_scheme": "Packages/ayu/ayu-mirage.sublime-color-scheme",
+	"font_face": "Noto Sans Mono",
+	"font_size": 18,
+	"ignored_packages":
+	[
+		"Rust",
+		"Vintage"
+	],
+	"rulers":
+	[
+		100
+	],
+	"theme": "ayu-mirage.sublime-theme"
+}
