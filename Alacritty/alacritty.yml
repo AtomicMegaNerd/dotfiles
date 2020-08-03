@@ -5,9 +5,11 @@ font:
     style: Regular
   bold:
     family: Noto Sans Mono
+    style: Bold
   italic:
     family: Noto Sans Mono
-  size: 16
+    style: Italic
+  size: 13
 
 cursor:
   style: Block
@@ -17,43 +19,43 @@ cursor:
 colors:
   # Default colors
   primary:
-    background: '0x000000'
-    foreground: '0xe0e0e0'
+    background: "0x000000"
+    foreground: "0xe0e0e0"
 
   # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
-    text: '0x000000'
-    cursor: '0xe0e0e0'
+    text: "0x000000"
+    cursor: "0xe0e0e0"
 
   # Normal colors
   normal:
-    black:   '0x000000'
-    red:     '0xfb0120'
-    green:   '0xa1c659'
-    yellow:  '0xfda331'
-    blue:    '0x6fb3d2'
-    magenta: '0xd381c3'
-    cyan:    '0x76c7b7'
-    white:   '0xe0e0e0'
+    black: "0x000000"
+    red: "0xfb0120"
+    green: "0xa1c659"
+    yellow: "0xfda331"
+    blue: "0x6fb3d2"
+    magenta: "0xd381c3"
+    cyan: "0x76c7b7"
+    white: "0xe0e0e0"
 
   # Bright colors
   bright:
-    black:   '0xb0b0b0'
-    red:     '0xfb0120'
-    green:   '0xa1c659'
-    yellow:  '0xfda331'
-    blue:    '0x6fb3d2'
-    magenta: '0xd381c3'
-    cyan:    '0x76c7b7'
-    white:   '0xffffff'
+    black: "0xb0b0b0"
+    red: "0xfb0120"
+    green: "0xa1c659"
+    yellow: "0xfda331"
+    blue: "0x6fb3d2"
+    magenta: "0xd381c3"
+    cyan: "0x76c7b7"
+    white: "0xffffff"
 
   indexed_colors:
-    - { index: 16, color: '0xfc6d24' }
-    - { index: 17, color: '0xbe643c' }
-    - { index: 18, color: '0x303030' }
-    - { index: 19, color: '0x505050' }
-    - { index: 20, color: '0xd0d0d0' }
-    - { index: 21, color: '0xf5f5f5' }
+    - { index: 16, color: "0xfc6d24" }
+    - { index: 17, color: "0xbe643c" }
+    - { index: 18, color: "0x303030" }
+    - { index: 19, color: "0x505050" }
+    - { index: 20, color: "0xd0d0d0" }
+    - { index: 21, color: "0xf5f5f5" }
 
 mouse_bindings:
   - { mouse: Right, action: Paste }
