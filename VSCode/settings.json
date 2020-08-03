@@ -80,7 +80,6 @@
     },
     // Haskell Settings
     // =================================================================================
-    "haskell.formattingProvider": "stylish-haskell",
     "haskell.enable": true,
     // Disable tracking and telemetry
     // =================================================================================
