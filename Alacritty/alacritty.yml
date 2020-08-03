@@ -9,7 +9,7 @@ font:
   italic:
     family: Noto Sans Mono
     style: Italic
-  size: 13
+  size: 16
 
 cursor:
   style: Block
