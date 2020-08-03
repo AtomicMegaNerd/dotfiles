@@ -62,8 +62,6 @@
     "python.formatting.provider": "black",
     "python.linting.mypyEnabled": true,
     "python.linting.pylintEnabled": true,
-    "python.analysis.typeCheckingMode": "strict",
-    "python.languageServer": "Pylance",
     // Rust settings
     // =================================================================================
     "[rust]": {
