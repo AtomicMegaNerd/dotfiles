@@ -79,6 +79,12 @@
     // Haskell Settings
     // =================================================================================
     "haskell.enable": true,
+    "[haskell]": {
+        "editor.tabSize": 2,
+        "editor.rulers": [
+            90
+        ]
+    },
     // Disable tracking and telemetry
     // =================================================================================
     "telemetry.enableTelemetry": false
