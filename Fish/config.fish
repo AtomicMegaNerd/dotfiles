@@ -5,8 +5,8 @@ pyenv init - | source
 ## Aliases
 
 alias vim="nvim"
-#alias ls="exa"
-#alias ll="exa -lah"
+alias ls="exa"
+alias ll="exa -lah"
 alias wx="curl wttr.in/Calgary"
 alias moon="curl wttr.in/moon"
 
