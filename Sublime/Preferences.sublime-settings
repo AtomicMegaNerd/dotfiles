@@ -4,7 +4,7 @@
 	"caret_stype": "blink",
 	"color_scheme": "Packages/ayu/ayu-mirage.sublime-color-scheme",
 	"font_face": "Noto Sans Mono",
-	"font_size": 14,
+	"font_size": 16,
 	"ignored_packages":
 	[
 		"Rust",
