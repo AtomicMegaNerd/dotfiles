@@ -69,7 +69,7 @@ autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 " Configure base16 color plug-in
 set termguicolors
 let base16colorspace=256
-colorscheme base16-bright
+colorscheme base16-default-dark
 
 " Configure cursor
 set guicursor=a:blinkon100
@@ -93,7 +93,7 @@ let g:vim_markdown_folding_disabled = 1
 " Rulers
 
 " Default to 80 cols
-set colorcolumn=80
+set colorcolumn=100
 
 " Rust
 au Filetype rust set colorcolumn=100
