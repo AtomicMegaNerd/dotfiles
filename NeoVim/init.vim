@@ -1,5 +1,31 @@
 set shell=/bin/bash
 set encoding=utf-8
+set termguicolors
+set guicursor=a:blinkon100
+set mouse=a
+set hidden
+set nowrap
+set smartcase
+
+set undodir=~/.vim/undodir
+set noswapfile
+set undofile
+set nobackup
+
+set scrolloff=8
+set signcolumn=yes
+set relativenumber
+set colorcolumn=100
+set noshowmode
+set nu
+set nohlsearch
+set incsearch
+
+set smartindent
+set expandtab
+set tabstop=4
+set shiftwidth=4
+
 
 " Specify a directory for plugins
 " - For Neovim: stdpath('data') . '/plugged'
@@ -35,6 +61,8 @@ Plug 'nbouscal/vim-stylish-haskell'
 
 " Git
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+Plug 'mhinz/vim-signify'
 
 " Syntax highlighting
 Plug 'rust-lang/rust.vim'
@@ -52,11 +80,12 @@ call plug#end()
 let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+      \             [ 'gitbranch', 'cocstatus', 'readonly', 'filename', 'modified' ] ]
       \ },
       \ 'component_function': {
       \   'filename': 'LightlineFilename',
-      \   'cocstatus': 'coc#status'
+      \   'cocstatus': 'coc#status',
+      \   'gitbranch': 'FugitiveHead'
       \ },
       \ }
 function! LightlineFilename()
@@ -67,33 +96,13 @@ endfunction
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 " Configure base16 color plug-in
-set termguicolors
-let base16colorspace=256
-colorscheme base16-bright
-
-" Configure cursor
-set guicursor=a:blinkon100
-
-" Enable mouse
-set mouse=a
-
-" Turn on the gutter
-set number
-
-set smartindent
-set expandtab
-set tabstop=4
-set shiftwidth=4
-
 filetype plugin indent on
 
 " This disables folding for the markdown plug-in.
 let g:vim_markdown_folding_disabled = 1
 
-" Rulers
-
-" Default to 80 cols
-set colorcolumn=80
+let base16colorspace=256
+colorscheme base16-default-dark
 
 " Rust
 au Filetype rust set colorcolumn=100
