@@ -90,7 +90,7 @@ autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 " Configure base16 color plug-in
 let base16colorspace=256
-colorscheme base16-bright
+colorscheme base16-default-dark
 
 filetype plugin indent on
 
