@@ -17,9 +17,9 @@
     "files.trimTrailingWhitespace": true,
     // Editor settings
     // =================================================================================
-    "editor.fontFamily": "Noto Sans Mono",
-    "editor.fontLigatures": false,
-    "editor.fontSize": 17,
+    "editor.fontFamily": "Cascadia Code",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 18,
     "editor.formatOnSave": true,
     "editor.suggestSelection": "first",
     "editor.cursorStyle": "block",
@@ -42,7 +42,7 @@
     // Workbench settings
     // =================================================================================
     "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
-    "workbench.colorTheme": "Monokai Pro (Filter Spectrum)",
+    "workbench.colorTheme": "GitHub Dark Dimmed",
     "workbench.settings.editor": "json",
     "workbench.startupEditor": "newUntitledFile",
     "workbench.settings.useSplitJSON": true,
@@ -87,5 +87,11 @@
     },
     // Disable tracking and telemetry
     // =================================================================================
-    "telemetry.enableTelemetry": false
+    "telemetry.enableTelemetry": false,
+    "workbench.editorAssociations": [
+        {
+            "viewType": "jupyter.notebook.ipynb",
+            "filenamePattern": "*.ipynb"
+        }
+    ]
 }

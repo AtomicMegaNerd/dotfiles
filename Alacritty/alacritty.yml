@@ -1,14 +1,14 @@
 # Font configuration (changes require restart)
 font:
   normal:
-    family: Noto Sans Mono
-    style: Regular
+    family: Cascadia Code
+    style: Semi-Light
   bold:
-    family: Noto Sans Mono
-    style: Bold
+    family: Cascadia Code
+    style: Semi-Light
   italic:
-    family: Noto Sans Mono
-    style: Italic
+    family: Cascadia Code
+    style: Semi-Light
   size: 14
 
 cursor:
