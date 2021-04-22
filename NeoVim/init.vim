@@ -54,11 +54,11 @@ Plug 'preservim/nerdtree'
 
 " Theming
 Plug 'chriskempson/base16-vim'
+Plug 'gruvbox-community/gruvbox'
 
 " Code formatting
 Plug 'psf/black', { 'tag': '19.10b0' }
-Plug 'nbouscal/vim-stylish-haskell'
-
+Plug 'sdiehl/vim-ormolu'
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
@@ -102,7 +102,7 @@ filetype plugin indent on
 let g:vim_markdown_folding_disabled = 1
 
 let base16colorspace=256
-colorscheme base16-default-dark
+colorscheme gruvbox
 
 " Rust
 au Filetype rust set colorcolumn=100
