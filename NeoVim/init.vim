@@ -167,6 +167,18 @@ onoremap <C-c> <Esc>
 lnoremap <C-c> <Esc>
 tnoremap <C-c> <Esc>
 
+" No arrow keys --- force yourself to use the home row
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+
+" Left and right can switch buffers
+nnoremap <left> :bp<CR>
+nnoremap <right> :bn<CR>
+
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
