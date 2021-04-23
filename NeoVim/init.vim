@@ -72,12 +72,12 @@ Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
 
 " Syntax highlighting
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'rust-lang/rust.vim'
 Plug 'dag/vim-fish'
 Plug 'plasticboy/vim-markdown'
 Plug 'cespare/vim-toml'
 Plug 'stephpy/vim-yaml'
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'neovimhaskell/haskell-vim'
 
 " Initialize plugin system
@@ -98,6 +98,15 @@ let g:lightline = {
 function! LightlineFilename()
   return expand('%:t') !=# '' ? @% : '[No Name]'
 endfunction
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+  },
+}
+EOF
 
 " Use auocmd to force lightline update.
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()

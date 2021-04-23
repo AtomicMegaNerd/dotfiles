@@ -12,7 +12,7 @@ font:
   size: 14
 
 cursor:
-  style: Block
+  style: Block 
 
 # Base16 Bright 256 - alacritty color config
 # Chris Kempson (http://chriskempson.com)
