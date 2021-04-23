@@ -35,13 +35,3 @@ if status --is-interactive
     source "$BASE16_SHELL/profile_helper.fish"
 end
 
-# fish-ssh-agent is used on the Mac but not on my Linux OS
-switch (uname)
-case Darwin
-    if test -z "$SSH_ENV"
-        set -xg SSH_ENV $HOME/.ssh/environment
-    end
-    if not __ssh_agent_is_started
-        __ssh_agent_start
-    end
-end
