@@ -12,15 +12,22 @@ ssh-add -K ~/.ssh/id_rsa
 # Default editor
 set -gx EDITOR nvim
 
-# Aliases
+## Aliases
 
-## Use exa for ls
+# I just love NeoVim
 alias vi="nvim"
 alias vim="nvim"
-alias ls="exa"
-alias ll="exa -l"
+
+# Fun web services
 alias wx="curl wttr.in/Calgary"
 alias moon="curl wttr.in/moon"
+
+# dust is a Rust replacement for du
+alias du="dust"
+
+# exa is a Rust based replacement for ls
+alias ls="exa"
+alias ll="exa -lah"
 
 # Start PyEnv
 status --is-interactive; and source (pyenv init -|psub)
