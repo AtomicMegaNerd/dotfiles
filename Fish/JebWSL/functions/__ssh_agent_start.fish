@@ -1,0 +1,1 @@
+/home/cdunphy/Code/Fish/fish-ssh-agent/functions/__ssh_agent_start.fish
