@@ -14,9 +14,6 @@ alias ll="exa -l"
 alias wx="curl wttr.in/Calgary"
 alias moon="curl wttr.in/moon"
 
-set -Ux PYENV_ROOT $HOME/.pyenv
-set -Ux fish_user_paths $PYENV_ROOT/bin $fish_user_paths
-
 # Start PyEnv
 status --is-interactive; and source (pyenv init -|psub)
 
