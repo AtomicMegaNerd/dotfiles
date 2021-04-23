@@ -4,15 +4,20 @@ pyenv init - | source
 
 ## Aliases
 
-alias vi="nvim"
+# I just love NeoVim
+alias vi="nvim" 
 alias vim="nvim"
-alias ls="exa"
-alias ll="exa -lah"
+
+# Fun web services
 alias wx="curl wttr.in/Calgary"
 alias moon="curl wttr.in/moon"
 
 # dust is a Rust replacement for du
 alias du="dust"
+
+# exa is a Rust based replacement for ls
+alias ls="exa"
+alias ll="exa -lah"
 
 # Base16 Shell
 if status --is-interactive
@@ -20,7 +25,7 @@ if status --is-interactive
     source "$BASE16_SHELL/profile_helper.fish"
 end
 
-# fish-ssh-agent
+# fish-ssh-agent is used on the Mac but not on my Linux OS
 switch (uname)
 case Darwin
     if test -z "$SSH_ENV"
