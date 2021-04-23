@@ -69,7 +69,6 @@ Plug 'psf/black', { 'tag': '19.10b0' }
 Plug 'sdiehl/vim-ormolu'
 " Git
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
 Plug 'mhinz/vim-signify'
 
 " Syntax highlighting
