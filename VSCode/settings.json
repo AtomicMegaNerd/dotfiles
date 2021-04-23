@@ -19,7 +19,7 @@
     // =================================================================================
     "editor.fontFamily": "Cascadia Code",
     "editor.fontLigatures": true,
-    "editor.fontSize": 18,
+    "editor.fontSize": 16,
     "editor.formatOnSave": true,
     "editor.suggestSelection": "first",
     "editor.cursorStyle": "block",
@@ -38,11 +38,7 @@
     // Window settings
     // =================================================================================
     "window.zoomLevel": 0,
-    "window.menuBarVisibility": "toggle",
-    // Workbench settings
-    // =================================================================================
-    "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
-    "workbench.colorTheme": "GitHub Dark Dimmed",
+    "workbench.colorTheme": "GitHub Dark",
     "workbench.settings.editor": "json",
     "workbench.startupEditor": "newUntitledFile",
     "workbench.settings.useSplitJSON": true,
@@ -78,7 +74,6 @@
     },
     // Haskell Settings
     // =================================================================================
-    "haskell.enable": true,
     "[haskell]": {
         "editor.tabSize": 2,
         "editor.rulers": [
@@ -88,10 +83,13 @@
     // Disable tracking and telemetry
     // =================================================================================
     "telemetry.enableTelemetry": false,
+    "python.languageServer": "Pylance",
     "workbench.editorAssociations": [
         {
             "viewType": "jupyter.notebook.ipynb",
             "filenamePattern": "*.ipynb"
         }
-    ]
+    ],
+    "workbench.fontAliasing": "antialiased",
+    "workbench.iconTheme": "Monokai Classic Monochrome Icons"
 }

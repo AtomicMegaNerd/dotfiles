@@ -2,9 +2,13 @@
 	"block_caret": true,
 	"caret": "#FFFFFF",
 	"caret_stype": "blink",
-	"color_scheme": "Packages/ayu/ayu-mirage.sublime-color-scheme",
+	"color_scheme": "Packages/GitHub Theme/schemes/GitHub Dark.sublime-color-scheme",
 	"font_face": "Cascadia Code",
-	"font_size": 14,
+	"font_options":
+	[
+		"gray_antialias"
+	],
+	"font_size": 16,
 	"ignored_packages":
 	[
 		"Rust",
@@ -14,5 +18,5 @@
 	[
 		100
 	],
-	"theme": "ayu-mirage.sublime-theme"
+	"theme": "GitHub-Theme.sublime-theme"
 }
