@@ -1,5 +1,14 @@
 # AtomicMegaNerd's Linux/MacOS Configs
 
+```
+    ___   __                  _      __  ___                 _   __              __
+   /   | / /_____  ____ ___  (_)____/  |/  /__  ____ _____ _/ | / /__  _________/ /
+  / /| |/ __/ __ \/ __ `__ \/ / ___/ /|_/ / _ \/ __ `/ __ `/  |/ / _ \/ ___/ __  / 
+ / ___ / /_/ /_/ / / / / / / / /__/ /  / /  __/ /_/ / /_/ / /|  /  __/ /  / /_/ /  
+/_/  |_\__/\____/_/ /_/ /_/_/\___/_/  /_/\___/\__, /\__,_/_/ |_/\___/_/   \__,_/   
+                                             /____/                                
+```
+
 This repository stores the dotfiles for my UNIX based systems.  The idea is
 to symlink all of the configs to the git managed files in this repo.
 
