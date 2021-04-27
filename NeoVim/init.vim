@@ -33,7 +33,7 @@ set smartindent
 set expandtab
 set tabstop=4
 set shiftwidth=4
-
+set clipboard=unnamedplus 
 
 " Specify a directory for plugins
 " - For Neovim: stdpath('data') . '/plugged'
@@ -67,6 +67,7 @@ Plug 'gruvbox-community/gruvbox'
 " Code formatting
 Plug 'psf/black', { 'tag': '19.10b0' }
 Plug 'sdiehl/vim-ormolu'
+
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
