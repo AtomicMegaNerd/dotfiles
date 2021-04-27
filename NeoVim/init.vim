@@ -66,6 +66,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'cespare/vim-toml'
 Plug 'stephpy/vim-yaml'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+Plug 'hashivim/vim-terraform'
 
 " Initialize plugin system
 call plug#end()
@@ -74,11 +75,12 @@ call plug#end()
 let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+      \             [ 'gitbranch', 'cocstatus', 'readonly', 'filename', 'modified' ] ]
       \ },
       \ 'component_function': {
       \   'filename': 'LightlineFilename',
-      \   'cocstatus': 'coc#status'
+      \   'cocstatus': 'coc#status',
+      \   'gitbranch': 'FugitiveHead'
       \ },
       \ }
 function! LightlineFilename()
@@ -96,6 +98,9 @@ filetype plugin indent on
 
 " This disables folding for the markdown plug-in.
 let g:vim_markdown_folding_disabled = 1
+
+let g:terraform_fmt_on_save=1
+let g:terraform_align=1
 
 " Rust
 au Filetype rust set colorcolumn=100
@@ -115,6 +120,8 @@ au Filetype json set tabstop=2 shiftwidth=2
 
 " Automatically run black when saving Python files
 autocmd BufWritePre *.py execute ':Black'
+
+au Filetype terraform set tabstop=2 shiftwidth=2
 
 " ====================
 " === Key Bindings ===
