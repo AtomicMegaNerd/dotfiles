@@ -5,7 +5,7 @@ SETUVAR __fish_initialized:3100
 SETUVAR fish_color_autosuggestion:585858
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:a1b56c
-SETUVAR fish_color_comment:f7ca88
+SETUVAR fish_color_comment:f0c674
 SETUVAR fish_color_cwd:green
 SETUVAR fish_color_cwd_root:red
 SETUVAR fish_color_end:ba8baf
@@ -14,7 +14,7 @@ SETUVAR fish_color_escape:86c1b9
 SETUVAR fish_color_history_current:\x2d\x2dbold
 SETUVAR fish_color_host:normal
 SETUVAR fish_color_host_remote:yellow
-SETUVAR fish_color_match:7cafc2
+SETUVAR fish_color_match:\x2d\x2dbackground\x3dbrblue
 SETUVAR fish_color_normal:normal
 SETUVAR fish_color_operator:7cafc2
 SETUVAR fish_color_param:d8d8d8
@@ -31,4 +31,4 @@ SETUVAR fish_pager_color_completion:normal
 SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
-SETUVAR --export fish_user_paths:/home/cdunphy/Apps/nvim\x2dlinux64/bin\x1e/home/cdunphy/\x2enpm\x2dpackages/bin\x1e/home/cdunphy/\x2epyenv/bin\x1e/home/cdunphy/\x2ecargo/bin\x1e/home/cdunphy/\x2elocal/bin\x1e/home/cdunphy/bin\x1e/home/cdunphy/\x2epyenv/bin\x1e/home/cdunphy/\x2efzf/bin
+SETUVAR --export fish_user_paths:/home/cdunphy/\x2enpm\x2dpackages/bin\x1e/home/cdunphy/Apps/nvim\x2dlinux64/bin\x1e/home/cdunphy/\x2epyenv/bin\x1e/home/cdunphy/\x2ecargo/bin\x1e/home/cdunphy/\x2elocal/bin\x1e/home/cdunphy/bin\x1e/home/cdunphy/\x2epyenv/bin\x1e/home/cdunphy/\x2efzf/bin

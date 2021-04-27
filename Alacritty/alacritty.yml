@@ -1,18 +1,18 @@
 # Font configuration (changes require restart)
 font:
   normal:
-    family: Noto Sans Mono
-    style: Regular
+    family: Cascadia Code
+    style: Semi-Light
   bold:
-    family: Noto Sans Mono
-    style: Bold
+    family: Cascadia Code
+    style: Semi-Light
   italic:
-    family: Noto Sans Mono
-    style: Italic
-  size: 18
+    family: Cascadia Code
+    style: Semi-Light
+  size: 14
 
 cursor:
-  style: Block
+  style: Block 
 
 # Base16 Bright 256 - alacritty color config
 # Chris Kempson (http://chriskempson.com)
