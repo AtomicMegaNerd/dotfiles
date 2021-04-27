@@ -34,6 +34,8 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 
+set clipboard+=unnamedplus
+
 " Specify a directory for plugins
 " - For Neovim: stdpath('data') . '/plugged'
 " - Avoid using standard Vim directory names like 'plugin'
