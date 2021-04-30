@@ -143,6 +143,11 @@ autocmd BufWritePre *.py execute ':Black'
 " === Key Bindings ===
 " ====================
 
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
 nmap <C-n> :NERDTreeToggle<CR>
 
 " This makes shift-tab go back one tab
@@ -151,23 +156,7 @@ nnoremap <S-Tab> <<
 " for insert mode
 inoremap <S-Tab> <C-d>
 
-nnoremap ; :
-
-" Ctrl+c and Ctrl+j as Esc
-" Ctrl-j is a little awkward unfortunately:
-" https://github.com/neovim/neovim/issues/5916
-" So we also map Ctrl+k
-inoremap <jj> <Esc>
-
-nnoremap <jj> <Esc>
-inoremap <jj> <Esc>
-vnoremap <jj> <Esc>
-snoremap <jj> <Esc>
-xnoremap <jj> <Esc>
-cnoremap <jj> <Esc>
-onoremap <jj> <Esc>
-lnoremap <jj> <Esc>
-tnoremap <jj> <Esc>
+inoremap jj <Esc>
 
 nnoremap <C-c> <Esc>
 inoremap <C-c> <Esc>

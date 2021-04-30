@@ -91,5 +91,6 @@
         }
     ],
     "workbench.fontAliasing": "antialiased",
-    "workbench.iconTheme": "Monokai Classic Monochrome Icons"
+    "workbench.iconTheme": "Monokai Classic Monochrome Icons",
+    "window.menuBarVisibility": "toggle"
 }
