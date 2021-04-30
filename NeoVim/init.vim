@@ -44,7 +44,9 @@ Plug 'junegunn/vim-easy-align'
 
 " Routing and search
 Plug 'airblade/vim-rooter'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 " GUI
 Plug 'itchyny/lightline.vim'
@@ -155,17 +157,17 @@ nnoremap ; :
 " Ctrl-j is a little awkward unfortunately:
 " https://github.com/neovim/neovim/issues/5916
 " So we also map Ctrl+k
-inoremap <C-j> <Esc>
+inoremap <jj> <Esc>
 
-nnoremap <C-k> <Esc>
-inoremap <C-k> <Esc>
-vnoremap <C-k> <Esc>
-snoremap <C-k> <Esc>
-xnoremap <C-k> <Esc>
-cnoremap <C-k> <Esc>
-onoremap <C-k> <Esc>
-lnoremap <C-k> <Esc>
-tnoremap <C-k> <Esc>
+nnoremap <jj> <Esc>
+inoremap <jj> <Esc>
+vnoremap <jj> <Esc>
+snoremap <jj> <Esc>
+xnoremap <jj> <Esc>
+cnoremap <jj> <Esc>
+onoremap <jj> <Esc>
+lnoremap <jj> <Esc>
+tnoremap <jj> <Esc>
 
 nnoremap <C-c> <Esc>
 inoremap <C-c> <Esc>
@@ -195,5 +197,7 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-
-
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
