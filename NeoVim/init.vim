@@ -40,6 +40,7 @@ set clipboard=unnamedplus
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.config/nvim/plugged')
 
+Plug 'mhinz/vim-startify'
 Plug 'junegunn/vim-easy-align'
 
 " Routing and search
@@ -82,6 +83,9 @@ Plug 'plasticboy/vim-markdown'
 Plug 'cespare/vim-toml'
 Plug 'stephpy/vim-yaml'
 Plug 'neovimhaskell/haskell-vim'
+
+" Commenting out code
+Plug 'preservim/nerdcommenter'
 
 " Initialize plugin system
 call plug#end()
