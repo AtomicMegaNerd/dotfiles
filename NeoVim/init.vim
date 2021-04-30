@@ -40,14 +40,14 @@ set clipboard=unnamedplus
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.config/nvim/plugged')
 
+" Helpers
 Plug 'mhinz/vim-startify'
 Plug 'junegunn/vim-easy-align'
-
-" Routing and search
 Plug 'airblade/vim-rooter'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'preservim/nerdcommenter'
 
 " GUI
 Plug 'itchyny/lightline.vim'
@@ -77,15 +77,9 @@ Plug 'mhinz/vim-signify'
 
 " Syntax highlighting
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'rust-lang/rust.vim'
 Plug 'dag/vim-fish'
 Plug 'plasticboy/vim-markdown'
-Plug 'cespare/vim-toml'
-Plug 'stephpy/vim-yaml'
 Plug 'neovimhaskell/haskell-vim'
-
-" Commenting out code
-Plug 'preservim/nerdcommenter'
 
 " Initialize plugin system
 call plug#end()
@@ -106,6 +100,7 @@ function! LightlineFilename()
   return expand('%:t') !=# '' ? @% : '[No Name]'
 endfunction
 
+" Configure tree-sitter
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
@@ -118,13 +113,12 @@ EOF
 " Use auocmd to force lightline update.
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
-" Configure base16 color plug-in
 filetype plugin indent on
 
 " This disables folding for the markdown plug-in.
 let g:vim_markdown_folding_disabled = 1
 
-let base16colorspace=256
+" Going with gruvbox for now
 colorscheme gruvbox
 
 " Rust
@@ -147,11 +141,13 @@ autocmd BufWritePre *.py execute ':Black'
 " === Key Bindings ===
 " ====================
 
+" Configure auto-complete for CoC
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 
+" File manager
 nmap <C-n> :NERDTreeToggle<CR>
 
 " This makes shift-tab go back one tab
@@ -160,17 +156,8 @@ nnoremap <S-Tab> <<
 " for insert mode
 inoremap <S-Tab> <C-d>
 
+" jj to escape from insert mode
 inoremap jj <Esc>
-
-nnoremap <C-c> <Esc>
-inoremap <C-c> <Esc>
-vnoremap <C-c> <Esc>
-snoremap <C-c> <Esc>
-xnoremap <C-c> <Esc>
-cnoremap <C-c> <Esc>
-onoremap <C-c> <Esc>
-lnoremap <C-c> <Esc>
-tnoremap <C-c> <Esc>
 
 " No arrow keys --- force yourself to use the home row
 nnoremap <up> <nop>
@@ -190,6 +177,7 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+" Telescope key bindings
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
