@@ -7,7 +7,7 @@ First run the extensions.sh script included in the file.
 If you need to updae this list run this command to list the currently installed extenions:
 
 ```bash
-code --list-extensions
+code --list-extensions | xargs -L 1 echo code --install-extension
 ```
 
 You may need to restart after this step.
