@@ -1,0 +1,445 @@
+# SSH Configuration Template
+
+# CTC Dev
+
+Host azure-hosted-gh-runner-dev
+  Hostname 100.124.167.5
+  User ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+# CTC QA
+
+Host devtools-qa-artifactory-03
+  HostName q9lcajartif03.labcorp.ad.ctc
+
+Host devtools-qa-artifactory-04
+  HostName q9lcajartif04.labcorp.ad.ctc
+
+Host devtools-qa-bitbucket-01
+  HostName q9lcajbtbkt01.labcorp.ad.ctc
+
+Host devtools-qa-bitbucket-02
+  HostName q9lcajbtbkt02.labcorp.ad.ctc
+
+Host devtools-qa-elasticsearch-07
+  HostName q9lcajeswest07.labcorp.ad.ctc
+
+Host devtools-qa-elasticsearch-08
+  HostName q9lcajeswest08.labcorp.ad.ctc
+
+Host devtools-qa-elasticsearch-09
+  HostName q9lcajeswest09.labcorp.ad.ctc
+
+Host devtools-qa-jira-03
+  HostName q9lcajjira03.labcorp.ad.ctc
+
+Host devtools-qa-jira-06
+  HostName q9lcajjira06.labcorp.ad.ctc
+
+Host devtools-qa-crowd
+  HostName Q9LCAJCROWD09.labcorp.ad.ctc
+
+Host devtools-qa-confluence01
+  HostName q9lcajconflu01.labcorp.ad.ctc
+  User ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+Host devtools-qa-confluence01
+  HostName q9lcajconflu02.labcorp.ad.ctc
+  User ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+Host devtools-qa-cm-jenkins
+  Hostname ajlcd-jenkins02
+  user ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+Host devtools-qa-jenkins-enterprise-01
+  HostName d9lcwpjkm01.labcorp.ad.ctc
+  user iupy
+
+Host devtools-qa-jenkins-enterprise-02
+  HostName d9lcwpjkm02.labcorp.ad.ctc
+  user iupy
+
+Host devtools-qa-new-jenkins
+  HostName q9icajjkm01.idm.ad.ctc
+  User ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+# CTC PRE-PROD
+
+Host devtools-pp-bitbucket-03
+  HostName q9lcajbtbkt03.labcorp.ad.ctc
+
+Host devtools-pp-bitbucket-04
+  HostName q9lcajbtbkt04.labcorp.ad.ctc
+
+Host devtools-pp-elasticsearch-10
+  HostName q9lcajeswest10.labcorp.ad.ctc
+
+Host devtools-pp-elasticsearch-11
+  HostName q9lcajeswest11.labcorp.ad.ctc
+
+Host devtools-pp-elasticsearch-12
+  HostName q9lcajeswest12.labcorp.ad.ctc
+
+Host devtools-pp-crowd
+  HostName Q9LCAJCROWD03.labcorp.ad.ctc
+
+Host devtools-pp-confluence-01
+  HostName s9lcajconflu01.labcorp.ad.ctc
+  User cdunphy
+
+Host devtools-pp-confluence-02
+  HostName s9lcajconflu02.labcorp.ad.ctc
+  User cdunphy
+
+Host devtools-pp-jira-01
+    Hostname s9lcajjir01.labcorp.ad.ctc
+    user cdunphy
+
+Host devtools-pp-jira-02
+    Hostname s9lcajjir02.labcorp.ad.ctc
+    user cdunphy
+
+# CTC PROD
+
+# Tested
+Host devtools-prod-jenkins-agent-arcus-1
+	Hostname p9cpwpajnk01.corp.ad.ctc
+  User ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+# Tested
+Host devtools-prod-jenkins-agent-arcus-2
+	Hostname p9cpwpajnk02.corp.ad.ctc
+  User ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+# Tested
+Host devtools-prod-jenkins-agent-docker-1
+	Hostname p9cpwpjnka01.corp.ad.ctc
+  User ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+# Tested
+Host devtools-prod-jenkins-agent-docker-2
+	Hostname p9cpwpjnka02.corp.ad.ctc
+  User ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+# Tested
+Host devtools-prod-jenkins-agent-docker-3
+	Hostname p9cpwpjnka03.corp.ad.ctc
+  User ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+# Tested
+Host devtools-prod-rundeck-agent-01
+  Hostname P9CPWPRND01.corp.ad.ctc
+  User ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+# Tested
+Host devtools-prod-rundeck-agent-02
+  Hostname P9CPWPRND02.corp.ad.ctc
+  User ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+# Tested
+Host devtools-prod-rundeck-01-wdc
+  Hostname p9cpwprnd01.corp.ad.ctc
+  user ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+# Tested
+Host devtools-prod-rundeck-02-wdc
+  Hostname p9cpwprnd02.corp.ad.ctc
+  user ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+# Tested
+Host devtools-prod-rundeck-01-aj
+  Hostname p9cpajrnd01.corp.ad.ctc
+  user ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+# Tested
+Host devtools-prod-rundeck-02-aj
+  Hostname p9cpajrnd02.corp.ad.ctc
+  user ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+# Tested
+Host devtools-prod-cm-jenkins
+  Hostname ajcp-jenkins01.corp.ad.ctc
+  user ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+# Tested
+Host devtools-prod-jenkins-enterprise-01
+	Hostname P9CPWPJKM01.corp.ad.ctc
+  user ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+# Tested
+Host devtools-prod-jenkins-enterprise-02
+	Hostname P9CPWPJKM02.corp.ad.ctc
+  user ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+# Broken
+Host devtools-prod-jenkins-operations-center-01
+	Hostname P9CPWPCJOC01.corp.ad.ctc
+  user ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+# Tested
+Host devtools-prod-jenkins-operations-center-02
+	Hostname P9CPWPCJOC02.corp.ad.ctc
+  user ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+# Tested
+Host devtools-prod-terraform
+  Hostname p9cpwptfe01.corp.ad.ctc
+  user ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+# Tested
+Host devtools-prod-artifactory-1
+  HostName P9CPWP00001ART1.corp.ad.ctc
+  user ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+# Tested
+Host devtools-prod-artifactory-2
+  HostName P9CPWP00002ART1.corp.ad.ctc
+  user ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+# Tested
+Host devtools-prod-artifactory-3
+  HostName P9CPWP00003ART1.corp.ad.ctc
+  user ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+# Tested
+Host devtools-prod-bitbucket-01
+  Hostname P9CPWP00001BIT1.corp.ad.ctc
+  user ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+# Tested
+Host devtools-prod-bitbucket-02
+  Hostname P9CPWP00002BIT1.corp.ad.ctc
+  user ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+# Tested
+Host devtools-prod-bitbucket-elasticsearch
+	Hostname p9cpwpbbels01.corp.ad.ctc
+  user ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+# Tested
+Host devtools-prod-confluence-01
+  Hostname p9icwpconflu01.idm.ad.ctc
+  user ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+# Tested
+Host devtools-prod-confluence-02
+  Hostname p9icwpconflu02.idm.ad.ctc
+  user ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+# Tested
+Host devtools-prod-crowd
+  HostName P9CPWP00001CROW.corp.ad.ctc
+  user ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+# Tested
+Host devtools-prod-haproxy-01
+  Hostname p9cpwp00001hap1.corp.ad.ctc
+  user ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+# Tested
+Host devtools-prod-haproxy-02
+  Hostname p9cpwp00002hap1.corp.ad.ctc
+  user ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+# Tested
+Host devtools-prod-jira-01
+  Hostname p9icwpjir01.idm.ad.ctc
+  user ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+# Tested
+Host devtools-prod-jira-02
+  Hostname p9icwpjir02.idm.ad.ctc
+  user ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+# Tested
+Host devtools-prod-postgresql-master
+  HostName P9CPWP00001PG01.corp.ad.ctc
+  user ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+# Tested
+Host devtools-prod-postgresql-slave
+  HostName 10.18.26.144
+  user ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+# Tested
+Host devtools-prod-sonarcube-01
+  Hostname p9idwpsonarq01.idm.ad.ctc
+  User ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+# Tested
+Host devtools-prod-xray-01
+  Hostname p9cpwpartxray01.corp.ad.ctc
+  User ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+# Tested
+Host devtools-prod-xray-02
+  Hostname p9cpwpartxray02.corp.ad.ctc
+  User ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+# Tested
+Host devtools-prod-chef-automate
+	Hostname P9CPWPCHFATM01.corp.ad.ctc
+  user ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+# Tested
+Host devtools-prod-new-jenkins
+  HostName p9icwpjkm01.idm.ad.ctc
+  User ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+# Legacy DevTools PP
+
+Host devtools-pp-zephyr
+  Hostname fmzpy1ap02d.unix.ctcwest.ctc
+  user ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
+
+# Legacy DevTools PROD
+
+Host legacy-devtools-ansible-trustedhost
+  HostName fmans01ap01.fglcorporate.net
+  user cdunphy
+
+Host legacy-devtools-prod-artifactory
+  HostName fmart01ap01.fglcorporate.net
+  user cdunphy
+
+Host legacy-devtools-prod-bamboo-master
+  HostName fmbam01ap01.fglcorporate.net
+  user ansible
+
+Host legacy-devtools-prod-bamboo-agent1
+  HostName fmbra01ap01.fglcorporate.net
+  user ansible
+
+Host legacy-devtools-prod-bamboo-agent2
+  HostName fmbra01ap02.fglcorporate.net
+  user cdunphy
+
+Host legacy-devtools-prod-bamboo-agent3
+  HostName fmbra01ap03.fglcorporate.net
+  user ansible
+
+Host legacy-devtools-prod-bamboo-agent4
+  HostName fmbra01ap04.unix.ctcwest.ctc
+  user ansible
+
+Host legacy-devtools-prod-confluence
+  HostName fmcfl01ap01.fglcorporate.net
+  user cdunphy
+
+Host legacy-devtools-prod-crowd
+  HostName fmcrd01ap01.fglcorporate.net
+  user ansible
+
+Host legacy-devtools-prod-bitbucket
+  HostName fmgit01ap01.fglcorporate.net
+  user ansible
+
+Host legacy-devtools-prod-jira
+  HostName fmjra01ap01.fglcorporate.net
+  user ansible
+
+Host legacy-devtools-prod-sonar
+  HostName fmson01ap01.fglcorporate.net
+  user cdunphy
+
+Host legacy-devtools-prod-zephyr
+  HostName zephyr.devops.fglsports.com
+  user cdunphy
+
+Host legacy-devtools-prod-jira-archive
+    Hostname p9cpwpjira01.corp.ad.ctc
+
+# Legacy QA CTC Delivery Tools
+
+Host legacy-devtools-qa-ansible-trustedhost
+  HostName fmans01ap01q.fglcorporate.net
+  user ansible
+
+Host legacy-devtools-qa-artifactory
+  HostName fmart01ap01q.fglcorporate.net
+  user ansible
+
+Host legacy-devtools-qa-bamboo-master
+  HostName fmbam01ap01q.fglcorporate.net
+  user ansible
+
+Host legacy-devtools-qa-bamboo-agent-1
+  HostName qaw-bamagt1.labcorp.ad.ctc
+  user ansible
+
+Host legacy-devtools-qa-bamboo-agent-2
+  HostName qaw-bamagt2.labcorp.ad.ctc
+  user ansible
+
+Host legacy-devtools-qa-confluence
+  HostName fmcfl01ap01q.fglcorporate.net
+  user ansible
+
+Host legacy-devtools-qa-crowd
+  HostName fmcrd01ap01q.fglcorporate.net
+  user ansible
+
+Host legacy-devtools-qa-bitbucket
+  HostName fmgit01ap01q.fglcorporate.net
+  user ansible
+
+Host legacy-devtools-qa-jira
+  HostName fmjra01ap01q.fglcorporate.net
+  user ansible
+
+Host legacy-devtools-qa-sonar
+  HostName fmson01ap01q.fglcorporate.net
+  user ansible
+
+Host ado-agent
+  HostName 100.124.167.27
+  user azureuser
+  IdentityFile ~/.ssh/vm-ado-test-agent-coa_key.pem
+
+Host *
+  UseKeychain yes
+  AddKeysToAgent yes
+  IdentityFile ~/.ssh/id_rsa
+  user iupy
