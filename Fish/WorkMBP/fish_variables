@@ -1,6 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-SETUVAR --export PYENV_ROOT:/home/cdunphy/\x2epyenv
+SETUVAR __fish_init_2_3_0:\x1d
 SETUVAR __fish_initialized:3100
 SETUVAR fish_color_autosuggestion:585858
 SETUVAR fish_color_cancel:\x2dr
@@ -25,10 +25,9 @@ SETUVAR fish_color_selection:white\x1e\x2d\x2dbold\x1e\x2d\x2dbackground\x3dbrbl
 SETUVAR fish_color_status:red
 SETUVAR fish_color_user:brgreen
 SETUVAR fish_color_valid_path:\x2d\x2dunderline
-SETUVAR fish_greeting:Welcome\x20to\x20fish\x2c\x20the\x20friendly\x20interactive\x20shell\x0aType\x20\x60help\x60\x20for\x20instructions\x20on\x20how\x20to\x20use\x20fish
+SETUVAR fish_greeting:Welcome\x20to\x20fish\x2c\x20the\x20friendly\x20interactive\x20shell
 SETUVAR fish_key_bindings:fish_default_key_bindings
 SETUVAR fish_pager_color_completion:normal
 SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
-SETUVAR --export fish_user_paths:/home/cdunphy/Apps/nvim\x2dlinux64/bin\x1e/home/cdunphy/\x2enpm\x2dpackages/bin\x1e/home/cdunphy/\x2epyenv/bin\x1e/home/cdunphy/\x2ecargo/bin\x1e/home/cdunphy/\x2elocal/bin\x1e/home/cdunphy/bin\x1e/home/cdunphy/\x2epyenv/bin\x1e/home/cdunphy/\x2efzf/bin

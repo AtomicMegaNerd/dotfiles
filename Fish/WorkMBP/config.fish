@@ -1,27 +1,48 @@
+# Aliases
+# ===================================
+alias ls "exa"
+alias du "dust"
+alias grep "rg"
+alias wx "curl wttr.in/Calgary"
+alias moon "curl wttr.in/moon"
+alias vim "nvim"
+alias vi "nvim"
+alias k "kubectl"
+alias d "docker"
+alias t "terraform"
+alias g "git"
+
+# EDITOR
+# ===================================
 set -gx EDITOR nvim
 
+# General flags
+# ===================================
+set -gx FUNCTIONS_CORE_TOOLS_TELEMETRY_OPTOUT 1
+
+# Python
+# ===================================
+set -gx PYENV_ROOT /Users/chris.dunphy/.pyenv
 pyenv init - | source
+# This allows pip to work with Artifactory
 
-## Aliases
+# iTerm 2
+# ===================================
+test -e {$HOME}/.iterm2_shell_integration.fish; and source {$HOME}/.iterm2_shell_integration.fish
 
-alias vi="nvim"
-alias vim="nvim"
-alias ls="exa"
-alias ll="exa -lah"
-alias wx="curl wttr.in/Calgary"
-alias moon="curl wttr.in/moon"
+# Java and Friends
+# ===================================
+set -gx JAVA_HOME /Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home
+set -gx GROOVY_HOME /usr/local/opt/groovy/libexec
 
-# Base16 Shell
+# PATH
+# ===================================
+set -gx fish_user_paths $HOME/bin $fish_user_paths
+set -gx fish_user_paths $HOME/.fzf/bin $fish_user_paths
+
+# Base16 Shell - For nice colors
+# ===================================
 if status --is-interactive
     set BASE16_SHELL "$HOME/.config/base16-shell/"
     source "$BASE16_SHELL/profile_helper.fish"
 end
-
-# fish-ssh-agent
-if test -z "$SSH_ENV"
-    set -xg SSH_ENV $HOME/.ssh/environment
-end
-if not __ssh_agent_is_started
-    __ssh_agent_start
-end
-
