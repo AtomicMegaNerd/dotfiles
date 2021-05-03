@@ -31,4 +31,4 @@ SETUVAR fish_pager_color_completion:normal
 SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
-SETUVAR --export fish_user_paths:/home/cdunphy/Apps/nvim\x2dlinux64/bin\x1e/home/cdunphy/\x2enpm\x2dpackages/bin\x1e/home/cdunphy/\x2epyenv/bin\x1e/home/cdunphy/\x2ecargo/bin\x1e/home/cdunphy/\x2elocal/bin\x1e/home/cdunphy/bin\x1e/home/cdunphy/\x2epyenv/bin\x1e/home/cdunphy/\x2efzf/bin
+SETUVAR --export fish_user_paths:/home/cdunphy/Apps/OpenRGB/bin/\x1e/home/cdunphy/Apps/nvim\x2dlinux64/bin\x1e/home/cdunphy/\x2enpm\x2dpackages/bin\x1e/home/cdunphy/\x2epyenv/bin\x1e/home/cdunphy/\x2ecargo/bin\x1e/home/cdunphy/\x2elocal/bin\x1e/home/cdunphy/bin\x1e/home/cdunphy/\x2epyenv/bin\x1e/home/cdunphy/\x2efzf/bin

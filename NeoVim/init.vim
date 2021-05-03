@@ -41,11 +41,14 @@ set clipboard+=unnamedplus
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.config/nvim/plugged')
 
+" Helpers
+Plug 'mhinz/vim-startify'
 Plug 'junegunn/vim-easy-align'
-
-" Routing and search
 Plug 'airblade/vim-rooter'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'preservim/nerdcommenter'
 
 " GUI
 Plug 'itchyny/lightline.vim'
@@ -68,6 +71,7 @@ Plug 'gruvbox-community/gruvbox'
 " Code formatting
 Plug 'psf/black', { 'tag': '19.10b0' }
 Plug 'sdiehl/vim-ormolu'
+
 " Git
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
@@ -75,11 +79,8 @@ Plug 'mhinz/vim-signify'
 
 " Syntax highlighting
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'rust-lang/rust.vim'
 Plug 'dag/vim-fish'
 Plug 'plasticboy/vim-markdown'
-Plug 'cespare/vim-toml'
-Plug 'stephpy/vim-yaml'
 Plug 'neovimhaskell/haskell-vim'
 
 " Initialize plugin system
@@ -101,6 +102,7 @@ function! LightlineFilename()
   return expand('%:t') !=# '' ? @% : '[No Name]'
 endfunction
 
+" Configure tree-sitter
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
@@ -113,13 +115,12 @@ EOF
 " Use auocmd to force lightline update.
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
-" Configure base16 color plug-in
 filetype plugin indent on
 
 " This disables folding for the markdown plug-in.
 let g:vim_markdown_folding_disabled = 1
 
-let base16colorspace=256
+" Going with gruvbox for now
 colorscheme gruvbox
 
 " Rust
@@ -147,6 +148,19 @@ au Filetype terraform set tabstop=2 shiftwidth=2
 " === Key Bindings ===
 " ====================
 
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+" Configure auto-complete for CoC
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+" File manager
 nmap <C-n> :NERDTreeToggle<CR>
 
 " This makes shift-tab go back one tab
@@ -155,33 +169,8 @@ nnoremap <S-Tab> <<
 " for insert mode
 inoremap <S-Tab> <C-d>
 
-nnoremap ; :
-
-" Ctrl+c and Ctrl+j as Esc
-" Ctrl-j is a little awkward unfortunately:
-" https://github.com/neovim/neovim/issues/5916
-" So we also map Ctrl+k
-inoremap <C-j> <Esc>
-
-nnoremap <C-k> <Esc>
-inoremap <C-k> <Esc>
-vnoremap <C-k> <Esc>
-snoremap <C-k> <Esc>
-xnoremap <C-k> <Esc>
-cnoremap <C-k> <Esc>
-onoremap <C-k> <Esc>
-lnoremap <C-k> <Esc>
-tnoremap <C-k> <Esc>
-
-nnoremap <C-c> <Esc>
-inoremap <C-c> <Esc>
-vnoremap <C-c> <Esc>
-snoremap <C-c> <Esc>
-xnoremap <C-c> <Esc>
-cnoremap <C-c> <Esc>
-onoremap <C-c> <Esc>
-lnoremap <C-c> <Esc>
-tnoremap <C-c> <Esc>
+" jj to escape from insert mode
+inoremap jj <Esc>
 
 " No arrow keys --- force yourself to use the home row
 nnoremap <up> <nop>
@@ -201,3 +190,8 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+" Telescope key bindings
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
