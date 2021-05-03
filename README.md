@@ -12,6 +12,15 @@
 This repository stores the dotfiles for my UNIX based systems.  The idea is
 to symlink all of the configs to the git managed files in this repo.
 
+This is based on my [GitHub dotfiles repp](https://github.com/AtomicMegaNerd/dotfiles) but 
+with additional configs for work that are kept only in CTC BitBucket.  This lets me pull in
+enhancements I make from my personal configs but also to have some work specific settings.
+
+As such I usually have two remotes on this repo at work:
+
+- github - I pull from the GitHub remote to pull in changes from my personal configs.
+- origin - I then push the changes along with work specific configs to BitBucket.
+
 ## Supported Apps
 
 * Alacritty

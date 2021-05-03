@@ -1,9 +1,4 @@
 {
-    // =================================================================================
-    // AtomicMegaNerd's VSCode Settings
-    // =================================================================================
-    // =================================================================================
-    // =================================================================================
     // Files settings
     // Configure glob patterns for excluding files and folders.
     "files.exclude": {
@@ -12,84 +7,178 @@
         "**/.hg": true,
         "**/.DS_Store": true,
         "**/*.pyc": true,
-        "**/__pycache__": true
+        "**/__pycache__": true,
+    },
+    "files.associations": {
+        "**/hosts/**": "ini",
+        "**/inventory/**": "ini",
+        "**application*.conf*": "hocon",
     },
     "files.trimTrailingWhitespace": true,
-    // Editor settings
-    // =================================================================================
-    "editor.fontFamily": "Cascadia Code",
-    "editor.fontLigatures": true,
-    "editor.fontSize": 16,
-    "editor.formatOnSave": true,
-    "editor.suggestSelection": "first",
-    "editor.cursorStyle": "block",
-    "editor.cursorBlinking": "blink",
-    "editor.minimap.enabled": false,
-    // Git settings
-    // =================================================================================
-    "git.confirmSync": false,
-    // Extensions settings
-    // =================================================================================
-    "extensions.ignoreRecommendations": true,
-    // Terminal settings
-    // =================================================================================
-    "terminal.integrated.fontFamily": "Noto Sans Mono",
-    "terminal.integrated.fontSize": 16,
-    // Window settings
-    // =================================================================================
-    "window.zoomLevel": 0,
-    "workbench.colorTheme": "GitHub Dark",
-    "workbench.settings.editor": "json",
-    "workbench.startupEditor": "newUntitledFile",
-    "workbench.settings.useSplitJSON": true,
-    // Explorer settings
-    // =================================================================================
-    "explorer.confirmDelete": false,
-    "explorer.openEditors.visible": 0, // disables open editors
+    "files.eol": "\n",
     // Python settings
-    // =================================================================================
     "[python]": {
         "editor.rulers": [
-            88
-        ],
-        "editor.tabSize": 4,
-        "editor.formatOnSave": true
-    },
-    "python.formatting.provider": "black",
-    "python.linting.mypyEnabled": true,
-    "python.linting.pylintEnabled": true,
-    // Rust settings
-    // =================================================================================
-    "[rust]": {
-        "editor.rulers": [
-            100
-        ]
-    },
-    // Markdown settings
-    // =================================================================================
-    "[markdown]": {
-        "editor.rulers": [
-            80
-        ]
-    },
-    // Haskell Settings
-    // =================================================================================
-    "[haskell]": {
-        "editor.tabSize": 2,
-        "editor.rulers": [
             90
-        ]
+        ], // black likes 90
     },
-    // Disable tracking and telemetry
-    // =================================================================================
-    "telemetry.enableTelemetry": false,
+    "[groovy]": {
+        "editor.rulers": [
+            120
+        ],
+    },
+    "python.linting.flake8Enabled": false,
+    "python.formatting.provider": "black",
+    "python.formatting.blackPath": "/Users/chris.dunphy/.pyenv/shims/black",
+    "python.linting.enabled": true,
+    "python.linting.lintOnSave": true,
+    "python.linting.pylintEnabled": true,
+    "python.linting.mypyEnabled": true,
+    "python.pythonPath": "/usr/local/bin/python3",
     "python.languageServer": "Pylance",
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    // Markdown Settings
+    "[markdown]": {
+        "editor.tabSize": 2,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    // YAML Settings
+    "[yaml]": {
+        "editor.tabSize": 2,
+        "editor.formatOnSave": false
+    },
+    // Use 100 columns
+    "prettier.printWidth": 100,
+    // Editor settings
+    "editor.cursorStyle": "block",
+    "editor.tabSize": 4,
+    "editor.autoClosingQuotes": "never",
+    "editor.rulers": [
+        100
+    ],
+    "editor.fontFamily": "Cascadia Code",
+    "editor.fontWeight": "normal",
+    "editor.fontSize": 17,
+    "editor.minimap.enabled": false,
+    "editor.fontLigatures": false,
+    "editor.formatOnSave": true,
+    "editor.autoClosingBrackets": "never",
+    "editor.autoSurround": "never",
+    // Git settings
+    "git.confirmSync": false,
+    // Extensions settings
+    "extensions.ignoreRecommendations": true,
+    // Terminal settings
+    "terminal.integrated.shell.osx": "/usr/local/bin/fish",
+    "terminal.integrated.fontFamily": "Cascadia Code",
+    "terminal.integrated.fontSize": 16,
+    // Window settings
+    "window.zoomLevel": 0,
+    "window.titleBarStyle": "custom",
+    // Workbench settings
+    "workbench.iconTheme": "Monokai Pro Icons",
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.colorCustomizations": {
+        "editorCursor.foreground": "#FFFFFF"
+    },
+    "workbench.editor.closeEmptyGroups": false,
+    "workbench.settings.editor": "json",
+    "workbench.fontAliasing": "antialiased",
     "workbench.editorAssociations": [
         {
             "viewType": "jupyter.notebook.ipynb",
             "filenamePattern": "*.ipynb"
         }
     ],
-    "workbench.fontAliasing": "antialiased",
-    "workbench.iconTheme": "Monokai Classic Monochrome Icons"
+    "workbench.activityBar.visible": true,
+    "workbench.colorTheme": "GitHub Dark Dimmed",
+    // Explorer settings
+    "explorer.confirmDelete": false,
+    "explorer.openEditors.visible": 0, // disables open editors
+    "explorer.confirmDragAndDrop": false,
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "markdownlint.config": {
+        "default": true,
+        "MD013": {
+            "line_length": 100
+        },
+        "MD024": {
+            "siblings_only": true
+        }
+    },
+    "editor.suggestSelection": "first",
+    "cSpell.userWords": [
+        "Jenkinsfile",
+        "Opex",
+        "aiohttp",
+        "ansible",
+        "artifactory",
+        "asyncio",
+        "automations",
+        "azmonparser",
+        "bhavik",
+        "cantire",
+        "cantire corp",
+        "cdunphy",
+        "centos",
+        "changelog",
+        "cookiecutter",
+        "corp",
+        "creds",
+        "datefmt",
+        "dulwich",
+        "dunphy",
+        "hashicorp",
+        "helloworld",
+        "inspec",
+        "jacoco",
+        "javax",
+        "jenkinsfile",
+        "jira",
+        "junit",
+        "lineinfile",
+        "loglevel",
+        "mockito",
+        "msal",
+        "name",
+        "newrelic",
+        "nrql",
+        "ntire",
+        "ntire corp repo name",
+        "outfile",
+        "pformat",
+        "pipenv",
+        "popen",
+        "pygit",
+        "pypi",
+        "pytest",
+        "qube",
+        "repo",
+        "repos",
+        "rubocop",
+        "rundeck",
+        "servlet",
+        "shellcheck",
+        "sonar",
+        "structs",
+        "teamname",
+        "templating",
+        "unittest",
+        "veracode"
+    ],
+    "cSpell.ignoreWords": [
+        "afan",
+        "hadolint",
+        "jenkinsfiles"
+    ],
+    "git.pullTags": false,
+    "azureFunctions.showProjectWarning": false,
+    "go.useLanguageServer": true,
 }
