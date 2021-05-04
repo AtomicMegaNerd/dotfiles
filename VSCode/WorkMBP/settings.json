@@ -181,4 +181,5 @@
     "git.pullTags": false,
     "azureFunctions.showProjectWarning": false,
     "go.useLanguageServer": true,
+    "redhat.telemetry.enabled": false,
 }

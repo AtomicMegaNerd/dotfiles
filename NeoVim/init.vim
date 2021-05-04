@@ -71,6 +71,9 @@ Plug 'gruvbox-community/gruvbox'
 " Code formatting
 Plug 'psf/black', { 'tag': '19.10b0' }
 Plug 'sdiehl/vim-ormolu'
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+Plug 'google/vim-glaive'
 
 " Git
 Plug 'mhinz/vim-signify'
@@ -86,6 +89,12 @@ Plug 'hashivim/vim-terraform'
 
 " Initialize plugin system
 call plug#end()
+
+" googla-java-format
+call glaive#Install()
+" Optional: Enable codefmt's default mappings on the <Leader>= prefix.
+Glaive codefmt plugin[mappings]
+Glaive codefmt google_java_executable="java -jar /Users/chris.dunphy/Tools/google-java-format/google-java-format-1.10.0-all-deps.jar"
 
 " Lightline
 let g:lightline = {
@@ -140,8 +149,12 @@ au Filetype haskell set tabstop=2 shiftwidth=2
 " JSON
 au Filetype json set tabstop=2 shiftwidth=2
 
+" Java
+au FileType java set tabstop=4 shiftwidth=4
+
 " Automatically run black when saving Python files
 autocmd BufWritePre *.py execute ':Black'
+autocmd FileType java AutoFormatBuffer google-java-format
 
 au Filetype terraform set tabstop=2 shiftwidth=2
 
