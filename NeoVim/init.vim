@@ -36,6 +36,9 @@ set shiftwidth=4
 
 set clipboard+=unnamedplus
 
+" spelunker is taking care of our spelling needs
+set nospell
+
 " Specify a directory for plugins
 " - For Neovim: stdpath('data') . '/plugged'
 " - Avoid using standard Vim directory names like 'plugin'
@@ -49,6 +52,10 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'preservim/nerdcommenter'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'kamykn/spelunker.vim'
+Plug 'kamykn/popup-menu.nvim'
 
 " GUI
 Plug 'itchyny/lightline.vim'
