@@ -34,6 +34,7 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 set clipboard=unnamedplus 
+set nospell
 
 " Specify a directory for plugins
 " - For Neovim: stdpath('data') . '/plugged'
@@ -48,6 +49,9 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'preservim/nerdcommenter'
+Plug 'kamykn/spelunker.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 " GUI
 Plug 'itchyny/lightline.vim'
