@@ -52,6 +52,8 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'preservim/nerdcommenter'
+Plug 'kamykn/spelunker.vim'
+Plug 'kamykn/popup-menu.nvim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'kamykn/spelunker.vim'
