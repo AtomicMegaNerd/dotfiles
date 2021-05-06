@@ -12,7 +12,10 @@ font:
   size: 14
 
 cursor:
-  style: Block 
+  style:
+    shape: Block
+    blinking: Always
+    blink_interval: 500
 
 # Base16 Bright 256 - alacritty color config
 # Chris Kempson (http://chriskempson.com)
