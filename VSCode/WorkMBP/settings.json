@@ -182,4 +182,5 @@
     "azureFunctions.showProjectWarning": false,
     "go.useLanguageServer": true,
     "redhat.telemetry.enabled": false,
+    "workbench.editor.untitled.hint": "hidden",
 }

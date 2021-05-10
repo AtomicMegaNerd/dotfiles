@@ -56,8 +56,7 @@ Plug 'kamykn/spelunker.vim'
 Plug 'kamykn/popup-menu.nvim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'kamykn/spelunker.vim'
-Plug 'kamykn/popup-menu.nvim'
+Plug 'godlygeek/tabular'
 
 " GUI
 Plug 'itchyny/lightline.vim'

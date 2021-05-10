@@ -1,0 +1,22 @@
+# Font configuration (changes require restart)
+font:
+  normal:
+    family: Cascadia Code
+    style: Semi-Light
+  bold:
+    family: Cascadia Code
+    style: Semi-Light
+  italic:
+    family: Cascadia Code
+    style: Semi-Light
+  size: 14
+
+cursor:
+  style:
+    shape: Block
+    blinking: Always
+    blink_interval: 500
+
+mouse_bindings:
+  - { mouse: Right, action: Paste }
+  - { mouse: Left, action: Copy }
