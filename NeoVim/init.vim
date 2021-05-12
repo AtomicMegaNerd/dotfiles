@@ -161,6 +161,7 @@ inoremap <silent><expr> <TAB>
 
 " File manager
 nmap <C-n> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
 
 " This makes shift-tab go back one tab
 " for command mode
