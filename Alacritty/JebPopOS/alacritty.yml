@@ -20,3 +20,6 @@ cursor:
 mouse_bindings:
   - { mouse: Right, action: Paste }
   - { mouse: Left, action: Copy }
+
+env:
+ { WINIT_X11_SCALE_FACTOR: "1.0" }
