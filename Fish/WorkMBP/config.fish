@@ -22,9 +22,16 @@ set -gx FUNCTIONS_CORE_TOOLS_TELEMETRY_OPTOUT 1
 
 # Python
 # ===================================
-set -gx PYENV_ROOT /Users/chris.dunphy/.pyenv
-pyenv init - | source
 # This allows pip to work with Artifactory
+# Add pyenv executable to PATH by running
+# the following interactively:
+set -Ux PYENV_ROOT $HOME/.pyenv
+set -U fish_user_paths $PYENV_ROOT/bin $fish_user_paths
+
+# Load pyenv automatically by appending
+# the following to ~/.config/fish/config.fish:
+status is-login; and pyenv init --path | source
+pyenv init - | source
 
 # iTerm 2
 # ===================================
