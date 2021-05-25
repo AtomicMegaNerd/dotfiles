@@ -21,11 +21,7 @@
         "hs",
         "lhs",
         "haskell"
-      ],
-      "initializationOptions": {
-        "languageServerHaskell": {
-        }
-      }
+      ]
     }
   }
 }
