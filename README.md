@@ -167,6 +167,14 @@ cd ~/Code/Configs/dotfiles/VSCode/HOST
 
 ### XMonad and XMobar
 
-I am not currently using these as I switched to Pop!_OS and it's excellent
-tiling Window manager for GNOME.  However, I may come back to this at some
-point.
+XMonad is a great tiling Window Manager to use with Linux VM's as it is very lightweight and
+also is extremely productive once setup.  First install xmonad, xmobar, and xmonad-contrib
+.  I also recommend you install lightdm (with lightdm-gtk-greeter) so that you can login to
+XMonad that way.
+
+```bash
+ln -s ~/Code/Configs/dotfiles/XMonadConfig/src/ ~/.xmonad
+ln -s ~/Code/Configs/dotfiles/XMobar ~/.config/xmobar
+cd ~/.xmonad
+xmonad --recompile
+```
