@@ -32,7 +32,6 @@ alias ll="exa -lah"
 # Load pyenv automatically by appending
 # the following to ~/.config/fish/config.fish:
 status is-login; and pyenv init --path | source
-pyenv init - | source
 
 # Enable iTerm2 shell integration
 source ~/.iterm2_shell_integration.(basename $SHELL)
