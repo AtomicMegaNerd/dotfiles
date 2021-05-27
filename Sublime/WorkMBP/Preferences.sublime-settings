@@ -106,7 +106,7 @@
 	"ignored_packages":
 	[
 		"Python",
-		"Vintage"
+		"Vintage",
 	],
 	"ignored_words":
 	[
@@ -223,6 +223,6 @@
 		80
 	],
 	"spell_check": true,
-	"theme": "GitHub-Theme.sublime-theme",
-	"translate_tabs_to_spaces": true
+	"theme": "Default.sublime-theme",
+	"translate_tabs_to_spaces": true,
 }
