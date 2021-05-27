@@ -25,7 +25,6 @@ set -gx FUNCTIONS_CORE_TOOLS_TELEMETRY_OPTOUT 1
 # Load pyenv automatically by appending
 # the following to ~/.config/fish/config.fish:
 status is-login; and pyenv init --path | source
-pyenv init - | source
 
 # iTerm 2
 # ===================================
