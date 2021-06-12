@@ -84,12 +84,9 @@
     // =================================================================================
     "telemetry.enableTelemetry": false,
     "python.languageServer": "Pylance",
-    "workbench.editorAssociations": [
-        {
-            "viewType": "jupyter.notebook.ipynb",
-            "filenamePattern": "*.ipynb"
-        }
-    ],
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter.notebook.ipynb"
+    },
     "workbench.fontAliasing": "antialiased",
     "workbench.iconTheme": "Monokai Classic Monochrome Icons",
     "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
