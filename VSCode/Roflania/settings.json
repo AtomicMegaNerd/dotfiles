@@ -89,6 +89,5 @@
     },
     "workbench.fontAliasing": "antialiased",
     "workbench.iconTheme": "Monokai Classic Monochrome Icons",
-    "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
     "workbench.editor.untitled.hint": "hidden",
 }
