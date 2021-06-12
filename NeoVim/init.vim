@@ -61,11 +61,6 @@ Plug 'itchyny/lightline.vim'
 
 " coc and plug-ins
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'fannheyward/coc-rust-analyzer'
-Plug 'fannheyward/coc-pyright'
-Plug 'neoclide/coc-json'
-Plug 'neoclide/coc-java'
-Plug 'josa42/coc-docker'
 
 " File management
 Plug 'preservim/nerdtree'
