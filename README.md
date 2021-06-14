@@ -106,6 +106,12 @@ ln -s ~/Code/Configs/dotfiles/NeoVim/coc-settings.json
 vim +PLugInstall +UpdateRemotePlugins
 ```
 
+Finally run the script to isntall the coc-extensions:
+
+```bash
+~/.config/nvim/install-coc-extensions.sh
+```
+
 ### Sublime Text 3
 
 Please make sure that Package Control is installed first.  Sadly there is
