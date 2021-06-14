@@ -1,5 +1,4 @@
 {
-  "python.jediEnabled": false,
   "python.linting.pylintEnabled": true,
   "python.linting.mypyEnabled": true,
   "python.linting.enabled": true,
@@ -7,6 +6,14 @@
   "python.linting.lintOnSave": true,
   "python.linting.pylintUseMinimalCheckers": false,
   "suggest.noselect": false,
+  "markdownlint.config": {
+    "MD013": {
+      "line_length": 100
+    },
+    "MD024": {
+      "siblings_only": true
+    }
+  },
   "languageserver": {
     "haskell": {
       "command": "haskell-language-server-wrapper",
@@ -17,11 +24,7 @@
         "cabal.project",
         "package.yaml"
       ],
-      "filetypes": [
-        "hs",
-        "lhs",
-        "haskell"
-      ]
+      "filetypes": ["hs", "lhs", "haskell"]
     }
   }
 }

@@ -74,7 +74,6 @@
     // Extensions settings
     "extensions.ignoreRecommendations": true,
     // Terminal settings
-    "terminal.integrated.shell.osx": "/usr/local/bin/fish",
     "terminal.integrated.fontFamily": "Cascadia Code",
     "terminal.integrated.fontSize": 16,
     // Window settings

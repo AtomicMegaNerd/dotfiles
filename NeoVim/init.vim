@@ -83,6 +83,7 @@ Plug 'sdiehl/vim-ormolu'
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'vue', 'yaml', 'html'] }
 
 " Git
 Plug 'mhinz/vim-signify'
