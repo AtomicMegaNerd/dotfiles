@@ -6,14 +6,6 @@
   "python.linting.lintOnSave": true,
   "python.linting.pylintUseMinimalCheckers": false,
   "suggest.noselect": false,
-  "markdownlint.config": {
-    "MD013": {
-      "line_length": 100
-    },
-    "MD024": {
-      "siblings_only": true
-    }
-  },
   "languageserver": {
     "haskell": {
       "command": "haskell-language-server-wrapper",
@@ -28,6 +20,7 @@
     }
   },
   "markdownlint.config": {
+    "MD012": false,
     "MD013": {
       "line_length": 100
     },

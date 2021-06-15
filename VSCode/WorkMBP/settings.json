@@ -88,12 +88,9 @@
     "workbench.editor.closeEmptyGroups": false,
     "workbench.settings.editor": "json",
     "workbench.fontAliasing": "antialiased",
-    "workbench.editorAssociations": [
-        {
-            "viewType": "jupyter.notebook.ipynb",
-            "filenamePattern": "*.ipynb"
-        }
-    ],
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter.notebook.ipynb"
+    },
     "workbench.activityBar.visible": true,
     "workbench.colorTheme": "GitHub Dark Dimmed",
     // Explorer settings
