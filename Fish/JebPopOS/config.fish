@@ -10,7 +10,8 @@ set -gx EDITOR nvim
 set -gx NPM_PACKAGES $HOME/.npm-packages
 set -gx NODE_PATH "$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 
-pyenv init - | source
+status is-login; and pyenv init --path | source
+pyenv init --path | source
 
 ## Aliases
 
