@@ -3,6 +3,9 @@
 SETUVAR --export PYENV_ROOT:/Users/chris\x2edunphy/\x2epyenv
 SETUVAR __fish_init_2_3_0:\x1d
 SETUVAR __fish_initialized:3100
+SETUVAR _fisher_jomik_2F_fish_2D_gruvbox_files:/Users/chris\x2edunphy/\x2econfig/fish/functions/theme_gruvbox\x2efish
+SETUVAR _fisher_jorgebucaran_2F_fisher_files:/Users/chris\x2edunphy/\x2econfig/fish/functions/fisher\x2efish\x1e/Users/chris\x2edunphy/\x2econfig/fish/completions/fisher\x2efish
+SETUVAR _fisher_plugins:jorgebucaran/fisher\x1ejomik/fish\x2dgruvbox
 SETUVAR fish_color_autosuggestion:585858
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:a1b56c
