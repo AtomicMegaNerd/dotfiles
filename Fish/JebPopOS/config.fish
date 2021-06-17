@@ -10,7 +10,8 @@ set -gx EDITOR nvim
 set -gx NPM_PACKAGES $HOME/.npm-packages
 set -gx NODE_PATH "$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 
-pyenv init - | source
+status is-login; and pyenv init --path | source
+pyenv init --path | source
 
 ## Aliases
 
@@ -30,7 +31,10 @@ alias ls="exa"
 alias ll="exa -lah"
 
 # Base16 Shell
-if status --is-interactive
-    set BASE16_SHELL "$HOME/.config/base16-shell/"
-    source "$BASE16_SHELL/profile_helper.fish"
-end
+#if status --is-interactive
+    #set BASE16_SHELL "$HOME/.config/base16-shell/"
+    #source "$BASE16_SHELL/profile_helper.fish"
+#end
+
+# Gruvbox
+theme_gruvbox dark hard
