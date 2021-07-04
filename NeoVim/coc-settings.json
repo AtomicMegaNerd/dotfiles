@@ -6,6 +6,7 @@
   "python.linting.lintOnSave": true,
   "python.linting.pylintUseMinimalCheckers": false,
   "suggest.noselect": false,
+  "yaml.format.enable": true,
   "languageserver": {
     "haskell": {
       "command": "haskell-language-server-wrapper",

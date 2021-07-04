@@ -21,5 +21,9 @@ mouse_bindings:
   - { mouse: Right, action: Paste }
   - { mouse: Left, action: Copy }
 
+window:
+  padding:
+    x: 3
+    y: 3 
 env:
  { WINIT_X11_SCALE_FACTOR: "1.0" }
