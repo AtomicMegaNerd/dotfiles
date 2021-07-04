@@ -37,9 +37,6 @@ set shiftwidth=4
 set clipboard=unnamedplus 
 set nospell
 
-" Specify a directory for plugins
-" - For Neovim: stdpath('data') . '/plugged'
-" - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.config/nvim/plugged')
 
 " Helpers
@@ -79,9 +76,6 @@ Plug 'mhinz/vim-signify'
 
 " Syntax highlighting
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'dag/vim-fish'
-" Plug 'plasticboy/vim-markdown'
-" Plug 'neovimhaskell/haskell-vim'
 
 " Initialize plugin system
 call plug#end()
