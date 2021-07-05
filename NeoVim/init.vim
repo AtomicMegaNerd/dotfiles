@@ -29,8 +29,6 @@ set nu
 set nohlsearch
 set incsearch
 
-set smartindent
-set autoindent
 set expandtab
 set tabstop=4
 set shiftwidth=4
@@ -41,7 +39,6 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Helpers
 Plug 'mhinz/vim-startify'
-Plug 'junegunn/vim-easy-align'
 Plug 'airblade/vim-rooter'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -51,6 +48,7 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'kamykn/spelunker.vim'
 Plug 'kamykn/popup-menu.nvim'
 Plug 'godlygeek/tabular'
+Plug 'dag/vim-fish'
 
 " GUI
 Plug 'itchyny/lightline.vim'
@@ -103,7 +101,7 @@ require'nvim-treesitter.configs'.setup {
     enable = true,              -- false will disable the whole extension
   },
   indent = {
-    enable = true
+    enable = true,
   }
 }
 EOF
@@ -156,8 +154,6 @@ require('telescope').setup{
 require('telescope').load_extension('coc')
 require('telescope').load_extension('fzf')
 EOF
-
-filetype plugin indent on
 
 " This disables folding for the markdown plug-in.
 let g:vim_markdown_folding_disabled = 1
