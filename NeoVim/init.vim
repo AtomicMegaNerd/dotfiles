@@ -204,10 +204,6 @@ endfunction
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-" File manager
-nmap <C-n> :NERDTreeToggle<CR>
-let NERDTreeShowHidden=1
-
 " No arrow keys --- force yourself to use the home row
 nnoremap <up> <nop>
 nnoremap <down> <nop>
