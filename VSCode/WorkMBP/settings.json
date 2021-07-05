@@ -76,15 +76,13 @@
     // Terminal settings
     "terminal.integrated.fontFamily": "Cascadia Code",
     "terminal.integrated.fontSize": 16,
-    // Window settings
-    "window.zoomLevel": 0,
     "window.titleBarStyle": "custom",
     // Workbench settings
     "workbench.iconTheme": "Monokai Pro Icons",
     "workbench.startupEditor": "newUntitledFile",
-    "workbench.colorCustomizations": {
-        "editorCursor.foreground": "#FFFFFF"
-    },
+    // "workbench.colorCustomizations": {
+    //     "editorCursor.foreground": "#FFFFFF"
+    // },
     "workbench.editor.closeEmptyGroups": false,
     "workbench.settings.editor": "json",
     "workbench.fontAliasing": "antialiased",
@@ -92,7 +90,7 @@
         "*.ipynb": "jupyter.notebook.ipynb"
     },
     "workbench.activityBar.visible": true,
-    "workbench.colorTheme": "GitHub Dark Dimmed",
+    "workbench.colorTheme": "GitHub Light",
     // Explorer settings
     "explorer.confirmDelete": false,
     "explorer.openEditors.visible": 0, // disables open editors

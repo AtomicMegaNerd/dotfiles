@@ -42,10 +42,10 @@ set -gx fish_user_paths $HOME/.fzf/bin $fish_user_paths
 
 # Base16 Shell - For nice colors
 # ===================================
-#if status --is-interactive
-    #set BASE16_SHELL "$HOME/.config/base16-shell/"
-    #source "$BASE16_SHELL/profile_helper.fish"
-#end
+if status --is-interactive
+    set BASE16_SHELL "$HOME/.config/base16-shell/"
+    source "$BASE16_SHELL/profile_helper.fish"
+end
 
 # Gruvbox
-theme_gruvbox dark hard
+base16-default-dark
