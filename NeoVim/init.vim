@@ -84,6 +84,8 @@ Plug 'mhinz/vim-signify'
 
 " Syntax highlighting
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'plasticboy/vim-markdown'
+Plug 'hashivim/vim-terraform'
 
 " Initialize plugin system
 call plug#end()
@@ -113,10 +115,13 @@ endfunction
 " Configure tree-sitter
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = "maintained",
   highlight = {
-    enable = true,              -- false will disable the whole extension
+    enable = true
   },
+  indent = {
+    enable = true
+  }
 }
 EOF
 
@@ -129,11 +134,14 @@ filetype plugin indent on
 let g:vim_markdown_folding_disabled = 1
 
 " Going with gruvbox for now
-colorscheme gruvbox
+colorscheme gruvbox 
 
 " Rust
 au Filetype rust set colorcolumn=100
 let g:rustfmt_autosave = 1
+
+let g:terraform_fmt_on_save=1
+let g:terraform_align=1
 
 " Force Jenkinsfile to use Groovy syntax
 au BufReadPost Jenkinsfile set syntax=groovy

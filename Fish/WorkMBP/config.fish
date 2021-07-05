@@ -7,10 +7,11 @@ alias wx "curl wttr.in/Calgary"
 alias moon "curl wttr.in/moon"
 alias vim "nvim"
 alias vi "nvim"
-alias k "kubectl"
-alias d "docker"
-alias t "terraform"
-alias g "git"
+
+# Shortcuts for common files
+alias wlog "nvim ~/WorkLog/Current.md"
+alias vconf "nvim ~/.config/nvim/init.vim"
+alias fconf "nvim ~/.config/fish/config.fish"
 
 # EDITOR
 # ===================================

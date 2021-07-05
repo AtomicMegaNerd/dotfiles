@@ -18,7 +18,17 @@
         "package.yaml"
       ],
       "filetypes": ["hs", "lhs", "haskell"]
-    }
+    },
+    "terraform": {
+			"command": "terraform-ls",
+			"args": ["serve"],
+			"filetypes": [
+				"terraform",
+				"tf"
+			],
+			"initializationOptions": {},
+			"settings": {}
+		}
   },
   "markdownlint.config": {
     "MD012": false,
