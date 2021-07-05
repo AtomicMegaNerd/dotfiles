@@ -77,7 +77,6 @@ Plug 'mhinz/vim-signify'
 " Syntax highlighting
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'plasticboy/vim-markdown'
-Plug 'neovimhaskell/haskell-vim'
 
 " Initialize plugin system
 call plug#end()
