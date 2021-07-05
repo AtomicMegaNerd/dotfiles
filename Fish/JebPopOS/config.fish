@@ -30,6 +30,12 @@ alias du="dust"
 alias ls="exa"
 alias ll="exa -lah"
 
+# Just use rigpgrep
+alias grep="rg"
+
+alias vconf="nvim $HOME/.config/nvim/init.vim"
+alias fconf="nvim $HOME/.config/fish/config.fish"
+
 # Base16 Shell
 if status --is-interactive
     set BASE16_SHELL "$HOME/.config/base16-shell/"
