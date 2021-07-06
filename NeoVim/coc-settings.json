@@ -6,6 +6,7 @@
   "python.linting.lintOnSave": true,
   "python.linting.pylintUseMinimalCheckers": false,
   "suggest.noselect": false,
+  "yaml.schemaStore.url": "",
   "yaml.format.enable": true,
   "languageserver": {
     "haskell": {

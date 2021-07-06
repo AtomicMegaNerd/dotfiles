@@ -6,14 +6,21 @@
 #                                              /____/
 # fish shell config
 
+# Environment Variables
+#######################
+
 set -gx EDITOR nvim
 set -gx NPM_PACKAGES $HOME/.npm-packages
 set -gx NODE_PATH "$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+
+## PyEnv
+########
 
 status is-login; and pyenv init --path | source
 pyenv init --path | source
 
 ## Aliases
+##########
 
 # I just love NeoVim
 alias vi="nvim"
@@ -29,6 +36,16 @@ alias du="dust"
 # exa is a Rust based replacement for ls
 alias ls="exa"
 alias ll="exa -lah"
+
+# Just use ripgrep
+alias grep="rg"
+
+# Convenient shortcuts
+alias vconf="nvim $HOME/.config/nvim/init.vim"
+alias fconf="nvim $HOME/.config/fish/config.fish"
+
+## Shell Theme
+##############
 
 # Base16 Shell
 if status --is-interactive

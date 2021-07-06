@@ -29,8 +29,6 @@ set nu
 set nohlsearch
 set incsearch
 
-set smartindent
-set autoindent
 set expandtab
 set tabstop=4
 set shiftwidth=4
@@ -44,17 +42,16 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Helpers
 Plug 'mhinz/vim-startify'
-Plug 'junegunn/vim-easy-align'
 Plug 'airblade/vim-rooter'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'preservim/nerdcommenter'
+Plug 'fannheyward/telescope-coc.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'kamykn/spelunker.vim'
 Plug 'kamykn/popup-menu.nvim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
 Plug 'godlygeek/tabular'
+Plug 'dag/vim-fish'
 
 " GUI
 Plug 'itchyny/lightline.vim'
@@ -62,15 +59,11 @@ Plug 'itchyny/lightline.vim'
 " coc and plug-ins
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" File management
-Plug 'preservim/nerdtree'
-
 " Theming
-Plug 'chriskempson/base16-vim'
 Plug 'gruvbox-community/gruvbox'
 
 " Code formatting
-Plug 'psf/black', { 'tag': '19.10b0' }
+Plug 'psf/black', { 'tag': '21.6b0' }
 Plug 'sdiehl/vim-ormolu'
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
@@ -112,29 +105,76 @@ function! LightlineFilename()
   return expand('%:t') !=# '' ? @% : '[No Name]'
 endfunction
 
+" Use autocmd to force lightline update
+autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
+
 " Configure tree-sitter
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained",
   highlight = {
-    enable = true
+    enable = true,
   },
   indent = {
-    enable = true
+    enable = true,
   }
 }
 EOF
 
-" Use auocmd to force lightline update.
-autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
+lua <<EOF
+require('telescope').setup{
+  defaults = {
+    vimgrep_arguments = {
+      'rg',
+      '--color=never',
+      '--no-heading',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--smart-case'
+    },
+    prompt_prefix = "> ",
+    selection_caret = "> ",
+    entry_prefix = "  ",
+    initial_mode = "insert",
+    selection_strategy = "reset",
+    sorting_strategy = "descending",
+    layout_strategy = "vertical",
+    layout_config = {
+      horizontal = {
+        mirror = false,
+      },
+      vertical = {
+        mirror = false,
+      },
+    },
+    file_sorter =  require'telescope.sorters'.get_fuzzy_file,
+    file_ignore_patterns = {},
+    generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
+    shorten_path = true,
+    winblend = 0,
+    border = {},
+    borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
+    color_devicons = true,
+    use_less = true,
+    set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
+    file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
+    grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
+    qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
 
-filetype plugin indent on
+    -- Developer configurations: Not meant for general override
+    buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker
+  }
+}
+require('telescope').load_extension('coc')
+require('telescope').load_extension('fzf')
+EOF
 
 " This disables folding for the markdown plug-in.
 let g:vim_markdown_folding_disabled = 1
 
 " Going with gruvbox for now
-colorscheme gruvbox 
+colorscheme gruvbox
 
 " Rust
 au Filetype rust set colorcolumn=100
@@ -186,10 +226,6 @@ endfunction
 " format on enter, <cr> could be remapped by other vim plugin
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-" File manager
-nmap <C-n> :NERDTreeToggle<CR>
-let NERDTreeShowHidden=1
 
 " No arrow keys --- force yourself to use the home row
 nnoremap <up> <nop>
