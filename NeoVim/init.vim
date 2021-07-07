@@ -6,7 +6,6 @@
 "                                              /____/
 " NeoVim Configuration File
 
-set shell=/bin/bash
 set encoding=utf-8
 set termguicolors
 set guicursor=a:blinkon100
@@ -29,6 +28,8 @@ set nu
 set nohlsearch
 set incsearch
 
+set autoindent
+set smartindent
 set expandtab
 set tabstop=4
 set shiftwidth=4
