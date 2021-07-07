@@ -10,7 +10,8 @@ set -gx EDITOR nvim
 set -gx NPM_PACKAGES $HOME/.npm-packages
 set -gx NODE_PATH "$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 
-pyenv init - | source
+status is-login; and pyenv init --path | source
+pyenv init --path | source
 
 ## Aliases
 
@@ -29,16 +30,12 @@ alias du="dust"
 alias ls="exa"
 alias ll="exa -lah"
 
+alias vconf="nvim $HOME/.config/nvim/init.vim"
+alias fconf="nvim $HOME/.config/fish/config.fish"
+
 # Base16 Shell
 if status --is-interactive
     set BASE16_SHELL "$HOME/.config/base16-shell/"
     source "$BASE16_SHELL/profile_helper.fish"
 end
 
-# fish-ssh-agent
-if test -z "$SSH_ENV"
-    set -xg SSH_ENV $HOME/.ssh/environment
-end
-if not __ssh_agent_is_started
-    __ssh_agent_start
-end
