@@ -39,6 +39,8 @@ set clipboard+=unnamedplus
 " spelunker is taking care of our spelling needs
 set nospell
 
+filetype plugin on
+
 call plug#begin('~/.config/nvim/plugged')
 
 " Helpers
@@ -53,6 +55,7 @@ Plug 'kamykn/spelunker.vim'
 Plug 'kamykn/popup-menu.nvim'
 Plug 'godlygeek/tabular'
 Plug 'dag/vim-fish'
+Plug 'preservim/nerdcommenter'
 
 " GUI
 Plug 'itchyny/lightline.vim'
