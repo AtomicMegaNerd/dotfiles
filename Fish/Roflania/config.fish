@@ -46,5 +46,4 @@ if status --is-interactive
     source "$BASE16_SHELL/profile_helper.fish"
 end
 
-# Gruvbox
-theme_gruvbox dark hard
+base16-default-dark
