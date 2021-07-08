@@ -35,6 +35,8 @@ set shiftwidth=4
 set clipboard=unnamedplus 
 set nospell
 
+filetype plugin on
+
 call plug#begin('~/.config/nvim/plugged')
 
 " Helpers
@@ -49,6 +51,7 @@ Plug 'kamykn/spelunker.vim'
 Plug 'kamykn/popup-menu.nvim'
 Plug 'godlygeek/tabular'
 Plug 'dag/vim-fish'
+Plug 'preservim/nerdcommenter'
 
 " GUI
 Plug 'itchyny/lightline.vim'
