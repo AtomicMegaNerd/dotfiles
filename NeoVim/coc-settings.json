@@ -18,7 +18,8 @@
         "cabal.project",
         "package.yaml"
       ],
-      "filetypes": ["hs", "lhs", "haskell"]
+      "filetypes": ["hs", "lhs", "haskell"],
+      "disableSnippetCompletion": true
     },
     "terraform": {
 			"command": "terraform-ls",
