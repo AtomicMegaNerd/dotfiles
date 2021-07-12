@@ -21,7 +21,8 @@
         "hs",
         "lhs",
         "haskell"
-      ]
+      ],
+      "disableSnippetCompletion": true
     }
   },
   "markdownlint.config": {

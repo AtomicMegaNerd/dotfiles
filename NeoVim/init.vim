@@ -13,7 +13,7 @@ set mouse=a
 set hidden
 set nowrap
 set smartcase
-
+set shell=/bin/bash
 set undodir=~/.vim/undodir
 set noswapfile
 set undofile
@@ -74,6 +74,7 @@ Plug 'mhinz/vim-signify'
 " Syntax highlighting
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'plasticboy/vim-markdown'
+Plug 'neovimhaskell/haskell-vim'
 
 " Initialize plugin system
 call plug#end()
