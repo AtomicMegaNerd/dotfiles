@@ -29,7 +29,6 @@ set nohlsearch
 set incsearch
 
 set autoindent
-set smartindent
 set expandtab
 set tabstop=4
 set shiftwidth=4
@@ -40,6 +39,7 @@ set clipboard+=unnamedplus
 set nospell
 
 filetype plugin on
+filetype indent on
 
 call plug#begin('~/.config/nvim/plugged')
 
@@ -122,6 +122,7 @@ require'nvim-treesitter.configs'.setup {
   },
   indent = {
     enable = true,
+    disable = {"python"}
   }
 }
 EOF
