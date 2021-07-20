@@ -177,4 +177,5 @@
     "go.useLanguageServer": true,
     "redhat.telemetry.enabled": false,
     "workbench.editor.untitled.hint": "hidden",
+    "python.defaultInterpreterPath": "/usr/local/bin/python3",
 }

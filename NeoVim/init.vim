@@ -28,6 +28,7 @@ set nu
 set nohlsearch
 set incsearch
 
+set nosmartindent
 set autoindent
 set expandtab
 set tabstop=4
@@ -38,6 +39,7 @@ set clipboard+=unnamedplus
 " spelunker is taking care of our spelling needs
 set nospell
 
+" Settings for indentation
 filetype plugin on
 filetype indent on
 

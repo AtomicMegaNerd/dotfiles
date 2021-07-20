@@ -21,6 +21,9 @@ set -gx EDITOR nvim
 # ===================================
 set -gx FUNCTIONS_CORE_TOOLS_TELEMETRY_OPTOUT 1
 
+# Tell NodeJS about our internal CTC certs
+set -gx NODE_EXTRA_CA_CERTS /Users/chris.dunphy/Certs/CTC_CA_bundle.crt
+
 # Python
 # ===================================
 # Load pyenv automatically by appending
