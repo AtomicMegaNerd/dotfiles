@@ -38,6 +38,7 @@ test -e {$HOME}/.iterm2_shell_integration.fish; and source {$HOME}/.iterm2_shell
 # ===================================
 set -gx JAVA_HOME /Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home
 set -gx GROOVY_HOME /usr/local/opt/groovy/libexec
+set -gx GRADLE_USER_HOME $HOME/.gradle
 
 # PATH
 # ===================================

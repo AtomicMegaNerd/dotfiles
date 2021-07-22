@@ -165,7 +165,8 @@
         "teamname",
         "templating",
         "unittest",
-        "veracode"
+        "veracode",
+        "vsts"
     ],
     "cSpell.ignoreWords": [
         "afan",
