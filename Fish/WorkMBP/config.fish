@@ -9,7 +9,6 @@ alias vim "nvim"
 alias vi "nvim"
 
 # Shortcuts for common files
-alias wlog "nvim ~/WorkLog/Current.md"
 alias vconf "nvim ~/.config/nvim/init.vim"
 alias fconf "nvim ~/.config/fish/config.fish"
 

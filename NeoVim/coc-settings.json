@@ -8,6 +8,7 @@
   "suggest.noselect": false,
   "pyright.completion.snippetSupport": false,
   "yaml.format.enable": true,
+  "powershell.integratedConsole.showOnStartup": false,
   "languageserver": {
     "haskell": {
       "command": "haskell-language-server-wrapper",

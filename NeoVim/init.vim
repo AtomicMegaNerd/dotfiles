@@ -82,7 +82,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
 
 " Syntax highlighting
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate', 'branch': '0.5-compat'}
 Plug 'plasticboy/vim-markdown'
 Plug 'hashivim/vim-terraform'
 Plug 'neovimhaskell/haskell-vim'

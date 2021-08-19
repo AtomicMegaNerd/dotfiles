@@ -29,7 +29,7 @@
     },
     "python.linting.flake8Enabled": false,
     "python.formatting.provider": "black",
-    "python.formatting.blackPath": "/Users/chris.dunphy/.pyenv/shims/black",
+    "python.formatting.blackPath": "/Users/chris.dunphy/.local/bin/black",
     "python.linting.enabled": true,
     "python.linting.lintOnSave": true,
     "python.linting.pylintEnabled": true,
@@ -61,11 +61,11 @@
     "editor.rulers": [
         100
     ],
-    "editor.fontFamily": "Cascadia Code",
+    "editor.fontFamily": "Jetbrains Mono",
     "editor.fontWeight": "normal",
-    "editor.fontSize": 17,
+    "editor.fontSize": 18,
     "editor.minimap.enabled": false,
-    "editor.fontLigatures": false,
+    "editor.fontLigatures": true,
     "editor.formatOnSave": true,
     "editor.autoClosingBrackets": "never",
     "editor.autoSurround": "never",
@@ -78,19 +78,20 @@
     "terminal.integrated.fontSize": 16,
     "window.titleBarStyle": "custom",
     // Workbench settings
-    "workbench.iconTheme": "Monokai Pro Icons",
+    "workbench.iconTheme": "Monokai Pro (Filter Machine) Icons",
     "workbench.startupEditor": "newUntitledFile",
-    // "workbench.colorCustomizations": {
-    //     "editorCursor.foreground": "#FFFFFF"
-    // },
+    "workbench.colorCustomizations": {
+        "editorCursor.foreground": "#FFFFFF"
+    },
     "workbench.editor.closeEmptyGroups": false,
     "workbench.settings.editor": "json",
-    "workbench.fontAliasing": "antialiased",
+    // Only use this with a thick font like Cascadia Code
+    // "workbench.fontAliasing": "antialiased",
     "workbench.editorAssociations": {
-        "*.ipynb": "jupyter.notebook.ipynb"
+        "*.ipynb": "jupyter-notebook"
     },
     "workbench.activityBar.visible": true,
-    "workbench.colorTheme": "GitHub Light",
+    "workbench.colorTheme": "GitHub Dark Dimmed",
     // Explorer settings
     "explorer.confirmDelete": false,
     "explorer.openEditors.visible": 0, // disables open editors
@@ -111,6 +112,7 @@
     "cSpell.userWords": [
         "Jenkinsfile",
         "Opex",
+        "adoprojmgr",
         "aiohttp",
         "ansible",
         "artifactory",
@@ -151,6 +153,7 @@
         "pipenv",
         "popen",
         "pygit",
+        "pylint",
         "pypi",
         "pytest",
         "qube",
@@ -179,4 +182,8 @@
     "redhat.telemetry.enabled": false,
     "workbench.editor.untitled.hint": "hidden",
     "python.defaultInterpreterPath": "/usr/local/bin/python3",
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
 }
