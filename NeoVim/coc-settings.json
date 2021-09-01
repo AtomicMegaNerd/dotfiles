@@ -32,5 +32,13 @@
     "MD024": {
       "siblings_only": true
     }
-  }
+  },
+  "coc.preferences.formatOnSaveFiletypes": [
+    "go",
+    "javascript",
+    "json",
+    "rust",
+    "typescript",
+    "yaml"
+  ]
 }

@@ -182,6 +182,8 @@ au Filetype json set tabstop=2 shiftwidth=2
 " Automatically run black when saving Python files
 autocmd BufWritePre *.py execute ':Black'
 
+autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
+
 " ====================
 " === Key Bindings ===
 " ====================
