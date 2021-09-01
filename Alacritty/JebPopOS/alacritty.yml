@@ -1,13 +1,13 @@
 # Font configuration (changes require restart)
 font:
   normal:
-    family: Noto Sans Mono
+    family: JetBrains Mono
     style: Regular
   bold:
-    family: Noto Sans Mono
+    family: JetBrains Mono
     style: Regular
   italic:
-    family: Noto Sans Mono
+    family: JetBrains Mono
     style: Regular
   size: 14
 
