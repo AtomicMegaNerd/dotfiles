@@ -90,4 +90,5 @@
     "workbench.fontAliasing": "antialiased",
     "workbench.iconTheme": "Monokai Classic Monochrome Icons",
     "workbench.editor.untitled.hint": "hidden",
+    "redhat.telemetry.enabled": false,
 }

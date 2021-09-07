@@ -211,6 +211,8 @@ autocmd FileType java AutoFormatBuffer google-java-format
 
 au Filetype terraform set tabstop=2 shiftwidth=2
 
+autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
+
 " ====================
 " === Key Bindings ===
 " ====================
