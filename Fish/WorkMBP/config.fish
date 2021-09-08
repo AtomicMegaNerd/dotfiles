@@ -7,6 +7,8 @@ alias wx "curl wttr.in/Calgary"
 alias moon "curl wttr.in/moon"
 alias vim "nvim"
 alias vi "nvim"
+alias cat "bat --paging=never"
+alias df "duf"
 
 # Shortcuts for common files
 alias vconf "nvim ~/.config/nvim/init.vim"
@@ -27,8 +29,8 @@ set -gx NODE_EXTRA_CA_CERTS /Users/chris.dunphy/Certs/CTC_CA_bundle.crt
 # ===================================
 # Load pyenv automatically by appending
 # the following to ~/.config/fish/config.fish:
-status is-login; and pyenv init --path | source
-
+status is-interactive; and pyenv init --path | source
+pyenv init - | source
 # iTerm 2
 # ===================================
 test -e {$HOME}/.iterm2_shell_integration.fish; and source {$HOME}/.iterm2_shell_integration.fish
