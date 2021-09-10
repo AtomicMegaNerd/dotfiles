@@ -130,14 +130,17 @@ require('telescope').setup{
     initial_mode = "insert",
     selection_strategy = "reset",
     sorting_strategy = "descending",
-    layout_strategy = "vertical",
+    layout_strategy = "flex",
     layout_config = {
-      horizontal = {
-        mirror = false,
-      },
-      vertical = {
-        mirror = false,
-      },
+        height = 0.9,
+        width = 0.9,
+        vertical = {
+            preview_cutoff = 1,
+            preview_height = 0.5,
+        },
+        horizontal = {
+            preview_width = 0.6,
+        },
     },
     file_sorter =  require'telescope.sorters'.get_fuzzy_file,
     file_ignore_patterns = {},
