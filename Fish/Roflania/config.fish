@@ -29,6 +29,12 @@ alias du="dust"
 alias ls="exa"
 alias ll="exa -lah"
 
+# duf is a replacement for df
+alias df="duf"
+
+# Use bat instead of cat
+alias cat="bat --paging=never"
+
 # Aliases for confiuguration files
 alias vconf="nvim ~/.config/nvim/init.vim"
 alias fconf="nvim ~/.config/fish/config.fish"
