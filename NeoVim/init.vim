@@ -58,6 +58,7 @@ Plug 'kamykn/popup-menu.nvim'
 Plug 'godlygeek/tabular'
 Plug 'dag/vim-fish'
 Plug 'preservim/nerdcommenter'
+Plug 'tpope/vim-eunuch'
 
 " GUI
 Plug 'itchyny/lightline.vim'
