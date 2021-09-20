@@ -25,12 +25,16 @@ set -gx FUNCTIONS_CORE_TOOLS_TELEMETRY_OPTOUT 1
 # Tell NodeJS about our internal CTC certs
 set -gx NODE_EXTRA_CA_CERTS /Users/chris.dunphy/Certs/CTC_CA_bundle.crt
 
+# Tell Vault to use JSON output
+set -gx VAULT_FORMAT json
+
 # Python
 # ===================================
 # Load pyenv automatically by appending
 # the following to ~/.config/fish/config.fish:
 status is-interactive; and pyenv init --path | source
 pyenv init - | source
+
 # iTerm 2
 # ===================================
 test -e {$HOME}/.iterm2_shell_integration.fish; and source {$HOME}/.iterm2_shell_integration.fish
@@ -45,6 +49,7 @@ set -gx GRADLE_USER_HOME $HOME/.gradle
 # ===================================
 set -gx fish_user_paths $HOME/bin $fish_user_paths
 set -gx fish_user_paths $HOME/.fzf/bin $fish_user_paths
+set -gx fish_user_paths $HOME/.gem/ruby/2.6.0/bin $fish_user_paths
 
 # Base16 Shell - For nice colors
 # ===================================

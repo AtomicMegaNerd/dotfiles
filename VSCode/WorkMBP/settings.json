@@ -69,6 +69,7 @@
     "editor.formatOnSave": true,
     "editor.autoClosingBrackets": "never",
     "editor.autoSurround": "never",
+    "editor.lineNumbers": "relative",
     // Git settings
     "git.confirmSync": false,
     // Extensions settings
@@ -78,11 +79,8 @@
     "terminal.integrated.fontSize": 16,
     "window.titleBarStyle": "custom",
     // Workbench settings
-    "workbench.iconTheme": "Monokai Pro (Filter Machine) Icons",
+    "workbench.iconTheme": "Monokai Pro Icons",
     "workbench.startupEditor": "newUntitledFile",
-    "workbench.colorCustomizations": {
-        "editorCursor.foreground": "#FFFFFF"
-    },
     "workbench.editor.closeEmptyGroups": false,
     "workbench.settings.editor": "json",
     // Only use this with a thick font like Cascadia Code
@@ -91,7 +89,7 @@
         "*.ipynb": "jupyter-notebook"
     },
     "workbench.activityBar.visible": true,
-    "workbench.colorTheme": "GitHub Dark Dimmed",
+    "workbench.colorTheme": "GitHub Dark Default",
     // Explorer settings
     "explorer.confirmDelete": false,
     "explorer.openEditors.visible": 0, // disables open editors
@@ -181,9 +179,9 @@
     "go.useLanguageServer": true,
     "redhat.telemetry.enabled": false,
     "workbench.editor.untitled.hint": "hidden",
-    "python.defaultInterpreterPath": "/usr/local/bin/python3",
     "notebook.cellToolbarLocation": {
         "default": "right",
         "jupyter-notebook": "left"
     },
+    "go.toolsManagement.autoUpdate": true,
 }

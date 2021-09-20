@@ -11,9 +11,13 @@ Host azure-hosted-gh-runner-dev
 
 Host devtools-qa-artifactory-03
   HostName q9lcajartif03.labcorp.ad.ctc
+  User ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
 
 Host devtools-qa-artifactory-04
   HostName q9lcajartif04.labcorp.ad.ctc
+  User ctc-admin
+  IdentityFile ~/.ssh/ctc-admin.priv
 
 Host devtools-qa-bitbucket-01
   HostName q9lcajbtbkt01.labcorp.ad.ctc
