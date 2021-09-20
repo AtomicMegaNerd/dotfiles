@@ -13,7 +13,7 @@ set mouse=a
 set hidden
 set nowrap
 set smartcase
-set shell=/usr/local/bin/fish
+set shell=/bin/zsh
 set undodir=~/.vim/undodir
 set noswapfile
 set undofile
@@ -54,6 +54,7 @@ Plug 'godlygeek/tabular'
 Plug 'dag/vim-fish'
 Plug 'preservim/nerdcommenter'
 Plug 'tpope/vim-eunuch'
+Plug 'vim-test/vim-test'
 
 " GUI
 Plug 'itchyny/lightline.vim'
@@ -79,6 +80,8 @@ Plug 'neovimhaskell/haskell-vim'
 
 " Initialize plugin system
 call plug#end()
+
+let test#python#runner = 'pytest'
 
 " Lightline
 let g:lightline = {
@@ -256,3 +259,11 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>ft <cmd>Telescope git_files<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" vim-test key bindings
+nmap <leader>tn :TestNearest<CR>
+nmap <leader>tf :TestFile<CR>
+nmap <leader>ts :TestSuite<CR>
+nmap <leader>tl :TestLast<CR>
+nmap <leader>tv :TestVisit<CR>
+
