@@ -7,7 +7,7 @@ alias wx "curl wttr.in/Calgary"
 alias moon "curl wttr.in/moon"
 alias vim "nvim"
 alias vi "nvim"
-alias cat "bat --paging=never"
+alias cat "bat --paging=never --style=plain"
 alias df "duf"
 
 # Shortcuts for common files
@@ -50,6 +50,7 @@ set -gx GRADLE_USER_HOME $HOME/.gradle
 set -gx fish_user_paths $HOME/bin $fish_user_paths
 set -gx fish_user_paths $HOME/.fzf/bin $fish_user_paths
 set -gx fish_user_paths $HOME/.gem/ruby/2.6.0/bin $fish_user_paths
+set -gx fish_user_paths "/Applications/Sublime Text.app/Contents/SharedSupport/bin" $fish_user_paths
 
 # Base16 Shell - For nice colors
 # ===================================

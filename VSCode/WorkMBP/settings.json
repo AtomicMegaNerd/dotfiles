@@ -89,7 +89,7 @@
         "*.ipynb": "jupyter-notebook"
     },
     "workbench.activityBar.visible": true,
-    "workbench.colorTheme": "GitHub Dark Default",
+    "workbench.colorTheme": "Gruvbox Dark Hard",
     // Explorer settings
     "explorer.confirmDelete": false,
     "explorer.openEditors.visible": 0, // disables open editors

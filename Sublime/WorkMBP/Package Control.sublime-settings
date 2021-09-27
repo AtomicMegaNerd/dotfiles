@@ -5,16 +5,13 @@
 	],
 	"installed_packages":
 	[
-		"ayu",
-		"Base16 Color Schemes",
+		"A File Icon",
 		"Dockerfile Syntax Highlighting",
 		"fish",
-		"Formatter",
 		"Git",
-		"GitHub Theme",
-		"JsPrettier",
-		"MagicPython",
-		"MarkdownPreview",
+		"gruvbox",
+		"LSP",
+		"LSP-pyright",
 		"Package Control",
 		"PipenvPath",
 		"SSH Config",
@@ -25,6 +22,6 @@
 		"SublimeLinter-pylint",
 		"Theme - Monokai Pro",
 		"Theme - Spaceblack",
-		"TOML"
+		"TOML",
 	],
 }

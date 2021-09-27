@@ -95,18 +95,11 @@
 		"Sheshank"
 	],
 	"block_caret": true,
-	"color_scheme": "Packages/GitHub Theme/schemes/GitHub Dark.sublime-color-scheme",
+	"color_scheme": "Packages/gruvbox/gruvbox (Dark) (Hard).sublime-color-scheme",
 	"dictionary": "Packages/Language - English/en_US.dic",
-	"font_face": "Cascadia Code",
-	"font_options":
-	[
-		"gray_antialias"
-	],
-	"font_size": 16,
-	"ignored_packages":
-	[
-		"Python",
-		"Vintage",
+	"font_face": "JetBrains Mono",
+	"font_size": 18,
+	"ignored_packages": [
 	],
 	"ignored_words":
 	[
@@ -162,6 +155,7 @@
 		"eftm",
 		"elasticsearch",
 		"eng",
+		"entrypoint",
 		"evault",
 		"evaultqa",
 		"f4e2a",
@@ -215,14 +209,15 @@
 		"tf",
 		"tfvars",
 		"tmp",
+		"usr",
 		"webapp",
-		"ws"
+		"ws",
 	],
 	"rulers":
 	[
-		80
+		88
 	],
 	"spell_check": true,
-	"theme": "Default.sublime-theme",
-	"translate_tabs_to_spaces": true,
+	"theme": "Adaptive.sublime-theme",
+	"vintage_start_in_command_mode": true
 }
