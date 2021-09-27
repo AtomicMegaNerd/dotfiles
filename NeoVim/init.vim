@@ -66,8 +66,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'gruvbox-community/gruvbox'
 
 " Code formatting
-Plug 'psf/black', { 'tag': '21.6b0' }
-Plug 'sdiehl/vim-ormolu'
+Plug 'psf/black', { 'tag': '21.9b0' }
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -177,8 +176,9 @@ colorscheme gruvbox
 au Filetype rust set colorcolumn=100
 let g:rustfmt_autosave = 1
 
-" Black likes 88
+" Python 
 au Filetype python set colorcolumn=88
+autocmd BufWritePre *.py execute ':Black'
 
 " Haskell
 au Filetype haskell set tabstop=2 shiftwidth=2
@@ -186,9 +186,7 @@ au Filetype haskell set tabstop=2 shiftwidth=2
 " JSON
 au Filetype json set tabstop=2 shiftwidth=2
 
-" Automatically run black when saving Python files
-autocmd BufWritePre *.py execute ':Black'
-
+" Golang
 autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
 
 " ====================
