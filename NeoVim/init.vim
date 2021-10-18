@@ -13,7 +13,7 @@ set mouse=a
 set hidden
 set nowrap
 set smartcase
-set shell=/bin/zsh
+set shell=/bin/bash
 set undodir=~/.vim/undodir
 set noswapfile
 set undofile
