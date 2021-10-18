@@ -34,7 +34,6 @@
     "python.linting.lintOnSave": true,
     "python.linting.pylintEnabled": true,
     "python.linting.mypyEnabled": true,
-    "python.pythonPath": "/usr/local/bin/python3",
     "python.languageServer": "Pylance",
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -63,7 +62,7 @@
     ],
     "editor.fontFamily": "Jetbrains Mono",
     "editor.fontWeight": "normal",
-    "editor.fontSize": 18,
+    "editor.fontSize": 17,
     "editor.minimap.enabled": false,
     "editor.fontLigatures": true,
     "editor.formatOnSave": true,
@@ -84,7 +83,7 @@
     "workbench.editor.closeEmptyGroups": false,
     "workbench.settings.editor": "json",
     // Only use this with a thick font like Cascadia Code
-    // "workbench.fontAliasing": "antialiased",
+    "workbench.fontAliasing": "antialiased",
     "workbench.editorAssociations": {
         "*.ipynb": "jupyter-notebook"
     },

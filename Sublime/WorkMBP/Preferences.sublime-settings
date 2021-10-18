@@ -167,6 +167,8 @@
 		"fmcrd01ap01",
 		"fmgit01ap01",
 		"fmjra01ap01",
+		"fmt",
+		"goroutine",
 		"govc",
 		"gromit",
 		"hadolint",
@@ -219,5 +221,6 @@
 	],
 	"spell_check": true,
 	"theme": "Adaptive.sublime-theme",
-	"vintage_start_in_command_mode": true
+	"vintage_start_in_command_mode": true,
+	"relative_line_numbers": true,
 }
