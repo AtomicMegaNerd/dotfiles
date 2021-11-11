@@ -68,15 +68,6 @@ vim.g.lightline = {
   component_function = { gitbranch = 'fugitive#head' },
 }
 
--- Highlight on yank
-vim.api.nvim_exec(
-[[
-  augroup YankHighlight
-    autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
-  augroup end
-]], false)
-
 --Map blankline
 vim.g.indent_blankline_char = '┊'
 vim.g.indent_blankline_filetype_exclude = { 'help', 'packer' }
@@ -95,9 +86,17 @@ require('gitsigns').setup {
   },
 }
 
--- Specific options for different kinds of files
+-- Highlight on yank
 vim.api.nvim_exec(
 [[
+  augroup YankHighlight
+    autocmd!
+    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
+  augroup end
+]], false)
+
+-- Specific options for different kinds of files
+vim.api.nvim_exec([[
   augroup FileTypeOptions
     autocmd!
     autocmd Filetype haskell set tabstop=2 shiftwidth=2
@@ -107,17 +106,15 @@ vim.api.nvim_exec(
 ]], false)
 
 -- Show the inlay hints for rust files
-vim.api.nvim_exec(
-[[
+vim.api.nvim_exec([[
   augroup ShowInlayHints
     autocmd!
-    autocmd CursorHold,CursorHoldI,CursorMoved *.rs :lua require'lsp_extensions'.inlay_hints{ only_current_line = true }
+    autocmd CursorHold,CursorHoldI *.rs :lua require'lsp_extensions'.inlay_hints{ enabled={"ChainingHint","TypeHint"}, only_current_line = true }
   augroup end
 ]], false)
 
--- Show the inlay hints for rust files
-vim.api.nvim_exec(
-[[
+-- Format Python files with Black, LSP doesn't support this yet.
+vim.api.nvim_exec([[
   augroup FormatWithBlack
     autocmd!
     autocmd BufWritePre *.py execute ':Black'
