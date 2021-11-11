@@ -7,7 +7,7 @@
 # fish shell config
 
 # Add my SSH key from the Keychain
-ssh-add -K ~/.ssh/id_rsa
+ssh-add --apple-use-keychain ~/.ssh/id_rsa
 
 # Default editor
 set -gx EDITOR nvim
