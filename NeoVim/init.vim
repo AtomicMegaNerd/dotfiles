@@ -13,7 +13,7 @@ set mouse=a
 set hidden
 set nowrap
 set smartcase
-set shell=/bin/zsh
+set shell=/bin/bash
 set undodir=~/.vim/undodir
 set noswapfile
 set undofile
@@ -66,7 +66,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'gruvbox-community/gruvbox'
 
 " Code formatting
-Plug 'psf/black', { 'tag': '21.9b0' }
+Plug 'psf/black', { 'tag': 'stable' }
 
 " Git
 Plug 'tpope/vim-fugitive'

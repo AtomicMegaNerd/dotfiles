@@ -37,6 +37,10 @@ alias du="dust"
 alias ls="exa"
 alias ll="exa -lah"
 
+alias df="duf"
+
+alias cat="bat --paging=never --style=plain"
+
 # Just use ripgrep
 alias grep="rg"
 

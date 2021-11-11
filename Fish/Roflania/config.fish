@@ -33,7 +33,9 @@ alias ll="exa -lah"
 alias df="duf"
 
 # Use bat instead of cat
-alias cat="bat --paging=never"
+alias cat="bat --paging=never --style=plain"
+
+alias grep="rg"
 
 # Aliases for confiuguration files
 alias vconf="nvim ~/.config/nvim/init.vim"
