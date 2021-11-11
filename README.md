@@ -62,9 +62,6 @@ I recommend homebrew for both Mac and Linux.
 
 ```bash
 brew install neovim 
-brew install node
-pip install --user neovim
-npm install -g tree-sitter-cli neovim
 ```
 
 #### Common
