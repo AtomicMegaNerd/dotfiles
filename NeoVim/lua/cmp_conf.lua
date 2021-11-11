@@ -1,5 +1,9 @@
--- nvim-cmp setup
+-- Set completeopt to have a better completion experience
+vim.o.completeopt = 'menuone,noselect' 
+
+local luasnip = require 'luasnip'
 local cmp = require 'cmp'
+
 cmp.setup {
   snippet = {
     expand = function(args)

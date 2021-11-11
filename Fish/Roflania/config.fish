@@ -38,7 +38,7 @@ alias cat="bat --paging=never --style=plain"
 alias grep="rg"
 
 # Aliases for confiuguration files
-alias vconf="nvim ~/.config/nvim/init.vim"
+alias vconf="nvim ~/.config/nvim/init.lua"
 alias fconf="nvim ~/.config/fish/config.fish"
 
 # Load pyenv automatically by appending

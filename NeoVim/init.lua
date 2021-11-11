@@ -11,6 +11,7 @@ require('packer_conf')
 require('telescope_conf')
 require('treesitter_conf')
 require('lsp_conf')
+require('cmp_conf')
 require('keymap')
 
 --Set highlight on search
@@ -25,6 +26,9 @@ vim.o.mouse = 'a'
 
 --Set color column
 vim.o.colorcolumn = '100'
+
+--Blinking block cursor!
+vim.o.guicursor='a:blinkon100'
 
 --Set tabstop
 vim.o.expandtab = true

@@ -19,7 +19,6 @@ local use = require('packer').use
 require('packer').startup(function()
     use 'wbthomason/packer.nvim' -- Package manager
     use 'tpope/vim-fugitive' -- Git commands in nvim
-    use 'tpope/vim-eunuch'
     -- UI to select things (files, grep results, open buffers...)
     use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
     use 'gruvbox-community/gruvbox'
@@ -32,18 +31,20 @@ require('packer').startup(function()
     use 'nvim-treesitter/nvim-treesitter'
     -- Additional textobjects for treesitter
     use 'nvim-treesitter/nvim-treesitter-textobjects'
+    
     use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
     use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
     use 'hrsh7th/cmp-nvim-lsp'
     use 'saadparwaiz1/cmp_luasnip'
     use 'L3MON4D3/LuaSnip' -- Snippets plugin
+
+    -- Random collection of the rest
     use 'mhinz/vim-startify'
     use 'airblade/vim-rooter'
-    use 'kamykn/spelunker.vim'
-    use 'kamykn/popup-menu.nvim'
     use 'godlygeek/tabular'
     use 'dag/vim-fish'
     use 'preservim/nerdcommenter'
+    use 'tpope/vim-eunuch' -- Git shell wrappers
     use 'vim-test/vim-test'
     use 'plasticboy/vim-markdown'
 end)
