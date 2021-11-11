@@ -28,15 +28,17 @@ require('packer').startup(function()
     -- Add git related info in the signs columns and popups
     use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
     -- Highlight, edit, and navigate code using a fast incremental parsing library
-    use 'nvim-treesitter/nvim-treesitter'
+    use {'nvim-treesitter/nvim-treesitter', run=":TSUpdate"}
     -- Additional textobjects for treesitter
     use 'nvim-treesitter/nvim-treesitter-textobjects'
     
     use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
+    use 'nvim-lua/lsp_extensions.nvim'
     use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
     use 'hrsh7th/cmp-nvim-lsp'
     use 'saadparwaiz1/cmp_luasnip'
     use 'L3MON4D3/LuaSnip' -- Snippets plugin
+    use 'ray-x/lsp_signature.nvim'
 
     -- Random collection of the rest
     use 'mhinz/vim-startify'
@@ -47,4 +49,5 @@ require('packer').startup(function()
     use 'tpope/vim-eunuch' -- Git shell wrappers
     use 'vim-test/vim-test'
     use 'plasticboy/vim-markdown'
+    use {'psf/black', version='stable' }
 end)

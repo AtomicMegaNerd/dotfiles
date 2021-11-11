@@ -104,6 +104,16 @@ _G.packer_plugins = {
     path = "/Users/chris/.local/share/nvim/site/pack/packer/start/lightline.vim",
     url = "https://github.com/itchyny/lightline.vim"
   },
+  ["lsp_extensions.nvim"] = {
+    loaded = true,
+    path = "/Users/chris/.local/share/nvim/site/pack/packer/start/lsp_extensions.nvim",
+    url = "https://github.com/nvim-lua/lsp_extensions.nvim"
+  },
+  ["lsp_signature.nvim"] = {
+    loaded = true,
+    path = "/Users/chris/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim",
+    url = "https://github.com/ray-x/lsp_signature.nvim"
+  },
   nerdcommenter = {
     loaded = true,
     path = "/Users/chris/.local/share/nvim/site/pack/packer/start/nerdcommenter",

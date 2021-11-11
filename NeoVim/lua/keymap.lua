@@ -19,3 +19,9 @@ vim.api.nvim_set_keymap('n', '<leader>ft', [[<cmd>Telescope git_files<CR>]], opt
 vim.api.nvim_set_keymap('n', '<leader>fb', [[<cmd>Telescope buffers<CR>]], opts)
 vim.api.nvim_set_keymap('n', '<leader>fh', [[<cmd>Telescope help_tags<CR>]], opts)
 
+-- VimTest
+vim.api.nvim_set_keymap('n', '<leader>tn', [[<cmd>TestNearest<cr>]], opts)
+vim.api.nvim_set_keymap('n', '<leader>tf', [[<cmd>TestFile<cr>]], opts)
+vim.api.nvim_set_keymap('n', '<leader>ts', [[<cmd>TestSuite<cr>]], opts)
+vim.api.nvim_set_keymap('n', '<leader>tl', [[<cmd>TestLast<cr>]], opts)
+vim.api.nvim_set_keymap('n', '<leader>tv', [[<cmd>TestVisit<cr>]], opts)
