@@ -40,6 +40,7 @@ vim.o.clipboard = 'unnamedplus'
 
 --Enable break indent
 vim.o.breakindent = true
+vim.g.vim_markdown_folding_disabled = 1
 
 --Save undo history
 vim.opt.undofile = true
