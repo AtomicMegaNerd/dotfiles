@@ -13,6 +13,7 @@ require('treesitter_conf')
 require('lsp_conf')
 require('cmp_conf')
 require('keymap')
+require('lualine_conf')
 
 --Set highlight on search
 vim.o.hlsearch = false
@@ -57,16 +58,6 @@ vim.wo.signcolumn = 'yes'
 vim.o.termguicolors = true
 vim.cmd [[colorscheme gruvbox]]
 vim.g.gruvbox_contrast_dark = 'hard'
-
---Set statusbar
-vim.g.lightline = {
-  active = { 
-    left = {
-        { 'mode', 'paste' }, { 'gitbranch', 'readonly', 'filename', 'modified' }
-    }
-  },
-  component_function = { gitbranch = 'fugitive#head' },
-}
 
 --Map blankline
 vim.g.indent_blankline_char = '┊'

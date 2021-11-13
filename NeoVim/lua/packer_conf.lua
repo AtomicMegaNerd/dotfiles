@@ -22,7 +22,6 @@ require('packer').startup(function()
     -- UI to select things (files, grep results, open buffers...)
     use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
     use 'gruvbox-community/gruvbox'
-    use 'itchyny/lightline.vim' 
     -- Add indentation guides even on blank lines
     use 'lukas-reineke/indent-blankline.nvim'
     -- Add git related info in the signs columns and popups
@@ -50,4 +49,5 @@ require('packer').startup(function()
     use 'vim-test/vim-test'
     use 'plasticboy/vim-markdown'
     use {'psf/black', version='stable' }
+    use {'nvim-lualine/lualine.nvim'}
 end)
