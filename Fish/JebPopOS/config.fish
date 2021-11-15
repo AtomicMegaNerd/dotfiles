@@ -48,14 +48,3 @@ alias grep="rg"
 alias vconf="nvim $HOME/.config/nvim/init.vim"
 alias fconf="nvim $HOME/.config/fish/config.fish"
 
-## Shell Theme
-##############
-
-# Base16 Shell
-if status --is-interactive
-    set BASE16_SHELL "$HOME/.config/base16-shell/"
-    source "$BASE16_SHELL/profile_helper.fish"
-end
-
-# Set the shell theme
-base16-default-dark
