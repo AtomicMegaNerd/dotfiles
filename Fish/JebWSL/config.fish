@@ -39,3 +39,5 @@ if status --is-interactive
     source "$BASE16_SHELL/profile_helper.fish"
 end
 
+base16-default-dark
+
