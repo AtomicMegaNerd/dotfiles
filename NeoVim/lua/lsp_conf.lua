@@ -47,6 +47,19 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+-- Bash Language Server
+nvim_lsp.bashls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
+-- Terraform Language Server
+nvim_lsp.terraformls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
+-- Pyright
 nvim_lsp.pyright.setup {
   on_attach = on_attach,
   capabilities = capabilities,
