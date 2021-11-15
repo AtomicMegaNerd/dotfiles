@@ -110,6 +110,9 @@ endfunction
 " Use autocmd to force lightline update
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
+" Env files use shell syntax
+autocmd BufNewFile,BufRead env.list set syntax=bash
+
 " Configure tree-sitter
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
@@ -210,6 +213,7 @@ au FileType java set tabstop=4 shiftwidth=4
 au Filetype terraform set tabstop=2 shiftwidth=2
 
 " Golang
+au Filetype go set colorcolumn=100
 autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
 
 " ====================

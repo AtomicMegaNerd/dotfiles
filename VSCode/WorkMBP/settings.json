@@ -78,7 +78,7 @@
     "terminal.integrated.fontSize": 16,
     "window.titleBarStyle": "custom",
     // Workbench settings
-    "workbench.iconTheme": "Monokai Pro Icons",
+    "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
     "workbench.startupEditor": "newUntitledFile",
     "workbench.editor.closeEmptyGroups": false,
     "workbench.settings.editor": "json",
@@ -88,7 +88,7 @@
         "*.ipynb": "jupyter-notebook"
     },
     "workbench.activityBar.visible": true,
-    "workbench.colorTheme": "Gruvbox Dark Hard",
+    "workbench.colorTheme": "Monokai Pro (Filter Spectrum)",
     // Explorer settings
     "explorer.confirmDelete": false,
     "explorer.openEditors.visible": 0, // disables open editors
