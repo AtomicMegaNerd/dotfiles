@@ -52,12 +52,3 @@ set -gx fish_user_paths $HOME/.fzf/bin $fish_user_paths
 set -gx fish_user_paths $HOME/.gem/ruby/2.6.0/bin $fish_user_paths
 set -gx fish_user_paths "/Applications/Sublime Text.app/Contents/SharedSupport/bin" $fish_user_paths
 
-# Base16 Shell - For nice colors
-# ===================================
-if status --is-interactive
-    set BASE16_SHELL "$HOME/.config/base16-shell/"
-    source "$BASE16_SHELL/profile_helper.fish"
-end
-
-# Gruvbox
-base16-default-dark
