@@ -11,7 +11,7 @@ alias cat "bat --paging=never --style=plain"
 alias df "duf"
 
 # Shortcuts for common files
-alias vconf "nvim ~/.config/nvim/init.vim"
+alias vconf "nvim ~/.config/nvim/init.lua"
 alias fconf "nvim ~/.config/fish/config.fish"
 
 # EDITOR

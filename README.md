@@ -59,32 +59,18 @@ base16-default-dark
 ### NeoVim
 
 If you setup fish the alias from vim to nvim should be setup already. If this
-is not the case please set this up first.  I now require the 0.5 branch.
+is not the case please set this up first.  This is now based on the 0.5 release as
+it uses a Lua based configuration.
 
-#### Mac
+My NeoVim setup now uses the built-in LSP as well as many other lua based plug-ins.  This means
+that my vim config is tightly coupled to Neovim.
 
-```bash
-brew install neovim --HEAD
-brew install node
-pip install --user neovim
-npm install -g tree-sitter-cli neovim
-```
+#### Mac/Linux
 
-#### Linux
-
-Download the latest 0.5 binary release from [here](https://github.com/neovim/neovim)
-and put it in folder.  Add the bin directory to the PATH.
+I recommend homebrew for both Mac and Linux.
 
 ```bash
-mkdir ~/Apps
-cp nvim-linux64.tar.gz ~/Apps
-cd ~/Apps
-tar -zxvf nvim-linux64.tar.gz
-rm nvim-linux64.tar.gz
-set -Ux fish_user_paths ~/Apps/nvim-linux64/bin/ $fish_user_paths
-apt install nodejs npm
-pip intall --user neovim
-npm install -g tree-sitter-cli neovim
+brew install neovim 
 ```
 
 #### Common
@@ -99,17 +85,9 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 To configure:
 
 ```bash
-mkdir ~/.config/nvim
-cd ~/.config/nvim
-ln -s ~/Code/Configs/dotfiles/NeoVim/init.vim
-ln -s ~/Code/Configs/dotfiles/NeoVim/coc-settings.json
-vim +PLugInstall +UpdateRemotePlugins
-```
-
-Finally run the script to isntall the coc-extensions:
-
-```bash
-~/.config/nvim/install-coc-extensions.sh
+cd ~/.config
+ln -s ~/Code/Configs/dotfiles/Neovim nvim
+nvim +PackerInstall
 ```
 
 ### Sublime Text 3
