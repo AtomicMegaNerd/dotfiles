@@ -59,8 +59,7 @@ vim.wo.signcolumn = 'yes'
 
 --Set colorscheme (order is important here)
 vim.o.termguicolors = true
-vim.cmd [[colorscheme gruvbox]]
-vim.g.gruvbox_contrast_dark = 'hard'
+require('nightfox').load('nightfox')
 
 --Map blankline
 vim.g.indent_blankline_char = '┊'

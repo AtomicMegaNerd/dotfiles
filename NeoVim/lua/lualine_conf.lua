@@ -1,3 +1,3 @@
 require'lualine'.setup {
-  options = {theme = 'powerline', icons_enabled=false,}
+  options = {theme = 'nightfox', icons_enabled=false,}
 }

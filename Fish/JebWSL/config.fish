@@ -25,19 +25,14 @@ alias moon="curl wttr.in/moon"
 
 # dust is a Rust replacement for du
 alias du="dust"
+alias df="duf"
+
+alias cat="bat --paging=never --style=plain"
 
 # exa is a Rust based replacement for ls
 alias ls="exa"
 alias ll="exa -lah"
 
-alias vconf="nvim $HOME/.config/nvim/init.vim"
+alias vconf="nvim $HOME/.config/nvim/init.lua"
 alias fconf="nvim $HOME/.config/fish/config.fish"
-
-# Base16 Shell
-if status --is-interactive
-    set BASE16_SHELL "$HOME/.config/base16-shell/"
-    source "$BASE16_SHELL/profile_helper.fish"
-end
-
-base16-default-dark
 

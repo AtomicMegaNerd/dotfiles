@@ -21,7 +21,7 @@ require('packer').startup(function()
     use 'tpope/vim-fugitive' -- Git commands in nvim
     -- UI to select things (files, grep results, open buffers...)
     use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
-    use 'gruvbox-community/gruvbox'
+    use 'EdenEast/nightfox.nvim'
     -- Add indentation guides even on blank lines
     use 'lukas-reineke/indent-blankline.nvim'
     -- Add git related info in the signs columns and popups
