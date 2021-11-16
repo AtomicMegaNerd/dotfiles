@@ -1,3 +1,3 @@
-require'lualine'.setup {
-  options = {theme = 'nightfox', icons_enabled=false,}
-}
+require("lualine").setup({
+	options = { theme = "nightfox", icons_enabled = false },
+})
