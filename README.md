@@ -37,14 +37,18 @@ ln -s ~/Code/Configs/dotfiles/Alacritty/alacritty.yml
 
 ### Fish
 
-Install the base-16 shell extension for nice colors!  Replace HOST with
-the folder that you want (Roflania, JebPopOS, etc).
+Fish is simple.  Simply symlink the HOST folder that you want (Roflania, JebPopOS, etc).
 
 ```bash
-git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
-cd ~/.config
-ln -s ~/Code/Configs/dotfiles/HOST/fish
-base16-default-dark
+ln -s ~/Code/Configs/dotfiles/Fish/HOST ~/.config/fish
+```
+
+### TMux
+
+Set the tmux.conf file from the symlink:
+
+```bash
+ln -s ~/Code/Configs/dotfiles/TMux/tmux.conf ~/.tmux.conf
 ```
 
 ### NeoVim
