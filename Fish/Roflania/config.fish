@@ -47,11 +47,3 @@ status is-login; and pyenv init --path | source
 
 # Enable iTerm2 shell integration
 source ~/.iterm2_shell_integration.(basename $SHELL)
-
-# Base16 Shell
-if status --is-interactive
-    set BASE16_SHELL "$HOME/.config/base16-shell/"
-    source "$BASE16_SHELL/profile_helper.fish"
-end
-
-base16-default-dark
