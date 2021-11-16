@@ -16,6 +16,7 @@ require("cmp_conf")
 require("keymap")
 require("lualine_conf")
 require("gitsigns_conf")
+require("formatter_conf")
 require("autocmds_conf")
 
 --Set highlight on search
