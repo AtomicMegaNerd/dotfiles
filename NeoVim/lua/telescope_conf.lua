@@ -2,7 +2,6 @@ require('telescope').setup{
   defaults = {
     vimgrep_arguments = {
       'rg',
-      '--color=never',
       '--no-heading',
       '--with-filename',
       '--line-number',
@@ -13,7 +12,6 @@ require('telescope').setup{
     selection_caret = "> ",
     entry_prefix = "  ",
     initial_mode = "insert",
-    selection_strategy = "reset",
     sorting_strategy = "ascending",
     layout_strategy = "flex",
     layout_config = {
@@ -28,7 +26,7 @@ require('telescope').setup{
         },
     },
     file_sorter =  require'telescope.sorters'.get_fuzzy_file,
-    file_ignore_patterns = {'targe'},
+    file_ignore_patterns = {'target, *.lock'},
     generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
     winblend = 0,
     border = {},

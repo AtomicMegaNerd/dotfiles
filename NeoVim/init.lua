@@ -59,7 +59,7 @@ vim.wo.signcolumn = 'yes'
 
 --Set colorscheme (order is important here)
 vim.o.termguicolors = true
-require('nightfox').load('duskfox')
+require('nightfox').load('nightfox')
 
 --Map blankline
 vim.g.indent_blankline_char = '┊'
