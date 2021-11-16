@@ -85,7 +85,7 @@ ln -s ~/Code/Configs/dotfiles/Neovim nvim
 nvim +PackerInstall
 ```
 
-### Sublime Text 3
+### Sublime Text 4
 
 Please make sure that Package Control is installed first.  Sadly there is
 a problem where the font_size configuration will need to be different on
@@ -101,7 +101,7 @@ brew install node
 ```
 
 ```bash
-cd /Users/chris/Library/Application Support/Sublime Text 3/Packages/User
+cd /Users/chris/Library/Application Support/Sublime Text 4/Packages/User
 ln -s ~/Code/Configs/dotfiles/Sublime/Roflania/LSP.sublime-settings
 ln -s ~/Code/Configs/dotfiles/Sublime/Roflania/Package\ Control.sublime-settings
 ln -s ~/Code/Configs/dotfiles/Sublime/Roflania/Preferences.sublime-settings
@@ -119,7 +119,7 @@ Replace HOST with (JebPopOS or JebWSL) depending on the host you are installing
 to.
 
 ```bash
-cd /home/cdunphy/.config/sublime-text-3/Packages/User
+cd /home/cdunphy/.config/sublime-text-4/Packages/User
 ln -s ~/Code/Configs/dotfiles/Sublime/HOST/LSP.sublime-settings
 ln -s ~/Code/Configs/dotfiles/Sublime/HOST/Package\ Control.sublime-settings
 ln -s ~/Code/Configs/dotfiles/Sublime/HOST/Preferences.sublime-settings
