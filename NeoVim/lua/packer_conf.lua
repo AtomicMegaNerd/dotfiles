@@ -44,8 +44,8 @@ require('packer').startup(function()
     use 'airblade/vim-rooter'
     use 'godlygeek/tabular'
     use 'dag/vim-fish'
-    use 'preservim/nerdcommenter'
-    use 'tpope/vim-eunuch' -- Git shell wrappers
+    use 'tpope/vim-eunuch' -- UNIX shell wrappers
+    use 'tpope/vim-commentary'
     use 'vim-test/vim-test'
     use 'plasticboy/vim-markdown'
     use {'psf/black', version='stable' }
