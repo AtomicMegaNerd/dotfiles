@@ -48,6 +48,6 @@ require('packer').startup(function()
     use 'tpope/vim-commentary'
     use 'vim-test/vim-test'
     use 'plasticboy/vim-markdown'
-    use {'psf/black', version='stable' }
+    use {'psf/black', version='21.10b0' }
     use {'nvim-lualine/lualine.nvim'}
 end)

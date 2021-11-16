@@ -68,3 +68,6 @@ vim.g.indent_blankline_buftype_exclude = { 'terminal', 'nofile' }
 vim.g.indent_blankline_char_highlight = 'LineNr'
 vim.g.indent_blankline_show_trailing_blankline_indent = false
 
+-- Black
+vim.g.black_skip_magic_trailing_comma = 1
+
