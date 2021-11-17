@@ -25,8 +25,8 @@ window:
   padding:
     x: 3
     y: 3 
-env:
- { WINIT_X11_SCALE_FACTOR: "1.0" }
+
+background_opacity: 0.9
 
 # Nightfox Alacritty Colors
 # Style: nightfox

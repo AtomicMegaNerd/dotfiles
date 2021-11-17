@@ -7,16 +7,17 @@
 -- NeoVim Configuration File
 
 -- Imports of the additional modules
-require('custom_funcs')
-require('packer_conf')
-require('telescope_conf')
-require('treesitter_conf')
-require('lsp_conf')
-require('cmp_conf')
-require('keymap')
-require('lualine_conf')
-require('gitsigns_conf')
-require('autocmds_conf')
+require("custom_funcs")
+require("packer_conf")
+require("telescope_conf")
+require("treesitter_conf")
+require("lsp_conf")
+require("cmp_conf")
+require("keymap")
+require("lualine_conf")
+require("gitsigns_conf")
+require("formatter_conf")
+require("autocmds_conf")
 
 --Set highlight on search
 vim.o.hlsearch = false
@@ -26,13 +27,13 @@ vim.wo.number = true
 vim.o.relativenumber = true
 
 --Enable mouse mode
-vim.o.mouse = 'a'
+vim.o.mouse = "a"
 
 --Set color column
-vim.o.colorcolumn = '100'
+vim.o.colorcolumn = "100"
 
 --Blinking block cursor!
-vim.o.guicursor='a:blinkon100'
+vim.o.guicursor = "a:blinkon100"
 
 --Set tabstop
 vim.o.expandtab = true
@@ -40,7 +41,7 @@ vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 
 --Use system clipboard
-vim.o.clipboard = 'unnamedplus'
+vim.o.clipboard = "unnamedplus"
 
 --Enable break indent
 vim.o.breakindent = true
@@ -55,17 +56,17 @@ vim.o.smartcase = true
 
 --Decrease update time
 vim.o.updatetime = 250
-vim.wo.signcolumn = 'yes'
+vim.wo.signcolumn = "yes"
 
 --Set colorscheme (order is important here)
 vim.o.termguicolors = true
-require('nightfox').load('nightfox')
+require("nightfox").load("nightfox")
 
 --Map blankline
-vim.g.indent_blankline_char = '┊'
-vim.g.indent_blankline_filetype_exclude = { 'help', 'packer' }
-vim.g.indent_blankline_buftype_exclude = { 'terminal', 'nofile' }
-vim.g.indent_blankline_char_highlight = 'LineNr'
+vim.g.indent_blankline_char = "┊"
+vim.g.indent_blankline_filetype_exclude = { "help", "packer" }
+vim.g.indent_blankline_buftype_exclude = { "terminal", "nofile" }
+vim.g.indent_blankline_char_highlight = "LineNr"
 vim.g.indent_blankline_show_trailing_blankline_indent = false
 
 -- Black
