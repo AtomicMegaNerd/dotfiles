@@ -69,19 +69,3 @@ nvim_lsp.pyright.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 })
-
--- Rust Analyzer
-nvim_lsp.rust_analyzer.setup({
-	on_attach = on_attach,
-	flags = {
-		debounce_text_changes = 150,
-	},
-	settings = {
-		["rust-analyzer"] = {
-			cargo = {
-				allFeatures = true,
-			},
-		},
-	},
-	capabilities = capabilities,
-})
