@@ -16,14 +16,16 @@ cmp.setup({
 		["<C-Space>"] = cmp.mapping.complete(),
 		["<C-e>"] = cmp.mapping.close(),
 		["<CR>"] = cmp.mapping.confirm({
-			behavior = cmp.ConfirmBehavior.Replace,
+			behavior = cmp.ConfirmBehavior.Insert,
 			select = true,
 		}),
 	},
 	sources = {
+		-- The order does matter here.  These are ordered
+		-- by priority.
 		{ name = "nvim_lsp" },
-		{ name = "luasnip" },
 		{ name = "path" },
+		{ name = "luasnip" },
 		{ name = "buffer" },
 	},
 })
