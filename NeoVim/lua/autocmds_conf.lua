@@ -55,9 +55,22 @@ vim.api.nvim_exec(
 	false
 )
 
-vim.api.nvim_exec([[
+vim.api.nvim_exec(
+	[[
 augroup FormatAutogroup
   autocmd!
   autocmd BufWritePost *.js,*.rs,*.lua FormatWrite
 augroup END
-]], true)
+]],
+	true
+)
+
+vim.api.nvim_exec(
+	[[
+augroup LintAutogroup
+  autocmd!
+  autocmd BufWritePost <buffer> lua require('lint').try_lint()
+augroup END
+]],
+	true
+)
