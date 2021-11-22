@@ -45,6 +45,6 @@ alias cat="bat --paging=never --style=plain"
 alias grep="rg"
 
 # Convenient shortcuts
-alias vconf="nvim $HOME/.config/nvim/init.vim"
+alias vconf="nvim $HOME/.config/nvim/init.lua"
 alias fconf="nvim $HOME/.config/fish/config.fish"
 
