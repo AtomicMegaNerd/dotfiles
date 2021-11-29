@@ -2,3 +2,4 @@ NeoVim/plugged
 **credentials.fish
 NeoVim/spell
 NeoVim/plugin
+**/Brewfile.lock.json
