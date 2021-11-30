@@ -24,7 +24,8 @@ mouse_bindings:
 window:
   padding:
     x: 3
-    y: 3 
+    y: 3
+  decorations: none
 
 background_opacity: 0.9
 
