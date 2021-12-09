@@ -40,6 +40,7 @@ require("packer").startup(function()
 	use("ray-x/lsp_signature.nvim")
 
 	-- Random collection of the rest
+	use("kamykn/spelunker.vim")
 	use("mhinz/vim-startify")
 	use("airblade/vim-rooter")
 	use("godlygeek/tabular")

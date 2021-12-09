@@ -25,7 +25,6 @@ cmp.setup({
 		-- by priority.
 		{ name = "nvim_lsp" },
 		{ name = "path" },
-		{ name = "luasnip" },
 		{ name = "buffer" },
 	},
 })
