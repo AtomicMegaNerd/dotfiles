@@ -442,6 +442,10 @@ Host ado-agent
   user azureuser
   IdentityFile ~/.ssh/vm-ado-test-agent-coa_key.pem
 
+Host unknown-host
+    HostName p9icwphd3m1.idm.ad.ctc
+    user ctc-admin
+    IdentityFile ~/.ssh/ctc-admin.priv
 Host *
   UseKeychain yes
   AddKeysToAgent yes
