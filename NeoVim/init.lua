@@ -27,6 +27,7 @@ vim.o.hlsearch = false
 --Make line numbers default, then make them relative
 vim.wo.number = true
 vim.o.relativenumber = true
+vim.o.scrolloff = 8
 
 --Enable mouse mode
 vim.o.mouse = "a"
