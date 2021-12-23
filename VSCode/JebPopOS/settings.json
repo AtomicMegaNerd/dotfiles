@@ -3,9 +3,8 @@
     // AtomicMegaNerd's VSCode Settings
     // =================================================================================
     // =================================================================================
-    // =================================================================================
-    // Files settings
-    // Configure glob patterns for excluding files and folders.
+    // ================================================================================= Files
+    // settings Configure glob patterns for excluding files and folders.
     "files.exclude": {
         "**/.git": true,
         "**/.svn": true,
@@ -19,7 +18,7 @@
     // =================================================================================
     "editor.fontFamily": "Cascadia Code",
     "editor.fontLigatures": true,
-    "editor.fontSize": 16,
+    "editor.fontSize": 13,
     "editor.formatOnSave": true,
     "editor.suggestSelection": "first",
     "editor.cursorStyle": "block",
@@ -34,7 +33,7 @@
     // Terminal settings
     // =================================================================================
     "terminal.integrated.fontFamily": "Noto Sans Mono",
-    "terminal.integrated.fontSize": 16,
+    "terminal.integrated.fontSize": 13,
     // Window settings
     // =================================================================================
     "window.zoomLevel": 0,

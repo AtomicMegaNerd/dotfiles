@@ -8,7 +8,7 @@ vim.api.nvim_set_keymap("i", "<down>", "<nop>", opts)
 vim.api.nvim_set_keymap("i", "<left>", "<nop>", opts)
 vim.api.nvim_set_keymap("i", "<right>", "<nop>", opts)
 
--- Left and right can switch bufferse
+-- Left and right can switch buffers
 vim.api.nvim_set_keymap("n", "<left>", "<cmd>bp<cr>", opts)
 vim.api.nvim_set_keymap("n", "<right>", "<cmd>bn<cr>", opts)
 

@@ -9,7 +9,7 @@ font:
   italic:
     family: JetBrains Mono
     style: Regular
-  size: 14
+  size: 12
 
 cursor:
   style:
@@ -27,7 +27,7 @@ window:
     y: 3
   decorations: none
 
-background_opacity: 0.9
+background_opacity: 0.98
 
 # Nightfox Alacritty Colors
 # Style: nightfox
