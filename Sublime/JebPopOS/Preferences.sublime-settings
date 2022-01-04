@@ -1,22 +1,21 @@
 {
+	// Leave this empty but leave it in otherwise Vintage is ignored by default.
+	"ignored_packages": [],
+	
+	// Apperance settings
+	"font_face": "Jetbrains Mono",
+	"font_size": 14,
+	"theme": "Adaptive.sublime-theme",
+	"gtk_client_side_window_decorations": false,
 	"block_caret": true,
 	"caret": "#FFFFFF",
-	"caret_stype": "blink",
-	"color_scheme": "Packages/GitHub Theme/schemes/GitHub Dark.sublime-color-scheme",
-	"font_face": "Cascadia Code",
-	"font_options":
-	[
-		"gray_antialias"
-	],
-	"font_size": 14,
-	"ignored_packages":
-	[
-		"Rust",
-		"Vintage"
-	],
-	"rulers":
-	[
-		100
-	],
-	"theme": "GitHub-Theme.sublime-theme"
+	"caret_style": "blink",
+	"rulers": [ 100],
+
+	// Configure Vintage
+	"relative_line_numbers": true,
+	"vintage_use_clipboard": true,
+	"vintage_start_in_command_mode": true,
+
+	"color_scheme": "Monokai Pro (Filter Spectrum).sublime-color-scheme",
 }

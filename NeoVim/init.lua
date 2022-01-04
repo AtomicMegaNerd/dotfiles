@@ -12,7 +12,6 @@ require("packer_conf")
 require("telescope_conf")
 require("treesitter_conf")
 require("lsp_conf")
-require("rust-tools_conf")
 require("cmp_conf")
 require("keymap")
 require("lualine_conf")
@@ -43,12 +42,12 @@ vim.o.expandtab = true
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 
+-- Indentation
+vim.o.autoindent = true
+vim.o.breakindent = true
+
 --Use system clipboard
 vim.o.clipboard = "unnamedplus"
-
---Enable break indent
-vim.o.breakindent = true
-vim.g.vim_markdown_folding_disabled = 1
 
 --Save undo history
 vim.opt.undofile = true
@@ -58,12 +57,15 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 --Decrease update time
-vim.o.updatetime = 250
+vim.o.updatetime = 300
 vim.wo.signcolumn = "yes"
 
 --Set colorscheme (order is important here)
 vim.o.termguicolors = true
 require("nightfox").load("nightfox")
+
+--Markdown folding
+vim.g.vim_markdown_folding_disabled = 1
 
 --Map blankline
 vim.g.indent_blankline_char = "┊"
@@ -75,3 +77,4 @@ vim.g.indent_blankline_show_trailing_blankline_indent = false
 -- Black
 vim.g.black_skip_magic_trailing_comma = 1
 
+vim.cmd("filetype plugin indent on")
