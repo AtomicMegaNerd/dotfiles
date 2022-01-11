@@ -45,5 +45,4 @@ alias fconf="nvim ~/.config/fish/config.fish"
 # the following to ~/.config/fish/config.fish:
 status is-login; and pyenv init --path | source
 
-# Enable iTerm2 shell integration
-source ~/.iterm2_shell_integration.(basename $SHELL)
+
