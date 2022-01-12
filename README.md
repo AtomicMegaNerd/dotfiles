@@ -46,7 +46,7 @@ ln -s ~/Code/Configs/dotfiles/Alacritty/alacritty.yml
 
 ### Fish
 
-Fish is simple.  Simply symlink the HOST folder that you want (Roflania, JebPopOS, etc).
+Fish is simple.  Simply symlink the HOST folder that you want (Discovery, JebPopOS, etc).
 
 ```bash
 ln -s ~/Code/Configs/dotfiles/Fish/HOST ~/.config/fish
@@ -101,7 +101,7 @@ a problem where the font_size configuration will need to be different on
 Linux than on MacOS so you'll need to set a different number there unless
 you like really giant sized text on Linux.
 
-#### Mac (Roflania)
+#### Mac (Discovery)
 
 If nodejs is not already installed....
 
@@ -111,9 +111,9 @@ brew install node
 
 ```bash
 cd /Users/chris/Library/Application Support/Sublime Text 4/Packages/User
-ln -s ~/Code/Configs/dotfiles/Sublime/Roflania/LSP.sublime-settings
-ln -s ~/Code/Configs/dotfiles/Sublime/Roflania/Package\ Control.sublime-settings
-ln -s ~/Code/Configs/dotfiles/Sublime/Roflania/Preferences.sublime-settings
+ln -s ~/Code/Configs/dotfiles/Sublime/Discovery/LSP.sublime-settings
+ln -s ~/Code/Configs/dotfiles/Sublime/Discovery/Package\ Control.sublime-settings
+ln -s ~/Code/Configs/dotfiles/Sublime/Discovery/Preferences.sublime-settings
 ```
 
 #### Linux
@@ -141,12 +141,12 @@ required.
 
 ### VSCode
 
-#### Mac (Roflania)
+#### Mac (Discovery)
 
 ```bash
 cd /Users/chris/Library/Application Support/Code/User
-ln -s ~/Code/Configs/dotfiles/VSCode/Roflania/settings.json
-cd ~/Code/Configs/dotfiles/VSCode/Roflania
+ln -s ~/Code/Configs/dotfiles/VSCode/Discovery/settings.json
+cd ~/Code/Configs/dotfiles/VSCode/Discovery
 ./install-exts.sh
 ```
 

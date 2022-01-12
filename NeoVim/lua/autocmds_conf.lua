@@ -74,3 +74,13 @@ augroup END
 ]],
 	true
 )
+
+vim.api.nvim_exec(
+	[[
+augroup FileMappings
+  autocmd!
+  autocmd BufNewFile,BufRead Jenkinsfile setf groovy
+augroup END
+]],
+	true
+)

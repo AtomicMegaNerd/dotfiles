@@ -35,8 +35,6 @@ alias df="duf"
 # Use bat instead of cat
 alias cat="bat --paging=never --style=plain"
 
-alias grep="rg"
-
 # Aliases for confiuguration files
 alias vconf="nvim ~/.config/nvim/init.lua"
 alias fconf="nvim ~/.config/fish/config.fish"
@@ -45,5 +43,7 @@ alias fconf="nvim ~/.config/fish/config.fish"
 # the following to ~/.config/fish/config.fish:
 status is-login; and pyenv init --path | source
 
-# Enable iTerm2 shell integration
-source ~/.iterm2_shell_integration.(basename $SHELL)
+
+
+test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
+
