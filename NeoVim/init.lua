@@ -74,4 +74,18 @@ vim.g.indent_blankline_buftype_exclude = { "terminal", "nofile" }
 vim.g.indent_blankline_char_highlight = "LineNr"
 vim.g.indent_blankline_show_trailing_blankline_indent = false
 
+--Vim Rooter
+-- These files signify the root of a project.
+vim.g.rooter_patterns = {
+	"Makefile",
+	"Cargo.toml",
+	"Pipfile",
+	"*.mod",
+	"Dockerfile",
+	"VERSION",
+	"CHANGELOG.md",
+	"*.cabal",
+	"stack.yaml",
+}
+
 vim.cmd("filetype plugin indent on")
