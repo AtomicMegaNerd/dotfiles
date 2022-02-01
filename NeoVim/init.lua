@@ -86,6 +86,8 @@ vim.g.rooter_patterns = {
 	"CHANGELOG.md",
 	"*.cabal",
 	"stack.yaml",
+	"init.lua",
+	"config.fish",
 }
 
 vim.cmd("filetype plugin indent on")
