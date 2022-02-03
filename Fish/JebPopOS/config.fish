@@ -43,6 +43,14 @@ alias du="dust"
 alias ls="exa"
 alias ll="exa -lah"
 
+# Directory aliases
+alias ch="cd ~"
+alias cr="cd ~/Code/Rust/"
+alias cg="cd ~/Code/Go/"
+alias cpy="cd ~/Code/Python/"
+alias ce="cd ~/Code/Exercism/"
+alias cdot="cd ~/Code/Configs/dotfiles/" 
+
 alias df="duf"
 
 alias cat="bat --paging=never --style=plain"
