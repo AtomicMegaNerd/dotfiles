@@ -77,4 +77,20 @@ vim.g.indent_blankline_show_trailing_blankline_indent = false
 -- Black
 vim.g.black_skip_magic_trailing_comma = 1
 
+--Vim Rooter
+-- These files signify the root of a project.
+vim.g.rooter_patterns = {
+	"Makefile",
+	"Cargo.toml",
+	"Pipfile",
+	"*.mod",
+	"Dockerfile",
+	"VERSION",
+	"CHANGELOG.md",
+	"*.cabal",
+	"stack.yaml",
+	"init.lua",
+	"config.fish",
+}
+
 vim.cmd("filetype plugin indent on")

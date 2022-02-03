@@ -17,14 +17,15 @@
     "files.trimTrailingWhitespace": true,
     // Editor settings
     // =================================================================================
-    "editor.fontFamily": "Cascadia Code",
+    "editor.fontFamily": "Jetbrains Mono",
     "editor.fontLigatures": true,
     "editor.fontSize": 16,
-    "editor.formatOnSave": true,
     "editor.suggestSelection": "first",
     "editor.cursorStyle": "block",
     "editor.cursorBlinking": "blink",
     "editor.minimap.enabled": false,
+    "editor.tabSize": 4,
+    "editor.formatOnSave": true,
     // Git settings
     // =================================================================================
     "git.confirmSync": false,
@@ -33,15 +34,18 @@
     "extensions.ignoreRecommendations": true,
     // Terminal settings
     // =================================================================================
-    "terminal.integrated.fontFamily": "Noto Sans Mono",
+    "terminal.integrated.fontFamily": "Jetbrains Mono",
     "terminal.integrated.fontSize": 16,
     // Window settings
     // =================================================================================
     "window.zoomLevel": 0,
-    "workbench.colorTheme": "GitHub Dark",
     "workbench.settings.editor": "json",
     "workbench.startupEditor": "newUntitledFile",
     "workbench.settings.useSplitJSON": true,
+    "workbench.fontAliasing": "antialiased",
+    "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
+    "workbench.colorTheme": "Monokai Pro (Filter Spectrum)",
+    "workbench.editor.untitled.hint": "hidden",
     // Explorer settings
     // =================================================================================
     "explorer.confirmDelete": false,
@@ -52,12 +56,11 @@
         "editor.rulers": [
             88
         ],
-        "editor.tabSize": 4,
-        "editor.formatOnSave": true
     },
     "python.formatting.provider": "black",
     "python.linting.mypyEnabled": true,
     "python.linting.pylintEnabled": true,
+    "python.languageServer": "Pylance",
     // Rust settings
     // =================================================================================
     "[rust]": {
@@ -82,13 +85,6 @@
     },
     // Disable tracking and telemetry
     // =================================================================================
-    "telemetry.enableTelemetry": false,
-    "python.languageServer": "Pylance",
-    "workbench.editorAssociations": {
-        "*.ipynb": "jupyter.notebook.ipynb"
-    },
-    "workbench.fontAliasing": "antialiased",
-    "workbench.iconTheme": "Monokai Classic Monochrome Icons",
-    "workbench.editor.untitled.hint": "hidden",
+    "telemetry.telemetryLevel": "off",
     "redhat.telemetry.enabled": false,
 }
