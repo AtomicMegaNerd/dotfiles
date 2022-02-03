@@ -54,6 +54,7 @@ alias cdot="cd ~/Code/Configs/dotfiles/"
 alias df="duf"
 
 alias cat="bat --paging=never --style=plain"
+alias go "grc go"
 
 # Just use ripgrep
 alias grep="rg"

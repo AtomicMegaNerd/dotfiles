@@ -35,9 +35,15 @@ alias df "duf"
 # Use bat instead of cat
 alias cat "bat --paging=never --style=plain"
 
-# Aliases for confiuguration files
+# Aliases for local files and directories
 alias vconf "nvim ~/.config/nvim/init.lua"
 alias fconf "nvim ~/.config/fish/config.fish"
+alias ch="cd ~"
+alias cr="cd ~/Code/Rust/"
+alias cg="cd ~/Code/Go/"
+alias cpy="cd ~/Code/Python/"
+alias ce="cd ~/Code/Exercism/"
+alias cdot="cd ~/Code/Configs/dotfiles/" 
 
 alias go "grc go"
 
