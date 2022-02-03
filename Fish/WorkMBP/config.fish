@@ -14,6 +14,8 @@ alias df "duf"
 alias vconf "nvim ~/.config/nvim/init.lua"
 alias fconf "nvim ~/.config/fish/config.fish"
 
+alias go "grc go"
+
 # EDITOR
 # ===================================
 set -gx EDITOR nvim
