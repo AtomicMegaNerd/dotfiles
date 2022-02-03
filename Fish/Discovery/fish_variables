@@ -1,9 +1,9 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-SETUVAR --export PYENV_ROOT:/Users/chris/\x2epyenv
+SETUVAR --export PYENV_ROOT:/Users/rcd/\x2epyenv
 SETUVAR __fish_initialized:3100
-SETUVAR _fisher_jomik_2F_fish_2D_gruvbox_files:/Users/chris/\x2econfig/fish/functions/theme_gruvbox\x2efish
-SETUVAR _fisher_jorgebucaran_2F_fisher_files:/Users/chris/\x2econfig/fish/functions/fisher\x2efish\x1e/Users/chris/\x2econfig/fish/completions/fisher\x2efish
+SETUVAR _fisher_jomik_2F_fish_2D_gruvbox_files:/Users/rcd/\x2econfig/fish/functions/theme_gruvbox\x2efish
+SETUVAR _fisher_jorgebucaran_2F_fisher_files:/Users/rcd/\x2econfig/fish/functions/fisher\x2efish\x1e/Users/rcd/\x2econfig/fish/completions/fisher\x2efish
 SETUVAR _fisher_plugins:jorgebucaran/fisher\x1ejomik/fish\x2dgruvbox
 SETUVAR fish_color_autosuggestion:585858
 SETUVAR fish_color_cancel:\x2dr
@@ -34,7 +34,7 @@ SETUVAR fish_pager_color_completion:normal
 SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
-SETUVAR --export fish_user_paths:/Users/chris/go/bin\x1e/Applications/Sublime\x20Text\x2eapp/Contents/SharedSupport/bin\x1e/Users/chris/\x2elocal/bin\x1e/Users/chris/\x2epyenv/bin\x1e/Users/chris/\x2ecargo/bin\x1e/Users/chris/bin/\x1e/Users/chris/\x2efzf/bin
+SETUVAR --export fish_user_paths:/opt/homebrew/sbin\x1e/opt/homebrew/bin\x1e/Users/rcd/go/bin\x1e/Applications/Sublime\x20Text\x2eapp/Contents/SharedSupport/bin\x1e/Users/rcd/\x2elocal/bin\x1e/Users/rcd/\x2epyenv/bin\x1e/Users/rcd/\x2ecargo/bin\x1e/Users/rcd/bin/\x1e/Users/rcd/\x2efzf/bin
 SETUVAR pure_begin_prompt_with_current_directory:true
 SETUVAR pure_color_command_duration:pure_color_warning
 SETUVAR pure_color_current_directory:pure_color_primary

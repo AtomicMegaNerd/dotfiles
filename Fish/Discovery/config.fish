@@ -15,35 +15,37 @@ set -gx EDITOR nvim
 ## Aliases
 
 # I just love NeoVim
-alias vi="nvim"
-alias vim="nvim"
+alias vi "nvim"
+alias vim "nvim"
 
 # Fun web services
-alias wx="curl wttr.in/Calgary"
-alias moon="curl wttr.in/moon"
+alias wx "curl wttr.in/Calgary"
+alias moon "curl wttr.in/moon"
 
 # dust is a Rust replacement for du
-alias du="dust"
+alias du "dust"
 
 # exa is a Rust based replacement for ls
-alias ls="exa"
-alias ll="exa -lah"
+alias ls "exa"
+alias ll "exa -lah"
 
 # duf is a replacement for df
-alias df="duf"
+alias df "duf"
 
 # Use bat instead of cat
-alias cat="bat --paging=never --style=plain"
-
-alias grep="rg"
+alias cat "bat --paging=never --style=plain"
 
 # Aliases for confiuguration files
-alias vconf="nvim ~/.config/nvim/init.lua"
-alias fconf="nvim ~/.config/fish/config.fish"
+alias vconf "nvim ~/.config/nvim/init.lua"
+alias fconf "nvim ~/.config/fish/config.fish"
+
+alias go "grc go"
 
 # Load pyenv automatically by appending
 # the following to ~/.config/fish/config.fish:
 status is-login; and pyenv init --path | source
 
-# Enable iTerm2 shell integration
-source ~/.iterm2_shell_integration.(basename $SHELL)
+
+
+test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
+
