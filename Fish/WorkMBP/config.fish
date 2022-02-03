@@ -10,9 +10,13 @@ alias vi "nvim"
 alias cat "bat --paging=never --style=plain"
 alias df "duf"
 
-# Shortcuts for common files
+# Shortcuts for common files and directories
 alias vconf "nvim ~/.config/nvim/init.lua"
 alias fconf "nvim ~/.config/fish/config.fish"
+alias ch="cd ~"
+alias cg="cd ~/Code/Go/"
+alias cpy="cd ~/Code/Python/"
+alias cdot="cd ~/Code/Configs/dotfiles/"
 
 alias go "grc go"
 
