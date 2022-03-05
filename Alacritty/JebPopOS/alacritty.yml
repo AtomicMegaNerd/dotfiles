@@ -27,7 +27,7 @@ window:
     y: 3
   decorations: none
 
-background_opacity: 0.98
+  opacity: 0.98
 
 # Nightfox Alacritty Colors
 # Style: nightfox

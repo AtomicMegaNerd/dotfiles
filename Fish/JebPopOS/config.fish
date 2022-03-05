@@ -49,6 +49,7 @@ alias cr="cd ~/Code/Rust/"
 alias cg="cd ~/Code/Go/"
 alias cpy="cd ~/Code/Python/"
 alias ce="cd ~/Code/Exercism/"
+alias cgo="cd ~/Code/Go/"
 alias cdot="cd ~/Code/Configs/dotfiles/" 
 
 alias df="duf"
