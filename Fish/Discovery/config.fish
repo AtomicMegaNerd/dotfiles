@@ -18,10 +18,6 @@ set -gx EDITOR nvim
 alias vi "nvim"
 alias vim "nvim"
 
-# Fun web services
-alias wx "curl wttr.in/Calgary"
-alias moon "curl wttr.in/moon"
-
 # dust is a Rust replacement for du
 alias du "dust"
 
@@ -46,12 +42,12 @@ alias ce="cd ~/Code/Exercism/"
 alias cdot="cd ~/Code/Configs/dotfiles/" 
 
 alias go "grc go"
+alias ifconfig "grc ifconfig"
+alias ip "grc ip"
 
 # Load pyenv automatically by appending
 # the following to ~/.config/fish/config.fish:
 status is-login; and pyenv init --path | source
-
-
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 
