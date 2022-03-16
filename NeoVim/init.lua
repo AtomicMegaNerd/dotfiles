@@ -62,7 +62,7 @@ vim.wo.signcolumn = "yes"
 
 --Set colorscheme (order is important here)
 vim.o.termguicolors = true
-require("nightfox").load("nightfox")
+vim.cmd("colorscheme nightfox")
 
 --Markdown folding
 vim.g.vim_markdown_folding_disabled = 1
