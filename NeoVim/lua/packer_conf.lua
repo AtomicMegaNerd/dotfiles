@@ -24,7 +24,7 @@ require("packer").startup(function()
 	use("EdenEast/nightfox.nvim")
 	-- Add indentation guides even on blank lines
 	use("lukas-reineke/indent-blankline.nvim")
-	-- Add git related info in the signs columns and popups
+	-- Add git related info in the signs columns and pop-ups
 	use({ "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } })
 	-- Highlight, edit, and navigate code using a fast incremental parsing library
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })

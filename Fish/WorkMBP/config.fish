@@ -14,9 +14,11 @@ alias df "duf"
 alias vconf "nvim ~/.config/nvim/init.lua"
 alias fconf "nvim ~/.config/fish/config.fish"
 alias ch="cd ~"
-alias cg="cd ~/Code/Go/"
-alias cpy="cd ~/Code/Python/"
-alias cdot="cd ~/Code/Configs/dotfiles/"
+alias cg="cd ~/Code/Go"
+alias cj="cd ~/Code/Java"
+alias cpy="cd ~/Code/Python"
+alias cdot="cd ~/Code/Configs/dotfiles"
+alias cdock="cd ~/Code/Docker"
 
 alias go "grc go"
 
@@ -47,7 +49,7 @@ test -e {$HOME}/.iterm2_shell_integration.fish; and source {$HOME}/.iterm2_shell
 
 # Java and Friends
 # ===================================
-set -gx JAVA_HOME /Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home
+set -gx JAVA_HOME /Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home
 set -gx GROOVY_HOME /usr/local/opt/groovy/libexec
 set -gx GRADLE_USER_HOME $HOME/.gradle
 
