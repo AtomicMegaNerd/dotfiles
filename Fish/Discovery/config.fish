@@ -43,7 +43,6 @@ alias cdot="cd ~/Code/Configs/dotfiles/"
 
 alias go "grc go"
 alias ifconfig "grc ifconfig"
-alias ip "grc ip"
 
 # Load pyenv automatically by appending
 # the following to ~/.config/fish/config.fish:
