@@ -32,16 +32,15 @@ pyenv init --path | source
 alias vi="nvim"
 alias vim="nvim"
 
-# Fun web services
-alias wx="curl wttr.in/Calgary"
-alias moon="curl wttr.in/moon"
-
 # dust is a Rust replacement for du
 alias du="dust"
 
 # exa is a Rust based replacement for ls
 alias ls="exa"
 alias ll="exa -lah"
+
+# duf is a replacement for df
+alias df="duf"
 
 # Directory aliases
 alias ch="cd ~"
@@ -52,10 +51,10 @@ alias ce="cd ~/Code/Exercism/"
 alias cgo="cd ~/Code/Go/"
 alias cdot="cd ~/Code/Configs/dotfiles/" 
 
-alias df="duf"
 
 alias cat="bat --paging=never --style=plain"
 alias go "grc go"
+alias ip "grc ip"
 
 # Just use ripgrep
 alias grep="rg"
@@ -63,4 +62,5 @@ alias grep="rg"
 # Convenient shortcuts
 alias vconf="nvim $HOME/.config/nvim/init.lua"
 alias fconf="nvim $HOME/.config/fish/config.fish"
+alias aconf="nvim $HOME/.config/alacritty/alacritty.yml"
 
