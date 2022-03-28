@@ -42,6 +42,9 @@ alias ll="exa -lah"
 # duf is a replacement for df
 alias df="duf"
 
+# bat is a modern replacement for cat
+alias cat="bat --paging=never --style=plain"
+
 # Directory aliases
 alias ch="cd ~"
 alias cr="cd ~/Code/Rust/"
@@ -51,8 +54,7 @@ alias ce="cd ~/Code/Exercism/"
 alias cgo="cd ~/Code/Go/"
 alias cdot="cd ~/Code/Configs/dotfiles/" 
 
-
-alias cat="bat --paging=never --style=plain"
+# Colorize
 alias go "grc go"
 alias ip "grc ip"
 

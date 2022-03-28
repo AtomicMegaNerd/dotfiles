@@ -29,8 +29,6 @@ window:
   opacity: 0.98
 
 # Nightfox Alacritty Colors
-# Style: nightfox
-# Upstream: https://github.com/edeneast/nightfox.nvim/raw/main/extra/nightfox/nightfox_alacritty.yml
 colors:
   # Default colors
   primary:

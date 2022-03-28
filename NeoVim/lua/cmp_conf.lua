@@ -1,5 +1,5 @@
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = "menuone,noselect"
+vim.o.completeopt = "menu,menuone,noselect"
 
 local luasnip = require("luasnip")
 local cmp = require("cmp")
