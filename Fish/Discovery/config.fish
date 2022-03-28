@@ -40,7 +40,6 @@ alias cg="cd ~/Code/Go/"
 alias cpy="cd ~/Code/Python/"
 alias ce="cd ~/Code/Exercism/"
 alias cdot="cd ~/Code/Configs/dotfiles/" 
-
 alias go "grc go"
 alias ifconfig "grc ifconfig"
 
