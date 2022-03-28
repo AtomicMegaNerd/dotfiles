@@ -16,6 +16,7 @@ vim.api.nvim_exec(
     autocmd!
     autocmd Filetype haskell set tabstop=2 shiftwidth=2
     autocmd Filetype lua set tabstop=2 shiftwidth=2
+    autocmd Filetype go set tabstop=4 shiftwidth=4
     autocmd Filetype python set colorcolumn=88
   augroup end
 ]],
