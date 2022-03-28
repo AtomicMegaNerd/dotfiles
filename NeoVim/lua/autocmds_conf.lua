@@ -44,7 +44,7 @@ vim.api.nvim_exec(
 	false
 )
 
--- Run Go-autoimporter
+-- Go auto importer
 vim.api.nvim_exec(
 	[[
   augroup RunGoImport
