@@ -56,4 +56,4 @@ colors:
     white:   '0xe4e4e5'
   indexed_colors:
     - { index: 16, color: '0xf4a261' }
-    - { index: 17, color:'0xd67ad2' } 
+    - { index: 17, color: '0xd67ad2' } 
