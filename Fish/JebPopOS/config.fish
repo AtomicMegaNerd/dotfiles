@@ -47,6 +47,7 @@ alias cat="bat --paging=never --style=plain"
 
 # Directory aliases
 alias ch="cd ~"
+alias csrc="cd ~/Code"
 alias cr="cd ~/Code/Rust/"
 alias cg="cd ~/Code/Go/"
 alias cpy="cd ~/Code/Python/"
