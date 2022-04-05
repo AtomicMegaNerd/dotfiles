@@ -13,6 +13,7 @@ alias df "duf"
 # Shortcuts for common files and directories
 alias vconf "nvim ~/.config/nvim/init.lua"
 alias fconf "nvim ~/.config/fish/config.fish"
+alias cconf "nvim ~/.config/fish/conf.d/credentials.fish"
 alias ch="cd ~"
 alias csrc="cd ~/Code"
 alias cg="cd ~/Code/Go"
