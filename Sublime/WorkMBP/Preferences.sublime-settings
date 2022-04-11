@@ -94,12 +94,14 @@
 		"Prashant's",
 		"Sheshank",
 		"async",
+		"Enablement",
+		"automations",
 	],
 	"block_caret": true,
 	"color_scheme": "Monokai Pro (Filter Machine).sublime-color-scheme",
 	"dictionary": "Packages/Language - English/en_US.dic",
 	"font_face": "JetBrains Mono",
-	"font_size": 18,
+	"font_size": 22,
 	"ignored_packages": [
 	],
 	"ignored_words":
