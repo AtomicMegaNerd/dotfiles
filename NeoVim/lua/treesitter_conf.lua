@@ -1,7 +1,7 @@
 require("nvim-treesitter.configs").setup({
-	ensure_installed = "all", 
+	ensure_installed = { "python", "go", "haskell", "rust", "fish", "bash", "lua" },
 	highlight = {
-		enable = true, 
+		enable = true,
 	},
 	indent = {
 		enable = true,
