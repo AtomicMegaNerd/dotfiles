@@ -45,6 +45,7 @@ vim.o.shiftwidth = 4
 -- Indentation
 vim.o.autoindent = true
 vim.o.breakindent = true
+vim.o.laststatus = 3
 
 --Use system clipboard
 vim.o.clipboard = "unnamedplus"

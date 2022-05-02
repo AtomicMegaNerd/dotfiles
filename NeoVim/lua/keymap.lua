@@ -13,11 +13,11 @@ vim.api.nvim_set_keymap("n", "<left>", "<cmd>bp<cr>", opts)
 vim.api.nvim_set_keymap("n", "<right>", "<cmd>bn<cr>", opts)
 
 -- Telescope keybindings
-vim.api.nvim_set_keymap("n", "<leader>ff", [[<cmd>Telescope find_files<CR>]], opts)
-vim.api.nvim_set_keymap("n", "<leader>fg", [[<cmd>Telescope live_grep<CR>]], opts)
-vim.api.nvim_set_keymap("n", "<leader>ft", [[<cmd>Telescope git_files<CR>]], opts)
-vim.api.nvim_set_keymap("n", "<leader>fb", [[<cmd>Telescope buffers<CR>]], opts)
-vim.api.nvim_set_keymap("n", "<leader>fh", [[<cmd>Telescope help_tags<CR>]], opts)
+vim.keymap.set("n", "<leader>ff", require("telescope.builtin").find_files)
+vim.keymap.set("n", "<leader>fg", require("telescope.builtin").live_grep)
+vim.keymap.set("n", "<leader>ft", require("telescope.builtin").git_files)
+vim.keymap.set("n", "<leader>fb", require("telescope.builtin").buffers)
+vim.keymap.set("n", "<leader>fh", require("telescope.builtin").help_tags)
 
 -- VimTest
 vim.api.nvim_set_keymap("n", "<leader>tn", [[<cmd>TestNearest<cr>]], opts)
