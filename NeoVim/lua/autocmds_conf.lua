@@ -45,17 +45,6 @@ vim.api.nvim_exec(
 	false
 )
 
--- Go auto importer
-vim.api.nvim_exec(
-	[[
-  augroup RunGoImport
-    autocmd!
-    autocmd BufWritePre *.go lua goimports(1000) 
-  augroup end
-]],
-	false
-)
-
 vim.api.nvim_exec(
 	[[
 augroup FormatAutogroup
