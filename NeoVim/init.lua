@@ -7,7 +7,6 @@
 -- NeoVim Configuration File
 
 -- Imports of the additional modules
-require("custom_funcs")
 require("packer_conf")
 require("telescope_conf")
 require("treesitter_conf")

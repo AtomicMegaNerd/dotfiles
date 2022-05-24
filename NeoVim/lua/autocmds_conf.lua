@@ -16,7 +16,7 @@ vim.api.nvim_exec(
     autocmd!
     autocmd Filetype haskell set tabstop=2 shiftwidth=2
     autocmd Filetype lua set tabstop=2 shiftwidth=2
-    autocmd Filetype go set tabstop=4 shiftwidth=4
+    autocmd Filetype go set tabstop=4 shiftwidth=4 colorcolumn=100
     autocmd Filetype python set colorcolumn=88
   augroup end
 ]],
@@ -40,17 +40,6 @@ vim.api.nvim_exec(
   augroup FormatWithBlack
     autocmd!
     autocmd BufWritePre *.py execute ':Black'
-  augroup end
-]],
-	false
-)
-
--- Go auto importer
-vim.api.nvim_exec(
-	[[
-  augroup RunGoImport
-    autocmd!
-    autocmd BufWritePre *.go lua goimports(1000) 
   augroup end
 ]],
 	false
