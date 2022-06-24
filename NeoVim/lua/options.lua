@@ -6,24 +6,25 @@
 --                                              /____/
 --
 
---Set highlight on search
+-- Set highlight on search
 vim.o.hlsearch = false
 
---Make line numbers default, then make them relative
+-- Make line numbers default, then make them relative
 vim.wo.number = true
 vim.o.relativenumber = true
 vim.o.scrolloff = 8
 
---Enable mouse mode
+-- Enable mouse mode
 vim.o.mouse = "a"
 
---Set color column
+-- Set color column and signcolumn
 vim.o.colorcolumn = "100"
+vim.wo.signcolumn = "yes"
 
---Blinking block cursor!
+-- Blinking block cursor!
 vim.o.guicursor = "a:blinkon100"
 
---Set tabstop
+-- Set tabstop
 vim.o.expandtab = true
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
@@ -33,19 +34,17 @@ vim.o.autoindent = true
 vim.o.breakindent = true
 vim.o.laststatus = 3
 
---Use system clipboard
+-- Use system clipboard
 vim.o.clipboard = "unnamedplus"
 
---Save undo history
+-- Save undo history
 vim.opt.undofile = true
 
---Case insensitive searching UNLESS /C or capital in search
+-- Case insensitive searching UNLESS /C or capital in search
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
---Decrease update time
-vim.o.updatetime = 300
-vim.wo.signcolumn = "yes"
+-- Enable spellcheck
 vim.o.spell = true
 
 --Set colorscheme (order is important here)
