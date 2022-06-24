@@ -54,19 +54,20 @@ vim.o.termguicolors = true
 vim.cmd("colorscheme nightfox")
 
 -- Vim Rooter
+----------------------------------------------------------------
 -- These files signify the root of a project.
 vim.g.rooter_patterns = {
-  "Makefile",
-  "Cargo.toml",
-  "Pipfile",
-  "*.mod",
-  "Dockerfile",
-  "VERSION",
-  "CHANGELOG.md",
-  "*.cabal",
-  "stack.yaml",
-  "init.lua",
-  "config.fish",
+	"Makefile",
+	"Cargo.toml",
+	"Pipfile",
+	"*.mod",
+	"Dockerfile",
+	"VERSION",
+	"CHANGELOG.md",
+	"*.cabal",
+	"stack.yaml",
+	"init.lua",
+	"config.fish",
 }
 
 -- Use filetypes.lua and disable filetypes.vim

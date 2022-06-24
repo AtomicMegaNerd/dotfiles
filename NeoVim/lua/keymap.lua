@@ -7,6 +7,8 @@
 --
 -- Custom Neovim keybindings
 
+-- Arrow keys
+----------------------------------------------------------------
 -- Disable arrow keys for editing
 vim.keymap.set("n", "<up>", "<nop>")
 vim.keymap.set("n", "<down>", "<nop>")
@@ -20,11 +22,11 @@ vim.keymap.set("n", "<left>", "<cmd>bp<cr>")
 vim.keymap.set("n", "<right>", "<cmd>bn<cr>")
 
 -- Telescope keybindings
+----------------------------------------------------------------
 vim.keymap.set("n", "<leader>ff", require("telescope.builtin").find_files, { desc = "[F]ind [F]files" })
 vim.keymap.set("n", "<leader>fb", require("telescope.builtin").buffers, { desc = "[F]ind [B]uffers" })
 vim.keymap.set("n", "<leader>fd", require("telescope.builtin").diagnostics, { desc = "[F]ind [D]iagnostics" })
 vim.keymap.set("n", "<leader>flg", require("telescope.builtin").live_grep, { desc = "[F]ind [L]ive [G]rep" })
-
 -- Git
 vim.keymap.set("n", "<leader>fgf", require("telescope.builtin").git_files, { desc = "[F]ind [G]it [F]iles" })
 vim.keymap.set("n", "<leader>fgb", require("telescope.builtin").git_branches, { desc = "[F]ind [G]it [B]ranch" })
@@ -36,6 +38,7 @@ vim.keymap.set("n", "<leader>fnc", require("telescope.builtin").commands, { desc
 vim.keymap.set("n", "<leader>fnk", require("telescope.builtin").keymaps, { desc = "[F]ind [N]eovim [C]ommands" })
 
 -- VimTest
+----------------------------------------------------------------
 vim.keymap.set("n", "<leader>tn", [[<cmd>TestNearest<cr>]], { desc = "Run [T]est [N]earest to cursor" })
 vim.keymap.set("n", "<leader>tf", [[<cmd>TestFile<cr>]], { desc = "Run all [T]ests in [F]ile" })
 vim.keymap.set("n", "<leader>ts", [[<cmd>TestSuite<cr>]], { desc = "Run whole [T]est [S]uite" })
