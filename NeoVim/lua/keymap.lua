@@ -25,3 +25,6 @@ vim.api.nvim_set_keymap("n", "<leader>tf", [[<cmd>TestFile<cr>]], opts)
 vim.api.nvim_set_keymap("n", "<leader>ts", [[<cmd>TestSuite<cr>]], opts)
 vim.api.nvim_set_keymap("n", "<leader>tl", [[<cmd>TestLast<cr>]], opts)
 vim.api.nvim_set_keymap("n", "<leader>tv", [[<cmd>TestVisit<cr>]], opts)
+
+-- Formatter
+vim.keymap.set("n", "<leader>f", ":Format<CR>")

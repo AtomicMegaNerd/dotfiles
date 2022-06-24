@@ -34,22 +34,11 @@ vim.api.nvim_exec(
 	false
 )
 
--- Format Python files with Black, LSP doesn't support this yet.
 vim.api.nvim_exec(
 	[[
-  augroup FormatWithBlack
-    autocmd!
-    autocmd BufWritePre *.py execute ':Black'
-  augroup end
-]],
-	false
-)
-
-vim.api.nvim_exec(
-	[[
-augroup FormatAutogroup
+augroup LintAutogroup
   autocmd!
-  autocmd BufWritePost *.js,*.rs,*.lua FormatWrite
+  autocmd BufWritePost <buffer> lua require('lint').try_lint()
 augroup END
 ]],
 	true
@@ -57,9 +46,9 @@ augroup END
 
 vim.api.nvim_exec(
 	[[
-augroup LintAutogroup
+augroup FormatAutogroup
   autocmd!
-  autocmd BufWritePost <buffer> lua require('lint').try_lint()
+  autocmd BufWritePost * FormatWrite
 augroup END
 ]],
 	true
