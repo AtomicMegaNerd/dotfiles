@@ -12,16 +12,6 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 	vim.fn.execute("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
 end
 
-vim.api.nvim_exec(
-	[[
-  augroup Packer
-    autocmd!
-    autocmd BufWritePost init.lua PackerCompile
-  augroup end
-]],
-	false
-)
-
 local function get_config(name)
 	return string.format('require("config/%s")', name)
 end
@@ -110,10 +100,14 @@ require("packer").startup({
 			config = get_config("lint_conf"),
 		})
 
+		use({
+			"numToStr/Comment.nvim",
+			config = get_config("comment_conf"),
+		})
+
 		-- The last few to use vimscript instead of Lua.
 		use("tpope/vim-eunuch")
 		use("tpope/vim-fugitive")
-		use("tpope/vim-commentary")
 		use("vim-test/vim-test")
 		use("airblade/vim-rooter")
 	end,

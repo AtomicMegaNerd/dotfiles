@@ -67,4 +67,6 @@ vim.g.rooter_patterns = {
 	"config.fish",
 }
 
-vim.cmd("filetype plugin indent on")
+-- Use filetypes.lua and disable filetypes.vim
+vim.g.do_filetype_lua = 1
+vim.g.did_load_filetypes = 0

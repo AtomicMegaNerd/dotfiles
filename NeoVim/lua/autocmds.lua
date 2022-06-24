@@ -1,48 +1,48 @@
--- Packer compile
+-- Automatically source and re-compile packer whenever you save plugins.lua or init.lua
+local pack_grp = vim.api.nvim_create_augroup("Packer", { clear = true })
+vim.api.nvim_create_autocmd("BufWritePost", {
+	command = "source <afile> | PackerCompile",
+	group = pack_grp,
+	pattern = { "init.lua", "plugins.lua" },
+})
 
--- Highlight on yank
-vim.api.nvim_exec(
-	[[
-  augroup YankHighlight
-    autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
-  augroup end
-]],
-	false
-)
+-- Automatically highlight text when we yank it
+local yank_grp = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+vim.api.nvim_create_autocmd("TextYankPost", {
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+	group = yank_grp,
+	pattern = "*",
+})
 
--- Specific options for different kinds of files
-vim.api.nvim_exec(
-	[[
-  augroup FileTypeOptions
-    autocmd!
-    autocmd Filetype haskell set tabstop=2 shiftwidth=2
-    autocmd Filetype lua set tabstop=2 shiftwidth=2
-    autocmd Filetype go set tabstop=4 shiftwidth=4
-    autocmd Filetype python set colorcolumn=88
-  augroup end
-]],
-	false
-)
+local fto_grp = vim.api.nvim_create_augroup("FileTypeOptions", { clear = true })
+vim.api.nvim_create_autocmd("Filetype", {
+	command = "set tabstop=2 shiftwidth=2",
+	group = fto_grp,
+	pattern = { "haskell", "lua" },
+})
 
--- Enable linters
-vim.api.nvim_exec(
-	[[
-augroup LintAutogroup
-  autocmd!
-  autocmd BufWritePost <buffer> lua require('lint').try_lint()
-augroup END
-]],
-	true
-)
+vim.api.nvim_create_autocmd("Filetype", {
+	command = "set colorcolum=88",
+	group = fto_grp,
+	pattern = { "python" },
+})
 
--- This leverages the formatter.nvim plug-in
-vim.api.nvim_exec(
-	[[
-augroup FormatAutogroup
-  autocmd!
-  autocmd BufWritePost * FormatWrite
-augroup END
-]],
-	true
-)
+-- Run any linters
+local lint_grp = vim.api.nvim_create_augroup("LintAutogroup", { clear = true })
+vim.api.nvim_create_autocmd("BufWritePost", {
+	callback = function()
+		require("lint").try_lint()
+	end,
+	group = lint_grp,
+	pattern = "*",
+})
+
+-- Run any formatters
+local fmt_grp = vim.api.nvim_create_augroup("FormatAutogroup", { clear = true })
+vim.api.nvim_create_autocmd("BufWritePost", {
+	command = "FormatWrite",
+	group = fmt_grp,
+	pattern = "*",
+})
