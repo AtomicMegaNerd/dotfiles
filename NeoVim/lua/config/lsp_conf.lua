@@ -3,40 +3,48 @@
 
 local nvim_lsp = require("lspconfig")
 
-local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...)
-    vim.api.nvim_buf_set_keymap(bufnr, ...)
-  end
+local on_attach = function(_, bufnr)
+	local lsp_sig_cfg = {
+		hint_prefix = "> ",
+	}
+	require("lsp_signature").on_attach(lsp_sig_cfg, bufnr)
+	local nmap = function(keys, func, desc)
+		if desc then
+			desc = "LSP: " .. desc
+		end
 
-  vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+		vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
+	end
 
-  local opts = { noremap = true, silent = true }
-  buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-  buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-  buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-  buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-  -- leader key bindings
-  buf_set_keymap("n", "<leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-  buf_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-  buf_set_keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-  buf_set_keymap("n", "<leader>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
-  buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  buf_set_keymap("n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
+	nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+	nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]tion")
 
-  buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
-  buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
+	nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
+	nmap("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
+	nmap("gr", require("telescope.builtin").lsp_references)
+	nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
+	nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 
-  if client.resolved_capabilities.document_formatting then
-    vim.api.nvim_command([[augroup Format]])
-    vim.api.nvim_command([[autocmd! * <buffer>]])
-    vim.api.nvim_command([[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()]])
-    vim.api.nvim_command([[augroup END]])
-  end
+	-- See `:help K` for why this keymap
+	nmap("K", vim.lsp.buf.hover, "Hover Documentation")
+	nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
 
-  local lsp_sig_cfg = {
-    hint_prefix = "> ",
-  }
-  require("lsp_signature").on_attach(lsp_sig_cfg, bufnr)
+	-- Lesser used LSP functionality
+	nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+	nmap("<leader>D", vim.lsp.buf.type_definition, "Type Definition")
+	nmap("<leader>wa", vim.lsp.buf.add_workspace_folder, "[W]orkspace [A]dd Folder")
+	nmap("<leader>wr", vim.lsp.buf.remove_workspace_folder, "[W]orkspace [R]emove Folder")
+	nmap("<leader>wl", function()
+		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+	end, "[W]orkspace [L]ist Folders")
+
+	-- Create a command `:Format` local to the LSP buffer
+	vim.api.nvim_buf_create_user_command(
+		bufnr,
+		"Format",
+		vim.lsp.buf.format or vim.lsp.buf.formatting,
+		{ desc = "Format current buffer with LSP" }
+	)
 end
 
 -- nvim-cmp supports additional completion capabilities
@@ -46,35 +54,35 @@ capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 -- Enable the following language servers
 local servers = { "gopls", "pyright", "yamlls", "bashls", "jdtls" }
 for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-  })
+	nvim_lsp[lsp].setup({
+		on_attach = on_attach,
+		capabilities = capabilities,
+	})
 end
 
 -- Make sure we suppress warnings on the vim global object
 nvim_lsp.sumneko_lua.setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-  settings = {
-    Lua = {
-      diagnostics = { globals = { "vim" } },
-    },
-  },
+	on_attach = on_attach,
+	capabilities = capabilities,
+	settings = {
+		Lua = {
+			diagnostics = { globals = { "vim" } },
+		},
+	},
 })
 
 -- Rust tools embeds the rust-analyzer server, but we want to make sure we pass
 -- our key-bindings to this server so things like rename work.
 require("rust-tools").setup({
-  server = {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    settings = {
-      ["rust-analyzer"] = {
-        checkOnSave = {
-          command = "clippy",
-        },
-      },
-    },
-  },
+	server = {
+		on_attach = on_attach,
+		capabilities = capabilities,
+		settings = {
+			["rust-analyzer"] = {
+				checkOnSave = {
+					command = "clippy",
+				},
+			},
+		},
+	},
 })

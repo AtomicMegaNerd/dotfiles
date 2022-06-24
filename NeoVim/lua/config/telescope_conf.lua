@@ -8,6 +8,7 @@ require("telescope").setup({
       "--line-number",
       "--column",
       "--smart-case",
+      "--u",
     },
     prompt_prefix = "> ",
     selection_caret = "> ",
@@ -28,7 +29,7 @@ require("telescope").setup({
       },
     },
     file_sorter = require("telescope.sorters").get_fuzzy_file,
-    file_ignore_patterns = { "target" },
+    file_ignore_patterns = { "target", "**.lock", "build", "node_modules" },
     generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
     winblend = 0,
     border = {},
@@ -43,4 +44,4 @@ require("telescope").setup({
   },
 })
 
-pcall(require('telescope').load_extension, 'fzf')
+pcall(require("telescope").load_extension, "fzf")
