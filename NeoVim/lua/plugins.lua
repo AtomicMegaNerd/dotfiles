@@ -104,7 +104,10 @@ require("packer").startup({
 
 		use("simrat39/rust-tools.nvim")
 
-		use("mfussenegger/nvim-lint")
+		use({
+			"mfussenegger/nvim-lint",
+			config = get_config("lint_conf"),
+		})
 	end,
 	config = {
 		display = {

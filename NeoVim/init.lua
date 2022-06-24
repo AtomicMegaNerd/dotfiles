@@ -7,7 +7,7 @@
 -- NeoVim Configuration File
 
 -- Imports of the additional modules
-require("plugins")
 require("keymap")
 require("autocmds")
 require("options")
+require("plugins")

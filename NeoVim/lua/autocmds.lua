@@ -23,17 +23,7 @@ vim.api.nvim_exec(
 	false
 )
 
--- Show the inlay hints for rust files
-vim.api.nvim_exec(
-	[[
-  augroup ShowInlayHints
-    autocmd!
-    autocmd CursorHold,CursorHoldI *.rs :lua require'lsp_extensions'.inlay_hints{ enabled={"ChainingHint","TypeHint"}, only_current_line = true }
-  augroup end
-]],
-	false
-)
-
+-- Enable linters
 vim.api.nvim_exec(
 	[[
 augroup LintAutogroup
@@ -44,6 +34,7 @@ augroup END
 	true
 )
 
+-- This leverages the formatter.nvim plug-in
 vim.api.nvim_exec(
 	[[
 augroup FormatAutogroup

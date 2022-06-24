@@ -1,16 +1,14 @@
-local opts = { noremap = true, silent = true }
-
--- Disable arrow keys while editing, this is vim after all!
-vim.api.nvim_set_keymap("n", "<up>", "<nop>", opts)
-vim.api.nvim_set_keymap("n", "<down>", "<nop>", opts)
-vim.api.nvim_set_keymap("i", "<up>", "<nop>", opts)
-vim.api.nvim_set_keymap("i", "<down>", "<nop>", opts)
-vim.api.nvim_set_keymap("i", "<left>", "<nop>", opts)
-vim.api.nvim_set_keymap("i", "<right>", "<nop>", opts)
+-- Disable arrow keys for editing
+vim.keymap.set("n", "<up>", "<nop>")
+vim.keymap.set("n", "<down>", "<nop>")
+vim.keymap.set("i", "<up>", "<nop>")
+vim.keymap.set("i", "<down>", "<nop>")
+vim.keymap.set("i", "<left>", "<nop>")
+vim.keymap.set("i", "<right>", "<nop>")
 
 -- Left and right can switch buffers
-vim.api.nvim_set_keymap("n", "<left>", "<cmd>bp<cr>", opts)
-vim.api.nvim_set_keymap("n", "<right>", "<cmd>bn<cr>", opts)
+vim.keymap.set("n", "<left>", "<cmd>bp<cr>")
+vim.keymap.set("n", "<right>", "<cmd>bn<cr>")
 
 -- Telescope keybindings
 vim.keymap.set("n", "<leader>ff", require("telescope.builtin").find_files)
@@ -20,11 +18,8 @@ vim.keymap.set("n", "<leader>fb", require("telescope.builtin").buffers)
 vim.keymap.set("n", "<leader>fh", require("telescope.builtin").help_tags)
 
 -- VimTest
-vim.api.nvim_set_keymap("n", "<leader>tn", [[<cmd>TestNearest<cr>]], opts)
-vim.api.nvim_set_keymap("n", "<leader>tf", [[<cmd>TestFile<cr>]], opts)
-vim.api.nvim_set_keymap("n", "<leader>ts", [[<cmd>TestSuite<cr>]], opts)
-vim.api.nvim_set_keymap("n", "<leader>tl", [[<cmd>TestLast<cr>]], opts)
-vim.api.nvim_set_keymap("n", "<leader>tv", [[<cmd>TestVisit<cr>]], opts)
-
--- Formatter
-vim.keymap.set("n", "<leader>f", ":Format<CR>")
+vim.keymap.set("n", "<leader>tn", [[<cmd>TestNearest<cr>]])
+vim.keymap.set("n", "<leader>tf", [[<cmd>TestFile<cr>]])
+vim.keymap.set("n", "<leader>ts", [[<cmd>TestSuite<cr>]])
+vim.keymap.set("n", "<leader>tl", [[<cmd>TestLast<cr>]])
+vim.keymap.set("n", "<leader>tv", [[<cmd>TestVisit<cr>]])
