@@ -9,17 +9,16 @@
 -- Set highlight on search
 vim.o.hlsearch = false
 
--- Make line numbers default, then make them relative
+-- Make line numbers default, then make them relative, also set column
 vim.wo.number = true
 vim.o.relativenumber = true
+vim.o.colorcolumn = "100"
+vim.wo.signcolumn = "yes"
+
 vim.o.scrolloff = 8
 
 -- Enable mouse mode
 vim.o.mouse = "a"
-
--- Set color column and signcolumn
-vim.o.colorcolumn = "100"
-vim.wo.signcolumn = "yes"
 
 -- Blinking block cursor!
 vim.o.guicursor = "a:blinkon100"
@@ -46,6 +45,9 @@ vim.o.smartcase = true
 
 -- Enable spellcheck
 vim.o.spell = true
+
+-- Better completion experience
+vim.o.completeopt = "menuone,noselect"
 
 --Set colorscheme (order is important here)
 vim.o.termguicolors = true

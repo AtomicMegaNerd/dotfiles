@@ -8,10 +8,6 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, ...)
   end
 
-  local function buf_set_option(...)
-    vim.api.nvim_buf_set_option(bufnr, ...)
-  end
-
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
   local opts = { noremap = true, silent = true }
@@ -37,7 +33,7 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_command([[augroup END]])
   end
 
-  lsp_sig_cfg = {
+  local lsp_sig_cfg = {
     hint_prefix = "> ",
   }
   require("lsp_signature").on_attach(lsp_sig_cfg, bufnr)
@@ -56,6 +52,7 @@ for _, lsp in ipairs(servers) do
   })
 end
 
+-- Make sure we suppress warnings on the vim global object
 nvim_lsp.sumneko_lua.setup({
   on_attach = on_attach,
   capabilities = capabilities,
