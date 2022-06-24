@@ -23,56 +23,86 @@ local use = require("packer").use
 require("packer").startup({
 	function()
 		use("wbthomason/packer.nvim") -- Package manager
+
 		use("tpope/vim-fugitive") -- Git commands in nvim
-		-- UI to select things (files, grep results, open buffers...)
+
+		use({
+			"goolord/alpha-nvim",
+			requires = { "kyazdani42/nvim-web-devicons" },
+			config = get_config("alpha_conf"),
+		})
+
 		use({
 			"nvim-telescope/telescope.nvim",
 			requires = { "nvim-lua/plenary.nvim" },
 			config = get_config("telescope"),
 		})
+
 		use("EdenEast/nightfox.nvim")
-		-- Add indentation guides even on blank lines
-		use("lukas-reineke/indent-blankline.nvim")
-		-- Add git related info in the signs columns and popups
+
 		use({
 			"lewis6991/gitsigns.nvim",
 			requires = { "nvim-lua/plenary.nvim" },
 			config = get_config("gitsigns"),
 		})
-		-- Highlight, edit, and navigate code using a fast incremental parsing library
+
+		-- Treesitter
 		use({
 			"nvim-treesitter/nvim-treesitter",
 			run = ":TSUpdate",
 			config = get_config("treesitter"),
 		})
+
+		-- LSP
 		use({
 			"neovim/nvim-lspconfig",
 			config = get_config("lsp"),
-		}) -- Collection of configurations for built-in LSP client
+		})
+
+		-- LSP extensions
 		use("nvim-lua/lsp_extensions.nvim")
+
+		-- CMP
 		use({
 			"hrsh7th/nvim-cmp",
 			config = get_config("cmp_conf"),
-		}) -- Autocompletion plugin
+		})
+
+		-- CMP extensions
 		use("hrsh7th/cmp-nvim-lsp")
 		use("hrsh7th/cmp-path")
 		use("hrsh7th/cmp-buffer")
 		use("saadparwaiz1/cmp_luasnip")
-		use("L3MON4D3/LuaSnip") -- Snippets plugin
+		use("L3MON4D3/LuaSnip")
 		use("ray-x/lsp_signature.nvim")
 
-		-- Random collection of the rest
+		-- Spelling
 		use("kamykn/spelunker.vim")
-		use("mhinz/vim-startify")
+
 		use("airblade/vim-rooter")
+
 		use("godlygeek/tabular")
+
 		use("dag/vim-fish")
-		use("tpope/vim-eunuch") -- Git shell wrappers
+
+		use("tpope/vim-eunuch")
+
 		use("tpope/vim-commentary")
-		use({ "mhartington/formatter.nvim", config = get_config("formatter_conf") })
+
+		use({
+			"mhartington/formatter.nvim",
+			config = get_config("formatter_conf"),
+		})
+
 		use("vim-test/vim-test")
-		use({ "nvim-lualine/lualine.nvim", config = get_config("lualine_conf") })
+
+		use({
+			"nvim-lualine/lualine.nvim",
+			config = get_config("lualine_conf"),
+		})
+
 		use("simrat39/rust-tools.nvim")
+
 		use("mfussenegger/nvim-lint")
 	end,
 	config = {
