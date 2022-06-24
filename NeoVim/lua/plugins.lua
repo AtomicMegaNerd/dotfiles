@@ -1,3 +1,10 @@
+--     ___   __                  _      __  ___                 _   __              __
+--    /   | / /_____  ____ ___  (_)____/  |/  /__  ____ _____ _/ | / /__  _________/ /
+--   / /| |/ __/ __ \/ __ `__ \/ / ___/ /|_/ / _ \/ __ `/ __ `/  |/ / _ \/ ___/ __  /
+--  / ___ / /_/ /_/ / / / / / / / /__/ /  / /  __/ /_/ / /_/ / /|  /  __/ /  / /_/ /
+-- /_/  |_\__/\____/_/ /_/ /_/_/\___/_/  /_/\___/\__, /\__,_/_/ |_/\___/_/   \__,_/
+--                                              /____/
+--
 -- Install packer
 local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
@@ -20,43 +27,46 @@ local function get_config(name)
 end
 
 local use = require("packer").use
+
 require("packer").startup({
 	function()
-		use("wbthomason/packer.nvim") -- Package manager
+		-- Package manager
+		use("wbthomason/packer.nvim")
 
-		use("tpope/vim-fugitive") -- Git commands in nvim
-
+		-- Start-up screen for Neovim
 		use({
 			"goolord/alpha-nvim",
 			requires = { "kyazdani42/nvim-web-devicons" },
 			config = get_config("alpha_conf"),
 		})
 
+		-- Telescope
 		use({
 			"nvim-telescope/telescope.nvim",
 			requires = { "nvim-lua/plenary.nvim" },
-			config = get_config("telescope"),
+			config = get_config("telescope_conf"),
 		})
 
+		-- Best theme ever
 		use("EdenEast/nightfox.nvim")
 
 		use({
 			"lewis6991/gitsigns.nvim",
 			requires = { "nvim-lua/plenary.nvim" },
-			config = get_config("gitsigns"),
+			config = get_config("gitsigns_conf"),
 		})
 
 		-- Treesitter
 		use({
 			"nvim-treesitter/nvim-treesitter",
 			run = ":TSUpdate",
-			config = get_config("treesitter"),
+			config = get_config("treesitter_conf"),
 		})
 
 		-- LSP
 		use({
 			"neovim/nvim-lspconfig",
-			config = get_config("lsp"),
+			config = get_config("lsp_conf"),
 		})
 
 		-- LSP extensions
@@ -77,24 +87,15 @@ require("packer").startup({
 		use("ray-x/lsp_signature.nvim")
 
 		-- Spelling
-		use("kamykn/spelunker.vim")
-
-		use("airblade/vim-rooter")
-
-		use("godlygeek/tabular")
-
-		use("dag/vim-fish")
-
-		use("tpope/vim-eunuch")
-
-		use("tpope/vim-commentary")
+		use({
+			"lewis6991/spellsitter.nvim",
+			config = get_config("spellsitter_conf"),
+		})
 
 		use({
 			"mhartington/formatter.nvim",
 			config = get_config("formatter_conf"),
 		})
-
-		use("vim-test/vim-test")
 
 		use({
 			"nvim-lualine/lualine.nvim",
@@ -108,6 +109,13 @@ require("packer").startup({
 			"mfussenegger/nvim-lint",
 			config = get_config("lint_conf"),
 		})
+
+		-- The last few to use vimscript instead of Lua.
+		use("tpope/vim-eunuch")
+		use("tpope/vim-fugitive")
+		use("tpope/vim-commentary")
+		use("vim-test/vim-test")
+		use("airblade/vim-rooter")
 	end,
 	config = {
 		display = {

@@ -1,3 +1,11 @@
+--     ___   __                  _      __  ___                 _   __              __
+--    /   | / /_____  ____ ___  (_)____/  |/  /__  ____ _____ _/ | / /__  _________/ /
+--   / /| |/ __/ __ \/ __ `__ \/ / ___/ /|_/ / _ \/ __ `/ __ `/  |/ / _ \/ ___/ __  /
+--  / ___ / /_/ /_/ / / / / / / / /__/ /  / /  __/ /_/ / /_/ / /|  /  __/ /  / /_/ /
+-- /_/  |_\__/\____/_/ /_/ /_/_/\___/_/  /_/\___/\__, /\__,_/_/ |_/\___/_/   \__,_/
+--                                              /____/
+--
+
 --Set highlight on search
 vim.o.hlsearch = false
 
@@ -38,22 +46,13 @@ vim.o.smartcase = true
 --Decrease update time
 vim.o.updatetime = 300
 vim.wo.signcolumn = "yes"
+vim.o.spell = true
 
 --Set colorscheme (order is important here)
 vim.o.termguicolors = true
 vim.cmd("colorscheme nightfox")
 
---Markdown folding
-vim.g.vim_markdown_folding_disabled = 1
-
---Map blankline
-vim.g.indent_blankline_char = "┊"
-vim.g.indent_blankline_filetype_exclude = { "help", "packer" }
-vim.g.indent_blankline_buftype_exclude = { "terminal", "nofile" }
-vim.g.indent_blankline_char_highlight = "LineNr"
-vim.g.indent_blankline_show_trailing_blankline_indent = false
-
---Vim Rooter
+-- Vim Rooter
 -- These files signify the root of a project.
 vim.g.rooter_patterns = {
 	"Makefile",

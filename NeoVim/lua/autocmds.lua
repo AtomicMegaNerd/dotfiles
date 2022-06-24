@@ -1,3 +1,5 @@
+-- Packer compile
+
 -- Highlight on yank
 vim.api.nvim_exec(
 	[[

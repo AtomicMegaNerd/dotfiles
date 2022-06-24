@@ -4,10 +4,10 @@
 --  / ___ / /_/ /_/ / / / / / / / /__/ /  / /  __/ /_/ / /_/ / /|  /  __/ /  / /_/ /
 -- /_/  |_\__/\____/_/ /_/ /_/_/\___/_/  /_/\___/\__, /\__,_/_/ |_/\___/_/   \__,_/
 --                                              /____/
--- NeoVim Configuration File
+--
+-- Neovim Configuration File
 
--- Imports of the additional modules
 require("keymap")
-require("autocmds")
 require("options")
+require("autocmds")
 require("plugins")
