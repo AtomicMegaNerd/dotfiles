@@ -17,9 +17,7 @@ to symlink all of the configs to the git managed files in this repo.
 * Alacritty
 * Fish
 * NeoVim
-* Xmonad with XMobar
 * VSCode
-* Sublime Text
 
 ## Setup
 
@@ -85,51 +83,6 @@ ln -s ~/Code/Configs/dotfiles/Neovim nvim
 nvim +PackerInstall
 ```
 
-### Sublime Text 4
-
-Please make sure that Package Control is installed first.  Sadly there is
-a problem where the font_size configuration will need to be different on
-Linux than on MacOS so you'll need to set a different number there unless
-you like really giant sized text on Linux.
-
-#### Mac (Discovery)
-
-If nodejs is not already installed....
-
-```bash
-brew install node
-```
-
-```bash
-cd /Users/chris/Library/Application Support/Sublime Text 4/Packages/User
-ln -s ~/Code/Configs/dotfiles/Sublime/Discovery/LSP.sublime-settings
-ln -s ~/Code/Configs/dotfiles/Sublime/Discovery/Package\ Control.sublime-settings
-ln -s ~/Code/Configs/dotfiles/Sublime/Discovery/Preferences.sublime-settings
-```
-
-#### Linux
-
-If nodejs is not already installed....
-
-```bash
-apt install nodejs npm
-```
-
-Replace HOST with (JebPopOS or JebWSL) depending on the host you are installing
-to.
-
-```bash
-cd /home/cdunphy/.config/sublime-text-4/Packages/User
-ln -s ~/Code/Configs/dotfiles/Sublime/HOST/LSP.sublime-settings
-ln -s ~/Code/Configs/dotfiles/Sublime/HOST/Package\ Control.sublime-settings
-ln -s ~/Code/Configs/dotfiles/Sublime/HOST/Preferences.sublime-settings
-```
-
-#### Common
-
-Starting Sublime should download, install, and configure everything as
-required.
-
 ### VSCode
 
 #### Mac (Discovery)
@@ -151,18 +104,4 @@ cd /home/cdunphy/.config/Code/User
 ln -s ~/Code/Configs/dotfiles/VSCode/HOST/settings.json
 cd ~/Code/Configs/dotfiles/VSCode/HOST
 ./install-exts.sh
-```
-
-### XMonad and XMobar
-
-XMonad is a great tiling Window Manager to use with Linux VM's as it is very lightweight and
-also is extremely productive once setup.  First install xmonad, xmobar, and xmonad-contrib
-.  I also recommend you install lightdm (with lightdm-gtk-greeter) so that you can login to
-XMonad that way.
-
-```bash
-ln -s ~/Code/Configs/dotfiles/XMonadConfig/src/ ~/.xmonad
-ln -s ~/Code/Configs/dotfiles/XMobar ~/.config/xmobar
-cd ~/.xmonad
-xmonad --recompile
 ```
