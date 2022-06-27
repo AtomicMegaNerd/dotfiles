@@ -21,6 +21,7 @@ alias cj="cd ~/Code/Java"
 alias cpy="cd ~/Code/Python"
 alias cdot="cd ~/Code/Configs/dotfiles"
 alias cdock="cd ~/Code/Docker"
+alias update_creds="$EDITOR ~/.config/fish/conf.d/credentials.fish"
 
 alias go "grc go"
 
