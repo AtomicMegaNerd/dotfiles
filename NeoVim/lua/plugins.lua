@@ -124,6 +124,8 @@ require("packer").startup({
 		use("tpope/vim-fugitive")
 		use("vim-test/vim-test")
 		use("airblade/vim-rooter")
+    -- Still the best spelling plug-in
+    use("kamykn/spelunker.vim")
 	end,
 	config = {
 		display = {
