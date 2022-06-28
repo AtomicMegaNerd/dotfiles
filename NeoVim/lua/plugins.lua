@@ -123,6 +123,8 @@ require("packer").startup({
 			config = get_config("lsp_installer_conf"),
 		})
 
+		use({ "akinsho/git-conflict.nvim", config = get_config("gitconflict_conf") })
+
 		-- The last few to use vimscript instead of Lua.
 		use("tpope/vim-eunuch")
 		use("tpope/vim-fugitive")
