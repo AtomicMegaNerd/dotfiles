@@ -43,9 +43,6 @@ vim.opt.undofile = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
--- Enable spellcheck
-vim.o.spell = true
-
 -- Better completion experience
 vim.o.completeopt = "menuone,noselect"
 
