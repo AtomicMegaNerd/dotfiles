@@ -83,12 +83,6 @@ require("packer").startup({
 		use("L3MON4D3/LuaSnip")
 		use("ray-x/lsp_signature.nvim")
 
-		-- Spelling
-		use({
-			"lewis6991/spellsitter.nvim",
-			config = get_config("spellsitter_conf"),
-		})
-
 		-- Automatic formatting
 		use({
 			"mhartington/formatter.nvim",
