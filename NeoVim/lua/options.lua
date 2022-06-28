@@ -47,7 +47,7 @@ vim.o.smartcase = true
 vim.o.spell = true
 
 -- Better completion experience
-vim.o.completeopt = { "menuone,noselect" }
+vim.o.completeopt = "menuone,noselect"
 
 --Set colorscheme (order is important here)
 vim.o.termguicolors = true
