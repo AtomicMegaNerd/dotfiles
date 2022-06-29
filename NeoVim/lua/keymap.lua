@@ -35,7 +35,7 @@ vim.keymap.set("n", "<leader>fgs", require("telescope.builtin").git_status, { de
 -- Neovim
 vim.keymap.set("n", "<leader>fnh", require("telescope.builtin").help_tags, { desc = "[F]ind [N]eovim [H]elp topics" })
 vim.keymap.set("n", "<leader>fnc", require("telescope.builtin").commands, { desc = "[F]ind [N]eovim [C]ommands" })
-vim.keymap.set("n", "<leader>fnk", require("telescope.builtin").keymaps, { desc = "[F]ind [N]eovim [C]ommands" })
+vim.keymap.set("n", "<leader>fnk", require("telescope.builtin").keymaps, { desc = "[F]ind [N]eovim [K]eymaps" })
 
 -- VimTest
 ----------------------------------------------------------------
