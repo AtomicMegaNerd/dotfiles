@@ -35,6 +35,7 @@ require("packer").startup({
 		-- Telescope
 		use({
 			"nvim-telescope/telescope.nvim",
+			branch = "0.1.x",
 			requires = { "nvim-lua/plenary.nvim" },
 			config = get_config("telescope_conf"),
 		})
