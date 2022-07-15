@@ -109,6 +109,7 @@ require("packer").startup({
 		-- Automatic toggling of comments
 		use({
 			"numToStr/Comment.nvim",
+      tag = "v0.6.1",
 			config = get_config("comment_conf"),
 		})
 
