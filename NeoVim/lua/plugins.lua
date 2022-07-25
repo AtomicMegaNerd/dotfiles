@@ -35,6 +35,7 @@ require("packer").startup({
 		-- Telescope
 		use({
 			"nvim-telescope/telescope.nvim",
+			branch = "0.1.x",
 			requires = { "nvim-lua/plenary.nvim" },
 			config = get_config("telescope_conf"),
 		})
@@ -108,6 +109,7 @@ require("packer").startup({
 		-- Automatic toggling of comments
 		use({
 			"numToStr/Comment.nvim",
+      tag = "v0.6.1",
 			config = get_config("comment_conf"),
 		})
 
@@ -124,8 +126,8 @@ require("packer").startup({
 		use("tpope/vim-fugitive")
 		use("vim-test/vim-test")
 		use("airblade/vim-rooter")
-    -- Still the best spelling plug-in
-    use("kamykn/spelunker.vim")
+		-- Still the best spelling plug-in
+		use("kamykn/spelunker.vim")
 	end,
 	config = {
 		display = {

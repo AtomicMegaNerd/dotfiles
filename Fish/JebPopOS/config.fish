@@ -19,12 +19,6 @@ set -gx MOZ_ENABLE_WAYLAND 1
 # Make Alacritty use XWayland
 set -gx WINIT_UNIX_BACKEND x11
 
-## PyEnv
-########
-
-status is-login; and pyenv init --path | source
-pyenv init --path | source
-
 ## Aliases
 ##########
 
