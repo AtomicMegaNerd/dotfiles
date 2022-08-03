@@ -26,7 +26,7 @@ local fto_grp = vim.api.nvim_create_augroup("FileTypeOptions", { clear = true })
 vim.api.nvim_create_autocmd("Filetype", {
 	command = "set tabstop=2 shiftwidth=2",
 	group = fto_grp,
-	pattern = { "haskell", "lua" },
+	pattern = { "haskell", "lua", "terraform" },
 })
 
 vim.api.nvim_create_autocmd("Filetype", {
@@ -35,6 +35,17 @@ vim.api.nvim_create_autocmd("Filetype", {
 	pattern = { "python" },
 })
 
+vim.api.nvim_create_autocmd("BufNewFile", {
+	command = "setf groovy",
+	group = fto_grp,
+	pattern = "Jenkinsfile",
+})
+
+vim.api.nvim_create_autocmd("BufRead", {
+	command = "setf groovy",
+	group = fto_grp,
+	pattern = "Jenkinsfile",
+})
 -- Linters
 ----------------------------------------------------------------
 local lint_grp = vim.api.nvim_create_augroup("LintAutogroup", { clear = true })
@@ -53,4 +64,10 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 	command = "FormatWrite",
 	group = fmt_grp,
 	pattern = "*",
+})
+
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+	pattern = { "*.tf", "*.tfvars" },
+	group = fmt_grp,
+	callback = vim.lsp.buf.formatting_sync,
 })

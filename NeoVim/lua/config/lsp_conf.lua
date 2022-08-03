@@ -52,7 +52,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
 -- Enable the following language servers
-local servers = { "gopls", "pyright", "yamlls", "bashls", "jdtls", "hls" }
+local servers = { "gopls", "pyright", "yamlls", "bashls", "jdtls", "hls", "terraformls" }
 for _, lsp in ipairs(servers) do
 	nvim_lsp[lsp].setup({
 		on_attach = on_attach,
@@ -68,7 +68,7 @@ nvim_lsp.sumneko_lua.setup({
 		Lua = {
 			diagnostics = { globals = { "vim" } },
 		},
-    telemetry = { enable = false, },
+		telemetry = { enable = false },
 	},
 })
 
