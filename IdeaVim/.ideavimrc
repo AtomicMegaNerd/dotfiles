@@ -15,6 +15,10 @@ set scrolloff 8
 set clipboard "unnamedplus"
 set ignorecase
 
+# Turn off the blasted noise!
+set visualbell
+set noerrorbells
+
 "
 " No arrow keys --- force yourself to use the home row
 nnoremap <up> <nop>

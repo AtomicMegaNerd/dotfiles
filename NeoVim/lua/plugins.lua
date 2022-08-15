@@ -70,6 +70,13 @@ require("packer").startup({
 		-- LSP extensions
 		use("nvim-lua/lsp_extensions.nvim")
 
+		-- LSP and Linters Installer
+		use({
+			"williamboman/mason.nvim",
+			config = get_config("mason_conf"),
+		})
+		use("williamboman/mason-lspconfig.nvim")
+
 		-- CMP
 		use({
 			"hrsh7th/nvim-cmp",
@@ -109,14 +116,8 @@ require("packer").startup({
 		-- Automatic toggling of comments
 		use({
 			"numToStr/Comment.nvim",
-      tag = "v0.6.1",
+			tag = "v0.6.1",
 			config = get_config("comment_conf"),
-		})
-
-		-- Automatically install lsp's!
-		use({
-			"williamboman/nvim-lsp-installer",
-			config = get_config("lsp_installer_conf"),
 		})
 
 		use({ "akinsho/git-conflict.nvim", config = get_config("gitconflict_conf") })
