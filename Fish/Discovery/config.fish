@@ -51,3 +51,6 @@ status is-login; and pyenv init --path | source
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 
+# Tell omg themes we have the nerd fonts installed
+set -g theme_nerd_fonts yes
+set -g theme_color_scheme nord
