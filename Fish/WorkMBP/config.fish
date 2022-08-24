@@ -23,7 +23,11 @@ alias cdot="cd ~/Code/Configs/dotfiles"
 alias cdock="cd ~/Code/Docker"
 alias update_creds="$EDITOR ~/.config/fish/conf.d/credentials.fish"
 
+# Colorize go
 alias go "grc go"
+
+# Shorten Terraform
+alias tf terraform
 
 # EDITOR
 # ===================================
@@ -63,3 +67,6 @@ set -gx fish_user_paths $HOME/.fzf/bin $fish_user_paths
 set -gx fish_user_paths $HOME/.gem/ruby/2.6.0/bin $fish_user_paths
 set -gx fish_user_paths "/Applications/Sublime Text.app/Contents/SharedSupport/bin" $fish_user_paths
 
+# Theme options
+set -g theme_nerd_fonts yes
+set -g theme_color_scheme nord
