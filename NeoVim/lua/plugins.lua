@@ -121,14 +121,13 @@ require("packer").startup({
 		})
 
 		use({ "akinsho/git-conflict.nvim", config = get_config("gitconflict_conf") })
+		use({ "lewis6991/spellsitter.nvim", config = get_config("spellsitter_conf") })
 
 		-- The last few to use vimscript instead of Lua.
 		use("tpope/vim-eunuch")
 		use("tpope/vim-fugitive")
 		use("vim-test/vim-test")
 		use("airblade/vim-rooter")
-		-- Still the best spelling plug-in
-		use("kamykn/spelunker.vim")
 	end,
 	config = {
 		display = {
