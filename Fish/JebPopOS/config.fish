@@ -61,3 +61,6 @@ alias vconf="nvim $HOME/.config/nvim/init.lua"
 alias fconf="nvim $HOME/.config/fish/config.fish"
 alias aconf="nvim $HOME/.config/alacritty/alacritty.yml"
 
+# Tell OMF themes we have the nerd fonts installed
+set -g theme_nerd_fonts yes
+set -g theme_color_scheme nord
