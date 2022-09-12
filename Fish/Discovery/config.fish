@@ -6,9 +6,6 @@
 #                                              /____/
 # fish shell config
 
-# Add my SSH key from the Keychain
-ssh-add --apple-use-keychain ~/.ssh/id_rsa
-
 # Default editor
 set -gx EDITOR nvim
 
@@ -54,3 +51,4 @@ test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shel
 # Tell omg themes we have the nerd fonts installed
 set -g theme_nerd_fonts yes
 set -g theme_color_scheme nord
+
