@@ -50,6 +50,9 @@ set -gx VAULT_FORMAT json
 status is-interactive; and pyenv init --path | source
 pyenv init - | source
 
+# Go
+set -gx GOPRIVATE dev.azure.com
+
 # iTerm 2
 # ===================================
 test -e {$HOME}/.iterm2_shell_integration.fish; and source {$HOME}/.iterm2_shell_integration.fish
@@ -70,3 +73,4 @@ set -gx fish_user_paths "/Applications/Sublime Text.app/Contents/SharedSupport/b
 # Theme options
 set -g theme_nerd_fonts yes
 set -g theme_color_scheme nord
+

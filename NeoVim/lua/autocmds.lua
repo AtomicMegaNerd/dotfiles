@@ -8,7 +8,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 	pattern = { "init.lua", "plugins.lua" },
 })
 
--- TextYank
+-- Text Yank
 ----------------------------------------------------------------
 -- Automatically highlight text when we yank it
 local yank_grp = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
@@ -46,6 +46,7 @@ vim.api.nvim_create_autocmd("BufRead", {
 	group = fto_grp,
 	pattern = "Jenkinsfile",
 })
+
 -- Linters
 ----------------------------------------------------------------
 local lint_grp = vim.api.nvim_create_augroup("LintAutogroup", { clear = true })
