@@ -120,7 +120,15 @@ require("packer").startup({
 			config = get_config("comment_conf"),
 		})
 
+		-- Which Key
+		use({
+			"folke/which-key.nvim",
+			config = get_config("which_key_conf"),
+		})
+
 		use({ "akinsho/git-conflict.nvim", config = get_config("gitconflict_conf") })
+
+		-- NOTE: Soon to be included by default in Neovim 0.8
 		use({ "lewis6991/spellsitter.nvim", config = get_config("spellsitter_conf") })
 
 		-- The last few to use vimscript instead of Lua.

@@ -26,16 +26,16 @@ vim.keymap.set("n", "<right>", "<cmd>bn<cr>")
 vim.keymap.set("n", "<leader>ff", require("telescope.builtin").find_files, { desc = "[F]ind [F]files" })
 vim.keymap.set("n", "<leader>fb", require("telescope.builtin").buffers, { desc = "[F]ind [B]uffers" })
 vim.keymap.set("n", "<leader>fd", require("telescope.builtin").diagnostics, { desc = "[F]ind [D]iagnostics" })
-vim.keymap.set("n", "<leader>flg", require("telescope.builtin").live_grep, { desc = "[F]ind [L]ive [G]rep" })
+vim.keymap.set("n", "<leader>fl", require("telescope.builtin").live_grep, { desc = "[F]ind [L]ive [G]rep" })
 -- Git
-vim.keymap.set("n", "<leader>fgf", require("telescope.builtin").git_files, { desc = "[F]ind [G]it [F]iles" })
-vim.keymap.set("n", "<leader>fgb", require("telescope.builtin").git_branches, { desc = "[F]ind [G]it [B]ranch" })
-vim.keymap.set("n", "<leader>fgc", require("telescope.builtin").git_commits, { desc = "[F]ind [G]it [C]ommits" })
-vim.keymap.set("n", "<leader>fgs", require("telescope.builtin").git_status, { desc = "[F]ind [G]it [S]tatus" })
+vim.keymap.set("n", "<leader>fg", require("telescope.builtin").git_files, { desc = "[F]ind [G]it files" })
+vim.keymap.set("n", "<leader>fr", require("telescope.builtin").git_branches, { desc = "[F]ind Git B[R]anch" })
+vim.keymap.set("n", "<leader>fc", require("telescope.builtin").git_commits, { desc = "[F]ind Git [C]ommits" })
+vim.keymap.set("n", "<leader>fs", require("telescope.builtin").git_status, { desc = "[F]ind Git [S]tatus" })
 -- Neovim
-vim.keymap.set("n", "<leader>fnh", require("telescope.builtin").help_tags, { desc = "[F]ind [N]eovim [H]elp topics" })
-vim.keymap.set("n", "<leader>fnc", require("telescope.builtin").commands, { desc = "[F]ind [N]eovim [C]ommands" })
-vim.keymap.set("n", "<leader>fnk", require("telescope.builtin").keymaps, { desc = "[F]ind [N]eovim [K]eymaps" })
+vim.keymap.set("n", "<leader>fh", require("telescope.builtin").help_tags, { desc = "[F]ind Neovim [H]elp topics" })
+vim.keymap.set("n", "<leader>fm", require("telescope.builtin").commands, { desc = "[F]ind Neovim Co[M]mands" })
+vim.keymap.set("n", "<leader>fk", require("telescope.builtin").keymaps, { desc = "[F]ind Neovim [K]eymaps" })
 
 -- VimTest
 ----------------------------------------------------------------
