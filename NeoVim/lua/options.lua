@@ -6,57 +6,61 @@
 --                                              /____/
 --
 
+local o = vim.o
+local wo = vim.wo
+local g = vim.g
+
 -- Set highlight on search
-vim.o.hlsearch = false
+o.hlsearch = false
 
 -- Make line numbers default, then make them relative, also set column
-vim.wo.number = true
-vim.o.relativenumber = true
-vim.o.colorcolumn = "100"
-vim.wo.signcolumn = "yes"
+o.relativenumber = true
+o.colorcolumn = "100"
+wo.number = true
+wo.signcolumn = "yes"
 
-vim.o.scrolloff = 8
+o.scrolloff = 8
 
 -- Enable mouse mode
-vim.o.mouse = "a"
+o.mouse = "a"
 
 -- Blinking block cursor!
-vim.o.guicursor = "a:blinkon100"
+o.guicursor = "a:blinkon100"
 
 -- Set tabstop
-vim.o.expandtab = true
-vim.o.tabstop = 4
-vim.o.shiftwidth = 4
+o.expandtab = true
+o.tabstop = 4
+o.shiftwidth = 4
 
 -- Indentation
-vim.o.autoindent = true
-vim.o.breakindent = true
-vim.o.laststatus = 3
+o.autoindent = true
+o.breakindent = true
+o.laststatus = 3
 
 -- Use system clipboard
-vim.o.clipboard = "unnamedplus"
+o.clipboard = "unnamedplus"
 
 -- Save undo history
 vim.opt.undofile = true
 
 -- Case insensitive searching UNLESS /C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
+o.ignorecase = true
+o.smartcase = true
 
 -- Better completion experience
-vim.o.completeopt = "menuone,noselect"
+o.completeopt = "menuone,noselect"
 
 -- Enable spell checking
-vim.o.spell = true
+o.spell = true
 
 --Set colorscheme (order is important here)
-vim.o.termguicolors = true
+o.termguicolors = true
 vim.cmd("colorscheme nightfox")
 
 -- Vim Rooter
 ----------------------------------------------------------------
 -- These files signify the root of a project.
-vim.g.rooter_patterns = {
+g.rooter_patterns = {
 	"Makefile",
 	"Cargo.toml",
 	"Pipfile",
@@ -71,5 +75,5 @@ vim.g.rooter_patterns = {
 }
 
 -- Use filetypes.lua and disable filetypes.vim
-vim.g.do_filetype_lua = 1
-vim.g.did_load_filetypes = 0
+g.do_filetype_lua = 1
+g.did_load_filetypes = 0
