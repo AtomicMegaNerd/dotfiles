@@ -128,9 +128,6 @@ require("packer").startup({
 
 		use({ "akinsho/git-conflict.nvim", config = get_config("gitconflict_conf") })
 
-		-- NOTE: Soon to be included by default in Neovim 0.8
-		use({ "lewis6991/spellsitter.nvim", config = get_config("spellsitter_conf") })
-
 		-- The last few to use vimscript instead of Lua.
 		use("tpope/vim-eunuch")
 		use("tpope/vim-fugitive")
