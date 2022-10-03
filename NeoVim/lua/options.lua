@@ -74,6 +74,3 @@ g.rooter_patterns = {
 	"config.fish",
 }
 
--- Use filetypes.lua and disable filetypes.vim
-g.do_filetype_lua = 1
-g.did_load_filetypes = 0

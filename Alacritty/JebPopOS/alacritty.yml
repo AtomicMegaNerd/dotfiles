@@ -1,4 +1,3 @@
-# Font configuration (changes require restart)
 font:
   normal:
     family: JetBrains Mono Nerd Font
@@ -9,7 +8,7 @@ font:
   italic:
     family: JetBrains Mono Nerd Font 
     style: Italic
-  size: 15
+  size: 14
 
 cursor:
   style:
