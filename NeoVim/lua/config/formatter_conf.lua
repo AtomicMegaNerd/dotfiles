@@ -15,5 +15,8 @@ require("formatter").setup({
 		javascript = {
 			require("formatter.filetypes.javascript").prettier,
 		},
+		yaml = {
+			require("formatter.filetypes.yaml").prettier,
+		},
 	},
 })
