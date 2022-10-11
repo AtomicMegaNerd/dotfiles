@@ -92,25 +92,11 @@ ln -s ~/Code/Configs/dotfiles/Neovim nvim
 nvim +PackerInstall
 ```
 
-### VSCode
+### Helix
 
-#### Mac (Discovery)
-
-```bash
-cd /Users/chris/Library/Application Support/Code/User
-ln -s ~/Code/Configs/dotfiles/VSCode/Discovery/settings.json
-cd ~/Code/Configs/dotfiles/VSCode/Discovery
-./install-exts.sh
-```
-
-#### Linux
-
-Replace HOST with (JebPopOS or JebWSL) depending on the host you are installing
-to.
+This is another text editor I am keeping an eye on.
 
 ```bash
-cd /home/cdunphy/.config/Code/User
-ln -s ~/Code/Configs/dotfiles/VSCode/HOST/settings.json
-cd ~/Code/Configs/dotfiles/VSCode/HOST
-./install-exts.sh
+cd ~/.config
+ln -s ~/Code/Configs/dotfiles/Helix/ helix
 ```
