@@ -40,6 +40,9 @@ o.laststatus = 3
 -- Use system clipboard
 o.clipboard = "unnamedplus"
 
+-- Shell
+o.shell = '/opt/homebrew/bin/fish'
+
 -- Save undo history
 vim.opt.undofile = true
 
