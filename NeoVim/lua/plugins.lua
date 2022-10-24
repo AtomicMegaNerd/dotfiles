@@ -128,6 +128,9 @@ require("packer").startup({
 
 		use({ "akinsho/git-conflict.nvim", config = get_config("gitconflict_conf") })
 
+		-- Make Nvim window transparent
+		use({ "xiyaowong/nvim-transparent", config = get_config("transparent_conf") })
+
 		-- The last few to use vimscript instead of Lua.
 		use("tpope/vim-eunuch")
 		use("tpope/vim-fugitive")

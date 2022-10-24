@@ -6,7 +6,18 @@
 --                                              /____/
 --
 -- Neovim Configuration File
+
 require("plugins")
 require("options")
 require("autocmds")
 require("keymap")
+
+-- Mac Specific configuration
+if vim.fn.has("macunix") == 1 then
+	require("macos")
+end
+
+-- Windows Specific configuration
+if vim.fn.has("win32") == 1 then
+	require("windows")
+end

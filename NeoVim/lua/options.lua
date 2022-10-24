@@ -37,9 +37,6 @@ o.autoindent = true
 o.breakindent = true
 o.laststatus = 3
 
--- Use system clipboard
-o.clipboard = "unnamedplus"
-
 -- Save undo history
 vim.opt.undofile = true
 
@@ -73,4 +70,3 @@ g.rooter_patterns = {
 	"init.lua",
 	"config.fish",
 }
-
