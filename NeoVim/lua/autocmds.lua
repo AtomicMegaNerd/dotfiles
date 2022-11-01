@@ -47,6 +47,12 @@ vim.api.nvim_create_autocmd("BufRead", {
 	pattern = "Jenkinsfile",
 })
 
+vim.api.nvim_create_autocmd("BufRead", {
+	command = "setf bash",
+	group = fto_grp,
+	pattern = "env.list",
+})
+
 -- Linters
 ----------------------------------------------------------------
 local lint_grp = vim.api.nvim_create_augroup("LintAutogroup", { clear = true })
