@@ -44,6 +44,7 @@ require("packer").startup({
 			run = "make",
 			cond = vim.fn.executable("make") == 1,
 		})
+		use({ "nvim-telescope/telescope-file-browser.nvim" })
 
 		-- Best theme ever
 		use("EdenEast/nightfox.nvim")

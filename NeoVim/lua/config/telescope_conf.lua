@@ -41,6 +41,13 @@ require("telescope").setup({
 		qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
 		buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
 	},
+	extensions = {
+		file_browser = {
+			-- disables netrw and use telescope-file-browser in its place
+			hijack_netrw = true,
+		},
+	},
 })
 
 pcall(require("telescope").load_extension, "fzf")
+pcall(require("telescope").load_extension("file_browser"))

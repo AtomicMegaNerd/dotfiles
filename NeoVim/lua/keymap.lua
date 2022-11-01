@@ -27,6 +27,13 @@ vim.keymap.set("n", "<leader>ff", require("telescope.builtin").find_files, { des
 vim.keymap.set("n", "<leader>fb", require("telescope.builtin").buffers, { desc = "[F]ind [B]uffers" })
 vim.keymap.set("n", "<leader>fd", require("telescope.builtin").diagnostics, { desc = "[F]ind [D]iagnostics" })
 vim.keymap.set("n", "<leader>fl", require("telescope.builtin").live_grep, { desc = "[F]ind [L]ive [G]rep" })
+vim.keymap.set(
+	"n",
+	"<leader>bf",
+	require("telescope").extensions.file_browser.file_browser,
+	{ desc = "[B]rowse [F]iles " }
+)
+
 -- Git
 vim.keymap.set("n", "<leader>fg", require("telescope.builtin").git_files, { desc = "[F]ind [G]it files" })
 vim.keymap.set("n", "<leader>fr", require("telescope.builtin").git_branches, { desc = "[F]ind Git B[R]anch" })
