@@ -7,11 +7,9 @@ require("nvim-treesitter.configs").setup({
 		"fish",
 		"bash",
 		"lua",
-		"markdown",
 		"yaml",
 		"vim",
 		"yaml",
-		"markdown",
 	},
 	highlight = {
 		enable = true,
