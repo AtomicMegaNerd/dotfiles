@@ -6,51 +6,61 @@
 #                                              /____/
 # fish shell config
 
-# Default editor
+# Environment Variables
+#######################
+
 set -gx EDITOR nvim
+set -gx NPM_PACKAGES $HOME/.npm-packages
+set -gx NODE_PATH "$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+
+# Ask Firefox to use Wayland
+set -gx MOZ_ENABLE_WAYLAND 1
+
+# Make Alacritty use XWayland
+set -gx WINIT_UNIX_BACKEND x11
 
 ## Aliases
+##########
 
 # I just love NeoVim
-alias vi "nvim"
-alias vim "nvim"
+alias vi="nvim"
+alias vim="nvim"
 
 # dust is a Rust replacement for du
-alias du "dust"
+alias du="dust"
 
 # exa is a Rust based replacement for ls
-alias ls "exa"
-alias ll "exa -lah"
+alias ls="exa"
+alias ll="exa -lah"
 
 # duf is a replacement for df
-alias df "duf"
+alias df="duf"
 
-# Use bat instead of cat
-alias cat "bat --paging=never --style=plain"
+# bat is a modern replacement for cat
+alias cat="bat --paging=never --style=plain"
 
-# Aliases for local files and directories
-alias vconf "nvim ~/.config/nvim/init.lua"
-alias fconf "nvim ~/.config/fish/config.fish"
+# Directory aliases
 alias ch="cd ~"
 alias csrc="cd ~/Code"
 alias cr="cd ~/Code/Rust/"
-alias cgo="cd ~/Code/Go/"
+alias cg="cd ~/Code/Go/"
 alias cpy="cd ~/Code/Python/"
-alias cjava="cd ~/Code/Java/"
-alias cexer="cd ~/Code/Exercism/"
+alias ce="cd ~/Code/Exercism/"
+alias cgo="cd ~/Code/Go/"
 alias cdot="cd ~/Code/Configs/dotfiles/" 
+
+# Colorize
 alias go "grc go"
-alias ifconfig "grc ifconfig"
+alias ip "grc ip"
 
-# Load pyenv automatically by appending
-# the following to ~/.config/fish/config.fish:
-status is-login; and pyenv init --path | source
+# Just use ripgrep
+alias grep="rg"
 
-test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
+# Convenient shortcuts
+alias vconf="nvim $HOME/.config/nvim/init.lua"
+alias fconf="nvim $HOME/.config/fish/config.fish"
+alias aconf="nvim $HOME/.config/alacritty/alacritty.yml"
 
-# Tell omg themes we have the nerd fonts installed
-set -x VIRTUAL_ENV_DISABLE_PROMPT 1
+# Tell OMF themes we have the nerd fonts installed
 set -g theme_nerd_fonts yes
 set -g theme_color_scheme nord
-set -g theme_newline_cursor yes
-set -g theme_newline_prompt '% '
