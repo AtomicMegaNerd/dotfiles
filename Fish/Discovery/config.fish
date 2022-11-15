@@ -49,6 +49,8 @@ status is-login; and pyenv init --path | source
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 
 # Tell omg themes we have the nerd fonts installed
+set -x VIRTUAL_ENV_DISABLE_PROMPT 1
 set -g theme_nerd_fonts yes
 set -g theme_color_scheme nord
-
+set -g theme_newline_cursor yes
+set -g theme_newline_prompt '% '
