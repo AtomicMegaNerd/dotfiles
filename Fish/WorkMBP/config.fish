@@ -63,6 +63,9 @@ set -gx JAVA_HOME /Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home
 set -gx GROOVY_HOME /usr/local/opt/groovy/libexec
 set -gx GRADLE_USER_HOME $HOME/.gradle
 
+# Tell Colima where to get the certs
+set -gx CERTS $HOME/Certs/
+
 # PATH
 # ===================================
 set -gx fish_user_paths $HOME/bin $fish_user_paths
@@ -70,7 +73,9 @@ set -gx fish_user_paths $HOME/.fzf/bin $fish_user_paths
 set -gx fish_user_paths $HOME/.gem/ruby/2.6.0/bin $fish_user_paths
 set -gx fish_user_paths "/Applications/Sublime Text.app/Contents/SharedSupport/bin" $fish_user_paths
 
-# Theme options
+# OMF Bobthefish theme options
+set -x VIRTUAL_ENV_DISABLE_PROMPT 1
 set -g theme_nerd_fonts yes
 set -g theme_color_scheme nord
-
+set -g theme_newline_cursor yes
+set -g theme_newline_prompt '% '
