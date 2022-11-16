@@ -5,3 +5,10 @@ set -q XDG_DATA_HOME
 
 # Load Oh My Fish configuration.
 source $OMF_PATH/init.fish
+
+# Tell omg themes we have the nerd fonts installed
+set -x VIRTUAL_ENV_DISABLE_PROMPT 1
+set -g theme_nerd_fonts yes
+set -g theme_color_scheme nord
+set -g theme_newline_cursor yes
+set -g theme_newline_prompt '% '
