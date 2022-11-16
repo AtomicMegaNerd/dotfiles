@@ -6,10 +6,14 @@
 #                                              /____/
 # fish shell config
 
+# My Custom paths
+fish_add_path $HOME/.local/bin
+fish_add_path $HOME/.cargo/bin
+
 # Default editor
 set -gx EDITOR nvim
 
-## Aliases
+#### Aliases
 
 # I just love NeoVim
 alias vi "nvim"
@@ -41,16 +45,3 @@ alias cexer="cd ~/Code/Exercism/"
 alias cdot="cd ~/Code/Configs/dotfiles/" 
 alias go "grc go"
 alias ifconfig "grc ifconfig"
-
-# Load pyenv automatically by appending
-# the following to ~/.config/fish/config.fish:
-status is-login; and pyenv init --path | source
-
-test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
-
-# Tell omg themes we have the nerd fonts installed
-set -x VIRTUAL_ENV_DISABLE_PROMPT 1
-set -g theme_nerd_fonts yes
-set -g theme_color_scheme nord
-set -g theme_newline_cursor yes
-set -g theme_newline_prompt '% '
