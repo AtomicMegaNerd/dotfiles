@@ -65,13 +65,19 @@ set -gx GRADLE_USER_HOME $HOME/.gradle
 
 # Tell Colima where to get the certs
 set -gx CERTS $HOME/Certs/
+set -gx DOCKER_HOST "unix://$HOME/.colima/default/docker.sock"
 
 # PATH
 # ===================================
-set -gx fish_user_paths $HOME/bin $fish_user_paths
-set -gx fish_user_paths $HOME/.fzf/bin $fish_user_paths
-set -gx fish_user_paths $HOME/.gem/ruby/2.6.0/bin $fish_user_paths
-set -gx fish_user_paths "/Applications/Sublime Text.app/Contents/SharedSupport/bin" $fish_user_paths
+fish_add_path $HOME/bin 
+fish_add_path $HOME/.fzf/bin
+fish_add_path "/Applications/Sublime Text.app/Contents/SharedSupport/bin"
+fish_add_path $HOME/.local/bin
+fish_add_path $HOME/.pyenv.bin
+
+# Ruby and Inspec
+fish_add_path -p /usr/local/opt/ruby/bin/
+fish_add_path /usr/local/lib/ruby/gems/3.1.0/bin
 
 # OMF Bobthefish theme options
 set -x VIRTUAL_ENV_DISABLE_PROMPT 1
