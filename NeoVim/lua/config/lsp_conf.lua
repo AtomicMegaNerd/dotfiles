@@ -113,10 +113,14 @@ null_ls.setup({
 		null_ls.builtins.formatting.isort,
 		null_ls.builtins.formatting.black,
 		null_ls.builtins.formatting.prettier,
+		null_ls.builtins.formatting.gofmt,
+		null_ls.builtins.formatting.rustfmt,
+
 		-- Diagnostics
 		null_ls.builtins.diagnostics.pylint,
 		null_ls.builtins.diagnostics.mypy,
 		null_ls.builtins.diagnostics.yamllint,
+		null_ls.builtins.diagnostics.markdownlint,
 	},
 	on_attach = on_attach,
 	capabilities = capabilities,
