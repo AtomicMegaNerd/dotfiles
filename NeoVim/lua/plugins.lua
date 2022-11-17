@@ -62,6 +62,11 @@ require("packer").startup({
 			config = get_config("treesitter_conf"),
 		})
 
+		use({
+      "jose-elias-alvarez/null-ls.nvim",
+      requires = { "nvim-lua/plenary.nvim" },
+    })
+
 		-- LSP
 		use({
 			"neovim/nvim-lspconfig",
@@ -70,6 +75,7 @@ require("packer").startup({
 
 		-- LSP extensions
 		use("nvim-lua/lsp_extensions.nvim")
+
 
 		-- LSP and Linters Installer
 		use({
@@ -92,12 +98,6 @@ require("packer").startup({
 		use("L3MON4D3/LuaSnip")
 		use("ray-x/lsp_signature.nvim")
 
-		-- Automatic formatting
-		use({
-			"mhartington/formatter.nvim",
-			config = get_config("formatter_conf"),
-		})
-
 		-- Status line
 		use({
 			"nvim-lualine/lualine.nvim",
@@ -107,12 +107,6 @@ require("packer").startup({
 
 		-- Rust
 		use("simrat39/rust-tools.nvim")
-
-		-- Linting
-		use({
-			"mfussenegger/nvim-lint",
-			config = get_config("lint_conf"),
-		})
 
 		-- Automatic toggling of comments
 		use({
