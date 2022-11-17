@@ -23,6 +23,9 @@ alias cdot="cd ~/Code/Configs/dotfiles"
 alias cdock="cd ~/Code/Docker"
 alias update_creds="$EDITOR ~/.config/fish/conf.d/credentials.fish"
 
+# Not Inspec? ;-)
+alias inspec="cinc-auditor"
+
 # Colorize go
 alias go "grc go"
 
