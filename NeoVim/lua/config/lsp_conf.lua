@@ -3,7 +3,20 @@
 
 local nvim_lsp = require("lspconfig")
 
-local on_attach = function(_, bufnr)
+-- We want to use null-ls for formatting
+local lsp_formatting = function(bufnr)
+	vim.lsp.buf.format({
+		filter = function(client)
+			-- apply whatever logic you want (in this example, we'll only use null-ls)
+			return client.name == "null-ls"
+		end,
+		bufnr = bufnr,
+	})
+end
+
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
+local on_attach = function(client, bufnr)
 	local lsp_sig_cfg = {
 		hint_prefix = "> ",
 	}
@@ -38,13 +51,17 @@ local on_attach = function(_, bufnr)
 		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 	end, "[W]orkspace [L]ist Folders")
 
-	-- Create a command `:Format` local to the LSP buffer
-	vim.api.nvim_buf_create_user_command(
-		bufnr,
-		"Format",
-		vim.lsp.buf.format or vim.lsp.buf.formatting,
-		{ desc = "Format current buffer with LSP" }
-	)
+	-- Setup format on save
+	if client.supports_method("textDocument/formatting") then
+		vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			group = augroup,
+			buffer = bufnr,
+			callback = function()
+				lsp_formatting(bufnr)
+			end,
+		})
+	end
 end
 
 -- nvim-cmp supports additional completion capabilities
@@ -52,7 +69,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 -- Enable the following language servers
-local servers = { "gopls", "pyright", "yamlls", "bashls", "jdtls", "hls", }
+local servers = { "gopls", "pyright", "yamlls", "bashls", "jdtls", "hls" }
 for _, lsp in ipairs(servers) do
 	nvim_lsp[lsp].setup({
 		on_attach = on_attach,
@@ -86,4 +103,21 @@ require("rust-tools").setup({
 			},
 		},
 	},
+})
+
+local null_ls = require("null-ls")
+null_ls.setup({
+	sources = {
+		-- Formatters
+		null_ls.builtins.formatting.stylua,
+		null_ls.builtins.formatting.isort,
+		null_ls.builtins.formatting.black,
+		null_ls.builtins.formatting.prettier,
+		-- Diagnostics
+		null_ls.builtins.diagnostics.pylint,
+		null_ls.builtins.diagnostics.mypy,
+		null_ls.builtins.diagnostics.yamllint,
+	},
+	on_attach = on_attach,
+	capabilities = capabilities,
 })

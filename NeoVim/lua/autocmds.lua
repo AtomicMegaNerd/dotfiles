@@ -34,23 +34,3 @@ vim.api.nvim_create_autocmd("Filetype", {
 	group = fto_grp,
 	pattern = { "python" },
 })
-
--- Linters
-----------------------------------------------------------------
-local lint_grp = vim.api.nvim_create_augroup("LintAutogroup", { clear = true })
-vim.api.nvim_create_autocmd("BufWritePost", {
-	callback = function()
-		require("lint").try_lint()
-	end,
-	group = lint_grp,
-	pattern = "*",
-})
-
--- Formatters
-----------------------------------------------------------------
-local fmt_grp = vim.api.nvim_create_augroup("FormatAutogroup", { clear = true })
-vim.api.nvim_create_autocmd("BufWritePost", {
-	command = "FormatWrite",
-	group = fmt_grp,
-	pattern = "*",
-})
