@@ -53,6 +53,9 @@ alias ip "grc ip"
 # Just use ripgrep
 alias grep="rg"
 
+# Helix
+alias hx="helix"
+
 # Convenient shortcuts
 alias vconf="nvim $HOME/.config/nvim/init.lua"
 alias fconf="nvim $HOME/.config/fish/config.fish"
