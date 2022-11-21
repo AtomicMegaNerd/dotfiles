@@ -63,9 +63,9 @@ require("packer").startup({
 		})
 
 		use({
-      "jose-elias-alvarez/null-ls.nvim",
-      requires = { "nvim-lua/plenary.nvim" },
-    })
+			"jose-elias-alvarez/null-ls.nvim",
+			requires = { "nvim-lua/plenary.nvim" },
+		})
 
 		-- LSP
 		use({
@@ -75,7 +75,6 @@ require("packer").startup({
 
 		-- LSP extensions
 		use("nvim-lua/lsp_extensions.nvim")
-
 
 		-- LSP and Linters Installer
 		use({
@@ -113,6 +112,13 @@ require("packer").startup({
 			"numToStr/Comment.nvim",
 			tag = "v0.7.0",
 			config = get_config("comment_conf"),
+		})
+
+		-- Highlight TODO, FIXME, etc.
+		use({
+			"folke/todo-comments.nvim",
+			requires = "nvim-lua/plenary.nvim",
+			config = get_config("todo_conf"),
 		})
 
 		-- Which Key

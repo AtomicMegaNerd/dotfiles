@@ -43,6 +43,7 @@ vim.keymap.set("n", "<leader>fs", require("telescope.builtin").git_status, { des
 vim.keymap.set("n", "<leader>fh", require("telescope.builtin").help_tags, { desc = "[F]ind Neovim [H]elp topics" })
 vim.keymap.set("n", "<leader>fm", require("telescope.builtin").commands, { desc = "[F]ind Neovim Co[M]mands" })
 vim.keymap.set("n", "<leader>fk", require("telescope.builtin").keymaps, { desc = "[F]ind Neovim [K]eymaps" })
+vim.keymap.set("n", "<leader>ft", [[<cmd>TodoTelescope<cr>]], { desc = "[F]ind [T]odo Comments" })
 
 -- VimTest
 ----------------------------------------------------------------
