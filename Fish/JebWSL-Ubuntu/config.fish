@@ -6,18 +6,17 @@
 #                                              /____/
 # fish shell config
 
+fish_add_path $HOME/.local/bin
+fish_add_path $HOME/.cargo/bin
+fish_add_path $HOME/.nix-profile/bin
+fish_add_path /nix/var/nix/profiles/default/bin
+
 # Environment Variables
 #######################
 
 set -gx EDITOR nvim
 set -gx NPM_PACKAGES $HOME/.npm-packages
 set -gx NODE_PATH "$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
-
-# Ask Firefox to use Wayland
-set -gx MOZ_ENABLE_WAYLAND 1
-
-# Make Alacritty use XWayland
-set -gx WINIT_UNIX_BACKEND x11
 
 ## Aliases
 ##########
@@ -60,7 +59,3 @@ alias grep="rg"
 alias vconf="nvim $HOME/.config/nvim/init.lua"
 alias fconf="nvim $HOME/.config/fish/config.fish"
 alias aconf="nvim $HOME/.config/alacritty/alacritty.yml"
-
-# Tell OMF themes we have the nerd fonts installed
-set -g theme_nerd_fonts yes
-set -g theme_color_scheme nord
