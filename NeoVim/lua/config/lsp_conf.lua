@@ -36,6 +36,7 @@ local on_attach = function(client, bufnr)
 	nmap("<leader>ca", "<cmd>Lspsaga code_action<cr>", "[C]ode [A]ction")
 	nmap("<leader>ld", "<cmd>Lspsaga show_line_diagnostics<cr>", "Show [L]ine [D]iagnostics")
 	nmap("<leader>cd", "<cmd>Lspsaga show_cursor_diagnostics<cr>", "Show [C]ursor [D]iagnostics")
+	nmap("<leader>gh", "<cmd>Lspsaga lsp_finder<cr>", "LSP Finder")
 
 	nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
 	nmap("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
