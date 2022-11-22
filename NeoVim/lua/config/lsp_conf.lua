@@ -58,8 +58,8 @@ local on_attach = function(client, bufnr)
 	end, "[W]orkspace [L]ist Folders")
 
 	-- Float terminal
-	nmap("<leader>tf", "<cmd>Lspsaga open_floaterm<CR>", "[T]erminal [F]loat")
-	vim.keymap.set("t", "<leader>tf", [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]], { silent = true })
+	nmap("<leader>tt", "<cmd>Lspsaga open_floaterm<CR>", "[T]oggle [T]erminal")
+	vim.keymap.set("t", "<leader>tt", [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]], { silent = true })
 
 	-- Setup format on save
 	if client.supports_method("textDocument/formatting") then
