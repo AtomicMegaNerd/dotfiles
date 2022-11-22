@@ -76,6 +76,12 @@ require("packer").startup({
 		-- LSP extensions
 		use("nvim-lua/lsp_extensions.nvim")
 
+		-- LSP Saga
+		use({
+			"glepnir/lspsaga.nvim",
+			branch = "main",
+		})
+
 		-- LSP and Linters Installer
 		use({
 			"williamboman/mason.nvim",
@@ -127,6 +133,7 @@ require("packer").startup({
 			config = get_config("which_key_conf"),
 		})
 
+		-- Managing Git Conflicts
 		use({ "akinsho/git-conflict.nvim", config = get_config("gitconflict_conf") })
 
 		-- Make Nvim window transparent
