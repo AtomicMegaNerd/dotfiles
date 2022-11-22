@@ -2,6 +2,9 @@
 --
 
 local nvim_lsp = require("lspconfig")
+local saga = require("lspsaga")
+
+saga.init_lsp_saga()
 
 -- We want to use null-ls for formatting
 local lsp_formatting = function(bufnr)
@@ -25,12 +28,15 @@ local on_attach = function(client, bufnr)
 		if desc then
 			desc = "LSP: " .. desc
 		end
-
 		vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
 	end
 
-	nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-	nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
+	-- LSP Saga
+	nmap("<leader>rn", "<cmd>Lspsaga rename<cr>", "[R]e[n]ame")
+	nmap("<leader>ca", "<cmd>Lspsaga code_action<cr>", "[C]ode [A]ction")
+	nmap("<leader>ld", "<cmd>Lspsaga show_line_diagnostics<cr>", "Show [L]ine [D]iagnostics")
+	nmap("<leader>cd", "<cmd>Lspsaga show_cursor_diagnostics<cr>", "Show [C]ursor [D]iagnostics")
+	nmap("<leader>gh", "<cmd>Lspsaga lsp_finder<cr>", "LSP Finder")
 
 	nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
 	nmap("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
@@ -39,7 +45,7 @@ local on_attach = function(client, bufnr)
 	nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 
 	-- See `:help K` for why this keymap
-	nmap("K", vim.lsp.buf.hover, "Hover Documentation")
+	nmap("K", "<cmd>Lspsaga hover_doc<cr>", "Hover Documentation")
 	nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
 
 	-- Lesser used LSP functionality
@@ -50,6 +56,10 @@ local on_attach = function(client, bufnr)
 	nmap("<leader>wl", function()
 		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 	end, "[W]orkspace [L]ist Folders")
+
+	-- Float terminal
+	nmap("<leader>tf", "<cmd>Lspsaga open_floaterm<CR>", "[T]erminal [F]loat")
+	vim.keymap.set("t", "<leader>tf", [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]], { silent = true })
 
 	-- Setup format on save
 	if client.supports_method("textDocument/formatting") then
