@@ -3,8 +3,12 @@ vim.o.completeopt = "menu,menuone,noselect"
 
 local luasnip = require("luasnip")
 local cmp = require("cmp")
+local lspkind = require("lspkind")
 
 cmp.setup({
+	formatting = {
+		format = lspkind.cmp_format(),
+	},
 	snippet = {
 		expand = function(args)
 			luasnip.lsp_expand(args.body)

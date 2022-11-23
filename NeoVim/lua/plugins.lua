@@ -82,6 +82,9 @@ require("packer").startup({
 			branch = "main",
 		})
 
+		-- LSP Kind
+		use("onsails/lspkind.nvim")
+
 		-- LSP and Linters Installer
 		use({
 			"williamboman/mason.nvim",
