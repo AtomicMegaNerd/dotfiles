@@ -16,11 +16,6 @@ if not null_ls_status then
 	return
 end
 
-local lsp_signature_status, lsp_signature = pcall(require, "lsp_signature")
-if not lsp_signature_status then
-	return
-end
-
 local tele_builtin_status, telescope_builtin = pcall(require, "telescope.builtin")
 if not tele_builtin_status then
 	return
@@ -31,25 +26,20 @@ if not rust_tools_status then
 	return
 end
 
--- We want to use null-ls for formatting
 local lsp_formatting = function(bufnr)
-	vim.lsp.buf.format({
-		filter = function(client)
-			-- apply whatever logic you want (in this example, we'll only use null-ls)
-			return client.name == "null-ls"
-		end,
-		bufnr = bufnr,
-	})
+    vim.lsp.buf.format({
+        filter = function(client)
+            -- apply whatever logic you want (in this example, we'll only use null-ls)
+            return client.name == "null-ls"
+        end,
+        bufnr = bufnr,
+    })
 end
 
+-- if you want to set up formatting on save, you can use this as a callback
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local on_attach = function(client, bufnr)
-	local lsp_sig_cfg = {
-		hint_prefix = "> ",
-	}
-	lsp_signature.on_attach(lsp_sig_cfg, bufnr)
-
 	local nmap = function(keys, func, desc)
 		if desc then
 			desc = "LSP: " .. desc
@@ -68,18 +58,16 @@ local on_attach = function(client, bufnr)
 	-- Lesser used LSP functionality
 	nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 	nmap("<leader>D", vim.lsp.buf.type_definition, "Type [D]efinition")
-
-	-- Setup format on save
-	if client.supports_method("textDocument/formatting") then
-		vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-		vim.api.nvim_create_autocmd("BufWritePre", {
-			group = augroup,
-			buffer = bufnr,
-			callback = function()
-				lsp_formatting(bufnr)
-			end,
-		})
-	end
+ if client.supports_method("textDocument/formatting") then
+        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            group = augroup,
+            buffer = bufnr,
+            callback = function()
+                lsp_formatting(bufnr)
+            end,
+        })
+    end
 end
 
 -- nvim-cmp supports additional completion capabilities
@@ -120,11 +108,12 @@ rust_tools.setup({
 		on_attach = on_attach,
 		capabilities = capabilities,
 		settings = {
-			["rust-analyzer"] = {
-				checkOnSave = {
-					command = "clippy",
-				},
-			},
+
+        ["rust-analyzer"] = {
+          checkOnSave = {
+            command = "clippy",
+          },
+        },
 		},
 	},
 })
