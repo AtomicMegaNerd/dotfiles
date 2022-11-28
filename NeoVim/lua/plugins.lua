@@ -92,9 +92,6 @@ return packer.startup({
 			config = get_config("lsp_conf"),
 		})
 
-		-- LSP extensions
-		use("nvim-lua/lsp_extensions.nvim")
-
 		-- LSP and Linters Installer
 		use({
 			"williamboman/mason.nvim",
@@ -114,7 +111,7 @@ return packer.startup({
 		use("hrsh7th/cmp-buffer")
 		use("saadparwaiz1/cmp_luasnip")
 		use("L3MON4D3/LuaSnip")
-		use("ray-x/lsp_signature.nvim")
+		use("onsails/lspkind.nvim")
 
 		-- Status line
 		use({
@@ -138,12 +135,6 @@ return packer.startup({
 			"folke/todo-comments.nvim",
 			requires = "nvim-lua/plenary.nvim",
 			config = get_config("todo_conf"),
-		})
-
-		-- Which Key
-		use({
-			"folke/which-key.nvim",
-			config = get_config("which_key_conf"),
 		})
 
 		-- Managing Git Conflicts
