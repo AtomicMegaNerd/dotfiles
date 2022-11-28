@@ -1,5 +1,5 @@
-local gc_status, gc = pcall(require, "git-conflict")
-if not gc_status then
+local status, gc = pcall(require, "git-conflict")
+if not status then
 	return
 end
 

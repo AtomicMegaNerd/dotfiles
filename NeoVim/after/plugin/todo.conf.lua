@@ -1,5 +1,5 @@
-local todo_status, todo = pcall(require, "todo-comments")
-if not todo_status then
+local status, todo = pcall(require, "todo-comments")
+if not status then
 	return
 end
 

@@ -1,5 +1,5 @@
-local tr_status, tr = pcall(require, "transparent")
-if not tr_status then
+local status, tr = pcall(require, "transparent")
+if not status then
 	return
 end
 

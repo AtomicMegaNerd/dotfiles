@@ -1,5 +1,5 @@
-local gs_status, gs = pcall(require, "gitsigns")
-if not gs_status then
+local status, gs = pcall(require, "gitsigns")
+if not status then
 	return
 end
 
