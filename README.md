@@ -100,3 +100,21 @@ This is another text editor I am keeping an eye on.
 cd ~/.config
 ln -s ~/Code/Configs/dotfiles/Helix/ helix
 ```
+
+### Powershell
+
+To use this Powershell configuration in Windows you need to install a few modules with scoop first:
+
+```pwsh
+scoop bucket add extras
+scoop install oh-my-posh
+scoop install terminal-icons
+```
+
+Then create the symlink (needs Administrator on Windows):
+
+```pwsh
+cd C:\Users\chris\Documents\PowerShell
+New-item -ItemType SymbolicLink -Target C:\Users\chris\Code\Configs\dotfiles\Powershell\Microsoft.PowerShell_profile.ps1 Microsoft.PowerShell_profile.ps1
+```
+

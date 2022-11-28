@@ -2,9 +2,6 @@
 --
 
 local nvim_lsp = require("lspconfig")
-local saga = require("lspsaga")
-
-saga.init_lsp_saga()
 
 -- We want to use null-ls for formatting
 local lsp_formatting = function(bufnr)
@@ -31,13 +28,8 @@ local on_attach = function(client, bufnr)
 		vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
 	end
 
-	-- LSP Saga
-	nmap("<leader>rn", "<cmd>Lspsaga rename<cr>", "[R]e[n]ame")
-	nmap("<leader>ca", "<cmd>Lspsaga code_action<cr>", "[C]ode [A]ction")
-	nmap("<leader>ld", "<cmd>Lspsaga show_line_diagnostics<cr>", "Show [L]ine [D]iagnostics")
-	nmap("<leader>cd", "<cmd>Lspsaga show_cursor_diagnostics<cr>", "Show [C]ursor [D]iagnostics")
-	nmap("<leader>gh", "<cmd>Lspsaga lsp_finder<cr>", "LSP Finder")
-
+	nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+	nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
 	nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
 	nmap("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
 	nmap("gr", require("telescope.builtin").lsp_references)
@@ -45,7 +37,7 @@ local on_attach = function(client, bufnr)
 	nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 
 	-- See `:help K` for why this keymap
-	nmap("K", "<cmd>Lspsaga hover_doc<cr>", "Hover Documentation")
+	nmap("K", vim.lsp.buf.hover, "Hover Documentation")
 	nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
 
 	-- Lesser used LSP functionality
@@ -56,10 +48,6 @@ local on_attach = function(client, bufnr)
 	nmap("<leader>wl", function()
 		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 	end, "[W]orkspace [L]ist Folders")
-
-	-- Float terminal
-	nmap("<leader>tt", "<cmd>Lspsaga open_floaterm<CR>", "[T]oggle [T]erminal")
-	vim.keymap.set("t", "<leader>tt", [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]], { silent = true })
 
 	-- Setup format on save
 	if client.supports_method("textDocument/formatting") then
@@ -75,8 +63,7 @@ local on_attach = function(client, bufnr)
 end
 
 -- nvim-cmp supports additional completion capabilities
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 -- Enable the following language servers
 local servers = { "gopls", "pyright", "yamlls", "bashls", "jdtls", "hls", "terraformls", "solargraph" }
@@ -131,6 +118,7 @@ null_ls.setup({
 		null_ls.builtins.diagnostics.mypy,
 		null_ls.builtins.diagnostics.yamllint,
 		null_ls.builtins.diagnostics.markdownlint,
+		null_ls.builtins.diagnostics.staticcheck,
 	},
 	on_attach = on_attach,
 	capabilities = capabilities,
