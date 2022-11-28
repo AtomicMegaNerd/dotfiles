@@ -118,6 +118,7 @@ null_ls.setup({
 		null_ls.builtins.diagnostics.mypy,
 		null_ls.builtins.diagnostics.yamllint,
 		null_ls.builtins.diagnostics.markdownlint,
+		null_ls.builtins.diagnostics.staticcheck,
 	},
 	on_attach = on_attach,
 	capabilities = capabilities,
