@@ -34,3 +34,4 @@ vim.api.nvim_create_autocmd("Filetype", {
 	group = fto_grp,
 	pattern = { "python" },
 })
+

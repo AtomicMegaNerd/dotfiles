@@ -1,4 +1,9 @@
-require("telescope").setup({
+local telescope_status, telescope = pcall(require, "telescope")
+if not telescope_status then
+	return
+end
+
+telescope.setup({
 	defaults = {
 		vimgrep_arguments = {
 			"rg",
@@ -27,29 +32,16 @@ require("telescope").setup({
 				preview_width = 0.6,
 			},
 		},
-		file_sorter = require("telescope.sorters").get_fuzzy_file,
 		file_ignore_patterns = { "target", "**.lock", "build", "node_modules" },
-		generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
-		winblend = 0,
-		border = {},
-		borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-		color_devicons = true,
-		use_less = true,
-		set_env = { ["COLORTERM"] = "truecolor" },
-		file_previewer = require("telescope.previewers").vim_buffer_cat.new,
-		grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
-		qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
-		buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
 	},
 	extensions = {
 		file_browser = {
-			-- disables netrw and use telescope-file-browser in its place
 			hijack_netrw = true,
 			hidden = true,
 		},
 	},
 })
 
-pcall(require("telescope").load_extension, "fzf")
-pcall(require("telescope").load_extension("file_browser"))
-pcall(require("telescope").load_extension("ui-select"))
+telescope.load_extension("fzf")
+telescope.load_extension("file_browser")
+telescope.load_extension("ui-select")

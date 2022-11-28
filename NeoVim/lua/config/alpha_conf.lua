@@ -1,5 +1,13 @@
-local alpha = require("alpha")
-local startify = require("alpha.themes.startify")
+local alpha_status, alpha = pcall(require, "alpha")
+if not alpha_status then
+	return
+end
+
+local startify_status, startify = pcall(require, "alpha.themes.startify")
+if not startify_status then
+	return
+end
+
 startify.section.header.val = {
 	[[     ___   __                  _      __  ___                 _   __              __]],
 	[[    /   | / /_____  ____ ___  (_)____/  |/  /__  ____ _____ _/ | / /__  _________/ /]],
