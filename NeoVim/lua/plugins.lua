@@ -92,9 +92,6 @@ return packer.startup({
 			config = get_config("lsp_conf"),
 		})
 
-		-- LSP Kind
-		use("onsails/lspkind.nvim")
-
 		-- LSP and Linters Installer
 		use({
 			"williamboman/mason.nvim",
