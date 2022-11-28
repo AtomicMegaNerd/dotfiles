@@ -23,27 +23,34 @@ vim.keymap.set("n", "<right>", "<cmd>bn<cr>")
 
 -- Telescope keybindings
 ----------------------------------------------------------------
-vim.keymap.set("n", "<leader>ff", require("telescope.builtin").find_files, { desc = "[F]ind [F]files" })
-vim.keymap.set("n", "<leader>fb", require("telescope.builtin").buffers, { desc = "[F]ind [B]uffers" })
-vim.keymap.set("n", "<leader>fd", require("telescope.builtin").diagnostics, { desc = "[F]ind [D]iagnostics" })
-vim.keymap.set("n", "<leader>fl", require("telescope.builtin").live_grep, { desc = "[F]ind [L]ive [G]rep" })
-vim.keymap.set(
-	"n",
-	"<leader>bf",
-	require("telescope").extensions.file_browser.file_browser,
-	{ desc = "[B]rowse [F]iles " }
-)
+
+local tb_status, tb = pcall(require, "telescope.builtin")
+if not tb_status then
+	return
+end
+
+local ts_status, ts = pcall(require, "telescope")
+if not ts_status then
+	return
+end
+
+vim.keymap.set("n", "<leader>ff", tb.find_files, { desc = "[F]ind [F]files" })
+vim.keymap.set("n", "<leader>fb", tb.buffers, { desc = "[F]ind [B]uffers" })
+vim.keymap.set("n", "<leader>fd", tb.diagnostics, { desc = "[F]ind [D]iagnostics" })
+vim.keymap.set("n", "<leader>fl", tb.live_grep, { desc = "[F]ind [L]ive [G]rep" })
 
 -- Git
-vim.keymap.set("n", "<leader>fg", require("telescope.builtin").git_files, { desc = "[F]ind [G]it files" })
-vim.keymap.set("n", "<leader>fr", require("telescope.builtin").git_branches, { desc = "[F]ind Git B[R]anch" })
-vim.keymap.set("n", "<leader>fc", require("telescope.builtin").git_commits, { desc = "[F]ind Git [C]ommits" })
-vim.keymap.set("n", "<leader>fs", require("telescope.builtin").git_status, { desc = "[F]ind Git [S]tatus" })
+vim.keymap.set("n", "<leader>fg", tb.git_files, { desc = "[F]ind [G]it files" })
+vim.keymap.set("n", "<leader>fr", tb.git_branches, { desc = "[F]ind Git B[R]anch" })
+vim.keymap.set("n", "<leader>fc", tb.git_commits, { desc = "[F]ind Git [C]ommits" })
+vim.keymap.set("n", "<leader>fs", tb.git_status, { desc = "[F]ind Git [S]tatus" })
 -- Neovim
-vim.keymap.set("n", "<leader>fh", require("telescope.builtin").help_tags, { desc = "[F]ind Neovim [H]elp topics" })
-vim.keymap.set("n", "<leader>fm", require("telescope.builtin").commands, { desc = "[F]ind Neovim Co[M]mands" })
-vim.keymap.set("n", "<leader>fk", require("telescope.builtin").keymaps, { desc = "[F]ind Neovim [K]eymaps" })
+vim.keymap.set("n", "<leader>fh", tb.help_tags, { desc = "[F]ind Neovim [H]elp topics" })
+vim.keymap.set("n", "<leader>fm", tb.commands, { desc = "[F]ind Neovim Co[M]mands" })
+vim.keymap.set("n", "<leader>fk", tb.keymaps, { desc = "[F]ind Neovim [K]eymaps" })
 vim.keymap.set("n", "<leader>ft", [[<cmd>TodoTelescope<cr>]], { desc = "[F]ind [T]odo Comments" })
+
+vim.keymap.set("n", "<leader>bf", ts.extensions.file_browser.file_browser, { desc = "[B]rowse [F]iles " })
 
 -- VimTest
 ----------------------------------------------------------------

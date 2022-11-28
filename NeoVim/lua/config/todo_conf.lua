@@ -1,5 +1,6 @@
-require("todo-comments").setup({
-	-- your configuration comes here
-	-- or leave it empty to use the default settings
-	-- refer to the configuration section below
-})
+local todo_status, todo = pcall(require, "todo-comments")
+if not todo_status then
+	return
+end
+
+todo.setup()

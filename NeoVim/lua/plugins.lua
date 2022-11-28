@@ -8,20 +8,39 @@
 
 -- Install packer
 ----------------------------------------------------------------
-local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-	vim.fn.execute("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
+-- auto install packer if not installed
+local ensure_packer = function()
+	local fn = vim.fn
+	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+	if fn.empty(fn.glob(install_path)) > 0 then
+		fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+		vim.cmd([[packadd packer.nvim]])
+		return true
+	end
+	return false
 end
+local packer_bootstrap = ensure_packer() -- true if packer was just installed
+
+-- Run PackerSync when we save this file
+vim.cmd([[ 
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+  augroup end
+]])
 
 local function get_config(name)
 	return string.format('require("config/%s")', name)
 end
 
-local use = require("packer").use
+-- import packer safely
+local status, packer = pcall(require, "packer")
+if not status then
+	return
+end
 
-require("packer").startup({
-	function()
+return packer.startup({
+	function(use)
 		-- Package manager
 		use("wbthomason/packer.nvim")
 
@@ -34,18 +53,17 @@ require("packer").startup({
 
 		-- Telescope
 		use({
+			"nvim-telescope/telescope-fzf-native.nvim",
+			run = "make",
+		})
+		use({ "nvim-telescope/telescope-file-browser.nvim" })
+		use({ "nvim-telescope/telescope-ui-select.nvim" })
+		use({
 			"nvim-telescope/telescope.nvim",
 			branch = "0.1.x",
 			requires = { "nvim-lua/plenary.nvim" },
 			config = get_config("telescope_conf"),
 		})
-		use({
-			"nvim-telescope/telescope-fzf-native.nvim",
-			run = "make",
-			cond = vim.fn.executable("make") == 1,
-		})
-		use({ "nvim-telescope/telescope-file-browser.nvim" })
-		use({ "nvim-telescope/telescope-ui-select.nvim" })
 
 		-- Best theme ever
 		use("EdenEast/nightfox.nvim")
@@ -139,6 +157,10 @@ require("packer").startup({
 		use("tpope/vim-fugitive")
 		use("vim-test/vim-test")
 		use("airblade/vim-rooter")
+
+		if packer_bootstrap then
+			require("packer").sync()
+		end
 	end,
 	config = {
 		display = {
