@@ -1,4 +1,4 @@
 NeoVim/plugged
 NeoVim/spell
-NeoVim/plugin
+NeoVim/plugin/packer_compiled.lua
 **/Brewfile.lock.json
