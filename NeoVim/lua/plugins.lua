@@ -45,6 +45,7 @@ require("packer").startup({
 			cond = vim.fn.executable("make") == 1,
 		})
 		use({ "nvim-telescope/telescope-file-browser.nvim" })
+		use({ "nvim-telescope/telescope-ui-select.nvim" })
 
 		-- Best theme ever
 		use("EdenEast/nightfox.nvim")
@@ -75,12 +76,6 @@ require("packer").startup({
 
 		-- LSP extensions
 		use("nvim-lua/lsp_extensions.nvim")
-
-		-- LSP Saga
-		use({
-			"glepnir/lspsaga.nvim",
-			branch = "main",
-		})
 
 		-- LSP and Linters Installer
 		use({
