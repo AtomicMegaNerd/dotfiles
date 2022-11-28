@@ -1,5 +1,6 @@
-require("which-key").setup({
-	-- your configuration comes here
-	-- or leave it empty to use the default settings
-	-- refer to the configuration section below
-})
+local wk_status, wk = pcall(require, "which-key")
+if not wk_status then
+	return
+end
+
+wk.setup()

@@ -1,5 +1,9 @@
--- Gitsigns
-require("gitsigns").setup({
+local gs_status, gs = pcall(require, "gitsigns")
+if not gs_status then
+	return
+end
+
+gs.setup({
 	signs = {
 		add = { hl = "GitGutterAdd", text = "+" },
 		change = { hl = "GitGutterChange", text = "~" },

@@ -52,4 +52,3 @@ vim.api.nvim_create_autocmd("BufRead", {
 	group = fto_grp,
 	pattern = "env.list",
 })
-
