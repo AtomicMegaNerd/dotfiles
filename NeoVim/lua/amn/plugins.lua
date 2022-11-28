@@ -29,10 +29,6 @@ vim.cmd([[
   augroup end
 ]])
 
-local function get_config(name)
-	return string.format('require("config/%s")', name)
-end
-
 -- import packer safely
 local status, packer = pcall(require, "packer")
 if not status then
@@ -48,7 +44,6 @@ return packer.startup({
 		use({
 			"goolord/alpha-nvim",
 			requires = { "kyazdani42/nvim-web-devicons" },
-			config = get_config("alpha_conf"),
 		})
 
 		-- Telescope
@@ -62,7 +57,6 @@ return packer.startup({
 			"nvim-telescope/telescope.nvim",
 			branch = "0.1.x",
 			requires = { "nvim-lua/plenary.nvim" },
-			config = get_config("telescope_conf"),
 		})
 
 		-- Best theme ever
@@ -71,14 +65,12 @@ return packer.startup({
 		use({
 			"lewis6991/gitsigns.nvim",
 			requires = { "nvim-lua/plenary.nvim" },
-			config = get_config("gitsigns_conf"),
 		})
 
 		-- Treesitter
 		use({
 			"nvim-treesitter/nvim-treesitter",
 			run = ":TSUpdate",
-			config = get_config("treesitter_conf"),
 		})
 
 		use({
@@ -89,20 +81,17 @@ return packer.startup({
 		-- LSP
 		use({
 			"neovim/nvim-lspconfig",
-			config = get_config("lsp_conf"),
 		})
 
 		-- LSP and Linters Installer
 		use({
 			"williamboman/mason.nvim",
-			config = get_config("mason_conf"),
 		})
 		use("williamboman/mason-lspconfig.nvim")
 
 		-- CMP
 		use({
 			"hrsh7th/nvim-cmp",
-			config = get_config("cmp_conf"),
 		})
 
 		-- CMP extensions
@@ -117,7 +106,6 @@ return packer.startup({
 		use({
 			"nvim-lualine/lualine.nvim",
 			requires = { "kyazdani42/nvim-web-devicons", opt = true },
-			config = get_config("lualine_conf"),
 		})
 
 		-- Rust
@@ -127,21 +115,19 @@ return packer.startup({
 		use({
 			"numToStr/Comment.nvim",
 			tag = "v0.7.0",
-			config = get_config("comment_conf"),
 		})
 
 		-- Highlight TODO, FIXME, etc.
 		use({
 			"folke/todo-comments.nvim",
 			requires = "nvim-lua/plenary.nvim",
-			config = get_config("todo_conf"),
 		})
 
 		-- Managing Git Conflicts
-		use({ "akinsho/git-conflict.nvim", config = get_config("gitconflict_conf") })
+		use({ "akinsho/git-conflict.nvim"})
 
 		-- Make Nvim window transparent
-		use({ "xiyaowong/nvim-transparent", config = get_config("transparent_conf") })
+		use({ "xiyaowong/nvim-transparent"})
 
 		-- The last few to use vimscript instead of Lua.
 		use("tpope/vim-eunuch")

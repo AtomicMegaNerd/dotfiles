@@ -7,17 +7,17 @@
 --
 -- Neovim Configuration File
 
-require("plugins")
-require("options")
-require("autocmds")
-require("keymap")
+require("amn.plugins")
+require("amn.options")
+require("amn.autocmds")
+require("amn.keymap")
 
 -- Mac Specific configuration
 if vim.fn.has("macunix") == 1 then
-	require("macos")
+	require("amn.macos")
 end
 
 -- Windows Specific configuration
 if vim.fn.has("win32") == 1 then
-	require("windows")
+	require("amn.windows")
 end
