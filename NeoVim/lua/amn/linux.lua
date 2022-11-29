@@ -2,7 +2,6 @@
 local is_wsl = function()
 	local kern_ver = vim.fn.readfile("/proc/version")[1]
 	if kern_ver == nil then
-		print("Unable to detect kernel version!")
 		return false
 	end
 	if string.find(kern_ver, "microsoft") then
