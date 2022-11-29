@@ -21,6 +21,9 @@ vim.keymap.set("i", "<right>", "<nop>")
 vim.keymap.set("n", "<left>", "<cmd>bp<cr>")
 vim.keymap.set("n", "<right>", "<cmd>bn<cr>")
 
+-- Delete without overwriting the clipboard
+vim.keymap.set("n", "x", '"_x')
+
 -- Telescope keybindings
 ----------------------------------------------------------------
 
