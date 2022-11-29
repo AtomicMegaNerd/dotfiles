@@ -124,10 +124,10 @@ return packer.startup({
 		})
 
 		-- Managing Git Conflicts
-		use({ "akinsho/git-conflict.nvim"})
+		use({ "akinsho/git-conflict.nvim" })
 
 		-- Make Nvim window transparent
-		use({ "xiyaowong/nvim-transparent"})
+		use({ "xiyaowong/nvim-transparent" })
 
 		-- The last few to use vimscript instead of Lua.
 		use("tpope/vim-eunuch")

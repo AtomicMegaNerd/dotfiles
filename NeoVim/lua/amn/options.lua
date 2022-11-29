@@ -70,3 +70,5 @@ g.rooter_patterns = {
 	"init.lua",
 	"config.fish",
 }
+
+vim.opt.clipboard:prepend({ "unnamed", "unnamedplus" })
