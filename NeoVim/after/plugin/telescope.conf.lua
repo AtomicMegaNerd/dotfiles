@@ -38,6 +38,7 @@ telescope.setup({
 		file_browser = {
 			hijack_netrw = true,
 			hidden = true,
+			respect_gitignore = false,
 		},
 	},
 })
