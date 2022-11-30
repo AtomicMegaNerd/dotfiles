@@ -82,6 +82,13 @@ for _, lsp in ipairs(servers) do
 	})
 end
 
+nvim_lsp.tsserver.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+	filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+	cmd = { "typescript-language-server", "--stdio" },
+})
+
 -- Make sure we suppress warnings on the vim global object
 nvim_lsp.sumneko_lua.setup({
 	on_attach = on_attach,
