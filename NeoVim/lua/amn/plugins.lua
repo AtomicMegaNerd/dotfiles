@@ -89,6 +89,8 @@ return packer.startup({
 		})
 		use("williamboman/mason-lspconfig.nvim")
 
+		use("j-hui/fidget.nvim")
+
 		-- CMP
 		use({
 			"hrsh7th/nvim-cmp",
