@@ -15,9 +15,17 @@ ts.setup({
 		"yaml",
 		"vim",
 		"yaml",
+		"typescript",
+		"javascript",
+		"tsx",
+		"toml",
+		"html",
+		"css",
+		"json",
 	},
 	highlight = {
 		enable = true,
+		disable = {},
 	},
 	indent = {
 		enable = true,
