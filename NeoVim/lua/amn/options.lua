@@ -40,6 +40,9 @@ o.laststatus = 3
 -- Save undo history
 vim.opt.undofile = true
 
+-- This is for which-key
+o.timeoutlen = 500
+
 -- Case insensitive searching UNLESS /C or capital in search
 o.ignorecase = true
 o.smartcase = true

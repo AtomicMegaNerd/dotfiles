@@ -131,6 +131,9 @@ return packer.startup({
 		-- Make Nvim window transparent
 		use({ "xiyaowong/nvim-transparent" })
 
+		-- Helper to find keys and commands
+		use({ "folke/which-key.nvim" })
+
 		-- The last few to use vimscript instead of Lua.
 		use("tpope/vim-eunuch")
 		use("tpope/vim-fugitive")
