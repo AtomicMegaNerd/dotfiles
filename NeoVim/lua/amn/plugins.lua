@@ -47,10 +47,13 @@ return packer.startup({
 		})
 
 		-- Telescope
-		use({
-			"nvim-telescope/telescope-fzf-native.nvim",
-			run = "make",
-		})
+		-- Don't use fzf on Windows
+		if vim.fn.has("win32") ~= 1 then
+			use({
+				"nvim-telescope/telescope-fzf-native.nvim",
+				run = "make",
+			})
+		end
 		use({ "nvim-telescope/telescope-file-browser.nvim" })
 		use({ "nvim-telescope/telescope-ui-select.nvim" })
 		use({
