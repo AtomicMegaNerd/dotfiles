@@ -14,8 +14,6 @@ fish_add_path $HOME/.yarn/bin
 #######################
 
 set -gx EDITOR nvim
-set -gx NPM_PACKAGES $HOME/.npm-packages
-set -gx NODE_PATH "$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 
 ## Aliases
 ##########
@@ -58,6 +56,3 @@ alias grep="rg"
 alias vconf="nvim $HOME/.config/nvim/init.lua"
 alias fconf="nvim $HOME/.config/fish/config.fish"
 alias aconf="nvim $HOME/.config/alacritty/alacritty.yml"
-
-set -gx TERM screen-256color
-set -gx COLORTERM truecolor
