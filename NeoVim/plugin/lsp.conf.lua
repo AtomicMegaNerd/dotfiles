@@ -74,7 +74,7 @@ end
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
 -- Enable the following language servers
-local servers = { "gopls", "yamlls", "bashls", "hls", "pyright" }
+local servers = { "gopls", "yamlls", "bashls", "hls", "pyright", "rnix" }
 for _, lsp in ipairs(servers) do
 	nvim_lsp[lsp].setup({
 		on_attach = on_attach,
@@ -133,6 +133,7 @@ null_ls.setup({
 		null_ls.builtins.formatting.gofmt,
 		null_ls.builtins.formatting.rustfmt,
 		null_ls.builtins.formatting.black,
+    null_ls.builtins.formatting.nixpkgs_fmt,
 
 		-- Diagnostics
 		null_ls.builtins.diagnostics.yamllint,
