@@ -61,3 +61,6 @@ alias hx="helix"
 alias vconf="nvim $HOME/.config/nvim/init.lua"
 alias fconf="nvim $HOME/.config/fish/config.fish"
 alias aconf="nvim $HOME/.config/alacritty/alacritty.yml"
+
+set -gx COLORTERM truecolor
+set -gx TERM screen-256color
