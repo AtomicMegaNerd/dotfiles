@@ -10,10 +10,7 @@ alias vi "nvim"
 alias cat "bat --paging=never --style=plain"
 alias df "duf"
 
-# Shortcuts for common files and directories
-alias vconf "nvim ~/.config/nvim/init.lua"
-alias fconf "nvim ~/.config/fish/config.fish"
-alias cconf "nvim ~/.config/fish/conf.d/credentials.fish"
+# Common directories
 alias ch="cd ~"
 alias csrc="cd ~/Code"
 alias cgo="cd ~/Code/Go"
@@ -21,7 +18,13 @@ alias cj="cd ~/Code/Java"
 alias cpy="cd ~/Code/Python"
 alias cdot="cd ~/Code/Configs/dotfiles"
 alias cdock="cd ~/Code/Docker"
+
+# Shortcuts for common files and directories
 alias update_creds="$EDITOR ~/.config/fish/conf.d/credentials.fish"
+alias vconf "nvim ~/.config/nvim/init.lua"
+alias fconf "nvim ~/.config/fish/config.fish"
+alias cconf "nvim ~/.config/fish/conf.d/credentials.fish"
+alias hconf "hx ~/.config/helix/config.toml"
 
 # Not Inspec? ;-)
 alias inspec="cinc-auditor"
