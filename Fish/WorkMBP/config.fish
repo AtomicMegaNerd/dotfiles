@@ -81,6 +81,9 @@ fish_add_path "/Applications/Sublime Text.app/Contents/SharedSupport/bin"
 fish_add_path $HOME/.local/bin
 fish_add_path $HOME/.pyenv.bin
 
+# For homebrew
+fish_add_path /usr/local/sbin
+
 # Ruby and Inspec
 fish_add_path -p /usr/local/opt/ruby/bin/
 fish_add_path /usr/local/lib/ruby/gems/3.1.0/bin
