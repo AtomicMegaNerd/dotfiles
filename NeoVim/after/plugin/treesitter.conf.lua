@@ -22,6 +22,7 @@ ts.setup({
 		"html",
 		"css",
 		"json",
+    "nix",
 	},
 	highlight = {
 		enable = true,

@@ -47,7 +47,7 @@ return packer.startup({
 		})
 
 		-- Telescope
-		-- Don't use fzf on Windows
+  	-- Don't use fzf on Windows
 		if vim.fn.has("win32") ~= 1 then
 			use({
 				"nvim-telescope/telescope-fzf-native.nvim",
