@@ -94,3 +94,13 @@ set -g theme_nerd_fonts yes
 set -g theme_color_scheme nord
 set -g theme_newline_cursor yes
 set -g theme_newline_prompt '% '
+
+# Aliases for tmux
+alias tl="tmux list-sessions"
+alias ta="tmux attach"
+alias tk="tmux kill-session"
+alias tka="tmux kill-server"
+
+function tn
+    tmux new -s (basename (eval pwd))
+end
