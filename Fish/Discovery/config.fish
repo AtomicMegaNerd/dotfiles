@@ -45,3 +45,13 @@ alias cexer="cd ~/Code/Exercism/"
 alias cdot="cd ~/Code/Configs/dotfiles/" 
 alias go "grc go"
 alias ifconfig "grc ifconfig"
+
+# Aliases for tmux
+alias tl="tmux list-sessions"
+alias ta="tmux attach"
+alias tk="tmux kill-session"
+alias tka="tmux kill-server"
+
+function tn
+    tmux new -s (basename (eval pwd))
+end

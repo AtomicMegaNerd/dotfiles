@@ -47,7 +47,7 @@ return packer.startup({
 		})
 
 		-- Telescope
-  	-- Don't use fzf on Windows
+		-- Don't use fzf on Windows
 		if vim.fn.has("win32") ~= 1 then
 			use({
 				"nvim-telescope/telescope-fzf-native.nvim",
@@ -67,12 +67,14 @@ return packer.startup({
 
 		use({
 			"lewis6991/gitsigns.nvim",
+			tag = "v0.6",
 			requires = { "nvim-lua/plenary.nvim" },
 		})
 
 		-- Treesitter
 		use({
 			"nvim-treesitter/nvim-treesitter",
+			tag = "v0.8.1",
 			run = ":TSUpdate",
 		})
 
@@ -84,6 +86,7 @@ return packer.startup({
 		-- LSP
 		use({
 			"neovim/nvim-lspconfig",
+			tag = "v0.1.4",
 		})
 
 		-- LSP and Linters Installer
