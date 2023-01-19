@@ -6,52 +6,53 @@
 #                                              /____/
 # fish shell config
 
-# My Custom paths
 fish_add_path $HOME/.local/bin
 fish_add_path $HOME/.cargo/bin
+fish_add_path $HOME/.yarn/bin
 
-# Default editor
+# Environment Variables
+#######################
+
 set -gx EDITOR nvim
 
-#### Aliases
+## Aliases
+##########
 
 # I just love NeoVim
-alias vi "nvim"
-alias vim "nvim"
+alias vi="nvim"
+alias vim="nvim"
 
 # dust is a Rust replacement for du
-alias du "dust"
+alias du="dust"
 
 # exa is a Rust based replacement for ls
-alias ls "exa"
-alias ll "exa -lah"
+alias ls="exa"
+alias ll="exa -lah"
 
 # duf is a replacement for df
-alias df "duf"
+alias df="duf"
 
-# Use bat instead of cat
-alias cat "bat --paging=never --style=plain"
+# bat is a modern replacement for cat
+alias cat="bat --paging=never --style=plain"
 
-# Aliases for local files and directories
-alias vconf "nvim ~/.config/nvim/init.lua"
-alias fconf "nvim ~/.config/fish/config.fish"
+# Directory aliases
 alias ch="cd ~"
 alias csrc="cd ~/Code"
 alias cr="cd ~/Code/Rust/"
-alias cgo="cd ~/Code/Go/"
+alias cg="cd ~/Code/Go/"
 alias cpy="cd ~/Code/Python/"
-alias cjava="cd ~/Code/Java/"
-alias cexer="cd ~/Code/Exercism/"
+alias ce="cd ~/Code/Exercism/"
+alias cgo="cd ~/Code/Go/"
 alias cdot="cd ~/Code/Configs/dotfiles/" 
+
+# Colorize
 alias go "grc go"
-alias ifconfig "grc ifconfig"
+alias ip "grc ip"
 
-# Aliases for tmux
-alias tl="tmux list-sessions"
-alias ta="tmux attach"
-alias tk="tmux kill-session"
-alias tka="tmux kill-server"
+# Just use ripgrep
+alias grep="rg"
 
-function tn
-    tmux new -s (basename (eval pwd))
-end
+# Convenient shortcuts
+alias vconf="nvim $HOME/.config/nvim/init.lua"
+alias fconf="nvim $HOME/.config/fish/config.fish"
+alias aconf="nvim $HOME/.config/alacritty/alacritty.yml"
