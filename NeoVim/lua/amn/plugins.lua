@@ -86,7 +86,6 @@ return packer.startup({
 		-- LSP
 		use({
 			"neovim/nvim-lspconfig",
-			tag = "v0.1.4",
 		})
 
 		-- LSP and Linters Installer
