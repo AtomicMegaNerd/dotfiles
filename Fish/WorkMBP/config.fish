@@ -79,7 +79,10 @@ fish_add_path $HOME/bin
 fish_add_path $HOME/.fzf/bin
 fish_add_path "/Applications/Sublime Text.app/Contents/SharedSupport/bin"
 fish_add_path $HOME/.local/bin
-fish_add_path $HOME/.pyenv.bin
+fish_add_path $HOME/.pyenv/bin
+
+# For Rust + Cargo
+fish_add_path $HOME/.cargo/bin
 
 # For homebrew
 fish_add_path /usr/local/sbin

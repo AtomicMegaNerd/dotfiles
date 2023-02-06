@@ -74,7 +74,7 @@ end
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
 -- Enable the following language servers
-local servers = { "gopls", "pyright", "yamlls", "bashls", "jdtls", "hls", "terraformls", "solargraph" }
+local servers = { "gopls", "pyright", "ruff_lsp", "yamlls", "bashls", "jdtls", "hls", "terraformls", "solargraph" }
 for _, lsp in ipairs(servers) do
 	nvim_lsp[lsp].setup({
 		on_attach = on_attach,
@@ -139,7 +139,6 @@ null_ls.setup({
 		null_ls.builtins.diagnostics.yamllint,
 		null_ls.builtins.diagnostics.markdownlint,
 		null_ls.builtins.diagnostics.staticcheck,
-		null_ls.builtins.diagnostics.pylint,
 	},
 	on_attach = on_attach,
 	capabilities = capabilities,
