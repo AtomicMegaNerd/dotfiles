@@ -136,7 +136,6 @@ null_ls.setup({
 		null_ls.builtins.formatting.nixpkgs_fmt,
 
 		-- Diagnostics
-		null_ls.builtins.diagnostics.yamllint,
 		null_ls.builtins.diagnostics.markdownlint,
 		null_ls.builtins.diagnostics.staticcheck,
 	},
