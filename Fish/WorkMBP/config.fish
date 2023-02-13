@@ -25,6 +25,7 @@ alias vconf "nvim ~/.config/nvim/init.lua"
 alias fconf "nvim ~/.config/fish/config.fish"
 alias cconf "nvim ~/.config/fish/conf.d/credentials.fish"
 alias hconf "hx ~/.config/helix/config.toml"
+alias aconf "nvim ~/.config/alacritty/alacritty.yml"
 
 # Not Inspec? ;-)
 alias inspec="cinc-auditor"
