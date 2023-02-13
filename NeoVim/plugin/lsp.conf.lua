@@ -90,7 +90,7 @@ nvim_lsp.tsserver.setup({
 })
 
 -- Make sure we suppress warnings on the vim global object
-nvim_lsp.sumneko_lua.setup({
+nvim_lsp.lua_ls.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 	settings = {
@@ -136,7 +136,6 @@ null_ls.setup({
 		null_ls.builtins.formatting.nixpkgs_fmt,
 
 		-- Diagnostics
-		null_ls.builtins.diagnostics.yamllint,
 		null_ls.builtins.diagnostics.markdownlint,
 		null_ls.builtins.diagnostics.staticcheck,
 		null_ls.builtins.diagnostics.pylint,
