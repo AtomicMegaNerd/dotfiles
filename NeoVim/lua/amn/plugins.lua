@@ -39,14 +39,12 @@ return packer.startup({
 	function(use)
 		-- Package manager
 		use("wbthomason/packer.nvim")
-
-		-- Start-up screen for Neovim
+		-- -- Start-up screen for Neovim
 		use({
 			"goolord/alpha-nvim",
 			requires = { "kyazdani42/nvim-web-devicons" },
 		})
-
-		-- Telescope
+		-- -- Telescope
 		-- Don't use fzf on Windows
 		if vim.fn.has("win32") ~= 1 then
 			use({
@@ -61,52 +59,42 @@ return packer.startup({
 			branch = "0.1.x",
 			requires = { "nvim-lua/plenary.nvim" },
 		})
-
-		-- Best theme ever
+		-- -- Best theme ever
 		use("EdenEast/nightfox.nvim")
-
 		use({
 			"lewis6991/gitsigns.nvim",
 			tag = "v0.6",
 			requires = { "nvim-lua/plenary.nvim" },
 		})
-
 		-- Treesitter
 		use({
 			"nvim-treesitter/nvim-treesitter",
 			tag = "v0.8.1",
 			run = ":TSUpdate",
 		})
-
 		use({
 			"jose-elias-alvarez/null-ls.nvim",
 			requires = { "nvim-lua/plenary.nvim" },
 		})
-
 		-- LSP
 		use({
 			"neovim/nvim-lspconfig",
 		})
-
 		-- LSP and Linters Installer
 		use({
 			"williamboman/mason.nvim",
 		})
 		use("williamboman/mason-lspconfig.nvim")
-
+		-- Display LSP status
 		use("j-hui/fidget.nvim")
-
 		-- CMP
 		use({
 			"hrsh7th/nvim-cmp",
 		})
-
 		-- CMP extensions
 		use("hrsh7th/cmp-nvim-lsp")
 		use("hrsh7th/cmp-path")
 		use("hrsh7th/cmp-buffer")
-		use("saadparwaiz1/cmp_luasnip")
-		use("L3MON4D3/LuaSnip")
 		use("onsails/lspkind.nvim")
 
 		-- Status line

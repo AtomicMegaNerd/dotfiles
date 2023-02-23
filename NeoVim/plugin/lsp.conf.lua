@@ -138,7 +138,7 @@ null_ls.setup({
 		-- Diagnostics
 		null_ls.builtins.diagnostics.markdownlint,
 		null_ls.builtins.diagnostics.staticcheck,
-		null_ls.builtins.diagnostics.pylint,
+		null_ls.builtins.diagnostics.mypy,
 	},
 	on_attach = on_attach,
 	capabilities = capabilities,
