@@ -35,6 +35,8 @@ alias cat "bat --paging=never --style=plain"
 # Aliases for local files and directories
 alias vconf "nvim ~/.config/nvim/init.lua"
 alias fconf "nvim ~/.config/fish/config.fish"
+alias aconf "nvim ~/.config/alacritty/alacritty.yml"
+
 alias ch="cd ~"
 alias csrc="cd ~/Code"
 alias cr="cd ~/Code/Rust/"
