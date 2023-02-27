@@ -9,15 +9,18 @@
                                              /____/
 ```
 
-This repository stores the dotfiles for my UNIX based systems.  The idea is
+**NOTE** I am migrating most of my dotfiles to Nix [https://github.com/AtomicMegaNerd/rcd-nix](https://github.com/AtomicMegaNerd/rcd-nix).
+I am likely to archive this repository soon as a result.
+
+This repository stores the dotfiles for my UNIX based systems. The idea is
 to symlink all of the configs to the git managed files in this repo.
 
 ## Supported Apps
 
-* Alacritty
-* Fish
-* NeoVim
-* VSCode
+- Alacritty
+- Fish
+- NeoVim
+- VSCode
 
 ## Setup
 
@@ -35,7 +38,7 @@ ln -s ~/Code/Configs/dotfiles/Alacritty/alacritty.yml
 
 ### Fish
 
-Fish is simple.  Simply symlink the HOST folder that you want (Discovery, JebPopOS, etc).
+Fish is simple. Simply symlink the HOST folder that you want (Discovery, JebPopOS, etc).
 
 ```bash
 ln -s ~/Code/Configs/dotfiles/Fish/HOST ~/.config/fish
@@ -52,10 +55,10 @@ ln -s ~/Code/Configs/dotfiles/TMux/tmux.conf ~/.tmux.conf
 ### NeoVim
 
 If you setup fish the alias from vim to nvim should be setup already. If this
-is not the case please set this up first.  This is now based on the 0.5 release as
+is not the case please set this up first. This is now based on the 0.5 release as
 it uses a Lua based configuration.
 
-My NeoVim setup now uses the built-in LSP as well as many other lua based plug-ins.  This means
+My NeoVim setup now uses the built-in LSP as well as many other lua based plug-ins. This means
 that my vim config is tightly coupled to Neovim.
 
 #### Mac/Linux
@@ -63,7 +66,7 @@ that my vim config is tightly coupled to Neovim.
 I recommend homebrew for both Mac and Linux.
 
 ```bash
-brew install neovim 
+brew install neovim
 ```
 
 #### Common
@@ -108,4 +111,3 @@ Then create the symlink (needs Administrator on Windows):
 cd C:\Users\chris\Documents\PowerShell
 New-item -ItemType SymbolicLink -Target C:\Users\chris\Code\Configs\dotfiles\Powershell\Microsoft.PowerShell_profile.ps1 Microsoft.PowerShell_profile.ps1
 ```
-
