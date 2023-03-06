@@ -156,6 +156,7 @@ in
       };
       user.signingkey = "${rcd_pub_key}";
       commit.gpgsign = true;
+      push.autoSetupRemote = true;
     };
   };
 
