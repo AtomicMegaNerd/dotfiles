@@ -11,6 +11,8 @@ require("amn.options")
 require("amn.autocmds")
 require("amn.keymap")
 
+-- For non-nix setups we want to use Packer. However for nix we want to not
+-- include Packer as we will use nix to install all the Neovim plug-ins.
 local install_type = os.getenv("AMN_INSTALL_TYPE")
 if install_type ~= nil and install_type == "non-nix" then
 	require("amn.plugins")
