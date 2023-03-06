@@ -105,6 +105,8 @@ return packer.startup({
 			requires = { "kyazdani42/nvim-web-devicons", opt = true },
 		})
 
+		use("akinsho/toggleterm.nvim")
+
 		-- Rust
 		use("simrat39/rust-tools.nvim")
 
