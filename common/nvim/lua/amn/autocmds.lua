@@ -1,8 +1,9 @@
 -- Packer
 ----------------------------------------------------------------
--- Automatically source and re-compile packer whenever you save plugins.lua or init.lua. This
--- only applies to non-Nix configurations.
 
+-- Automatically source and re-compile packer whenever you save plugins.lua or init.lua. This
+-- only applies to non-Nix configurations. On nix managed systems we simply use nix to manage
+-- the packages and packer isn't even installed.
 local install_type = os.getenv("AMN_INSTALL_TYPE")
 if install_type ~= nil and install_type == "non-nix" then
 	local pack_grp = vim.api.nvim_create_augroup("Packer", { clear = true })
