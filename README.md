@@ -84,7 +84,7 @@ This is another text editor I am keeping an eye on.
 
 ```bash
 cd ~/.config
-ln -s ~/Code/Configs/dotfiles/Helix/ helix
+ln -s ~/Code/Configs/dotfiles/legacy/Helix/ helix
 ```
 
 ### Powershell
