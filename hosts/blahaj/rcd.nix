@@ -81,7 +81,7 @@
       cpy = "cd ~/Code/Python/";
       ce = "cd ~/Code/Exercism/";
       cgo = "cd ~/Code/Go/";
-      cdot = "cd ~/Code/Nix/rcd-nix";
+      cdot = "cd ~/Code/Configs/dotfiles";
 
       # Just use ripgrep
       grep = "rg";
