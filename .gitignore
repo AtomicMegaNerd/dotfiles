@@ -1,5 +1,5 @@
 NeoVim/plugged
 **credentials.fish
 NeoVim/spell
-NeoVim/plugin/packer_compiled.lua
+**/packer_compiled.lua
 **/Brewfile.lock.json

@@ -40,6 +40,8 @@ alias tf terraform
 # ===================================
 set -gx EDITOR nvim
 
+set -gx AMN_INSTALL_TYPE "non-nix"
+
 # General flags
 # ===================================
 set -gx FUNCTIONS_CORE_TOOLS_TELEMETRY_OPTOUT 1
@@ -60,9 +62,6 @@ pyenv init - | source
 # Go
 set -gx GOPRIVATE dev.azure.com
 
-# iTerm 2
-# ===================================
-test -e {$HOME}/.iterm2_shell_integration.fish; and source {$HOME}/.iterm2_shell_integration.fish
 
 # Java and Friends
 # ===================================
@@ -78,7 +77,6 @@ set -gx DOCKER_HOST "unix://$HOME/.colima/default/docker.sock"
 # ===================================
 fish_add_path $HOME/bin 
 fish_add_path $HOME/.fzf/bin
-fish_add_path "/Applications/Sublime Text.app/Contents/SharedSupport/bin"
 fish_add_path $HOME/.local/bin
 fish_add_path $HOME/.pyenv/bin
 
@@ -92,13 +90,6 @@ fish_add_path /usr/local/sbin
 fish_add_path -p /usr/local/opt/ruby/bin/
 fish_add_path /usr/local/lib/ruby/gems/3.1.0/bin
 
-# OMF Bobthefish theme options
-set -x VIRTUAL_ENV_DISABLE_PROMPT 1
-set -g theme_nerd_fonts yes
-set -g theme_color_scheme nord
-set -g theme_newline_cursor yes
-set -g theme_newline_prompt '% '
-
 # Aliases for tmux
 alias tl="tmux list-sessions"
 alias ta="tmux attach"
@@ -108,3 +99,5 @@ alias tka="tmux kill-server"
 function tn
     tmux new -s (basename (eval pwd))
 end
+
+oh-my-posh init fish --config ~/.config/oh-my-posh/rcd.omp.json | source
