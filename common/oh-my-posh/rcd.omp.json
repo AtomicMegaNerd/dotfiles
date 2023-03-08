@@ -10,15 +10,6 @@
           "leading_diamond": "\ue0b6",
           "powerline_symbol": "\ue0b0",
           "style": "diamond",
-          "template": " {{ .HostName }} ",
-          "type": "text"
-        },
-        {
-          "background": "#3b4261",
-          "foreground": "#719cd6",
-          "leading_diamond": "\ue0b6",
-          "powerline_symbol": "\ue0b0",
-          "style": "powerline",
           "template": " {{ .UserName }} ",
           "type": "session"
         },
