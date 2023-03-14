@@ -17,6 +17,7 @@ in
     grc
     colima
     docker
+    glow
   ];
 
   programs.direnv = {
