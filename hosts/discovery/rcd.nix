@@ -18,6 +18,7 @@ in
     colima
     docker
     glow
+    tldr
   ];
 
   programs.direnv = {
