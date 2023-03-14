@@ -8,6 +8,7 @@
   home.packages = with pkgs; [
     neofetch
     oh-my-posh
+    glow
   ];
 
   programs.direnv = {
