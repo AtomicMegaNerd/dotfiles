@@ -8,8 +8,6 @@ if not lspkind_status then
 	return
 end
 
-vim.o.completeopt = "menu,menuone,noselect"
-
 cmp.setup({
 	snippet = {
 		expand = function(args)

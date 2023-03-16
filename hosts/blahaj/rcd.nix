@@ -9,6 +9,7 @@
     neofetch
     oh-my-posh
     glow
+    tldr
   ];
 
   programs.direnv = {

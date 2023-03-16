@@ -6,8 +6,8 @@ if not lspconfig_status then
 	return
 end
 
-local lsp_signature_status, lsp_signature = pcall(require, "lsp_signature")
-if not lsp_signature_status then
+local lsp_sig_status, lsp_signature = pcall(require, "lsp_signature")
+if not lsp_sig_status then
 	return
 end
 
@@ -40,6 +40,8 @@ local lsp_formatting = function(bufnr)
 		bufnr = bufnr,
 	})
 end
+
+lsp_signature.setup()
 
 -- if you want to set up formatting on save, you can use this as a callback
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})

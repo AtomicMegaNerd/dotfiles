@@ -71,7 +71,7 @@ return packer.startup({
 		-- Treesitter
 		use({
 			"nvim-treesitter/nvim-treesitter",
-			tag = "v0.8.1",
+			tag = "v0.8.5.2",
 			run = ":TSUpdate",
 		})
 		use({
@@ -81,6 +81,9 @@ return packer.startup({
 		-- LSP
 		use({
 			"neovim/nvim-lspconfig",
+		})
+		use({
+			"ray-x/lsp_signature.nvim",
 		})
 		-- LSP and Linters Installer
 		use({

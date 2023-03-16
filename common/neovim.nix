@@ -76,5 +76,6 @@
       vim-test
       vim-rooter
       toggleterm-nvim
+      lsp_signature-nvim
     ];
 }
