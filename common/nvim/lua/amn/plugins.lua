@@ -63,13 +63,12 @@ return packer.startup({
 		use("EdenEast/nightfox.nvim")
 		use({
 			"lewis6991/gitsigns.nvim",
-			tag = "v0.6",
 			requires = { "nvim-lua/plenary.nvim" },
 		})
 		-- Treesitter
 		use({
 			"nvim-treesitter/nvim-treesitter",
-			tag = "v0.8.1",
+			tag = "v0.8.5.2",
 			run = ":TSUpdate",
 		})
 		use({
@@ -79,6 +78,9 @@ return packer.startup({
 		-- LSP
 		use({
 			"neovim/nvim-lspconfig",
+		})
+		use({
+			"ray-x/lsp_signature.nvim",
 		})
 		-- LSP and Linters Installer
 		use({
