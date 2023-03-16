@@ -9,7 +9,7 @@ font:
   italic:
     family: JetBrainsMono Nerd Font
     style: Italic
-  size: 24
+  size: 22
 
 cursor:
   style:
@@ -25,7 +25,7 @@ window:
   padding:
     x: 3
     y: 3
-  opacity: 0.98
+  opacity: 0.94
 
 # Nightfox Alacritty Colors
 colors:

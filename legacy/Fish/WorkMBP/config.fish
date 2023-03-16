@@ -40,7 +40,12 @@ alias tf terraform
 # ===================================
 set -gx EDITOR nvim
 
+# Used by the dotfiles. For example my neovim config behaves differently if it is configured
+# by Nix.
 set -gx AMN_INSTALL_TYPE "non-nix"
+
+# Fixes an issue with MacOS' super out of date terminfo
+set -gx TERMINFO_DIRS "$TERMINFO_DIRS:$HOME/.local/share/terminfo"
 
 # General flags
 # ===================================

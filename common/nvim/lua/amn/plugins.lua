@@ -63,8 +63,10 @@ return packer.startup({
 		use("EdenEast/nightfox.nvim")
 		use({
 			"lewis6991/gitsigns.nvim",
-			tag = "v0.6",
 			requires = { "nvim-lua/plenary.nvim" },
+		})
+		use({
+			"ray-x/lsp_signature.nvim",
 		})
 		-- Treesitter
 		use({
