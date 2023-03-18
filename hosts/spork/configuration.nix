@@ -43,10 +43,8 @@ in
     };
   };
 
-  # Enable Wayland and XWayland with the nVidia drivers
   services.xserver = {
     enable = true;
-    videoDrivers = [ "nvidia" ];
     layout = "us";
     xkbVariant = "";
     displayManager.gdm.wayland = true;
@@ -54,7 +52,6 @@ in
     desktopManager.gnome.enable = true;
   };
   hardware.opengl.enable = true;
-  hardware.nvidia.modesetting.enable = true;
   programs.xwayland.enable = true;
 
   # Virtualization and Containers
@@ -134,14 +131,18 @@ in
       wget
       curl
       fish
+      neovim
+      exa
+      ripgrep
+      fd
+      procs
+      jq
       htop
       git
       zip
       unzip
       procs
       firefox
-      fd
-      rustup
 
       # fonts
       corefonts

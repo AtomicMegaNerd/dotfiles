@@ -37,6 +37,13 @@
             ./hosts/blahaj/configuration.nix
           ];
         };
+        spork = nixpkgs.lib.nixosSystem {
+          pkgs = pkgs-linux;
+          system = "x86_64-linux";
+          modules = [
+            ./hosts/spork/configuration.nix
+          ];
+        };
       };
 
       # Home Manager configuration
