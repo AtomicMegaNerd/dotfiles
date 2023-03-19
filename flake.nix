@@ -50,6 +50,10 @@
       homeConfigurations = {
         useGlobalPkgs = true;
         useUserPackages = true;
+        "rcd@spork" = home-manager.lib.homeManagerConfiguration {
+          pkgs = unstable-linux;
+          modules = [ ./hosts/spork/rcd.nix ];
+        };
         "rcd@blahaj" = home-manager.lib.homeManagerConfiguration {
           pkgs = unstable-linux;
           modules = [ ./hosts/blahaj/rcd.nix ];
