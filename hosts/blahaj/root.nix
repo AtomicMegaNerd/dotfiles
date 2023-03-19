@@ -9,30 +9,8 @@
     oh-my-posh
   ];
 
-  programs.neovim = {
-    package = pkgs.neovim-unwrapped;
-    enable = true;
-    defaultEditor = true;
-    vimAlias = true;
+  programs.neovim = import ../../common/neovim.nix { inherit pkgs; };
 
-    plugins = [
-      pkgs.vimPlugins.nvim-treesitter.withPlugins
-      (p:
-        [
-          p.nix
-          p.go
-          p.rust
-          p.haskell
-          p.python
-          p.typescript
-          p.fish
-          p.bash
-          p.markdown
-          p.yaml
-          p.toml
-        ])
-    ];
-  };
 
   programs.fish =
     {
@@ -78,6 +56,8 @@
         set -g fish_pager_color_prefix $cyan
         set -g fish_pager_color_completion $foreground
         set -g fish_pager_color_description $commentc
+
+        oh-my-posh init fish --config ~/.config/oh-my-posh/rcd.omp.json | source
       '';
 
       shellAliases = {
@@ -127,9 +107,17 @@
   };
 
   xdg.configFile = {
+    nvim = {
+      source = ../../common/nvim;
+      target = "nvim";
+    };
     tmux = {
-      source = ../common/tmux;
+      source = ../../common/tmux;
       target = "tmux";
+    };
+    oh-my-posh = {
+      source = ../../common/oh-my-posh;
+      target = "oh-my-posh";
     };
   };
 }
