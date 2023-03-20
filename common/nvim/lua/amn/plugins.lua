@@ -82,9 +82,6 @@ return packer.startup({
 		use({
 			"neovim/nvim-lspconfig",
 		})
-		use({
-			"ray-x/lsp_signature.nvim",
-		})
 		-- LSP and Linters Installer
 		use({
 			"williamboman/mason.nvim",
