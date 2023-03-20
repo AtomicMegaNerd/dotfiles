@@ -26,8 +26,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "xiyaowong";
           repo = "nvim-transparent";
-          rev = "6816751e3d595b3209aa475a83b6fbaa3a5ccc98";
-          sha256 = "sha256-j1PO0r2q5w0fJvO7BG0xXDjIdOVl73eGO1rclB221uw=";
+          rev = "ae46ff104269f031a0656672106f2ab8f6abf585";
+          sha256 = "sha256-VOaIb07HRK+ZKArPCWr2HVBQLjxnHNEyUhAybPEcq4I=";
         };
       };
     in
