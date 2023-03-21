@@ -41,7 +41,10 @@ local lsp_formatting = function(bufnr)
 	})
 end
 
-lsp_signature.setup()
+-- Disable the panda
+lsp_signature.setup({
+	hint_prefix = "> ",
+})
 
 -- if you want to set up formatting on save, you can use this as a callback
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})

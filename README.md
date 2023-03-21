@@ -14,11 +14,15 @@ use Nix as a package manager. This repo also contains other dotfiles for non-Nix
 
 Right now we have two hosts that are managed by Nix:
 
+| Host      | OS    | Platform       |
+| --------- | ----- | -------------- |
+| spork     | NixOS | x86-64-linux   |
+| blahaj    | NixOS | x86-64-linux   |
+| discovery | MacOS | aarch64-darwin |
 
 ## Run OS Upgrade
 
-Run the build against the host that you are interested in. This only applies to
-NixOS machines:
+Run the build against the host that you are interested in. This only applies to NixOS machines:
 
 ```bash
 sudo nixos-rebuild switch --flake .#

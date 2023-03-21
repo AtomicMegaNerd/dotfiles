@@ -37,20 +37,38 @@
             ./hosts/blahaj/configuration.nix
           ];
         };
+        spork = nixpkgs.lib.nixosSystem {
+          pkgs = pkgs-linux;
+          system = "x86_64-linux";
+          modules = [
+            ./hosts/spork/configuration.nix
+          ];
+        };
       };
 
       # Home Manager configuration
       homeConfigurations = {
         useGlobalPkgs = true;
         useUserPackages = true;
+        # Spork
+        "rcd@spork" = home-manager.lib.homeManagerConfiguration {
+          pkgs = unstable-linux;
+          modules = [ ./hosts/spork/rcd.nix ];
+        };
+        "root@spork" = home-manager.lib.homeManagerConfiguration {
+          pkgs = unstable-linux;
+          modules = [ ./hosts/spork/root.nix ];
+        };
+        # Blahaj
         "rcd@blahaj" = home-manager.lib.homeManagerConfiguration {
           pkgs = unstable-linux;
           modules = [ ./hosts/blahaj/rcd.nix ];
         };
         "root@blahaj" = home-manager.lib.homeManagerConfiguration {
           pkgs = unstable-linux;
-          modules = [ ./hosts/blahaj/rcd.nix ];
+          modules = [ ./hosts/blahaj/root.nix ];
         };
+        # Discovery
         "rcd@Discovery" = home-manager.lib.homeManagerConfiguration {
           pkgs = unstable-mac;
           modules = [ ./hosts/discovery/rcd.nix ];
