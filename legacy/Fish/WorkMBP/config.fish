@@ -50,6 +50,7 @@ set -gx TERMINFO_DIRS "$TERMINFO_DIRS:$HOME/.local/share/terminfo"
 # General flags
 # ===================================
 set -gx FUNCTIONS_CORE_TOOLS_TELEMETRY_OPTOUT 1
+set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
 
 # Tell NodeJS about our internal CTC certs
 # set -gx NODE_EXTRA_CA_CERTS /Users/chris.dunphy/Certs/CTC_CA_bundle.crt
