@@ -82,11 +82,6 @@ return packer.startup({
 		use({
 			"neovim/nvim-lspconfig",
 		})
-		-- LSP and Linters Installer
-		use({
-			"williamboman/mason.nvim",
-		})
-		use("williamboman/mason-lspconfig.nvim")
 		-- Display LSP status
 		use("j-hui/fidget.nvim")
 		-- CMP
