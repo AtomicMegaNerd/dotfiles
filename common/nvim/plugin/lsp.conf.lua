@@ -26,11 +26,6 @@ if not tele_builtin_status then
 	return
 end
 
-local rust_tools_status, rust_tools = pcall(require, "rust-tools")
-if not rust_tools_status then
-	return
-end
-
 local lsp_formatting = function(bufnr)
 	vim.lsp.buf.format({
 		filter = function(client)
@@ -87,13 +82,23 @@ end
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
 -- Enable the following language servers
-local servers = { "gopls", "pyright", "ruff_lsp", "yamlls", "bashls", "jdtls", "hls", "terraformls", "solargraph" }
+local servers = { "gopls", "pyright", "ruff_lsp", "bashls", "jdtls", "hls", "terraformls", "solargraph" }
 for _, lsp in ipairs(servers) do
 	nvim_lsp[lsp].setup({
 		on_attach = on_attach,
 		capabilities = capabilities,
 	})
 end
+
+nvim_lsp.yamlls.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+	settings = {
+		yaml = {
+			keyOrdering = false,
+		},
+	},
+})
 
 nvim_lsp.tsserver.setup({
 	on_attach = on_attach,
@@ -118,23 +123,6 @@ nvim_lsp.lua_ls.setup({
 			},
 		},
 		telemetry = { enable = false },
-	},
-})
-
--- Rust tools embeds the rust-analyzer server, but we want to make sure we pass
--- our key-bindings to this server so things like rename work.
-rust_tools.setup({
-	server = {
-		on_attach = on_attach,
-		capabilities = capabilities,
-		settings = {
-
-			["rust-analyzer"] = {
-				checkOnSave = {
-					command = "clippy",
-				},
-			},
-		},
 	},
 })
 
