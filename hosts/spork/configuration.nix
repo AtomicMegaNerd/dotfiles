@@ -54,7 +54,19 @@
   # Virtualization and Containers
   virtualisation = {
     docker.enable = true;
+    libvirtd = {
+      enable = true;
+      qemu = {
+        package = pkgs.qemu_kvm;
+        swtpm.enable = true;
+        ovmf = {
+          enable = true;
+          packages = [ pkgs.OVMFFull.fd ];
+        };
+      };
+    };
   };
+  services.spice-vdagentd.enable = true;
 
   # Other services
   services.flatpak.enable = true;
@@ -145,6 +157,14 @@
       corefonts
       noto-fonts
       noto-fonts-cjk
+
+      virt-manager
+      virt-viewer
+      win-spice
+      win-virtio
+      spice-protocol
+      spice
+      spice-gtk
 
       # GNOME specific
       gnome.gnome-tweaks
