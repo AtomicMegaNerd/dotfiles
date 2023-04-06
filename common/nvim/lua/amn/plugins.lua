@@ -45,13 +45,10 @@ return packer.startup({
 			requires = { "kyazdani42/nvim-web-devicons" },
 		})
 		-- -- Telescope
-		-- Don't use fzf on Windows
-		if vim.fn.has("win32") ~= 1 then
-			use({
-				"nvim-telescope/telescope-fzf-native.nvim",
-				run = "make",
-			})
-		end
+    use({
+      "nvim-telescope/telescope-fzf-native.nvim",
+      run = "make",
+    })
 		use({ "nvim-telescope/telescope-file-browser.nvim" })
 		use({ "nvim-telescope/telescope-ui-select.nvim" })
 		use({
@@ -64,9 +61,6 @@ return packer.startup({
 		use({
 			"lewis6991/gitsigns.nvim",
 			requires = { "nvim-lua/plenary.nvim" },
-		})
-		use({
-			"ray-x/lsp_signature.nvim",
 		})
 		-- Treesitter
 		use({
@@ -81,6 +75,9 @@ return packer.startup({
 		-- LSP
 		use({
 			"neovim/nvim-lspconfig",
+		})
+		use({
+			"ray-x/lsp_signature.nvim",
 		})
 		-- Display LSP status
 		use("j-hui/fidget.nvim")
@@ -103,9 +100,6 @@ return packer.startup({
 		})
 
 		use("akinsho/toggleterm.nvim")
-
-		-- Rust
-		use("simrat39/rust-tools.nvim")
 
 		-- Automatic toggling of comments
 		use({

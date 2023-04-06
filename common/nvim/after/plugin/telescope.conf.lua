@@ -44,9 +44,6 @@ telescope.setup({
 })
 
 -- Don't use fzf on Windows
-if vim.fn.has("win32") ~= 1 then
-	telescope.load_extension("fzf")
-end
-
+telescope.load_extension("fzf")
 telescope.load_extension("file_browser")
 telescope.load_extension("ui-select")
