@@ -91,7 +91,7 @@ ln -s ~/Code/Configs/dotfiles/legacy/Helix/ helix
 
 To use this Powershell configuration in Windows you need to install a few modules with scoop first:
 
-```pwsh
+```powershell
 scoop bucket add extras
 scoop install oh-my-posh
 scoop install terminal-icons
@@ -99,7 +99,9 @@ scoop install terminal-icons
 
 Then create the symlink (needs Administrator on Windows):
 
-```pwsh
-cd C:\Users\chris\Documents\PowerShell
-New-item -ItemType SymbolicLink -Target C:\Users\chris\Code\Configs\dotfiles\Powershell\Microsoft.PowerShell_profile.ps1 Microsoft.PowerShell_profile.ps1
+```powershell
+cd C:\Users\chris\Documents\PowerShell `
+    New-item -ItemType SymbolicLink -Target `
+    C:\Users\chris\Code\Configs\dotfiles\Powershell\Microsoft.PowerShell_profile.ps1 `
+    Microsoft.PowerShell_profile.ps1
 ```
