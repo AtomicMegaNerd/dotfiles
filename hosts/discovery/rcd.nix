@@ -17,6 +17,8 @@ in
     grc
     colima
     docker
+    ripgrep
+    fd
     glow
     tldr
   ];
