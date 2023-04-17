@@ -45,10 +45,10 @@ return packer.startup({
 			requires = { "kyazdani42/nvim-web-devicons" },
 		})
 		-- -- Telescope
-    use({
-      "nvim-telescope/telescope-fzf-native.nvim",
-      run = "make",
-    })
+		use({
+			"nvim-telescope/telescope-fzf-native.nvim",
+			run = "make",
+		})
 		use({ "nvim-telescope/telescope-file-browser.nvim" })
 		use({ "nvim-telescope/telescope-ui-select.nvim" })
 		use({
@@ -104,7 +104,7 @@ return packer.startup({
 		-- Automatic toggling of comments
 		use({
 			"numToStr/Comment.nvim",
-			tag = "v0.7.0",
+			tag = "v0.8.0",
 		})
 
 		-- Highlight TODO, FIXME, etc.
