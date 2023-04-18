@@ -53,7 +53,8 @@
 
   # Virtualization and Containers
   virtualisation = {
-    docker.enable = true;
+    podman.enable = true;
+    podman.dockerCompat = true;
     libvirtd = {
       enable = true;
       qemu = {

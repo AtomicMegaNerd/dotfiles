@@ -37,6 +37,7 @@
         [
           p.nix
           p.go
+          p.gomod
           p.rust
           p.haskell
           p.python

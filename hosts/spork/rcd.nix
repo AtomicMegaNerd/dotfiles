@@ -19,6 +19,7 @@
   };
 
   programs.neovim = import ../../common/neovim.nix { inherit pkgs; };
+  programs.helix = import ../../common/helix.nix { inherit pkgs; };
 
   programs.fish = {
     enable = true;
