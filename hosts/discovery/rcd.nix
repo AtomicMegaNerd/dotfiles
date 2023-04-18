@@ -15,8 +15,7 @@ in
     duf
     du-dust
     grc
-    colima
-    docker
+    podman
     ripgrep
     fd
     glow
