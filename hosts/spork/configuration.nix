@@ -153,12 +153,14 @@
       unzip
       procs
       firefox
+      solaar # Logitech Unifying Receiver
 
       # fonts
       corefonts
       noto-fonts
       noto-fonts-cjk
 
+      # Virtualization
       virt-manager
       virt-viewer
       win-spice
