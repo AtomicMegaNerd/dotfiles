@@ -174,13 +174,16 @@
           family = "JetBrainsMono Nerd Font";
           style = "Medium";
         };
-        size = 18;
+        size = 20;
       };
       cursor = {
         style = {
           shape = "Block";
           blinking = "Always";
         };
+      };
+      env = {
+        TERM = "xterm-256color";
       };
       mouse_bindings = [
         { mouse = "Right"; action = "Paste"; }
