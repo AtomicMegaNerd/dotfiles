@@ -11,6 +11,9 @@ font:
     style: Italic
   size: 22
 
+env:
+  TERM: xterm-256color
+
 cursor:
   style:
     shape: Block
@@ -25,7 +28,6 @@ window:
   padding:
     x: 3
     y: 3
-  opacity: 0.94
 
 # Nightfox Alacritty Colors
 colors:
