@@ -195,7 +195,7 @@
           x = 3;
           y = 3;
         };
-        opacity = 0.97;
+        opacity = 0.94;
       };
       colors = {
         primary = {
