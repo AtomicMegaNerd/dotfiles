@@ -130,6 +130,10 @@
       source = ../../common/poetry;
       target = "poetry";
     };
+    sway = {
+      source = ./sway;
+      target = "sway";
+    };
   };
 
   programs.git = {

@@ -67,14 +67,15 @@
       };
     };
   };
-  services.spice-vdagentd.enable = true;
 
   # Other services
   services.flatpak.enable = true;
   services.onedrive.enable = true;
+  services.dbus.enable = true;
+  services.spice-vdagentd.enable = true;
+  programs.dconf.enable = true;
 
   # Other core apps
-  programs.dconf.enable = true;
   programs._1password-gui.enable = true;
   programs._1password-gui.polkitPolicyOwners = [ "rcd" ];
   programs.steam.enable = true;
@@ -111,6 +112,29 @@
     gnome-calendar
     gnome-contacts
   ]);
+
+  # Enable Sway
+  programs.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true; # so that gtk works properly
+    extraPackages = with pkgs; [
+      swaylock
+      swayidle
+      wl-clipboard
+      wf-recorder
+      mako # notification daemon
+      slurp
+      wofi
+    ];
+    extraSessionCommands = ''
+      export SDL_VIDEODRIVER=wayland
+      export QT_QPA_PLATFORM=wayland
+      export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+      export _JAVA_AWT_WM_NONREPARENTING=1
+      export MOZ_ENABLE_WAYLAND=1
+    '';
+  };
+  programs.waybar.enable = true;
 
 
   # Enable sound with pipewire.
