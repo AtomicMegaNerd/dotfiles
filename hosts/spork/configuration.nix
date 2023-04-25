@@ -114,6 +114,10 @@
   ]);
 
   # Enable Sway
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+  };
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true; # so that gtk works properly
@@ -122,9 +126,13 @@
       swayidle
       wl-clipboard
       wf-recorder
-      mako # notification daemon
       slurp
       wofi
+      xwayland
+      libinput
+      glib
+      gtk3.out
+      gnome.gnome-control-center
     ];
     extraSessionCommands = ''
       export SDL_VIDEODRIVER=wayland
@@ -132,6 +140,9 @@
       export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
       export _JAVA_AWT_WM_NONREPARENTING=1
       export MOZ_ENABLE_WAYLAND=1
+      export XDG_SESSION_TYPE=wayland
+      export XDG_SESSION_DESKTOP=sway
+      export XDG_CURRENT_DESKTOP=sway
     '';
   };
   programs.waybar.enable = true;
