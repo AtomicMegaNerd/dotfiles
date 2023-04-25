@@ -49,8 +49,6 @@
       unzip
       procs
       jq
-      kubectl
-      minikube
     ];
 
   # List services that you want to enable:
