@@ -206,3 +206,5 @@ include @sysconfdir@/sway/config.d/*
 
 # Fixes slowly loading GNOME applications
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+# Makes 1Password SSH agent work
+exec systemctl --user start polkit-gnome-authentication-agent-1.service
