@@ -116,9 +116,6 @@ return packer.startup({
 		-- Managing Git Conflicts
 		use({ "akinsho/git-conflict.nvim" })
 
-		-- Make Nvim window transparent
-		use({ "xiyaowong/nvim-transparent" })
-
 		-- Helper to find keys and commands
 		use({ "folke/which-key.nvim" })
 
