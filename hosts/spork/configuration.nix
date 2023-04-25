@@ -76,6 +76,7 @@
   programs.dconf.enable = true;
 
   # Other core apps
+  programs._1password.enable = true;
   programs._1password-gui.enable = true;
   programs._1password-gui.polkitPolicyOwners = [ "rcd" ];
   programs.steam.enable = true;
