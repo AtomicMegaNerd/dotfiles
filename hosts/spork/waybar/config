@@ -2,11 +2,23 @@
     "layer": "top",
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
-    "modules-right": ["clock"],
+    "modules-right": ["memory", "cpu", "clock", "tray"],
     "sway/window": {
         "max-length": 50
     },
+	"memory": {
+		"interval": 5,
+		"format": "Mem {}%"
+	},
+	"cpu": {
+		"interval": 5,
+		"format": "CPU {usage:2}%"
+	},
     "clock": {
         "format-alt": "{:%a, %d. %b  %H:%M}"
+    },
+    "tray": {
+        "icon-size": 24,
+        "spacing": 10
     }
 }

@@ -134,6 +134,7 @@
       xwayland
       libinput
       glib
+      autotiling
       gtk3.out
       gnome.gnome-control-center
     ];

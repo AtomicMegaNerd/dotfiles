@@ -182,3 +182,4 @@ exec systemctl --user start polkit-gnome-authentication-agent-1.service
 exec waybar
 
 exec swaybg -i ~/OneDrive/Pictures/Wallpapers/5k_image.jpg -m stretch
+exec_always autotiling
