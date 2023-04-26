@@ -28,6 +28,12 @@ exec swayidle -w \
          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
          before-sleep 'swaylock -f -c 000000'
 
+### Gaps
+gaps inner 10
+
+## No titles on the borders
+default_border none
+
 ### Key bindings
 #
 # Basics:
@@ -166,27 +172,13 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-#
-# Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
-bar {
-    position top
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
-
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
-}
-
 include @sysconfdir@/sway/config.d/*
 
 # Fixes slowly loading GNOME applications
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 # Makes 1Password SSH agent work
 exec systemctl --user start polkit-gnome-authentication-agent-1.service
+# Use Waybar
+exec waybar
+
+exec swaybg -i ~/OneDrive/Pictures/Wallpapers/5k_image.jpg -m stretch

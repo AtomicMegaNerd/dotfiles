@@ -125,6 +125,8 @@
     extraPackages = with pkgs; [
       swaylock
       swayidle
+      swaybg
+      waybar
       wl-clipboard
       wf-recorder
       slurp

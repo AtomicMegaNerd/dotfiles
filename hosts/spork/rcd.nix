@@ -134,6 +134,10 @@
       source = ./sway;
       target = "sway";
     };
+    waybar = {
+      source = ./waybar;
+      target = "waybar";
+    };
   };
 
   programs.git = {
