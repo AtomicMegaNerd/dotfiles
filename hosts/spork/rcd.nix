@@ -144,6 +144,8 @@
     };
   };
 
+  home.file."/home/rcd/.config/ulauncher".source = config.lib.file.mkOutOfStoreSymlink /home/rcd/Code/Configs/dotfiles/hosts/spork/ulauncher;
+
   programs.git = {
     enable = true;
     userName = "Chris Dunphy";

@@ -3,6 +3,15 @@
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
     "modules-right": ["memory", "cpu", "clock", "tray"],
+    "sway/workspaces": {
+        "all-outputs": true,
+        "persistent_workspaces": {
+             "1": [],
+             "2": [],
+             "3": [],
+             "4": []
+        }
+    },
     "sway/window": {
         "max-length": 50
     },
