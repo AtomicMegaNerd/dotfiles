@@ -180,6 +180,9 @@ include @sysconfdir@/sway/config.d/*
 # Fixes slowly loading GNOME applications
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
+# Setup gnome_polkit
+exec systemctl --user restart polkit-gnome-authentication-agent-1.service
+
 # Use Waybar as our toolbar
 exec waybar
 
