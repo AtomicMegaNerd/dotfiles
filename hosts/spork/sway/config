@@ -21,18 +21,21 @@ set $term alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu wofi --show run | xargs
+set $menu ulauncher-toggle
+for_window [app_id="ulauncher"] floating enable, border none
 
+# Enable the lock-screen
 exec swayidle -w \
-         timeout 300 'swaylock -f -c 000000' \
-         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-         before-sleep 'swaylock -f -c 000000'
+         timeout 300 'swaylock -f -c 000000'
 
 ### Gaps
 gaps inner 10
 
 ## No titles on the borders
 default_border none
+
+# Set wallpaper image
+output * background ~/OneDrive/Pictures/Wallpapers/IMG_0792.jpeg stretch
 
 ### Key bindings
 #
@@ -176,10 +179,26 @@ include @sysconfdir@/sway/config.d/*
 
 # Fixes slowly loading GNOME applications
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
-# Makes 1Password SSH agent work
-exec systemctl --user start polkit-gnome-authentication-agent-1.service
-# Use Waybar
+
+# Use Waybar as our toolbar
 exec waybar
 
-exec swaybg -i ~/OneDrive/Pictures/Wallpapers/5k_image.jpg -m stretch
+# Enable polkit - this makes 1Password work with the SSH agent for example
+exec lxpolkit
+
+# Turn Sway into a dynamic tiler
 exec_always autotiling
+
+# Enable ulauncher which is awesome
+exec ulauncher --hide-window 1 
+
+# Gnome settings
+set $gnome-schema org.gnome.desktop.interface
+exec_always {
+    gsettings set $gnome-schema gtk-theme 'Adwaita-Dark'
+    gsettings set $gnome-schema icon-theme 'Adwaita'
+    gsettings set org.gnome.desktop.wm.preferences button-layout ''
+    gsettings set org.gnome.desktop.default-applications.terminal exec $term
+    gsettings set org.gnome.desktop.default-applications.terminal exec-arg ''
+}
+

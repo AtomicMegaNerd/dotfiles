@@ -46,7 +46,6 @@
     xkbVariant = "";
     displayManager.gdm.wayland = true;
     displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
   };
   hardware.opengl.enable = true;
   programs.xwayland.enable = true;
@@ -67,7 +66,10 @@
       };
     };
   };
-
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+  };
   # Other services
   services.flatpak.enable = true;
   services.onedrive.enable = true;
@@ -90,35 +92,6 @@
     ];
   };
 
-  # Enable the GNOME Desktop Environment.
-  services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
-  environment.gnome.excludePackages = (with pkgs; [
-    gnome-photos
-    gnome-tour
-    gnome-text-editor
-  ]) ++ (with pkgs.gnome; [
-    cheese # webcam tool
-    gnome-music
-    gnome-terminal
-    gedit # text editor
-    epiphany # web browser
-    geary # email reader
-    evince # document viewer
-    gnome-characters
-    totem # video player
-    tali # poker game
-    iagno # go game
-    hitori # sudoku game
-    atomix # puzzle game
-    gnome-calendar
-    gnome-contacts
-  ]);
-
-  # Enable Sway
-  xdg.portal = {
-    enable = true;
-    wlr.enable = true;
-  };
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true; # so that gtk works properly
@@ -127,16 +100,18 @@
       swayidle
       swaybg
       waybar
+      mako
       wl-clipboard
       wf-recorder
       slurp
-      wofi
+      xfce.thunar
+      ulauncher
+      lxde.lxsession
       xwayland
       libinput
       glib
       autotiling
       gtk3.out
-      gnome.gnome-control-center
     ];
     extraSessionCommands = ''
       export SDL_VIDEODRIVER=wayland
@@ -207,11 +182,6 @@
       spice-protocol
       spice
       spice-gtk
-
-      # GNOME specific
-      gnome.gnome-tweaks
-      gnomeExtensions.pop-shell
-      gnomeExtensions.appindicator
     ];
 
 
