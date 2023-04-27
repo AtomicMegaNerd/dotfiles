@@ -183,9 +183,6 @@ exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSO
 # Use Waybar as our toolbar
 exec waybar
 
-# Enable polkit - this makes 1Password work with the SSH agent for example
-exec lxpolkit
-
 # Turn Sway into a dynamic tiler
 exec_always autotiling
 
@@ -195,10 +192,14 @@ exec ulauncher --hide-window 1
 # Gnome settings
 set $gnome-schema org.gnome.desktop.interface
 exec_always {
-    gsettings set $gnome-schema gtk-theme 'Adwaita-Dark'
+    gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+    gsettings set $schema gtk-application-prefer-dark-theme true
+    gsettings set $gnome-schema gtk-theme 'Adwaita'
     gsettings set $gnome-schema icon-theme 'Adwaita'
     gsettings set org.gnome.desktop.wm.preferences button-layout ''
     gsettings set org.gnome.desktop.default-applications.terminal exec $term
     gsettings set org.gnome.desktop.default-applications.terminal exec-arg ''
 }
 
+# Enable notifications
+exec mako

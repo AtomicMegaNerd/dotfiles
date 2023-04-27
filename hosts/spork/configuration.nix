@@ -48,6 +48,7 @@
     displayManager.gdm.enable = true;
   };
   hardware.opengl.enable = true;
+  hardware.bluetooth.enable = true;
   programs.xwayland.enable = true;
 
   # Virtualization and Containers
@@ -105,13 +106,15 @@
       wf-recorder
       slurp
       xfce.thunar
+      xdg-utils
       ulauncher
-      lxde.lxsession
+      blueman
       xwayland
       libinput
+      polkit_gnome
       glib
       autotiling
-      gtk3.out
+      at-spi2-atk # GTK4 progams expect accessibility protocols
     ];
     extraSessionCommands = ''
       export SDL_VIDEODRIVER=wayland
@@ -122,6 +125,7 @@
       export XDG_SESSION_TYPE=wayland
       export XDG_SESSION_DESKTOP=sway
       export XDG_CURRENT_DESKTOP=sway
+      export GTK_A11Y=none
     '';
   };
   programs.waybar.enable = true;

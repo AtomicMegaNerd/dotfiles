@@ -138,6 +138,10 @@
       source = ./waybar;
       target = "waybar";
     };
+    gtk = {
+      source = ./gtk-3.0;
+      target = "gtk-3.0";
+    };
   };
 
   programs.git = {
