@@ -76,9 +76,13 @@
   services.onedrive.enable = true;
   services.dbus.enable = true;
   services.spice-vdagentd.enable = true;
-  programs.dconf.enable = true;
+  services.gnome.gnome-keyring.enable = true;
+
+  # Polkit
+  security.polkit.enable = true;
 
   # Other core apps
+  programs.dconf.enable = true;
   programs._1password.enable = true;
   programs._1password-gui.enable = true;
   programs._1password-gui.polkitPolicyOwners = [ "rcd" ];
@@ -106,12 +110,12 @@
       wf-recorder
       slurp
       xfce.thunar
+      polkit_gnome
       xdg-utils
       ulauncher
       blueman
       xwayland
       libinput
-      polkit_gnome
       glib
       autotiling
       at-spi2-atk # GTK4 progams expect accessibility protocols
@@ -166,6 +170,7 @@
       procs
       jq
       htop
+      duf
       git
       zip
       unzip
