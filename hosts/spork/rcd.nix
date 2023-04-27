@@ -177,28 +177,6 @@
     '';
   };
 
-  systemd.user.services = {
-    polkit-gnome-authentication-agent-1 = {
-      Unit = {
-        After = [ "graphical-session-pre.target" ];
-        Description = "polkit-gnome-authentication-agent-1";
-        PartOf = [ "graphical-session.target" ];
-      };
-
-      Service = {
-        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-        Restart = "on-failure";
-        RestartSec = 1;
-        TimeoutStopSec = 10;
-        Type = "simple";
-      };
-
-      Install = {
-        WantedBy = [ "graphical-session.target" ];
-      };
-    };
-  };
-
   programs.alacritty = {
     enable = true;
     settings = {
@@ -260,6 +238,28 @@
           { index = 16; color = "0xf4a261"; }
           { index = 17; color = "0xd67ad2"; }
         ];
+      };
+    };
+  };
+
+  systemd.user.services = {
+    polkit-gnome-authentication-agent-1 = {
+      Unit = {
+        After = [ "graphical-session-pre.target" ];
+        Description = "polkit-gnome-authentication-agent-1";
+        PartOf = [ "graphical-session.target" ];
+      };
+
+      Service = {
+        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        Restart = "on-failure";
+        RestartSec = 1;
+        TimeoutStopSec = 10;
+        Type = "simple";
+      };
+
+      Install = {
+        WantedBy = [ "graphical-session.target" ];
       };
     };
   };
