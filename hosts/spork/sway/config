@@ -8,6 +8,7 @@
 #
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
+set $hyper Mod1
 
 # Home row direction keys, like vim
 set $left h
@@ -43,12 +44,17 @@ output * background ~/OneDrive/Pictures/Wallpapers/IMG_0792.jpeg stretch
 #
     # Start a terminal
     bindsym $mod+Return exec $term
+    bindsym $hyper+t exec $term
+
+    # Browser
+    bindsym $hyper+b exec firefox
 
     # Kill focused window
     bindsym $mod+Shift+q kill
 
     # Start your launcher
     bindsym $mod+d exec $menu
+    bindsym $hyper+space exec $menu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
