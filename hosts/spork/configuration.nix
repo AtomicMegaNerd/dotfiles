@@ -112,12 +112,14 @@
       xfce.thunar
       polkit_gnome
       xdg-utils
+      clipman
       ulauncher
       blueman
       xwayland
       libinput
       glib
       autotiling
+      pavucontrol
       at-spi2-atk # GTK4 progams expect accessibility protocols
     ];
     extraSessionCommands = ''

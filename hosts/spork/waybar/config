@@ -2,7 +2,7 @@
     "layer": "top",
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
-    "modules-right": ["memory", "cpu", "clock", "tray"],
+    "modules-right": ["pulseaudio", "memory", "cpu", "clock", "tray"],
     "sway/workspaces": {
         "all-outputs": true,
         "persistent_workspaces": {
@@ -14,6 +14,10 @@
     },
     "sway/window": {
         "max-length": 50
+    },
+    "pulseaudio": {
+  	    "format": "{volume}% {icon}",
+        "on-click": "pavucontrol",
     },
 	"memory": {
 		"interval": 5,

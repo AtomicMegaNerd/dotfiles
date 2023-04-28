@@ -205,5 +205,8 @@ exec_always {
     gsettings set org.gnome.desktop.default-applications.terminal exec-arg ''
 }
 
+# Clipboard
+exec wl-paste -t text --watch clipman store --no-persist
+
 # Enable notifications
 exec mako
