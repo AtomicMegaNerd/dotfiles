@@ -33,7 +33,7 @@
             "style": "folder"
           },
           "style": "powerline",
-          "template": " \uf74a  {{ .Path }} ",
+          "template": " \uf07b  {{ .Path }} ",
           "type": "path"
         },
         {
