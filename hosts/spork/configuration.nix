@@ -90,15 +90,6 @@
     enable = true;
   };
 
-  # Setup fonts
-  fonts = {
-    fontDir.enable = true;
-    # Can't live without nerd fonts!
-    fonts = with pkgs; [
-      (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
-    ];
-  };
-
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true; # so that gtk works properly

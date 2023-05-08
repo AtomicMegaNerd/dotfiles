@@ -11,6 +11,7 @@
     glow
     tldr
     grc
+    (pkgs.nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
   ];
 
   programs.direnv = {
