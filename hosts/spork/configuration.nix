@@ -86,7 +86,9 @@
   programs._1password.enable = true;
   programs._1password-gui.enable = true;
   programs._1password-gui.polkitPolicyOwners = [ "rcd" ];
-  programs.steam.enable = true;
+  programs.steam = {
+    enable = true;
+  };
 
   # Setup fonts
   fonts = {

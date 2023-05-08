@@ -269,4 +269,6 @@
       };
     };
   };
+
+  xdg.enable = true;
 }
