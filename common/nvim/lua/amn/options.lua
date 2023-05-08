@@ -75,3 +75,10 @@ g.rooter_patterns = {
 }
 
 vim.opt.clipboard:prepend({ "unnamed", "unnamedplus" })
+
+vim.filetype.add({
+	pattern = {
+		[".*/yamllint/config"] = "yaml",
+		[".*/.config/waybar/config"] = "json",
+	},
+})

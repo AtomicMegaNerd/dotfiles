@@ -130,6 +130,10 @@
       source = ../../common/poetry;
       target = "poetry";
     };
+    yamllint = {
+      source = ../../common/yamllint;
+      target = "yamllint";
+    };
   };
 
   programs.git = {
