@@ -142,6 +142,10 @@
       source = ./gtk-3.0;
       target = "gtk-3.0";
     };
+    yamllint = {
+      source = ../../common/yamllint;
+      target = "yamllint";
+    };
   };
 
   home.file."/home/rcd/.config/ulauncher".source = config.lib.file.mkOutOfStoreSymlink /home/rcd/Code/Configs/dotfiles/hosts/spork/ulauncher;
