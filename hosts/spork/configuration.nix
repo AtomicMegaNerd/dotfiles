@@ -46,9 +46,9 @@
     xkbVariant = "";
     displayManager.gdm.wayland = true;
     displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
   };
   hardware.opengl.enable = true;
+  hardware.bluetooth.enable = true;
   programs.xwayland.enable = true;
 
   # Virtualization and Containers
@@ -67,50 +67,67 @@
       };
     };
   };
-  services.spice-vdagentd.enable = true;
-
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+  };
   # Other services
   services.flatpak.enable = true;
   services.onedrive.enable = true;
+  services.dbus.enable = true;
+  services.spice-vdagentd.enable = true;
+  services.gnome.gnome-keyring.enable = true;
+
+  # Polkit
+  security.polkit.enable = true;
 
   # Other core apps
   programs.dconf.enable = true;
+  programs._1password.enable = true;
   programs._1password-gui.enable = true;
   programs._1password-gui.polkitPolicyOwners = [ "rcd" ];
-  programs.steam.enable = true;
-
-  # Setup fonts
-  fonts = {
-    fontDir.enable = true;
-    # Can't live without nerd fonts!
-    fonts = with pkgs; [
-      (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
-    ];
+  programs.steam = {
+    enable = true;
   };
 
-  # Enable the GNOME Desktop Environment.
-  services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
-  environment.gnome.excludePackages = (with pkgs; [
-    gnome-photos
-    gnome-tour
-    gnome-text-editor
-  ]) ++ (with pkgs.gnome; [
-    cheese # webcam tool
-    gnome-music
-    gnome-terminal
-    gedit # text editor
-    epiphany # web browser
-    geary # email reader
-    evince # document viewer
-    gnome-characters
-    totem # video player
-    tali # poker game
-    iagno # go game
-    hitori # sudoku game
-    atomix # puzzle game
-    gnome-calendar
-    gnome-contacts
-  ]);
+  programs.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true; # so that gtk works properly
+    extraPackages = with pkgs; [
+      swaylock
+      swayidle
+      swaybg
+      waybar
+      mako
+      wl-clipboard
+      wf-recorder
+      slurp
+      xfce.thunar
+      polkit_gnome
+      xdg-utils
+      clipman
+      ulauncher
+      blueman
+      xwayland
+      libinput
+      glib
+      autotiling
+      pavucontrol
+      at-spi2-atk # GTK4 progams expect accessibility protocols
+    ];
+    extraSessionCommands = ''
+      export SDL_VIDEODRIVER=x11
+      export QT_QPA_PLATFORM=wayland
+      export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+      export _JAVA_AWT_WM_NONREPARENTING=1
+      export MOZ_ENABLE_WAYLAND=1
+      export XDG_SESSION_TYPE=wayland
+      export XDG_SESSION_DESKTOP=sway
+      export XDG_CURRENT_DESKTOP=sway
+      export GTK_A11Y=none
+    '';
+  };
+  programs.waybar.enable = true;
 
 
   # Enable sound with pipewire.
@@ -148,17 +165,20 @@
       procs
       jq
       htop
+      duf
       git
       zip
       unzip
       procs
       firefox
+      solaar # Logitech Unifying Receiver
 
       # fonts
       corefonts
       noto-fonts
       noto-fonts-cjk
 
+      # Virtualization
       virt-manager
       virt-viewer
       win-spice
@@ -166,11 +186,6 @@
       spice-protocol
       spice
       spice-gtk
-
-      # GNOME specific
-      gnome.gnome-tweaks
-      gnomeExtensions.pop-shell
-      gnomeExtensions.appindicator
     ];
 
 

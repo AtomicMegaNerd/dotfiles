@@ -184,7 +184,7 @@ in
           family = "JetBrainsMono Nerd Font";
           style = "Medium";
         };
-        size = 18;
+        size = 20;
       };
       cursor = {
         style = {

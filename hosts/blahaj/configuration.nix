@@ -49,12 +49,17 @@
       unzip
       procs
       jq
+      kubectl
     ];
 
   # List services that you want to enable:
   services.openssh.enable = true;
-  virtualisation.podman.enable = true;
-  virtualisation.podman.dockerCompat = true;
+  virtualisation.docker.enable = true;
+
+  # Setup k3s
+  networking.firewall.allowedTCPPorts = [ 6443 ];
+  services.k3s.enable = true;
+  services.k3s.role = "server";
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

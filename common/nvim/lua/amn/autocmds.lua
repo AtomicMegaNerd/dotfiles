@@ -32,7 +32,7 @@ local fto_grp = vim.api.nvim_create_augroup("FileTypeOptions", { clear = true })
 vim.api.nvim_create_autocmd("Filetype", {
 	command = "set tabstop=2 shiftwidth=2",
 	group = fto_grp,
-	pattern = { "haskell", "lua", "typescript", "tsx", "jsx", "javascript", "terraform" },
+	pattern = { "haskell", "lua", "typescript", "tsx", "jsx", "javascript", "terraform", "nix" },
 })
 
 vim.api.nvim_create_autocmd("Filetype", {
@@ -41,19 +41,13 @@ vim.api.nvim_create_autocmd("Filetype", {
 	pattern = { "python" },
 })
 
-vim.api.nvim_create_autocmd("BufNewFile", {
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 	command = "setf groovy",
 	group = fto_grp,
 	pattern = "Jenkinsfile",
 })
 
-vim.api.nvim_create_autocmd("BufRead", {
-	command = "setf groovy",
-	group = fto_grp,
-	pattern = "Jenkinsfile",
-})
-
-vim.api.nvim_create_autocmd("BufRead", {
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	command = "setf bash",
 	group = fto_grp,
 	pattern = "env.list",

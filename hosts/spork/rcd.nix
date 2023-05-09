@@ -11,6 +11,7 @@
     glow
     tldr
     grc
+    (pkgs.nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
   ];
 
   programs.direnv = {
@@ -130,7 +131,25 @@
       source = ../../common/poetry;
       target = "poetry";
     };
+    sway = {
+      source = ./sway;
+      target = "sway";
+    };
+    waybar = {
+      source = ./waybar;
+      target = "waybar";
+    };
+    gtk = {
+      source = ./gtk-3.0;
+      target = "gtk-3.0";
+    };
+    yamllint = {
+      source = ../../common/yamllint;
+      target = "yamllint";
+    };
   };
+
+  home.file."/home/rcd/.config/ulauncher".source = config.lib.file.mkOutOfStoreSymlink /home/rcd/Code/Configs/dotfiles/hosts/spork/ulauncher;
 
   programs.git = {
     enable = true;
@@ -154,7 +173,6 @@
     enableFishIntegration = true;
   };
 
-  xdg.enable = true;
   fonts.fontconfig.enable = true;
 
   programs.ssh = {
@@ -174,13 +192,16 @@
           family = "JetBrainsMono Nerd Font";
           style = "Medium";
         };
-        size = 18;
+        size = 20;
       };
       cursor = {
         style = {
           shape = "Block";
           blinking = "Always";
         };
+      };
+      env = {
+        TERM = "xterm-256color";
       };
       mouse_bindings = [
         { mouse = "Right"; action = "Paste"; }
@@ -192,7 +213,7 @@
           x = 3;
           y = 3;
         };
-        opacity = 0.97;
+        opacity = 0.94;
       };
       colors = {
         primary = {
@@ -227,4 +248,28 @@
       };
     };
   };
+
+  systemd.user.services = {
+    polkit-gnome-authentication-agent-1 = {
+      Unit = {
+        After = [ "graphical-session-pre.target" ];
+        Description = "polkit-gnome-authentication-agent-1";
+        PartOf = [ "graphical-session.target" ];
+      };
+
+      Service = {
+        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        Restart = "on-failure";
+        RestartSec = 1;
+        TimeoutStopSec = 10;
+        Type = "simple";
+      };
+
+      Install = {
+        WantedBy = [ "graphical-session.target" ];
+      };
+    };
+  };
+
+  xdg.enable = true;
 }
