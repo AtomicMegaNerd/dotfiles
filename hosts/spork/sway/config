@@ -44,7 +44,6 @@ exec swayidle -w \
 # Gaps                                              #
 #####################################################
 
-smart_gaps on
 gaps inner 10
 
 ## No titles on the borders
