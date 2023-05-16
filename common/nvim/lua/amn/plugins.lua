@@ -127,10 +127,21 @@ return packer.startup({
 		-- Helper to find keys and commands
 		use({ "folke/which-key.nvim" })
 
+		-- NeoTest
+		use({
+			"nvim-neotest/neotest",
+			requires = {
+				"nvim-lua/plenary.nvim",
+				"nvim-treesitter/nvim-treesitter",
+				"antoinemadec/FixCursorHold.nvim",
+				"nvim-neotest/neotest-go",
+				"nvim-neotest/neotest-python",
+			},
+		})
+
 		-- The last few to use vimscript instead of Lua.
 		use("tpope/vim-eunuch")
 		use("tpope/vim-fugitive")
-		use("vim-test/vim-test")
 		use("airblade/vim-rooter")
 
 		if packer_bootstrap then
