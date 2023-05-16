@@ -113,6 +113,14 @@ return packer.startup({
 			requires = "nvim-lua/plenary.nvim",
 		})
 
+		-- Refactoring
+		use({
+			"ThePrimeagen/refactoring.nvim",
+			requires = {
+				{ "nvim-lua/plenary.nvim" },
+				{ "nvim-treesitter/nvim-treesitter" },
+			},
+		})
 		-- Managing Git Conflicts
 		use({ "akinsho/git-conflict.nvim" })
 

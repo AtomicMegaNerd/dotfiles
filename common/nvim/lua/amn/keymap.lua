@@ -69,3 +69,51 @@ keymap.set("n", "<leader>tf", [[<cmd>TestFile<cr>]], { desc = "Run all [T]ests i
 keymap.set("n", "<leader>ts", [[<cmd>TestSuite<cr>]], { desc = "Run whole [T]est [S]uite" })
 keymap.set("n", "<leader>tl", [[<cmd>TestLast<cr>]], { desc = "Re-Run [T]est we ran [L]ast" })
 keymap.set("n", "<leader>tv", [[<cmd>TestVisit<cr>]], { desc = "Return to the last [T]est file and [V]isit" })
+
+-- Remaps for the refactoring operations currently offered by the plugin
+vim.api.nvim_set_keymap(
+	"v",
+	"<leader>re",
+	[[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>]],
+	{ noremap = true, silent = true, expr = false }
+)
+vim.api.nvim_set_keymap(
+	"v",
+	"<leader>rf",
+	[[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>]],
+	{ noremap = true, silent = true, expr = false }
+)
+vim.api.nvim_set_keymap(
+	"v",
+	"<leader>rv",
+	[[ <Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>]],
+	{ noremap = true, silent = true, expr = false }
+)
+vim.api.nvim_set_keymap(
+	"v",
+	"<leader>ri",
+	[[ <Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]],
+	{ noremap = true, silent = true, expr = false }
+)
+
+-- Extract block doesn't need visual mode
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>rb",
+	[[ <Cmd>lua require('refactoring').refactor('Extract Block')<CR>]],
+	{ noremap = true, silent = true, expr = false }
+)
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>rbf",
+	[[ <Cmd>lua require('refactoring').refactor('Extract Block To File')<CR>]],
+	{ noremap = true, silent = true, expr = false }
+)
+
+-- Inline variable can also pick up the identifier currently under the cursor without visual mode
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>ri",
+	[[ <Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]],
+	{ noremap = true, silent = true, expr = false }
+)
