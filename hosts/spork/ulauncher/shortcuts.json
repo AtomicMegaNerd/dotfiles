@@ -33,7 +33,7 @@
         "id": "bd7fd03d-ab35-476d-acc2-6839f1be2be9",
         "name": "Steam HiDPI",
         "keyword": "Steam",
-        "cmd": "GDK_SCALE=2 steam",
+        "cmd": "steam -forcedesktopscaling 2",
         "icon": null,
         "is_default_search": false,
         "run_without_argument": true,
