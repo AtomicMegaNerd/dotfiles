@@ -1,10 +1,5 @@
-local nt_status, nt = pcall(require, "neotest")
-if not nt_status then
-	return
-end
-
-nt.setup({
-	adaptors = {
+require("neotest").setup({
+	adapters = {
 		require("neotest-python"),
 		require("neotest-rust"),
 		require("neotest-go"),

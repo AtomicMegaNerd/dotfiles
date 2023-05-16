@@ -79,6 +79,7 @@
       lsp_signature-nvim
       refactoring-nvim
       neotest
+      FixCursorHold-nvim
       neotest-python
       neotest-go
       neotest-rust
