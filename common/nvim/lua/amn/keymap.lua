@@ -38,12 +38,8 @@ local tb_status, tb = pcall(require, "telescope.builtin")
 if not tb_status then
 	return
 end
-local tfb = ts.extensions.file_browser.file_browser
 
-local nt_status, nt = pcall(require, "neotest")
-if not nt_status then
-	return
-end
+local tfb = ts.extensions.file_browser.file_browser
 
 -- Telescope basics
 keymap.set("n", "<leader>ff", tb.find_files, { desc = "[F]ind [F]files" })
@@ -66,8 +62,14 @@ keymap.set("n", "<leader>bf", tfb, { desc = "[B]rowse [F]iles " })
 -- ToggleTerm
 keymap.set("n", "<leader>c", [[<cmd>ToggleTerm direction=float<cr>]], { desc = "Open [C]ommand-line terminal" })
 
--- Refactoring
+-- Run Tests
 ----------------------------------------------------------------
+keymap.set("n", "<leader>tn", [[<cmd>TestNearest<cr>]], { desc = "Run [T]est [N]earest to cursor" })
+keymap.set("n", "<leader>tf", [[<cmd>TestFile<cr>]], { desc = "Run all [T]ests in [F]ile" })
+keymap.set("n", "<leader>ts", [[<cmd>TestSuite<cr>]], { desc = "Run whole [T]est [S]uite" })
+keymap.set("n", "<leader>tv", [[<cmd>TestVisit<cr>]], { desc = "Return to the last [T]est file and [V]isit" })
+
+-- Refactoring
 vim.api.nvim_set_keymap(
 	"v",
 	"<leader>re",
@@ -113,21 +115,4 @@ vim.api.nvim_set_keymap(
 	"<leader>ri",
 	[[ <Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]],
 	{ noremap = true, silent = true, expr = false }
-)
-
--- Run Tests
-----------------------------------------------------------------
-keymap.set("n", "<leader>tn", function()
-	nt.run.run()
-	nt.output.open()
-end, { desc = "Run [T]est [N]earest to cursor" })
-
-keymap.set("n", "<leader>tf", function()
-	nt.run.run(vim.fn.expand("%"))
-	nt.output.open()
-end, { desc = "Run all [T]ests in [F]ile" })
-
-keymap.set("n", "<leader>ts", function()
-	nt.run.run(vim.fn.getcwd())
-	nt.summary.open()
-end, { desc = "Run whole [T]est [S]uite" })
+) ---------------------------------------------------------------

@@ -75,14 +75,9 @@
       vim-eunuch
       vim-fugitive
       vim-rooter
+      vim-test
       toggleterm-nvim
       lsp_signature-nvim
       refactoring-nvim
-      neotest
-      FixCursorHold-nvim
-      neotest-python
-      neotest-go
-      neotest-rust
-      neotest-haskell
     ];
 }
