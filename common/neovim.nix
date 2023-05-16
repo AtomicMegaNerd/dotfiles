@@ -74,9 +74,14 @@
       todo-comments-nvim
       vim-eunuch
       vim-fugitive
-      vim-test
       vim-rooter
       toggleterm-nvim
       lsp_signature-nvim
+      refactoring-nvim
+      neotest
+      neotest-python
+      neotest-go
+      neotest-rust
+      neotest-haskell
     ];
 }

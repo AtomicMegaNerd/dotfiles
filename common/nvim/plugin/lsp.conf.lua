@@ -125,7 +125,6 @@ rust_tools.setup({
 		on_attach = on_attach,
 		capabilities = capabilities,
 		settings = {
-
 			["rust-analyzer"] = {
 				checkOnSave = {
 					command = "clippy",
@@ -141,14 +140,12 @@ null_ls.setup({
 		null_ls.builtins.formatting.stylua,
 		null_ls.builtins.formatting.prettier,
 		null_ls.builtins.formatting.gofmt,
-		null_ls.builtins.formatting.rustfmt,
 		null_ls.builtins.formatting.black,
 		null_ls.builtins.formatting.nixpkgs_fmt,
 
 		-- Diagnostics
 		null_ls.builtins.diagnostics.markdownlint,
 		null_ls.builtins.diagnostics.staticcheck,
-		null_ls.builtins.diagnostics.mypy,
 	},
 	on_attach = on_attach,
 	capabilities = capabilities,
