@@ -103,6 +103,7 @@
       wf-recorder
       slurp
       xfce.thunar
+      xfce.tumbler
       polkit_gnome
       xdg-utils
       clipman
