@@ -174,6 +174,16 @@
       firefox
       solaar # Logitech Unifying Receiver
 
+      (lutris.override {
+        extraLibraries = pkgs: [
+          libpng
+          libpng12
+          libjpeg
+          libjpeg8
+          libjpeg_original
+        ];
+      })
+
       # fonts
       corefonts
       noto-fonts

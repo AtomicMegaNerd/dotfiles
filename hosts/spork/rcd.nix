@@ -12,6 +12,8 @@
     tldr
     grc
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
+
+    uqm # Ur-Quan Masters
   ];
 
   programs.direnv = {

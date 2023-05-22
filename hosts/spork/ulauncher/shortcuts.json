@@ -38,5 +38,15 @@
         "is_default_search": false,
         "run_without_argument": true,
         "added": 1683580321.9365985
+    },
+    "d9534546-64e1-4980-abb3-30d0f56a3c2a": {
+        "id": "d9534546-64e1-4980-abb3-30d0f56a3c2a",
+        "name": "Ur Quan Masters",
+        "keyword": "uqm",
+        "cmd": "uqm",
+        "icon": null,
+        "is_default_search": false,
+        "run_without_argument": true,
+        "added": 1684770840.455311
     }
 }
