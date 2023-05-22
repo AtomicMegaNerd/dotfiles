@@ -1,19 +1,21 @@
 { pkgs }:
 {
   enable = true;
-  languages = [{
-    name = "python";
-    indent = {
-      tab-width = 4;
-      unit = " ";
-    };
-    language-server = {
-      command = "pyright-langserver";
-      args = [ "--stdio" ];
-    };
-    formatter = { command = "black"; args = [ "-" ]; };
-    auto-format = true;
-  }];
+  languages = {
+    language = [{
+      name = "python";
+      indent = {
+        tab-width = 4;
+        unit = " ";
+      };
+      language-server = {
+        command = "pyright-langserver";
+        args = [ "--stdio" ];
+      };
+      formatter = { command = "black"; args = [ "-" ]; };
+      auto-format = true;
+    }];
+  };
 
   settings = {
     theme = "nightfox";
