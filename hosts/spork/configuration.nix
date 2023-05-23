@@ -103,6 +103,7 @@
       wf-recorder
       slurp
       xfce.thunar
+      xfce.tumbler
       polkit_gnome
       xdg-utils
       clipman
@@ -172,6 +173,15 @@
       procs
       firefox
       solaar # Logitech Unifying Receiver
+
+      (lutris.override {
+        extraLibraries = pkgs: [
+          libpng
+          libpng12
+          libjpeg
+          libjpeg_original
+        ];
+      })
 
       # fonts
       corefonts

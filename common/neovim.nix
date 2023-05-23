@@ -74,9 +74,10 @@
       todo-comments-nvim
       vim-eunuch
       vim-fugitive
-      vim-test
       vim-rooter
+      vim-test
       toggleterm-nvim
       lsp_signature-nvim
+      refactoring-nvim
     ];
 }

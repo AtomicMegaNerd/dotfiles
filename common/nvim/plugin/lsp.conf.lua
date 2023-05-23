@@ -126,13 +126,28 @@ nvim_lsp.lua_ls.setup({
 	},
 })
 
+-- Rust tools embeds the rust-analyzer server, but we want to make sure we pass
+-- our key-bindings to this server so things like rename work.
+rust_tools.setup({
+	server = {
+		on_attach = on_attach,
+		capabilities = capabilities,
+		settings = {
+			["rust-analyzer"] = {
+				checkOnSave = {
+					command = "clippy",
+				},
+			},
+		},
+	},
+})
+
 null_ls.setup({
 	sources = {
 		-- Formatters
 		null_ls.builtins.formatting.stylua,
 		null_ls.builtins.formatting.prettier,
 		null_ls.builtins.formatting.gofmt,
-		null_ls.builtins.formatting.rustfmt,
 		null_ls.builtins.formatting.black,
 		null_ls.builtins.formatting.nixpkgs_fmt,
 
