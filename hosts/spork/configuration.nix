@@ -179,7 +179,6 @@
           libpng
           libpng12
           libjpeg
-          libjpeg8
           libjpeg_original
         ];
       })
