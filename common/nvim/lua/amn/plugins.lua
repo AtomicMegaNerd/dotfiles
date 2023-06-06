@@ -56,6 +56,10 @@ return packer.startup({
 			branch = "0.1.x",
 			requires = { "nvim-lua/plenary.nvim" },
 		})
+		use({
+			"nvim-telescope/telescope-frecency.nvim",
+			requires = { "kkharji/sqlite.lua" },
+		})
 		-- -- Best theme ever
 		use("EdenEast/nightfox.nvim")
 		use({
