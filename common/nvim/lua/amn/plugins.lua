@@ -84,7 +84,7 @@ return packer.startup({
 			"ray-x/lsp_signature.nvim",
 		})
 		-- Display LSP status
-		use("j-hui/fidget.nvim")
+		use({ "j-hui/fidget.nvim", tag = "legacy" })
 		-- CMP
 		use({
 			"hrsh7th/nvim-cmp",
