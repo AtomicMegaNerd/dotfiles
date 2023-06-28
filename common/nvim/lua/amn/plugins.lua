@@ -143,6 +143,13 @@ return packer.startup({
 			},
 		})
 
+		-- Mason
+		use({
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
+			run = ":MasonUpdate", -- :MasonUpdate updates registry contents
+		})
+
 		-- The last few to use vimscript instead of Lua.
 		use("tpope/vim-eunuch")
 		use("tpope/vim-fugitive")

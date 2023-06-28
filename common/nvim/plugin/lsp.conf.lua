@@ -26,6 +26,19 @@ if not tele_builtin_status then
 	return
 end
 
+local mason_status, mason = pcall(require, "mason")
+if not mason_status then
+	return
+end
+
+local mason_lsp_status, mason_lsp = pcall(require, "mason-lspconfig")
+if not mason_lsp_status then
+	return
+end
+
+mason.setup()
+mason_lsp.setup()
+
 local lsp_formatting = function(bufnr)
 	vim.lsp.buf.format({
 		filter = function(client)
@@ -82,7 +95,8 @@ end
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
 -- Enable the following language servers
-local servers = { "gopls", "pyright", "ruff_lsp", "bashls", "jdtls", "hls", "terraformls", "solargraph" }
+local servers =
+	{ "gopls", "pyright", "ruff_lsp", "bashls", "jdtls", "hls", "terraformls", "solargraph", "powershell_es" }
 for _, lsp in ipairs(servers) do
 	nvim_lsp[lsp].setup({
 		on_attach = on_attach,
@@ -125,7 +139,6 @@ nvim_lsp.lua_ls.setup({
 		telemetry = { enable = false },
 	},
 })
-
 
 null_ls.setup({
 	sources = {

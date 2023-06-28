@@ -9,7 +9,7 @@ font:
   italic:
     family: JetBrainsMono Nerd Font
     style: Italic
-  size: 15
+  size: 12
 
 env:
   TERM: xterm-256color
