@@ -20,6 +20,7 @@ in
     fd
     glow
     tldr
+    lazygit
   ];
 
   programs.direnv = {
