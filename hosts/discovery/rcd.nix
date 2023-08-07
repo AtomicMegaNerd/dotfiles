@@ -5,7 +5,7 @@ in
 {
   home.username = "rcd";
   home.homeDirectory = "/Users/rcd";
-  home.stateVersion = "22.11";
+  home.stateVersion = "23.05";
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
@@ -40,6 +40,7 @@ in
       # Enable Homebrew for casks
       fish_add_path /opt/homebrew/bin
       fish_add_path /opt/homebrew/sbin
+      fish_add_path ~/.nix-profile/bin 
     '';
 
     interactiveShellInit = ''
@@ -198,7 +199,6 @@ in
         { mouse = "Left"; action = "Copy"; }
       ];
       window = {
-        decorations = "none";
         padding = {
           x = 3;
           y = 3;
