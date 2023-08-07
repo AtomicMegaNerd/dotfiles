@@ -15,7 +15,6 @@ in
     duf
     du-dust
     grc
-    podman
     ripgrep
     fd
     glow
