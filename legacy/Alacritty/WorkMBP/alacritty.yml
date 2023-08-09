@@ -24,7 +24,7 @@ mouse_bindings:
   - { mouse: Left, action: Copy }
 
 window:
-  decorations: none
+  startup_mode: "Fullscreen"
   padding:
     x: 3
     y: 3

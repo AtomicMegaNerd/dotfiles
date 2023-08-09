@@ -22,7 +22,7 @@ end
 local packer_bootstrap = ensure_packer() -- true if packer was just installed
 
 -- Run PackerSync when we save this file
-vim.cmd([[ 
+vim.cmd([[
   augroup packer_user_config
     autocmd!
     autocmd BufWritePost plugins.lua source <afile> | PackerSync
@@ -55,10 +55,6 @@ return packer.startup({
 			"nvim-telescope/telescope.nvim",
 			branch = "0.1.x",
 			requires = { "nvim-lua/plenary.nvim" },
-		})
-		use({
-			"nvim-telescope/telescope-frecency.nvim",
-			requires = { "kkharji/sqlite.lua" },
 		})
 		-- -- Best theme ever
 		use("EdenEast/nightfox.nvim")
