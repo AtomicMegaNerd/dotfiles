@@ -137,6 +137,9 @@ return packer.startup({
 			run = ":MasonUpdate", -- :MasonUpdate updates registry contents
 		})
 
+    -- Which Key
+    use("folke/which-key.nvim")
+
 		-- The last few to use vimscript instead of Lua.
 		use("tpope/vim-fugitive")
 
