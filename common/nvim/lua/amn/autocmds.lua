@@ -14,7 +14,7 @@ if install_type ~= nil and install_type == "non-nix" then
 	})
 end
 
--- Text Yank
+-- Text yank
 ----------------------------------------------------------------
 -- Automatically highlight text when we yank it
 local yank_grp = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
@@ -26,7 +26,16 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	pattern = "*",
 })
 
--- Options for specific Filetypes
+-- Formatting
+----------------------------------------------------------------
+local fmt_grp = vim.api.nvim_create_augroup("FormatOptions", { clear = true })
+vim.api.nvim_create_autocmd("BufWritePost", {
+	command = "FormatWrite",
+	group = fmt_grp,
+	pattern = "*",
+})
+
+-- Options for specific file types
 ----------------------------------------------------------------
 local fto_grp = vim.api.nvim_create_augroup("FileTypeOptions", { clear = true })
 vim.api.nvim_create_autocmd("Filetype", {

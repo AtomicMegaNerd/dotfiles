@@ -101,6 +101,8 @@ return packer.startup({
 			tag = "v0.8.0",
 		})
 
+		use("mhartington/formatter.nvim")
+
 		-- Highlight TODO, FIXME, etc.
 		use({
 			"folke/todo-comments.nvim",
@@ -137,8 +139,8 @@ return packer.startup({
 			run = ":MasonUpdate", -- :MasonUpdate updates registry contents
 		})
 
-    -- Which Key
-    use("folke/which-key.nvim")
+		-- Which Key
+		use("folke/which-key.nvim")
 
 		-- The last few to use vimscript instead of Lua.
 		use("tpope/vim-fugitive")

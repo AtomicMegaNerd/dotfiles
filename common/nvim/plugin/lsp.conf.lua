@@ -39,13 +39,9 @@ lsp_signature.setup({
 	hint_prefix = "> ",
 })
 
--- if you want to set up formatting on save, you can use this as a callback
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
--- Set up signature support
-lsp_signature.setup()
 
-local on_attach = function(client, bufnr)
+local on_attach = function(_, bufnr)
 	local nmap = function(keys, func, desc)
 		if desc then
 			desc = "LSP: " .. desc

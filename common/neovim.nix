@@ -78,5 +78,7 @@
       toggleterm-nvim
       lsp_signature-nvim
       refactoring-nvim
+      nvim-lint
+      formatter-nvim
     ];
 }
