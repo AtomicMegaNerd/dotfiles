@@ -57,21 +57,4 @@ o.spell = true
 o.termguicolors = true
 vim.cmd("colorscheme nightfox")
 
--- Vim Rooter
-----------------------------------------------------------------
--- These files signify the root of a project.
-g.rooter_patterns = {
-	"Makefile",
-	"Cargo.toml",
-	"Pipfile",
-	"*.mod",
-	"Dockerfile",
-	"VERSION",
-	"CHANGELOG.md",
-	"*.cabal",
-	"stack.yaml",
-	"init.lua",
-	"config.fish",
-}
-
 vim.opt.clipboard:prepend({ "unnamed", "unnamedplus" })
