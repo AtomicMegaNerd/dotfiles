@@ -95,8 +95,6 @@ return packer.startup({
 			requires = { "kyazdani42/nvim-web-devicons", opt = true },
 		})
 
-		use("akinsho/toggleterm.nvim")
-
 		-- Automatic toggling of comments
 		use({
 			"numToStr/Comment.nvim",
