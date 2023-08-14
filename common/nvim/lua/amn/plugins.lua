@@ -65,7 +65,7 @@ return packer.startup({
 		-- Treesitter
 		use({
 			"nvim-treesitter/nvim-treesitter",
-			tag = "v0.8.5.2",
+			tag = "v0.9.1",
 			run = ":TSUpdate",
 		})
 		-- LSP
@@ -119,9 +119,6 @@ return packer.startup({
 		})
 		-- Managing Git Conflicts
 		use({ "akinsho/git-conflict.nvim" })
-
-		-- Helper to find keys and commands
-		use({ "folke/which-key.nvim" })
 
 		-- NeoTest
 		use({
