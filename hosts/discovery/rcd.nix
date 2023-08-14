@@ -20,6 +20,7 @@ in
     glow
     tldr
     lazygit
+    ncurses
   ];
 
   programs.direnv = {
@@ -36,6 +37,7 @@ in
     shellInit = ''
       set -gx EDITOR nvim
       set -gx GOPATH $HOME/.local/go
+      set -gx TERMINFO_DIRS $HOME/.local/share/terminfo
       # Enable Homebrew for casks
       fish_add_path /opt/homebrew/bin
       fish_add_path /opt/homebrew/sbin
