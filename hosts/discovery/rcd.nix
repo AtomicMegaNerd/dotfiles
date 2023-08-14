@@ -4,8 +4,8 @@ let
 in
 {
   home.username = "rcd";
-  home.homeDirectory = "/home/rcd";
-  home.stateVersion = "22.11";
+  home.homeDirectory = "/Users/rcd";
+  home.stateVersion = "23.05";
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
@@ -15,11 +15,11 @@ in
     duf
     du-dust
     grc
-    podman
     ripgrep
     fd
     glow
     tldr
+    lazygit
   ];
 
   programs.direnv = {
@@ -39,6 +39,8 @@ in
       # Enable Homebrew for casks
       fish_add_path /opt/homebrew/bin
       fish_add_path /opt/homebrew/sbin
+      fish_add_path ~/.nix-profile/bin 
+      fish_add_path /nix/var/nix/profiles/default/bin
     '';
 
     interactiveShellInit = ''
@@ -184,7 +186,7 @@ in
           family = "JetBrainsMono Nerd Font";
           style = "Medium";
         };
-        size = 20;
+        size = 16;
       };
       cursor = {
         style = {
@@ -197,7 +199,7 @@ in
         { mouse = "Left"; action = "Copy"; }
       ];
       window = {
-        decorations = "none";
+        startup_mode = "Fullscreen";
         padding = {
           x = 3;
           y = 3;

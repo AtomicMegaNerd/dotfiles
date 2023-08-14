@@ -51,6 +51,10 @@
   hardware.bluetooth.enable = true;
   programs.xwayland.enable = true;
 
+  # Logitech
+  hardware.logitech.wireless.enable = true;
+  hardware.logitech.wireless.enableGraphical = true;
+
   # Virtualization and Containers
   virtualisation = {
     podman.enable = true;
@@ -172,7 +176,6 @@
       unzip
       procs
       firefox
-      solaar # Logitech Unifying Receiver
 
       (lutris.override {
         extraLibraries = pkgs: [

@@ -1,15 +1,6 @@
 ---
 font:
-  normal:
-    family: JetBrainsMono Nerd Font
-    style: Medium
-  bold:
-    family: JetBrainsMono Nerd Font
-    style: Bold
-  italic:
-    family: JetBrainsMono Nerd Font
-    style: Italic
-  size: 18
+ size: 18
 
 cursor:
   style:
@@ -22,7 +13,6 @@ mouse_bindings:
   - { mouse: Left, action: Copy }
 
 window:
-  decorations: none
   padding:
     x: 3
     y: 3
