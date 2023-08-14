@@ -71,7 +71,7 @@ local capabilities = cmp_nvim_lsp.default_capabilities()
 
 -- Enable the following language servers
 local servers =
-	{ "gopls", "pyright", "ruff_lsp", "bashls", "hls", "terraformls", "solargraph", "powershell_es" }
+	{ "gopls", "pyright", "ruff_lsp", "bashls", "terraformls" }
 for _, lsp in ipairs(servers) do
 	nvim_lsp[lsp].setup({
 		on_attach = on_attach,
@@ -87,13 +87,6 @@ nvim_lsp.yamlls.setup({
 			keyOrdering = false,
 		},
 	},
-})
-
-nvim_lsp.tsserver.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
-	cmd = { "typescript-language-server", "--stdio" },
 })
 
 -- Make sure we suppress warnings on the vim global object
