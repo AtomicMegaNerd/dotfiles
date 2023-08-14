@@ -16,11 +16,6 @@ if not cmp_nvim_lsp_status then
 	return
 end
 
-local null_ls_status, null_ls = pcall(require, "null-ls")
-if not null_ls_status then
-	return
-end
-
 local tele_builtin_status, telescope_builtin = pcall(require, "telescope.builtin")
 if not tele_builtin_status then
 	return
@@ -38,16 +33,6 @@ end
 
 mason.setup()
 mason_lsp.setup()
-
-local lsp_formatting = function(bufnr)
-	vim.lsp.buf.format({
-		filter = function(client)
-			-- apply whatever logic you want (in this example, we'll only use null-ls)
-			return client.name == "null-ls"
-		end,
-		bufnr = bufnr,
-	})
-end
 
 -- Disable the panda
 lsp_signature.setup({
@@ -96,7 +81,7 @@ local capabilities = cmp_nvim_lsp.default_capabilities()
 
 -- Enable the following language servers
 local servers =
-	{ "gopls", "pyright", "ruff_lsp", "bashls", "jdtls", "hls", "terraformls", "solargraph", "powershell_es" }
+	{ "gopls", "pyright", "ruff_lsp", "bashls", "hls", "terraformls", "solargraph", "powershell_es" }
 for _, lsp in ipairs(servers) do
 	nvim_lsp[lsp].setup({
 		on_attach = on_attach,
@@ -140,19 +125,3 @@ nvim_lsp.lua_ls.setup({
 	},
 })
 
-null_ls.setup({
-	sources = {
-		-- Formatters
-		null_ls.builtins.formatting.stylua,
-		null_ls.builtins.formatting.prettier,
-		null_ls.builtins.formatting.gofmt,
-		null_ls.builtins.formatting.black,
-		null_ls.builtins.formatting.nixpkgs_fmt,
-
-		-- Diagnostics
-		null_ls.builtins.diagnostics.markdownlint,
-		null_ls.builtins.diagnostics.staticcheck,
-	},
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
