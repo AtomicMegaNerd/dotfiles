@@ -26,25 +26,12 @@ if not rust_tools_status then
 	return
 end
 
-local lsp_formatting = function(bufnr)
-	vim.lsp.buf.format({
-		filter = function(client)
-			-- apply whatever logic you want (in this example, we'll only use null-ls)
-			return client.name == "null-ls"
-		end,
-		bufnr = bufnr,
-	})
-end
-
 -- Disable the panda
 lsp_signature.setup({
 	hint_prefix = "> ",
 })
 
--- if you want to set up formatting on save, you can use this as a callback
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-
-local on_attach = function(client, bufnr)
+local on_attach = function(_, bufnr)
 	local nmap = function(keys, func, desc)
 		if desc then
 			desc = "LSP: " .. desc
@@ -63,16 +50,6 @@ local on_attach = function(client, bufnr)
 	-- Lesser used LSP functionality
 	nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 	nmap("<leader>D", vim.lsp.buf.type_definition, "Type [D]efinition")
-	if client.supports_method("textDocument/formatting") then
-		vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-		vim.api.nvim_create_autocmd("BufWritePre", {
-			group = augroup,
-			buffer = bufnr,
-			callback = function()
-				lsp_formatting(bufnr)
-			end,
-		})
-	end
 end
 
 -- nvim-cmp supports additional completion capabilities

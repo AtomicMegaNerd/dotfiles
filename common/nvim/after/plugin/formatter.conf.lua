@@ -4,9 +4,10 @@ if not fmt_status then
 end
 
 fmt.setup({
-
+  logging = true,
+  -- Set the log level
+  log_level = vim.log.levels.INFO,
 	filetype = {
-
 		python = {
 			require("formatter.filetypes.python").black,
 		},
