@@ -71,10 +71,6 @@ return packer.startup({
 			tag = "v0.8.5.2",
 			run = ":TSUpdate",
 		})
-		use({
-			"jose-elias-alvarez/null-ls.nvim",
-			requires = { "nvim-lua/plenary.nvim" },
-		})
 		-- LSP
 		use({
 			"neovim/nvim-lspconfig",

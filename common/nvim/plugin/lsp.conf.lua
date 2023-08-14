@@ -16,11 +16,6 @@ if not cmp_nvim_lsp_status then
 	return
 end
 
-local null_ls_status, null_ls = pcall(require, "null-ls")
-if not null_ls_status then
-	return
-end
-
 local tele_builtin_status, telescope_builtin = pcall(require, "telescope.builtin")
 if not tele_builtin_status then
 	return
@@ -132,21 +127,4 @@ rust_tools.setup({
 			},
 		},
 	},
-})
-
-null_ls.setup({
-	sources = {
-		-- Formatters
-		null_ls.builtins.formatting.stylua,
-		null_ls.builtins.formatting.prettier,
-		null_ls.builtins.formatting.gofmt,
-		null_ls.builtins.formatting.black,
-		null_ls.builtins.formatting.nixpkgs_fmt,
-
-		-- Diagnostics
-		null_ls.builtins.diagnostics.markdownlint,
-		null_ls.builtins.diagnostics.staticcheck,
-	},
-	on_attach = on_attach,
-	capabilities = capabilities,
 })

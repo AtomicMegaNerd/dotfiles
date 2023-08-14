@@ -57,7 +57,6 @@
       nightfox-nvim
       gitsigns-nvim
       nvim-lspconfig
-      null-ls-nvim
       fidget-nvim
       nvim-cmp
       vim-vsnip
