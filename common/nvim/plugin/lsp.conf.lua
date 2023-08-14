@@ -64,16 +64,6 @@ local on_attach = function(client, bufnr)
 	-- Lesser used LSP functionality
 	nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 	nmap("<leader>D", vim.lsp.buf.type_definition, "Type [D]efinition")
-	if client.supports_method("textDocument/formatting") then
-		vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-		vim.api.nvim_create_autocmd("BufWritePre", {
-			group = augroup,
-			buffer = bufnr,
-			callback = function()
-				lsp_formatting(bufnr)
-			end,
-		})
-	end
 end
 
 -- nvim-cmp supports additional completion capabilities

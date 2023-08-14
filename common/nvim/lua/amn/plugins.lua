@@ -143,9 +143,7 @@ return packer.startup({
 		})
 
 		-- The last few to use vimscript instead of Lua.
-		use("tpope/vim-eunuch")
 		use("tpope/vim-fugitive")
-		use("airblade/vim-rooter")
 
 		if packer_bootstrap then
 			require("packer").sync()
