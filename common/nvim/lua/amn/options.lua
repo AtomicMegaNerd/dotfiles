@@ -8,7 +8,6 @@
 
 local o = vim.o
 local wo = vim.wo
-local g = vim.g
 
 -- Set highlight on search
 o.hlsearch = false
@@ -41,7 +40,7 @@ o.laststatus = 3
 vim.opt.undofile = true
 
 -- This is for which-key
-o.timeoutlen = 500
+o.timeoutlen = 1000
 
 -- Case insensitive searching UNLESS /C or capital in search
 o.ignorecase = true
