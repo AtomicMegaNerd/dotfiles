@@ -20,6 +20,7 @@ in
     glow
     tldr
     lazygit
+    ncurses
   ];
 
   programs.direnv = {
@@ -36,6 +37,10 @@ in
     shellInit = ''
       set -gx EDITOR nvim
       set -gx GOPATH $HOME/.local/go
+
+      # Fixes color bug on MacOS
+      set -gx TERMINFO_DIRS $TERMINFO_DIRS:$HOME/.local/share/terminfo
+
       # Enable Homebrew for casks
       fish_add_path /opt/homebrew/bin
       fish_add_path /opt/homebrew/sbin
@@ -187,6 +192,9 @@ in
           style = "Medium";
         };
         size = 16;
+      };
+      env = {
+        TERM = "xterm-256color";
       };
       cursor = {
         style = {

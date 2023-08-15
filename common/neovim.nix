@@ -80,5 +80,6 @@
       refactoring-nvim
       nvim-lint
       formatter-nvim
+      go-nvim
     ];
 }
