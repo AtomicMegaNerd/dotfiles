@@ -19,6 +19,9 @@ keymap.set("i", "<down>", "<nop>")
 keymap.set("i", "<left>", "<nop>")
 keymap.set("i", "<right>", "<nop>")
 
+-- Remap ; to : for normal mode
+keymap.set("n", ";", ":")
+
 -- Left and right can switch buffers
 keymap.set("n", "<left>", "<cmd>bp<cr>")
 keymap.set("n", "<right>", "<cmd>bn<cr>")
