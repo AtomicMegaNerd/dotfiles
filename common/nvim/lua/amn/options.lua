@@ -57,3 +57,6 @@ o.termguicolors = true
 vim.cmd("colorscheme nightfox")
 
 vim.opt.clipboard:prepend({ "unnamed", "unnamedplus" })
+
+-- I often hit :W instead of :w by mistake
+vim.api.nvim_create_user_command("W", "write", { desc = "Write when I hold down shift too long" })
