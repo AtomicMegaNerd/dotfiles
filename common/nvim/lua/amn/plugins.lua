@@ -78,7 +78,6 @@ require("lazy").setup({
 	-- Automatic toggling of comments
 	{
 		"numToStr/Comment.nvim",
-		tag = "v0.8.0",
 	},
 
 	{ "mhartington/formatter.nvim" },
