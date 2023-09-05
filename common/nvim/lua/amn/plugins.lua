@@ -5,155 +5,112 @@
 -- /_/  |_\__/\____/_/ /_/ /_/_/\___/_/  /_/\___/\__, /\__,_/_/ |_/\___/_/   \__,_/
 --                                              /____/
 --
-
--- Install packer
-----------------------------------------------------------------
--- auto install packer if not installed
-local ensure_packer = function()
-	local fn = vim.fn
-	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-	if fn.empty(fn.glob(install_path)) > 0 then
-		fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
-		vim.cmd([[packadd packer.nvim]])
-		return true
-	end
-	return false
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
 end
-local packer_bootstrap = ensure_packer() -- true if packer was just installed
+vim.opt.rtp:prepend(lazypath)
 
--- Run PackerSync when we save this file
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]])
+require("lazy").setup({
+	-- Start-up screen for Neovim
+	{
+		"goolord/alpha-nvim",
+		dependencies = { "kyazdani42/nvim-web-devicons", lazy = true },
+	},
+	-- Telescope
+	{
+		"nvim-telescope/telescope-fzf-native.nvim",
+		build = "make",
+	},
+	{ "nvim-telescope/telescope-file-browser.nvim" },
+	{ "nvim-telescope/telescope-ui-select.nvim" },
+	{
+		"nvim-telescope/telescope.nvim",
+		branch = "0.1.x",
+		dependencies = { "nvim-lua/plenary.nvim", lazy = true },
+	},
+	-- Best theme ever
+	{ "EdenEast/nightfox.nvim" },
+	{
+		"lewis6991/gitsigns.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+	},
+	-- Treesitter
+	{
+		"nvim-treesitter/nvim-treesitter",
+		tag = "v0.9.1",
+		cmd = "TSUpdate",
+	},
+	-- LSP
+	{
+		"neovim/nvim-lspconfig",
+	},
+	{
+		"ray-x/lsp_signature.nvim",
+	},
+	-- Display LSP status
+	{ "j-hui/fidget.nvim", tag = "legacy" },
+	-- CMP
+	{
+		"hrsh7th/nvim-cmp",
+	},
+	-- CMP extensions
+	{ "hrsh7th/vim-vsnip" },
+	{ "hrsh7th/cmp-vsnip" },
+	{ "hrsh7th/cmp-nvim-lsp" },
+	{ "hrsh7th/cmp-path" },
+	{ "hrsh7th/cmp-buffer" },
+	{ "onsails/lspkind.nvim" },
 
--- import packer safely
-local status, packer = pcall(require, "packer")
-if not status then
-	return
-end
+	-- Status line
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = { "kyazdani42/nvim-web-devicons", opt = true },
+	},
 
-return packer.startup({
-	function(use)
-		-- Package manager
-		use("wbthomason/packer.nvim")
-		-- -- Start-up screen for Neovim
-		use({
-			"goolord/alpha-nvim",
-			requires = { "kyazdani42/nvim-web-devicons" },
-		})
-		-- -- Telescope
-		use({
-			"nvim-telescope/telescope-fzf-native.nvim",
-			run = "make",
-		})
-		use({ "nvim-telescope/telescope-file-browser.nvim" })
-		use({ "nvim-telescope/telescope-ui-select.nvim" })
-		use({
-			"nvim-telescope/telescope.nvim",
-			branch = "0.1.x",
-			requires = { "nvim-lua/plenary.nvim" },
-		})
-		-- -- Best theme ever
-		use("EdenEast/nightfox.nvim")
-		use({
-			"lewis6991/gitsigns.nvim",
-			requires = { "nvim-lua/plenary.nvim" },
-		})
-		-- Treesitter
-		use({
+	-- Automatic toggling of comments
+	{
+		"numToStr/Comment.nvim",
+		tag = "v0.8.0",
+	},
+
+	{ "mhartington/formatter.nvim" },
+
+	-- Highlight TODO, FIXME, etc.
+	{
+		"folke/todo-comments.nvim",
+		dependencies = { "nvim-lua/plenary.nvim", lazy = true },
+	},
+
+	-- NeoTest
+	{
+		"nvim-neotest/neotest",
+		dependencies = {
+			{ "nvim-lua/plenary.nvim", lazy = true },
 			"nvim-treesitter/nvim-treesitter",
-			tag = "v0.9.1",
-			run = ":TSUpdate",
-		})
-		-- LSP
-		use({
-			"neovim/nvim-lspconfig",
-		})
-		use({
-			"ray-x/lsp_signature.nvim",
-		})
-		-- Display LSP status
-		use({ "j-hui/fidget.nvim", tag = "legacy" })
-		-- CMP
-		use({
-			"hrsh7th/nvim-cmp",
-		})
-		-- CMP extensions
-		use("hrsh7th/vim-vsnip")
-		use("hrsh7th/cmp-vsnip")
-		use("hrsh7th/cmp-nvim-lsp")
-		use("hrsh7th/cmp-path")
-		use("hrsh7th/cmp-buffer")
-		use("onsails/lspkind.nvim")
-
-		-- Status line
-		use({
-			"nvim-lualine/lualine.nvim",
-			requires = { "kyazdani42/nvim-web-devicons", opt = true },
-		})
-
-		-- Automatic toggling of comments
-		use({
-			"numToStr/Comment.nvim",
-			tag = "v0.8.0",
-		})
-
-		use("mhartington/formatter.nvim")
-
-		-- Highlight TODO, FIXME, etc.
-		use({
-			"folke/todo-comments.nvim",
-			requires = "nvim-lua/plenary.nvim",
-		})
-
-		-- Refactoring
-		use({
-			"ThePrimeagen/refactoring.nvim",
-			requires = {
-				{ "nvim-lua/plenary.nvim" },
-				{ "nvim-treesitter/nvim-treesitter" },
-			},
-		})
-		-- Managing Git Conflicts
-		use({ "akinsho/git-conflict.nvim" })
-
-		-- NeoTest
-		use({
-			"nvim-neotest/neotest",
-			requires = {
-				"nvim-lua/plenary.nvim",
-				"nvim-treesitter/nvim-treesitter",
-				"antoinemadec/FixCursorHold.nvim",
-				"nvim-neotest/neotest-go",
-				"nvim-neotest/neotest-python",
-			},
-		})
-
-		-- Mason
-		use({
-			"williamboman/mason.nvim",
-			"williamboman/mason-lspconfig.nvim",
-			run = ":MasonUpdate", -- :MasonUpdate updates registry contents
-		})
-
-		-- Which Key
-		use("folke/which-key.nvim")
-
-		-- The last few to use vimscript instead of Lua.
-		use("tpope/vim-fugitive")
-
-		if packer_bootstrap then
-			require("packer").sync()
-		end
-	end,
-	config = {
-		display = {
-			open_fn = function()
-				return require("packer.util").float({ border = "single" })
-			end,
+			"antoinemadec/FixCursorHold.nvim",
+			"nvim-neotest/neotest-go",
+			"nvim-neotest/neotest-python",
 		},
 	},
+
+	-- Mason
+	{
+		"williamboman/mason.nvim",
+		"williamboman/mason-lspconfig.nvim",
+		cmd = "MasonUpdate", -- MasonUpdate updates registry contents
+	},
+
+	-- Which Key
+	{ "folke/which-key.nvim", lazy = true },
+
+	-- The last few to use vimscript instead of Lua.
+	{ "tpope/vim-fugitive" },
 })
