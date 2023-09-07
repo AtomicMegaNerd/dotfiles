@@ -1,6 +1,6 @@
 # Aliases
 # ===================================
-alias ls "exa"
+alias ls "eza"
 alias du "dust"
 alias grep "rg"
 alias wx "curl wttr.in/Calgary"
@@ -18,6 +18,7 @@ alias cj="cd ~/Code/Java"
 alias cpy="cd ~/Code/Python"
 alias cdot="cd ~/Code/Configs/dotfiles"
 alias cdock="cd ~/Code/Docker"
+alias capm="cd ~/Code/Python/coa-ado-project-manager"
 
 # Shortcuts for common files and directories
 alias update_creds="$EDITOR ~/.config/fish/conf.d/credentials.fish"
