@@ -11,7 +11,7 @@ in
   home.packages = with pkgs; [
     neofetch
     oh-my-posh
-    exa
+    eza
     duf
     du-dust
     grc
