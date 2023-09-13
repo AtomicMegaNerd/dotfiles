@@ -11,6 +11,15 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	pattern = "*",
 })
 
+-- Formatting
+----------------------------------------------------------------
+local fmt_grp = vim.api.nvim_create_augroup("FormatOptions", { clear = true })
+vim.api.nvim_create_autocmd("BufWritePost", {
+	command = "FormatWrite",
+	group = fmt_grp,
+	pattern = { "*" },
+})
+
 -- Options for specific file types
 ----------------------------------------------------------------
 local fto_grp = vim.api.nvim_create_augroup("FileTypeOptions", { clear = true })

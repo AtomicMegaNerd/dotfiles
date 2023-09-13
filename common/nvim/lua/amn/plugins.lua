@@ -76,6 +76,9 @@ require("lazy").setup({
 		dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
 	},
 
+	-- Formatting
+	{ "mhartington/formatter.nvim" },
+
 	-- Automatic toggling of comments
 	{
 		"numToStr/Comment.nvim",
