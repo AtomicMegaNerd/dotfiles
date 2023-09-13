@@ -68,6 +68,7 @@ local capabilities = cmp_nvim_lsp.default_capabilities()
 -- Enable the following language servers
 local servers =
 	{ "gopls", "pyright", "ruff_lsp", "bashls", "terraformls" }
+
 for _, lsp in ipairs(servers) do
 	nvim_lsp[lsp].setup({
 		on_attach = on_attach,

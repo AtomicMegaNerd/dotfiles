@@ -44,10 +44,6 @@ end
 
 local tfb = ts.extensions.file_browser.file_browser
 
-local nt_status, nt = pcall(require, "neotest")
-if not nt_status then
-	return
-end
 
 keymap.set("n", "<leader>ff", tb.find_files, { desc = "[F]ind [F]files" })
 keymap.set("n", "<leader>fb", tb.buffers, { desc = "[F]ind [B]uffers" })
@@ -71,6 +67,11 @@ keymap.set("n", "<leader>c", [[<cmd>ToggleTerm direction=float<cr>]], { desc = "
 
 -- NeoTest
 ----------------------------------------------------------------
+
+local nt_status, nt = pcall(require, "neotest")
+if not nt_status then
+	return
+end
 
 keymap.set("n", "<leader>tn", function()
 	nt.run.run()
