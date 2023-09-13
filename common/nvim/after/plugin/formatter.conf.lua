@@ -14,5 +14,11 @@ fmt.setup({
 		go = {
 			require("formatter.filetypes.go").gofmt,
 		},
+		json = {
+			require("formatter.filetypes.json").prettier,
+		},
+		yaml = {
+			require("formatter.filetypes.yaml").prettier,
+		},
 	},
 })
