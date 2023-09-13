@@ -81,8 +81,6 @@ require("lazy").setup({
 		"numToStr/Comment.nvim",
 	},
 
-	{ "mhartington/formatter.nvim" },
-
 	-- Highlight TODO, FIXME, etc.
 
 	-- NeoTest
@@ -110,6 +108,7 @@ require("lazy").setup({
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim", lazy = true },
 	},
+	{ "folke/neodev.nvim" },
 
 	-- The one plug-in that is still written in Vim script :-)
 	{ "tpope/vim-fugitive" },
