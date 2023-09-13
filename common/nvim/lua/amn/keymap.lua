@@ -29,7 +29,7 @@ keymap.set("n", "<right>", "<cmd>bn<cr>")
 -- Delete without overwriting the clipboard
 keymap.set("n", "x", '"_x')
 
--- Telescope keybindings
+-- Telescope
 ----------------------------------------------------------------
 
 local ts_status, ts = pcall(require, "telescope")
@@ -49,7 +49,6 @@ if not nt_status then
 	return
 end
 
--- Telescope basics
 keymap.set("n", "<leader>ff", tb.find_files, { desc = "[F]ind [F]files" })
 keymap.set("n", "<leader>fb", tb.buffers, { desc = "[F]ind [B]uffers" })
 keymap.set("n", "<leader>fd", tb.diagnostics, { desc = "[F]ind [D]iagnostics" })
@@ -70,8 +69,9 @@ keymap.set("n", "<leader>bf", tfb, { desc = "[B]rowse [F]iles " })
 -- ToggleTerm
 keymap.set("n", "<leader>c", [[<cmd>ToggleTerm direction=float<cr>]], { desc = "Open [C]ommand-line terminal" })
 
--- Run Tests
+-- NeoTest
 ----------------------------------------------------------------
+
 keymap.set("n", "<leader>tn", function()
 	nt.run.run()
 	nt.output.open()
@@ -87,51 +87,21 @@ keymap.set("n", "<leader>ts", function()
 	nt.summary.open()
 end, { desc = "Run whole [T]est [S]uite" })
 
--- Refactoring
+-- Trouble.nvim
 ----------------------------------------------------------------
-vim.api.nvim_set_keymap(
-	"v",
-	"<leader>re",
-	[[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>]],
-	{ noremap = true, silent = true, expr = false }
-)
-vim.api.nvim_set_keymap(
-	"v",
-	"<leader>rf",
-	[[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>]],
-	{ noremap = true, silent = true, expr = false }
-)
-vim.api.nvim_set_keymap(
-	"v",
-	"<leader>rv",
-	[[ <Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>]],
-	{ noremap = true, silent = true, expr = false }
-)
-vim.api.nvim_set_keymap(
-	"v",
-	"<leader>ri",
-	[[ <Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]],
-	{ noremap = true, silent = true, expr = false }
-)
 
--- Extract block doesn't need visual mode
-vim.api.nvim_set_keymap(
-	"n",
-	"<leader>rb",
-	[[ <Cmd>lua require('refactoring').refactor('Extract Block')<CR>]],
-	{ noremap = true, silent = true, expr = false }
-)
-vim.api.nvim_set_keymap(
-	"n",
-	"<leader>rbf",
-	[[ <Cmd>lua require('refactoring').refactor('Extract Block To File')<CR>]],
-	{ noremap = true, silent = true, expr = false }
-)
-
--- Inline variable can also pick up the identifier currently under the cursor without visual mode
-vim.api.nvim_set_keymap(
-	"n",
-	"<leader>ri",
-	[[ <Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]],
-	{ noremap = true, silent = true, expr = false }
-)
+vim.keymap.set("n", "<leader>xw", function()
+	require("trouble").open("workspace_diagnostics")
+end)
+vim.keymap.set("n", "<leader>xd", function()
+	require("trouble").open("document_diagnostics")
+end)
+vim.keymap.set("n", "<leader>xq", function()
+	require("trouble").open("quickfix")
+end)
+vim.keymap.set("n", "<leader>xl", function()
+	require("trouble").open("loclist")
+end)
+vim.keymap.set("n", "gR", function()
+	require("trouble").open("lsp_references")
+end)

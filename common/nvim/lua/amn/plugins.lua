@@ -22,8 +22,9 @@ require("lazy").setup({
 	-- Start-up screen for Neovim
 	{
 		"goolord/alpha-nvim",
-		dependencies = { "kyazdani42/nvim-web-devicons", lazy = true },
+		dependencies = { "nvim-tree/nvim-web-devicons", lazy = true },
 	},
+
 	-- Telescope
 	{
 		"nvim-telescope/telescope-fzf-native.nvim",
@@ -72,7 +73,7 @@ require("lazy").setup({
 	-- Status line
 	{
 		"nvim-lualine/lualine.nvim",
-		dependencies = { "kyazdani42/nvim-web-devicons", opt = true },
+		dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
 	},
 
 	-- Automatic toggling of comments
@@ -83,20 +84,16 @@ require("lazy").setup({
 	{ "mhartington/formatter.nvim" },
 
 	-- Highlight TODO, FIXME, etc.
-	{
-		"folke/todo-comments.nvim",
-		dependencies = { "nvim-lua/plenary.nvim", lazy = true },
-	},
 
 	-- NeoTest
 	{
 		"nvim-neotest/neotest",
 		dependencies = {
 			{ "nvim-lua/plenary.nvim", lazy = true },
-			"nvim-treesitter/nvim-treesitter",
-			"antoinemadec/FixCursorHold.nvim",
-			"nvim-neotest/neotest-go",
-			"nvim-neotest/neotest-python",
+			{ "nvim-treesitter/nvim-treesitter", lazy = true },
+			{ "antoinemadec/FixCursorHold.nvim", lazy = true },
+			{ "nvim-neotest/neotest-go", lazy = true },
+			{ "nvim-neotest/neotest-python", lazy = true },
 		},
 	},
 
@@ -109,7 +106,11 @@ require("lazy").setup({
 
 	-- Which Key
 	{ "folke/which-key.nvim", lazy = true },
+	{
+		"folke/todo-comments.nvim",
+		dependencies = { "nvim-lua/plenary.nvim", lazy = true },
+	},
 
-	-- The last few to use vimscript instead of Lua.
+	-- The one plug-in that is still written in Vim script :-)
 	{ "tpope/vim-fugitive" },
 })
