@@ -39,8 +39,6 @@ lsp_signature.setup({
 	hint_prefix = "> ",
 })
 
-
-
 local on_attach = function(_, bufnr)
 	local nmap = function(keys, func, desc)
 		if desc then
@@ -66,8 +64,7 @@ end
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
 -- Enable the following language servers
-local servers =
-	{ "gopls", "pyright", "ruff_lsp", "bashls", "terraformls" }
+local servers = { "pyright", "ruff_lsp", "bashls", "terraformls" }
 
 for _, lsp in ipairs(servers) do
 	nvim_lsp[lsp].setup({
@@ -83,6 +80,15 @@ nvim_lsp.yamlls.setup({
 		yaml = {
 			keyOrdering = false,
 		},
+	},
+})
+
+nvim_lsp.gopls.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+	settings = {
+   -- Static analysis linter for Go
+		staticcheck = true,
 	},
 })
 
@@ -104,4 +110,3 @@ nvim_lsp.lua_ls.setup({
 		telemetry = { enable = false },
 	},
 })
-
