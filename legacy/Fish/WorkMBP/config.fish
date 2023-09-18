@@ -107,4 +107,8 @@ function tn
     tmux new -s (basename (eval pwd))
 end
 
+# Init oh-my-posh
 oh-my-posh init fish --config ~/.config/oh-my-posh/rcd.omp.json | source
+
+# Init zoxide
+zoxide init fish | source
