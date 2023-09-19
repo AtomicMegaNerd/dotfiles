@@ -3,3 +3,5 @@ NeoVim/plugged
 NeoVim/spell
 **/packer_compiled.lua
 **/Brewfile.lock.json
+common/newsboat/history.cmdline
+common/newsboat/cache.db
