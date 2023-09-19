@@ -5,3 +5,4 @@ NeoVim/spell
 **/Brewfile.lock.json
 common/newsboat/history.cmdline
 common/newsboat/cache.db
+common/newsboat/cache.db.lock
