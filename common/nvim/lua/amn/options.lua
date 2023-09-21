@@ -54,7 +54,7 @@ o.spell = true
 
 --Set colorscheme (order is important here)
 o.termguicolors = true
-vim.cmd("colorscheme nightfox")
+vim.cmd("colorscheme dayfox")
 
 vim.opt.clipboard:prepend({ "unnamed", "unnamedplus" })
 
