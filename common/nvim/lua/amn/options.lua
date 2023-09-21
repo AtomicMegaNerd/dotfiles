@@ -54,7 +54,7 @@ o.spell = true
 
 --Set colorscheme (order is important here)
 o.termguicolors = true
-vim.cmd("colorscheme dayfox")
+vim.cmd("colorscheme catppuccin")
 
 vim.opt.clipboard:prepend({ "unnamed", "unnamedplus" })
 

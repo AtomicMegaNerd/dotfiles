@@ -38,7 +38,7 @@ require("lazy").setup({
 		dependencies = { "nvim-lua/plenary.nvim", lazy = true },
 	},
 	-- Best theme ever
-	{ "EdenEast/nightfox.nvim" },
+	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 	{
 		"lewis6991/gitsigns.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
