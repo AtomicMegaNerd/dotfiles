@@ -98,7 +98,8 @@ require("lazy").setup({
 	},
 	{ "folke/neodev.nvim" },
 
-	-- The one plug-in that is still written in Vim script :-)
+  -- Vimscript lives on!
 	{ "tpope/vim-fugitive" },
 	{ "vim-test/vim-test" },
+	{ "airblade/vim-rooter" },
 })

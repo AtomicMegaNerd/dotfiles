@@ -57,7 +57,6 @@ o.spell = true
 o.termguicolors = true
 vim.cmd("colorscheme catppuccin")
 
-
 vim.opt.clipboard:prepend({ "unnamed", "unnamedplus" })
 -- Vim Rooter
 ----------------------------------------------------------------
@@ -76,6 +75,7 @@ g.rooter_patterns = {
 	"stack.yaml",
 	"init.lua",
 	"config.fish",
+	"flake.nix",
 }
 
 -- I often hit :W instead of :w by mistake
