@@ -8,6 +8,7 @@
 
 local o = vim.o
 local wo = vim.wo
+local g = vim.g
 
 -- Set highlight on search
 o.hlsearch = false
@@ -56,7 +57,26 @@ o.spell = true
 o.termguicolors = true
 vim.cmd("colorscheme catppuccin")
 
+
 vim.opt.clipboard:prepend({ "unnamed", "unnamedplus" })
+-- Vim Rooter
+----------------------------------------------------------------
+-- These files signify the root of a project.
+g["test#strategy"] = "neovim"
+
+g.rooter_patterns = {
+	"Makefile",
+	"Cargo.toml",
+	"Pipfile",
+	"*.mod",
+	"Dockerfile",
+	"VERSION",
+	"CHANGELOG.md",
+	"*.cabal",
+	"stack.yaml",
+	"init.lua",
+	"config.fish",
+}
 
 -- I often hit :W instead of :w by mistake
 vim.api.nvim_create_user_command("W", "write", { desc = "Write when I hold down shift too long" })

@@ -84,20 +84,6 @@ require("lazy").setup({
 		"numToStr/Comment.nvim",
 	},
 
-	-- Highlight TODO, FIXME, etc.
-
-	-- NeoTest
-	{
-		"nvim-neotest/neotest",
-		dependencies = {
-			{ "nvim-lua/plenary.nvim", lazy = true },
-			{ "nvim-treesitter/nvim-treesitter", lazy = true },
-			{ "antoinemadec/FixCursorHold.nvim", lazy = true },
-			{ "nvim-neotest/neotest-go", lazy = true },
-			{ "nvim-neotest/neotest-python", lazy = true },
-		},
-	},
-
 	-- Mason
 	{
 		"williamboman/mason.nvim",
@@ -105,7 +91,6 @@ require("lazy").setup({
 		cmd = "MasonUpdate", -- MasonUpdate updates registry contents
 	},
 
-	-- Which Key
 	{ "folke/which-key.nvim", lazy = true },
 	{
 		"folke/todo-comments.nvim",
@@ -115,4 +100,5 @@ require("lazy").setup({
 
 	-- The one plug-in that is still written in Vim script :-)
 	{ "tpope/vim-fugitive" },
+	{ "vim-test/vim-test" },
 })
