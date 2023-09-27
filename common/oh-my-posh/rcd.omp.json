@@ -5,7 +5,9 @@
     "closer": "p:os",
     "pink": "#ea76cb",
     "lavender": "#7287FD",
-    "blue": "#1e66f5"
+    "blue": "#1e66f5",
+    "sky": "#04a5e5",
+    "green": "#40a02b"
   },
   "blocks": [
     {
@@ -28,7 +30,7 @@
           "type": "path"
         },
         {
-          "foreground": "p:lavender",
+          "foreground": "p:sky",
           "properties": {
             "branch_icon": "\ue725 ",
             "cherry_pick_icon": "\ue29b ",
@@ -46,7 +48,7 @@
           "type": "git"
         },
         {
-          "foreground": "p:pink",
+          "foreground": "p:lavender",
           "properties": {
             "fetch_version": true
           },
@@ -64,7 +66,7 @@
           "type": "rust"
         },
         {
-          "foreground": "p:blue",
+          "foreground": "p:lavender",
           "properties": {
             "display_mode": "files"
           },
