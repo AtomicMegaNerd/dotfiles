@@ -19,23 +19,7 @@
 
   environment.systemPackages = with pkgs;
     [
-      wget
-      curl
-      git
-      neovim
-      du-dust
-      duf
-      htop
-      ripgrep
-      fd
-      exa
-      grc
-      zip
-      unzip
-      procs
-      jq
-      fish
-      kubectl
+        fish
     ];  
     environment.shellInit = ''export  NIXPATH="/nix/var/nix/profiles/per-user/$USER/channels:nixos-config=/etc/nixos/configuration.nix"'';
 
