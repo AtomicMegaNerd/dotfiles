@@ -26,6 +26,8 @@
       jq
       fish
       kubectl
+      dos2unix
+      zoxide
   ];
 
   programs.direnv = {
