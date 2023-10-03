@@ -17,6 +17,8 @@
     };
   };
 
+  virtualisation.docker.enable = true;
+
   environment.systemPackages = with pkgs;
     [
         fish
@@ -35,7 +37,7 @@
     };
   };
 
- nix = {
+  nix = {
     package = pkgs.nixFlakes;
     extraOptions = "experimental-features = nix-command flakes";
   };
