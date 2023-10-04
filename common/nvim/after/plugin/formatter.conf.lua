@@ -11,5 +11,17 @@ fmt.setup({
 		lua = {
 			require("formatter.filetypes.lua").stylua,
 		},
+		nix = {
+			require("formatter.filetypes.nix").nixpkgs_fmt,
+		},
+		go = {
+			require("formatter.filetypes.go").gofmt,
+		},
+		json = {
+			require("formatter.filetypes.json").prettier,
+		},
+        yaml = {
+            require("formatter.filetypes.yaml").prettier,
+        },
 	},
 })

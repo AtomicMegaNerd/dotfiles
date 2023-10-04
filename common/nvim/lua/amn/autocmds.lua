@@ -32,20 +32,6 @@ local fmt_grp = vim.api.nvim_create_augroup("FormatOptions", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePost", {
 	command = "FormatWrite",
 	group = fmt_grp,
-	pattern = { "*.lua", "*.py" },
-})
-
-status, go_fmt = pcall(require, "go.format")
-if not status then
-	return
-end
-
-vim.api.nvim_create_autocmd("BufWritePre", {
-	callback = function()
-		go_fmt.goimport()
-	end,
-	group = fmt_grp,
-	pattern = "*.go",
 })
 
 -- Options for specific file types

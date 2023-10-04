@@ -8,8 +8,6 @@
     # Language servers
     sumneko-lua-language-server
     rnix-lsp
-
-    # null-ls sources
     shellcheck
     stylua
     nixpkgs-fmt
@@ -35,6 +33,7 @@
       nvim-transparent
       (nvim-treesitter.withPlugins (p:
         [
+          p.lua
           p.nix
           p.go
           p.gomod
@@ -68,7 +67,6 @@
       lualine-nvim
       nvim-web-devicons
       plenary-nvim
-      rust-tools-nvim
       comment-nvim
       todo-comments-nvim
       vim-eunuch
@@ -76,7 +74,6 @@
       vim-rooter
       vim-test
       lsp_signature-nvim
-      refactoring-nvim
       nvim-lint
       formatter-nvim
     ];

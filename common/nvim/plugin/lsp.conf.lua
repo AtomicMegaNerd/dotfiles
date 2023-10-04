@@ -21,11 +21,6 @@ if not tele_builtin_status then
 	return
 end
 
-local rust_tools_status, rust_tools = pcall(require, "rust-tools")
-if not rust_tools_status then
-	return
-end
-
 -- Disable the panda
 lsp_signature.setup({
 	hint_prefix = "> ",
@@ -87,21 +82,5 @@ nvim_lsp.lua_ls.setup({
 			},
 		},
 		telemetry = { enable = false },
-	},
-})
-
--- Rust tools embeds the rust-analyzer server, but we want to make sure we pass
--- our key-bindings to this server so things like rename work.
-rust_tools.setup({
-	server = {
-		on_attach = on_attach,
-		capabilities = capabilities,
-		settings = {
-			["rust-analyzer"] = {
-				checkOnSave = {
-					command = "clippy",
-				},
-			},
-		},
 	},
 })
