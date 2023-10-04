@@ -159,6 +159,7 @@
     userName = "Chris Dunphy";
     userEmail = "chris@megaparsec.ca";
     extraConfig = {
+      core.sshCommand = "ssh.exe";
       init.defaultBranch = "main";
       pull.rebase = false;
     };
