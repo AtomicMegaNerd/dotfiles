@@ -75,11 +75,9 @@
       vim-fugitive
       vim-rooter
       vim-test
-      toggleterm-nvim
       lsp_signature-nvim
       refactoring-nvim
       nvim-lint
       formatter-nvim
-      go-nvim
     ];
 }
