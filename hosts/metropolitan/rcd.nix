@@ -10,24 +10,24 @@
     oh-my-posh
     glow
     tldr
-      wget
-      curl
-      git
-      du-dust
-      duf
-      htop
-      ripgrep
-      fd
-      eza
-      grc
-      zip
-      unzip
-      procs
-      jq
-      fish
-      kubectl
-      dos2unix
-      zoxide
+    wget
+    curl
+    git
+    du-dust
+    duf
+    htop
+    ripgrep
+    fd
+    eza
+    grc
+    zip
+    unzip
+    procs
+    jq
+    fish
+    kubectl
+    dos2unix
+    zoxide
   ];
 
   programs.direnv = {
