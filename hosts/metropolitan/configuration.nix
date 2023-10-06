@@ -17,12 +17,16 @@
     };
   };
 
-  virtualisation.podman.enable = true;
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+  };
 
   environment.systemPackages = with pkgs;
     [
       fish
     ];
+
   environment.shellInit = ''export  NIXPATH="/nix/var/nix/profiles/per-user/$USER/channels:nixos-config=/etc/nixos/configuration.nix"'';
 
   users = {
