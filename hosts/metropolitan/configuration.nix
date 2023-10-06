@@ -10,22 +10,22 @@
 {
 
   wsl = {
-  enable = true;
-  defaultUser = "rcd";
-  wslConf = {
-    network.hostname = "metropolitan";
+    enable = true;
+    defaultUser = "rcd";
+    wslConf = {
+      network.hostname = "metropolitan";
     };
   };
 
-  virtualisation.docker.enable = true;
+  virtualisation.podman.enable = true;
 
   environment.systemPackages = with pkgs;
     [
-        fish
-    ];  
-    environment.shellInit = ''export  NIXPATH="/nix/var/nix/profiles/per-user/$USER/channels:nixos-config=/etc/nixos/configuration.nix"'';
+      fish
+    ];
+  environment.shellInit = ''export  NIXPATH="/nix/var/nix/profiles/per-user/$USER/channels:nixos-config=/etc/nixos/configuration.nix"'';
 
-   users = {
+  users = {
     users.rcd = {
       isNormalUser = true;
       description = "Chris Dunphy";
