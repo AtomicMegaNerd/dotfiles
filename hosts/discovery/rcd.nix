@@ -11,7 +11,7 @@ in
   home.packages = with pkgs; [
     neofetch
     oh-my-posh
-    exa
+    eza
     duf
     du-dust
     grc
@@ -90,8 +90,8 @@ in
     '';
 
     shellAliases = {
-      ls = "exa";
-      ll = "exa -lah";
+      ls = "eza";
+      ll = "eza -lah";
       df = "duf";
       cat = "bat --paging=never --style=plain";
 

@@ -9,9 +9,15 @@
     # Home Manager sources
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
+
+    # NixOS-WSL
+    nixos-wsl = {
+      url = "github:nix-community/NixOS-WSL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager }:
+  outputs = { self, nixpkgs, nixpkgs-unstable, nixos-wsl, home-manager }:
     let
       pkgs-linux = import nixpkgs {
         system = "x86_64-linux";
@@ -37,11 +43,12 @@
             ./hosts/blahaj/configuration.nix
           ];
         };
-        spork = nixpkgs.lib.nixosSystem {
+        metropolitan = nixpkgs.lib.nixosSystem {
           pkgs = pkgs-linux;
           system = "x86_64-linux";
           modules = [
-            ./hosts/spork/configuration.nix
+            ./hosts/metropolitan/configuration.nix
+            nixos-wsl.nixosModules.wsl
           ];
         };
       };
@@ -50,15 +57,6 @@
       homeConfigurations = {
         useGlobalPkgs = true;
         useUserPackages = true;
-        # Spork
-        "rcd@spork" = home-manager.lib.homeManagerConfiguration {
-          pkgs = unstable-linux;
-          modules = [ ./hosts/spork/rcd.nix ];
-        };
-        "root@spork" = home-manager.lib.homeManagerConfiguration {
-          pkgs = unstable-linux;
-          modules = [ ./hosts/spork/root.nix ];
-        };
         # Blahaj
         "rcd@blahaj" = home-manager.lib.homeManagerConfiguration {
           pkgs = unstable-linux;
@@ -73,6 +71,16 @@
           pkgs = unstable-mac;
           modules = [ ./hosts/discovery/rcd.nix ];
         };
+        # Metropolitan
+        "rcd@metropolitan" = home-manager.lib.homeManagerConfiguration {
+          pkgs = unstable-linux;
+          modules = [ ./hosts/metropolitan/rcd.nix ];
+        };
+        "root@metropolitan" = home-manager.lib.homeManagerConfiguration {
+          pkgs = unstable-linux;
+          modules = [ ./hosts/metropolitan/root.nix ];
+        };
+
       };
     };
 }

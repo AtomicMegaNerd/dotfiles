@@ -10,10 +10,24 @@
     oh-my-posh
     glow
     tldr
+    wget
+    curl
+    git
+    du-dust
+    duf
+    htop
+    ripgrep
+    fd
+    eza
     grc
-    (pkgs.nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
-
-    uqm # Ur-Quan Masters
+    zip
+    unzip
+    procs
+    jq
+    fish
+    kubectl
+    dos2unix
+    zoxide
   ];
 
   programs.direnv = {
@@ -28,7 +42,8 @@
     enable = true;
 
     shellInit = ''
-      set -gx NIX_PATH $NIX_PATH:$HOME/.nix-defexpr/channels
+      set -gx EDITOR nvim
+      set -gx GOPATH $HOME/.local/go
     '';
 
     interactiveShellInit = ''
@@ -133,31 +148,18 @@
       source = ../../common/poetry;
       target = "poetry";
     };
-    sway = {
-      source = ./sway;
-      target = "sway";
-    };
-    waybar = {
-      source = ./waybar;
-      target = "waybar";
-    };
-    gtk = {
-      source = ./gtk-3.0;
-      target = "gtk-3.0";
-    };
     yamllint = {
       source = ../../common/yamllint;
       target = "yamllint";
     };
   };
 
-  home.file."/home/rcd/.config/ulauncher".source = config.lib.file.mkOutOfStoreSymlink /home/rcd/Code/Configs/dotfiles/hosts/spork/ulauncher;
-
   programs.git = {
     enable = true;
     userName = "Chris Dunphy";
     userEmail = "chris@megaparsec.ca";
     extraConfig = {
+      core.sshCommand = "ssh.exe";
       init.defaultBranch = "main";
       pull.rebase = false;
     };
@@ -174,104 +176,4 @@
     enable = true;
     enableFishIntegration = true;
   };
-
-  fonts.fontconfig.enable = true;
-
-  programs.ssh = {
-    enable = true;
-    forwardAgent = true;
-    extraConfig = ''
-      Host *
-              IdentityAgent ~/.1password/agent.sock
-    '';
-  };
-
-  programs.alacritty = {
-    enable = true;
-    settings = {
-      font = {
-        normal = {
-          family = "JetBrainsMono Nerd Font";
-          style = "Medium";
-        };
-        size = 20;
-      };
-      cursor = {
-        style = {
-          shape = "Block";
-          blinking = "Always";
-        };
-      };
-      env = {
-        TERM = "xterm-256color";
-      };
-      mouse_bindings = [
-        { mouse = "Right"; action = "Paste"; }
-        { mouse = "Left"; action = "Copy"; }
-      ];
-      window = {
-        decorations = "none";
-        padding = {
-          x = 3;
-          y = 3;
-        };
-        opacity = 0.94;
-      };
-      colors = {
-        primary = {
-          background = "0x192330";
-          foreground = "0xcdcecf";
-        };
-        normal = {
-          black = "0x393b44";
-          red = "0xc94f6d";
-          green = "0x81b29a";
-          yellow = "0xdbc074";
-          blue = "0x719cd6";
-          magenta = "0x9d79d6";
-          cyan = "0x63cdcf";
-          white = "0xdfdfe0";
-        };
-        # Bright colors
-        bright = {
-          black = "0x575860";
-          red = "0xd16983";
-          green = "0x8ebaa4";
-          yellow = "0xe0c989";
-          blue = "0x86abdc";
-          magenta = "0xbaa1e2";
-          cyan = "0x7ad4d6";
-          white = "0xe4e4e5";
-        };
-        indexed_colors = [
-          { index = 16; color = "0xf4a261"; }
-          { index = 17; color = "0xd67ad2"; }
-        ];
-      };
-    };
-  };
-
-  systemd.user.services = {
-    polkit-gnome-authentication-agent-1 = {
-      Unit = {
-        After = [ "graphical-session-pre.target" ];
-        Description = "polkit-gnome-authentication-agent-1";
-        PartOf = [ "graphical-session.target" ];
-      };
-
-      Service = {
-        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-        Restart = "on-failure";
-        RestartSec = 1;
-        TimeoutStopSec = 10;
-        Type = "simple";
-      };
-
-      Install = {
-        WantedBy = [ "graphical-session.target" ];
-      };
-    };
-  };
-
-  xdg.enable = true;
 }

@@ -7,7 +7,6 @@
 
   home.packages = with pkgs; [
     oh-my-posh
-    grc
   ];
 
   programs.neovim = import ../../common/neovim.nix { inherit pkgs; };
@@ -88,6 +87,7 @@
         }
       ];
     };
+
 
   programs.tmux = {
     enable = true;
