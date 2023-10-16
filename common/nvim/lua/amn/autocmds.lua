@@ -1,4 +1,3 @@
-
 -- Text yank
 ----------------------------------------------------------------
 -- Automatically highlight text when we yank it
@@ -22,10 +21,16 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 -- Options for specific file types
 ----------------------------------------------------------------
 local fto_grp = vim.api.nvim_create_augroup("FileTypeOptions", { clear = true })
-vim.api.nvim_create_autocmd("Filetype", {
+vim.api.nvim_create_autocmd("FileType", {
 	command = "set tabstop=2 shiftwidth=2",
 	group = fto_grp,
 	pattern = { "haskell", "lua", "typescript", "tsx", "jsx", "javascript", "terraform", "nix" },
+})
+
+vim.api.nvim_create_autocmd("Filetype", {
+	command = "set noexpandtab",
+	group = fto_grp,
+	pattern = { "bash", "sh", "go" },
 })
 
 vim.api.nvim_create_autocmd("Filetype", {
@@ -41,7 +46,7 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 })
 
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-	command = "setf bash",
+	command = "setf sh",
 	group = fto_grp,
 	pattern = "env.list",
 })

@@ -23,8 +23,8 @@ fmt.setup({
 		yaml = {
 			require("formatter.filetypes.yaml").prettier,
 		},
-    bash = {
-      require("formatter.filetypes.sh").shfmt,
-    },
+		sh = {
+			require("formatter.filetypes.sh").shfmt,
+		},
 	},
 })
