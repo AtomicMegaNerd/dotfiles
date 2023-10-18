@@ -26,5 +26,8 @@ fmt.setup({
 		sh = {
 			require("formatter.filetypes.sh").shfmt,
 		},
+		terraform = {
+			require("formatter.filetypes.terraform").terraformfmt,
+		},
 	},
 })

@@ -64,7 +64,7 @@ end
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
 -- Enable the following language servers
-local servers = { "pyright", "ruff_lsp", "bashls", "terraformls" }
+local servers = { "pyright", "ruff_lsp", "bashls", "terraformls", "tflint" }
 
 for _, lsp in ipairs(servers) do
 	nvim_lsp[lsp].setup({
@@ -87,7 +87,7 @@ nvim_lsp.gopls.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 	settings = {
-   -- Static analysis linter for Go
+		-- Static analysis linter for Go
 		staticcheck = true,
 	},
 })
