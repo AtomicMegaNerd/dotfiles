@@ -37,8 +37,8 @@ require("lazy").setup({
 		branch = "0.1.x",
 		dependencies = { "nvim-lua/plenary.nvim", lazy = true },
 	},
-	-- Best theme ever
 	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+	{ "EdenEast/nightfox.nvim" },
 	{
 		"lewis6991/gitsigns.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
@@ -46,7 +46,6 @@ require("lazy").setup({
 	-- Treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
-		tag = "v0.9.1",
 		cmd = "TSUpdate",
 	},
 	-- LSP
@@ -73,7 +72,7 @@ require("lazy").setup({
 	-- Status line
 	{
 		"nvim-lualine/lualine.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
+		dependencies = { "nvim-tree/nvim-web-devicons", lazy = true },
 	},
 
 	-- Formatting
