@@ -10,6 +10,7 @@
     rnix-lsp
     shellcheck
     stylua
+    tree-sitter
     nixpkgs-fmt
     nodePackages.markdownlint-cli
     nodePackages.yaml-language-server
@@ -33,6 +34,7 @@
       nvim-transparent
       (nvim-treesitter.withPlugins (p:
         [
+          p.c
           p.lua
           p.nix
           p.go

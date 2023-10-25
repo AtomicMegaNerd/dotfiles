@@ -4,6 +4,10 @@ if not status then
 end
 
 ts.setup({
+	highlight = {
+		enable = true,
+		disable = {},
+	},
 	indent = {
 		enable = true,
 		disable = { "python", "go" },
