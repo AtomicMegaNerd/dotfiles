@@ -84,4 +84,3 @@ vim.api.nvim_create_user_command("W", "write", { desc = "Write when I hold down 
 -- Co-pilot
 vim.g.copilot_assume_mapped = true
 vim.cmd("Copilot enable")
-
