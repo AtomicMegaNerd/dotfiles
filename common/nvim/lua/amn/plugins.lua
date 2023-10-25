@@ -98,8 +98,11 @@ require("lazy").setup({
 	},
 	{ "folke/neodev.nvim" },
 
-  -- Vimscript lives on!
+	-- Vimscript lives on!
 	{ "tpope/vim-fugitive" },
 	{ "vim-test/vim-test" },
 	{ "airblade/vim-rooter" },
+
+	-- I for one shall welcome our new robot overlords!
+	{ "github/copilot.vim" },
 })
