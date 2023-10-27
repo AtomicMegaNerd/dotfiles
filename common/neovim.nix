@@ -19,19 +19,7 @@
   ];
 
   plugins = with pkgs.vimPlugins;
-    let
-      nvim-transparent = pkgs.vimUtils.buildVimPlugin {
-        name = "nvim-transparent";
-        src = pkgs.fetchFromGitHub {
-          owner = "xiyaowong";
-          repo = "nvim-transparent";
-          rev = "ae46ff104269f031a0656672106f2ab8f6abf585";
-          sha256 = "sha256-VOaIb07HRK+ZKArPCWr2HVBQLjxnHNEyUhAybPEcq4I=";
-        };
-      };
-    in
     [
-      nvim-transparent
       (nvim-treesitter.withPlugins (p:
         [
           p.c
