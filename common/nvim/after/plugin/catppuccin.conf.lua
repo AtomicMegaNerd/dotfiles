@@ -7,8 +7,14 @@ end
 catppuccin.setup({
 	flavour = "frappe",
 	no_italic = true,
-	background = {
-		light = "lattle",
-		dark = "frappe",
+	integrations = {
+		cmp = true,
+		gitsigns = true,
+		treesitter = true,
+		alpha = true,
+		telescope = true,
+		fidget = true,
 	},
 })
+
+vim.cmd.colorscheme("catppuccin")

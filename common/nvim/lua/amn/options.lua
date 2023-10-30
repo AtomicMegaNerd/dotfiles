@@ -55,7 +55,6 @@ o.spell = true
 
 --Set colorscheme (order is important here)
 o.termguicolors = true
-vim.cmd("colorscheme catppuccin")
 
 -- Vim Rooter
 ----------------------------------------------------------------
@@ -73,5 +72,3 @@ g.rooter_patterns = {
 	"init.lua",
 	"config.fish",
 }
-
-vim.opt.clipboard:prepend({ "unnamed", "unnamedplus" })
