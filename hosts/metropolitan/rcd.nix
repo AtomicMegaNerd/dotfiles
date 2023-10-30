@@ -36,7 +36,6 @@
   };
 
   programs.neovim = import ../../common/neovim.nix { inherit pkgs; };
-  programs.helix = import ../../common/helix.nix { inherit pkgs; };
   programs.tmux = import ../../common/tmux.nix { inherit pkgs; };
 
   programs.fish = {
