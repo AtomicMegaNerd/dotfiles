@@ -123,8 +123,6 @@
     ];
   };
 
-  programs.tmux = { };
-
   xdg.configFile = {
     nvim = {
       source = ../../common/nvim;
