@@ -80,7 +80,6 @@
           pkgs = unstable-linux;
           modules = [ ./hosts/metropolitan/root.nix ];
         };
-
       };
     };
 }
