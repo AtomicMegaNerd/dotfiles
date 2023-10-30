@@ -8,6 +8,10 @@
   home.packages = with pkgs; [
     neofetch
     starship
+    eza
+    du-dust
+    fish
+    htop
     glow
     tldr
   ];
