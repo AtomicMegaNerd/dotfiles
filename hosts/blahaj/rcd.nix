@@ -14,6 +14,16 @@
     htop
     glow
     tldr
+    wget
+    curl
+    duf
+    ripgrep
+    fd
+    grc
+    zip
+    unzip
+    procs
+    jq
   ];
 
   programs.neovim = import ../../common/neovim.nix { inherit pkgs; };

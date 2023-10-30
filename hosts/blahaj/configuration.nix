@@ -32,47 +32,11 @@
     };
   };
 
-  environment.systemPackages = with pkgs;
-    [
-      wget
-      curl
-      git
-      neovim
-      du-dust
-      duf
-      htop
-      ripgrep
-      fd
-      exa
-      grc
-      zip
-      unzip
-      procs
-      jq
-      kubectl
-    ];
-
   programs.fish.enable = true;
 
   # List services that you want to enable:
   services.openssh.enable = true;
   virtualisation.docker.enable = true;
-
-  # Setup k3s
-  networking.firewall.allowedTCPPorts = [ 6443 ];
-  services.k3s.enable = true;
-  services.k3s.role = "server";
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # Copy the NixOS configuration file and link it from the resulting system
-  # (/run/current-system/configuration.nix). This is useful in case you
-  # accidentally delete configuration.nix.
-  # system.copySystemConfiguration = true;
 
   system.autoUpgrade = {
     enable = true;
