@@ -177,7 +177,7 @@ in
           family = "JetBrainsMono Nerd Font";
           style = "Medium";
         };
-        size = 16;
+        size = 18;
       };
       env = {
         TERM = "xterm-256color";
