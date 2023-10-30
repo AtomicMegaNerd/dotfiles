@@ -137,6 +137,7 @@
       set-option -sa terminal-overrides ",xterm-256color:RGB"
       set-option -sg escape-time 10
       set-option -g focus-events on
+      set-option -g status-position top
 
       setw -g mouse on
 
@@ -150,10 +151,6 @@
     nvim = {
       source = ../../common/nvim;
       target = "nvim";
-    };
-    oh-my-posh = {
-      source = ../../common/oh-my-posh;
-      target = "oh-my-posh";
     };
     poetry = {
       source = ../../common/poetry;
