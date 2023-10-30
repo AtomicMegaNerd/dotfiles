@@ -24,10 +24,6 @@ in
     fish
   ];
 
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
-  };
 
   programs.neovim = import ../../common/neovim.nix { inherit pkgs; };
   programs.tmux = import ../../common/tmux.nix { inherit pkgs; };
@@ -126,11 +122,9 @@ in
     ];
   };
 
-  xdg.configFile = {
-    nvim = {
-      source = ../../common/nvim;
-      target = "nvim";
-    };
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
   };
 
   home.file.".ssh/allowed_signers".text = "${rcd_pub_key}";
@@ -163,5 +157,12 @@ in
   programs.fzf = {
     enable = true;
     enableFishIntegration = true;
+  };
+
+  xdg.configFile = {
+    nvim = {
+      source = ../../common/nvim;
+      target = "nvim";
+    };
   };
 }
