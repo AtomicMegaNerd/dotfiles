@@ -37,6 +37,8 @@ alias go "grc go"
 # Shorten Terraform
 alias tf terraform
 
+set fish_greeting # Disable greeting
+
 # EDITOR
 # ===================================
 set -gx EDITOR nvim
@@ -53,9 +55,6 @@ set -gx TERMINFO_DIRS "$TERMINFO_DIRS:$HOME/.local/share/terminfo"
 set -gx FUNCTIONS_CORE_TOOLS_TELEMETRY_OPTOUT 1
 set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
 
-# Tell NodeJS about our internal CTC certs
-# set -gx NODE_EXTRA_CA_CERTS /Users/chris.dunphy/Certs/CTC_CA_bundle.crt
-
 # Tell Vault to use JSON output
 set -gx VAULT_FORMAT json
 
@@ -69,7 +68,6 @@ pyenv init - | source
 # Go
 set -gx GOPRIVATE dev.azure.com
 
-
 # Java and Friends
 # ===================================
 set -gx JAVA_HOME /Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home
@@ -78,7 +76,6 @@ set -gx GRADLE_USER_HOME $HOME/.gradle
 
 # Tell Colima where to get the certs
 set -gx CERTS $HOME/Certs/
-set -gx DOCKER_HOST "unix://$HOME/.colima/default/docker.sock"
 
 # PATH
 # ===================================
