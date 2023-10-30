@@ -43,7 +43,6 @@
       telescope-ui-select-nvim
       telescope-file-browser-nvim
       telescope-fzf-native-nvim
-      nightfox-nvim
       gitsigns-nvim
       nvim-lspconfig
       fidget-nvim
@@ -66,5 +65,6 @@
       lsp_signature-nvim
       nvim-lint
       formatter-nvim
+      catppuccin-nvim
     ];
 }

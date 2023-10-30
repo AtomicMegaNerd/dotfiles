@@ -55,7 +55,7 @@ o.spell = true
 
 --Set colorscheme (order is important here)
 o.termguicolors = true
-vim.cmd("colorscheme nightfox")
+vim.cmd("colorscheme catppuccin")
 
 -- Vim Rooter
 ----------------------------------------------------------------
