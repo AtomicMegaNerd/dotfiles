@@ -7,7 +7,6 @@
 
   home.packages = with pkgs; [
     neofetch
-    oh-my-posh
     glow
     tldr
     wget
@@ -86,8 +85,8 @@
     '';
 
     shellAliases = {
-      ls = "exa";
-      ll = "exa -lah";
+      ls = "eza";
+      ll = "eza -lah";
       df = "duf";
       cat = "bat --paging=never --style=plain";
 

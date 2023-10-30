@@ -10,7 +10,6 @@ in
 
   home.packages = with pkgs; [
     neofetch
-    oh-my-posh
     eza
     duf
     du-dust
@@ -21,6 +20,8 @@ in
     tldr
     lazygit
     ncurses
+    starship
+    fish
   ];
 
   programs.direnv = {
@@ -37,6 +38,7 @@ in
     shellInit = ''
       set -gx EDITOR nvim
       set -gx GOPATH $HOME/.local/go
+      set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
 
       # Fixes color bug on MacOS
       set -gx TERMINFO_DIRS $TERMINFO_DIRS:$HOME/.local/share/terminfo
@@ -51,42 +53,38 @@ in
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
 
-      ### Nightfox theme ###
-      set -l foreground cdcecf
-      set -l selection 223249
-      set -l comment 526176
-      set -l red c94f6d
-      set -l orange f4a261
-      set -l yellow dbc074
-      set -l green 81b29a
-      set -l purple 9d79d6
-      set -l cyan 63cdcf
-      set -l pink d67ad2
+      # name: 'Catppuccin frappe'
+      # url: 'https://github.com/catppuccin/fish'
+      # preferred_background: 303446
 
-      # Syntax Highlighting Colors
-      set -g fish_color_normal $foreground
-      set -g fish_color_command $cyan
-      set -g fish_color_keyword $pink
-      set -g fish_color_quote $yellow
-      set -g fish_color_redirection $foreground
-      set -g fish_color_end $orange
-      set -g fish_color_error $red
-      set -g fish_color_param $purple
-      set -g fish_color_comment $comment
-      set -g fish_color_selection --background=$selection
-      set -g fish_color_search_math --background=$selection
-      set -g fish_color_operator $green
-      set -g fish_color_escape $pink
-      set -g fish_color_autosuggestion $comment
+      set -g fish_color_normal c6d0f5
+      set -g fish_color_command 8caaee
+      set -g fish_color_param eebebe
+      set -g fish_color_keyword e78284
+      set -g fish_color_quote a6d189
+      set -g fish_color_redirection f4b8e4
+      set -g fish_color_end ef9f76
+      set -g fish_color_comment 838ba7
+      set -g fish_color_error e78284
+      set -g fish_color_gray 737994
+      set -g fish_color_selection --background=414559
+      set -g fish_color_search_match --background=414559
+      set -g fish_color_option a6d189
+      set -g fish_color_operator f4b8e4
+      set -g fish_color_escape ea999c
+      set -g fish_color_autosuggestion 737994
+      set -g fish_color_cancel e78284
+      set -g fish_color_cwd e5c890
+      set -g fish_color_user 81c8be
+      set -g fish_color_host 8caaee
+      set -g fish_color_host_remote a6d189
+      set -g fish_color_status e78284
+      set -g fish_pager_color_progress 737994
+      set -g fish_pager_color_prefix f4b8e4
+      set -g fish_pager_color_completion c6d0f5
+      set -g fish_pager_color_description 737994
 
-      # Completion Pager Colors
-      set -g fish_pager_color_progress $comment
-      set -g fish_pager_color_prefix $cyan
-      set -g fish_pager_color_completion $foreground
-      set -g fish_pager_color_description $commentc
-
-      set -x VIRTUAL_ENV_DISABLE_PROMPT 1
-      oh-my-posh init fish --config ~/.config/oh-my-posh/rcd.omp.json | source
+      starship init fish | source
     '';
 
     shellAliases = {
