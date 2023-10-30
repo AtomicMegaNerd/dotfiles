@@ -32,20 +32,6 @@ local fmt_grp = vim.api.nvim_create_augroup("FormatOptions", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePost", {
 	command = "FormatWrite",
 	group = fmt_grp,
-	pattern = { "*.lua", "*.py" },
-})
-
-status, go_fmt = pcall(require, "go.format")
-if not status then
-	return
-end
-
-vim.api.nvim_create_autocmd("BufWritePre", {
-	callback = function()
-		go_fmt.goimport()
-	end,
-	group = fmt_grp,
-	pattern = "*.go",
 })
 
 -- Options for specific file types
@@ -61,12 +47,6 @@ vim.api.nvim_create_autocmd("Filetype", {
 	command = "set colorcolumn=88",
 	group = fto_grp,
 	pattern = { "python" },
-})
-
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-	command = "setf yaml",
-	group = fto_grp,
-	pattern = "*/yamllint/config",
 })
 
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {

@@ -8,10 +8,9 @@
     # Language servers
     sumneko-lua-language-server
     rnix-lsp
-
-    # null-ls sources
     shellcheck
     stylua
+    tree-sitter
     nixpkgs-fmt
     nodePackages.markdownlint-cli
     nodePackages.yaml-language-server
@@ -20,21 +19,11 @@
   ];
 
   plugins = with pkgs.vimPlugins;
-    let
-      nvim-transparent = pkgs.vimUtils.buildVimPlugin {
-        name = "nvim-transparent";
-        src = pkgs.fetchFromGitHub {
-          owner = "xiyaowong";
-          repo = "nvim-transparent";
-          rev = "ae46ff104269f031a0656672106f2ab8f6abf585";
-          sha256 = "sha256-VOaIb07HRK+ZKArPCWr2HVBQLjxnHNEyUhAybPEcq4I=";
-        };
-      };
-    in
     [
-      nvim-transparent
       (nvim-treesitter.withPlugins (p:
         [
+          p.c
+          p.lua
           p.nix
           p.go
           p.gomod
@@ -54,7 +43,6 @@
       telescope-ui-select-nvim
       telescope-file-browser-nvim
       telescope-fzf-native-nvim
-      nightfox-nvim
       gitsigns-nvim
       nvim-lspconfig
       fidget-nvim
@@ -68,18 +56,15 @@
       lualine-nvim
       nvim-web-devicons
       plenary-nvim
-      rust-tools-nvim
       comment-nvim
       todo-comments-nvim
       vim-eunuch
       vim-fugitive
       vim-rooter
       vim-test
-      toggleterm-nvim
       lsp_signature-nvim
-      refactoring-nvim
       nvim-lint
       formatter-nvim
-      go-nvim
+      catppuccin-nvim
     ];
 }

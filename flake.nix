@@ -48,7 +48,7 @@
           system = "x86_64-linux";
           modules = [
             ./hosts/metropolitan/configuration.nix
-	    nixos-wsl.nixosModules.wsl
+            nixos-wsl.nixosModules.wsl
           ];
         };
       };
@@ -71,7 +71,7 @@
           pkgs = unstable-mac;
           modules = [ ./hosts/discovery/rcd.nix ];
         };
-	    # Metropolitan
+        # Metropolitan
         "rcd@metropolitan" = home-manager.lib.homeManagerConfiguration {
           pkgs = unstable-linux;
           modules = [ ./hosts/metropolitan/rcd.nix ];

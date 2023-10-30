@@ -5,7 +5,7 @@ end
 
 lualine.setup({
 	options = {
-		theme = "nightfox",
+		theme = "catppuccin",
 		icons_enabled = false,
 		globalstatus = true,
 	},
