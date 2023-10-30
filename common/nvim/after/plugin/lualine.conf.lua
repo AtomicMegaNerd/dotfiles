@@ -8,7 +8,5 @@ lualine.setup({
 		theme = "auto",
 		icons_enabled = false,
 		globalstatus = true,
-		section_separators = "█",
-		component_separators = "|",
 	},
 })
