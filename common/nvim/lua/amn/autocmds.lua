@@ -52,12 +52,6 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 })
 
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-	command = "setf yaml",
-	group = fto_grp,
-	pattern = "*/yamllint/config",
-})
-
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	command = "setf json",
 	group = fto_grp,
 	pattern = "*/waybar/config",

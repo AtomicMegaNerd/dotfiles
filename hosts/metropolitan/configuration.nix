@@ -6,9 +6,7 @@
 # https://github.com/nix-community/NixOS-WSL
 
 { config, lib, pkgs, ... }:
-
 {
-
   wsl = {
     enable = true;
     defaultUser = "rcd";
@@ -16,16 +14,6 @@
       network.hostname = "metropolitan";
     };
   };
-
-  virtualisation.podman = {
-    enable = true;
-    dockerCompat = true;
-  };
-
-  environment.systemPackages = with pkgs;
-    [
-      fish
-    ];
 
   environment.shellInit = ''export  NIXPATH="/nix/var/nix/profiles/per-user/$USER/channels:nixos-config=/etc/nixos/configuration.nix"'';
 

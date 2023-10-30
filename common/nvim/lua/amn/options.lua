@@ -58,11 +58,11 @@ o.termguicolors = true
 vim.cmd("colorscheme catppuccin")
 
 vim.opt.clipboard:prepend({ "unnamed", "unnamedplus" })
+
 -- Vim Rooter
 ----------------------------------------------------------------
 -- These files signify the root of a project.
 g["test#strategy"] = "neovim"
-
 g.rooter_patterns = {
 	"Makefile",
 	"Cargo.toml",
