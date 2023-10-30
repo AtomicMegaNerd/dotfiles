@@ -90,6 +90,10 @@
     enable = true;
     prefix = "C-a";
 
+    plugins = with pkgs; [
+      tmuxPlugins.catppuccin
+    ];
+
     extraConfig = ''
       set -g default-terminal "tmux-256color"
 
