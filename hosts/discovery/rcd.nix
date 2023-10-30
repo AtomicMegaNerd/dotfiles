@@ -20,14 +20,13 @@ in
     tldr
     lazygit
     ncurses
-    starship
-    fish
   ];
 
 
   programs.neovim = import ../../common/neovim.nix { inherit pkgs; };
   programs.tmux = import ../../common/tmux.nix { inherit pkgs; };
   programs.alacritty = import ../../common/alacritty.nix { inherit pkgs; };
+  programs.starship = import ../../common/starship.nix { inherit pkgs; };
 
   programs.fish = {
     enable = true;
