@@ -31,6 +31,7 @@ in
 
   programs.neovim = import ../../common/neovim.nix { inherit pkgs; };
   programs.helix = import ../../common/helix.nix { inherit pkgs; };
+  programs.tmux = import ../../common/tmux.nix { inherit pkgs; };
 
   programs.fish = {
     enable = true;
@@ -125,23 +126,10 @@ in
     ];
   };
 
-  programs.tmux = {
-    enable = true;
-    prefix = "C-a";
-  };
-
   xdg.configFile = {
     nvim = {
       source = ../../common/nvim;
       target = "nvim";
-    };
-    tmux = {
-      source = ../../common/tmux;
-      target = "tmux";
-    };
-    oh-my-posh = {
-      source = ../../common/oh-my-posh;
-      target = "oh-my-posh";
     };
     poetry = {
       source = ../../common/poetry;
@@ -210,37 +198,103 @@ in
           x = 3;
           y = 3;
         };
-        opacity = 0.97;
+        opacity = 1.0;
       };
+
       colors = {
+        # Default colors
         primary = {
-          background = "0x192330";
-          foreground = "0xcdcecf";
+          background = "#303446"; # base
+          foreground = "#C6D0F5"; # text
+          # Bright and dim foreground colors
+          dim_foreground = "#C6D0F5"; # text
+          bright_foreground = "#C6D0F5"; # text
         };
+
+        # Cursor colors
+        cursor = {
+          text = "#303446"; # base
+          cursor = "#F2D5CF"; # rosewater
+          vi_mode_cursor = {
+            text = "#303446"; # base
+            cursor = "#BABBF1"; # lavender
+          };
+        };
+
+        # Search colors
+        search = {
+          matches = {
+            foreground = "#303446"; # base
+            background = "#A5ADCE"; # subtext0
+          };
+          focused_match = {
+            foreground = "#303446"; # base
+            background = "#A6D189"; # green
+          };
+          footer_bar = {
+            foreground = "#303446"; # base
+            background = "#A5ADCE"; # subtext0
+          };
+        };
+
+        # Keyboard regex hints
+        hints = {
+          start = {
+            foreground = "#303446"; # base
+            background = "#E5C890"; # yellow
+          };
+          end = {
+            foreground = "#303446"; # base
+            background = "#A5ADCE"; # subtext0
+          };
+        };
+        # Selection colors
+        selection = {
+          text = "#303446"; # base
+          background = "#F2D5CF"; # rosewater
+        };
+
+        # Normal colors
         normal = {
-          black = "0x393b44";
-          red = "0xc94f6d";
-          green = "0x81b29a";
-          yellow = "0xdbc074";
-          blue = "0x719cd6";
-          magenta = "0x9d79d6";
-          cyan = "0x63cdcf";
-          white = "0xdfdfe0";
+          black = "#51576D"; # surface1
+          red = "#E78284"; # red
+          green = "#A6D189"; # green
+          yellow = "#E5C890"; # yellow
+          blue = "#8CAAEE"; # blue
+          magenta = "#F4B8E4"; # pink
+          cyan = "#81C8BE"; # teal
+          white = "#B5BFE2"; # subtext1
         };
         # Bright colors
         bright = {
-          black = "0x575860";
-          red = "0xd16983";
-          green = "0x8ebaa4";
-          yellow = "0xe0c989";
-          blue = "0x86abdc";
-          magenta = "0xbaa1e2";
-          cyan = "0x7ad4d6";
-          white = "0xe4e4e5";
+          black = "#626880"; # surface2
+          red = "#E78284"; # red
+          green = "#A6D189"; # green
+          yellow = "#E5C890"; # yellow
+          blue = "#8CAAEE"; # blue
+          magenta = "#F4B8E4"; # pink
+          cyan = "#81C8BE"; # teal
+          white = "#A5ADCE"; # subtext0
         };
+
+        # Dim colors
+        dim = {
+          black = "#51576D"; #surface1
+          red = "#E78284"; #red
+          green = "#A6D189"; #green
+          yellow = "#E5C890"; #yellow
+          blue = "#8CAAEE"; #blue
+          magenta = "#F4B8E4"; #pink
+          cyan = "#81C8BE"; #teal
+          white = "#B5BFE2"; #subtext1
+        };
+
         indexed_colors = [
-          { index = 16; color = "0xf4a261"; }
-          { index = 17; color = "0xd67ad2"; }
+          {
+            index = 16;
+            color = "#EF9F76";
+          }
+          { index = 17; color = "#F2D5CF"; }
         ];
       };
     };
