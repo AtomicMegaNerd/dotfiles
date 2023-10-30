@@ -132,10 +132,6 @@ in
       source = ../../common/nvim;
       target = "nvim";
     };
-    poetry = {
-      source = ../../common/poetry;
-      target = "poetry";
-    };
   };
 
   home.file.".ssh/allowed_signers".text = "${rcd_pub_key}";
