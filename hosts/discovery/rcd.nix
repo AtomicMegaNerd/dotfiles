@@ -27,6 +27,7 @@ in
   programs.tmux = import ../../common/tmux.nix { inherit pkgs; };
   programs.alacritty = import ../../common/alacritty.nix { inherit pkgs; };
   programs.starship = import ../../common/starship.nix { inherit pkgs; };
+  programs.zellij = import ../../common/zellij.nix { inherit pkgs; };
 
   programs.fish = {
     enable = true;
