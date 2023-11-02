@@ -30,6 +30,7 @@
   programs.tmux = import ../../common/tmux.nix { inherit pkgs; };
   programs.starship = import ../../common/starship.nix { inherit pkgs; };
   programs.fish = import ../../common/fish.nix { inherit pkgs; };
+  programs.zellij = import ../../common/zellij.nix { inherit pkgs; };
 
   programs.direnv = {
     enable = true;

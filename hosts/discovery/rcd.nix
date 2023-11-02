@@ -27,6 +27,8 @@ in
   programs.tmux = import ../../common/tmux.nix { inherit pkgs; };
   programs.alacritty = import ../../common/alacritty.nix { inherit pkgs; };
   programs.starship = import ../../common/starship.nix { inherit pkgs; };
+  programs.zellij = import ../../common/zellij.nix { inherit pkgs; };
+  programs.helix = import ../../common/helix.nix { inherit pkgs; };
 
   programs.fish = {
     enable = true;
@@ -106,11 +108,18 @@ in
       ta = "tmux attach";
       tk = "tmux kill-session";
       tka = "tmux kill-server";
+
+      # Zellij
+      zl = "zellij ls";
+      za = "zellij a";
+      zk = "zellij k";
+      zka = "zellij ka";
     };
 
     functions =
       {
         tn = "tmux new -s (basename (eval pwd))";
+        zn = "zellij -s (basename (eval pwd))";
       };
 
     plugins = [
