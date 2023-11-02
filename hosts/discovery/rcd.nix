@@ -107,11 +107,18 @@ in
       ta = "tmux attach";
       tk = "tmux kill-session";
       tka = "tmux kill-server";
+
+      # Zellij
+      zl = "zellij ls";
+      za = "zellij a";
+      zk = "zellij k";
+      zka = "zellij ka";
     };
 
     functions =
       {
         tn = "tmux new -s (basename (eval pwd))";
+        zn = "zellij -s (basename (eval pwd))";
       };
 
     plugins = [
