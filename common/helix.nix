@@ -3,10 +3,7 @@
   enable = true;
 
   settings = {
-
-
-    theme = "catppuccin-frappe";
-
+    theme = "catppuccin";
     editor = {
       line-number = "relative";
       true-color = true;
@@ -21,6 +18,5 @@
         select = "block";
       };
     };
-
   };
 }
