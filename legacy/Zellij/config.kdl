@@ -1,0 +1,3 @@
+theme "catppuccin-frappe"
+default_mode "locked"
+pane_frames false

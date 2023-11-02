@@ -3,8 +3,6 @@
 alias ls "eza"
 alias du "dust"
 alias grep "rg"
-alias wx "curl wttr.in/Calgary"
-alias moon "curl wttr.in/moon"
 alias vim "nvim"
 alias vi "nvim"
 alias cat "bat --paging=never --style=plain"
@@ -18,30 +16,48 @@ alias cj="cd ~/Code/Java"
 alias cpy="cd ~/Code/Python"
 alias cdot="cd ~/Code/Configs/dotfiles"
 alias cdock="cd ~/Code/Docker"
-alias capm="cd ~/Code/Python/coa-ado-project-manager"
 
 # Shortcuts for common files and directories
-alias update_creds="$EDITOR ~/.config/fish/conf.d/credentials.fish"
 alias vconf "nvim ~/.config/nvim/init.lua"
 alias fconf "nvim ~/.config/fish/config.fish"
 alias cconf "nvim ~/.config/fish/conf.d/credentials.fish"
-alias hconf "hx ~/.config/helix/config.toml"
 alias aconf "nvim ~/.config/alacritty/alacritty.yml"
-
-# Not Inspec? ;-)
-alias inspec="cinc-auditor"
 
 # Colorize go
 alias go "grc go"
 
-# Shorten Terraform
+# Terraform
 alias tf terraform
 
-set fish_greeting # Disable greeting
+# tmux
+alias tl "tmux list-sessions"
+alias ta "tmux attach"
+alias tk "tmux kill-session"
+alias tka "tmux kill-server"
 
-# EDITOR
+# Zellij
+alias zl "zellij ls"
+alias za "zellij a"
+alias zk "zellij k"
+alias zka "zellij ka"
+
+# Functions
 # ===================================
+
+function tn
+    tmux new -s (basename (eval pwd))
+end
+
+function zn
+    zellij -s (basename (eval pwd))
+end
+
+# Variables
+# ===================================
+set fish_greeting # Disable greeting
 set -gx EDITOR nvim
+set -gx FUNCTIONS_CORE_TOOLS_TELEMETRY_OPTOUT 1
+set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
 
 # Used by the dotfiles. For example my neovim config behaves differently if it is configured
 # by Nix.
@@ -50,29 +66,11 @@ set -gx AMN_INSTALL_TYPE "non-nix"
 # Fixes an issue with MacOS' super out of date terminfo
 set -gx TERMINFO_DIRS "$TERMINFO_DIRS:$HOME/.local/share/terminfo"
 
-# General flags
-# ===================================
-set -gx FUNCTIONS_CORE_TOOLS_TELEMETRY_OPTOUT 1
-set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
-
-# Tell Vault to use JSON output
-set -gx VAULT_FORMAT json
-
-# Python
-# ===================================
-# Load pyenv automatically by appending
-# the following to ~/.config/fish/config.fish:
-status is-interactive; and pyenv init --path | source
-pyenv init - | source
-
 # Go
 set -gx GOPRIVATE dev.azure.com
 
-# Java and Friends
-# ===================================
-set -gx JAVA_HOME /Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home
-set -gx GROOVY_HOME /usr/local/opt/groovy/libexec
-set -gx GRADLE_USER_HOME $HOME/.gradle
+# Tell Vault to use JSON output
+set -gx VAULT_FORMAT json
 
 # Tell Colima where to get the certs
 set -gx CERTS $HOME/Certs/
@@ -84,27 +82,15 @@ fish_add_path $HOME/.fzf/bin
 fish_add_path $HOME/.local/bin
 fish_add_path $HOME/.pyenv/bin
 
-# For Rust + Cargo
-fish_add_path $HOME/.cargo/bin
+# Pyenv
+# ===================================
+status is-interactive; and pyenv init --path | source
+pyenv init - | source
 
-# For homebrew
-fish_add_path /usr/local/sbin
-
-# Ruby and Inspec
-fish_add_path -p /usr/local/opt/ruby/bin/
-fish_add_path /usr/local/lib/ruby/gems/3.1.0/bin
-
-# Aliases for tmux
-alias tl="tmux list-sessions"
-alias ta="tmux attach"
-alias tk="tmux kill-session"
-alias tka="tmux kill-server"
-
-function tn
-    tmux new -s (basename (eval pwd))
-end
-
+# Starship prompt
+# ===================================
 starship init fish | source
 
-# Init zoxide
+# Zoxide
+# ===================================
 zoxide init fish | source
