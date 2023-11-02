@@ -32,6 +32,7 @@
   programs.fish = import ../../common/fish.nix { inherit pkgs; };
   programs.zellij = import ../../common/zellij.nix { inherit pkgs; };
   programs.tmux = import ../../common/tmux.nix { inherit pkgs; };
+  programs.helix = import ../../common/helix.nix { inherit pkgs; };
 
   programs.direnv = {
     enable = true;

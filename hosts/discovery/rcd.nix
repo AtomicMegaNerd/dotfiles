@@ -28,6 +28,7 @@ in
   programs.alacritty = import ../../common/alacritty.nix { inherit pkgs; };
   programs.starship = import ../../common/starship.nix { inherit pkgs; };
   programs.zellij = import ../../common/zellij.nix { inherit pkgs; };
+  programs.helix = import ../../common/helix.nix { inherit pkgs; };
 
   programs.fish = {
     enable = true;
