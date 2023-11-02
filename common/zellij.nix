@@ -4,6 +4,6 @@
   settings = {
     pane_frames = false;
     theme = "catppuccin-frappe";
-    default_layout = "compact";
+    default_mode = "locked";
   };
 }
