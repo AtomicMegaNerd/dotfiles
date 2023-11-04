@@ -66,5 +66,6 @@
       nvim-lint
       formatter-nvim
       catppuccin-nvim
+      rust-tools-nvim
     ];
 }
