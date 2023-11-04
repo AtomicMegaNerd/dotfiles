@@ -5,9 +5,6 @@ end
 
 fmt.setup({
   filetype = {
-    nix = {
-      require("formatter.filetypes.nix").nixpkgs_fmt,
-    },
     json = {
       require("formatter.filetypes.json").prettier,
     },

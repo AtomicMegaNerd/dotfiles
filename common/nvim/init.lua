@@ -15,15 +15,15 @@ require("amn.keymap")
 -- include Packer as we will use nix to install all the Neovim plug-ins.
 local install_type = os.getenv("AMN_INSTALL_TYPE")
 if install_type ~= nil and install_type == "non-nix" then
-	require("amn.plugins")
+  require("amn.plugins")
 end
 
 -- Mac Specific configuration
 if vim.fn.has("macunix") == 1 then
-	require("amn.macos")
+  require("amn.macos")
 end
 
 -- Linux Specific configuration
 if vim.fn.has("linux") == 1 then
-	require("amn.linux")
+  require("amn.linux")
 end
