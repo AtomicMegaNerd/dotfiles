@@ -18,6 +18,13 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 	group = fmt_grp,
 })
 
+vim.api.nvim_create_autocmd("BufWritePre", {
+	callback = function()
+		vim.lsp.buf.format()
+	end,
+  group = fmt_grp,
+})
+
 -- Options for specific file types
 ----------------------------------------------------------------
 local fto_grp = vim.api.nvim_create_augroup("FileTypeOptions", { clear = true })
