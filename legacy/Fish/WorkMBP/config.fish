@@ -23,9 +23,6 @@ alias fconf "nvim ~/.config/fish/config.fish"
 alias cconf "nvim ~/.config/fish/conf.d/credentials.fish"
 alias aconf "nvim ~/.config/alacritty/alacritty.yml"
 
-# Colorize go
-alias go "grc go"
-
 # Terraform
 alias tf terraform
 
