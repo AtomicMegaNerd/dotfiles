@@ -36,6 +36,7 @@
           p.markdown
           p.yaml
           p.toml
+          p.zig
         ])
       )
       alpha-nvim
