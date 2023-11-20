@@ -6,7 +6,6 @@
 
   extraPackages = with pkgs; [
     # Language servers
-    # Failing to build on MacOS
     # lua-language-server
     rnix-lsp
     shellcheck
