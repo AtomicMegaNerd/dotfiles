@@ -7,6 +7,7 @@ end
 catppuccin.setup({
 	flavour = "frappe",
 	no_italic = true,
+	transparent_background = true,
 	integrations = {
 		cmp = true,
 		gitsigns = true,

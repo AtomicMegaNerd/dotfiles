@@ -6,7 +6,8 @@
 
   extraPackages = with pkgs; [
     # Language servers
-    sumneko-lua-language-server
+    # Failing to build on MacOS
+    # lua-language-server
     rnix-lsp
     shellcheck
     stylua
@@ -36,6 +37,7 @@
           p.markdown
           p.yaml
           p.toml
+          p.zig
         ])
       )
       alpha-nvim
