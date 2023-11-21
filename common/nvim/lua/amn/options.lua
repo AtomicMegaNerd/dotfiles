@@ -27,6 +27,8 @@ o.mouse = "a"
 -- Blinking block cursor!
 o.guicursor = "a:blinkon100"
 
+vim.opt.clipboard:append({ "unnamed", "unnamedplus" })
+
 -- Set tabstop
 o.expandtab = true
 o.tabstop = 4
