@@ -62,15 +62,15 @@ o.termguicolors = true
 ----------------------------------------------------------------
 -- These files signify the root of a project.
 g.rooter_patterns = {
-	"Makefile",
-	"Cargo.toml",
-	"Pipfile",
-	"*.mod",
-	"Dockerfile",
-	"VERSION",
-	"CHANGELOG.md",
-	"*.cabal",
-	"stack.yaml",
-	"init.lua",
-	"config.fish",
+  "Makefile",
+  "Cargo.toml",
+  "Pipfile",
+  "*.mod",
+  "Dockerfile",
+  "VERSION",
+  "CHANGELOG.md",
+  "*.cabal",
+  "stack.yaml",
+  "init.lua",
+  "config.fish",
 }

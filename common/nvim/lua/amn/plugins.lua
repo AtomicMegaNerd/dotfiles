@@ -32,7 +32,7 @@ lazy.setup({
   },
   {
     "goolord/alpha-nvim",
-    dependencies = { "kyazdani42/nvim-web-devicons" },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
   },
   "j-hui/fidget.nvim",
   {
@@ -68,7 +68,7 @@ lazy.setup({
   "onsails/lspkind.nvim",
   {
     "nvim-lualine/lualine.nvim",
-    dependencies = { "kyazdani42/nvim-web-devicons" },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
   },
   "numToStr/Comment.nvim",
   {
