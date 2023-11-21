@@ -1,0 +1,45 @@
+{
+  // Editor settings
+  "editor.fontSize": 18,
+  "editor.semanticHighlighting.enabled": true,
+  "editor.lineNumbers": "relative",
+  "editor.formatOnSave": true,
+  "editor.fontFamily": "Cascadia Code",
+
+  // Vim settings
+  "vim.autoindent": true,
+
+  // Workbench settings
+  "workbench.startupEditor": "none",
+  "workbench.colorTheme": "Catppuccin Frappé",
+  "workbench.iconTheme": "catppuccin-frappe",
+  "workbench.layoutControl.enabled": false,
+  "workbench.activityBar.location": "top",
+  "workbench.settings.editor": "ui",
+
+  // Catppuccin settings
+  "catppuccin.italicKeywords": false,
+  "catppuccin.italicComments": false,
+
+  // Python settings
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff"
+  },
+
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // Turn off creepy tracking
+  "telemetry.telemetryLevel": "off",
+  "editor.minimap.enabled": false
+}
+
