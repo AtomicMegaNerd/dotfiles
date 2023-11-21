@@ -83,4 +83,5 @@ lazy.setup({
   "tpope/vim-fugitive",
   "vim-test/vim-test",
   "airblade/vim-rooter",
+  "github/copilot.vim",
 })
