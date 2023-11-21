@@ -6,3 +6,4 @@ NeoVim/spell
 common/newsboat/history.cmdline
 common/newsboat/cache.db
 common/newsboat/cache.db.lock
+common/nvim/lazy-lock.json

@@ -6,10 +6,10 @@
 
   extraPackages = with pkgs; [
     # Language servers
-    # Failing to build on MacOS
-    # lua-language-server
+    lua-language-server
     rnix-lsp
     shellcheck
+    rust-analyzer
     stylua
     tree-sitter
     nixpkgs-fmt
@@ -68,6 +68,6 @@
       nvim-lint
       formatter-nvim
       catppuccin-nvim
-      rust-tools-nvim
+      neodev-nvim
     ];
 }

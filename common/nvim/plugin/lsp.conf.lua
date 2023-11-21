@@ -63,7 +63,7 @@ end
 -- nvim-cmp supports additional completion capabilities
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
-local servers = { "pyright", "rnix", "ruff_lsp", "bashls", "terraformls", "tflint" }
+local servers = { "pyright", "rnix", "ruff_lsp", "bashls", "terraformls", "tflint", "rust_analyzer" }
 for _, lsp in ipairs(servers) do
 	nvim_lsp[lsp].setup({
 		on_attach = on_attach,

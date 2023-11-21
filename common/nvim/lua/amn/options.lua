@@ -27,6 +27,8 @@ o.mouse = "a"
 -- Blinking block cursor!
 o.guicursor = "a:blinkon100"
 
+vim.opt.clipboard:append({ "unnamed", "unnamedplus" })
+
 -- Set tabstop
 o.expandtab = true
 o.tabstop = 4
@@ -64,18 +66,18 @@ vim.opt.clipboard:prepend({ "unnamed", "unnamedplus" })
 -- These files signify the root of a project.
 g["test#strategy"] = "neovim"
 g.rooter_patterns = {
-	"Makefile",
-	"Cargo.toml",
-	"Pipfile",
-	"*.mod",
-	"Dockerfile",
-	"VERSION",
-	"CHANGELOG.md",
-	"*.cabal",
-	"stack.yaml",
-	"init.lua",
-	"config.fish",
-	"flake.nix",
+"Makefile",
+"Cargo.toml",
+"Pipfile",
+"*.mod",
+"Dockerfile",
+"VERSION",
+"CHANGELOG.md",
+"*.cabal",
+"stack.yaml",
+"init.lua",
+"config.fish",
+"flake.nix",
 }
 
 -- I often hit :W instead of :w by mistake

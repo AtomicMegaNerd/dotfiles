@@ -34,11 +34,13 @@ keymap.set("n", "x", '"_x')
 
 local ts_status, ts = pcall(require, "telescope")
 if not ts_status then
+	vim.print("Error: could not load telescope")
 	return
 end
 
 local tb_status, tb = pcall(require, "telescope.builtin")
 if not tb_status then
+	vim.print("Error: could not load telescope.builtin")
 	return
 end
 

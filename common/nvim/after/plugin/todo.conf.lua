@@ -1,6 +1,6 @@
 local status, todo = pcall(require, "todo-comments")
 if not status then
-	return
+  return
 end
 
 todo.setup()
