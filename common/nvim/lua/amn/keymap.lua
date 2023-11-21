@@ -31,12 +31,12 @@ keymap.set("n", "x", '"_x')
 
 local ts_status, ts = pcall(require, "telescope")
 if not ts_status then
-	return
+  return
 end
 
 local tb_status, tb = pcall(require, "telescope.builtin")
 if not tb_status then
-	return
+  return
 end
 
 local tfb = ts.extensions.file_browser.file_browser
@@ -68,51 +68,3 @@ keymap.set("n", "<leader>tn", [[<cmd>TestNearest<cr>]], { desc = "Run [T]est [N]
 keymap.set("n", "<leader>tf", [[<cmd>TestFile<cr>]], { desc = "Run all [T]ests in [F]ile" })
 keymap.set("n", "<leader>ts", [[<cmd>TestSuite<cr>]], { desc = "Run whole [T]est [S]uite" })
 keymap.set("n", "<leader>tv", [[<cmd>TestVisit<cr>]], { desc = "Return to the last [T]est file and [V]isit" })
-
--- Refactoring
-vim.api.nvim_set_keymap(
-	"v",
-	"<leader>re",
-	[[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>]],
-	{ noremap = true, silent = true, expr = false }
-)
-vim.api.nvim_set_keymap(
-	"v",
-	"<leader>rf",
-	[[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>]],
-	{ noremap = true, silent = true, expr = false }
-)
-vim.api.nvim_set_keymap(
-	"v",
-	"<leader>rv",
-	[[ <Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>]],
-	{ noremap = true, silent = true, expr = false }
-)
-vim.api.nvim_set_keymap(
-	"v",
-	"<leader>ri",
-	[[ <Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]],
-	{ noremap = true, silent = true, expr = false }
-)
-
--- Extract block doesn't need visual mode
-vim.api.nvim_set_keymap(
-	"n",
-	"<leader>rb",
-	[[ <Cmd>lua require('refactoring').refactor('Extract Block')<CR>]],
-	{ noremap = true, silent = true, expr = false }
-)
-vim.api.nvim_set_keymap(
-	"n",
-	"<leader>rbf",
-	[[ <Cmd>lua require('refactoring').refactor('Extract Block To File')<CR>]],
-	{ noremap = true, silent = true, expr = false }
-)
-
--- Inline variable can also pick up the identifier currently under the cursor without visual mode
-vim.api.nvim_set_keymap(
-	"n",
-	"<leader>ri",
-	[[ <Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]],
-	{ noremap = true, silent = true, expr = false }
-) ---------------------------------------------------------------

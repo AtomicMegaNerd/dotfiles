@@ -1,149 +1,87 @@
 --     ___   __                  _      __  ___                 _   __              __
---    /   | / /_____  ____ ___  (_)____/  |/  /__  ____ _____ _/ | / /__  _________/ /
+--    /   | / /_____  ____ ___  (_____/  |/  /__  ____ _____ _/ | / /__  _________/ /
 --   / /| |/ __/ __ \/ __ `__ \/ / ___/ /|_/ / _ \/ __ `/ __ `/  |/ / _ \/ ___/ __  /
 --  / ___ / /_/ /_/ / / / / / / / /__/ /  / /  __/ /_/ / /_/ / /|  /  __/ /  / /_/ /
 -- /_/  |_\__/\____/_/ /_/ /_/_/\___/_/  /_/\___/\__, /\__,_/_/ |_/\___/_/   \__,_/
 --                                              /____/
 --
 
--- Install packer
-----------------------------------------------------------------
--- auto install packer if not installed
-local ensure_packer = function()
-	local fn = vim.fn
-	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-	if fn.empty(fn.glob(install_path)) > 0 then
-		fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
-		vim.cmd([[packadd packer.nvim]])
-		return true
-	end
-	return false
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
-local packer_bootstrap = ensure_packer() -- true if packer was just installed
+vim.opt.rtp:prepend(lazypath)
 
--- Run PackerSync when we save this file
-vim.cmd([[ 
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]])
-
--- import packer safely
-local status, packer = pcall(require, "packer")
+local status, lazy = pcall(require, "lazy")
 if not status then
-	return
+  return
 end
 
-return packer.startup({
-	function(use)
-		-- Package manager
-		use("wbthomason/packer.nvim")
-		-- -- Start-up screen for Neovim
-		use({
-			"goolord/alpha-nvim",
-			requires = { "kyazdani42/nvim-web-devicons" },
-		})
-		-- -- Telescope
-		-- Don't use fzf on Windows
-		if vim.fn.has("win32") ~= 1 then
-			use({
-				"nvim-telescope/telescope-fzf-native.nvim",
-				run = "make",
-			})
-		end
-		use({ "nvim-telescope/telescope-file-browser.nvim" })
-		use({ "nvim-telescope/telescope-ui-select.nvim" })
-		use({
-			"nvim-telescope/telescope.nvim",
-			branch = "0.1.x",
-			requires = { "nvim-lua/plenary.nvim" },
-		})
-		-- -- Best theme ever
-		use("EdenEast/nightfox.nvim")
-		use({
-			"lewis6991/gitsigns.nvim",
-			requires = { "nvim-lua/plenary.nvim" },
-		})
-		-- Treesitter
-		use({
-			"nvim-treesitter/nvim-treesitter",
-			tag = "v0.8.5.2",
-			run = ":TSUpdate",
-		})
-		-- LSP
-		use({
-			"neovim/nvim-lspconfig",
-		})
-		use({
-			"ray-x/lsp_signature.nvim",
-		})
-		-- LSP and Linters Installer
-		use({
-			"williamboman/mason.nvim",
-		})
-		use("williamboman/mason-lspconfig.nvim")
-		-- Display LSP status
-		use("j-hui/fidget.nvim")
-		-- CMP
-		use({
-			"hrsh7th/nvim-cmp",
-		})
-		-- CMP extensions
-		use("hrsh7th/vim-vsnip")
-		use("hrsh7th/cmp-vsnip")
-		use("hrsh7th/cmp-nvim-lsp")
-		use("hrsh7th/cmp-path")
-		use("hrsh7th/cmp-buffer")
-		use("onsails/lspkind.nvim")
-
-		-- Status line
-		use({
-			"nvim-lualine/lualine.nvim",
-			requires = { "kyazdani42/nvim-web-devicons", opt = true },
-		})
-
-		use("akinsho/toggleterm.nvim")
-
-		-- Rust
-		use("simrat39/rust-tools.nvim")
-
-		-- Automatic toggling of comments
-		use({
-			"numToStr/Comment.nvim",
-			tag = "v0.7.0",
-		})
-
-		-- Highlight TODO, FIXME, etc.
-		use({
-			"folke/todo-comments.nvim",
-			requires = "nvim-lua/plenary.nvim",
-		})
-
-		-- Managing Git Conflicts
-		use({ "akinsho/git-conflict.nvim" })
-
-		-- Make Nvim window transparent
-		use({ "xiyaowong/nvim-transparent" })
-
-		-- Helper to find keys and commands
-		use({ "folke/which-key.nvim" })
-
-		-- The last few to use vimscript instead of Lua.
-		use("tpope/vim-eunuch")
-		use("tpope/vim-fugitive")
-		use("vim-test/vim-test")
-		use("airblade/vim-rooter")
-
-		if packer_bootstrap then
-			require("packer").sync()
-		end
-	end,
-	config = {
-		display = {
-			open_fn = function()
-				return require("packer.util").float({ border = "single" })
-			end,
-		},
-	},
+lazy.setup({
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
+  },
+  {
+    "goolord/alpha-nvim",
+    dependencies = { "kyazdani42/nvim-web-devicons" },
+  },
+  "j-hui/fidget.nvim",
+  {
+    "nvim-telescope/telescope-fzf-native.nvim",
+    build =
+    "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+  },
+  { "nvim-telescope/telescope-file-browser.nvim" },
+  { "nvim-telescope/telescope-ui-select.nvim" },
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
+  {
+    "lewis6991/gitsigns.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    cmd = "TSUpdate",
+  },
+  "neovim/nvim-lspconfig",
+  "ray-x/lsp_signature.nvim",
+  "williamboman/mason.nvim",
+  "williamboman/mason-lspconfig.nvim",
+  -- Completion
+  "hrsh7th/nvim-cmp",
+  "hrsh7th/vim-vsnip",
+  "hrsh7th/cmp-vsnip",
+  "hrsh7th/cmp-nvim-lsp",
+  "hrsh7th/cmp-path",
+  "hrsh7th/cmp-buffer",
+  "onsails/lspkind.nvim",
+  {
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "kyazdani42/nvim-web-devicons" },
+  },
+  "numToStr/Comment.nvim",
+  {
+    "folke/todo-comments.nvim",
+    dependencies = "nvim-lua/plenary.nvim",
+  },
+  "akinsho/git-conflict.nvim",
+  "folke/which-key.nvim",
+  "folke/neodev.nvim",
+  "mhartington/formatter.nvim",
+  -- These are older vim script based plug-ins
+  "tpope/vim-eunuch",
+  "tpope/vim-fugitive",
+  "vim-test/vim-test",
+  "airblade/vim-rooter",
 })
