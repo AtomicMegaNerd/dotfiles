@@ -11,5 +11,8 @@ fmt.setup({
     yaml = {
       require("formatter.filetypes.yaml").prettier,
     },
+    lua = {
+      require("formatter.filetypes.lua").stylua,
+    },
   },
 })
