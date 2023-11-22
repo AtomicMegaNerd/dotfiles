@@ -33,7 +33,11 @@ lazy.setup({
     "goolord/alpha-nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
-  "j-hui/fidget.nvim",
+  -- Telescope
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
   {
     "nvim-telescope/telescope-fzf-native.nvim",
     build =
@@ -41,20 +45,23 @@ lazy.setup({
   },
   { "nvim-telescope/telescope-file-browser.nvim" },
   { "nvim-telescope/telescope-ui-select.nvim" },
-  {
-    "nvim-telescope/telescope.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-  },
-  {
-    "lewis6991/gitsigns.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-  },
+  -- Treesitter
   {
     "nvim-treesitter/nvim-treesitter",
     cmd = "TSUpdate",
   },
+  -- Git
+  {
+    "lewis6991/gitsigns.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
+  "tpope/vim-fugitive",
+  -- LSP
   "neovim/nvim-lspconfig",
   "ray-x/lsp_signature.nvim",
+  "folke/neodev.nvim",
+  "j-hui/fidget.nvim",
+  -- Mason
   "williamboman/mason.nvim",
   "williamboman/mason-lspconfig.nvim",
   -- Completion
@@ -65,22 +72,20 @@ lazy.setup({
   "hrsh7th/cmp-path",
   "hrsh7th/cmp-buffer",
   "onsails/lspkind.nvim",
+  -- Status Line
   {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
+  -- Code Comments
   "numToStr/Comment.nvim",
   {
     "folke/todo-comments.nvim",
     dependencies = "nvim-lua/plenary.nvim",
   },
-  "akinsho/git-conflict.nvim",
+  -- Misc
   "folke/which-key.nvim",
-  "folke/neodev.nvim",
   "mhartington/formatter.nvim",
-  -- These are older vim script based plug-ins
-  "tpope/vim-eunuch",
-  "tpope/vim-fugitive",
   "vim-test/vim-test",
   "airblade/vim-rooter",
   "github/copilot.vim",

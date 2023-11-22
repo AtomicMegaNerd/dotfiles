@@ -4,7 +4,7 @@
   settings = {
     font = {
       normal = {
-        family = "JetBrainsMono Nerd Font";
+        family = "JetBrainsMono NF";
         style = "Medium";
       };
       size = 18;
@@ -23,12 +23,12 @@
       { mouse = "Left"; action = "Copy"; }
     ];
     window = {
-      startup_mode = "Fullscreen";
+      decorations = "None";
       padding = {
         x = 3;
         y = 3;
       };
-      opacity = 0.95;
+      opacity = 0.97;
     };
 
     colors = {

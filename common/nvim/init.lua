@@ -12,7 +12,6 @@ if install_type ~= nil and install_type == "non-nix" then
     require("amn.plugins")
 end
 
--- Keymaps and Autocmds come after
 require("amn.options")
 require("amn.autocmds")
 require("amn.keymap")

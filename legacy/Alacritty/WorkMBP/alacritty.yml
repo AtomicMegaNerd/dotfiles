@@ -1,13 +1,13 @@
 ---
 font:
   normal:
-    family: JetBrainsMono Nerd Font
+    family: JetBrainsMono NF
     style: Medium
   bold:
-    family: JetBrainsMono Nerd Font
+    family: JetBrainsMono NF
     style: Bold
   italic:
-    family: JetBrainsMono Nerd Font
+    family: JetBrainsMono NF
     style: Italic
   size: 19
 
@@ -24,7 +24,7 @@ mouse_bindings:
   - { mouse: Left, action: Copy }
 
 window:
-  startup_mode: "Fullscreen"
+  decorations: "none"
   padding:
     x: 3
     y: 3
