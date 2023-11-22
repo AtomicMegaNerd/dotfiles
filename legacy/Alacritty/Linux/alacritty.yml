@@ -1,12 +1,11 @@
 ---
 font:
- size: 18
+  size: 18
 
 cursor:
   style:
     shape: Block
     blinking: Always
-    blink_interval: 500
 
 mouse_bindings:
   - { mouse: Right, action: Paste }

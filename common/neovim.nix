@@ -21,6 +21,7 @@
 
   plugins = with pkgs.vimPlugins;
     [
+      # Treesitter
       (nvim-treesitter.withPlugins (p:
         [
           p.c
@@ -40,14 +41,23 @@
           p.zig
         ])
       )
+      # Theme
+      catppuccin-nvim
+      # Status Screen
       alpha-nvim
+      # Telescope
       telescope-nvim
       telescope-ui-select-nvim
       telescope-file-browser-nvim
       telescope-fzf-native-nvim
+      # Git
+      vim-fugitive
       gitsigns-nvim
+      # LSP
       nvim-lspconfig
-      fidget-nvim
+      neodev-nvim
+      lsp_signature-nvim
+      # Completion
       nvim-cmp
       vim-vsnip
       cmp-vsnip
@@ -55,19 +65,19 @@
       cmp-path
       cmp-buffer
       lspkind-nvim
+      # Status Line
       lualine-nvim
-      nvim-web-devicons
-      plenary-nvim
+      # Comments
       comment-nvim
       todo-comments-nvim
-      vim-eunuch
-      vim-fugitive
+      # Misc
       vim-rooter
       vim-test
-      lsp_signature-nvim
-      nvim-lint
       formatter-nvim
-      catppuccin-nvim
-      neodev-nvim
+      fidget-nvim
+      which-key-nvim
+      # Dependencies
+      nvim-web-devicons
+      plenary-nvim
     ];
 }
