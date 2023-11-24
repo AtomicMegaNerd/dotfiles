@@ -6,10 +6,10 @@
 
   extraPackages = with pkgs; [
     # Language servers
+    # TODO: Re-enable this once it is no longer broken on the Mac
     lua-language-server
     rnix-lsp
     shellcheck
-    rust-analyzer
     stylua
     tree-sitter
     nixpkgs-fmt
