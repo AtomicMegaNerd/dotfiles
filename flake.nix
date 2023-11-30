@@ -44,7 +44,7 @@
           ];
         };
         metropolitan = nixpkgs.lib.nixosSystem {
-          pkgs = pkgs-linux;
+          pkgs = unstable-linux;
           system = "x86_64-linux";
           modules = [
             ./hosts/metropolitan/configuration.nix
