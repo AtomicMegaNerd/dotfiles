@@ -9,9 +9,6 @@
       };
       size = 18;
     };
-    env = {
-      TERM = "xterm-256color";
-    };
     cursor = {
       style = {
         shape = "Block";
