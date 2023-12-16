@@ -1,9 +1,8 @@
 { pkgs }:
 {
   enable = true;
-
   settings = {
-    theme = "catppuccin";
+    theme = "catppuccin_frappe";
     editor = {
       line-number = "relative";
       true-color = true;
