@@ -41,6 +41,12 @@ vim.api.nvim_create_autocmd("Filetype", {
 })
 
 vim.api.nvim_create_autocmd("Filetype", {
+  command = "set nospell",
+  group = fto_grp,
+  pattern = { "yaml" },
+})
+
+vim.api.nvim_create_autocmd("Filetype", {
   command = "set colorcolumn=100",
   group = fto_grp,
   pattern = {

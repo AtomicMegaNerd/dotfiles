@@ -20,12 +20,14 @@ mouse_bindings:
   - { mouse: Right, action: Paste }
   - { mouse: Left, action: Copy }
 
+selection:
+  save_to_clipboard: true
+
 window:
   decorations: "none"
   padding:
     x: 3
     y: 3
-  opacity: 0.95
 
 import:
   # uncomment the flavour you want below:

@@ -37,6 +37,7 @@ alias zl "zellij ls"
 alias za "zellij a"
 alias zk "zellij k"
 alias zka "zellij ka"
+alias zda "zellij da"
 
 # Functions
 # ===================================
