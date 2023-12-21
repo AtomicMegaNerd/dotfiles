@@ -13,7 +13,7 @@
     # NixOS-WSL
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
 
@@ -38,14 +38,12 @@
       nixosConfigurations = {
         blahaj = nixpkgs.lib.nixosSystem {
           pkgs = pkgs-linux;
-          system = "x86_64-linux";
           modules = [
             ./hosts/blahaj/configuration.nix
           ];
         };
         metropolitan = nixpkgs.lib.nixosSystem {
           pkgs = unstable-linux;
-          system = "x86_64-linux";
           modules = [
             ./hosts/metropolitan/configuration.nix
             nixos-wsl.nixosModules.wsl
