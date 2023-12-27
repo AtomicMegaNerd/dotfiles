@@ -31,21 +31,27 @@ lazy.setup({
     priority = 1000,
   },
   {
+    "rcarriga/nvim-notify",
+    priority = 500,
+  },
+  {
     "goolord/alpha-nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
   -- Telescope
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    dependencies = {
+      { "nvim-lua/plenary.nvim" },
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build =
+        "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+      },
+      { "nvim-telescope/telescope-file-browser.nvim" },
+      { "nvim-telescope/telescope-ui-select.nvim" },
+    },
   },
-  {
-    "nvim-telescope/telescope-fzf-native.nvim",
-    build =
-    "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
-  },
-  { "nvim-telescope/telescope-file-browser.nvim" },
-  { "nvim-telescope/telescope-ui-select.nvim" },
   -- Treesitter
   {
     "nvim-treesitter/nvim-treesitter",
@@ -65,14 +71,29 @@ lazy.setup({
   -- Mason
   "williamboman/mason.nvim",
   "williamboman/mason-lspconfig.nvim",
+  -- Tests
+  {
+    "nvim-neotest/neotest",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-neotest/neotest-python",
+      "nvim-neotest/neotest-go",
+    },
+  },
   -- Completion
-  "hrsh7th/nvim-cmp",
-  "hrsh7th/vim-vsnip",
-  "hrsh7th/cmp-vsnip",
-  "hrsh7th/cmp-nvim-lsp",
-  "hrsh7th/cmp-path",
-  "hrsh7th/cmp-buffer",
-  "onsails/lspkind.nvim",
+  {
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      "hrsh7th/vim-vsnip",
+      "hrsh7th/cmp-vsnip",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-buffer",
+      "onsails/lspkind.nvim",
+    },
+  },
   -- Status Line
   {
     "nvim-lualine/lualine.nvim",
@@ -87,6 +108,5 @@ lazy.setup({
   -- Misc
   "folke/which-key.nvim",
   "mhartington/formatter.nvim",
-  "vim-test/vim-test",
   "airblade/vim-rooter",
 })

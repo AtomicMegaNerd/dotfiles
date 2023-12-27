@@ -42,6 +42,7 @@
       )
       # Theme
       catppuccin-nvim
+      nvim-notify
       # Status Screen
       alpha-nvim
       # Telescope
@@ -56,6 +57,10 @@
       nvim-lspconfig
       neodev-nvim
       lsp_signature-nvim
+      # Testing
+      neotest
+      neotest-python
+      neotest-go
       # Completion
       nvim-cmp
       vim-vsnip
@@ -71,7 +76,6 @@
       todo-comments-nvim
       # Misc
       vim-rooter
-      vim-test
       formatter-nvim
       fidget-nvim
       which-key-nvim
