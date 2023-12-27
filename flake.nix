@@ -42,7 +42,7 @@
             ./hosts/blahaj/configuration.nix
           ];
         };
-        metropolitan = nixpkgs.lib.nixosSystem {
+        metropolitan = nixpkgs-unstable.lib.nixosSystem {
           pkgs = unstable-linux;
           modules = [
             ./hosts/metropolitan/configuration.nix
