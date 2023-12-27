@@ -1,6 +1,6 @@
 local nt_status, nt = pcall(require, "neotest")
 if not nt_status then
-  vim.nofify("Cannot not load neotest", vim.log.levels.ERROR)
+  vim.notify("Cannot load neotest", vim.log.levels.ERROR)
   return
 end
 

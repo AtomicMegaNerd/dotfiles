@@ -65,18 +65,17 @@ keymap.set("n", "<leader>ft", [[<cmd>TodoTelescope<cr>]], { desc = "[F]ind [T]od
 keymap.set("n", "<leader>fn", function()
   ts.extensions.notify.notify()
 end, { desc = "[F]ind [N]otifications" })
-
 -- File Browser
 keymap.set("n", "<leader>bf", tfb, { desc = "[B]rowse [F]iles " })
 
+-- Run Tests
+----------------------------------------------------------------
 local nt_status, nt = pcall(require, "neotest")
 if not nt_status then
   vim.notify("Cannot load neotest", vim.log.levels.ERROR)
   return
 end
 
--- Run Tests
-----------------------------------------------------------------
 keymap.set("n", "<leader>tn", function()
   nt.run.run()
   nt.output.open()
