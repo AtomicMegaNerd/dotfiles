@@ -18,9 +18,9 @@ end
 
 nt.setup({
   adapters = {
-    nt_pytest = {
+    nt_pytest({
       args = { "--log-level", "INFO" },
-    },
-    nt_go = {},
+    }),
+    nt_go({}),
   },
 })

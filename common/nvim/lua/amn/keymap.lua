@@ -80,14 +80,17 @@ end
 keymap.set("n", "<leader>tn", function()
   nt.run.run()
   nt.output.open()
+  nt.summary.open()
 end, { desc = "Run [T]est [N]earest to cursor" })
 
 keymap.set("n", "<leader>tf", function()
   nt.run.run(vim.fn.expand("%"))
   nt.output.open()
+  nt.summary.open()
 end, { desc = "Run all [T]ests in [F]ile" })
 
 keymap.set("n", "<leader>ts", function()
   nt.run.run(vim.fn.getcwd())
+  nt.output.open()
   nt.summary.open()
 end, { desc = "Run whole [T]est [S]uite" })
