@@ -34,14 +34,14 @@ keymap.set("n", "x", '"_x')
 
 local ts_status, ts = pcall(require, "telescope")
 if not ts_status then
-	vim.print("Error: could not load telescope")
-	return
+  vim.print("Error: could not load telescope")
+  return
 end
 
 local tb_status, tb = pcall(require, "telescope.builtin")
 if not tb_status then
-	vim.print("Error: could not load telescope.builtin")
-	return
+  vim.print("Error: could not load telescope.builtin")
+  return
 end
 
 local tfb = ts.extensions.file_browser.file_browser
@@ -63,12 +63,26 @@ keymap.set("n", "<leader>fk", tb.keymaps, { desc = "[F]ind Neovim [K]eymaps" })
 keymap.set("n", "<leader>ft", [[<cmd>TodoTelescope<cr>]], { desc = "[F]ind [T]odo Comments" })
 -- File Browser
 keymap.set("n", "<leader>bf", tfb, { desc = "[B]rowse [F]iles " })
--- ToggleTerm
-keymap.set("n", "<leader>c", [[<cmd>ToggleTerm direction=float<cr>]], { desc = "Open [C]ommand-line terminal" })
+
+local nt_status, nt = pcall(require, "neotest")
+if not nt_status then
+  vim.notify("Error: could not load neotest", vim.log.levels.ERROR)
+  return
+end
 
 -- Run Tests
 ----------------------------------------------------------------
-keymap.set("n", "<leader>tn", [[<cmd>TestNearest<cr>]], { desc = "Run [T]est [N]earest to cursor" })
-keymap.set("n", "<leader>tf", [[<cmd>TestFile<cr>]], { desc = "Run all [T]ests in [F]ile" })
-keymap.set("n", "<leader>ts", [[<cmd>TestSuite<cr>]], { desc = "Run whole [T]est [S]uite" })
-keymap.set("n", "<leader>tv", [[<cmd>TestVisit<cr>]], { desc = "Return to the last [T]est file and [V]isit" })
+keymap.set("n", "<leader>tn", function()
+  nt.run.run()
+  nt.output.open()
+end, { desc = "Run [T]est [N]earest to cursor" })
+
+keymap.set("n", "<leader>tf", function()
+  nt.run.run(vim.fn.expand("%"))
+  nt.output.open()
+end, { desc = "Run all [T]ests in [F]ile" })
+
+keymap.set("n", "<leader>ts", function()
+  nt.run.run(vim.fn.getcwd())
+  nt.summary.open()
+end, { desc = "Run whole [T]est [S]uite" })

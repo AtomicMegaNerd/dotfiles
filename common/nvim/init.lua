@@ -8,8 +8,10 @@
 -- Neovim Configuration File
 
 local install_type = os.getenv("AMN_INSTALL_TYPE")
-if install_type ~= nil and install_type == "non-nix" then
-    require("amn.plugins")
+local non_nix = install_type ~= nil and install_type == "non-nix"
+
+if non_nix then
+  require("amn.plugins")
 end
 
 require("amn.options")
@@ -18,15 +20,22 @@ require("amn.keymap")
 
 -- Mac Specific configuration
 if vim.fn.has("macunix") == 1 then
-	require("amn.macos")
+  vim.notify("MacOS detected")
+  require("amn.macos")
 end
 
 -- Linux Specific configuration
 if vim.fn.has("linux") == 1 then
-	require("amn.linux")
+  vim.notify("Linux detected")
+  require("amn.linux")
 end
 
 -- Windows Specific configuration
 if vim.fn.has("win32") == 1 then
-	require("amn.windows")
+  vim.notify("Windows detected")
+  require("amn.windows")
+end
+
+if non_nix then
+  vim.notify("Non-Nix installation detected. Using non-nix configuration.")
 end

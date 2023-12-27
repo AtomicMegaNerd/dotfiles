@@ -72,6 +72,17 @@ lazy.setup({
   "hrsh7th/cmp-path",
   "hrsh7th/cmp-buffer",
   "onsails/lspkind.nvim",
+  -- Unit tests
+  {
+    "nvim-neotest/neotest",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-neotest/neotest-python",
+      "nvim-neotest/neotest-go",
+    },
+  },
   -- Status Line
   {
     "nvim-lualine/lualine.nvim",
@@ -84,9 +95,9 @@ lazy.setup({
     dependencies = "nvim-lua/plenary.nvim",
   },
   -- Misc
+  "rcarriga/nvim-notify",
   "folke/which-key.nvim",
   "mhartington/formatter.nvim",
-  "vim-test/vim-test",
   "airblade/vim-rooter",
   "github/copilot.vim",
 })
