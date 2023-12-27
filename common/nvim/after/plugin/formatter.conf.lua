@@ -1,5 +1,6 @@
 local fmt_status, fmt = pcall(require, "formatter")
 if not fmt_status then
+  vim.notify("Cannot load formatter", vim.log.levels.ERROR)
   return
 end
 

@@ -1,6 +1,6 @@
 local status, catppuccin = pcall(require, "catppuccin")
 if not status then
-  vim.notify("Could not load catppuccin", vim.log.levels.ERROR)
+  vim.notify("Cannot load catppuccin", vim.log.levels.ERROR)
   return
 end
 

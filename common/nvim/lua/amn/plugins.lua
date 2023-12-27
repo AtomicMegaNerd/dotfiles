@@ -24,10 +24,16 @@ if not status then
 end
 
 lazy.setup({
+  -- Always load the color scheme first
   {
     "catppuccin/nvim",
     name = "catppuccin",
     priority = 1000,
+  },
+  -- Load notify as early as possible as well...
+  {
+    "rcarriga/nvim-notify",
+    priority = 500,
   },
   {
     "goolord/alpha-nvim",
@@ -36,15 +42,17 @@ lazy.setup({
   -- Telescope
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    dependencies = {
+      { "nvim-lua/plenary.nvim" },
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build =
+        "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+      },
+      { "nvim-telescope/telescope-file-browser.nvim" },
+      { "nvim-telescope/telescope-ui-select.nvim" },
+    },
   },
-  {
-    "nvim-telescope/telescope-fzf-native.nvim",
-    build =
-    "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
-  },
-  { "nvim-telescope/telescope-file-browser.nvim" },
-  { "nvim-telescope/telescope-ui-select.nvim" },
   -- Treesitter
   {
     "nvim-treesitter/nvim-treesitter",
@@ -55,6 +63,7 @@ lazy.setup({
     "lewis6991/gitsigns.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
   },
+  -- Git
   "tpope/vim-fugitive",
   -- LSP
   "neovim/nvim-lspconfig",
@@ -65,13 +74,17 @@ lazy.setup({
   "williamboman/mason.nvim",
   "williamboman/mason-lspconfig.nvim",
   -- Completion
-  "hrsh7th/nvim-cmp",
-  "hrsh7th/vim-vsnip",
-  "hrsh7th/cmp-vsnip",
-  "hrsh7th/cmp-nvim-lsp",
-  "hrsh7th/cmp-path",
-  "hrsh7th/cmp-buffer",
-  "onsails/lspkind.nvim",
+  {
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      "hrsh7th/vim-vsnip",
+      "hrsh7th/cmp-vsnip",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-buffer",
+      "onsails/lspkind.nvim",
+    },
+  },
   -- Unit tests
   {
     "nvim-neotest/neotest",
@@ -95,7 +108,6 @@ lazy.setup({
     dependencies = "nvim-lua/plenary.nvim",
   },
   -- Misc
-  "rcarriga/nvim-notify",
   "folke/which-key.nvim",
   "mhartington/formatter.nvim",
   "airblade/vim-rooter",

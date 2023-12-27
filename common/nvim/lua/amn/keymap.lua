@@ -34,13 +34,13 @@ keymap.set("n", "x", '"_x')
 
 local ts_status, ts = pcall(require, "telescope")
 if not ts_status then
-  vim.print("Error: could not load telescope")
+  vim.notify("Cannot load telescope", vim.log.levels.ERROR)
   return
 end
 
 local tb_status, tb = pcall(require, "telescope.builtin")
 if not tb_status then
-  vim.print("Error: could not load telescope.builtin")
+  vim.notify("Cannot load telescope.builtin", vim.log.levels.ERROR)
   return
 end
 
@@ -61,12 +61,17 @@ keymap.set("n", "<leader>fm", tb.commands, { desc = "[F]ind Neovim Co[M]mands" }
 keymap.set("n", "<leader>fk", tb.keymaps, { desc = "[F]ind Neovim [K]eymaps" })
 -- Todo Comments
 keymap.set("n", "<leader>ft", [[<cmd>TodoTelescope<cr>]], { desc = "[F]ind [T]odo Comments" })
+-- Notifications
+keymap.set("n", "<leader>fn", function()
+  ts.extensions.notify.notify()
+end, { desc = "[F]ind [N]otifications" })
+
 -- File Browser
 keymap.set("n", "<leader>bf", tfb, { desc = "[B]rowse [F]iles " })
 
 local nt_status, nt = pcall(require, "neotest")
 if not nt_status then
-  vim.notify("Error: could not load neotest", vim.log.levels.ERROR)
+  vim.notify("Cannot load neotest", vim.log.levels.ERROR)
   return
 end
 

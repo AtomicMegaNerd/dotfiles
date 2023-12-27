@@ -1,6 +1,7 @@
 local status, comment = pcall(require, "Comment")
 if not status then
-	return
+  vim.notify("Cannot load Comment", vim.log.levels.ERROR)
+  return
 end
 
 comment.setup()
