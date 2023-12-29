@@ -22,7 +22,6 @@ in
     ncurses
   ];
 
-
   programs.neovim = import ../../common/neovim.nix { inherit pkgs; };
   programs.tmux = import ../../common/tmux.nix { inherit pkgs; };
   programs.alacritty = import ../../common/alacritty.nix { inherit pkgs; };
