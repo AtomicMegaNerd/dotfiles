@@ -20,7 +20,7 @@
       { mouse = "Left"; action = "Copy"; }
     ];
     window = {
-      decorations = "None";
+      decorations = "Buttonless";
       padding = {
         x = 3;
         y = 3;
@@ -42,10 +42,6 @@
       cursor = {
         text = "#303446"; # base
         cursor = "#F2D5CF"; # rosewater
-        vi_mode_cursor = {
-          text = "#303446"; # base
-          cursor = "#BABBF1"; # lavender
-        };
       };
 
       # Search colors
@@ -57,10 +53,6 @@
         focused_match = {
           foreground = "#303446"; # base
           background = "#A6D189"; # green
-        };
-        footer_bar = {
-          foreground = "#303446"; # base
-          background = "#A5ADCE"; # subtext0
         };
       };
 
@@ -92,6 +84,7 @@
         cyan = "#81C8BE"; # teal
         white = "#B5BFE2"; # subtext1
       };
+
       # Bright colors
       bright = {
         black = "#626880"; # surface2
