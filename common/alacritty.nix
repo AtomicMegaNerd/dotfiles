@@ -15,7 +15,7 @@
         blinking = "Always";
       };
     };
-    mouse_bindings = [
+    mouse.bindings = [
       { mouse = "Right"; action = "Paste"; }
       { mouse = "Left"; action = "Copy"; }
     ];
