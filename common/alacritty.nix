@@ -25,7 +25,6 @@
         x = 3;
         y = 3;
       };
-      opacity = 0.97;
     };
 
     colors = {
