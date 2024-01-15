@@ -31,7 +31,7 @@ mouse = "Left"
 save_to_clipboard = true
 
 [window]
-decorations = "none"
+decorations = "Buttonless"
 
 [window.padding]
 x = 3
