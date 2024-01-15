@@ -74,3 +74,6 @@ g.rooter_patterns = {
   "init.lua",
   "config.fish",
 }
+
+-- Co-pilot
+vim.g.copilot_assume_mapped = true
