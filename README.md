@@ -36,14 +36,14 @@ We use home-manager on all of our Nix managed machines.
 home-manager switch -- flake .#USERNAME@HOST
 ```
 
-## Legacy Non-Nix Configurations
+## non-nix Non-Nix Configurations
 
 The following are instructions fro configuring your dotfiles on non-Nix systems:
 
 ### Alacritty
 
 ```bash
-ln -s ~/Code/Configs/dotfiles/legacy/Alacritty/HOST/ ~/.config/alacritty
+ln -s ~/Code/Configs/dotfiles/non-nix/Alacritty/HOST/ ~/.config/alacritty
 ```
 
 ### Fish
@@ -51,7 +51,7 @@ ln -s ~/Code/Configs/dotfiles/legacy/Alacritty/HOST/ ~/.config/alacritty
 Fish is simple. Simply symlink the HOST folder that you want (Discovery, JebPopOS, etc).
 
 ```bash
-ln -s ~/Code/Configs/dotfiles/legacy/Fish/HOST ~/.config/fish
+ln -s ~/Code/Configs/dotfiles/non-nix/Fish/HOST ~/.config/fish
 ```
 
 ### TMux
@@ -84,7 +84,7 @@ This is another text editor I am keeping an eye on.
 
 ```bash
 cd ~/.config
-ln -s ~/Code/Configs/dotfiles/legacy/Helix/ helix
+ln -s ~/Code/Configs/dotfiles/non-nix/Helix/ helix
 ```
 
 ### Powershell
