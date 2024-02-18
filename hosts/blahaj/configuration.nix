@@ -37,11 +37,6 @@
   services.openssh.enable = true;
   virtualisation.docker.enable = true;
 
-  system.autoUpgrade = {
-    enable = true;
-    channel = "https:nixos.org/channels/nixos-22.11";
-  };
-
   nix = {
     gc = {
       automatic = true;
