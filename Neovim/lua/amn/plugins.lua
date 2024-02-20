@@ -35,6 +35,10 @@ lazy.setup({
     priority = 500,
   },
   {
+    "rcarriga/nvim-notify",
+    priority = 100,
+  },
+  {
     "goolord/alpha-nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
@@ -105,9 +109,10 @@ lazy.setup({
     "folke/todo-comments.nvim",
     dependencies = "nvim-lua/plenary.nvim",
   },
+  -- Formatting
+  "stevearc/conform.nvim",
   -- Misc
   "folke/which-key.nvim",
-  "mhartington/formatter.nvim",
   "airblade/vim-rooter",
   "github/copilot.vim",
 })

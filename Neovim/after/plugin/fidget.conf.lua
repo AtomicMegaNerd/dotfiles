@@ -6,8 +6,6 @@ end
 
 fidget.setup({
   notification = {
-    override_vim_notify = true,
-    filter = vim.log.levels.INFO,
     window = {
       winblend = 0,
     },

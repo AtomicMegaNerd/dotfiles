@@ -74,6 +74,9 @@ set -gx VAULT_FORMAT json
 # Tell Colima where to get the certs
 set -gx CERTS $HOME/Certs/
 
+# Logging
+set -gx NVIM_LOG_FILE ~/.local/share/nvim/nvim.log
+
 # PATH
 # ===================================
 fish_add_path $HOME/bin 

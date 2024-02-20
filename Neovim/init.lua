@@ -14,7 +14,7 @@ require("amn.keymap")
 
 -- Mac Specific configuration
 if vim.fn.has("macunix") == 1 then
-  vim.notify("MacOS detected", vim.log.levels.DEBUG)
+  vim.notify("MacOS detected", vim.log.levels.INFO)
   require("amn.macos")
 end
 
