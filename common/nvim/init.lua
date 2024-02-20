@@ -17,6 +17,7 @@ end
 require("amn.options")
 require("amn.autocmds")
 require("amn.keymap")
+require("amn.lsp")
 
 if not non_nix then
 	require("amn.notify_conf")
