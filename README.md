@@ -14,11 +14,11 @@ use Nix as a package manager. This repo also contains other dotfiles for non-Nix
 
 Right now we have two hosts that are managed by Nix:
 
-| Host      | OS    | Platform       |
-| --------- | ----- | -------------- |
-| spork     | NixOS | x86-64-linux   |
-| blahaj    | NixOS | x86-64-linux   |
-| discovery | MacOS | aarch64-darwin |
+| Host          | OS    | Platform       |
+| ------------- | ----- | -------------- |
+| metropolitan  | NixOS | x86-64-linux   |
+| blahaj        | NixOS | x86-64-linux   |
+| discovery     | MacOS | aarch64-darwin |
 
 ## Run OS Upgrade
 
@@ -62,7 +62,7 @@ Set the tmux.conf file from the symlink:
 ln -s ~/Code/Configs/dotfiles/common/tmux/tmux.conf ~/.tmux.conf
 ```
 
-### NeoVim
+### Neovim
 
 For non-nix systems set the environment variable:
 
@@ -76,7 +76,7 @@ Then after installing Neovim you can symlink the configuration:
 ln -s ~/Code/Configs/dotfiles/common/nvim ~/.config/nvim
 ```
 
-When you first load Neovim run :PackerSync to install all the plug-ins.
+When you first load Neovim run :Lazy to install all the plug-ins.
 
 ### Helix
 
