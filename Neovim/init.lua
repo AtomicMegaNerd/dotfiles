@@ -14,14 +14,14 @@ require("amn.keymap")
 
 -- Mac Specific configuration
 if vim.fn.has("macunix") == 1 then
-  vim.notify("MacOS detected", vim.log.levels.INFO)
-  require("amn.macos")
+	vim.notify("MacOS detected", vim.log.levels.DEBUG)
+	require("amn.macos")
 end
 
 -- Linux Specific configuration
 if vim.fn.has("linux") == 1 then
-  vim.notify("Linux detected", vim.log.levels.DEBUG)
-  require("amn.linux")
+	vim.notify("Linux detected", vim.log.levels.DEBUG)
+	require("amn.linux")
 end
 
 vim.notify("Non-Nix installation detected. Using non-nix configuration.", vim.log.levels.DEBUG)
