@@ -20,7 +20,7 @@ require("amn.keymap")
 require("amn.lsp")
 
 if not non_nix then
-	require("amn.notify_conf")
+	require("amn.notify")
 end
 
 -- Mac Specific configuration
