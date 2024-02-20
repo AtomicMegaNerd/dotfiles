@@ -24,7 +24,7 @@ end
 
 -- Mac Specific configuration
 if vim.fn.has("macunix") == 1 then
-  vim.notify("Detected MacOS", vim.log.levels.INFO)
+  vim.notify("Detected MacOS", vim.log.levels.DEBUG)
   require("amn.macos")
 end
 
