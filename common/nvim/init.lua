@@ -18,9 +18,13 @@ require("amn.options")
 require("amn.autocmds")
 require("amn.keymap")
 
+if not non_nix then
+  require("amn.notify_conf")
+end
+
 -- Mac Specific configuration
 if vim.fn.has("macunix") == 1 then
-  vim.notify("Detected MacOS", vim.log.levels.DEBUG)
+  vim.notify("Detected MacOS", vim.log.levels.INFO)
   require("amn.macos")
 end
 

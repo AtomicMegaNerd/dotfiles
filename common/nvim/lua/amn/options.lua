@@ -54,8 +54,9 @@ o.completeopt = "menuone,noselect"
 
 -- Enable spell checking
 o.spell = true
+o.spellfile = os.getenv("HOME") .. "/.local/share/nvim/en.utf-8.add"
 
---Set colorscheme (order is important here)
+-- This enables 24-bit RGB color in the TUI
 o.termguicolors = true
 
 -- Vim Rooter
