@@ -4,6 +4,7 @@ return {
 		"ray-x/lsp_signature.nvim",
 		"hrsh7th/cmp-nvim-lsp",
 	},
+	lazy = true,
 	config = function()
 		local lspconfig_status, nvim_lsp = pcall(require, "lspconfig")
 		if not lspconfig_status then
@@ -94,5 +95,5 @@ return {
 				telemetry = { enable = false },
 			},
 		})
-	end
+	end,
 }

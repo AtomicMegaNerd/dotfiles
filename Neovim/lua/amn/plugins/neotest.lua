@@ -7,6 +7,7 @@ return {
 		"nvim-neotest/neotest-python",
 		"nvim-neotest/neotest-go",
 	},
+	lazy = true,
 	config = function()
 		local nt_status, nt = pcall(require, "neotest")
 		if not nt_status then

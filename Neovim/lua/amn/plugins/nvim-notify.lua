@@ -7,7 +7,6 @@ return {
 			vim.notify("Failed to load notify", vim.log.levels.ERROR)
 			return
 		end
-
 		notify.setup({
 			background_colour = "#000000",
 			render = "compact",

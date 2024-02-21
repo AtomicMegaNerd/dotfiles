@@ -1,5 +1,6 @@
 return {
 	"stevearc/conform.nvim",
+	lazy = true,
 	config = function()
 		local status, conform = pcall(require, "conform")
 		if not status then
