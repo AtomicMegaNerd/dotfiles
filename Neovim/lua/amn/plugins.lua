@@ -24,7 +24,7 @@ if not status then
 end
 
 lazy.setup({
-	-- Always load the color scheme first
+	-- Color scheme
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
@@ -33,6 +33,7 @@ lazy.setup({
 			require("amn.catppuccin")
 		end,
 	},
+	-- LSP Startup information
 	{
 		"j-hui/fidget.nvim",
 		priority = 500,
@@ -40,6 +41,7 @@ lazy.setup({
 			require("amn.fidget")
 		end,
 	},
+	-- General vim.notify replacement
 	{
 		"rcarriga/nvim-notify",
 		priority = 101,
@@ -47,30 +49,35 @@ lazy.setup({
 			require("amn.nvim-notify")
 		end,
 	},
+	-- Startup screen
 	{
 		"goolord/alpha-nvim",
+		priority = 100,
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
 			require("amn.alpha")
 		end,
 	},
-	-- Telescope
+	-- Telescope is a fuzzy finder framework for Neovim
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
 			{ "nvim-lua/plenary.nvim" },
+			-- Make Telescope faster
 			{
 				"nvim-telescope/telescope-fzf-native.nvim",
 				build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
 			},
+			-- Browse files
 			{ "nvim-telescope/telescope-file-browser.nvim" },
+			-- Replace Neovim's built-in select UI
 			{ "nvim-telescope/telescope-ui-select.nvim" },
 		},
 		config = function()
 			require("amn.telescope")
 		end,
 	},
-	-- Treesitter
+	-- Treesitter is a parser generator tool and an incremental parsing library
 	{
 		"nvim-treesitter/nvim-treesitter",
 		cmd = "TSUpdate",
@@ -78,7 +85,7 @@ lazy.setup({
 			require("amn.treesitter")
 		end,
 	},
-	-- Git
+	-- Git information in the gutter
 	{
 		"lewis6991/gitsigns.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
@@ -86,13 +93,18 @@ lazy.setup({
 			require("amn.gitsigns")
 		end,
 	},
-	-- Git
+	-- Git commands in Neovim
 	"tpope/vim-fugitive",
 	-- LSP
 	"neovim/nvim-lspconfig",
 	"ray-x/lsp_signature.nvim",
-	"folke/neodev.nvim",
-	-- Mason
+	{
+		"folke/neodev.nvim",
+		config = function()
+			require("amn.neodev")
+		end,
+	},
+	-- Mason is for installing LSP's, linters, and formatters
 	{
 		"williamboman/mason.nvim",
 		dependencies = { "williamboman/mason-lspconfig.nvim" },
@@ -100,7 +112,7 @@ lazy.setup({
 			require("amn.mason")
 		end,
 	},
-	-- Completion
+	-- Auto-completion for Neovim
 	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
@@ -109,13 +121,13 @@ lazy.setup({
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-buffer",
-			"onsails/lspkind.nvim",
+			"onsails/lspkind.nvim", -- Add vscode-like pictograms to neovim built-in LSP
 		},
 		config = function()
 			require("amn.cmp")
 		end,
 	},
-	-- Unit tests
+	-- Unit test framework
 	{
 		"nvim-neotest/neotest",
 		dependencies = {
@@ -165,6 +177,8 @@ lazy.setup({
 			require("amn.which-key")
 		end,
 	},
+	-- vim-rooter changes the working directory to the project root
 	"airblade/vim-rooter",
+	-- Robot helping me with my code
 	"github/copilot.vim",
 })
