@@ -2,6 +2,9 @@ return {
 	"catppuccin/nvim",
 	name = "catppuccin",
 	priority = 1000,
+	init = function()
+		vim.o.termguicolors = true
+	end,
 	config = function()
 		local status, catppuccin = pcall(require, "catppuccin")
 		if not status then
@@ -21,7 +24,6 @@ return {
 				fidget = true,
 			},
 		})
-		vim.o.termguicolors = true
 		vim.cmd.colorscheme("catppuccin")
 	end,
 }
