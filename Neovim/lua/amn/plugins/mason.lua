@@ -12,7 +12,6 @@ return {
 			vim.notify("Cannot load mason-lspconfig", vim.log.levels.ERROR)
 			return
 		end
-
 		mason.setup()
 		mason_lsp.setup()
 	end,
