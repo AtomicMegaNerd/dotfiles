@@ -12,17 +12,3 @@ require("amn.options")
 require("amn.autocmds")
 require("amn.keymap")
 require("amn.lsp")
-
--- Mac Specific configuration
-if vim.fn.has("macunix") == 1 then
-	vim.notify("MacOS detected", vim.log.levels.DEBUG)
-	require("amn.macos")
-end
-
--- Linux Specific configuration
-if vim.fn.has("linux") == 1 then
-	vim.notify("Linux detected", vim.log.levels.DEBUG)
-	require("amn.linux")
-end
-
-vim.notify("Non-Nix installation detected. Using non-nix configuration.", vim.log.levels.DEBUG)
