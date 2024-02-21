@@ -55,30 +55,4 @@ o.completeopt = "menuone,noselect"
 -- Enable spell checking
 o.spell = true
 
---Set colorscheme (order is important here)
-o.termguicolors = true
-vim.cmd("colorscheme catppuccin")
-
 vim.opt.clipboard:prepend({ "unnamed", "unnamedplus" })
-
--- Vim Rooter
-----------------------------------------------------------------
--- These files signify the root of a project.
-g["test#strategy"] = "neovim"
-g.rooter_patterns = {
-  "Cargo.toml",
-  "go.mod",
-  "Dockerfile",
-  "pyproject.toml",
-  "init.lua",
-  "config.fish",
-  "flake.nix",
-}
-
--- I often hit :W instead of :w by mistake
-vim.api.nvim_create_user_command("W", "write", { desc = "Write when I hold down shift too long" })
-
--- Co-pilot
-vim.g.copilot_assume_mapped = true
-vim.g.copilot_proxy_strict_ssl = false
-vim.cmd("Copilot enable")
