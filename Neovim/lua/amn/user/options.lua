@@ -7,8 +7,8 @@
 --
 
 local o = vim.o
+local opt = vim.opt
 local wo = vim.wo
-local g = vim.g
 
 -- Set highlight on search
 o.hlsearch = false
@@ -27,8 +27,6 @@ o.mouse = "a"
 -- Blinking block cursor!
 o.guicursor = "a:blinkon100"
 
-vim.opt.clipboard:append({ "unnamed", "unnamedplus" })
-
 -- Set tabstop
 o.expandtab = true
 o.tabstop = 4
@@ -40,10 +38,8 @@ o.breakindent = true
 o.laststatus = 3
 
 -- Save undo history
-vim.opt.undofile = true
-
--- This is for which-key
-o.timeoutlen = 1000
+opt.clipboard:append({ "unnamed", "unnamedplus" })
+opt.undofile = true
 
 -- Case insensitive searching UNLESS /C or capital in search
 o.ignorecase = true
@@ -54,5 +50,3 @@ o.completeopt = "menuone,noselect"
 
 -- Enable spell checking
 o.spell = true
-
-vim.opt.clipboard:prepend({ "unnamed", "unnamedplus" })
