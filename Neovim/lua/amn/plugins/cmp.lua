@@ -7,7 +7,6 @@ return {
 		"hrsh7th/cmp-buffer",
 		"onsails/lspkind.nvim",
 	},
-	lazy = true,
 	config = function()
 		local status, cmp = pcall(require, "cmp")
 		if not status then

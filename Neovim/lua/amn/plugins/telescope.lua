@@ -12,7 +12,6 @@ return {
 		-- Replace Neovim's built-in select UI
 		{ "nvim-telescope/telescope-ui-select.nvim" },
 	},
-	lazy = true,
 	config = function()
 		local status, telescope = pcall(require, "telescope")
 		if not status then

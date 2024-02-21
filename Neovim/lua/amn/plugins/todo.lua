@@ -1,7 +1,6 @@
 return {
 	"folke/todo-comments.nvim",
 	dependencies = "nvim-lua/plenary.nvim",
-	lazy = true,
 	config = function()
 		local status, todo = pcall(require, "todo-comments")
 		if not status then

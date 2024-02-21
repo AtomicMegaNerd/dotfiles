@@ -1,7 +1,6 @@
 return {
 	"williamboman/mason.nvim",
 	dependencies = { "williamboman/mason-lspconfig.nvim" },
-	lazy = true,
 	config = function()
 		local m_status, mason = pcall(require, "mason")
 		if not m_status then

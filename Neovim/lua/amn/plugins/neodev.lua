@@ -1,6 +1,5 @@
 return {
 	"folke/neodev.nvim",
-	lazy = true,
 	config = function()
 		local status, neodev = pcall(require, "neodev")
 		if not status then
