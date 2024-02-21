@@ -55,10 +55,18 @@ return {
 			nmap("<leader>D", vim.lsp.buf.type_definition, "Type [D]efinition")
 		end
 
-		-- nvim-cmp supports additional completion capabilities
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 
-		local servers = { "pyright", "rnix", "ruff_lsp", "bashls", "omnisharp", "gopls" }
+		local servers = {
+			"pyright",
+			"rnix",
+			"ruff_lsp",
+			"bashls",
+			"omnisharp",
+			"gopls",
+			"golangci_lint_ls",
+		}
+
 		for _, lsp in ipairs(servers) do
 			nvim_lsp[lsp].setup({
 				on_attach = on_attach,
