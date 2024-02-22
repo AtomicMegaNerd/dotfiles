@@ -3,9 +3,15 @@ return {
 	priority = 100,
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
-		local sstatus, startify = pcall(require, "alpha.themes.startify")
-		if not sstatus then
-			vim.notify("Cannot load alpha.themes.startify", vim.log.levels.ERROR)
+		local utils = require("amn.utils")
+
+		local alpha = utils.do_import("alpha")
+		if not alpha then
+			return
+		end
+
+		local startify = utils.do_import("alpha.themes.startify")
+		if not startify then
 			return
 		end
 		startify.section.header.val = {
@@ -17,11 +23,6 @@ return {
 			[[                                              /____/]],
 		}
 
-		local astatus, alpha = pcall(require, "alpha")
-		if not astatus then
-			vim.notify("Cannot load alpha", vim.log.levels.ERROR)
-			return
-		end
 		alpha.setup(startify.config)
 	end,
 }

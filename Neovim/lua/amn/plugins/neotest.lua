@@ -8,27 +8,47 @@ return {
 		"nvim-neotest/neotest-go",
 	},
 	config = function()
-		local nt_status, nt = pcall(require, "neotest")
-		if not nt_status then
-			vim.notify("Cannot load neotest", vim.log.levels.ERROR)
+		local utils = require("amn.utils")
+		local nt = utils.do_import("neotest")
+		if not nt then
 			return
 		end
-		local nt_pytest_status, nt_pytest = pcall(require, "neotest-python")
-		if not nt_pytest_status then
-			vim.notify("Cannot load neotest-python", vim.log.levels.ERROR)
+
+		local nt_pytest = utils.do_import("neotest-python")
+		if not nt_pytest then
 			return
 		end
-		local nt_go_status, nt_go = pcall(require, "neotest-go")
-		if not nt_go_status then
-			vim.notify("Cannot load neotest-go", vim.log.levels.ERROR)
+
+		local nt_go = utils.do_import("neotest-go")
+		if not nt_go then
 			return
 		end
+
 		nt.setup({
 			adapters = {
 				nt_pytest({}),
 				nt_go({}),
 			},
 		})
+
 		vim.g["test#strategy"] = "neovim"
+
+		utils.nmap("<leader>tn", function()
+			nt.run.run()
+			nt.output.open()
+			nt.summary.open()
+		end, "Run [T]est [N]earest to cursor")
+
+		utils.nmap("<leader>tf", function()
+			nt.run.run(vim.fn.expand("%"))
+			nt.output.open()
+			nt.summary.open()
+		end, "Run all [T]ests in [F]ile")
+
+		utils.nmap("<leader>ts", function()
+			nt.run.run(vim.fn.getcwd())
+			nt.output.open()
+			nt.summary.open()
+		end, "Run whole [T]est [S]uite")
 	end,
 }

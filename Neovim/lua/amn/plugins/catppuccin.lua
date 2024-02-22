@@ -6,11 +6,12 @@ return {
 		vim.o.termguicolors = true
 	end,
 	config = function()
-		local status, catppuccin = pcall(require, "catppuccin")
-		if not status then
-			vim.notify("Cannot load catppuccin", vim.log.levels.ERROR)
+		local utils = require("amn.utils")
+		local catppuccin = utils.do_import("catppuccin")
+		if not catppuccin then
 			return
 		end
+
 		catppuccin.setup({
 			flavour = "frappe",
 			no_italic = true,

@@ -1,11 +1,12 @@
 return {
 	"stevearc/conform.nvim",
 	config = function()
-		local status, conform = pcall(require, "conform")
-		if not status then
-			vim.notify("Cannot load conform", vim.log.levels.ERROR)
+		local utils = require("amn.utils")
+		local conform = utils.do_import("conform")
+		if not conform then
 			return
 		end
+
 		conform.setup({
 			formatters_by_ft = {
 				lua = { "stylua" },

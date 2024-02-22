@@ -2,11 +2,12 @@ return {
 	"nvim-treesitter/nvim-treesitter",
 	cmd = "TSUpdate",
 	config = function()
-		local status, ts = pcall(require, "nvim-treesitter.configs")
-		if not status then
-			vim.notify("nvim-treesitter not found", vim.log.levels.ERROR)
+		local utils = require("amn.utils")
+		local ts = utils.do_import("nvim-treesitter.configs")
+		if not ts then
 			return
 		end
+
 		ts.setup({
 			highlight = {
 				enable = true,

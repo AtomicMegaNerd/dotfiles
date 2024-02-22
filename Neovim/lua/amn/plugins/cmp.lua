@@ -8,9 +8,9 @@ return {
 		"onsails/lspkind.nvim",
 	},
 	config = function()
-		local status, cmp = pcall(require, "cmp")
-		if not status then
-			vim.notify("Failed to load cmp", vim.log.levels.ERROR)
+		local utils = require("amn.utils")
+		local cmp = utils.do_import("cmp")
+		if not cmp then
 			return
 		end
 

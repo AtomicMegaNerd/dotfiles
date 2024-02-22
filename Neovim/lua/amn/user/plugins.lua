@@ -5,6 +5,8 @@
 -- /_/  |_\__/\____/_/ /_/ /_/_/\___/_/  /_/\___/\__, /\__,_/_/ |_/\___/_/   \__,_/
 --                                              /____/
 --
+local utils = require("amn.utils")
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
@@ -18,9 +20,8 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local status, lazy = pcall(require, "lazy")
-if not status then
-	vim.notify("Cannot load lazy", vim.log.levels.ERROR)
+local lazy = utils.do_import("lazy")
+if not lazy then
 	return
 end
 

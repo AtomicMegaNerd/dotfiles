@@ -2,16 +2,18 @@ return {
 	"williamboman/mason.nvim",
 	dependencies = { "williamboman/mason-lspconfig.nvim" },
 	config = function()
-		local m_status, mason = pcall(require, "mason")
-		if not m_status then
-			vim.notify("Cannot load mason", vim.log.levels.ERROR)
+		local utils = require("amn.utils")
+
+		local mason = utils.do_import("mason")
+		if not mason then
 			return
 		end
-		local ml_status, mason_lsp = pcall(require, "mason-lspconfig")
-		if not ml_status then
-			vim.notify("Cannot load mason-lspconfig", vim.log.levels.ERROR)
+
+		local mason_lsp = utils.do_import("mason-lspconfig")
+		if not mason_lsp then
 			return
 		end
+
 		mason.setup()
 		mason_lsp.setup()
 	end,

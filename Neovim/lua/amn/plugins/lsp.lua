@@ -5,27 +5,25 @@ return {
 		"hrsh7th/cmp-nvim-lsp",
 	},
 	config = function()
-		local lspconfig_status, nvim_lsp = pcall(require, "lspconfig")
-		if not lspconfig_status then
-			vim.notify("Cannot load lspconfig", vim.log.levels.ERROR)
+		local utils = require("amn.utils")
+
+		local nvim_lsp = utils.do_import("lspconfig")
+		if not nvim_lsp then
 			return
 		end
 
-		local lsp_sig_status, lsp_signature = pcall(require, "lsp_signature")
-		if not lsp_sig_status then
-			vim.notify("Cannot load lsp_signature", vim.log.levels.ERROR)
+		local lsp_signature = utils.do_import("lsp_signature")
+		if not lsp_signature then
 			return
 		end
 
-		local cmp_nvim_lsp_status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-		if not cmp_nvim_lsp_status then
-			vim.notify("Cannot load cmp_nvim_lsp", vim.log.levels.ERROR)
+		local cmp_nvim_lsp = utils.do_import("cmp_nvim_lsp")
+		if not cmp_nvim_lsp then
 			return
 		end
 
-		local tele_builtin_status, telescope_builtin = pcall(require, "telescope.builtin")
-		if not tele_builtin_status then
-			vim.notify("Cannot load telescope.builtin", vim.log.levels.ERROR)
+		local telescope_builtin = utils.do_import("telescope.builtin")
+		if not telescope_builtin then
 			return
 		end
 
@@ -35,24 +33,15 @@ return {
 		})
 
 		local on_attach = function(_, bufnr)
-			local nmap = function(keys, func, desc)
-				if desc then
-					desc = "LSP: " .. desc
-				end
-				vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
-			end
-
-			nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-			nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
-			nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
-			nmap("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
-			nmap("gr", telescope_builtin.lsp_references)
-			-- See `:help K` for why this keymap
-			nmap("K", vim.lsp.buf.hover, "Hover Documentation")
-			nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
-			-- Lesser used LSP functionality
-			nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
-			nmap("<leader>D", vim.lsp.buf.type_definition, "Type [D]efinition")
+			utils.nmap_buf("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame", "LSP", bufnr)
+			utils.nmap_buf("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", "LSP", bufnr)
+			utils.nmap_buf("gd", vim.lsp.buf.definition, "[G]oto [D]efinition", "LSP", bufnr)
+			utils.nmap_buf("gl", vim.lsp.buf.declaration, "[G]oto [D]eclaration", "LSP", bufnr)
+			utils.nmap_buf("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation", "LSP", bufnr)
+			utils.nmap_buf("gr", telescope_builtin.lsp_references, "[G]oto [R]eferences", "LSP", bufnr)
+			utils.nmap_buf("gt", vim.lsp.buf.type_definition, "Type [D]efinition", "LSP", bufnr)
+			utils.nmap_buf("K", vim.lsp.buf.hover, "Hover Documentation", "LSP", bufnr)
+			utils.nmap_buf("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation", "LSP", bufnr)
 		end
 
 		local capabilities = cmp_nvim_lsp.default_capabilities()

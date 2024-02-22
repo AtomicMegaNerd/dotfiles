@@ -13,9 +13,19 @@ return {
 		{ "nvim-telescope/telescope-ui-select.nvim" },
 	},
 	config = function()
-		local status, telescope = pcall(require, "telescope")
-		if not status then
-			vim.notify("Cannot load telescope", vim.log.levels.ERROR)
+		local utils = require("amn.utils")
+		if not utils then
+			vim.notify("Utils not found", vim.log.levels.ERROR)
+			return
+		end
+
+		local telescope = utils.do_import("telescope")
+		if not telescope then
+			return
+		end
+
+		local tb = utils.do_import("telescope.builtin")
+		if not tb then
 			return
 		end
 
@@ -58,8 +68,33 @@ return {
 				},
 			},
 		})
+
 		telescope.load_extension("fzf")
 		telescope.load_extension("file_browser")
 		telescope.load_extension("ui-select")
+
+		local tfb = telescope.extensions.file_browser.file_browser
+
+		utils.nmap("<leader>ff", tb.find_files, "[F]ind [F]files", "Telescope")
+		utils.nmap("<leader>fb", tb.buffers, "[F]ind [B]uffers", "Telescope")
+		utils.nmap("<leader>fd", tb.diagnostics, "[F]ind [D]iagnostics", "Telescope")
+		utils.nmap("<leader>fl", tb.live_grep, "[F]ind [L]ive [G]rep", "Telescope")
+		-- Git
+		utils.nmap("<leader>fg", tb.git_files, "[F]ind [G]it files", "Telescope")
+		utils.nmap("<leader>fr", tb.git_branches, "[F]ind Git B[R]anch", "Telescope")
+		utils.nmap("<leader>fc", tb.git_commits, "[F]ind Git [C]ommits", "Telescope")
+		utils.nmap("<leader>fs", tb.git_status, "[F]ind Git [S]tatus", "Telescope")
+		-- Neovim
+		utils.nmap("<leader>fh", tb.help_tags, "[F]ind Neovim [H]elp topics", "Telescope")
+		utils.nmap("<leader>fm", tb.commands, "[F]ind Neovim Co[M]mands", "Telescope")
+		utils.nmap("<leader>fk", tb.keymaps, "[F]ind Neovim [K]eymaps", "Telescope")
+		-- Todo Comments
+		utils.nmap("<leader>ft", [[<cmd>TodoTelescope<cr>]], "[F]ind [T]odo Comments", "Telescope")
+		-- Notifications
+		utils.nmap("<leader>fn", function()
+			telescope.extensions.notify.notify()
+		end, "[F]ind [N]otifications", "Telescope")
+		-- File Browser
+		utils.nmap("<leader>bf", tfb, "[B]rowse [F]iles", "Telescope")
 	end,
 }

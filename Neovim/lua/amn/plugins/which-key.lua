@@ -4,11 +4,12 @@ return {
 		vim.o.timeoutlen = 1000
 	end,
 	config = function()
-		local status, wk = pcall(require, "which-key")
-		if not status then
-			vim.notify("Cannot load which-key", vim.log.levels.ERROR)
+		local utils = require("amn.utils")
+		local wk = utils.do_import("which-key")
+		if not wk then
 			return
 		end
+
 		wk.setup()
 	end,
 }

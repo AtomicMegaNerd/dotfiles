@@ -1,12 +1,12 @@
 return {
-  "numToStr/Comment.nvim",
-  config = function()
-    local status, comment = pcall(require, "Comment")
-    if not status then
-      vim.notify("Cannot load Comment", vim.log.levels.ERROR)
-      return
-    end
+	"numToStr/Comment.nvim",
+	config = function()
+		local utils = require("amn.utils")
+		local comment = utils.do_import("Comment")
+		if not comment then
+			return
+		end
 
-    comment.setup()
-  end,
+		comment.setup()
+	end,
 }

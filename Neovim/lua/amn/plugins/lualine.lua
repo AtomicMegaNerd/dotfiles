@@ -2,9 +2,9 @@ return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
-		local status, lualine = pcall(require, "lualine")
-		if not status then
-			vim.notify("Cannot load lualine", vim.log.levels.ERROR)
+		local utils = require("amn.utils")
+		local lualine = utils.do_import("lualine")
+		if not lualine then
 			return
 		end
 
