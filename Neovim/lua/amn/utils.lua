@@ -1,35 +1,38 @@
 local M = {}
 
 local do_map = function(mode, keys, func, desc, plugin, bufnr)
-	desc = desc or ""
-	plugin = plugin or ""
+	desc = desc or nil
+	plugin = plugin or nil
 	bufnr = bufnr or nil
 
 	if plugin then
 		desc = plugin .. ": " .. desc
 	end
 
-	if desc and bufnr then
-		vim.keymap.set(mode, keys, func, { buffer = bufnr, desc = desc })
-	elseif desc then
-		vim.keymap.set(mode, keys, func, { desc = desc })
-	elseif bufnr then
-		vim.keymap.set(mode, keys, func, { buffer = bufnr })
-	else
-		vim.keymap.set(mode, keys, func)
+	local options = {}
+	if desc then
+		options.desc = desc
 	end
+	if bufnr then
+		options.buffer = bufnr
+	end
+
+	vim.keymap.set(mode, keys, func, options)
 end
 
-M.nmap_buf = function(keys, func, desc, plugin, bufnr)
+M.nmap = function(keys, func, desc, plugin, bufnr)
+	desc = desc or nil
+	plugin = plugin or nil
+	bufnr = bufnr or nil
+
 	return do_map("n", keys, func, desc, plugin, bufnr)
 end
 
-M.nmap = function(keys, func, desc, plugin)
-	return do_map("n", keys, func, desc, plugin, nil)
-end
-
-M.imap = function(keys, func, desc, plugin)
-	return do_map("i", keys, func, desc, plugin, nil)
+M.imap = function(keys, func, desc, plugin, bufnr)
+	desc = desc or nil
+	plugin = plugin or nil
+	bufnr = bufnr or nil
+	return do_map("i", keys, func, desc, plugin, bufnr)
 end
 
 -- This function is used to import modules in a safe way. It will log an error if the module is
