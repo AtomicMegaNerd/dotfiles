@@ -50,7 +50,7 @@
       user.signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK9DWvFVS2L2P6G/xUlV0yp6gOpqGgCj4dbY91zyT8ul";
       gpg = {
         ssh = {
-          program = "/mnt/c/Users/chris/AppData/Local/1Password/app/8/op-ssh-sign.exe";
+          program = "/mnt/c/Program Files/1Password/app/8/op-ssh-sign.exe";
         };
         format = "ssh";
       };
