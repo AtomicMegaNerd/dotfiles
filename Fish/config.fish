@@ -74,6 +74,8 @@ set -gx VAULT_FORMAT json
 # Tell Colima where to get the certs
 set -gx CERTS $HOME/Certs/
 
+# Corporate TLS MITM shenanigans
+set -gx NODE_TLS_REJECT_UNAUTHORIZED 0
 # Logging
 set -gx NVIM_LOG_FILE ~/.local/share/nvim/nvim.log
 
