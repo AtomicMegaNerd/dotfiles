@@ -32,11 +32,38 @@
   };
 
   programs.fish.enable = true;
-
-  # List services that you want to enable:
   services.openssh.enable = true;
-  virtualisation.docker.enable = true;
 
+  services.docker.networks = {
+    default = {
+      enable = true;
+      bridge.enableIPForwarding = true;
+    };
+  };
+
+  virtualisation.docker.enable = true;
+  services.docker.containers = {
+    {
+      unifi = {
+        enable = true;
+        image = "jacobalberty/unifi";
+        restart = "unless-stopped";
+        ports = [
+          "8080:8080"
+          "8443:8443"
+          "3478:3478/udp"
+        ];
+        environment = {
+          TZ = "America/Edmonton";
+        };
+        volumes = [
+          "${HOME}/unifi:/unifi"
+        ];
+        user = "unifi";
+      };
+    }
+  };
+      
   nix = {
     gc = {
       automatic = true;
