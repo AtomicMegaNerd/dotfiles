@@ -1,3 +1,4 @@
+.DS_Store
 NeoVim/plugged
 NeoVim/spell
 NeoVim/plugin/packer_compiled.lua

@@ -9,4 +9,5 @@ lualine.setup({
 		icons_enabled = false,
 		globalstatus = true,
 	},
+	extensions = { "fugitive" },
 })

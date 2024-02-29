@@ -11,31 +11,36 @@ local install_type = os.getenv("AMN_INSTALL_TYPE")
 local non_nix = install_type ~= nil and install_type == "non-nix"
 
 if non_nix then
-  require("amn.plugins")
+	require("amn.plugins")
 end
 
 require("amn.options")
 require("amn.autocmds")
 require("amn.keymap")
+require("amn.lsp")
+
+if not non_nix then
+	require("amn.notify")
+end
 
 -- Mac Specific configuration
 if vim.fn.has("macunix") == 1 then
-  vim.notify("Detected MacOS", vim.log.levels.DEBUG)
-  require("amn.macos")
+	vim.notify("Detected MacOS", vim.log.levels.DEBUG)
+	require("amn.macos")
 end
 
 -- Linux Specific configuration
 if vim.fn.has("linux") == 1 then
-  vim.notify("Detected Linux", vim.log.levels.DEBUG)
-  require("amn.linux")
+	vim.notify("Detected Linux", vim.log.levels.DEBUG)
+	require("amn.linux")
 end
 
 -- Windows Specific configuration
 if vim.fn.has("win32") == 1 then
-  vim.notify("Detected Windows", vim.log.levels.DEBUG)
-  require("amn.windows")
+	vim.notify("Detected Windows", vim.log.levels.DEBUG)
+	require("amn.windows")
 end
 
 if non_nix then
-  vim.notify("Detected Non-Nix Install", vim.log.levels.DEBUG)
+	vim.notify("Detected Non-Nix Install", vim.log.levels.DEBUG)
 end

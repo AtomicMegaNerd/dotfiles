@@ -76,7 +76,7 @@
       todo-comments-nvim
       # Misc
       vim-rooter
-      formatter-nvim
+      conform-nvim
       fidget-nvim
       which-key-nvim
       # Dependencies

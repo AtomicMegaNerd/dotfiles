@@ -14,11 +14,11 @@ use Nix as a package manager. This repo also contains other dotfiles for non-Nix
 
 Right now we have two hosts that are managed by Nix:
 
-| Host      | OS    | Platform       |
-| --------- | ----- | -------------- |
-| spork     | NixOS | x86-64-linux   |
-| blahaj    | NixOS | x86-64-linux   |
-| discovery | MacOS | aarch64-darwin |
+| Host          | OS    | Platform       |
+| ------------- | ----- | -------------- |
+| metropolitan  | NixOS | x86-64-linux   |
+| blahaj        | NixOS | x86-64-linux   |
+| discovery     | MacOS | aarch64-darwin |
 
 ## Run OS Upgrade
 
@@ -36,14 +36,14 @@ We use home-manager on all of our Nix managed machines.
 home-manager switch -- flake .#USERNAME@HOST
 ```
 
-## Legacy Non-Nix Configurations
+## non-nix Non-Nix Configurations
 
 The following are instructions fro configuring your dotfiles on non-Nix systems:
 
 ### Alacritty
 
 ```bash
-ln -s ~/Code/Configs/dotfiles/legacy/Alacritty/HOST/ ~/.config/alacritty
+ln -s ~/Code/Configs/dotfiles/non-nix/Alacritty/HOST/ ~/.config/alacritty
 ```
 
 ### Fish
@@ -51,7 +51,7 @@ ln -s ~/Code/Configs/dotfiles/legacy/Alacritty/HOST/ ~/.config/alacritty
 Fish is simple. Simply symlink the HOST folder that you want (Discovery, JebPopOS, etc).
 
 ```bash
-ln -s ~/Code/Configs/dotfiles/legacy/Fish/HOST ~/.config/fish
+ln -s ~/Code/Configs/dotfiles/non-nix/Fish/HOST ~/.config/fish
 ```
 
 ### TMux
@@ -62,7 +62,7 @@ Set the tmux.conf file from the symlink:
 ln -s ~/Code/Configs/dotfiles/common/tmux/tmux.conf ~/.tmux.conf
 ```
 
-### NeoVim
+### Neovim
 
 For non-nix systems set the environment variable:
 
@@ -76,7 +76,7 @@ Then after installing Neovim you can symlink the configuration:
 ln -s ~/Code/Configs/dotfiles/common/nvim ~/.config/nvim
 ```
 
-When you first load Neovim run :PackerSync to install all the plug-ins.
+When you first load Neovim run :Lazy to install all the plug-ins.
 
 ### Helix
 
@@ -84,7 +84,7 @@ This is another text editor I am keeping an eye on.
 
 ```bash
 cd ~/.config
-ln -s ~/Code/Configs/dotfiles/legacy/Helix/ helix
+ln -s ~/Code/Configs/dotfiles/non-nix/Helix/ helix
 ```
 
 ### Powershell

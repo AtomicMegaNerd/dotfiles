@@ -5,7 +5,7 @@ in
 {
   home.username = "rcd";
   home.homeDirectory = "/Users/rcd";
-  home.stateVersion = "23.05";
+  home.stateVersion = "23.11";
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
@@ -24,10 +24,8 @@ in
 
   programs.neovim = import ../../common/neovim.nix { inherit pkgs; };
   programs.tmux = import ../../common/tmux.nix { inherit pkgs; };
-  programs.alacritty = import ../../common/alacritty.nix { inherit pkgs; };
   programs.starship = import ../../common/starship.nix { inherit pkgs; };
   programs.zellij = import ../../common/zellij.nix { inherit pkgs; };
-  programs.helix = import ../../common/helix.nix { inherit pkgs; };
 
   programs.fish = {
     enable = true;
@@ -170,6 +168,13 @@ in
     nvim = {
       source = ../../common/nvim;
       target = "nvim";
+    };
+  };
+
+  xdg.configFile = {
+    alacritty = {
+      source = ../../non-nix/Alacritty/Discovery;
+      target = "alacritty";
     };
   };
 }
