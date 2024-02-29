@@ -37,10 +37,6 @@
           pkgs = unstable system-linux;
           modules = [ ./hosts/blahaj/rcd.nix ];
         };
-        "root@blahaj" = home-manager.lib.homeManagerConfiguration {
-          pkgs = unstable system-linux;
-          modules = [ ./hosts/blahaj/root.nix ];
-        };
         "rcd@Discovery" = home-manager.lib.homeManagerConfiguration {
           pkgs = unstable system-mac;
           modules = [ ./hosts/discovery/rcd.nix ];
@@ -48,10 +44,6 @@
         "rcd@metropolitan" = home-manager.lib.homeManagerConfiguration {
           pkgs = unstable system-linux;
           modules = [ ./hosts/metropolitan/rcd.nix ];
-        };
-        "root@metropolitan" = home-manager.lib.homeManagerConfiguration {
-          pkgs = unstable system-linux;
-          modules = [ ./hosts/metropolitan/root.nix ];
         };
       };
     };
