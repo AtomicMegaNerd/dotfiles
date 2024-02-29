@@ -11,7 +11,6 @@
 
   // Workbench settings
   "workbench.startupEditor": "none",
-  "workbench.colorTheme": "Catppuccin Frappé",
   "workbench.iconTheme": "catppuccin-frappe",
   "workbench.layoutControl.enabled": false,
   "workbench.activityBar.location": "top",
@@ -40,6 +39,8 @@
 
   // Turn off creepy tracking
   "telemetry.telemetryLevel": "off",
-  "editor.minimap.enabled": false
+  "editor.minimap.enabled": false,
+  "extensions.ignoreRecommendations": true,
+  "git.openRepositoryInParentFolders": "always",
+  "workbench.colorTheme": "Catppuccin Frappé"
 }
-
