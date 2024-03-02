@@ -24,6 +24,8 @@
     unzip
     procs
     jq
+    nmap
+    dig
   ];
 
   programs.neovim = import ../../common/neovim.nix { inherit pkgs; };
