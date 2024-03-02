@@ -41,6 +41,8 @@
   
   systemd.tmpfiles.rules = [
     "d /var/lib/unifi 0755 root root -"
+    "d /etc/pihole 0755 root root -"
+    "d /etc/dnsmasq.d 0755 root root -"
   ];
 
   virtualisation.oci-containers = {
@@ -58,6 +60,17 @@
         extraOptions = [
           "--network=host"
         ];
+      };
+
+      pihole = {
+        user = "root";
+        autoStart = true;
+        image = "pihole/pihole:2024.02.2";
+        ports = [ "53:53/tcp" "53:53/udp" "8081:80/tcp" ];
+        volumes = [ "/etc/pihole:/etc/pihole" "/etc/dnsmasq.d:/etc/dnsmasq.d" ];
+        environment = {
+          TZ = "America/Edmonton";
+        };
       };
     };
   };
