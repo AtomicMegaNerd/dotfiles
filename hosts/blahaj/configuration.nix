@@ -19,7 +19,7 @@
     hostName = "blahaj";
     networkmanager.enable = true;
     firewall.allowedTCPPorts = [ 8443 8080 8081 53 ];
-    firewall.allowedUDPPorts = [ 3478 ];
+    firewall.allowedUDPPorts = [ 3478 53 ];
   };
         
   time.timeZone = "America/Edmonton";
