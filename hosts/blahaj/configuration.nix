@@ -15,8 +15,13 @@
   boot.loader.efi.efiSysMountPoint = "/boot";
   boot.loader.grub.device = "/dev/nvme0n1";
 
-  networking.hostName = "blahaj";
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "blahaj";
+    networkmanager.enable = true;
+    firewall.allowedTCPPorts = [ 8443 8080 8081 53 ];
+    firewall.allowedUDPPorts = [ 3478 53 ];
+  };
+        
   time.timeZone = "America/Edmonton";
 
   users = {
@@ -33,35 +38,41 @@
 
   programs.fish.enable = true;
   services.openssh.enable = true;
+  
+  systemd.tmpfiles.rules = [
+    "d /var/lib/unifi 0755 root root -"
+    "d /etc/pihole 0755 root root -"
+    "d /etc/dnsmasq.d 0755 root root -"
+  ];
 
-  services.docker.networks = {
-    default = {
-      enable = true;
-      bridge.enableIPForwarding = true;
-    };
-  };
-
-  virtualisation.docker.enable = true;
-  services.docker.containers = {
-    {
+  virtualisation.oci-containers = {
+    backend = "docker";
+    containers = {
       unifi = {
-        enable = true;
-        image = "jacobalberty/unifi";
-        restart = "unless-stopped";
-        ports = [
-          "8080:8080"
-          "8443:8443"
-          "3478:3478/udp"
-        ];
+        user = "unifi";
+        autoStart = true;
+        image = "jacobalberty/unifi:v8.0";
+        ports = [ "8080:8080" "8443:8443" "3478:3478/udp" ];
+        volumes = [ "/var/lib/unifi:/unifi" ];
         environment = {
           TZ = "America/Edmonton";
         };
-        volumes = [
-          "${HOME}/unifi:/unifi"
+        extraOptions = [
+          "--network=host"
         ];
-        user = "unifi";
       };
-    }
+
+      pihole = {
+        user = "root";
+        autoStart = true;
+        image = "pihole/pihole:2024.02.2";
+        ports = [ "53:53/tcp" "53:53/udp" "8081:80/tcp" ];
+        volumes = [ "/etc/pihole:/etc/pihole" "/etc/dnsmasq.d:/etc/dnsmasq.d" ];
+        environment = {
+          TZ = "America/Edmonton";
+        };
+      };
+    };
   };
       
   nix = {

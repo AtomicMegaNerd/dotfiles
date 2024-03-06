@@ -20,6 +20,7 @@ in
     tldr
     lazygit
     ncurses
+    nmap
   ];
 
   programs.neovim = import ../../common/neovim.nix { inherit pkgs; };
