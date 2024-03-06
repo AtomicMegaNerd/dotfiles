@@ -51,7 +51,7 @@
       unifi = {
         user = "unifi";
         autoStart = true;
-        image = "jacobalberty/unifi:v8.0";
+        image = "jacobalberty/unifi:v8.0.28";
         ports = [ "8080:8080" "8443:8443" "3478:3478/udp" ];
         volumes = [ "/var/lib/unifi:/unifi" ];
         environment = {
