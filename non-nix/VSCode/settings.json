@@ -13,7 +13,7 @@
   "workbench.startupEditor": "none",
   "workbench.iconTheme": "catppuccin-frappe",
   "workbench.layoutControl.enabled": false,
-  "workbench.activityBar.location": "top",
+  "workbench.activityBar.location": "hidden",
   "workbench.settings.editor": "ui",
 
   // Catppuccin settings
