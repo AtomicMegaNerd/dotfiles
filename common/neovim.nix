@@ -7,7 +7,6 @@
   extraPackages = with pkgs; [
     # Language servers
     lua-language-server
-    rnix-lsp
     shellcheck
     stylua
     tree-sitter
