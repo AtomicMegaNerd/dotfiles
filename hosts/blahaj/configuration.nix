@@ -40,7 +40,6 @@
   services.openssh.enable = true;
   
   systemd.tmpfiles.rules = [
-    "d /var/lib/unifi 0755 root root -"
     "d /etc/pihole 0755 root root -"
     "d /etc/dnsmasq.d 0755 root root -"
   ];
