@@ -6,9 +6,9 @@ return {
        "nvim-lua/plenary.nvim",
     },
     opts = {
-      debug = true, -- Enable debugging
-      -- See Configuration section for rest
+      debug = true, 
+      show_help = false,
+      context = "buffers",
     },
-    -- See Commands section for default commands if you want to lazy load on them
   },
 }
