@@ -20,6 +20,8 @@
   "catppuccin.italicKeywords": false,
   "catppuccin.italicComments": false,
 
+  "rust-analyzer.semanticHighlighting.strings.enable": true,
+
   // Python settings
   "[python]": {
     "editor.defaultFormatter": "charliermarsh.ruff"
@@ -42,5 +44,6 @@
   "editor.minimap.enabled": false,
   "extensions.ignoreRecommendations": true,
   "git.openRepositoryInParentFolders": "always",
-  "workbench.colorTheme": "Catppuccin Frappé"
+  "workbench.colorTheme": "Catppuccin Frappé",
+  "window.commandCenter": false
 }
