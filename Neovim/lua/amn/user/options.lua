@@ -50,3 +50,4 @@ o.completeopt = "menuone,noselect"
 
 -- Enable spell checking
 o.spell = true
+

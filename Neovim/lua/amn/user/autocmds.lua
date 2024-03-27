@@ -90,3 +90,10 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	group = fto_grp,
 	pattern = "*/waybar/config",
 })
+
+-- Automatically move to the right window when opening a new file, this includes
+-- help and/or Copilot Chat
+vim.api.nvim_create_autocmd("BufWinEnter", {
+	command = "wincmd L",
+	group = fto_grp,
+})
