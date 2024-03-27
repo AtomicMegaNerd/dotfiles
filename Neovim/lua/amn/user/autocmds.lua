@@ -73,6 +73,12 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 	pattern = "Jenkinsfile",
 })
 
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+	command = "setf markdown",
+	group = fto_grp,
+	pattern = "copilot-chat",
+})
+
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	command = "setf sh",
 	group = fto_grp,
