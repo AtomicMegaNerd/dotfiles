@@ -35,3 +35,16 @@ vim.api.nvim_create_autocmd("Filetype", {
 	group = fto_grp,
 	pattern = { "python" },
 })
+
+-- Set copilot-chat as markdown filetype
+vim.api.nvim_create_autocmd("Filetype", {
+	command = "set filetype=markdown",
+	group = fto_grp,
+	pattern = { "copilot-chat" },
+})
+
+-- Always open new windows on the right
+vim.api.nvim_create_autocmd("BufWinEnter", {
+	command = "wincmd L",
+	group = fto_grp,
+})
