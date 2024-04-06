@@ -56,10 +56,6 @@
       nvim-lspconfig
       neodev-nvim
       lsp_signature-nvim
-      # Testing
-      neotest
-      neotest-python
-      neotest-go
       # Completion
       nvim-cmp
       vim-vsnip
