@@ -55,6 +55,7 @@
         volumes = [ "/etc/pihole:/etc/pihole" "/etc/dnsmasq.d:/etc/dnsmasq.d" ];
         environment = {
           TZ = "America/Edmonton";
+          FTLCONF_LOCAL_IPV4 = "192.168.1.232";
         };
       };
     };
