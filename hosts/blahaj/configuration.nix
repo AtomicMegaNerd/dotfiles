@@ -18,8 +18,8 @@
   networking = {
     hostName = "blahaj";
     networkmanager.enable = true;
-    firewall.allowedTCPPorts = [ 8443 8080 8081 53 ];
-    firewall.allowedUDPPorts = [ 3478 53 ];
+    firewall.allowedTCPPorts = [ 8081 53 ];
+    firewall.allowedUDPPorts = [ 53 ];
   };
         
   time.timeZone = "America/Edmonton";
@@ -50,11 +50,12 @@
       pihole = {
         user = "root";
         autoStart = true;
-        image = "pihole/pihole:2024.02.2";
+        image = "pihole/pihole:2024.03.2";
         ports = [ "53:53/tcp" "53:53/udp" "8081:80/tcp" ];
         volumes = [ "/etc/pihole:/etc/pihole" "/etc/dnsmasq.d:/etc/dnsmasq.d" ];
         environment = {
           TZ = "America/Edmonton";
+          FTLCONF_LOCAL_IPV4 = "192.168.1.232";
         };
       };
     };
