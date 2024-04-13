@@ -1,4 +1,8 @@
 { config, pkgs, ... }:
+let
+  piholeUid = 888;
+  piholeGid = 888;
+in
 {
   imports =
     [
@@ -20,6 +24,7 @@
     networkmanager.enable = true;
     firewall.allowedTCPPorts = [ 8081 53 ];
     firewall.allowedUDPPorts = [ 53 ];
+    nameservers = [ "127.0.0.1" "::1" ];
   };
         
   time.timeZone = "America/Edmonton";
@@ -34,14 +39,21 @@
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK9DWvFVS2L2P6G/xUlV0yp6gOpqGgCj4dbY91zyT8ul"
       ];
     };
+    groups.pihole = { gid = piholeGid; };
+    users.pihole = {
+      isSystemUser = true;
+      uid = piholeUid;
+      group = "pihole";
+      extraGroups = [ "docker" ];
+    };
   };
 
   programs.fish.enable = true;
   services.openssh.enable = true;
-  
+ 
   systemd.tmpfiles.rules = [
-    "d /etc/pihole 0755 root root -"
-    "d /etc/dnsmasq.d 0755 root root -"
+    "Z /etc/pihole 0775 ${toString piholeUid} ${toString piholeGid} -"
+    "Z /etc/dnsmasq.d 0775 ${toString piholeUid} ${toString piholeGid} -"
   ];
 
   virtualisation.oci-containers = {
@@ -56,6 +68,8 @@
         environment = {
           TZ = "America/Edmonton";
           FTLCONF_LOCAL_IPV4 = "192.168.1.232";
+          PIHOLE_UID = toString piholeUid;
+          PIHOLE_GID = toString piholeGid;
         };
       };
     };
