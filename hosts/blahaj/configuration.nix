@@ -25,6 +25,9 @@ in
     firewall.allowedTCPPorts = [ 8081 53 ];
     firewall.allowedUDPPorts = [ 53 ];
     nameservers = [ "127.0.0.1" "::1" ];
+    interfaces.enp0s31f6.ipv6.addresses = [
+      { address = "fd00:1234:5678:9abc:def0:1234:5678:9abc"; prefixLength = 64; }
+    ];
   };
         
   time.timeZone = "America/Edmonton";
@@ -44,7 +47,6 @@ in
       isSystemUser = true;
       uid = piholeUid;
       group = "pihole";
-      extraGroups = [ "docker" ];
     };
   };
 
