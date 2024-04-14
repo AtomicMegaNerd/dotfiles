@@ -1,25 +1,16 @@
 {
-    "layer": "top",
-    "modules-left": ["hyprland/workspaces", "hyprland/mode"],
-    "modules-center": ["hyprland/window"],
-    "modules-right": ["pulseaudio", "memory", "cpu", "clock", "tray"],
-    "hyprland/workspaces": {
-        "all-outputs": true,
-        "persistent_workspaces": {
-             "1": [],
-             "2": [],
-             "3": [],
-             "4": []
-        }
-    },
-    "hyprland/window": {
-        "max-length": 200,
-        "separate-outputs: true
-    },
-    "pulseaudio": {
-  	    "format": "{volume}% {icon}",
-        "on-click": "pavucontrol",
-    },
+  "layer": "top",
+  "modules-left": ["hyprland/workspaces" ],
+  "modules-center": ["hyprland/window"],
+  "modules-right": ["memory", "cpu", "clock", "tray"],
+  "hyprland/workspaces": {
+    "format": "{name}",
+    "active-only": true
+  },
+  "hyprland/window": {
+      "max-length": 200,
+      "separate-outputs": true
+  },
 	"memory": {
 		"interval": 5,
 		"format": "Mem {}%"
@@ -28,11 +19,11 @@
 		"interval": 5,
 		"format": "CPU {usage:2}%"
 	},
-    "clock": {
-        "format-alt": "{:%a, %d. %b  %H:%M}"
-    },
-    "tray": {
-        "icon-size": 24,
-        "spacing": 10
-    }
+  "clock": {
+      "format-alt": "{:%a, %d. %b  %H:%M}"
+  },
+  "tray": {
+      "icon-size": 24,
+      "spacing": 10
+  }
 }
