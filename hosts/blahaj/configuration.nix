@@ -1,14 +1,12 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 let
   piholeUid = 888;
   piholeGid = 888;
-in
-{
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+in {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Use the latest Linux kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -25,11 +23,12 @@ in
     firewall.allowedTCPPorts = [ 8081 53 ];
     firewall.allowedUDPPorts = [ 53 ];
     nameservers = [ "127.0.0.1" "::1" ];
-    interfaces.enp0s31f6.ipv6.addresses = [
-      { address = "fd00:1234:5678:9abc:def0:1234:5678:9abc"; prefixLength = 64; }
-    ];
+    interfaces.enp0s31f6.ipv6.addresses = [{
+      address = "fd00:1234:5678:9abc:def0:1234:5678:9abc";
+      prefixLength = 64;
+    }];
   };
-        
+
   time.timeZone = "America/Edmonton";
 
   users = {
@@ -52,7 +51,7 @@ in
 
   programs.fish.enable = true;
   services.openssh.enable = true;
- 
+
   systemd.tmpfiles.rules = [
     "Z /etc/pihole 0775 ${toString piholeUid} ${toString piholeGid} -"
     "Z /etc/dnsmasq.d 0775 ${toString piholeUid} ${toString piholeGid} -"
@@ -76,7 +75,7 @@ in
       };
     };
   };
-      
+
   nix = {
     gc = {
       automatic = true;

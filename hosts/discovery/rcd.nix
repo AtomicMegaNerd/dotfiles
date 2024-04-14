@@ -1,8 +1,8 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 let
-  rcd_pub_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK9DWvFVS2L2P6G/xUlV0yp6gOpqGgCj4dbY91zyT8ul";
-in
-{
+  rcd_pub_key =
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK9DWvFVS2L2P6G/xUlV0yp6gOpqGgCj4dbY91zyT8ul";
+in {
   home.username = "rcd";
   home.homeDirectory = "/Users/rcd";
   home.stateVersion = "23.11";
@@ -114,18 +114,15 @@ in
       zka = "zellij ka";
     };
 
-    functions =
-      {
-        tn = "tmux new -s (basename (eval pwd))";
-        zn = "zellij -s (basename (eval pwd))";
-      };
+    functions = {
+      tn = "tmux new -s (basename (eval pwd))";
+      zn = "zellij -s (basename (eval pwd))";
+    };
 
-    plugins = [
-      {
-        name = "grc";
-        src = pkgs.fishPlugins.grc.src;
-      }
-    ];
+    plugins = [{
+      name = "grc";
+      src = pkgs.fishPlugins.grc.src;
+    }];
   };
 
   programs.direnv = {
@@ -155,9 +152,7 @@ in
 
   programs.bat = {
     enable = true;
-    config = {
-      theme = "Nord";
-    };
+    config = { theme = "Nord"; };
   };
 
   programs.fzf = {

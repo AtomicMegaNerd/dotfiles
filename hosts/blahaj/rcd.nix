@@ -1,5 +1,4 @@
-{ config, pkgs, ... }:
-{
+{ pkgs, ... }: {
   home.username = "rcd";
   home.homeDirectory = "/home/rcd";
   home.stateVersion = "22.11";
@@ -51,9 +50,7 @@
 
   programs.bat = {
     enable = true;
-    config = {
-      theme = "Nord";
-    };
+    config = { theme = "Nord"; };
   };
 
   programs.fzf = {

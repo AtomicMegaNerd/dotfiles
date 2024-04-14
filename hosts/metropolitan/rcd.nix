@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }: {
   home.username = "rcd";
   home.homeDirectory = "/home/rcd";
   home.stateVersion = "22.11";
@@ -58,21 +58,6 @@
     enableFishIntegration = true;
   };
 
-  xdg.configFile = {
-    nvim = {
-      source = ../../common/nvim;
-      target = "nvim";
-    };
-    hypr = {
-      source = ../../common/hypr;
-      target = "hypr";
-    };
-    waybar = {
-      source = ../../common/waybar;
-      target = "waybar";
-    };
-  };
-
   programs.ssh = {
     enable = true;
     forwardAgent = true;
@@ -82,10 +67,32 @@
     '';
   };
 
-  xdg.configFile = {
-    alacritty = {
-      source = ../../common/alacritty;
-      target = "alacritty";
+  xdg = {
+
+    mimeApps = {
+      enable = true;
+      associations.added = { "text/html" = "firefox.desktop"; };
+      defaultApplications = { "text/html" = "firefox.desktop"; };
+    };
+
+    configFile = {
+      nvim = {
+        source = ../../common/nvim;
+        target = "nvim";
+      };
+      hypr = {
+        source = ../../common/hypr;
+        target = "hypr";
+      };
+      waybar = {
+        source = ../../common/waybar;
+        target = "waybar";
+      };
+
+      alacritty = {
+        source = ../../common/alacritty;
+        target = "alacritty";
+      };
     };
   };
 }
