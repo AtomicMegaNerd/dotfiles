@@ -1,0 +1,35 @@
+import = ["/Users/rcd/.config/alacritty/catppuccin-frappe.toml"]
+
+[font]
+size=16
+
+[font.bold]
+family="JetBrainsMono Nerd Font"
+style="Bold"
+
+[font.italic]
+family="JetBrainsMono Nerd Font"
+style="Italic"
+
+[font.normal]
+family="JetBrainsMono Nerd Font"
+style="Medium"
+
+[[mouse.bindings]]
+action = "Paste"
+mouse = "Right"
+
+[[mouse.bindings]]
+action = "Copy"
+mouse = "Left"
+
+[selection]
+save_to_clipboard = true
+
+[window]
+decorations = "Buttonless"
+
+[window.padding]
+x = 3
+y = 3
+

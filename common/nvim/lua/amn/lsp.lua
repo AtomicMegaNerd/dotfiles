@@ -1,4 +1,4 @@
--- LSP settings
+-- LSP settingslsp
 --
 
 local lspconfig_status, nvim_lsp = pcall(require, "lspconfig")
@@ -51,7 +51,16 @@ end
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
 -- Enable the following language servers
-local servers = { "gopls", "yamlls", "bashls", "pyright", "ruff_lsp", "zls", "rust_analyzer" }
+local servers = {
+	"gopls",
+	"yamlls",
+	"bashls",
+	"pyright",
+	"ruff_lsp",
+	"zls",
+	"rust_analyzer",
+	"nil_ls",
+}
 for _, lsp in ipairs(servers) do
 	nvim_lsp[lsp].setup({
 		on_attach = on_attach,

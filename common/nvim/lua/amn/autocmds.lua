@@ -48,3 +48,7 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 	command = "wincmd L",
 	group = fto_grp,
 })
+
+vim.filetype.add({
+	pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
+})
