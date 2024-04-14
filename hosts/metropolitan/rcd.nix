@@ -63,13 +63,23 @@
       source = ../../common/nvim;
       target = "nvim";
     };
-  };
-
-  xdg.configFile = {
     hypr = {
       source = ../../common/hypr;
       target = "hypr";
     };
+    waybar = {
+      source = ../../common/waybar;
+      target = "waybar";
+    };
+  };
+
+  programs.ssh = {
+    enable = true;
+    forwardAgent = true;
+    extraConfig = ''
+      Host *
+              IdentityAgent ~/.1password/agent.sock
+    '';
   };
 
   xdg.configFile = {

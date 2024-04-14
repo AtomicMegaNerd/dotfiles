@@ -53,6 +53,23 @@
   hardware.logitech.wireless.enable = true;
   hardware.logitech.wireless.enableGraphical = true;
 
+  # Virtualization and Containers
+  virtualisation = {
+    podman.enable = true;
+    podman.dockerCompat = true;
+    libvirtd = {
+      enable = true;
+      qemu = {
+        package = pkgs.qemu_kvm;
+        swtpm.enable = true;
+        ovmf = {
+          enable = true;
+          packages = [ pkgs.OVMFFull.fd ];
+        };
+      };
+    };
+  };
+
   # Enable sound.
   sound.enable = true;
   services.pipewire = {
