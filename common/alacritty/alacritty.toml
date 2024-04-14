@@ -1,4 +1,4 @@
-import = ["/Users/rcd/.config/alacritty/catppuccin-frappe.toml"]
+import = ["/home/rcd/.config/alacritty/catppuccin-frappe.toml"]
 
 [font]
 size=16

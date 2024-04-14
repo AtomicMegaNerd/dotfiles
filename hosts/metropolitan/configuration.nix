@@ -95,7 +95,18 @@
   };
 
   # Default packages
-  environment.systemPackages = with pkgs; [ git alacritty firefox wofi waybar ];
+  environment.systemPackages = with pkgs; [
+    git
+    alacritty
+    firefox
+    wofi
+    waybar
+    mako
+    hyprlock
+    hyprpaper
+    hyprpicker
+    hypridle
+  ];
 
   # Other services
   services.flatpak.enable = true;
