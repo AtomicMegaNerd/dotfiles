@@ -52,3 +52,7 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 vim.filetype.add({
 	pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
 })
+
+vim.filetype.add({
+	pattern = { [".*/waybar/config"] = "json" },
+})

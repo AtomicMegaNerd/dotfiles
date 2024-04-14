@@ -13,7 +13,8 @@
         }
     },
     "hyprland/window": {
-        "max-length": 50
+        "max-length": 200,
+        "separate-outputs: true
     },
     "pulseaudio": {
   	    "format": "{volume}% {icon}",

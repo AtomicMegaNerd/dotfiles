@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [ # Include the results of the hardware scan.
@@ -106,6 +106,12 @@
     hyprpaper
     hyprpicker
     hypridle
+    qt5.qtwayland
+    qt6.qtwayland
+    qt6.qmake
+    adwaita-qt
+    adwaita-qt6
+    wl-clipboard
   ];
 
   # Other services
@@ -123,6 +129,19 @@
   programs._1password-gui.enable = true;
   programs._1password-gui.polkitPolicyOwners = [ "rcd" ];
   programs.hyprland = { enable = true; };
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+    XDG_SESSION_TYPE = "wayland";
+    MOZ_ENABLE_WAYLAND = "1";
+    SDL_VIDEODRIVER = "wayland";
+    _JAVA_AWT_WM_NONREPARENTING = "1";
+    CLUTTER_BACKEND = "wayland";
+    WLR_RENDERER = "vulkan";
+    XDG_CURRENT_DESKTOP = "Hyprland";
+    XDG_SESSION_DESKTOP = "Hyprland";
+    GTK_USE_PORTAL = "1";
+    NIXOS_XDG_OPEN_USE_PORTAL = "1";
+  };
 
   system.stateVersion = "23.11"; # Did you read the comment?
 
