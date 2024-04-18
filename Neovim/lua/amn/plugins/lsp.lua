@@ -48,12 +48,9 @@ return {
 
 		local servers = {
 			"pyright",
-			"rnix",
 			"ruff_lsp",
 			"bashls",
-			"omnisharp",
 			"gopls",
-			"golangci_lint_ls",
 		}
 
 		for _, lsp in ipairs(servers) do
