@@ -1,126 +1,102 @@
 @import "frappe.css";
 
-/* Reset all styles */
 * {
-  border: none;
-  border-radius: 3px;
+  font-family: JetBrainsMono Nerd Font;
+  font-size: 17px;
   min-height: 0;
-  margin: 0.2em 0.3em 0.2em 0.3em;
 }
 
-/* The whole bar */
 #waybar {
-  background: @base;
+  background: transparent;
   color: @text;
-  font-family: "Cantarell", "Font Awesome 5 Pro";
-  font-size: 16px;
-  font-weight: bold;
+  margin: 5px 5px;
 }
 
-/* Each module */
-#clock,
-#cpu,
-#memory,
-#network,
-#pulseaudio,
-#temperature,
-#custom-weather,
-#custom-gpu,
-#tray,
-#language,
-
-/* Each module that should blink */
-#memory,
-#temperature,
-
-/* Each critical module */
-#memory.critical,
-#cpu.critical,
-#temperature.critical,
-
-/* Each warning */
-#network.disconnected,
-#memory.warning,
-#cpu.warning,
-#temperature.warning,
+#workspaces {
+  border-radius: 1rem;
+  margin: 5px;
+  background-color: @surface0;
+  margin-left: 1rem;
+}
 
 #workspaces button {
-  font-weight: bold; 
-  padding: 0;
-  opacity: 0.3;
-  background: none;
-  font-size: 1em;
+  color: @lavender;
+  border-radius: 1rem;
+  padding: 0.4rem;
 }
 
-#workspaces button.focused {
-  background: @mantle;
-  color: @text;
-  opacity: 1;
-  padding: 0 0.4em;
+#workspaces button.active {
+  color: @sky;
+  border-radius: 1rem;
 }
 
-#workspaces button.urgent {
-  border-color: @crust;
-  color: @txt;
-  opacity: 1;
+#workspaces button:hover {
+  color: @sapphire;
+  border-radius: 1rem;
 }
 
-#window {
-  margin-right: 40px;
-  margin-left: 40px;
-  font-weight: normal;
+#custom-music,
+#tray,
+#backlight,
+#clock,
+#battery,
+#pulseaudio,
+#custom-lock,
+#custom-power {
+  background-color: @surface0;
+  padding: 0.5rem 1rem;
+  margin: 5px 0;
 }
-#bluetooth {
-  background: @base;
-  font-size: 1.2em;
-  font-weight: bold;
-  padding: 0 0.6em;
-}
-#custom-gpu {
-  background: @base;
-  font-weight: bold;
-  padding: 0 0.6em;
-}
-#custom-weather {
-  background: @base;
-  font-weight: bold;
-  padding: 0 0.6em;
-}
-#idle_inhibitor {
-  background: @base;
-  /*font-size: 1.6em;*/
-  font-weight: bold;
-  padding: 0 0.6em;
-}
-#network {
-  background: @base;
-  color: @text;
-}
-#memory {
-  background: @base;
-  color: @text;
-}
-#cpu {
-  background: @base;
-  color: @text;
-}
-#temperature {
-  background-color: @base;
-  color: @text;
-}
+
 #clock {
-  background: @base;
-  color: @text;
+  color: @blue;
+  border-radius: 0px 1rem 1rem 0px;
+  margin-right: 1rem;
 }
-#clock.date {
-  background: @base;
-  color: @text;
+
+#battery {
+  color: @green;
 }
-#clock.time {
-  background: @base;
-  color: @text;
+
+#battery.charging {
+  color: @green;
 }
+
+#battery.warning:not(.charging) {
+  color: @red;
+}
+
+#backlight {
+  color: @yellow;
+}
+
+#backlight, #battery {
+    border-radius: 0;
+}
+
+#pulseaudio {
+  color: @maroon;
+  border-radius: 1rem 0px 0px 1rem;
+  margin-left: 1rem;
+}
+
+#custom-music {
+  color: @mauve;
+  border-radius: 1rem;
+}
+
+#custom-lock {
+    border-radius: 1rem 0px 0px 1rem;
+    color: @lavender;
+}
+
+#custom-power {
+    margin-right: 1rem;
+    border-radius: 0px 1rem 1rem 0px;
+    color: @red;
+}
+
 #tray {
-  background: @base;
-  color: @text;
+  margin-right: 1rem;
+  border-radius: 1rem;
 }
