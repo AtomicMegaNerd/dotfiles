@@ -112,6 +112,7 @@
     adwaita-qt
     adwaita-qt6
     wl-clipboard
+    blueman
   ];
 
   # Other services

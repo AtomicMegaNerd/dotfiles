@@ -1,3 +1,11 @@
+vim.filetype.add({
+	pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
+})
+
+vim.filetype.add({
+	pattern = { [".*/waybar/config"] = "json" },
+})
+
 -- Text yank
 ----------------------------------------------------------------
 -- Automatically highlight text when we yank it
@@ -47,12 +55,4 @@ vim.api.nvim_create_autocmd("Filetype", {
 vim.api.nvim_create_autocmd("BufWinEnter", {
 	command = "wincmd L",
 	group = fto_grp,
-})
-
-vim.filetype.add({
-	pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
-})
-
-vim.filetype.add({
-	pattern = { [".*/waybar/config"] = "json" },
 })
