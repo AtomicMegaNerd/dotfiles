@@ -4,10 +4,21 @@
   "editor.semanticHighlighting.enabled": true,
   "editor.lineNumbers": "relative",
   "editor.formatOnSave": true,
-  "editor.fontFamily": "Cascadia Code",
+  "editor.fontFamily": "JetBrains Mono Nerd Font",
 
   // Vim settings
   "vim.autoindent": true,
+  "vim.hlsearch": true,
+  "vim.incsearch": true,
+  "vim.leader": "\\",
+
+  // For vim extension remap ; to :
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [";"],
+      "after": [":"]
+    }
+  ],
 
   // Workbench settings
   "workbench.startupEditor": "none",
@@ -46,5 +57,5 @@
   "git.openRepositoryInParentFolders": "always",
   "workbench.colorTheme": "Catppuccin Frappé",
   "window.commandCenter": false,
-  "security.workspace.trust.untrustedFiles": "open"
+  "security.workspace.trust.enabled": false
 }
