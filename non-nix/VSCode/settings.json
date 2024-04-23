@@ -45,5 +45,6 @@
   "extensions.ignoreRecommendations": true,
   "git.openRepositoryInParentFolders": "always",
   "workbench.colorTheme": "Catppuccin Frappé",
-  "window.commandCenter": false
+  "window.commandCenter": false,
+  "security.workspace.trust.untrustedFiles": "open"
 }
