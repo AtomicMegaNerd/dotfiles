@@ -1,5 +1,4 @@
-{ config, pkgs, ... }:
-{
+{ config, pkgs, ... }: {
   home.username = "rcd";
   home.homeDirectory = "/home/rcd";
   home.stateVersion = "22.11";
@@ -47,24 +46,22 @@
       core.sshCommand = "ssh.exe";
       init.defaultBranch = "main";
       pull.rebase = false;
-      user.signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK9DWvFVS2L2P6G/xUlV0yp6gOpqGgCj4dbY91zyT8ul";
+      user.signingkey =
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK9DWvFVS2L2P6G/xUlV0yp6gOpqGgCj4dbY91zyT8ul";
       gpg = {
         ssh = {
-          program = "/mnt/c/Program Files/1Password/app/8/op-ssh-sign.exe";
+          program =
+            "/mnt/c/Users/chris/AppData/Local/1Password/app/8/op-ssh-sign.exe";
         };
         format = "ssh";
       };
-      commit = {
-        gpgsign = true;
-      };
+      commit = { gpgsign = true; };
     };
   };
 
   programs.bat = {
     enable = true;
-    config = {
-      theme = "Nord";
-    };
+    config = { theme = "Nord"; };
   };
 
   programs.fzf = {
@@ -79,3 +76,4 @@
     };
   };
 }
+
