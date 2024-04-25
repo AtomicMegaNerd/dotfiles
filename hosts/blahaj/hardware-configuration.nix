@@ -5,8 +5,7 @@
 
 {
   imports =
-    [
-      (modulesPath + "/installer/scan/not-detected.nix")
+    [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
@@ -15,34 +14,23 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    {
-      device = "/dev/nvme0n1p2";
+    { device = "/dev/disk/by-uuid/eed0b1d7-9ca5-4ea3-a4c3-6117d07952c8";
       fsType = "btrfs";
-      options = [ "subvol=root" "compress=zstd" "discard=async" ];
-    };
-
-  fileSystems."/home" =
-    {
-      device = "/dev/nvme0n1p2";
-      fsType = "btrfs";
-      options = [ "subvol=home" "compress=zstd" "discard=async" ];
-    };
-
-  fileSystems."/nix" =
-    {
-      device = "/dev/nvme0n1p2";
-      fsType = "btrfs";
-      options = [ "subvol=nix" "compress=zstd" "discard=async" ];
+      options = [ "subvol=@" ];
     };
 
   fileSystems."/boot" =
-    {
-      device = "/dev/nvme0n1p1";
+    { device = "/dev/disk/by-uuid/180C-5D4B";
       fsType = "vfat";
+      options = [ "fmask=0022" "dmask=0022" ];
     };
 
-  swapDevices =
-    [{ device = "/dev/nvme0n1p3"; }];
+  fileSystems."/data" =
+    { device = "/dev/disk/by-uuid/eb6c5b2f-a821-4b71-9c41-0fac1c4c045e";
+      fsType = "btrfs";
+    };
+
+  swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
@@ -52,6 +40,5 @@
   # networking.interfaces.enp0s31f6.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

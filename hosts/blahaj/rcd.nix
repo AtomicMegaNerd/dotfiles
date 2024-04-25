@@ -5,26 +5,6 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
-    neofetch
-    starship
-    eza
-    du-dust
-    fish
-    htop
-    glow
-    tldr
-    wget
-    curl
-    duf
-    ripgrep
-    fd
-    grc
-    zip
-    unzip
-    procs
-    jq
-    nmap
-    dig
   ];
 
   programs.neovim = import ../../common/neovim.nix { inherit pkgs; };
