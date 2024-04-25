@@ -15,12 +15,12 @@
     let
       system-linux = "x86_64-linux";
       system-mac = "aarch64-darwin";
-      unstable = system: import nixpkgs-unstable {
-        inherit system;
-        config.allowUnfree = true;
-      };
-    in
-    {
+      unstable = system:
+        import nixpkgs-unstable {
+          inherit system;
+          config.allowUnfree = true;
+        };
+    in {
       nixosConfigurations = {
         blahaj = nixpkgs-unstable.lib.nixosSystem {
           pkgs = unstable system-linux;
@@ -28,7 +28,10 @@
         };
         metropolitan = nixpkgs-unstable.lib.nixosSystem {
           pkgs = unstable system-linux;
-          modules = [ ./hosts/metropolitan/configuration.nix nixos-wsl.nixosModules.wsl ];
+          modules = [
+            ./hosts/metropolitan/configuration.nix
+            nixos-wsl.nixosModules.wsl
+          ];
         };
       };
 
