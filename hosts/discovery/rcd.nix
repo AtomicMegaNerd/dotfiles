@@ -3,26 +3,28 @@ let
   rcd_pub_key =
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK9DWvFVS2L2P6G/xUlV0yp6gOpqGgCj4dbY91zyT8ul";
 in {
-  home.username = "rcd";
-  home.homeDirectory = "/Users/rcd";
-  home.stateVersion = "23.11";
+  home = {
+    username = "rcd";
+    homeDirectory = "/Users/rcd";
+    stateVersion = "23.11";
+    file.".ssh/allowed_signers".text = "${rcd_pub_key}";
+    packages = with pkgs; [
+      neofetch
+      eza
+      duf
+      du-dust
+      grc
+      ripgrep
+      fd
+      glow
+      tldr
+      lazygit
+      ncurses
+      nmap
+    ];
+  };
+
   programs.home-manager.enable = true;
-
-  home.packages = with pkgs; [
-    neofetch
-    eza
-    duf
-    du-dust
-    grc
-    ripgrep
-    fd
-    glow
-    tldr
-    lazygit
-    ncurses
-    nmap
-  ];
-
   programs.neovim = import ../../common/neovim.nix { inherit pkgs; };
   programs.tmux = import ../../common/tmux.nix { inherit pkgs; };
   programs.starship = import ../../common/starship.nix { inherit pkgs; };
@@ -130,7 +132,6 @@ in {
     nix-direnv.enable = true;
   };
 
-  home.file.".ssh/allowed_signers".text = "${rcd_pub_key}";
   programs.git = {
     enable = true;
     userName = "Chris Dunphy";
