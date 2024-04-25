@@ -21,6 +21,15 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	group = fmt_grp,
 })
 
+-- Linting
+----------------------------------------------------------------
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+	callback = function()
+		require("lint").try_lint()
+	end,
+	group = fmt_grp,
+})
+
 -- Options for specific file types
 ----------------------------------------------------------------
 local fto_grp = vim.api.nvim_create_augroup("FileTypeOptions", { clear = true })
@@ -71,6 +80,12 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 	command = "setf groovy",
 	group = fto_grp,
 	pattern = "Jenkinsfile",
+})
+
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+	command = "setf markdown",
+	group = fto_grp,
+	pattern = "copilot-chat",
 })
 
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {

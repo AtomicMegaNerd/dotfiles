@@ -33,27 +33,24 @@ return {
 		})
 
 		local on_attach = function(_, bufnr)
-			utils.nmap_buf("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame", "LSP", bufnr)
-			utils.nmap_buf("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", "LSP", bufnr)
-			utils.nmap_buf("gd", vim.lsp.buf.definition, "[G]oto [D]efinition", "LSP", bufnr)
-			utils.nmap_buf("gl", vim.lsp.buf.declaration, "[G]oto [D]eclaration", "LSP", bufnr)
-			utils.nmap_buf("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation", "LSP", bufnr)
-			utils.nmap_buf("gr", telescope_builtin.lsp_references, "[G]oto [R]eferences", "LSP", bufnr)
-			utils.nmap_buf("gt", vim.lsp.buf.type_definition, "Type [D]efinition", "LSP", bufnr)
-			utils.nmap_buf("K", vim.lsp.buf.hover, "Hover Documentation", "LSP", bufnr)
-			utils.nmap_buf("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation", "LSP", bufnr)
+			utils.nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame", "LSP", bufnr)
+			utils.nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", "LSP", bufnr)
+			utils.nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition", "LSP", bufnr)
+			utils.nmap("gl", vim.lsp.buf.declaration, "[G]oto [D]eclaration", "LSP", bufnr)
+			utils.nmap("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation", "LSP", bufnr)
+			utils.nmap("gr", telescope_builtin.lsp_references, "[G]oto [R]eferences", "LSP", bufnr)
+			utils.nmap("gt", vim.lsp.buf.type_definition, "Type [D]efinition", "LSP", bufnr)
+			utils.nmap("K", vim.lsp.buf.hover, "Hover Documentation", "LSP", bufnr)
+			utils.nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation", "LSP", bufnr)
 		end
 
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 
 		local servers = {
 			"pyright",
-			"rnix",
 			"ruff_lsp",
 			"bashls",
-			"omnisharp",
 			"gopls",
-			"golangci_lint_ls",
 		}
 
 		for _, lsp in ipairs(servers) do

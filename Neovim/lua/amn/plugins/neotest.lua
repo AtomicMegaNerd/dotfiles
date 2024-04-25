@@ -2,6 +2,7 @@ return {
 	"nvim-neotest/neotest",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
+    "nvim-neotest/nvim-nio",
 		"antoinemadec/FixCursorHold.nvim",
 		"nvim-treesitter/nvim-treesitter",
 		"nvim-neotest/neotest-python",
@@ -36,19 +37,16 @@ return {
 		utils.nmap("<leader>tn", function()
 			nt.run.run()
 			nt.output.open()
-			nt.summary.open()
 		end, "Run [T]est [N]earest to cursor")
 
 		utils.nmap("<leader>tf", function()
 			nt.run.run(vim.fn.expand("%"))
 			nt.output.open()
-			nt.summary.open()
 		end, "Run all [T]ests in [F]ile")
 
 		utils.nmap("<leader>ts", function()
 			nt.run.run(vim.fn.getcwd())
 			nt.output.open()
-			nt.summary.open()
 		end, "Run whole [T]est [S]uite")
 	end,
 }

@@ -50,3 +50,5 @@ o.completeopt = "menuone,noselect"
 
 -- Enable spell checking
 o.spell = true
+
+o.helpheight = 9999
