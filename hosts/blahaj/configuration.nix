@@ -24,7 +24,7 @@ in {
     networkmanager.enable = true;
     firewall.allowedTCPPorts = [ 8081 53 ];
     firewall.allowedUDPPorts = [ 53 ];
-    nameservers = [ "127.0.0.1" "::1" "8.8.8.8" ];
+    nameservers = [ "9.9.9.9" "149.112.112.112" "2620:fe::fe" "2620:fe::9" ];
     interfaces.enp0s31f6 = {
       useDHCP = true;
       ipv6.addresses = [{
@@ -74,6 +74,7 @@ in {
           FTLCONF_LOCAL_IPV4 = "192.168.1.232";
           PIHOLE_UID = toString piholeUid;
           PIHOLE_GID = toString piholeGid;
+          DHCP_IPv6 = "true";
         };
       };
     };
