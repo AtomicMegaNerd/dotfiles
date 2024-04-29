@@ -58,10 +58,6 @@ set -gx FUNCTIONS_CORE_TOOLS_TELEMETRY_OPTOUT 1
 set -gx DOTNET_CLI_TELEMETRY_OPTOUT 1
 set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
 
-# Used by the dotfiles. For example my neovim config behaves differently if it is configured
-# by Nix.
-set -gx AMN_INSTALL_TYPE "non-nix"
-
 # Fixes an issue with MacOS' super out of date terminfo
 set -gx TERMINFO_DIRS "$TERMINFO_DIRS:$HOME/.local/share/terminfo"
 
@@ -76,7 +72,8 @@ set -gx CERTS $HOME/Certs/
 
 # Corporate TLS MITM shenanigans
 set -gx NODE_TLS_REJECT_UNAUTHORIZED 0
-# Logging
+
+# Logging for Neovim
 set -gx NVIM_LOG_FILE ~/.local/share/nvim/nvim.log
 
 # PATH
