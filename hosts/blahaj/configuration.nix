@@ -41,7 +41,7 @@ in {
     users.rcd = {
       isNormalUser = true;
       description = "Chris Dunphy";
-      extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
+      extraGroups = [ "wheel" "docker" ];
       shell = pkgs.fish;
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK9DWvFVS2L2P6G/xUlV0yp6gOpqGgCj4dbY91zyT8ul"
@@ -72,9 +72,9 @@ in {
         environment = {
           TZ = "America/Edmonton";
           FTLCONF_LOCAL_IPV4 = "192.168.1.232";
+          FTLCONF_LOCAL_IPV6 = "fd00:1234:5678:9abc:def0:1234:5678:9abc";
           PIHOLE_UID = toString piholeUid;
           PIHOLE_GID = toString piholeGid;
-          DHCP_IPv6 = "true";
         };
       };
     };
