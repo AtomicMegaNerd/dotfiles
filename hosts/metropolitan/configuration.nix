@@ -1,11 +1,8 @@
-{ config, lib, pkgs, ... }:
-{
+{ pkgs, ... }: {
   wsl = {
     enable = true;
     defaultUser = "rcd";
-    wslConf = {
-      network.hostname = "metropolitan";
-    };
+    wslConf = { network.hostname = "metropolitan"; };
   };
 
   users = {
@@ -29,3 +26,4 @@
 
   system.stateVersion = "23.11"; # Did you read the comment?
 }
+
