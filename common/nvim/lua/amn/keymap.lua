@@ -68,13 +68,3 @@ keymap.set("n", "<leader>fn", function()
 end, { desc = "[F]ind [N]otifications" })
 -- File Browser
 keymap.set("n", "<leader>bf", tfb, { desc = "[B]rowse [F]iles " })
-
-local status, neotest = pcall(require, "neotest")
-if not status then
-	vim.notify("Cannot load neotest", vim.log.levels.ERROR)
-	return
-end
-
--- Neotest
-keymap.set("n", "<leader>tn", neotest.run.run(), { desc = "[T]est [N]earest" })
-keymap.set("n", "<leader>tf", neotest.run.run(vim.fn.expand("%")), { desc = "[T]est [F]ile" })
