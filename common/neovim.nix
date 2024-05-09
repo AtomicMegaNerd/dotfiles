@@ -76,10 +76,6 @@
     nvim-web-devicons
     plenary-nvim
     copilot-vim
-    # Neotest
-    neotest
-    neotest-rust
-    neotest-python
-    neotest-go
+    vim-test
   ];
 }
