@@ -76,5 +76,6 @@
     nvim-web-devicons
     plenary-nvim
     copilot-vim
+    vim-test
   ];
 }

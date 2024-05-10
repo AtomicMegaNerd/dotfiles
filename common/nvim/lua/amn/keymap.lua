@@ -68,3 +68,10 @@ keymap.set("n", "<leader>fn", function()
 end, { desc = "[F]ind [N]otifications" })
 -- File Browser
 keymap.set("n", "<leader>bf", tfb, { desc = "[B]rowse [F]iles " })
+
+-- Vim-Test
+keymap.set("n", "<leader>tn", [[<cmd>TestNearest<cr>]], { desc = "[T]est [N]earest" })
+keymap.set("n", "<leader>tf", [[<cmd>TestFile<cr>]], { desc = "[T]est [F]ile" })
+keymap.set("n", "<leader>ts", [[<cmd>TestSuite<cr>]], { desc = "[T]est [S]uite" })
+keymap.set("n", "<leader>tl", [[<cmd>TestLast<cr>]], { desc = "[T]est [L]ast" })
+keymap.set("n", "<leader>tv", [[<cmd>TestVisit<cr>]], { desc = "[T]est [V]isit" })
