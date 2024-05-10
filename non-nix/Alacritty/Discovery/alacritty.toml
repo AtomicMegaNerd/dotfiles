@@ -1,7 +1,7 @@
 import = ["/Users/rcd/.config/alacritty/catppuccin-frappe.toml"]
 
 [font]
-size=19
+size=16
 
 [font.bold]
 family="JetBrainsMono Nerd Font"
