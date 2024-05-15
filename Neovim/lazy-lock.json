@@ -25,7 +25,7 @@
   "nvim-lspconfig": { "branch": "master", "commit": "a27179f56c6f98a4cdcc79ee2971b514815a4940" },
   "nvim-nio": { "branch": "master", "commit": "8765cbc4d0c629c8158a5341e1b4305fd93c3a90" },
   "nvim-notify": { "branch": "master", "commit": "5371f4bfc1f6d3adf4fe9d62cd3a9d44356bfd15" },
-  "nvim-treesitter": { "branch": "master", "commit": "c26cfc75bc77b3538f4f288b013bc927a371bf2e" },
+  "nvim-treesitter": { "branch": "master", "commit": "aa0c7dd29631ee8c2df738d99bd33b762b3a6e22" },
   "nvim-web-devicons": { "branch": "master", "commit": "e37bb1feee9e7320c76050a55443fa843b4b6f83" },
   "plenary.nvim": { "branch": "master", "commit": "08e301982b9a057110ede7a735dd1b5285eb341f" },
   "telescope-file-browser.nvim": { "branch": "master", "commit": "4d5fd21bae12ee6e9a79232e1c377f43c419d0c5" },
@@ -33,7 +33,7 @@
   "telescope-ui-select.nvim": { "branch": "master", "commit": "6e51d7da30bd139a6950adf2a47fda6df9fa06d2" },
   "telescope.nvim": { "branch": "master", "commit": "6f6bb8065567b56c42e283b06e8a1c670c0092a1" },
   "todo-comments.nvim": { "branch": "main", "commit": "a7e39ae9e74f2c8c6dc4eea6d40c3971ae84752d" },
-  "vim-fugitive": { "branch": "master", "commit": "ce882460cf3db12e99f8bf579cbf99e331f6dd4f" },
+  "vim-fugitive": { "branch": "master", "commit": "5b0347b5231a0f40abc311ccaf7bbf02d3ce3a5a" },
   "vim-rooter": { "branch": "master", "commit": "45e53f01e4e1c4a3ee20814de232162713aff578" },
   "vim-vsnip": { "branch": "master", "commit": "02a8e79295c9733434aab4e0e2b8c4b7cea9f3a9" },
   "which-key.nvim": { "branch": "main", "commit": "4433e5ec9a507e5097571ed55c02ea9658fb268a" }
