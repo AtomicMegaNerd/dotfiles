@@ -43,8 +43,19 @@
     userName = "Chris Dunphy";
     userEmail = "chris@megaparsec.ca";
     extraConfig = {
+      core.sshCommand = "ssh.exe";
       init.defaultBranch = "main";
       pull.rebase = false;
+      user.signingkey =
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK9DWvFVS2L2P6G/xUlV0yp6gOpqGgCj4dbY91zyT8ul";
+      gpg = {
+        ssh = {
+          program =
+            "/mnt/c/Users/chris/AppData/Local/1Password/app/8/op-ssh-sign.exe";
+        };
+        format = "ssh";
+      };
+      commit = { gpgsign = true; };
     };
   };
 
@@ -58,41 +69,11 @@
     enableFishIntegration = true;
   };
 
-  programs.ssh = {
-    enable = true;
-    forwardAgent = true;
-    extraConfig = ''
-      Host *
-              IdentityAgent ~/.1password/agent.sock
-    '';
-  };
-
-  xdg = {
-
-    mimeApps = {
-      enable = true;
-      associations.added = { "text/html" = "firefox.desktop"; };
-      defaultApplications = { "text/html" = "firefox.desktop"; };
-    };
-
-    configFile = {
-      nvim = {
-        source = ../../common/nvim;
-        target = "nvim";
-      };
-      hypr = {
-        source = ../../common/hypr;
-        target = "hypr";
-      };
-      waybar = {
-        source = ../../common/waybar;
-        target = "waybar";
-      };
-
-      alacritty = {
-        source = ../../common/alacritty;
-        target = "alacritty";
-      };
+  xdg.configFile = {
+    nvim = {
+      source = ../../common/nvim;
+      target = "nvim";
     };
   };
 }
+
