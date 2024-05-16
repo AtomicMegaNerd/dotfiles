@@ -4,6 +4,14 @@
   home.stateVersion = "22.11";
   programs.home-manager.enable = true;
 
+  # Dark mode
+  dconf.settings = {
+    "org/gnome/desktop/interface" = { color-scheme = "prefer-dark"; };
+  };
+
+  gtk.enable = true;
+  gtk.theme.name = "Adwaita-dark";
+
   home.packages = with pkgs; [
     neofetch
     glow
