@@ -106,7 +106,6 @@
     adwaita-qt6
     wl-clipboard
     blueman
-    helvum
   ];
 
   # Other services
