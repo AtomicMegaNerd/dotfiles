@@ -1,13 +1,12 @@
 # Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
+# your system. Help is available in the configuration.nix(5) man page, onconfiguration
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [ ./hardware-configuration.nix ];
 
-  # Use the systemd-boot EFI boot loader.
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = [ "quiet" ];
@@ -46,10 +45,6 @@
   };
   hardware.opengl.enable = true;
   hardware.bluetooth.enable = true;
-
-  # Logitech
-  hardware.logitech.wireless.enable = true;
-  hardware.logitech.wireless.enableGraphical = true;
 
   # Virtualization and Containers
   virtualisation = {
