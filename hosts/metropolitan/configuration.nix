@@ -106,6 +106,7 @@
     adwaita-qt6
     wl-clipboard
     blueman
+    pavucontrol
   ];
 
   # Other services
