@@ -42,6 +42,7 @@
     xkb.variant = "";
     displayManager.gdm.wayland = true;
     displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
   };
   hardware.opengl.enable = true;
   hardware.bluetooth.enable = true;
@@ -71,6 +72,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+  hardware.pulseaudio.enable = false;
 
   # Fonts
   fonts.packages = with pkgs;
@@ -88,33 +90,12 @@
   };
 
   # Default packages
-  environment.systemPackages = with pkgs; [
-    git
-    alacritty
-    firefox
-    walker
-    waybar
-    mako
-    hyprlock
-    hyprpaper
-    hyprpicker
-    hypridle
-    qt5.qtwayland
-    qt6.qtwayland
-    qt6.qmake
-    adwaita-qt
-    adwaita-qt6
-    wl-clipboard
-    blueman
-    pavucontrol
-  ];
+  environment.systemPackages = with pkgs; [ git alacritty firefox ];
 
   # Other services
   services.flatpak.enable = true;
   services.onedrive.enable = true;
-  services.dbus.enable = true;
   services.spice-vdagentd.enable = true;
-  services.gnome.gnome-keyring.enable = true;
 
   # Polkit
   security.polkit.enable = true;
@@ -123,7 +104,6 @@
   programs._1password.enable = true;
   programs._1password-gui.enable = true;
   programs._1password-gui.polkitPolicyOwners = [ "rcd" ];
-  programs.hyprland = { enable = true; };
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     XDG_SESSION_TYPE = "wayland";
