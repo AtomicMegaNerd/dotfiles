@@ -2,7 +2,7 @@
   "layer": "top",
   "modules-left": ["hyprland/workspaces" ],
   "modules-center": ["hyprland/window"],
-  "modules-right": ["bluetooth", "memory", "cpu", "clock", "tray"],
+  "modules-right": ["pulseaudio","bluetooth", "memory", "cpu", "clock", "tray"],
   "hyprland/workspaces": {
     "format": "{name}",
     "active-only": true
@@ -27,14 +27,14 @@
 	},
 	"scroll-step": 1,
 	"on-click": "pavucontrol"
-},
-    "bluetooth": {
-        "format": " {status}",
-        "format-disabled": "", 
-        "format-connected": " {num_connections} connected",
-        "tooltip-format": "{controller_alias}\t{controller_address}",
-        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
-        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+  },
+"bluetooth": {
+    "format": " {status}",
+    "format-disabled": "", 
+    "format-connected": " {num_connections} connected",
+    "tooltip-format": "{controller_alias}\t{controller_address}",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
     },
 	"memory": {
 		"interval": 5,

@@ -4,9 +4,6 @@
   home.stateVersion = "22.11";
   programs.home-manager.enable = true;
 
-  home.packages = with pkgs; [
-  ];
-
   programs.neovim = import ../../common/neovim.nix { inherit pkgs; };
   programs.tmux = import ../../common/tmux.nix { inherit pkgs; };
   programs.starship = import ../../common/starship.nix { inherit pkgs; };

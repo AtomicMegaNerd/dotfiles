@@ -88,6 +88,15 @@
         source = ../../common/nvim;
         target = "nvim";
       };
+      hypr = {
+        source = ../../common/hypr;
+        target = "hypr";
+      };
+      waybar = {
+        source = ../../common/waybar;
+        target = "waybar";
+      };
+
       alacritty = {
         source = ../../common/alacritty;
         target = "alacritty";
