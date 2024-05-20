@@ -11,9 +11,9 @@ Import-Module -Name Terminal-Icons
 New-Alias -Name vim -Value nvim
 
 # Functions
-function cdot { cd "C:\Users\chris\Code\Configs\dotfiles" }
+function cdot { cd "C:\Users\RCD\Code\Configs\dotfiles" }
 
-function cpy { cd "C:\Users\chris\Code\Python" }
+function cpy { cd "C:\Users\RCD\Code\Python" }
 
 function which ($command) {
   Get-Command -Name $command -ErrorAction SilentlyContinue |
