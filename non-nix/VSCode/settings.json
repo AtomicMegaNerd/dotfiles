@@ -1,10 +1,10 @@
 {
   // Editor settings
-  "editor.fontSize": 18,
+  "editor.fontSize": 16,
   "editor.semanticHighlighting.enabled": true,
   "editor.lineNumbers": "relative",
   "editor.formatOnSave": true,
-  "editor.fontFamily": "JetBrains Mono Nerd Font",
+  "editor.fontFamily": "Cascadia Code",
 
   // Vim settings
   "vim.autoindent": true,
