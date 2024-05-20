@@ -65,7 +65,6 @@
     # Status Line
     lualine-nvim
     # Comments
-    comment-nvim
     todo-comments-nvim
     # Misc
     vim-rooter

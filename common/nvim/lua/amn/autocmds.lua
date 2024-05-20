@@ -25,20 +25,6 @@ vim.api.nvim_create_autocmd("Filetype", {
 	pattern = { "python" },
 })
 
--- Always open new windows on the right
-vim.api.nvim_create_autocmd("BufWinEnter", {
-	command = "wincmd L",
-	group = fto_grp,
-})
-
-vim.filetype.add({
-	pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
-})
-
-vim.filetype.add({
-	pattern = { [".*/waybar/config"] = "json" },
-})
-
 vim.filetype.add({
 	pattern = { ["copilot-chat"] = "markdown" },
 })
