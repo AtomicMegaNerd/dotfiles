@@ -5,10 +5,13 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
-    walker.url = "github:abenz1267/walker";
+    nixos-wsl = {
+      url = "github:nix-community/NixOS-WSL";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
-  outputs = { self, nixpkgs-unstable, home-manager, walker }:
+  outputs = { self, nixpkgs-unstable, home-manager, nixos-wsl }:
     let
       system-linux = "x86_64-linux";
       system-mac = "aarch64-darwin";
@@ -25,7 +28,10 @@
         };
         metropolitan = nixpkgs-unstable.lib.nixosSystem {
           pkgs = unstable system-linux;
-          modules = [ ./hosts/metropolitan/configuration.nix ];
+          modules = [ 
+	    ./hosts/metropolitan/configuration.nix
+	    nixos-wsl.nixosModules.wsl
+	  ];
         };
       };
 
@@ -43,9 +49,6 @@
           modules = [ ./hosts/metropolitan/rcd.nix ];
         };
       };
-
-      metropolitan.systemPackages.${system-linux} =
-        [ walker.packages.${system-linux}.default ];
     };
 
 }
