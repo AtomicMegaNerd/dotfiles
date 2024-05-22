@@ -42,7 +42,7 @@
     set -g fish_pager_color_description 737994
 
     starship init fish | source
-    zoxide init fish | source
+    zoxide init --cmd cd fish | source
   '';
 
   shellAliases = {
