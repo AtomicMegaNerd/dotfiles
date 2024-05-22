@@ -113,6 +113,7 @@ in {
     dig
     neovim
     git
+    zoxide
   ];
 
   # Enable the OpenSSH daemon.
