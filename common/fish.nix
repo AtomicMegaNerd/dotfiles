@@ -51,16 +51,6 @@
     df = "duf";
     cat = "bat --paging=never --style=plain";
 
-    # Directory aliases
-    ch = "cd ~";
-    csrc = "cd ~/Code";
-    cr = "cd ~/Code/Rust/";
-    cg = "cd ~/Code/Go/";
-    cpy = "cd ~/Code/Python/";
-    ce = "cd ~/Code/Exercism/";
-    cgo = "cd ~/Code/Go/";
-    cdot = "cd ~/Code/Configs/dotfiles";
-
     # Just use ripgrep
     grep = "rg";
 
