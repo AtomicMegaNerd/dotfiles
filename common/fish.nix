@@ -1,5 +1,4 @@
-{ pkgs }:
-{
+{ pkgs }: {
   enable = true;
 
   shellInit = ''
@@ -43,6 +42,7 @@
     set -g fish_pager_color_description 737994
 
     starship init fish | source
+    zoxide init fish | source
   '';
 
   shellAliases = {
@@ -76,16 +76,13 @@
     zka = "zellij ka";
   };
 
-  functions =
-    {
-      tn = "tmux new -s (basename (eval pwd))";
-      zn = "zellij -s (basename (eval pwd))";
-    };
+  functions = {
+    tn = "tmux new -s (basename (eval pwd))";
+    zn = "zellij -s (basename (eval pwd))";
+  };
 
-  plugins = [
-    {
-      name = "grc";
-      src = pkgs.fishPlugins.grc.src;
-    }
-  ];
+  plugins = [{
+    name = "grc";
+    src = pkgs.fishPlugins.grc.src;
+  }];
 }
