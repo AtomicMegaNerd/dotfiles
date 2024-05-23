@@ -13,12 +13,10 @@ require("amn.lsp")
 
 -- Mac Specific configuration
 if vim.fn.has("macunix") == 1 then
-	vim.notify("Detected MacOS", vim.log.levels.DEBUG)
 	require("amn.macos")
 end
 
 -- Linux Specific configuration
 if vim.fn.has("linux") == 1 then
-	vim.notify("Detected Linux", vim.log.levels.DEBUG)
 	require("amn.linux")
 end
