@@ -4,4 +4,7 @@ if not status then
 	return
 end
 
-copilot_chat.setup()
+copilot_chat.setup({
+	context = "buffer",
+	show_help = false,
+})
