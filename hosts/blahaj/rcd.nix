@@ -14,6 +14,7 @@
     starship = import ../../common/starship.nix { inherit pkgs; };
     fish = import ../../common/fish.nix { inherit pkgs; };
     zellij = import ../../common/zellij.nix { inherit pkgs; };
+    bat = import ../../common/bat.nix { inherit pkgs; };
 
     direnv = {
       enable = true;
@@ -36,11 +37,6 @@
       options = [ "--cmd cd" ];
     };
 
-    bat = {
-      enable = true;
-      config = { theme = "Catppuccin Frappe"; };
-    };
-
     fzf = {
       enable = true;
       enableFishIntegration = true;
@@ -51,10 +47,6 @@
     nvim = {
       source = ../../common/nvim;
       target = "nvim";
-    };
-    bat = {
-      source = ../../common/bat/themes;
-      target = "bat/themes";
     };
   };
 }
