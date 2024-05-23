@@ -79,8 +79,10 @@ in {
     };
   };
 
+  # We have the common packages that we want but we can always add more
   environment.systemPackages =
-    import ../../common/packages.nix { inherit pkgs; };
+    (import ../../common/packages.nix { inherit pkgs; })
+    ++ (with pkgs; [ neovim starship git ]);
 
   services.openssh.enable = true;
   programs.fish.enable = true;
