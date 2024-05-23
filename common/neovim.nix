@@ -1,9 +1,27 @@
-{ pkgs }: {
+{ pkgs }:
+let
+  myNixpkgs = pkgs.appendOverlays [
+    (self: super: {
+      vimPlugins = super.vimPlugins // {
+        CopilotChat-nvim = super.vimUtils.buildVimPlugin {
+          pname = "CopilotChat-nvim";
+          version = "master";
+          src = super.fetchFromGitHub {
+            owner = "CopilotC-Nvim";
+            repo = "CopilotChat.nvim";
+            rev = "master";
+            sha256 = "0lrhwq7jb4irz9nsz487ximcgmr0bg6bx6v0hwslnr4sl5vgx5ld";
+          };
+        };
+      };
+    })
+  ];
+in {
   enable = true;
   defaultEditor = true;
   vimAlias = true;
 
-  extraPackages = with pkgs; [
+  extraPackages = with myNixpkgs; [
     # Language servers
     lua-language-server
     shellcheck
@@ -17,7 +35,7 @@
     nodePackages.prettier
   ];
 
-  plugins = with pkgs.vimPlugins; [
+  plugins = with myNixpkgs.vimPlugins; [
     # Treesitter
     (nvim-treesitter.withAllGrammars)
     # Theme
@@ -58,5 +76,6 @@
     copilot-vim
     vim-test
     oil-nvim
+    CopilotChat-nvim # Add the CopilotChat.nvim plugin here
   ];
 }
