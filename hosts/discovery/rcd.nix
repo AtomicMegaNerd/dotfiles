@@ -16,6 +16,7 @@ in {
     tmux = import ../../common/tmux.nix { inherit pkgs; };
     starship = import ../../common/starship.nix { inherit pkgs; };
     zellij = import ../../common/zellij.nix { inherit pkgs; };
+    bat = import ../../common/bat.nix { inherit pkgs; };
 
     direnv = {
       enable = true;
@@ -47,11 +48,6 @@ in {
       options = [ "--cmd cd" ];
     };
 
-    bat = {
-      enable = true;
-      config = { theme = "Catppuccin Frappe"; };
-    };
-
     fzf = {
       enable = true;
       enableFishIntegration = true;
@@ -66,10 +62,6 @@ in {
     alacritty = {
       source = ../../common/alacritty;
       target = "alacritty";
-    };
-    bat = {
-      source = ../../common/bat/themes;
-      target = "bat/themes";
     };
   };
 }

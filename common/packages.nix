@@ -17,4 +17,5 @@ with pkgs; [
   procs
   jq
   dos2unix
+  nix-prefetch-git
 ]
