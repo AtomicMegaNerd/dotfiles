@@ -1,5 +1,5 @@
 { pkgs, ... }:
-let rcd_pub_key = builtins.readFile ./common/rcd_pub_key;
+let rcd_pub_key = builtins.readFile ../../common/rcd_pub_key;
 in {
   home = {
     username = "rcd";
@@ -9,7 +9,7 @@ in {
     packages = import ../../common/packages.nix { inherit pkgs; };
   };
 
-  program = {
+  programs = {
     home-manager.enable = true;
     fish = import ../../common/fish.nix { inherit pkgs; };
     neovim = import ../../common/neovim.nix { inherit pkgs; };
