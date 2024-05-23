@@ -1,11 +1,26 @@
-{ pkgs }: {
+{ pkgs }:
+let
+  commonShellInit = ''
+    set -gx EDITOR nvim
+    set -gx GOPATH $HOME/.local/go
+    set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
+  '';
+in {
   enable = true;
 
-  shellInit = ''
-    set -gx EDITOR nvim
-    set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
-    set -gx GOPATH $HOME/.local/go
-  '';
+  shellInit = if pkgs.stdenv.isDarwin then ''
+    ${commonShellInit}
+
+    # Fixes color bug on MacOS
+    set -gx TERMINFO_DIRS $TERMINFO_DIRS:$HOME/.local/share/terminfo
+
+    # Enable Homebrew for casks
+    fish_add_path /opt/homebrew/bin
+    fish_add_path /opt/homebrew/sbin
+    fish_add_path ~/.nix-profile/bin 
+    fish_add_path /nix/var/nix/profiles/default/bin
+  '' else
+    commonShellInit;
 
   interactiveShellInit = ''
     set fish_greeting # Disable greeting

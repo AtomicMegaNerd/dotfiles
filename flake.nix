@@ -28,10 +28,10 @@
         };
         metropolitan = nixpkgs-unstable.lib.nixosSystem {
           pkgs = unstable system-linux;
-          modules = [ 
-	    ./hosts/metropolitan/configuration.nix
-	    nixos-wsl.nixosModules.wsl
-	  ];
+          modules = [
+            ./hosts/metropolitan/configuration.nix
+            nixos-wsl.nixosModules.wsl
+          ];
         };
       };
 
