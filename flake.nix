@@ -9,8 +9,8 @@
 
   outputs = { self, nixpkgs, home-manager }:
     let
-      system-linux = "x86_64-linux";
-      system-mac = "aarch64-darwin";
+      sysLinux = "x86_64-linux";
+      sysMac = "aarch64-darwin";
 
       pkgs = system:
         import nixpkgs {
@@ -31,14 +31,14 @@
         };
     in {
       nixosConfigurations = {
-        blahaj = nixos system-linux "blahaj";
-        metropolitan = nixos system-linux "metropolitan";
+        blahaj = nixos sysLinux "blahaj";
+        metropolitan = nixos sysLinux "metropolitan";
       };
 
       homeConfigurations = {
-        "rcd@blahaj" = hm system-linux "blahaj";
-        "rcd@Discovery" = hm system-mac "discovery";
-        "rcd@metropolitan" = hm system-linux "metropolitan";
+        "rcd@blahaj" = hm sysLinux "blahaj";
+        "rcd@metropolitan" = hm sysLinux "metropolitan";
+        "rcd@Discovery" = hm sysMac "discovery";
       };
     };
 }
