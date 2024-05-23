@@ -4,28 +4,7 @@
   home.stateVersion = "22.11";
   programs.home-manager.enable = true;
 
-  home.packages = with pkgs; [
-    fastfetch
-    glow
-    tldr
-    wget
-    curl
-    du-dust
-    duf
-    htop
-    ripgrep
-    fd
-    eza
-    grc
-    zip
-    unzip
-    procs
-    jq
-    fish
-    dos2unix
-    zoxide
-  ];
-
+  home.packages = import ../../common/packages.nix { inherit pkgs; };
   programs.neovim = import ../../common/neovim.nix { inherit pkgs; };
   programs.starship = import ../../common/starship.nix { inherit pkgs; };
   programs.fish = import ../../common/fish.nix { inherit pkgs; };

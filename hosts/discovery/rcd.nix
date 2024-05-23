@@ -8,23 +8,9 @@ in {
     homeDirectory = "/Users/rcd";
     stateVersion = "23.11";
     file.".ssh/allowed_signers".text = "${rcd_pub_key}";
-    packages = with pkgs; [
-      fastfetch
-      eza
-      duf
-      du-dust
-      grc
-      ripgrep
-      fd
-      glow
-      tldr
-      lazygit
-      ncurses
-      nmap
-      zoxide
-    ];
   };
 
+  home.packages = import ../../common/packages.nix { inherit pkgs; };
   programs.home-manager.enable = true;
   programs.fish = import ../../common/fish.nix { inherit pkgs; };
   programs.neovim = import ../../common/neovim.nix { inherit pkgs; };
