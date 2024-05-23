@@ -1,47 +1,42 @@
 {
-  description = "AtomicMegaNerd Core Nix Flake";
-
   inputs = {
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
   };
 
-  outputs = { nixpkgs-unstable, home-manager }:
+  outputs = { self, nixpkgs-unstable, home-manager }:
     let
       system-linux = "x86_64-linux";
       system-mac = "aarch64-darwin";
-      unstable = system:
+
+      pkgs = system:
         import nixpkgs-unstable {
           inherit system;
           config.allowUnfree = true;
         };
+
+      nixos = system: hostname:
+        nixpkgs-unstable.lib.nixosSystem {
+          pkgs = pkgs system;
+          modules = [ ./hosts/${hostname}/configuration.nix ];
+        };
+
+      hm = system: hostname:
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgs system;
+          modules = [ ./hosts/${hostname}/rcd.nix ];
+        };
     in {
       nixosConfigurations = {
-        blahaj = nixpkgs-unstable.lib.nixosSystem {
-          pkgs = unstable system-linux;
-          modules = [ ./hosts/blahaj/configuration.nix ];
-        };
-        metropolitan = nixpkgs-unstable.lib.nixosSystem {
-          pkgs = unstable system-linux;
-          modules = [ ./hosts/metropolitan/configuration.nix ];
-        };
+        blahaj = nixos system-linux "blahaj";
+        metropolitan = nixos system-linux "metropolitan";
       };
 
       homeConfigurations = {
-        "rcd@blahaj" = home-manager.lib.homeManagerConfiguration {
-          pkgs = unstable system-linux;
-          modules = [ ./hosts/blahaj/rcd.nix ];
-        };
-        "rcd@Discovery" = home-manager.lib.homeManagerConfiguration {
-          pkgs = unstable system-mac;
-          modules = [ ./hosts/discovery/rcd.nix ];
-        };
-        "rcd@metropolitan" = home-manager.lib.homeManagerConfiguration {
-          pkgs = unstable system-linux;
-          modules = [ ./hosts/metropolitan/rcd.nix ];
-        };
+        "rcd@blahaj" = hm system-linux "blahaj";
+        "rcd@Discovery" = hm system-mac "discovery";
+        "rcd@metropolitan" = hm system-linux "metropolitan";
       };
     };
-
 }
