@@ -124,7 +124,6 @@ in {
   };
 
   environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
     XDG_SESSION_TYPE = "wayland";
     MOZ_ENABLE_WAYLAND = "1";
     SDL_VIDEODRIVER = "wayland";
@@ -133,7 +132,6 @@ in {
     XDG_SESSION_DESKTOP = "Hyprland";
     GTK_USE_PORTAL = "1";
     NIXOS_XDG_OPEN_USE_PORTAL = "1";
-    ELECTRON_OZONE_PLATFORM_HINT = "wayland";
   };
 
   xdg = {
