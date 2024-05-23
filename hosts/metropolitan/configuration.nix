@@ -17,7 +17,7 @@ in {
     };
   };
 
-  environment.systempackages = with pkgs; [ neovim git ];
+  environment.systemPackages = with pkgs; [ neovim git ];
 
   nix = {
     gc = {
