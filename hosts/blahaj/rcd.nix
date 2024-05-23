@@ -38,7 +38,7 @@
 
     bat = {
       enable = true;
-      config = { theme = "Nord"; };
+      config = { theme = "Catppuccin Frappe"; };
     };
 
     fzf = {
@@ -51,6 +51,10 @@
     nvim = {
       source = ../../common/nvim;
       target = "nvim";
+    };
+    bat = {
+      source = ../../common/bat/themes;
+      target = "bat/themes";
     };
   };
 }
