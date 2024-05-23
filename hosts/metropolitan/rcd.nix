@@ -5,7 +5,7 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
-    neofetch
+    fastfetch
     glow
     tldr
     wget

@@ -9,7 +9,7 @@ in {
     stateVersion = "23.11";
     file.".ssh/allowed_signers".text = "${rcd_pub_key}";
     packages = with pkgs; [
-      neofetch
+      fastfetch
       eza
       duf
       du-dust
@@ -21,6 +21,7 @@ in {
       lazygit
       ncurses
       nmap
+      zoxide
     ];
   };
 

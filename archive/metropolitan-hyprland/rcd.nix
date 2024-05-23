@@ -13,7 +13,7 @@
   gtk.theme.name = "Adwaita-dark";
 
   home.packages = with pkgs; [
-    neofetch
+    fastfetch
     glow
     tldr
     wget
