@@ -95,6 +95,8 @@ in {
     wl-clipboard
     blueman
     pavucontrol
+    amdvlk
+    vulkan-validation-layers
   ];
 
   services.flatpak.enable = true;
@@ -118,7 +120,6 @@ in {
     SDL_VIDEODRIVER = "wayland";
     _JAVA_AWT_WM_NONREPARENTING = "1";
     CLUTTER_BACKEND = "wayland";
-    WLR_RENDERER = "vulkan";
     XDG_CURRENT_DESKTOP = "Hyprland";
     XDG_SESSION_DESKTOP = "Hyprland";
     GTK_USE_PORTAL = "1";
