@@ -1,10 +1,6 @@
-# Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, onconfiguration
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
 { pkgs, ... }:
-
-{
+let rcd_pub_key = builtins.readFile ../../common/rcd_pub_key;
+in {
   imports = [ ./hardware-configuration.nix ];
 
   boot = {
@@ -19,11 +15,9 @@
     plymouth.enable = true;
     plymouth.theme = "breeze";
   };
-  networking.hostName = "metropolitan"; # Define your hostname.
-  networking.networkmanager.enable =
-    true; # Easiest to use and most distros use this by default.
+  networking.hostName = "metropolitan";
+  networking.networkmanager.enable = true;
 
-  # Set your time zone.
   time.timeZone = "America/Edmonton";
 
   i18n = {
@@ -46,7 +40,6 @@
   hardware.opengl.enable = true;
   hardware.bluetooth.enable = true;
 
-  # Virtualization and Containers
   virtualisation = {
     podman.enable = true;
     podman.dockerCompat = true;
@@ -63,7 +56,6 @@
     };
   };
 
-  # Enable sound.
   sound.enable = true;
   services.pipewire = {
     enable = true;
@@ -72,23 +64,19 @@
     pulse.enable = true;
   };
 
-  # Fonts
   fonts.packages = with pkgs;
     [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
 
-  # Users
   users.users.rcd = {
     isNormalUser = true;
     description = "Chris Dunphy";
     extraGroups = [ "wheel" ];
     shell = pkgs.fish;
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK9DWvFVS2L2P6G/xUlV0yp6gOpqGgCj4dbY91zyT8ul"
-    ];
+    openssh.authorizedKeys.keys = [ rcd_pub_key ];
   };
 
-  # Default packages
   environment.systemPackages = with pkgs; [
+    neovim
     git
     alacritty
     firefox
@@ -109,14 +97,12 @@
     pavucontrol
   ];
 
-  # Other services
   services.flatpak.enable = true;
   services.onedrive.enable = true;
   services.dbus.enable = true;
   services.spice-vdagentd.enable = true;
   services.gnome.gnome-keyring.enable = true;
 
-  # Polkit
   security.polkit.enable = true;
 
   programs.fish.enable = true;

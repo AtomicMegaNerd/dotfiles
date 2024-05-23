@@ -6,6 +6,7 @@
 let
   piholeUid = 888;
   piholeGid = 888;
+  rcd_pub_key = builtins.readFile ../../common/rcd_pub_key;
 in {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -42,9 +43,7 @@ in {
       description = "Chris Dunphy";
       extraGroups = [ "wheel" "docker" ];
       shell = pkgs.fish;
-      openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK9DWvFVS2L2P6G/xUlV0yp6gOpqGgCj4dbY91zyT8ul"
-      ];
+      openssh.authorizedKeys.keys = [ rcd_pub_key ];
     };
     groups.pihole = { gid = piholeGid; };
     users.pihole = {

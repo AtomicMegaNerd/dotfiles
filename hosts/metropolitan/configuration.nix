@@ -1,4 +1,6 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+let rcd_pub_key = builtins.readFile ../../common/rcd_pub_key;
+in {
   wsl = {
     enable = true;
     defaultUser = "rcd";
@@ -10,20 +12,26 @@
       isNormalUser = true;
       description = "Chris Dunphy";
       shell = pkgs.fish;
-      extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
-      openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK9DWvFVS2L2P6G/xUlV0yp6gOpqGgCj4dbY91zyT8ul"
-      ];
+      extraGroups = [ "wheel" "docker" ];
+      openssh.authorizedKeys.keys = [ rcd_pub_key ];
     };
   };
 
+  environment.systempackages = with pkgs; [ neovim git ];
+
   nix = {
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
+
     package = pkgs.nixFlakes;
     extraOptions = "experimental-features = nix-command flakes";
   };
 
   programs.fish.enable = true;
 
-  system.stateVersion = "23.11"; # Did you read the comment?
+  system.stateVersion = "23.11";
 }
 
