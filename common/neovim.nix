@@ -18,8 +18,24 @@
   ];
 
   plugins = with pkgs.vimPlugins; [
-    # Treesitter
-    (nvim-treesitter.withAllGrammars)
+    (nvim-treesitter.withPlugins (p: [
+      p.c
+      p.lua
+      p.nix
+      p.go
+      p.gomod
+      p.rust
+      p.haskell
+      p.python
+      p.typescript
+      p.fish
+      p.bash
+      p.markdown
+      p.yaml
+      p.toml
+      p.zig
+      p.hyprlang
+    ]))
     # Theme
     catppuccin-nvim
     nvim-notify
