@@ -20,6 +20,14 @@ in {
 
   time.timeZone = "America/Edmonton";
 
+  users.users.rcd = {
+    isNormalUser = true;
+    description = "Chris Dunphy";
+    extraGroups = [ "wheel" ];
+    shell = pkgs.fish;
+    openssh.authorizedKeys.keys = [ rcd_pub_key ];
+  };
+
   i18n = {
     defaultLocale = "en_CA.UTF-8";
     supportedLocales =
@@ -30,15 +38,16 @@ in {
     };
   };
 
-  services.xserver = {
-    enable = true;
-    xkb.layout = "us";
-    xkb.variant = "";
-    displayManager.gdm.wayland = true;
-    displayManager.gdm.enable = true;
+  hardware = {
+    opengl = {
+      enable = true;
+      driSupport32Bit = true;
+      extraPackages = with pkgs; [ amdvlk ];
+      extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
+    };
+    bluetooth.enable = true;
   };
-  hardware.opengl.enable = true;
-  hardware.bluetooth.enable = true;
+  sound.enable = true;
 
   virtualisation = {
     podman.enable = true;
@@ -56,24 +65,8 @@ in {
     };
   };
 
-  sound.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
   fonts.packages = with pkgs;
     [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
-
-  users.users.rcd = {
-    isNormalUser = true;
-    description = "Chris Dunphy";
-    extraGroups = [ "wheel" ];
-    shell = pkgs.fish;
-    openssh.authorizedKeys.keys = [ rcd_pub_key ];
-  };
 
   environment.systemPackages = with pkgs; [
     neovim
@@ -98,31 +91,49 @@ in {
     xdg-utils
   ];
 
-  services.flatpak.enable = true;
-  services.onedrive.enable = true;
-  services.dbus.enable = true;
-  services.spice-vdagentd.enable = true;
-  services.gnome.gnome-keyring.enable = true;
+  services = {
+    xserver = {
+      enable = true;
+      xkb.layout = "us";
+      displayManager.gdm.wayland = true;
+      displayManager.gdm.enable = true;
+      videoDrivers = [ "amdgpu" ];
+    };
+    flatpak.enable = true;
+    onedrive.enable = true;
+    dbus.enable = true;
+    spice-vdagentd.enable = true;
+    gnome.gnome-keyring.enable = true;
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+    };
+  };
 
+  # 1Password needs this
   security.polkit.enable = true;
 
-  programs.fish.enable = true;
-  programs._1password.enable = true;
-  programs._1password-gui.enable = true;
-  programs._1password-gui.polkitPolicyOwners = [ "rcd" ];
-  programs.hyprland = { enable = true; };
+  programs = {
+    fish.enable = true;
+    _1password.enable = true;
+    _1password-gui.enable = true;
+    _1password-gui.polkitPolicyOwners = [ "rcd" ];
+    hyprland = { enable = true; };
+  };
 
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     XDG_SESSION_TYPE = "wayland";
     MOZ_ENABLE_WAYLAND = "1";
     SDL_VIDEODRIVER = "wayland";
-    _JAVA_AWT_WM_NONREPARENTING = "1";
     CLUTTER_BACKEND = "wayland";
     XDG_CURRENT_DESKTOP = "Hyprland";
     XDG_SESSION_DESKTOP = "Hyprland";
     GTK_USE_PORTAL = "1";
     NIXOS_XDG_OPEN_USE_PORTAL = "1";
+    ELECTRON_OZONE_PLATFORM_HINT = "wayland";
   };
 
   xdg = {
