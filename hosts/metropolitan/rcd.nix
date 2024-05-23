@@ -14,7 +14,6 @@
     fish = import ../../common/fish.nix { inherit pkgs; };
     zellij = import ../../common/zellij.nix { inherit pkgs; };
     tmux = import ../../common/tmux.nix { inherit pkgs; };
-    helix = import ../../common/helix.nix { inherit pkgs; };
     bat = import ../../common/bat.nix { inherit pkgs; };
 
     direnv = {
@@ -27,18 +26,8 @@
       userName = "Chris Dunphy";
       userEmail = "chris@megaparsec.ca";
       extraConfig = {
-        core.sshCommand = "ssh.exe";
         init.defaultBranch = "main";
         pull.rebase = false;
-        user.signingkey =
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK9DWvFVS2L2P6G/xUlV0yp6gOpqGgCj4dbY91zyT8ul";
-        gpg = {
-          ssh = {
-            program = "/mnt/c/Program Files/1Password/app/8/op-ssh-sign.exe";
-          };
-          format = "ssh";
-        };
-        commit = { gpgsign = true; };
       };
     };
 
@@ -52,13 +41,48 @@
       enable = true;
       enableFishIntegration = true;
     };
-  };
 
-  xdg.configFile = {
-    nvim = {
-      source = ../../common/nvim;
-      target = "nvim";
+    ssh = {
+      enable = true;
+      forwardAgent = true;
+      extraConfig = ''
+        Host *
+                IdentityAgent ~/.1password/agent.sock
+      '';
     };
   };
-}
 
+  xdg = {
+    mimeApps = {
+      enable = true;
+      associations.added = { "text/html" = "firefox.desktop"; };
+      defaultApplications = { "text/html" = "firefox.desktop"; };
+    };
+
+    configFile = {
+      nvim = {
+        source = ../../common/nvim;
+        target = "nvim";
+      };
+      hypr = {
+        source = ../../common/hypr;
+        target = "hypr";
+      };
+      waybar = {
+        source = ../../common/waybar;
+        target = "waybar";
+      };
+      alacritty = {
+        source = ../../common/alacritty;
+        target = "alacritty";
+      };
+    };
+  };
+
+  # Dark mode
+  dconf.settings = {
+    "org/gnome/desktop/interface" = { color-scheme = "prefer-dark"; };
+  };
+  gtk.enable = true;
+  gtk.theme.name = "Adwaita-dark";
+}
