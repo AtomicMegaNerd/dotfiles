@@ -29,6 +29,14 @@ vim.filetype.add({
 	pattern = { ["copilot-chat"] = "markdown" },
 })
 
+vim.filetype.add({
+	filename = {
+		["hyprland.conf"] = "hyprlang",
+		["hypridle.conf"] = "hyprlang",
+		["hyprlock.conf"] = "hyprlang",
+	},
+})
+
 -- Formatting
 ----------------------------------------------------------------
 local fmt_grp = vim.api.nvim_create_augroup("FormatOptions", { clear = true })

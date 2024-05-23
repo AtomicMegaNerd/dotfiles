@@ -46,27 +46,22 @@ in {
       extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
     };
     bluetooth.enable = true;
+    pulseaudio.enable = false;
   };
   sound.enable = true;
 
-  virtualisation = {
-    podman.enable = true;
-    podman.dockerCompat = true;
-    libvirtd = {
-      enable = true;
-      qemu = {
-        package = pkgs.qemu_kvm;
-        swtpm.enable = true;
-        ovmf = {
-          enable = true;
-          packages = [ pkgs.OVMFFull.fd ];
-        };
-      };
-    };
-  };
-
   fonts.packages = with pkgs;
     [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
+
+  nixpkgs.overlays = [
+    (self: super: {
+      catppuccin-gtk = super.catppuccin-gtk.override {
+        accents = [ "teal" ];
+        size = "standard";
+        variant = "frappe";
+      };
+    })
+  ];
 
   environment.systemPackages = with pkgs; [
     neovim
@@ -89,7 +84,24 @@ in {
     blueman
     pavucontrol
     xdg-utils
+    clipman
+    catppuccin-gtk
+    catppuccin-cursors.frappeTeal
+    wl-clipboard
+    wl-clip-persist
+    themechanger
   ];
+
+  programs = {
+    fish.enable = true;
+    dconf.enable = true;
+    _1password.enable = true;
+    _1password-gui.enable = true;
+    _1password-gui.polkitPolicyOwners = [ "rcd" ];
+    hyprland = { enable = true; };
+    thunar.enable = true;
+    xfconf.enable = true;
+  };
 
   services = {
     xserver = {
@@ -102,6 +114,7 @@ in {
     flatpak.enable = true;
     onedrive.enable = true;
     dbus.enable = true;
+    dbus.packages = with pkgs; [ xfce.xfconf ];
     spice-vdagentd.enable = true;
     gnome.gnome-keyring.enable = true;
     pipewire = {
@@ -109,19 +122,13 @@ in {
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
+      wireplumber.enable = true;
     };
+    tumbler.enable = true;
   };
 
   # 1Password needs this
   security.polkit.enable = true;
-
-  programs = {
-    fish.enable = true;
-    _1password.enable = true;
-    _1password-gui.enable = true;
-    _1password-gui.polkitPolicyOwners = [ "rcd" ];
-    hyprland = { enable = true; };
-  };
 
   environment.sessionVariables = {
     XDG_SESSION_TYPE = "wayland";
@@ -141,9 +148,25 @@ in {
     };
   };
 
-  system.stateVersion = "23.11"; # Did you read the comment?
+  virtualisation = {
+    podman.enable = true;
+    podman.dockerCompat = true;
+    libvirtd = {
+      enable = true;
+      qemu = {
+        package = pkgs.qemu_kvm;
+        swtpm.enable = true;
+        ovmf = {
+          enable = true;
+          packages = [ pkgs.OVMFFull.fd ];
+        };
+      };
+    };
+  };
 
   nix = {
+    settings.auto-optimise-store = true;
+    optimise.automatic = true;
     gc = {
       automatic = true;
       dates = "weekly";
@@ -153,5 +176,7 @@ in {
     package = pkgs.nixFlakes;
     extraOptions = "experimental-features = nix-command flakes";
   };
+
+  system.stateVersion = "23.11"; # Did you read the comment?
 }
 
