@@ -12,7 +12,7 @@
 This is my core flake for my Nix-managed machines as well as any other machines that
 use Nix as a package manager. This repo also contains other dotfiles for non-Nix systems.
 
-Right now we have two hosts that are managed by Nix:
+Right now we have three hosts that are managed by Nix:
 
 | Host          | OS    | Platform       |
 | ------------- | ----- | -------------- |
@@ -36,56 +36,7 @@ We use home-manager on all of our Nix managed machines.
 home-manager switch -- flake .#USERNAME@HOST
 ```
 
-## non-nix Non-Nix Configurations
-
-The following are instructions fro configuring your dotfiles on non-Nix systems:
-
-### Alacritty
-
-```bash
-ln -s ~/Code/Configs/dotfiles/non-nix/Alacritty/HOST/ ~/.config/alacritty
-```
-
-### Fish
-
-Fish is simple. Simply symlink the HOST folder that you want (Discovery, JebPopOS, etc).
-
-```bash
-ln -s ~/Code/Configs/dotfiles/non-nix/Fish/HOST ~/.config/fish
-```
-
-### TMux
-
-Set the tmux.conf file from the symlink:
-
-```bash
-ln -s ~/Code/Configs/dotfiles/common/tmux/tmux.conf ~/.tmux.conf
-```
-
-### Neovim
-
-For non-nix systems set the environment variable:
-
-```bash
-AMN_INSTALL_TYPE="non-nix"
-```
-
-Then after installing Neovim you can symlink the configuration:
-
-```bash
-ln -s ~/Code/Configs/dotfiles/common/nvim ~/.config/nvim
-```
-
-When you first load Neovim run :Lazy to install all the plug-ins.
-
-### Helix
-
-This is another text editor I am keeping an eye on.
-
-```bash
-cd ~/.config
-ln -s ~/Code/Configs/dotfiles/non-nix/Helix/ helix
-```
+## Windows Stuff
 
 ### Powershell
 
@@ -93,7 +44,7 @@ To use this Powershell configuration in Windows you need to install a few module
 
 ```powershell
 scoop bucket add extras
-scoop install oh-my-posh
+scoop install starship
 scoop install terminal-icons
 ```
 
