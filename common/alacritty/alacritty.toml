@@ -1,4 +1,4 @@
-import = ["/home/rcd/.config/alacritty/catppuccin-frappe.toml"]
+import = ["~/.config/alacritty/catppuccin-frappe.toml"]
 
 [font]
 size=16
@@ -32,4 +32,5 @@ decorations = "Buttonless"
 [window.padding]
 x = 3
 y = 3
+
 
