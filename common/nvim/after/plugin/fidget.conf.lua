@@ -1,12 +1,13 @@
 local status, fidget = pcall(require, "fidget")
 if not status then
-  return
+	vim.notify("Cannot load fidget.nvim", vim.log.levels.ERROR)
+	return
 end
 
 fidget.setup({
-  notification = {
-    window = {
-      winblend = 0,
-    },
-  },
+	notification = {
+		window = {
+			winblend = 0,
+		},
+	},
 })

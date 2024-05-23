@@ -1,5 +1,6 @@
 local alpha_status, alpha = pcall(require, "alpha")
 if not alpha_status then
+	vim.notify("Cannot load alpha.nvim", vim.log.levels.ERROR)
 	return
 end
 

@@ -47,9 +47,8 @@
     lspkind-nvim
     # Status Line
     lualine-nvim
-    # Comments
-    todo-comments-nvim
     # Misc
+    todo-comments-nvim
     vim-rooter
     conform-nvim
     fidget-nvim

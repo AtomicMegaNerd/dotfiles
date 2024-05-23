@@ -1,5 +1,6 @@
 local status, gs = pcall(require, "gitsigns")
 if not status then
+	vim.notify("Cannot load gitsigns.nvim", vim.log.levels.ERROR)
 	return
 end
 
