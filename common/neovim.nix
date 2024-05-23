@@ -19,24 +19,7 @@
 
   plugins = with pkgs.vimPlugins; [
     # Treesitter
-    (nvim-treesitter.withPlugins (p: [
-      p.c
-      p.lua
-      p.nix
-      p.go
-      p.gomod
-      p.rust
-      p.haskell
-      p.python
-      p.typescript
-      p.fish
-      p.bash
-      p.markdown
-      p.yaml
-      p.toml
-      p.zig
-      p.hyprlang
-    ]))
+    (nvim-treesitter.withAllGrammars)
     # Theme
     catppuccin-nvim
     nvim-notify
@@ -76,5 +59,6 @@
     plenary-nvim
     copilot-vim
     vim-test
+    oil-nvim
   ];
 }
