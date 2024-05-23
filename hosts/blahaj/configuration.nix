@@ -1,24 +1,18 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { pkgs, ... }:
 let
   piholeUid = 888;
   piholeGid = 888;
   rcd_pub_key = builtins.readFile ../../common/rcd_pub_key;
 in {
-  imports = [ # Include the results of the hardware scan.
-    ./hardware-configuration.nix
-  ];
 
-  # Use the latest Linux kernel
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  # Bootloader
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  imports = [ ./hardware-configuration.nix ];
 
-  # Networking
+  boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
+  };
+
   networking = {
     hostName = "blahaj";
     networkmanager.enable = true;
@@ -78,7 +72,6 @@ in {
     };
   };
 
-  # We have the common packages that we want but we can always add more
   environment.systemPackages =
     (import ../../common/packages.nix { inherit pkgs; })
     ++ (with pkgs; [ neovim starship git ]);
@@ -96,5 +89,5 @@ in {
     };
   };
 
-  system.stateVersion = "23.11"; # Did you read the comment?
+  system.stateVersion = "23.11";
 }
