@@ -58,7 +58,7 @@ in {
       target = "nvim";
     };
     alacritty = {
-      source = ../../non-nix/Alacritty/Discovery;
+      source = ../../common/alacritty;
       target = "alacritty";
     };
   };
