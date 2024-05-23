@@ -36,9 +36,12 @@
       p.zig
       p.hyprlang
     ]))
+    # Core deps
+    nvim-web-devicons
+    plenary-nvim
+    nvim-notify
     # Theme
     catppuccin-nvim
-    nvim-notify
     # Status Screen
     alpha-nvim
     # Telescope
@@ -63,18 +66,14 @@
     lspkind-nvim
     # Status Line
     lualine-nvim
-    # Misc
-    todo-comments-nvim
-    conform-nvim
-    fidget-nvim
-    which-key-nvim
     # Bots
     CopilotChat-nvim
     copilot-vim
-    # Dependencies
-    nvim-web-devicons
-    plenary-nvim
+    # Misc
     vim-test
     oil-nvim
+    todo-comments-nvim
+    conform-nvim
+    fidget-nvim
   ];
 }

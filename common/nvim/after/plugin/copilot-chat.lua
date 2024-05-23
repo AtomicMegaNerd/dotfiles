@@ -5,6 +5,5 @@ if not status then
 end
 
 copilot_chat.setup({
-	context = "buffer",
 	show_help = false,
 })
