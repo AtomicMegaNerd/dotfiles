@@ -90,6 +90,7 @@ in {
     wl-clipboard
     wl-clip-persist
     themechanger
+    xfce.xfce4-settings
   ];
 
   programs = {
