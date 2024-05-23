@@ -95,8 +95,7 @@ in {
     wl-clipboard
     blueman
     pavucontrol
-    amdvlk
-    vulkan-validation-layers
+    xdg-utils
   ];
 
   services.flatpak.enable = true;
@@ -124,6 +123,13 @@ in {
     XDG_SESSION_DESKTOP = "Hyprland";
     GTK_USE_PORTAL = "1";
     NIXOS_XDG_OPEN_USE_PORTAL = "1";
+  };
+
+  xdg = {
+    portal = {
+      enable = true;
+      extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
+    };
   };
 
   system.stateVersion = "23.11"; # Did you read the comment?
