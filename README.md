@@ -39,23 +39,3 @@ We use home-manager on all of our Nix managed machines.
 home-manager switch -- flake .#USERNAME@HOST
 ```
 
-## Windows Stuff
-
-### Powershell
-
-To use this Powershell configuration in Windows you need to install a few modules with scoop first:
-
-```powershell
-scoop bucket add extras
-scoop install starship
-scoop install terminal-icons
-```
-
-Then create the symlink (needs Administrator on Windows):
-
-```powershell
-cd C:\Users\chris\Documents\PowerShell `
-    New-item -ItemType SymbolicLink -Target `
-    C:\Users\chris\Code\Configs\dotfiles\Powershell\Microsoft.PowerShell_profile.ps1 `
-    Microsoft.PowerShell_profile.ps1
-```
