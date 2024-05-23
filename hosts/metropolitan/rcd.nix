@@ -41,6 +41,12 @@
       };
     };
 
+    zoxide = {
+      enable = true;
+      enableFishIntegration = true;
+      options = [ "--cmd cd" ];
+    };
+
     bat = {
       enable = true;
       config = { theme = "Nord"; };

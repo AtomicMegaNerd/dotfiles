@@ -17,5 +17,4 @@ with pkgs; [
   procs
   jq
   dos2unix
-  zoxide
 ]

@@ -55,9 +55,6 @@ in {
     set -g fish_pager_color_prefix f4b8e4
     set -g fish_pager_color_completion c6d0f5
     set -g fish_pager_color_description 737994
-
-    starship init fish | source
-    zoxide init --cmd cd fish | source
   '';
 
   shellAliases = {

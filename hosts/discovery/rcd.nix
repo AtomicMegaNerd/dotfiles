@@ -41,9 +41,15 @@ in {
       };
     };
 
+    zoxide = {
+      enable = true;
+      enableFishIntegration = true;
+      options = [ "--cmd cd" ];
+    };
+
     bat = {
       enable = true;
-      config = { theme = "Nord"; };
+      config = { theme = "Catppuccin Frappe"; };
     };
 
     fzf = {
@@ -60,6 +66,10 @@ in {
     alacritty = {
       source = ../../common/alacritty;
       target = "alacritty";
+    };
+    bat = {
+      source = ../../common/bat/themes;
+      target = "bat/themes";
     };
   };
 }
