@@ -73,6 +73,7 @@ in {
     mako
     hyprlock
     hyprpaper
+    hyprcursor
     hyprpicker
     hypridle
     qt5.qtwayland
