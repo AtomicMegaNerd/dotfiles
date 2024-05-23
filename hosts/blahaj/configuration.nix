@@ -13,7 +13,6 @@ in {
 
   # Use the latest Linux kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
-
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -80,7 +79,15 @@ in {
     };
   };
 
+  environment.systemPackages =
+    import ../../common/packages.nix { inherit pkgs; };
+
+  services.openssh.enable = true;
+  programs.fish.enable = true;
+
   nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = "experimental-features = nix-command flakes";
     gc = {
       automatic = true;
       dates = "weekly";
@@ -88,49 +95,5 @@ in {
     };
   };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    fastfetch
-    starship
-    eza
-    du-dust
-    fish
-    htop
-    glow
-    tldr
-    wget
-    curl
-    duf
-    ripgrep
-    fd
-    grc
-    zip
-    unzip
-    procs
-    jq
-    nmap
-    dig
-    neovim
-    git
-    zoxide
-  ];
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-  programs.fish.enable = true;
-
-  nix = {
-    package = pkgs.nixFlakes;
-    extraOptions = "experimental-features = nix-command flakes";
-  };
-
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
-
 }

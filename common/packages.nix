@@ -18,4 +18,5 @@ with pkgs; [
   jq
   dos2unix
   zoxide
+  neovim
 ]
