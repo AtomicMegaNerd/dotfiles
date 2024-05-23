@@ -49,7 +49,6 @@
     lualine-nvim
     # Misc
     todo-comments-nvim
-    vim-rooter
     conform-nvim
     fidget-nvim
     which-key-nvim
