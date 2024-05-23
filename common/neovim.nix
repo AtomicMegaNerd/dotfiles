@@ -10,7 +10,7 @@
     stylua
     tree-sitter
     haskellPackages.nixfmt
-    nil
+    nixd
     nodePackages.markdownlint-cli
     nodePackages.yaml-language-server
     nodePackages.bash-language-server

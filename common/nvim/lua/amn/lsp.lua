@@ -59,7 +59,7 @@ local servers = {
 	"ruff_lsp",
 	"zls",
 	"rust_analyzer",
-	"nil_ls",
+	"nixd",
 }
 for _, lsp in ipairs(servers) do
 	nvim_lsp[lsp].setup({
