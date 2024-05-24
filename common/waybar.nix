@@ -51,7 +51,7 @@
       font-size: 20px;
       border-radius: 0px;
       border: none;
-      margin: 10px 10px;
+      margin: 0px 10px 0px 10px;
       font-family: JetBrainsMono Nerd Font Mono;
       min-height: 0px;
     }
