@@ -18,11 +18,6 @@
       format = "{volume}% ";
       format-bluetooth = "{volume}%   ";
       format-muted = "";
-      format-icons = {
-        "alsa_output.pci-0000_00_1f.3.analog-stereo" = "";
-        "headphones" = "";
-        "default" = [ "" "" ];
-      };
       scroll-step = 1;
       on-click = "pavucontrol";
     };
@@ -44,11 +39,41 @@
   style = lib.strings.concatStrings [''
     * {
       font-size: 20px;
-      border-radius: 0px;
-      border: none;
-      margin: 0px 10px 0px 10px;
       font-family: JetBrainsMono Nerd Font Mono;
-      min-height: 0px;
+    }
+
+    #waybar {
+      background-color: @base;
+      margin: 5px 5px;
+    }
+
+    #workspaces {
+      border-radius: 1rem;
+      margin: 5px;
+      margin-left: 1rem;
+    }
+
+    #workspaces button {
+      border-radius: 1rem;
+      padding: 0.4rem;
+    }
+
+    #workspaces button.active {
+      border-radius: 1rem;
+    }
+
+    #workspaces button:hover {
+      border-radius: 1rem;
+    }
+
+    #clock, #cpu, #memory {
+      border-radius: 0px 1rem 1rem 0px;
+      margin-right: 2rem;
+    }
+
+    #tray {
+      margin-right: 1rem;
+      border-radius: 1rem;
     }
   ''];
 }
