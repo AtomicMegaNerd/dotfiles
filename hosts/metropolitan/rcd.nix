@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
 
   home = {
     username = "rcd";
@@ -16,7 +16,7 @@
     tmux = import ../../common/tmux.nix;
     alacritty = import ../../common/alacritty.nix;
     bat = import ../../common/bat.nix;
-    waybar = import ../../common/waybar.nix;
+    waybar = import ../../common/waybar.nix { inherit lib; };
 
     direnv = {
       enable = true;
