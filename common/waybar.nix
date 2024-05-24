@@ -15,17 +15,12 @@
       separate-outputs = true;
     };
     pulseaudio = {
-      format = "{volume}% {icon}";
-      format-bluetooth = "{volume}% {icon}";
+      format = "{volume}% ";
+      format-bluetooth = "{volume}%   ";
       format-muted = "";
       format-icons = {
         "alsa_output.pci-0000_00_1f.3.analog-stereo" = "";
         "headphones" = "";
-        "handsfree" = "";
-        "headset" = "";
-        "phone" = "";
-        "portable" = "";
-        "car" = "";
         "default" = [ "" "" ];
       };
       scroll-step = 1;
