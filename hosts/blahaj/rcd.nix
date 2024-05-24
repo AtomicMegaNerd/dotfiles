@@ -20,7 +20,13 @@
       nix-direnv.enable = true;
     };
 
-    bat = { enable = true; };
+    bat = {
+      enable = true;
+      catppuccin = {
+        enable = true;
+        flavor = "frappe";
+      };
+    };
 
     git = {
       enable = true;
@@ -51,8 +57,4 @@
     };
   };
 
-  catppuccin = {
-    enable = true;
-    flavor = "frappe";
-  };
 }

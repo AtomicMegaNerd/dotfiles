@@ -62,9 +62,4 @@ in {
       target = "nvim";
     };
   };
-
-  catppuccin = {
-    enable = true;
-    flavor = "frappe";
-  };
 }

@@ -1,4 +1,4 @@
-{ pkgs }:
+{ pkgs, ... }:
 let
   commonShellInit = ''
     set -gx EDITOR nvim
@@ -7,6 +7,11 @@ let
   '';
 in {
   enable = true;
+
+  catppuccin = {
+    enable = true;
+    flavor = "frappe";
+  };
 
   shellInit = if pkgs.stdenv.isDarwin then ''
     ${commonShellInit}
