@@ -10,10 +10,10 @@
   programs = {
     home-manager.enable = true;
     neovim = import ../../common/neovim.nix { inherit pkgs; };
-    tmux = import ../../common/tmux.nix { inherit pkgs; };
-    starship = import ../../common/starship.nix { inherit pkgs; };
+    tmux = import ../../common/tmux.nix;
+    starship = import ../../common/starship.nix;
     fish = import ../../common/fish.nix { inherit pkgs; };
-    zellij = import ../../common/zellij.nix { inherit pkgs; };
+    zellij = import ../../common/zellij.nix;
 
     direnv = {
       enable = true;

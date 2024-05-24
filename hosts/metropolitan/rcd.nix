@@ -9,12 +9,12 @@
 
   programs = {
     home-manager.enable = true;
-    neovim = import ../../common/neovim.nix { inherit pkgs; };
-    starship = import ../../common/starship.nix { };
     fish = import ../../common/fish.nix { inherit pkgs; };
-    zellij = import ../../common/zellij.nix { };
-    tmux = import ../../common/tmux.nix { };
-    alacritty = import ../../common/alacritty.nix { };
+    neovim = import ../../common/neovim.nix { inherit pkgs; };
+    starship = import ../../common/starship.nix;
+    zellij = import ../../common/zellij.nix;
+    tmux = import ../../common/tmux.nix;
+    alacritty = import ../../common/alacritty.nix;
 
     direnv = {
       enable = true;

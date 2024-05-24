@@ -13,10 +13,10 @@ in {
     home-manager.enable = true;
     fish = import ../../common/fish.nix { inherit pkgs; };
     neovim = import ../../common/neovim.nix { inherit pkgs; };
-    tmux = import ../../common/tmux.nix { };
-    starship = import ../../common/starship.nix { };
-    zellij = import ../../common/zellij.nix { };
-    alacritty = import ../../common/alacritty.nix { };
+    tmux = import ../../common/tmux.nix;
+    starship = import ../../common/starship.nix;
+    zellij = import ../../common/zellij.nix;
+    alacritty = import ../../common/alacritty.nix;
 
     bat = { enable = true; };
 

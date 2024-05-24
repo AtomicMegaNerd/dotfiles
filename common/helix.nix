@@ -1,4 +1,4 @@
-{ }: {
+{
   enable = true;
   settings = {
     editor = {

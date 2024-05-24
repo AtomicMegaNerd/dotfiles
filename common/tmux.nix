@@ -1,4 +1,4 @@
-{ }: {
+{
   enable = true;
   prefix = "C-a";
   extraConfig = ''
@@ -10,5 +10,4 @@
     setw -g mouse on
     set -g base-index 1
   '';
-
 }
