@@ -16,6 +16,7 @@
     tmux = import ../../common/tmux.nix;
     alacritty = import ../../common/alacritty.nix;
     bat = import ../../common/bat.nix;
+    waybar = import ../../common/waybar.nix;
 
     direnv = {
       enable = true;
@@ -68,10 +69,6 @@
       hypr = {
         source = ../../common/hypr;
         target = "hypr";
-      };
-      waybar = {
-        source = ../../common/waybar;
-        target = "waybar";
       };
     };
   };

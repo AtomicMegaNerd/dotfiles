@@ -45,7 +45,6 @@ in {
       extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
     };
     bluetooth.enable = true;
-    pulseaudio.enable = false;
   };
   sound.enable = true;
 
