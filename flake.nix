@@ -1,23 +1,25 @@
 {
   inputs = {
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs-unstable, home-manager }:
+  outputs = { self, nixpkgs, home-manager }:
     let
-      system-linux = "x86_64-linux";
-      system-mac = "aarch64-darwin";
+      sysLinux = "x86_64-linux";
+      sysMac = "aarch64-darwin";
 
       pkgs = system:
-        import nixpkgs-unstable {
+        import nixpkgs {
           inherit system;
           config.allowUnfree = true;
         };
 
       nixos = system: hostname:
-        nixpkgs-unstable.lib.nixosSystem {
+        nixpkgs.lib.nixosSystem {
           pkgs = pkgs system;
           modules = [ ./hosts/${hostname}/configuration.nix ];
         };
@@ -29,14 +31,14 @@
         };
     in {
       nixosConfigurations = {
-        blahaj = nixos system-linux "blahaj";
-        metropolitan = nixos system-linux "metropolitan";
+        blahaj = nixos sysLinux "blahaj";
+        metropolitan = nixos sysLinux "metropolitan";
       };
 
       homeConfigurations = {
-        "rcd@blahaj" = hm system-linux "blahaj";
-        "rcd@Discovery" = hm system-mac "discovery";
-        "rcd@metropolitan" = hm system-linux "metropolitan";
+        "rcd@blahaj" = hm sysLinux "blahaj";
+        "rcd@metropolitan" = hm sysLinux "metropolitan";
+        "rcd@Discovery" = hm sysMac "discovery";
       };
     };
 }
