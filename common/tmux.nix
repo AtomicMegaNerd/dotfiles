@@ -10,4 +10,8 @@
     setw -g mouse on
     set -g base-index 1
   '';
+  catppuccin = {
+    enable = true;
+    flavor = "frappe";
+  };
 }
