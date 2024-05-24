@@ -15,13 +15,12 @@
     zellij = import ../../common/zellij.nix;
     tmux = import ../../common/tmux.nix;
     alacritty = import ../../common/alacritty.nix;
+    bat = import ../../common/bat.nix;
 
     direnv = {
       enable = true;
       nix-direnv.enable = true;
     };
-
-    bat = { enable = true; };
 
     git = {
       enable = true;
@@ -75,10 +74,5 @@
         target = "waybar";
       };
     };
-  };
-
-  catppuccin = {
-    enable = true;
-    flavor = "frappe";
   };
 }

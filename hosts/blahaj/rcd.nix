@@ -10,22 +10,15 @@
   programs = {
     home-manager.enable = true;
     neovim = import ../../common/neovim.nix { inherit pkgs; };
+    fish = import ../../common/fish.nix { inherit pkgs; };
     tmux = import ../../common/tmux.nix;
     starship = import ../../common/starship.nix;
-    fish = import ../../common/fish.nix { inherit pkgs; };
     zellij = import ../../common/zellij.nix;
+    bat = import ../../common/bat.nix;
 
     direnv = {
       enable = true;
       nix-direnv.enable = true;
-    };
-
-    bat = {
-      enable = true;
-      catppuccin = {
-        enable = true;
-        flavor = "frappe";
-      };
     };
 
     git = {
@@ -56,5 +49,4 @@
       target = "nvim";
     };
   };
-
 }

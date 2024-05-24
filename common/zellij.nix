@@ -5,4 +5,9 @@
     default_mode = "locked";
     serialization_interval = 1;
   };
+
+  catppuccin = {
+    enable = true;
+    flavor = "frappe";
+  };
 }
