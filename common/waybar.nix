@@ -6,6 +6,7 @@
   };
   settings = [{
     layer = "top";
+    height = 40;
     modules-left = [ "hyprland/workspaces" ];
     modules-center = [ "hyprland/window" ];
     modules-right = [ "pulseaudio" "memory" "cpu" "clock" "tray" ];
@@ -39,36 +40,64 @@
   style = lib.strings.concatStrings [''
     * {
       font-size: 20px;
+      border-radius: 0px;
+      border: none;
       font-family: JetBrainsMono Nerd Font Mono;
+      min-height: 0px;
     }
 
     #waybar {
       background-color: @base;
-      margin: 5px 5px;
+      margin: 0px 5px;
+    }
+
+    #window {
+      font-weight: bold;
+      border-radius: 1rem;
     }
 
     #workspaces {
-      border-radius: 1rem;
-      margin: 5px;
-      margin-left: 1rem;
+      border-radius: 16px;
+      margin: 0px 4px;
+      padding: 0px 5px;
     }
 
     #workspaces button {
+      font-weight: bold;
       border-radius: 1rem;
-      padding: 0.4rem;
+      opacity: 0.5;
     }
 
     #workspaces button.active {
+      font-weight: bold;
+      opacity: 1;
       border-radius: 1rem;
     }
 
     #workspaces button:hover {
+      font-weight: bold;
       border-radius: 1rem;
     }
 
-    #clock, #cpu, #memory {
-      border-radius: 0px 1rem 1rem 0px;
-      margin-right: 2rem;
+    #pulseaudio, #cpu, #memory {
+      font-weight: bold;
+      border-radius: 24px 5px 24px 5px;
+      margin: 4px 0px;
+      margin-left: 7px;
+      padding: 0px 18px;
+      padding-top: 2px;
+      padding-bottom: 2px;
+    }
+
+    #clock {
+      font-weight: bold;
+      border-radius: 24px 5px 24px 5px;
+      margin: 4px 0px;
+      margin-left: 7px;
+      padding: 0px 18px;
+      margin-right: 7px;
+      padding-top: 2px;
+      padding-bottom: 2px;
     }
 
     #tray {
