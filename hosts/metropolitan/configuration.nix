@@ -13,7 +13,6 @@ in {
     };
     # Plymouth
     plymouth.enable = true;
-    plymouth.theme = "breeze";
   };
   networking.hostName = "metropolitan";
   networking.networkmanager.enable = true;
@@ -180,6 +179,11 @@ in {
 
     package = pkgs.nixFlakes;
     extraOptions = "experimental-features = nix-command flakes";
+  };
+
+  catppuccin = {
+    enable = true;
+    flavor = "frappe";
   };
 
   system.stateVersion = "23.11"; # Did you read the comment?

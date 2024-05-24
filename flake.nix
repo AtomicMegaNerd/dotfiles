@@ -22,7 +22,10 @@
       nixos = system: hostname:
         nixpkgs.lib.nixosSystem {
           pkgs = pkgs system;
-          modules = [ ./hosts/${hostname}/configuration.nix ];
+          modules = [
+            ./hosts/${hostname}/configuration.nix
+            catppuccin.nixosModules.catppuccin
+          ];
         };
 
       hm = system: hostname:
