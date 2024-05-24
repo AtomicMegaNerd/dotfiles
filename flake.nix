@@ -5,9 +5,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    catppuccin.url = "github:catppuccin/nix";
   };
 
-  outputs = { self, nixpkgs, home-manager }:
+  outputs = { self, nixpkgs, home-manager, catppuccin }:
     let
       sysLinux = "x86_64-linux";
       sysMac = "aarch64-darwin";
@@ -27,7 +28,10 @@
       hm = system: hostname:
         home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs system;
-          modules = [ ./hosts/${hostname}/rcd.nix ];
+          modules = [
+            ./hosts/${hostname}/rcd.nix
+            catppuccin.homeManagerModules.catppuccin
+          ];
         };
     in {
       nixosConfigurations = {

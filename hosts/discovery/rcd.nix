@@ -16,7 +16,8 @@ in {
     tmux = import ../../common/tmux.nix { inherit pkgs; };
     starship = import ../../common/starship.nix { inherit pkgs; };
     zellij = import ../../common/zellij.nix { inherit pkgs; };
-    bat = import ../../common/bat.nix { inherit pkgs; };
+
+    bat = { enable = true; };
 
     direnv = {
       enable = true;
@@ -63,5 +64,10 @@ in {
       source = ../../common/alacritty;
       target = "alacritty";
     };
+  };
+
+  catppuccin = {
+    enable = true;
+    flavor = "frappe";
   };
 }

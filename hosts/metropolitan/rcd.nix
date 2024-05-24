@@ -14,12 +14,13 @@
     fish = import ../../common/fish.nix { inherit pkgs; };
     zellij = import ../../common/zellij.nix { inherit pkgs; };
     tmux = import ../../common/tmux.nix { inherit pkgs; };
-    bat = import ../../common/bat.nix { inherit pkgs; };
 
     direnv = {
       enable = true;
       nix-direnv.enable = true;
     };
+
+    bat = { enable = true; };
 
     git = {
       enable = true;
@@ -77,5 +78,10 @@
         target = "alacritty";
       };
     };
+  };
+
+  catppuccin = {
+    enable = true;
+    flavor = "frappe";
   };
 }
