@@ -51,6 +51,16 @@ in {
   fonts.packages = with pkgs;
     [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
 
+  nixpkgs.overlays = [
+    (self: super: {
+      catppuccin-gtk = super.catppuccin-gtk.override {
+        accents = [ "teal" ];
+        size = "standard";
+        variant = "frappe";
+      };
+    })
+  ];
+
   environment.systemPackages = with pkgs; [
     neovim
     git
@@ -103,11 +113,6 @@ in {
     displayManager.sddm = {
       enable = true;
       wayland.enable = true;
-      catppuccin = {
-        enable = true;
-        background = "/home/rcd/.wallpaper";
-        flavor = "frappe";
-      };
     };
     flatpak.enable = true;
     onedrive.enable = true;
@@ -180,7 +185,6 @@ in {
 
   catppuccin = {
     enable = true;
-    accent = "teal";
     flavor = "frappe";
   };
 
