@@ -7,6 +7,8 @@
     packages = import ../../common/packages.nix { inherit pkgs; };
   };
 
+  services = { hypridle = import ../../common/hypridle.nix; };
+
   programs = {
     home-manager.enable = true;
     fish = import ../../common/fish.nix { inherit pkgs; };
@@ -17,6 +19,9 @@
     alacritty = import ../../common/alacritty.nix;
     bat = import ../../common/bat.nix;
     waybar = import ../../common/waybar.nix { inherit lib; };
+    hyprland = import ../../common/hyprland.nix;
+    hyprpaper = import ../../common/hyprpaper.nix;
+    hyprlock = import ../../common/hyprlock.nix;
 
     direnv = {
       enable = true;
@@ -65,10 +70,6 @@
       nvim = {
         source = ../../common/nvim;
         target = "nvim";
-      };
-      hypr = {
-        source = ../../common/hypr;
-        target = "hypr";
       };
     };
   };
