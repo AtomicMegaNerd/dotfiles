@@ -81,6 +81,8 @@ in {
     themechanger
     xfce.xfce4-settings
     polkit_gnome
+    grim
+    slurp
   ];
 
   programs = {
