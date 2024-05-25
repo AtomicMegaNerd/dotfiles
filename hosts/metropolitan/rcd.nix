@@ -67,14 +67,17 @@
     };
   };
 
-  gtk.catppuccin = {
+  gtk = {
     enable = true;
-    flavor = "frappe";
-    accent = "teal";
-    icon = {
+    catppuccin = {
       enable = true;
       flavor = "frappe";
       accent = "teal";
+      icon = {
+        enable = true;
+        flavor = "frappe";
+        accent = "teal";
+      };
     };
   };
 

@@ -51,16 +51,6 @@ in {
   fonts.packages = with pkgs;
     [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
 
-  nixpkgs.overlays = [
-    (self: super: {
-      catppuccin-gtk = super.catppuccin-gtk.override {
-        accents = [ "teal" ];
-        size = "standard";
-        variant = "frappe";
-      };
-    })
-  ];
-
   environment.systemPackages = with pkgs; [
     neovim
     git
