@@ -108,9 +108,11 @@ in {
     xserver = {
       enable = true;
       xkb.layout = "us";
-      displayManager.gdm.wayland = true;
-      displayManager.gdm.enable = true;
       videoDrivers = [ "amdgpu" ];
+    };
+    displayManager.sddm = {
+      enable = true;
+      wayland.enable = true;
     };
     flatpak.enable = true;
     onedrive.enable = true;
