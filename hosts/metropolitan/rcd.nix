@@ -70,6 +70,11 @@
     enable = true;
     flavor = "frappe";
     accent = "teal";
+    icon = {
+      enable = true;
+      flavor = "frappe";
+      accent = "teal";
+    };
   };
 
   xdg = {
