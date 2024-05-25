@@ -13,24 +13,24 @@
       sysLinux = "x86_64-linux";
       sysMac = "aarch64-darwin";
 
-      pkgs = system:
+      buildPkgsConf = system:
         import nixpkgs {
           inherit system;
           config.allowUnfree = true;
         };
 
-      nixos = system: hostname:
+      buildNixOsConf = system: hostname:
         nixpkgs.lib.nixosSystem {
-          pkgs = pkgs system;
+          pkgs = buildPkgsConf system;
           modules = [
             ./hosts/${hostname}/configuration.nix
             catppuccin.nixosModules.catppuccin
           ];
         };
 
-      hm = system: hostname:
+      buildHomeMgrConf = system: hostname:
         home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgs system;
+          pkgs = buildPkgsConf system;
           modules = [
             ./hosts/${hostname}/rcd.nix
             catppuccin.homeManagerModules.catppuccin
@@ -38,14 +38,14 @@
         };
     in {
       nixosConfigurations = {
-        blahaj = nixos sysLinux "blahaj";
-        metropolitan = nixos sysLinux "metropolitan";
+        blahaj = buildNixOsConf sysLinux "blahaj";
+        metropolitan = buildNixOsConf sysLinux "metropolitan";
       };
 
       homeConfigurations = {
-        "rcd@blahaj" = hm sysLinux "blahaj";
-        "rcd@metropolitan" = hm sysLinux "metropolitan";
-        "rcd@Discovery" = hm sysMac "discovery";
+        "rcd@blahaj" = buildHomeMgrConf sysLinux "blahaj";
+        "rcd@metropolitan" = buildHomeMgrConf sysLinux "metropolitan";
+        "rcd@Discovery" = buildHomeMgrConf sysMac "discovery";
       };
     };
 }
