@@ -83,6 +83,7 @@ in {
     polkit_gnome
     grim
     slurp
+    brave
   ];
 
   programs = {

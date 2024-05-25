@@ -17,6 +17,7 @@
 
     # Default mod key
     "$mod" = "SUPER";
+    "$shiftmod" = "SHIFT_SUPER";
 
     # Execute apps at launch
     exec-once = [
@@ -37,6 +38,7 @@
       "$mod, F, exec, thunar"
       "$mod, U, togglefloating"
       "$mod, T, exec, $terminal"
+      "$shiftmod, S, exec, grim"
       "$mod, B, exec, $browser"
       "$mod, space, exec, $launcher"
       "$mod, L, exec, loginctl lock-session"
