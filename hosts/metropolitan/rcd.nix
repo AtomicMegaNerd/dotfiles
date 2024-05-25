@@ -7,7 +7,11 @@
     packages = import ../../common/packages.nix { inherit pkgs; };
   };
 
-  services = { hypridle = import ../../common/hypridle.nix; };
+  services = {
+    hypridle = import ../../common/hypridle.nix;
+    hyprpaper = import ../../common/hyprpaper.nix;
+  };
+  wayland.windowManager.hyprland = import ../../common/hyprland.nix;
 
   programs = {
     home-manager.enable = true;
@@ -19,8 +23,6 @@
     alacritty = import ../../common/alacritty.nix;
     bat = import ../../common/bat.nix;
     waybar = import ../../common/waybar.nix { inherit lib; };
-    hyprland = import ../../common/hyprland.nix;
-    hyprpaper = import ../../common/hyprpaper.nix;
     hyprlock = import ../../common/hyprlock.nix;
 
     direnv = {

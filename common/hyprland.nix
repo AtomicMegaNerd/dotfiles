@@ -70,8 +70,8 @@
       gaps_in = 5;
       gaps_out = 10;
       border_size = 1;
-      col.active_border = "$teal";
-      col.inactive_border = "$surface1";
+      "col.active_border" = "$teal";
+      "col.inactive_border" = "$surface1";
     };
 
     decoration = {
@@ -80,9 +80,8 @@
         size = 8;
         passes = 2;
       };
-
-      col.shadow = "$teal";
-      col.shadow_inactive = "0xff$baseAlpha";
+      "col.shadow" = "$teal";
+      "col.shadow_inactive" = "0xff$baseAlpha";
     };
 
     misc = {
