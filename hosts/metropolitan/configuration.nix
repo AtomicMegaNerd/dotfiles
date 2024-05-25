@@ -90,6 +90,7 @@ in {
     wl-clip-persist
     themechanger
     xfce.xfce4-settings
+    polkit_gnome
   ];
 
   programs = {

@@ -1,4 +1,4 @@
-{
+{ pkgs }: {
   enable = true;
 
   catppuccin = {
@@ -27,6 +27,7 @@
       "blueman"
       ''
         wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"''
+      "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1 &"
     ];
 
     # Bindings

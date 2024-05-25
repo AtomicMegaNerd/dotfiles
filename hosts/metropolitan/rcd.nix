@@ -11,7 +11,8 @@
     hypridle = import ../../common/hypridle.nix;
     hyprpaper = import ../../common/hyprpaper.nix;
   };
-  wayland.windowManager.hyprland = import ../../common/hyprland.nix;
+  wayland.windowManager.hyprland =
+    import ../../common/hyprland.nix { inherit pkgs; };
 
   programs = {
     home-manager.enable = true;
