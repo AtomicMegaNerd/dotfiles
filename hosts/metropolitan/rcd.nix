@@ -10,6 +10,14 @@
   services = {
     hypridle = import ../../common/hypridle.nix;
     hyprpaper = import ../../common/hyprpaper.nix;
+
+    mako = {
+      enable = true;
+      catppuccin = {
+        enable = true;
+        flavor = "frappe";
+      };
+    };
   };
 
   wayland.windowManager.hyprland =
@@ -65,6 +73,7 @@
                 IdentityAgent ~/.1password/agent.sock
       '';
     };
+
   };
 
   gtk = {

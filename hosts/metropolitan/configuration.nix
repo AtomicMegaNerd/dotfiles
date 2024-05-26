@@ -95,6 +95,7 @@ in {
     hyprland = { enable = true; };
     thunar.enable = true;
     xfconf.enable = true;
+    steam.enable = true;
   };
 
   services = {
