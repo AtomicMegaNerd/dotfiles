@@ -17,8 +17,7 @@ in {
     starship = import ../../common/starship.nix;
     zellij = import ../../common/zellij.nix;
     alacritty = import ../../common/alacritty.nix;
-
-    bat = { enable = true; };
+    bat = import ../../common/bat.nix;
 
     direnv = {
       enable = true;
