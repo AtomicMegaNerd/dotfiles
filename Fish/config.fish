@@ -8,15 +8,6 @@ alias vi "nvim"
 alias cat "bat --paging=never --style=plain"
 alias df "duf"
 
-# Common directories
-alias ch="cd ~"
-alias csrc="cd ~/Code"
-alias cgo="cd ~/Code/Go"
-alias cj="cd ~/Code/Java"
-alias cpy="cd ~/Code/Python"
-alias cdot="cd ~/Code/Configs/dotfiles"
-alias cdock="cd ~/Code/Docker"
-
 # Shortcuts for common files and directories
 alias vconf "nvim ~/.config/nvim/init.lua"
 alias fconf "nvim ~/.config/fish/config.fish"
@@ -94,4 +85,4 @@ starship init fish | source
 
 # Zoxide
 # ===================================
-zoxide init fish | source
+zoxide init fish --cmd cd | source
