@@ -109,6 +109,10 @@ in {
     displayManager.sddm = {
       enable = true;
       wayland.enable = true;
+      catppuccin = {
+        enable = true;
+        flavor = "frappe";
+      };
     };
     flatpak.enable = true;
     onedrive.enable = true;
