@@ -90,8 +90,10 @@ in {
     fish.enable = true;
     dconf.enable = true;
     _1password.enable = true;
-    _1password-gui.enable = true;
-    _1password-gui.polkitPolicyOwners = [ "rcd" ];
+    _1password-gui = {
+      enable = true;
+      polkitPolicyOwners = [ "rcd" ];
+    };
     hyprland = { enable = true; };
     thunar.enable = true;
     xfconf.enable = true;
