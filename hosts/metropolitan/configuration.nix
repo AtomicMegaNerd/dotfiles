@@ -45,6 +45,7 @@ in {
       extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
     };
     bluetooth.enable = true;
+    pulseaudio.enable = false;
   };
   sound.enable = true;
 
@@ -56,34 +57,17 @@ in {
     git
     alacritty
     firefox
-    walker
-    waybar
-    mako
-    hyprlock
-    hyprpaper
-    hyprcursor
-    hyprpicker
-    hypridle
-    qt5.qtwayland
-    qt6.qtwayland
-    qt6.qmake
     adwaita-qt
     adwaita-qt6
-    wl-clipboard
-    blueman
     pavucontrol
     xdg-utils
-    clipman
-    catppuccin-gtk
-    catppuccin-cursors.frappeTeal
     wl-clipboard
     wl-clip-persist
-    themechanger
     xfce.xfce4-settings
-    polkit_gnome
-    grim
-    slurp
     brave
+    gnome.adwaita-icon-theme
+    gnome.gnome-tweaks
+    gnomeExtensions.appindicator
   ];
 
   programs = {
@@ -94,9 +78,6 @@ in {
       enable = true;
       polkitPolicyOwners = [ "rcd" ];
     };
-    hyprland = { enable = true; };
-    thunar.enable = true;
-    xfconf.enable = true;
     steam.enable = true;
   };
 
@@ -105,21 +86,15 @@ in {
       enable = true;
       xkb.layout = "us";
       videoDrivers = [ "amdgpu" ];
-    };
-    displayManager.sddm = {
-      enable = true;
-      wayland.enable = true;
-      catppuccin = {
+      displayManager.gdm = {
         enable = true;
-        flavor = "frappe";
+        wayland = true;
       };
+      desktopManager.gnome = { enable = true; };
     };
     flatpak.enable = true;
     onedrive.enable = true;
-    dbus.enable = true;
-    dbus.packages = with pkgs; [ xfce.xfconf ];
     spice-vdagentd.enable = true;
-    gnome.gnome-keyring.enable = true;
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -127,7 +102,7 @@ in {
       pulse.enable = true;
       wireplumber.enable = true;
     };
-    tumbler.enable = true;
+    udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
   };
 
   # 1Password needs this
@@ -135,8 +110,6 @@ in {
 
   environment.sessionVariables = {
     XDG_SESSION_TYPE = "wayland";
-    XDG_CURRENT_DESKTOP = "Hyprland";
-    XDG_SESSION_DESKTOP = "Hyprland";
     MOZ_ENABLE_WAYLAND = "1";
     SDL_VIDEODRIVER = "wayland";
     CLUTTER_BACKEND = "wayland";
@@ -145,13 +118,6 @@ in {
     QT_QPA_PLATFORM = "wayland";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
     NIXOS_XDG_OPEN_USE_PORTAL = "1";
-  };
-
-  xdg = {
-    portal = {
-      enable = true;
-      extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
-    };
   };
 
   virtualisation = {

@@ -7,22 +7,6 @@
     packages = import ../../common/packages.nix { inherit pkgs; };
   };
 
-  services = {
-    hypridle = import ../../common/hypridle.nix;
-    hyprpaper = import ../../common/hyprpaper.nix;
-
-    mako = {
-      enable = true;
-      catppuccin = {
-        enable = true;
-        flavor = "frappe";
-      };
-    };
-  };
-
-  wayland.windowManager.hyprland =
-    import ../../common/hyprland.nix { inherit pkgs; };
-
   programs = {
     home-manager.enable = true;
     fish = import ../../common/fish.nix { inherit pkgs; };
@@ -32,8 +16,6 @@
     tmux = import ../../common/tmux.nix;
     alacritty = import ../../common/alacritty.nix;
     bat = import ../../common/bat.nix;
-    waybar = import ../../common/waybar.nix { inherit lib; };
-    hyprlock = import ../../common/hyprlock.nix;
 
     direnv = {
       enable = true;
@@ -76,27 +58,7 @@
 
   };
 
-  gtk = {
-    enable = true;
-    catppuccin = {
-      enable = true;
-      flavor = "frappe";
-      accent = "teal";
-      icon = {
-        enable = true;
-        flavor = "frappe";
-        accent = "teal";
-      };
-    };
-  };
-
   xdg = {
-    mimeApps = {
-      enable = true;
-      associations.added = { "text/html" = "firefox.desktop"; };
-      defaultApplications = { "text/html" = "firefox.desktop"; };
-    };
-
     configFile = {
       nvim = {
         source = ../../common/nvim;
