@@ -87,6 +87,7 @@ in {
     brave
     xfce.xfce4-settings
     brave
+    gnome.adwaita-icon-theme
   ];
 
   programs = {
@@ -97,7 +98,7 @@ in {
       enable = true;
       polkitPolicyOwners = [ "rcd" ];
     };
-    hyprland = { enable = true; };
+    hyprland.enable = true;
     thunar.enable = true;
     xfconf.enable = true;
     steam.enable = true;
