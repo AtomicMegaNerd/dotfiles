@@ -68,6 +68,7 @@ in {
     gnome.adwaita-icon-theme
     gnome.gnome-tweaks
     gnomeExtensions.appindicator
+    gnomeExtensions.paperwm
   ];
 
   programs = {
