@@ -1,6 +1,5 @@
 {
   enable = true;
-
   settings = {
     font = {
       size = 16;
@@ -17,7 +16,6 @@
         style = "Medium";
       };
     };
-
     mouse = {
       bindings = [
         {
@@ -30,9 +28,7 @@
         }
       ];
     };
-
     selection = { save_to_clipboard = true; };
-
     window = {
       decorations = "Buttonless";
       padding = {
@@ -41,7 +37,6 @@
       };
     };
   };
-
   catppuccin = {
     enable = true;
     flavor = "frappe";

@@ -7,6 +7,9 @@
     packages = import ../../common/packages.nix { inherit pkgs; };
   };
 
+  wayland.windowManager.hyprland =
+    import ../../common/hyprland.nix { inherit pkgs; };
+
   programs = {
     home-manager.enable = true;
     fish = import ../../common/fish.nix { inherit pkgs; };
@@ -16,6 +19,8 @@
     tmux = import ../../common/tmux.nix;
     alacritty = import ../../common/alacritty.nix;
     bat = import ../../common/bat.nix;
+    waybar = import ../../common/waybar.nix { inherit lib; };
+    hyprlock = import ../../common/hyprlock.nix;
 
     direnv = {
       enable = true;

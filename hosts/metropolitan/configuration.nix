@@ -57,18 +57,36 @@ in {
     git
     alacritty
     firefox
+    walker
+    waybar
+    mako
+    hyprlock
+    hyprpaper
+    hyprcursor
+    hyprpicker
+    hypridle
+    qt5.qtwayland
+    qt6.qtwayland
+    qt6.qmake
     adwaita-qt
     adwaita-qt6
+    wl-clipboard
+    blueman
     pavucontrol
     xdg-utils
+    clipman
+    catppuccin-gtk
+    catppuccin-cursors.frappeTeal
     wl-clipboard
     wl-clip-persist
+    themechanger
+    xfce.xfce4-settings
+    polkit_gnome
+    grim
+    slurp
+    brave
     xfce.xfce4-settings
     brave
-    gnome.adwaita-icon-theme
-    gnome.gnome-tweaks
-    gnomeExtensions.appindicator
-    gnomeExtensions.paperwm
   ];
 
   programs = {
@@ -79,6 +97,9 @@ in {
       enable = true;
       polkitPolicyOwners = [ "rcd" ];
     };
+    hyprland = { enable = true; };
+    thunar.enable = true;
+    xfconf.enable = true;
     steam.enable = true;
   };
 
