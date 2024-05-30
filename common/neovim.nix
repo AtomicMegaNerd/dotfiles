@@ -50,7 +50,8 @@
     telescope-file-browser-nvim
     telescope-fzf-native-nvim
     # Git
-    vim-fugitive
+    neogit
+    diffview-nvim
     gitsigns-nvim
     # LSP
     nvim-lspconfig
