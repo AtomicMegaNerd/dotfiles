@@ -71,7 +71,6 @@ in {
     adwaita-qt
     adwaita-qt6
     wl-clipboard
-    blueman
     pavucontrol
     xdg-utils
     clipman
@@ -116,6 +115,7 @@ in {
       desktopManager.gnome = { enable = true; };
     };
     flatpak.enable = true;
+    blueman.enable = true;
     onedrive.enable = true;
     spice-vdagentd.enable = true;
     pipewire = {
