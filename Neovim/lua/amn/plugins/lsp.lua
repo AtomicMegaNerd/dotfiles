@@ -48,7 +48,7 @@ return {
 
 		local servers = {
 			"pyright",
-			"ruff_lsp",
+			"ruff",
 			"bashls",
 			"gopls",
 		}
