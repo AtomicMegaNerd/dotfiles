@@ -56,8 +56,8 @@ local servers = {
 	"yamlls",
 	"bashls",
 	"pyright",
-	"ruff_lsp",
 	"zls",
+	"ruff",
 	"rust_analyzer",
 	"nixd",
 }
