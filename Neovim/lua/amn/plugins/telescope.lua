@@ -75,10 +75,11 @@ return {
 
 		local tfb = telescope.extensions.file_browser.file_browser
 
+		-- Base
 		utils.nmap("<leader>ff", tb.find_files, "[F]ind [F]files", "Telescope")
 		utils.nmap("<leader>fb", tb.buffers, "[F]ind [B]uffers", "Telescope")
 		utils.nmap("<leader>fd", tb.diagnostics, "[F]ind [D]iagnostics", "Telescope")
-		utils.nmap("<leader>fl", tb.live_grep, "[F]ind [L]ive [G]rep", "Telescope")
+		utils.nmap("<leader>fl", tb.live_grep, "[F]ind [L]ive grep", "Telescope")
 		-- Git
 		utils.nmap("<leader>fg", tb.git_files, "[F]ind [G]it files", "Telescope")
 		utils.nmap("<leader>fr", tb.git_branches, "[F]ind Git B[R]anch", "Telescope")
