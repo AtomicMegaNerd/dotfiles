@@ -4,4 +4,13 @@ if not status then
 	return
 end
 
-neogit.setup()
+neogit.setup({
+
+	integrations = {
+		diffview = true,
+		telescope = true,
+		fzf_lua = true,
+	},
+})
+
+vim.keymap.set("n", "<leader>ng", neogit.open, { desc = "Open [N]eo[g]it" })
