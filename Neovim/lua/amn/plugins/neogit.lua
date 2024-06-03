@@ -25,5 +25,7 @@ return {
 				fzf_lua = true,
 			},
 		})
+
+		utils.nmap("<leader>ng", neogit.open)
 	end,
 }
