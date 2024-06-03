@@ -11,8 +11,7 @@ repos:
         stages: [pre-commit]
       - id: check-toml
         stages: [pre-commit]
-  - repo: https://github.com/rwxcorp/pre-commit-lua.git
-    rev: v1.0.0
+  - repo: https://github.com/JohnnyMorganz/StyLua
+    rev: v0.20.0
     hooks:
       - id: stylua
-      - id: luacheck
