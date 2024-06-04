@@ -1,13 +1,5 @@
-# Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-# NixOS-WSL specific options are documented on the NixOS-WSL repository:
-# https://github.com/nix-community/NixOS-WSL
-
 { pkgs, ... }:
-let
-  rcd_pub_key = builtins.readFile ../../common/rcd_pub_key;
+let rcd_pub_key = builtins.readFile ../../common/rcd_pub_key;
 in {
 
   wsl = {
@@ -28,11 +20,7 @@ in {
 
   programs.fish.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    neovim
-    git
-    curl
-  ];
+  environment.systemPackages = with pkgs; [ neovim git curl ];
 
   nix = {
     gc = {
@@ -48,6 +36,6 @@ in {
     enable = true;
     flavor = "frappe";
   };
-  
+
   system.stateVersion = "23.11";
 }
