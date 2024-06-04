@@ -1,6 +1,7 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixos.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -12,10 +13,16 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, catppuccin, nixos-wsl }:
+  outputs = { self, nixos, nixpkgs, home-manager, catppuccin, nixos-wsl }:
     let
       sysLinux = "x86_64-linux";
       sysMac = "aarch64-darwin";
+
+      buildOsPkgsConf = system:
+        import nixos {
+          inherit system;
+          config.allowUnfree = true;
+        };
 
       buildPkgsConf = system:
         import nixpkgs {
@@ -24,8 +31,8 @@
         };
 
       buildNixOsConf = system: hostname:
-        nixpkgs.lib.nixosSystem {
-          pkgs = buildPkgsConf system;
+        nixos.lib.nixosSystem {
+          pkgs = buildOsPkgsConf system;
           modules = [
             ./hosts/${hostname}/configuration.nix
             catppuccin.nixosModules.catppuccin
@@ -33,12 +40,12 @@
         };
 
       buildWslNixOsConf = system: hostname:
-        nixpkgs.lib.nixosSystem {
-          pkgs = buildPkgsConf system;
+        nixos.lib.nixosSystem {
+          pkgs = buildOsPkgsConf system;
           modules = [
             ./hosts/${hostname}/configuration.nix
             catppuccin.nixosModules.catppuccin
-	    nixos-wsl.nixosModules.wsl
+            nixos-wsl.nixosModules.wsl
           ];
         };
 
@@ -50,7 +57,8 @@
             catppuccin.homeManagerModules.catppuccin
           ];
         };
-    in {
+    in
+    {
       nixosConfigurations = {
         blahaj = buildNixOsConf sysLinux "blahaj";
         metropolitan = buildWslNixOsConf sysLinux "metropolitan";

@@ -69,6 +69,22 @@
         "type": "github"
       }
     },
+    "nixos": {
+      "locked": {
+        "lastModified": 1717196966,
+        "narHash": "sha256-yZKhxVIKd2lsbOqYd5iDoUIwsRZFqE87smE2Vzf6Ck0=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "57610d2f8f0937f39dbd72251e9614b1561942d8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixos-wsl": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -93,16 +109,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1717196966,
-        "narHash": "sha256-yZKhxVIKd2lsbOqYd5iDoUIwsRZFqE87smE2Vzf6Ck0=",
+        "lastModified": 1717399147,
+        "narHash": "sha256-eCWaE/q1VItpFAxxLVt171MdtDcjEnwi6QB/yuF73JU=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "57610d2f8f0937f39dbd72251e9614b1561942d8",
+        "rev": "4a4ecb0ab415c9fccfb005567a215e6a9564cdf5",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "nixos-unstable",
+        "ref": "nixpkgs-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -111,6 +127,7 @@
       "inputs": {
         "catppuccin": "catppuccin",
         "home-manager": "home-manager",
+        "nixos": "nixos",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs"
       }
