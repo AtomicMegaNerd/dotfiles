@@ -18,40 +18,24 @@
       sysLinux = "x86_64-linux";
       sysMac = "aarch64-darwin";
 
-      buildOsPkgsConf = system:
-        import nixos {
+      buildPkgsConf = system: isNixos:
+        import (if isNixos then nixos else nixpkgs) {
           inherit system;
           config.allowUnfree = true;
         };
 
-      buildPkgsConf = system:
-        import nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-        };
-
-      buildNixOsConf = system: hostname:
+      buildNixOsConf = system: hostname: isWsl:
         nixos.lib.nixosSystem {
-          pkgs = buildOsPkgsConf system;
+          pkgs = buildPkgsConf system true;
           modules = [
             ./hosts/${hostname}/configuration.nix
             catppuccin.nixosModules.catppuccin
-          ];
-        };
-
-      buildWslNixOsConf = system: hostname:
-        nixos.lib.nixosSystem {
-          pkgs = buildOsPkgsConf system;
-          modules = [
-            ./hosts/${hostname}/configuration.nix
-            catppuccin.nixosModules.catppuccin
-            nixos-wsl.nixosModules.wsl
-          ];
+          ] ++ (if isWsl then [ nixos-wsl.nixosModules.wsl ] else [ ]);
         };
 
       buildHomeMgrConf = system: hostname:
         home-manager.lib.homeManagerConfiguration {
-          pkgs = buildPkgsConf system;
+          pkgs = buildPkgsConf system false;
           modules = [
             ./hosts/${hostname}/rcd.nix
             catppuccin.homeManagerModules.catppuccin
@@ -60,8 +44,8 @@
     in
     {
       nixosConfigurations = {
-        blahaj = buildNixOsConf sysLinux "blahaj";
-        metropolitan = buildWslNixOsConf sysLinux "metropolitan";
+        blahaj = buildNixOsConf sysLinux "blahaj" false;
+        metropolitan = buildNixOsConf sysLinux "metropolitan" true;
       };
 
       homeConfigurations = {
