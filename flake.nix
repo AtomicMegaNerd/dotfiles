@@ -9,7 +9,7 @@
     catppuccin.url = "github:catppuccin/nix";
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixos";
     };
   };
 
