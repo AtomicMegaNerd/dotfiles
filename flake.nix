@@ -6,9 +6,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     catppuccin.url = "github:catppuccin/nix";
+    nixos-wsl = {
+      url = "github:nix-community/NixOS-WSL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, catppuccin }:
+  outputs = { self, nixpkgs, home-manager, catppuccin, nixos-wsl }:
     let
       sysLinux = "x86_64-linux";
       sysMac = "aarch64-darwin";
@@ -28,6 +32,16 @@
           ];
         };
 
+      buildWslNixOsConf = system: hostname:
+        nixpkgs.lib.nixosSystem {
+          pkgs = buildPkgsConf system;
+          modules = [
+            ./hosts/${hostname}/configuration.nix
+            catppuccin.nixosModules.catppuccin
+	    nixos-wsl.nixosModules.wsl
+          ];
+        };
+
       buildHomeMgrConf = system: hostname:
         home-manager.lib.homeManagerConfiguration {
           pkgs = buildPkgsConf system;
@@ -39,7 +53,7 @@
     in {
       nixosConfigurations = {
         blahaj = buildNixOsConf sysLinux "blahaj";
-        metropolitan = buildNixOsConf sysLinux "metropolitan";
+        metropolitan = buildWslNixOsConf sysLinux "metropolitan";
       };
 
       homeConfigurations = {

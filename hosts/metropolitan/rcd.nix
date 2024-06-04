@@ -1,4 +1,6 @@
-{ pkgs, lib, ... }: {
+{ pkgs, ... }:
+let rcd_pub_key = builtins.readFile ../../common/rcd_pub_key;
+in {
 
   home = {
     username = "rcd";
@@ -7,33 +9,14 @@
     packages = import ../../common/packages.nix { inherit pkgs; };
   };
 
-  services = {
-    hypridle = import ../../common/hypridle.nix;
-    hyprpaper = import ../../common/hyprpaper.nix;
-
-    mako = {
-      enable = true;
-      catppuccin = {
-        enable = true;
-        flavor = "frappe";
-      };
-    };
-  };
-
-  wayland.windowManager.hyprland =
-    import ../../common/hyprland.nix { inherit pkgs; };
-
   programs = {
     home-manager.enable = true;
-    fish = import ../../common/fish.nix { inherit pkgs; };
     neovim = import ../../common/neovim.nix { inherit pkgs; };
+    fish = import ../../common/fish.nix { inherit pkgs; };
+    tmux = import ../../common/tmux.nix;
     starship = import ../../common/starship.nix;
     zellij = import ../../common/zellij.nix;
-    tmux = import ../../common/tmux.nix;
-    alacritty = import ../../common/alacritty.nix;
     bat = import ../../common/bat.nix;
-    waybar = import ../../common/waybar.nix { inherit lib; };
-    hyprlock = import ../../common/hyprlock.nix;
 
     direnv = {
       enable = true;
@@ -45,8 +28,18 @@
       userName = "Chris Dunphy";
       userEmail = "chris@megaparsec.ca";
       extraConfig = {
+        core.sshCommand = "ssh.exe";
         init.defaultBranch = "main";
         pull.rebase = false;
+        user.signingkey = "${rcd_pub_key}";
+        gpg = {
+          ssh = {
+            program =
+              "/mnt/c/Users/RCD/AppData/Local/1Password/app/8/op-ssh-sign.exe";
+          };
+          format = "ssh";
+        };
+        commit = { gpgsign = true; };
       };
     };
 
@@ -64,42 +57,12 @@
         flavor = "frappe";
       };
     };
-
-    ssh = {
-      enable = true;
-      forwardAgent = true;
-      extraConfig = ''
-        Host *
-                IdentityAgent ~/.1password/agent.sock
-      '';
-    };
   };
 
-  gtk = {
-    enable = true;
-    catppuccin = {
-      enable = true;
-      flavor = "frappe";
-      accent = "teal";
-      icon = {
-        enable = true;
-        flavor = "frappe";
-        accent = "teal";
-      };
-    };
-  };
-
-  xdg = {
-    mimeApps = {
-      enable = true;
-      associations.added = { "text/html" = "firefox.desktop"; };
-      defaultApplications = { "text/html" = "firefox.desktop"; };
-    };
-    configFile = {
-      nvim = {
-        source = ../../common/nvim;
-        target = "nvim";
-      };
+  xdg.configFile = {
+    nvim = {
+      source = ../../common/nvim;
+      target = "nvim";
     };
   };
 }
