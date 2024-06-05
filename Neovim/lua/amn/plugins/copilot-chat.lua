@@ -13,15 +13,9 @@ return {
 				return vim.notify("CopilotChat not found", vim.log.levels.ERROR)
 			end
 
-			local chat_select = utils.do_import("CopilotChat.select")
-			if not chat_select then
+			local select = utils.do_import("CopilotChat.select")
+			if not select then
 				vim.notify("CopilotChat.select not found", vim.log.levels.ERROR)
-				return
-			end
-
-			local chat_actions = utils.do_import("CopilotChat.actions")
-			if not chat_actions then
-				vim.notify("CopilotChat.actions not found", vim.log.levels.ERROR)
 				return
 			end
 
@@ -42,37 +36,36 @@ return {
 				},
 			})
 
-			utils.nmap("<leader>cc", function()
+			utils.nmap("<leader>pc", function()
 				chat.open()
-			end, "[C]opilit [C]hat")
+			end, "Co[P]ilot [C]hat")
 
-			utils.nmap("<leader>cct", function()
+			utils.nmap("<leader>pt", function()
 				chat.toggle()
-			end, "[C]opilit [C]hat [T]oggle")
+			end, "Co[P]ilot [T]oggle")
 
-			utils.nmap("<leader>ccf", function()
+			utils.nmap("<leader>pf", function()
 				chat.open({ window = { layout = "float" } })
-			end, "[C]opilit [C]hat [F]loat")
+			end, "Co[P]ilot [F]loat")
 
-			utils.vmap("<leader>ccs", function()
-				chat.ask("Please Explain how this works", { selection = chat_select.buffer })
-			end, "[C]opilit [C]hat explain [B]uffer")
+			utils.nmap("<leader>pb", function()
+				chat.ask("Please Explain how this works", { selection = select.buffer })
+			end, "Co[P]ilot [B]uffer explain")
+			utils.vmap("<leader>pb", function()
+				chat.ask("Please Explain how this works", { selection = select.buffer })
+			end, "Co[P]ilot [B]uffer explain")
 
-			utils.vmap("<leader>ccs", function()
-				chat.ask("Please explain how this works", { selection = chat_select.selection })
-			end, "[C]opilit [C]hat explain [S]election")
+			utils.vmap("<leader>ps", function()
+				chat.ask("Please explain how this works", { selection = select.visual })
+			end, "Co[P]ilot [S]election explain")
 
-			utils.nmap("<leader>cca", function()
-				chat_actions.pick(chat.prompt_actions({
-					selection = chat_select.visual,
-				}))
-			end, "[C]opilit [C]hat [A]ctions")
-
-			-- Turn on relative numbers when entering a copilot buffer
+			-- Turn on relative numbers when entering a copilot buffer and set filetype to
+			-- Markdown
 			vim.api.nvim_create_autocmd("BufEnter", {
 				pattern = "copilot-*",
 				callback = function()
 					vim.opt_local.relativenumber = true
+					vim.bo.filetype = "markdown"
 				end,
 			})
 		end,
