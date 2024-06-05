@@ -48,13 +48,21 @@ return {
 				chat.open({ window = { layout = "float" } })
 			end, "Co[P]ilot [F]loat")
 
-			utils.nvmap("<leader>pb", function()
+			utils.nvmap("<leader>pbe", function()
 				chat.ask("Please Explain how this works", { selection = select.buffer })
-			end, "Co[P]ilot [B]uffer explain")
+			end, "Co[P]ilot [B]uffer [E]xplain")
 
-			utils.vmap("<leader>ps", function()
+			utils.nvmap("<leader>pbo", function()
+				chat.ask("Please optimize this code", { selection = select.buffer })
+			end, "Co[P]ilot [B]uffer [O]ptimize")
+
+			utils.vmap("<leader>pse", function()
 				chat.ask("Please explain how this works", { selection = select.visual })
-			end, "Co[P]ilot [S]election explain")
+			end, "Co[P]ilot [S]election [E]xplain")
+
+			utils.vmap("<leader>pso", function()
+				chat.ask("Please optimize this code", { selection = select.visual })
+			end, "Co[P]ilot [S]election [O]ptimize")
 
 			-- Turn on relative numbers when entering a copilot buffer and set filetype to
 			-- Markdown
