@@ -28,6 +28,14 @@ M.nmap = function(keys, func, desc, plugin, bufnr)
 	return do_map("n", keys, func, desc, plugin, bufnr)
 end
 
+M.vmap = function(keys, func, desc, plugin, bufnr)
+	desc = desc or nil
+	plugin = plugin or nil
+	bufnr = bufnr or nil
+
+	return do_map("v", keys, func, desc, plugin, bufnr)
+end
+
 M.imap = function(keys, func, desc, plugin, bufnr)
 	desc = desc or nil
 	plugin = plugin or nil
