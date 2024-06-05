@@ -48,10 +48,7 @@ return {
 				chat.open({ window = { layout = "float" } })
 			end, "Co[P]ilot [F]loat")
 
-			utils.nmap("<leader>pb", function()
-				chat.ask("Please Explain how this works", { selection = select.buffer })
-			end, "Co[P]ilot [B]uffer explain")
-			utils.vmap("<leader>pb", function()
+			utils.nvmap("<leader>pb", function()
 				chat.ask("Please Explain how this works", { selection = select.buffer })
 			end, "Co[P]ilot [B]uffer explain")
 
@@ -61,8 +58,10 @@ return {
 
 			-- Turn on relative numbers when entering a copilot buffer and set filetype to
 			-- Markdown
+			local chat_grp = vim.api.nvim_create_augroup("CopilotChat", { clear = true })
 			vim.api.nvim_create_autocmd("BufEnter", {
 				pattern = "copilot-*",
+				group = chat_grp,
 				callback = function()
 					vim.opt_local.relativenumber = true
 					vim.bo.filetype = "markdown"

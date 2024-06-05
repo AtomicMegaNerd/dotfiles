@@ -25,7 +25,7 @@ M.nmap = function(keys, func, desc, plugin, bufnr)
 	plugin = plugin or nil
 	bufnr = bufnr or nil
 
-	return do_map("n", keys, func, desc, plugin, bufnr)
+	do_map("n", keys, func, desc, plugin, bufnr)
 end
 
 M.vmap = function(keys, func, desc, plugin, bufnr)
@@ -33,14 +33,23 @@ M.vmap = function(keys, func, desc, plugin, bufnr)
 	plugin = plugin or nil
 	bufnr = bufnr or nil
 
-	return do_map("v", keys, func, desc, plugin, bufnr)
+	do_map("v", keys, func, desc, plugin, bufnr)
+end
+
+M.nvmap = function(keys, func, desc, plugin, bufnr)
+	desc = desc or nil
+	plugin = plugin or nil
+	bufnr = bufnr or nil
+
+	do_map("n", keys, func, desc, plugin, bufnr)
+	do_map("v", keys, func, desc, plugin, bufnr)
 end
 
 M.imap = function(keys, func, desc, plugin, bufnr)
 	desc = desc or nil
 	plugin = plugin or nil
 	bufnr = bufnr or nil
-	return do_map("i", keys, func, desc, plugin, bufnr)
+	do_map("i", keys, func, desc, plugin, bufnr)
 end
 
 -- This function is used to import modules in a safe way. It will log an error if the module is
