@@ -17,6 +17,9 @@ alias aconf "nvim ~/.config/alacritty/alacritty.yml"
 # Terraform
 alias tf terraform
 
+# Podman
+alias docker podman
+
 # tmux
 alias tl "tmux list-sessions"
 alias ta "tmux attach"
@@ -58,7 +61,6 @@ set -gx GOPRIVATE dev.azure.com
 # Tell Vault to use JSON output
 set -gx VAULT_FORMAT json
 
-# Tell Colima where to get the certs
 set -gx CERTS $HOME/Certs/
 
 # Corporate TLS MITM shenanigans
@@ -69,7 +71,7 @@ set -gx NVIM_LOG_FILE ~/.local/share/nvim/nvim.log
 
 # PATH
 # ===================================
-fish_add_path $HOME/bin 
+fish_add_path $HOME/bin
 fish_add_path $HOME/.fzf/bin
 fish_add_path $HOME/.local/bin
 fish_add_path $HOME/.pyenv/bin
