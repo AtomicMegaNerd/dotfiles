@@ -1,5 +1,5 @@
 { pkgs, ... }:
-let rcd_pub_key = builtins.readFile ../../common/rcd_pub_key;
+let rcd_pub_key = builtins.readFile ../../static/rcd_pub_key;
 in {
 
   wsl = {

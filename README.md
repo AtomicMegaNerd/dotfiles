@@ -10,8 +10,7 @@
 ```
 
 This is my core flake for my Nix-managed machines as well as any other machines that
-use Nix as a package manager. This repo also contains other dotfiles for non-Nix systems.
-
+use Nix as a package manager. This repo also contains other configs for non-Nix systems.
 
 ## Nix Systems
 
@@ -39,3 +38,38 @@ We use home-manager on all of our Nix managed machines.
 home-manager switch -- flake .#USERNAME@HOST
 ```
 
+## Windows
+
+Configuration files for my Windows programs:
+
+- Windows Terminal
+- VSCode
+- Powershell
+
+### Setting Up Symlinks
+
+#### Powershell
+
+```powershell
+New-Item -ItemType SymbolicLink -Target C:\Users\RCD\Code\Configs\dotfiles\configs\Powershell\Microsoft.PowerShell_profile.ps1 -Path C:\Users\RCD\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
+```
+
+#### VSCode
+
+```powershell
+New-Item -ItemType SymbolicLink -Target C:\Users\RCD\Code\Configs\dotfiles\configs\VSCode\settings.json -Path C:\Users\RCD\AppData\Roaming\Code\User\settings.json
+```
+
+#### Windows Terminal
+
+The tricky aspect here is we have to delete the settings.json first.
+
+```powershell
+New-Item -ItemType SymbolicLink -Target C:\Users\RCD\Code\Configs\dotfiles\configs\WindowsTerminal\settings.json -Path C:\Users\RCD\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
+```
+
+#### Neovim
+
+```powershell
+New-Item -ItemType SymbolicLink -Target C:\Users\RCD\Code\Configs\dotfiles\configs\Neovim -Path C:\Users\RCD\AppData\Local\nvim
+```

@@ -2,8 +2,9 @@
 let
   piholeUid = 888;
   piholeGid = 888;
-  rcd_pub_key = builtins.readFile ../../common/rcd_pub_key;
-in {
+  rcd_pub_key = builtins.readFile ../../static/rcd_pub_key;
+in
+{
 
   imports = [ ./hardware-configuration.nix ];
 
@@ -72,8 +73,7 @@ in {
     };
   };
 
-  environment.systemPackages =
-    (import ../../common/packages.nix { inherit pkgs; })
+  environment.systemPackages = (import ../../nix/packages.nix { inherit pkgs; })
     ++ (with pkgs; [ neovim starship git ]);
 
   services.openssh.enable = true;

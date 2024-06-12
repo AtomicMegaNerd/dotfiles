@@ -1,5 +1,5 @@
 { pkgs, ... }:
-let rcd_pub_key = builtins.readFile ../../common/rcd_pub_key;
+let rcd_pub_key = builtins.readFile ../../static/rcd_pub_key;
 in {
   imports = [ ./hardware-configuration.nix ];
 
@@ -179,4 +179,3 @@ in {
 
   system.stateVersion = "23.11"; # Did you read the comment?
 }
-

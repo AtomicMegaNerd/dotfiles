@@ -1,23 +1,23 @@
 { pkgs, ... }:
-let rcd_pub_key = builtins.readFile ../../common/rcd_pub_key;
+let rcd_pub_key = builtins.readFile ../../static/rcd_pub_key;
 in {
   home = {
     username = "rcd";
     homeDirectory = "/Users/rcd";
     stateVersion = "23.11";
     file.".ssh/allowed_signers".text = "${rcd_pub_key}";
-    packages = import ../../common/packages.nix { inherit pkgs; };
+    packages = import ../../nix/packages.nix { inherit pkgs; };
   };
 
   programs = {
     home-manager.enable = true;
-    fish = import ../../common/fish.nix { inherit pkgs; };
-    neovim = import ../../common/neovim.nix { inherit pkgs; };
-    tmux = import ../../common/tmux.nix;
-    starship = import ../../common/starship.nix;
-    zellij = import ../../common/zellij.nix;
-    alacritty = import ../../common/alacritty.nix;
-    bat = import ../../common/bat.nix;
+    fish = import ../../nix/fish.nix { inherit pkgs; };
+    neovim = import ../../nix/neovim.nix { inherit pkgs; };
+    tmux = import ../../nix/tmux.nix;
+    starship = import ../../nix/starship.nix;
+    zellij = import ../../nix/zellij.nix;
+    alacritty = import ../../nix/alacritty.nix;
+    bat = import ../../nix/bat.nix;
 
     direnv = {
       enable = true;
@@ -61,7 +61,7 @@ in {
 
   xdg.configFile = {
     nvim = {
-      source = ../../common/nvim;
+      source = ../../config/nvim;
       target = "nvim";
     };
   };

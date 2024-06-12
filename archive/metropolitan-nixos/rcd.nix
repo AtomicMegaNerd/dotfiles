@@ -4,12 +4,12 @@
     username = "rcd";
     homeDirectory = "/home/rcd";
     stateVersion = "22.11";
-    packages = import ../../common/packages.nix { inherit pkgs; };
+    packages = import ../../nix/packages.nix { inherit pkgs; };
   };
 
   services = {
-    hypridle = import ../../common/hypridle.nix;
-    hyprpaper = import ../../common/hyprpaper.nix;
+    hypridle = import ../../nix/hypridle.nix;
+    hyprpaper = import ../../nix/hyprpaper.nix;
 
     mako = {
       enable = true;
@@ -21,19 +21,19 @@
   };
 
   wayland.windowManager.hyprland =
-    import ../../common/hyprland.nix { inherit pkgs; };
+    import ../../nix/hyprland.nix { inherit pkgs; };
 
   programs = {
     home-manager.enable = true;
-    fish = import ../../common/fish.nix { inherit pkgs; };
-    neovim = import ../../common/neovim.nix { inherit pkgs; };
-    starship = import ../../common/starship.nix;
-    zellij = import ../../common/zellij.nix;
-    tmux = import ../../common/tmux.nix;
-    alacritty = import ../../common/alacritty.nix;
-    bat = import ../../common/bat.nix;
-    waybar = import ../../common/waybar.nix { inherit lib; };
-    hyprlock = import ../../common/hyprlock.nix;
+    fish = import ../../nix/fish.nix { inherit pkgs; };
+    neovim = import ../../nix/neovim.nix { inherit pkgs; };
+    starship = import ../../nix/starship.nix;
+    zellij = import ../../nix/zellij.nix;
+    tmux = import ../../nix/tmux.nix;
+    alacritty = import ../../nix/alacritty.nix;
+    bat = import ../../nix/bat.nix;
+    waybar = import ../../nix/waybar.nix { inherit lib; };
+    hyprlock = import ../../nix/hyprlock.nix;
 
     direnv = {
       enable = true;
@@ -97,7 +97,7 @@
     };
     configFile = {
       nvim = {
-        source = ../../common/nvim;
+        source = ../../config/nvim;
         target = "nvim";
       };
     };
