@@ -53,15 +53,13 @@ M.imap = function(keys, func, desc, plugin, bufnr)
 end
 
 -- This function is used to import modules in a safe way. It will log an error if the module is
--- not found. The function returns the module if it was found, otherwise it will throw an error.
+-- not found. The function returns the module if it was found.
 M.do_import = function(module)
 	local status, lib = pcall(require, module)
 	if status then
 		return lib
 	else
 		vim.notify("Error importing " .. module, vim.log.levels.ERROR)
-		-- Throw an error
-		error("Error importing " .. module)
 	end
 end
 

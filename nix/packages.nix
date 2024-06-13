@@ -19,4 +19,15 @@ with pkgs; [
   dos2unix
   nix-prefetch-git
   pre-commit
+  lua-language-server
+  rust-analyzer
+  shellcheck
+  stylua
+  nixd
+  haskellPackages.nixfmt
+  nodePackages.markdownlint-cli
+  nodePackages.yaml-language-server
+  nodePackages.bash-language-server
+  nodePackages.prettier
+  nodejs_22
 ]
