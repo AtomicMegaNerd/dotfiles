@@ -47,9 +47,16 @@ Configuration files for my Windows programs:
 - Powershell
 - Neovim (shared with Nix)
 
-To install the configs, first make sure you have the required programs installed. 
+To install the configs, first make sure you have the required programs installed.
 Then run the following as Administrator:
 
 ```powershell
 .\scripts\CreateSymlinks.ps1
 ```
+
+## Environment Variables
+
+The following environment variables are used in the different configurations:
+
+- NVIM_ENABLE_MASON - Set to "1" in order to enable Mason which can then manage and install
+  different LSP's and linters for Neovim.
