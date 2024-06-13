@@ -45,31 +45,11 @@ Configuration files for my Windows programs:
 - Windows Terminal
 - VSCode
 - Powershell
+- Neovim (shared with Nix)
 
-### Setting Up Symlinks
-
-#### Powershell
-
-```powershell
-New-Item -ItemType SymbolicLink -Target C:\Users\RCD\Code\Configs\dotfiles\config\Powershell\Microsoft.PowerShell_profile.ps1 -Path C:\Users\RCD\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
-```
-
-#### VSCode
+To install the configs, first make sure you have the required programs installed. 
+Then run the following as Administrator:
 
 ```powershell
-New-Item -ItemType SymbolicLink -Target C:\Users\RCD\Code\Configs\dotfiles\configs\VSCode\settings.json -Path C:\Users\RCD\AppData\Roaming\Code\User\settings.json
-```
-
-#### Windows Terminal
-
-The tricky aspect here is we have to delete the settings.json first.
-
-```powershell
-New-Item -ItemType SymbolicLink -Target C:\Users\RCD\Code\Configs\dotfiles\configs\WindowsTerminal\settings.json -Path C:\Users\RCD\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
-```
-
-#### Neovim
-
-```powershell
-New-Item -ItemType SymbolicLink -Target C:\Users\RCD\Code\Configs\dotfiles\configs\Neovim -Path C:\Users\RCD\AppData\Local\nvim
+.\scripts\CreateSymlinks.ps1
 ```
