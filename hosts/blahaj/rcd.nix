@@ -4,7 +4,7 @@
     username = "rcd";
     homeDirectory = "/home/rcd";
     stateVersion = "22.11";
-    packages = import ../../static/packages.nix { inherit pkgs; };
+    packages = import ../../nix/packages.nix { inherit pkgs; };
   };
 
   programs = {
