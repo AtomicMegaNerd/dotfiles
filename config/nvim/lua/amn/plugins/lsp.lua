@@ -12,6 +12,10 @@ return {
 		local cmp_nvim_lsp = utils.do_import("cmp_nvim_lsp")
 		local telescope_builtin = utils.do_import("telescope.builtin")
 
+		if not nvim_lsp or not lsp_signature or not cmp_nvim_lsp or not telescope_builtin then
+			return
+		end
+
 		-- Disable the panda
 		lsp_signature.setup({
 			hint_prefix = "> ",

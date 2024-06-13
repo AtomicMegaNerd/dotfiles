@@ -5,6 +5,11 @@ if vim.env.NON_NIX_SYSTEM == "1" then
 		config = function()
 			local utils = require("amn.utils")
 			local mason = utils.do_import("mason")
+
+			if not mason then
+				return
+			end
+
 			mason.setup()
 		end,
 	}

@@ -60,6 +60,7 @@ M.do_import = function(module)
 		return lib
 	else
 		vim.notify("Error importing " .. module, vim.log.levels.ERROR)
+		return nil
 	end
 end
 

@@ -11,6 +11,10 @@ return {
 		local utils = require("amn.utils")
 		local cmp = utils.do_import("cmp")
 
+		if not cmp then
+			return
+		end
+
 		cmp.setup({
 			snippet = {
 				expand = function(args)

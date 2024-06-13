@@ -11,6 +11,10 @@ return {
 		local select = utils.do_import("CopilotChat.select")
 		local chat_cmp = utils.do_import("CopilotChat.integrations.cmp")
 
+		if not chat or not select or not chat_cmp then
+			return
+		end
+
 		chat_cmp.setup()
 		chat.setup({
 			show_help = false,

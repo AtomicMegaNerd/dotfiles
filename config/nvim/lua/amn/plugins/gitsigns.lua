@@ -5,6 +5,10 @@ return {
 		local utils = require("amn.utils")
 		local gitsigns = utils.do_import("gitsigns")
 
+		if not gitsigns then
+			return
+		end
+
 		gitsigns.setup({
 			signs = {
 				add = { hl = "GitGutterAdd", text = "+" },

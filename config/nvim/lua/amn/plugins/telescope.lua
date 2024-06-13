@@ -17,6 +17,10 @@ return {
 		local telescope = utils.do_import("telescope")
 		local tb = utils.do_import("telescope.builtin")
 
+		if not telescope or not tb then
+			return
+		end
+
 		telescope.setup({
 			defaults = {
 				vimgrep_arguments = {

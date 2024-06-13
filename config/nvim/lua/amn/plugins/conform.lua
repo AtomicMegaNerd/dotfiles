@@ -4,6 +4,10 @@ return {
 		local utils = require("amn.utils")
 		local conform = utils.do_import("conform")
 
+		if not conform then
+			return
+		end
+
 		conform.setup({
 			formatters_by_ft = {
 				lua = { "stylua" },

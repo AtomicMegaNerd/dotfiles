@@ -8,6 +8,11 @@ return {
 	config = function()
 		local utils = require("amn.utils")
 		local neogit = utils.do_import("neogit")
+
+		if not neogit then
+			return
+		end
+
 		neogit.setup({
 			integrations = {
 				diffview = true,

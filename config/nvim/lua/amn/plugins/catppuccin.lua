@@ -9,6 +9,10 @@ return {
 		local utils = require("amn.utils")
 		local catppuccin = utils.do_import("catppuccin")
 
+		if not catppuccin then
+			return
+		end
+
 		catppuccin.setup({
 			flavour = "frappe",
 			no_italic = true,
