@@ -2,9 +2,6 @@ return {
 	"catppuccin/nvim",
 	name = "catppuccin",
 	priority = 1000,
-	init = function()
-		vim.o.termguicolors = true
-	end,
 	config = function()
 		local utils = require("amn.utils")
 		local catppuccin = utils.do_import("catppuccin")
@@ -26,6 +23,7 @@ return {
 				fidget = true,
 			},
 		})
+
 		vim.cmd.colorscheme("catppuccin")
 	end,
 }

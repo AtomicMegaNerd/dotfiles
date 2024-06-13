@@ -27,10 +27,9 @@ o.mouse = "a"
 -- Blinking block cursor!
 o.guicursor = "a:blinkon100"
 
--- Set tabstop
-o.expandtab = true
-o.tabstop = 4
-o.shiftwidth = 4
+o.expandtab = true -- Use spaces instead of tabs
+o.tabstop = 4 -- Number of spaces tabs count for
+o.shiftwidth = 4 -- Number of spaces to (auto)indent
 
 -- Indentation
 o.autoindent = true
@@ -38,7 +37,6 @@ o.breakindent = true
 o.laststatus = 3
 
 -- Save undo history
-opt.clipboard:append({ "unnamed", "unnamedplus" })
 opt.undofile = true
 
 -- Case insensitive searching UNLESS /C or capital in search
@@ -50,3 +48,6 @@ o.completeopt = "menuone,noselect"
 
 -- Enable spell checking
 o.spell = true
+
+-- Clipboard
+opt.clipboard:append({ "unnamed", "unnamedplus" })

@@ -11,3 +11,8 @@ require("amn.user.plugins")
 require("amn.user.options")
 require("amn.user.autocmds")
 require("amn.user.keymap")
+
+-- Linux Specific configuration
+if vim.fn.has("linux") == 1 then
+	require("amn.user.linux")
+end
