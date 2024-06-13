@@ -20,7 +20,18 @@ in {
 
   programs.fish.enable = true;
 
-  environment.systemPackages = with pkgs; [ neovim git curl ];
+  virtualisation.containers.enable = true;
+  virtualisation = {
+
+    podman = {
+      enable = true;
+      dockerCompat = true;
+
+      defaultNetwork.settings.dns_enabled = true;
+    };
+  };
+
+  environment.systemPackages = with pkgs; [ neovim git curl podman-compose ];
 
   nix = {
     gc = {
