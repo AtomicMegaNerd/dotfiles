@@ -22,6 +22,7 @@
         p.toml
         p.zig
         p.hyprlang
+        p.dockerfile
       ]))
     ];
 }
