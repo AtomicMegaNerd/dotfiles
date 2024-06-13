@@ -51,7 +51,7 @@ Configuration files for my Windows programs:
 #### Powershell
 
 ```powershell
-New-Item -ItemType SymbolicLink -Target C:\Users\RCD\Code\Configs\dotfiles\configs\Powershell\Microsoft.PowerShell_profile.ps1 -Path C:\Users\RCD\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
+New-Item -ItemType SymbolicLink -Target C:\Users\RCD\Code\Configs\dotfiles\config\Powershell\Microsoft.PowerShell_profile.ps1 -Path C:\Users\RCD\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
 ```
 
 #### VSCode
