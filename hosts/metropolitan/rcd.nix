@@ -61,7 +61,7 @@ in {
 
   xdg.configFile = {
     nvim = {
-      source = ../../config/nvim;
+      source = ../../nix/nvim;
       target = "nvim";
     };
   };
