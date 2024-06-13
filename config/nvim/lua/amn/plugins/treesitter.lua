@@ -1,5 +1,4 @@
-if vim.env.NON_NIX_SYSTEM == 1 then
-	vim.notify("Non-Nix system deteceted: Tree-Sitter enabled via Lazy!", vim.log.levels.INFO)
+if vim.env.NON_NIX_SYSTEM == "1" then
 	return {
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",

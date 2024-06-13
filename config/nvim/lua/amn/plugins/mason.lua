@@ -1,5 +1,4 @@
-if vim.env.NON_NIX_SYSTEM == 1 then
-	vim.notify("Non-nix system detected: Mason enabled!", vim.log.levels.INFO)
+if vim.env.NON_NIX_SYSTEM == "1" then
 	return {
 		"williamboman/mason.nvim",
 		dependencies = { "williamboman/mason-lspconfig.nvim" },
