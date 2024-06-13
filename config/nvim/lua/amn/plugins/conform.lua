@@ -18,6 +18,7 @@ return {
 				javascript = { "prettier" },
 				typescript = { "prettier" },
 				json = { "prettier" },
+				nix = { "nixfmt" },
 			},
 		})
 	end,
