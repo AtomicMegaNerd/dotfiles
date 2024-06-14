@@ -1,4 +1,4 @@
-if vim.env.NVIM_MASON_ENALBLE == "1" then
+if vim.env.NVIM_MASON_ENABLE == "1" then
 	return {
 		"williamboman/mason.nvim",
 		dependencies = { "williamboman/mason-lspconfig.nvim" },
