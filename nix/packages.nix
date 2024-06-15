@@ -27,7 +27,7 @@ with pkgs; [
   haskellPackages.nixfmt
   nodePackages.markdownlint-cli
   nodePackages.yaml-language-server
-  nodePackages.bash-language-server
+  bash-language-server
   nodePackages.prettier
   nodejs_22
 ]
