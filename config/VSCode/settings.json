@@ -22,13 +22,14 @@
 
   // Workbench settings
   "workbench.startupEditor": "none",
-  "workbench.iconTheme": "catppuccin-frappe",
+  "workbench.iconTheme": "catppuccin-mocha",
   "workbench.layoutControl.enabled": false,
   "workbench.settings.editor": "ui",
 
   // Catppuccin settings
   "catppuccin.italicKeywords": false,
   "catppuccin.italicComments": false,
+  "catpuccin.accentColor": "teal",
 
   "rust-analyzer.semanticHighlighting.strings.enable": true,
 

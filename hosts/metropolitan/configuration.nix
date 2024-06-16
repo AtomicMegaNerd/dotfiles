@@ -45,7 +45,7 @@ in {
 
   catppuccin = {
     enable = true;
-    flavor = "frappe";
+    flavor = "mocha";
   };
 
   system.stateVersion = "23.11";

@@ -2,7 +2,7 @@
   enable = true;
   catppuccin = {
     enable = true;
-    flavor = "frappe";
+    flavor = "mocha";
   };
   settings = [{
     layer = "top";

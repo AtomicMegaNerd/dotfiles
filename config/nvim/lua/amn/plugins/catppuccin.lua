@@ -11,7 +11,7 @@ return {
 		end
 
 		catppuccin.setup({
-			flavour = "frappe",
+			flavour = "mocha",
 			no_italic = true,
 			transparent_background = true,
 			integrations = {
