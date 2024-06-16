@@ -5,8 +5,7 @@ let
     set -gx GOPATH $HOME/.local/go
     set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
   '';
-in
-{
+in {
   enable = true;
 
   catppuccin = {
@@ -14,20 +13,19 @@ in
     flavor = "frappe";
   };
 
-  shellInit =
-    if pkgs.stdenv.isDarwin then ''
-      ${commonShellInit}
+  shellInit = if pkgs.stdenv.isDarwin then ''
+    ${commonShellInit}
 
-      # Fixes color bug on MacOS
-      set -gx TERMINFO_DIRS $TERMINFO_DIRS:$HOME/.local/share/terminfo
+    # Fixes color bug on MacOS
+    set -gx TERMINFO_DIRS $TERMINFO_DIRS:$HOME/.local/share/terminfo
 
-      # Enable Homebrew for casks
-      fish_add_path /opt/homebrew/bin
-      fish_add_path /opt/homebrew/sbin
-      fish_add_path ~/.nix-profile/bin
-      fish_add_path /nix/var/nix/profiles/default/bin
-    '' else
-      commonShellInit;
+    # Enable Homebrew for casks
+    fish_add_path /opt/homebrew/bin
+    fish_add_path /opt/homebrew/sbin
+    fish_add_path ~/.nix-profile/bin
+    fish_add_path /nix/var/nix/profiles/default/bin
+  '' else
+    commonShellInit;
 
   interactiveShellInit = ''
     set fish_greeting # Disable greeting
@@ -38,7 +36,6 @@ in
     ll = "eza -lah";
     df = "duf";
     cat = "bat --paging=never --style=plain";
-    docker = "podman";
 
     # Just use ripgrep
     grep = "rg";
