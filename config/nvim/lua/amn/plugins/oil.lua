@@ -1,5 +1,5 @@
 return {
-	"stevearc/oil",
+	"stevearc/oil.nvim",
 	config = function()
 		local utils = require("amn.utils")
 		local oil = utils.do_import("oil")
