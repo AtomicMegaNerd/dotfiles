@@ -381,7 +381,6 @@
       "name": "Catppuccin Frappe",
       "tab": {
         "background": "#303446FF",
-        "iconStyle": "default",
         "showCloseButton": "always",
         "unfocusedBackground": null
       },
@@ -390,18 +389,13 @@
         "unfocusedBackground": "#232634FF"
       },
       "window": {
-        "applicationTheme": "dark",
-        "experimental.rainbowFrame": false,
-        "frame": null,
-        "unfocusedFrame": null,
-        "useMica": false
+        "applicationTheme": "dark"
       }
     },
     {
       "name": "Catppuccin Macchiato",
       "tab": {
         "background": "#24273AFF",
-        "iconStyle": "default",
         "showCloseButton": "always",
         "unfocusedBackground": null
       },
@@ -410,11 +404,7 @@
         "unfocusedBackground": "#181926FF"
       },
       "window": {
-        "applicationTheme": "dark",
-        "experimental.rainbowFrame": false,
-        "frame": null,
-        "unfocusedFrame": null,
-        "useMica": false
+        "applicationTheme": "dark"
       }
     }
   ],
