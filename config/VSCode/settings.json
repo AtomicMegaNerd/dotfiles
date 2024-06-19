@@ -22,7 +22,7 @@
 
   // Workbench settings
   "workbench.startupEditor": "none",
-  "workbench.iconTheme": "catppuccin-macchiato",
+  "workbench.iconTheme": "catppuccin-frappe",
   "workbench.layoutControl.enabled": false,
   "workbench.settings.editor": "ui",
 
