@@ -3,7 +3,7 @@
 
   catppuccin = {
     enable = true;
-    flavor = "frappe";
+    flavor = "macchiato";
   };
 
   settings = {

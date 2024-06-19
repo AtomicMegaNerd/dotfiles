@@ -12,6 +12,6 @@
   '';
   catppuccin = {
     enable = true;
-    flavor = "mocha";
+    flavor = "macchiato";
   };
 }

@@ -42,7 +42,7 @@
       enableFishIntegration = true;
       catppuccin = {
         enable = true;
-        flavor = "mocha";
+        flavor = "macchiato";
       };
     };
   };
