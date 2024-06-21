@@ -7,6 +7,6 @@ return {
 			return
 		end
 
-		lint.linters_by_ft = { go = "golangci-lint" }
+		lint.linters_by_ft = { go = "golangcilint" }
 	end,
 }
