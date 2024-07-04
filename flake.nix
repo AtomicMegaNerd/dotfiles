@@ -1,4 +1,4 @@
-#     ___   __                  _      __  ___                 _   __              __
+# ___   __                  _      __  ___                 _   __              __
 #    /   | / /_____  ____ ___  (_)____/  |/  /__  ____ _____ _/ | / /__  _________/ /
 #   / /| |/ __/ __ \/ __ `__ \/ / ___/ /|_/ / _ \/ __ `/ __ `/  |/ / _ \/ ___/ __  /
 #  / ___ / /_/ /_/ / / / / / / / /__/ /  / /  __/ /_/ / /_/ / /|  /  __/ /  / /_/ /
@@ -17,13 +17,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     catppuccin.url = "github:catppuccin/nix";
-    nixos-wsl = {
-      url = "github:nix-community/NixOS-WSL";
-      inputs.nixpkgs.follows = "nixos";
-    };
   };
 
-  outputs = { self, nixos, nixpkgs, home-manager, catppuccin, nixos-wsl }:
+  outputs = { self, nixos, nixpkgs, home-manager, catppuccin, }:
     let
       sysLinux = "x86_64-linux";
       sysMac = "aarch64-darwin";
@@ -40,7 +36,7 @@
           modules = [
             ./hosts/${hostname}/configuration.nix
             catppuccin.nixosModules.catppuccin
-          ] ++ (if isWsl then [ nixos-wsl.nixosModules.wsl ] else [ ]);
+          ];
         };
 
       buildHomeMgrConf = system: hostname:
@@ -55,12 +51,10 @@
     {
       nixosConfigurations = {
         blahaj = buildNixOsConf sysLinux "blahaj" false;
-        metropolitan = buildNixOsConf sysLinux "metropolitan" true;
       };
 
       homeConfigurations = {
         "rcd@blahaj" = buildHomeMgrConf sysLinux "blahaj";
-        "rcd@metropolitan" = buildHomeMgrConf sysLinux "metropolitan";
         "rcd@Discovery" = buildHomeMgrConf sysMac "discovery";
       };
     };
