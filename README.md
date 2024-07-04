@@ -14,11 +14,8 @@ use Nix as a package manager. This repo also contains other configs for non-Nix 
 
 ## Nix Systems
 
-Right now we have three hosts that are managed by Nix:
-
 | Host          | OS    | Platform       |
 | ------------- | ----- | -------------- |
-| metropolitan  | NixOS | x86-64-linux   |
 | blahaj        | NixOS | x86-64-linux   |
 | discovery     | MacOS | aarch64-darwin |
 
