@@ -11,27 +11,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	pattern = "*",
 })
 
--- Formatting
-----------------------------------------------------------------
-local fmt_grp = vim.api.nvim_create_augroup("FormatOptions", { clear = true })
-
-vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = "*",
-	callback = function(args)
-		require("conform").format({ bufnr = args.buf })
-	end,
-	group = fmt_grp,
-})
-
--- Linting
-----------------------------------------------------------------
-vim.api.nvim_create_autocmd("BufWritePost", {
-	callback = function()
-		require("lint").try_lint()
-	end,
-	group = fmt_grp,
-})
-
 -- Options for specific file types
 ----------------------------------------------------------------
 local fto_grp = vim.api.nvim_create_augroup("FileTypeOptions", { clear = true })
