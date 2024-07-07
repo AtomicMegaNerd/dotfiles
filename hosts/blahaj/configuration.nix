@@ -58,7 +58,7 @@ in {
       pihole = {
         user = "root";
         autoStart = true;
-        image = "pihole/pihole:2024.06.0";
+        image = "pihole/pihole:2024.07.0";
         ports = [ "53:53/tcp" "53:53/udp" "8081:80/tcp" ];
         volumes = [ "/etc/pihole:/etc/pihole" "/etc/dnsmasq.d:/etc/dnsmasq.d" ];
         environment = {
