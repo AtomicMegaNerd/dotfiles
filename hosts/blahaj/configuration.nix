@@ -35,7 +35,7 @@ in {
     users.rcd = {
       isNormalUser = true;
       description = "Chris Dunphy";
-      extraGroups = [ "wheel" "docker" ];
+      extraGroups = [ "wheel" "docker" "podman" ];
       shell = pkgs.fish;
       openssh.authorizedKeys.keys = [ rcd_pub_key ];
     };
@@ -52,21 +52,29 @@ in {
     "Z /etc/dnsmasq.d 0775 ${toString piholeUid} ${toString piholeGid} -"
   ];
 
-  virtualisation.oci-containers = {
-    backend = "docker";
-    containers = {
-      pihole = {
-        user = "root";
-        autoStart = true;
-        image = "pihole/pihole:2024.07.0";
-        ports = [ "53:53/tcp" "53:53/udp" "8081:80/tcp" ];
-        volumes = [ "/etc/pihole:/etc/pihole" "/etc/dnsmasq.d:/etc/dnsmasq.d" ];
-        environment = {
-          TZ = "America/Edmonton";
-          FTLCONF_LOCAL_IPV4 = "192.168.1.232";
-          FTLCONF_LOCAL_IPV6 = "fd00:1234:5678:9abc:def0:1234:5678:9abc";
-          PIHOLE_UID = toString piholeUid;
-          PIHOLE_GID = toString piholeGid;
+  virtualisation = {
+    podman = {
+      enable = true;
+      dockerCompat = true;
+      dockerSocket.enable = true;
+    };
+    oci-containers = {
+      backend = "podman";
+      containers = {
+        pihole = {
+          user = "root";
+          autoStart = true;
+          image = "pihole/pihole:2024.07.0";
+          ports = [ "53:53/tcp" "53:53/udp" "8081:80/tcp" ];
+          volumes =
+            [ "/etc/pihole:/etc/pihole" "/etc/dnsmasq.d:/etc/dnsmasq.d" ];
+          environment = {
+            TZ = "America/Edmonton";
+            FTLCONF_LOCAL_IPV4 = "192.168.1.232";
+            FTLCONF_LOCAL_IPV6 = "fd00:1234:5678:9abc:def0:1234:5678:9abc";
+            PIHOLE_UID = toString piholeUid;
+            PIHOLE_GID = toString piholeGid;
+          };
         };
       };
     };
