@@ -1,6 +1,5 @@
 .DS_Store
-NeoVim/plugged
-NeoVim/spell
-NeoVim/plugin/packer_compiled.lua
 **/Brewfile.lock.json
+**/credentials.fish
 common/nvim/lazy-lock.json
+**/nvim/spell

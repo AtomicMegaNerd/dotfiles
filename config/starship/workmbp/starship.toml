@@ -1,0 +1,7 @@
+command_timeout = 2000
+
+[username]
+show_always=true
+
+[git_branch]
+truncation_length=30
