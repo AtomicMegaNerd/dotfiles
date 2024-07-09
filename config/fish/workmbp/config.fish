@@ -20,7 +20,7 @@ alias tf terraform
 # Podman
 alias docker podman
 
-# tmux
+# Tmux
 alias tl "tmux list-sessions"
 alias ta "tmux attach"
 alias tk "tmux kill-session"

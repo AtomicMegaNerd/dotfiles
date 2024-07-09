@@ -23,7 +23,7 @@ use Nix as a package manager. This repo also contains other configs for non-Nix 
 
 Run the build against the host that you are interested in. This only applies to NixOS machines:
 
-```bash
+```fish
 sudo nixos-rebuild switch --flake .#
 ```
 
@@ -31,8 +31,8 @@ sudo nixos-rebuild switch --flake .#
 
 We use home-manager on all of our Nix managed machines.
 
-```bash
-home-manager switch -- flake .#USERNAME@HOST
+```fish
+home-manager switch --flake .#USERNAME@HOST
 ```
 
 ## Windows
@@ -55,5 +55,8 @@ Then run the following as Administrator:
 
 The following environment variables are used in the different configurations:
 
-- NVIM_ENABLE_MASON - Set to "1" in order to enable Mason which can then manage and install
-  different LSP's and linters for Neovim.
+```fish
+# Set to "1" in order to enable Mason which can then manage and install
+# LSP servers and linters for Neovim.
+set -gx NVIM_ENABLE_MASON 1
+```
