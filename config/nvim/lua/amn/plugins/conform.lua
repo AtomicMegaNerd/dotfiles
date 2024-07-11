@@ -14,7 +14,6 @@ return {
 				python = { "ruff_format" },
 				sh = { "shfmt" },
 				go = { "gofmt" },
-				rust = { "rustfmt" },
 				javascript = { "prettier" },
 				typescript = { "prettier" },
 				json = { "prettier" },

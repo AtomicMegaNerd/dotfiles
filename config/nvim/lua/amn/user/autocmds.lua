@@ -28,27 +28,6 @@ vim.api.nvim_create_autocmd("Filetype", {
 })
 
 vim.api.nvim_create_autocmd("Filetype", {
-	command = "set colorcolumn=100",
-	group = fto_grp,
-	pattern = {
-		"go",
-		"sh",
-		"typescript",
-		"javascript",
-		"rust",
-		"lua",
-		"nix",
-		"yaml",
-		"json",
-		"markdown",
-		"haskell",
-		"terraform",
-		"powershell",
-		"dockerfile",
-	},
-})
-
-vim.api.nvim_create_autocmd("Filetype", {
 	command = "set colorcolumn=88",
 	group = fto_grp,
 	pattern = { "python" },

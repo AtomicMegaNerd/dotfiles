@@ -17,10 +17,8 @@ with pkgs; [
   procs
   jq
   dos2unix
-  nix-prefetch-git
   pre-commit
   lua-language-server
-  rust-analyzer
   shellcheck
   stylua
   nixd
