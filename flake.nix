@@ -16,7 +16,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    catppuccin.url = "github:catppuccin/nix";
+    catppuccin = { url = "github:catppuccin/nix"; };
   };
 
   outputs = { self, nixos, nixpkgs, home-manager, catppuccin, }:
@@ -47,8 +47,8 @@
             catppuccin.homeManagerModules.catppuccin
           ];
         };
-    in
-    {
+
+    in {
       nixosConfigurations = {
         blahaj = buildNixOsConf sysLinux "blahaj" false;
       };
