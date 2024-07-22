@@ -27,7 +27,11 @@ return {
 		})
 
 		utils.nmap("<leader>pc", function()
-			chat.open()
+			chat.open({
+				window = {
+					layout = "replace",
+				},
+			})
 		end, "Co[P]ilot [C]hat")
 
 		utils.nmap("<leader>pt", function()
