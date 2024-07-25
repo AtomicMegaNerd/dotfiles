@@ -58,5 +58,6 @@
   "window.commandCenter": false,
   "security.workspace.trust.enabled": false,
   "workbench.colorTheme": "Catppuccin Frappé",
-  "Lua.diagnostics.globals": ["vim"]
+  "Lua.diagnostics.globals": ["vim"],
+  "catppuccin.accentColor": "teal"
 }
