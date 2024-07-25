@@ -16,11 +16,11 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    catppuccin = { url = "github:catppuccin/nix"; };
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL";
-      inputs.nixpkgs.follows = "nixos";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
+    catppuccin = { url = "github:catppuccin/nix"; };
   };
 
   outputs = { self, nixos, nixpkgs, home-manager, catppuccin, nixos-wsl }:
@@ -40,7 +40,7 @@
           modules = [
             ./hosts/${hostname}/configuration.nix
             catppuccin.nixosModules.catppuccin
-          ] + (if isWsl then [ nixos-wsl.nixosModules.wsl ] else [ ]);
+          ] ++ (if isWsl then [ nixos-wsl.nixosModules.wsl ] else [ ]);
         };
 
       buildHomeMgrConf = system: hostname:
