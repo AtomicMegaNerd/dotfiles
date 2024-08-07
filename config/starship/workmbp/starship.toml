@@ -1,4 +1,4 @@
-command_timeout = 2000
+command_timeout = 5000
 
 [username]
 show_always=true
