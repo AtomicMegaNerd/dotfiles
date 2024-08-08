@@ -48,12 +48,15 @@ in {
     gnome-tour
     gnome-calendar
     epiphany
+    simple-scan
     geary
     totem
     cheese
     gnome-text-editor
   ]) ++ (with pkgs.gnome; [
     gnome-music
+    gnome-contacts
+    gnome-maps
     gnome-characters
     tali # poker game
     iagno # go game
