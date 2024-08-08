@@ -1,52 +1,86 @@
 { pkgs, ... }:
 let rcd_pub_key = builtins.readFile ../../static/rcd_pub_key;
 in {
+  imports = [ ./hardware-configuration.nix ];
 
-  wsl = {
+  boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
+    plymouth.enable = true;
+  };
+
+  # Networking
+  networking = {
+    hostName = "metropolitan";
+    networkmanager.enable = true;
+  };
+
+  time.timeZone = "America/Edmonton";
+  i18n.defaultLocale = "en_CA.UTF-8";
+
+  # GUI
+  services.xserver.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
+
+  # Enable sound.
+  hardware.pulseaudio.enable = false;
+  services.pipewire = {
     enable = true;
-    defaultUser = "rcd";
-    wslConf = { network.hostname = "metropolitan"; };
+    pulse.enable = true;
   };
 
-  users = {
-    users.rcd = {
-      isNormalUser = true;
-      description = "Chris Dunphy";
-      shell = pkgs.fish;
-      extraGroups = [ "wheel" "docker" ];
-      openssh.authorizedKeys.keys = [ rcd_pub_key ];
-    };
+  # User Account
+  users.users.rcd = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" "docker" "podman" ];
+    shell = pkgs.fish;
+    openssh.authorizedKeys.keys = [ rcd_pub_key ];
   };
 
-  programs.fish.enable = true;
+  fonts.packages = with pkgs;
+    [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
 
-  virtualisation.containers.enable = true;
-  virtualisation = {
+  environment.systemPackages = (import ../../nix/packages.nix { inherit pkgs; })
+    ++ (with pkgs; [ neovim starship git alacritty ]);
 
-    podman = {
+  services.openssh.enable = true;
+  programs = {
+    fish.enable = true;
+    _1password.enable = true;
+    _1password-gui = {
       enable = true;
-      dockerCompat = true;
-      dockerSocket.enable = true;
-      defaultNetwork.settings.dns_enabled = true;
+      polkitPolicyOwners = [ "rcd" ];
     };
   };
 
-  environment.systemPackages = with pkgs; [ neovim git curl podman-compose ];
+  virtualisation = {
+    podman.enable = true;
+    podman.dockerCompat = true;
+    libvirtd = {
+      enable = true;
+      qemu = {
+        package = pkgs.qemu_kvm;
+        swtpm.enable = true;
+        ovmf = {
+          enable = true;
+          packages = [ pkgs.OVMFFull.fd ];
+        };
+      };
+    };
+  };
 
   nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = "experimental-features = nix-command flakes";
     gc = {
       automatic = true;
       dates = "weekly";
       options = "--delete-older-than 7d";
     };
-    package = pkgs.nixFlakes;
-    extraOptions = "experimental-features = nix-command flakes";
   };
 
-  catppuccin = {
-    enable = true;
-    flavor = "macchiato";
-  };
-
-  system.stateVersion = "23.11";
+  system.stateVersion = "24.05";
 }
+

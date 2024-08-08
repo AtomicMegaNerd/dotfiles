@@ -5,7 +5,7 @@ in {
   home = {
     username = "rcd";
     homeDirectory = "/home/rcd";
-    stateVersion = "22.11";
+    stateVersion = "24.05";
     packages = import ../../nix/packages.nix { inherit pkgs; };
   };
 
@@ -15,6 +15,7 @@ in {
     fish = import ../../nix/fish.nix { inherit pkgs; };
     tmux = import ../../nix/tmux.nix;
     starship = import ../../nix/starship.nix;
+    alacritty = import ../../nix/alacritty.nix;
     zellij = import ../../nix/zellij.nix;
     bat = import ../../nix/bat.nix;
 
@@ -28,18 +29,8 @@ in {
       userName = "Chris Dunphy";
       userEmail = "chris@megaparsec.ca";
       extraConfig = {
-        core.sshCommand = "ssh.exe";
         init.defaultBranch = "main";
         pull.rebase = false;
-        user.signingkey = "${rcd_pub_key}";
-        gpg = {
-          ssh = {
-            program =
-              "/mnt/c/Users/RCD/AppData/Local/1Password/app/8/op-ssh-sign.exe";
-          };
-          format = "ssh";
-        };
-        commit = { gpgsign = true; };
       };
     };
 
@@ -56,6 +47,15 @@ in {
         enable = true;
         flavor = "macchiato";
       };
+    };
+
+    ssh = {
+      enable = true;
+      forwardAgent = true;
+      extraConfig = ''
+        Host *
+                IdentityAgent ~/.1password/agent.sock
+      '';
     };
   };
 
