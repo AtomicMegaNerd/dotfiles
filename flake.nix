@@ -21,7 +21,7 @@
           config.allowUnfree = true;
         };
 
-      buildNixOsConf = system: hostname: isWsl:
+      buildNixOsConf = system: hostname:
         nixos.lib.nixosSystem {
           pkgs = buildPkgsConf system true;
           modules = [
@@ -41,8 +41,8 @@
 
     in {
       nixosConfigurations = {
-        blahaj = buildNixOsConf sysLinux "blahaj" false;
-        metropolitan = buildNixOsConf sysLinux "metropolitan" true;
+        blahaj = buildNixOsConf sysLinux "blahaj";
+        metropolitan = buildNixOsConf sysLinux "metropolitan";
       };
 
       homeConfigurations = {
