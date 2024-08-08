@@ -16,7 +16,7 @@ in {
     tmux = import ../../nix/tmux.nix;
     starship = import ../../nix/starship.nix;
     zellij = import ../../nix/zellij.nix;
-    alacritty = import ../../nix/alacritty.nix;
+    alacritty = import ../../nix/alacritty.nix { inherit pkgs; };
     bat = import ../../nix/bat.nix;
 
     direnv = {

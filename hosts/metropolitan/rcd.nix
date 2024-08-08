@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-let rcd_pub_key = builtins.readFile ../../static/rcd_pub_key;
-in {
+{ pkgs, ... }: {
 
   home = {
     username = "rcd";
@@ -15,7 +13,7 @@ in {
     fish = import ../../nix/fish.nix { inherit pkgs; };
     tmux = import ../../nix/tmux.nix;
     starship = import ../../nix/starship.nix;
-    alacritty = import ../../nix/alacritty.nix;
+    alacritty = import ../../nix/alacritty.nix { inherit pkgs; };
     zellij = import ../../nix/zellij.nix;
     bat = import ../../nix/bat.nix;
 

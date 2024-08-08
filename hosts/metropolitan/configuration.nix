@@ -42,8 +42,35 @@ in {
   fonts.packages = with pkgs;
     [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
 
+  environment.gnome.excludePackages = (with pkgs; [
+    gnome-terminal
+    gnome-photos
+    gnome-tour
+    gnome-calendar
+    epiphany
+    geary
+    totem
+    cheese
+    gnome-text-editor
+  ]) ++ (with pkgs.gnome; [
+    gnome-music
+    gnome-characters
+    tali # poker game
+    iagno # go game
+    hitori # sudoku game
+    atomix # puzzle game
+  ]);
+
   environment.systemPackages = (import ../../nix/packages.nix { inherit pkgs; })
-    ++ (with pkgs; [ neovim starship git alacritty firefox ]);
+    ++ (with pkgs; [
+      neovim
+      starship
+      git
+      alacritty
+      firefox
+      zed-editor
+      pop-launcher
+    ]) ++ (with pkgs.gnomeExtensions; [ tray-icons-reloaded pop-shell ]);
 
   services.openssh.enable = true;
   programs = {
