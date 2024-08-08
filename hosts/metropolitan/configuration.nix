@@ -43,7 +43,7 @@ in {
     [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
 
   environment.systemPackages = (import ../../nix/packages.nix { inherit pkgs; })
-    ++ (with pkgs; [ neovim starship git alacritty ]);
+    ++ (with pkgs; [ neovim starship git alacritty firefox ]);
 
   services.openssh.enable = true;
   programs = {
