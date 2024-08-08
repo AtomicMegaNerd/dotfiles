@@ -70,10 +70,15 @@ in {
       firefox
       zed-editor
       pop-launcher
-    ]) ++ (with pkgs.gnomeExtensions; [ tray-icons-reloaded pop-shell ]);
+    ]) ++ (with pkgs.gnomeExtensions; [ appindicator pop-shell ]);
 
-  services.openssh.enable = true;
+  services = {
+    openssh.enable = true;
+    udev.packages = [ pkgs.gnome.gnome-settings-daemon ];
+  };
+
   programs = {
+    dconf.enable = true;
     fish.enable = true;
     _1password.enable = true;
     _1password-gui = {
