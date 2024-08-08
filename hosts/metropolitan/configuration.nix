@@ -70,6 +70,7 @@ in {
       firefox
       zed-editor
       gnome-tweaks
+      signal-desktop
     ]) ++ (with pkgs.gnomeExtensions; [ appindicator pop-shell ]);
 
   services = {
