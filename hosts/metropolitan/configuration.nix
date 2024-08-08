@@ -62,8 +62,15 @@ in {
   ]);
 
   environment.systemPackages = (import ../../nix/packages.nix { inherit pkgs; })
-    ++ (with pkgs; [ neovim starship git alacritty firefox zed-editor ])
-    ++ (with pkgs.gnomeExtensions; [ appindicator pop-shell ]);
+    ++ (with pkgs; [
+      neovim
+      starship
+      git
+      alacritty
+      firefox
+      zed-editor
+      gnome-tweaks
+    ]) ++ (with pkgs.gnomeExtensions; [ appindicator pop-shell ]);
 
   services = {
     openssh.enable = true;
