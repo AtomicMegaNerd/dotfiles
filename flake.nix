@@ -1,12 +1,3 @@
-# ___   __                  _      __  ___                 _   __              __
-#    /   | / /_____  ____ ___  (_)____/  |/  /__  ____ _____ _/ | / /__  _________/ /
-#   / /| |/ __/ __ \/ __ `__ \/ / ___/ /|_/ / _ \/ __ `/ __ `/  |/ / _ \/ ___/ __  /
-#  / ___ / /_/ /_/ / / / / / / / /__/ /  / /  __/ /_/ / /_/ / /|  /  __/ /  / /_/ /
-# /_/  |_\__/\____/_/ /_/ /_/_/\___/_/  /_/\___/\__, /\__,_/_/ |_/\___/_/   \__,_/
-#                                              /____/
-#
-# Nix Flake
-
 {
   description = "AtomicMegaNerd's NixOS Flake";
   inputs = {
@@ -16,14 +7,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixos-wsl = {
-      url = "github:nix-community/NixOS-WSL";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     catppuccin = { url = "github:catppuccin/nix"; };
   };
 
-  outputs = { self, nixos, nixpkgs, home-manager, catppuccin, nixos-wsl }:
+  outputs = { self, nixos, nixpkgs, home-manager, catppuccin, }:
     let
       sysLinux = "x86_64-linux";
       sysMac = "aarch64-darwin";
@@ -40,7 +27,7 @@
           modules = [
             ./hosts/${hostname}/configuration.nix
             catppuccin.nixosModules.catppuccin
-          ] ++ (if isWsl then [ nixos-wsl.nixosModules.wsl ] else [ ]);
+          ];
         };
 
       buildHomeMgrConf = system: hostname:
