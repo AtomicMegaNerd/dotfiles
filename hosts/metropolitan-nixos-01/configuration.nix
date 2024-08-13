@@ -7,29 +7,16 @@ in {
     kernelPackages = pkgs.linuxPackages_latest;
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
-    plymouth.enable = true;
   };
 
   # Networking
   networking = {
-    hostName = "metropolitan";
+    hostName = "metropolitan-nixos-01";
     networkmanager.enable = true;
   };
 
   time.timeZone = "America/Edmonton";
   i18n.defaultLocale = "en_CA.UTF-8";
-
-  # GUI
-  services.xserver.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  # Enable sound.
-  hardware.pulseaudio.enable = false;
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
-  };
 
   # User Account
   users.users.rcd = {
@@ -42,54 +29,19 @@ in {
   fonts.packages = with pkgs;
     [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
 
-  environment.gnome.excludePackages = (with pkgs; [
-    gnome-terminal
-    gnome-photos
-    gnome-tour
-    gnome-calendar
-    epiphany
-    simple-scan
-    geary
-    totem
-    cheese
-    gnome-text-editor
-  ]) ++ (with pkgs.gnome; [
-    gnome-music
-    gnome-contacts
-    gnome-maps
-    gnome-characters
-    tali # poker game
-    iagno # go game
-    hitori # sudoku game
-    atomix # puzzle game
-  ]);
-
   environment.systemPackages = (import ../../nix/packages.nix { inherit pkgs; })
     ++ (with pkgs; [
       neovim
       starship
       git
-      alacritty
-      firefox
-      zed-editor
-      gnome-tweaks
-      signal-desktop
-    ]) ++ (with pkgs.gnomeExtensions; [ appindicator pop-shell ]);
+    ]);
 
   services = {
     openssh.enable = true;
-    udev.packages = [ pkgs.gnome.gnome-settings-daemon ];
-    flatpak.enable = true;
   };
 
   programs = {
-    dconf.enable = true;
     fish.enable = true;
-    _1password.enable = true;
-    _1password-gui = {
-      enable = true;
-      polkitPolicyOwners = [ "rcd" ];
-    };
   };
 
   virtualisation = {

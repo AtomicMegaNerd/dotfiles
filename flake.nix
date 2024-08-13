@@ -42,13 +42,13 @@
     in {
       nixosConfigurations = {
         blahaj = buildNixOsConf sysLinux "blahaj";
-        metropolitan = buildNixOsConf sysLinux "metropolitan";
+        metropolitan-nixos-01 = buildNixOsConf sysLinux "metropolitan-nixos-01";
       };
 
       homeConfigurations = {
         "rcd@blahaj" = buildHomeMgrConf sysLinux "blahaj";
         "rcd@Discovery" = buildHomeMgrConf sysMac "discovery";
-        "rcd@metropolitan" = buildHomeMgrConf sysLinux "metropolitan";
+        "rcd@metropolitan-nixos-01" = buildHomeMgrConf sysLinux "metropolitan-nixos-01";
       };
     };
 }
