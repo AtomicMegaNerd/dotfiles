@@ -30,19 +30,17 @@ in {
     [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
 
   environment.systemPackages = (import ../../nix/packages.nix { inherit pkgs; })
-    ++ (with pkgs; [
-      neovim
-      starship
-      git
-    ]);
+    ++ (with pkgs; [ neovim starship git ]);
 
   services = {
-    openssh.enable = true;
+    openssh = {
+      permitRootLogin = "no";
+      passwordAuthentication = false;
+      enable = true;
+    };
   };
 
-  programs = {
-    fish.enable = true;
-  };
+  programs = { fish.enable = true; };
 
   virtualisation = {
     podman.enable = true;
