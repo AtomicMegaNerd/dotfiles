@@ -13,7 +13,6 @@
     fish = import ../../nix/fish.nix { inherit pkgs; };
     tmux = import ../../nix/tmux.nix;
     starship = import ../../nix/starship.nix;
-    alacritty = import ../../nix/alacritty.nix { inherit pkgs; };
     zellij = import ../../nix/zellij.nix;
     bat = import ../../nix/bat.nix;
 
@@ -45,15 +44,6 @@
         enable = true;
         flavor = "macchiato";
       };
-    };
-
-    ssh = {
-      enable = true;
-      forwardAgent = true;
-      extraConfig = ''
-        Host *
-                IdentityAgent ~/.1password/agent.sock
-      '';
     };
   };
 
