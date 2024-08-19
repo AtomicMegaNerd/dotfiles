@@ -38,6 +38,7 @@ in {
       passwordAuthentication = false;
       enable = true;
     };
+    qemuGuest.enable = true;
   };
 
   programs = { fish.enable = true; };
@@ -45,17 +46,6 @@ in {
   virtualisation = {
     podman.enable = true;
     podman.dockerCompat = true;
-    libvirtd = {
-      enable = true;
-      qemu = {
-        package = pkgs.qemu_kvm;
-        swtpm.enable = true;
-        ovmf = {
-          enable = true;
-          packages = [ pkgs.OVMFFull.fd ];
-        };
-      };
-    };
   };
 
   nix = {
