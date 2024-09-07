@@ -34,8 +34,10 @@ in {
 
   services = {
     openssh = {
-      permitRootLogin = "no";
-      passwordAuthentication = false;
+      settings = {
+        permitRootLogin = "no";
+        passwordAuthentication = false;
+      };
       enable = true;
     };
     qemuGuest.enable = true;
