@@ -74,6 +74,7 @@ in {
             FTLCONF_LOCAL_IPV6 = "fd00:1234:5678:9abc:def0:1234:5678:9abc";
             PIHOLE_UID = toString piholeUid;
             PIHOLE_GID = toString piholeGid;
+            BLOCK_ICLOUD_PR = "false";
           };
         };
       };
