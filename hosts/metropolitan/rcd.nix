@@ -1,9 +1,11 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+let rcd_pub_key = builtins.readFile ../../static/rcd_pub_key;
+in {
 
   home = {
     username = "rcd";
     homeDirectory = "/home/rcd";
-    stateVersion = "24.05";
+    stateVersion = "22.11";
     packages = import ../../nix/packages.nix { inherit pkgs; };
   };
 
@@ -26,8 +28,18 @@
       userName = "Chris Dunphy";
       userEmail = "chris@megaparsec.ca";
       extraConfig = {
+        core.sshCommand = "ssh.exe";
         init.defaultBranch = "main";
         pull.rebase = false;
+        user.signingkey = "${rcd_pub_key}";
+        gpg = {
+          ssh = {
+            program =
+              "/mnt/c/Users/chris/AppData/Local/1Password/app/8/op-ssh-sign.exe";
+          };
+          format = "ssh";
+        };
+        commit = { gpgsign = true; };
       };
     };
 
