@@ -1,0 +1,17 @@
+[core]
+    sshCommand = C:/Windows/System32/OpenSSH/ssh.exe
+    autocrlf = true
+
+[user]
+    name = Chris Dunphy
+    email = chris@megaparsec.ca
+    signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK9DWvFVS2L2P6G/xUlV0yp6gOpqGgCj4dbY91zyT8ul
+
+[gpg]
+    format = ssh
+
+[gpg "ssh"]
+    program = "C:/Users/chris/AppData/Local/1Password/app/8/op-ssh-sign.exe"
+
+[commit]
+    gpgsign = true
