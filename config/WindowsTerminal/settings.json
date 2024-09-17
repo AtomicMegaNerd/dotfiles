@@ -67,11 +67,13 @@
             {
                 "commandline": "ssh rcd@192.168.1.232",
                 "guid": "{daadf2e5-5891-57da-b6f1-3f0b66ef51fe}",
+                "icon": "C:\\Users\\chris\\iCloudDrive\\Pictures\\Saved Pictures\\Icons\\nix-logo-1.png",
                 "name": "Blahaj"
             },
             {
                 "guid": "{c397f356-5e7b-55bc-956b-8cb4b9762c26}",
                 "hidden": false,
+                "icon": "C:\\Users\\chris\\iCloudDrive\\Pictures\\Saved Pictures\\Icons\\nix-logo-1.png",
                 "name": "NixOS",
                 "source": "Windows.Terminal.Wsl"
             },
