@@ -31,8 +31,6 @@
   "catppuccin.italicComments": false,
   "catpuccin.accentColor": "teal",
 
-  "rust-analyzer.semanticHighlighting.strings.enable": true,
-
   // Python settings
   "[python]": {
     "editor.defaultFormatter": "charliermarsh.ruff"
@@ -49,6 +47,9 @@
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+
+  "gopls": { "ui.semanticTokens": true },
+
 
   // Turn off creepy tracking
   "telemetry.telemetryLevel": "off",
