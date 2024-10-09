@@ -14,6 +14,9 @@ return {
 				go = {
 					coverage_file = "cover.out",
 				},
+				python = {
+					coverage_file = ".coverage",
+				},
 			},
 		})
 	end,
