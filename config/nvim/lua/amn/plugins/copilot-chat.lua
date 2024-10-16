@@ -29,9 +29,12 @@ return {
 		utils.nmap("<leader>pc", function()
 			chat.open({
 				window = {
+					title = "Co-Pilot Chat",
 					layout = "replace",
 				},
 			})
+			-- This ensures that the buffer shows up in the buffer list
+			vim.cmd("setlocal buflisted")
 		end, "Co[P]ilot [C]hat")
 
 		utils.nmap("<leader>pt", function()
@@ -39,7 +42,12 @@ return {
 		end, "Co[P]ilot [T]oggle")
 
 		utils.nmap("<leader>pf", function()
-			chat.float()
+			chat.open({
+				window = {
+					title = "Co-Pilot Chat",
+					layout = "float",
+				},
+			})
 		end, "Co[P]ilot [F]loat")
 
 		utils.nvmap("<leader>pbe", function()
@@ -60,7 +68,7 @@ return {
 
 		local chat_grp = vim.api.nvim_create_augroup("CopilotChat", { clear = true })
 		vim.api.nvim_create_autocmd("BufEnter", {
-			pattern = "copilot-*",
+			pattern = "copilot-chat",
 			group = chat_grp,
 			callback = function()
 				vim.opt_local.relativenumber = true
