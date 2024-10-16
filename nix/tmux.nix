@@ -3,6 +3,7 @@
   prefix = "C-a";
   extraConfig = ''
     set -g default-terminal "tmux-256color"
+    set -g default-command $SHELL
     set-option -sa terminal-overrides ",xterm-256color:RGB"
     set-option -sg escape-time 10
     set-option -g focus-events on
