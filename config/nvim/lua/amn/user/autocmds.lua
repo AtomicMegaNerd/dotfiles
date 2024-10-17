@@ -18,7 +18,7 @@ local fto_grp = vim.api.nvim_create_augroup("FileTypeOptions", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
 	command = "set tabstop=2 shiftwidth=2",
 	group = fto_grp,
-	pattern = { "haskell", "lua", "typescript", "tsx", "jsx", "javascript", "terraform", "nix" },
+	pattern = { "haskell", "lua", "typescript", "javascript", "terraform", "nix" },
 })
 
 vim.api.nvim_create_autocmd("Filetype", {
@@ -31,6 +31,25 @@ vim.api.nvim_create_autocmd("Filetype", {
 	command = "set colorcolumn=88",
 	group = fto_grp,
 	pattern = { "python" },
+})
+
+vim.api.nvim_create_autocmd("Filetype", {
+	command = "set colorcolumn=100",
+	group = fto_grp,
+	pattern = {
+		"go",
+		"yaml",
+		"markdown",
+		"json",
+		"sh",
+		"bash",
+		"nix",
+		"lua",
+		"typescript",
+		"javascript",
+		"haskell",
+		"terraform",
+	},
 })
 
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
