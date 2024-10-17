@@ -5,7 +5,7 @@ blinking = "Always"
 shape = "Block"
 
 [font]
-size = 16
+size = 18
 
 [font.bold]
 family = "CaskaydiaCove Nerd Font"
