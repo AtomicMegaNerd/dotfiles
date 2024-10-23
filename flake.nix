@@ -12,9 +12,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     catppuccin = { url = "github:catppuccin/nix"; };
+    atuin = { url = "github:atuinsh/atuin"; };
   };
 
-  outputs = { self, nixos, nixpkgs, home-manager, catppuccin, nixos-wsl }:
+  outputs =
+    { self, nixos, nixpkgs, home-manager, catppuccin, nixos-wsl, atuin }:
     let
       sysLinux = "x86_64-linux";
       sysMac = "aarch64-darwin";
@@ -40,13 +42,14 @@
           modules = [
             ./hosts/${hostname}/rcd.nix
             catppuccin.homeManagerModules.catppuccin
+            { home.packages = [ atuin.packages.${system}.default ]; }
           ];
         };
 
     in {
       nixosConfigurations = {
         blahaj = buildNixOsConf sysLinux "blahaj" false;
-	metropolitan = buildNixOsConf sysLinux "metropolitan" true;
+        metropolitan = buildNixOsConf sysLinux "metropolitan" true;
       };
 
       homeConfigurations = {
