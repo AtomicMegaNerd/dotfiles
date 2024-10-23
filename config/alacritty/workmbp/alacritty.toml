@@ -1,4 +1,3 @@
-import = ["/Users/chris.dunphy/.config/alacritty/catppuccin/catppuccin-macchiato.toml"]
 
 [cursor.style]
 blinking = "Always"
@@ -36,3 +35,6 @@ decorations = "Buttonless"
 [window.padding]
 x = 3
 y = 3
+
+[general]
+import = ["/Users/chris.dunphy/.config/alacritty/catppuccin/catppuccin-macchiato.toml"]

@@ -74,6 +74,7 @@ set -gx NVIM_LOG_FILE ~/.local/share/nvim/nvim.log
 fish_add_path $HOME/bin
 fish_add_path $HOME/.local/bin
 fish_add_path $HOME/.pyenv/bin
+fish_add_path $HOME/go/bin
 
 # Pyenv
 # ===================================
