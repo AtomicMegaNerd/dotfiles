@@ -1,47 +1,49 @@
-# Aliases
-# ===================================
-alias ls "eza"
-alias du "dust"
-alias grep "rg"
-alias vim "nvim"
-alias vi "nvim"
-alias cat "bat --paging=never --style=plain"
-alias df "duf"
+if status is-interactive
+    # Aliases
+    # ===================================
+    alias ls "eza"
+    alias du "dust"
+    alias grep "rg"
+    alias vim "nvim"
+    alias vi "nvim"
+    alias cat "bat --paging=never --style=plain"
+    alias df "duf"
 
-# Shortcuts for common files and directories
-alias vconf "nvim ~/.config/nvim/init.lua"
-alias fconf "nvim ~/.config/fish/config.fish"
-alias cconf "nvim ~/.config/fish/conf.d/credentials.fish"
-alias aconf "nvim ~/.config/alacritty/alacritty.yml"
+    # Shortcuts for common files and directories
+    alias vconf "nvim ~/.config/nvim/init.lua"
+    alias fconf "nvim ~/.config/fish/config.fish"
+    alias cconf "nvim ~/.config/fish/conf.d/credentials.fish"
+    alias aconf "nvim ~/.config/alacritty/alacritty.yml"
 
-# Terraform
-alias tf terraform
+    # Terraform
+    alias tf terraform
 
-# Podman
-alias docker podman
+    # Podman
+    alias docker podman
 
-# Tmux
-alias tl "tmux list-sessions"
-alias ta "tmux attach"
-alias tk "tmux kill-session"
-alias tka "tmux kill-server"
+    # Tmux
+    alias tl "tmux list-sessions"
+    alias ta "tmux attach"
+    alias tk "tmux kill-session"
+    alias tka "tmux kill-server"
 
-# Zellij
-alias zl "zellij ls"
-alias za "zellij a"
-alias zk "zellij k"
-alias zka "zellij ka"
-alias zda "zellij da"
+    # Zellij
+    alias zl "zellij ls"
+    alias za "zellij a"
+    alias zk "zellij k"
+    alias zka "zellij ka"
+    alias zda "zellij da"
 
-# Functions
-# ===================================
+    # Functions
+    # ===================================
 
-function tn
-    tmux new -s (basename (eval pwd))
-end
+    function tn
+        tmux new -s (basename (eval pwd))
+    end
 
-function zn
-    zellij -s (basename (eval pwd))
+    function zn
+        zellij -s (basename (eval pwd))
+    end
 end
 
 # Variables
@@ -83,12 +85,16 @@ pyenv init - | source
 
 # Starship prompt
 # ===================================
-starship init fish | source
+status is-interactive; and starship init fish | source
 
 # Zoxide
 # ===================================
-zoxide init fish --cmd cd | source
+status is-interactive; and zoxide init fish --cmd cd | source
 
 # Fzf
 # ===================================
-fzf --fish | source
+status is-interactive; and fzf --fish | source
+
+# Atuin
+# ===================================
+status is-interactive; and atuin init fish | source
