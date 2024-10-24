@@ -21,11 +21,6 @@
       nix-direnv.enable = true;
     };
 
-    atuin = {
-      enable = true;
-      enableFishIntegration = true;
-    };
-
     git = {
       enable = true;
       userName = "Chris Dunphy";

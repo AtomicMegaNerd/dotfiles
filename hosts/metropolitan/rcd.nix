@@ -18,11 +18,6 @@ in {
     zellij = import ../../nix/zellij.nix;
     bat = import ../../nix/bat.nix;
 
-    atuin = {
-      enable = true;
-      enableFishIntegration = true;
-    };
-
     direnv = {
       enable = true;
       nix-direnv.enable = true;
