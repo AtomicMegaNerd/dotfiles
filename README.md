@@ -17,7 +17,7 @@ use Nix as a package manager. This repo also contains other configs for non-Nix 
 | Host          | OS    | Platform       |
 | ------------- | ----- | -------------- |
 | blahaj        | NixOS | x86-64-linux   |
-| discovery     | MacOS | aarch64-darwin |
+| metropolitan  | NixOS | x86-64-linux   |
 
 ### Nix System Upgrade
 

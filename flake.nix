@@ -19,7 +19,6 @@
     { self, nixos, nixpkgs, home-manager, catppuccin, nixos-wsl, atuin }:
     let
       sysLinux = "x86_64-linux";
-      sysMac = "aarch64-darwin";
 
       buildPkgsConf = system: isNixos:
         import (if isNixos then nixos else nixpkgs) {
@@ -54,7 +53,6 @@
 
       homeConfigurations = {
         "rcd@blahaj" = buildHomeMgrConf sysLinux "blahaj";
-        "rcd@Discovery" = buildHomeMgrConf sysMac "discovery";
         "rcd@metropolitan" = buildHomeMgrConf sysLinux "metropolitan";
       };
     };
