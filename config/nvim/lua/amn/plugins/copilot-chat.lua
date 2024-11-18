@@ -10,7 +10,7 @@ return {
 		local chat = utils.do_import("CopilotChat")
 		local select = utils.do_import("CopilotChat.select")
 
-		if not chat or not select or not chat_cmp then
+		if not chat or not select then
 			return
 		end
 
