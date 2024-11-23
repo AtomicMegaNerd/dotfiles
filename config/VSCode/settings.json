@@ -1,11 +1,17 @@
 {
   // Editor settings
-  "editor.fontSize": 16,
+  "editor.fontSize": 18,
   "editor.semanticHighlighting.enabled": true,
   "editor.lineNumbers": "relative",
   "editor.formatOnSave": true,
   "editor.fontFamily": "Cascadia Code",
   "editor.minimap.enabled": false,
+
+  // Terminal settings
+  "terminal.integrated.fontFamily": "Cascadia Code",
+  "terminal.integrated.fontSize": 18,
+  "terminal.integrated.cursorStyle": "block",
+  "terminal.integrated.cursorBlinking": true,
 
   // Vim settings
   "vim.autoindent": true,
@@ -23,10 +29,10 @@
 
   // Workbench settings
   "workbench.startupEditor": "none",
-  "workbench.iconTheme": "catppuccin-macchiato",
+  "workbench.iconTheme": "catppuccin-mocha",
   "workbench.layoutControl.enabled": false,
   "workbench.settings.editor": "ui",
-  "workbench.colorTheme": "Catppuccin Macchiato",
+  "workbench.colorTheme": "Catppuccin Mocha",
 
   // Catppuccin settings
   "catppuccin.italicKeywords": false,
