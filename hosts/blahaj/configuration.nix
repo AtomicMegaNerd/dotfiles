@@ -19,13 +19,7 @@ in {
     firewall.allowedTCPPorts = [ 8081 53 ];
     firewall.allowedUDPPorts = [ 53 ];
     nameservers = [ "9.9.9.9" "149.112.112.112" "2620:fe::fe" "2620:fe::9" ];
-    interfaces.enp0s31f6 = {
-      useDHCP = true;
-      ipv6.addresses = [{
-        address = "fd00:1234:5678:9abc:def0:1234:5678:9abc";
-        prefixLength = 64;
-      }];
-    };
+    interfaces.enp0s31f6 = { useDHCP = true; };
   };
 
   time.timeZone = "America/Edmonton";
@@ -71,7 +65,7 @@ in {
           environment = {
             TZ = "America/Edmonton";
             FTLCONF_LOCAL_IPV4 = "192.168.1.232";
-            FTLCONF_LOCAL_IPV6 = "fd00:1234:5678:9abc:def0:1234:5678:9abc";
+            FTLCONF_LOCAL_IPV6 = "2604:3d09:676:2d40:1741:4ef9:2d04:ee1b";
             PIHOLE_UID = toString piholeUid;
             PIHOLE_GID = toString piholeGid;
             BLOCK_ICLOUD_PR = "false";
@@ -82,7 +76,7 @@ in {
   };
 
   environment.systemPackages = (import ../../nix/packages.nix { inherit pkgs; })
-    ++ (with pkgs; [ neovim starship git ]);
+    ++ (with pkgs; [ neovim starship git dig ]);
 
   services.openssh.enable = true;
   programs.fish.enable = true;
