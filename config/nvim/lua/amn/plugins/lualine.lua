@@ -11,7 +11,7 @@ return {
 
 		lualine.setup({
 			options = {
-				theme = "catppuccin",
+				theme = "gruvbox",
 				icons_enabled = false,
 				globalstatus = true,
 			},
