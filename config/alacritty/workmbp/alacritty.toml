@@ -37,4 +37,4 @@ x = 3
 y = 3
 
 [general]
-import = ["/Users/chris.dunphy/.config/alacritty/catppuccin/catppuccin-macchiato.toml"]
+import = ["/Users/chris.dunphy/.config/alacritty/themes/gruvbox-dark.toml"]

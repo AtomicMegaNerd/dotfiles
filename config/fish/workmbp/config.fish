@@ -98,3 +98,7 @@ status is-interactive; and fzf --fish | source
 # Atuin
 # ===================================
 status is-interactive; and atuin init fish | source
+
+# Gruvbox theme
+# ===================================
+theme_gruvbox dark soft
