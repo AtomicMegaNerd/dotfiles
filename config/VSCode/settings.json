@@ -32,7 +32,7 @@
   "workbench.iconTheme": "catppuccin-mocha",
   "workbench.layoutControl.enabled": false,
   "workbench.settings.editor": "ui",
-  "workbench.colorTheme": "Catppuccin Mocha",
+  "workbench.colorTheme": "Gruvbox Dark Soft",
 
   // Catppuccin settings
   "catppuccin.italicKeywords": false,
