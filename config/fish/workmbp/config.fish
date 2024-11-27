@@ -54,6 +54,11 @@ set -gx FUNCTIONS_CORE_TOOLS_TELEMETRY_OPTOUT 1
 set -gx DOTNET_CLI_TELEMETRY_OPTOUT 1
 set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
 
+# CLI Theme
+# ===================================
+
+set -gx CLI_THEME gruvbox
+
 # Fixes an issue with MacOS' super out of date terminfo
 set -gx TERMINFO_DIRS "$TERMINFO_DIRS:$HOME/.local/share/terminfo"
 
