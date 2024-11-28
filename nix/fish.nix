@@ -4,9 +4,9 @@ let
     set -gx EDITOR nvim
     set -gx GOPATH $HOME/.local/go
     set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
+    set -gx CLI_THEME "catppuccin"
   '';
-in
-{
+in {
   enable = true;
 
   catppuccin = {
@@ -14,20 +14,19 @@ in
     flavor = "macchiato";
   };
 
-  shellInit =
-    if pkgs.stdenv.isDarwin then ''
-      ${commonShellInit}
+  shellInit = if pkgs.stdenv.isDarwin then ''
+    ${commonShellInit}
 
-      # Fixes color bug on MacOS
-      set -gx TERMINFO_DIRS $TERMINFO_DIRS:$HOME/.local/share/terminfo
+    # Fixes color bug on MacOS
+    set -gx TERMINFO_DIRS $TERMINFO_DIRS:$HOME/.local/share/terminfo
 
-      # Enable Homebrew for casks
-      fish_add_path /opt/homebrew/bin
-      fish_add_path /opt/homebrew/sbin
-      fish_add_path ~/.nix-profile/bin
-      fish_add_path /nix/var/nix/profiles/default/bin
-    '' else
-      commonShellInit;
+    # Enable Homebrew for casks
+    fish_add_path /opt/homebrew/bin
+    fish_add_path /opt/homebrew/sbin
+    fish_add_path ~/.nix-profile/bin
+    fish_add_path /nix/var/nix/profiles/default/bin
+  '' else
+    commonShellInit;
 
   interactiveShellInit = ''
     set fish_greeting # Disable greeting

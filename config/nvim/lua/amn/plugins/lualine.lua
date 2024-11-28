@@ -1,3 +1,13 @@
+local get_theme = function()
+	local cli_theme = vim.fn.getenv("CLI_THEME")
+	if cli_theme == "gruvbox" then
+		return "gruvbox"
+	end
+	if cli_theme == "catppuccin" then
+		return "catppuccin"
+	end
+end
+
 return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -11,7 +21,7 @@ return {
 
 		lualine.setup({
 			options = {
-				theme = "gruvbox",
+				theme = get_theme(),
 				icons_enabled = false,
 				globalstatus = true,
 			},
