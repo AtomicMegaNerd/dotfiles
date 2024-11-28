@@ -7,15 +7,15 @@ shape = "Block"
 size = 18
 
 [font.bold]
-family = "CaskaydiaCove Nerd Font"
+family = "JetBrainsMono Nerd Font"
 style = "SemiBold"
 
 [font.italic]
-family = "CaskaydiaCove Nerd Font"
+family = "JetBrainsMono Nerd Font"
 style = "Italic"
 
 [font.normal]
-family = "CaskaydiaCove Nerd Font"
+family = "JetBrainsMono Nerd Font"
 style = "Regular"
 
 [[mouse.bindings]]
@@ -37,4 +37,4 @@ x = 3
 y = 3
 
 [general]
-import = ["/Users/chris.dunphy/.config/alacritty/themes/gruvbox-dark.toml"]
+import = ["/Users/chris.dunphy/.config/alacritty/themes/gruvbox-dark-soft.toml"]

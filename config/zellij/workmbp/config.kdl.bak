@@ -1,0 +1,6 @@
+theme "gruvbox-dark"
+default_mode "locked"
+pane_frames false
+
+// Fixes https://github.com/zellij-org/zellij/issues/2946
+serialization_interval 1
