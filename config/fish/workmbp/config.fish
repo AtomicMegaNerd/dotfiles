@@ -21,12 +21,6 @@ if status is-interactive
     # Podman
     alias docker podman
 
-    # Tmux
-    alias tl "tmux list-sessions"
-    alias ta "tmux attach"
-    alias tk "tmux kill-session"
-    alias tka "tmux kill-server"
-
     # Zellij
     alias zl "zellij ls"
     alias za "zellij a"
