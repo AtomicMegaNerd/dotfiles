@@ -29,12 +29,6 @@ if status is-interactive
     alias zda "zellij da"
 
     # Functions
-    # ===================================
-
-    function tn
-        tmux new -s (basename (eval pwd))
-    end
-
     function zn
         zellij -s (basename (eval pwd))
     end
@@ -51,7 +45,7 @@ set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
 # CLI Theme
 # ===================================
 
-set -gx CLI_THEME gruvbox
+set -gx CLI_THEME catppuccin
 
 # Fixes an issue with MacOS' super out of date terminfo
 set -gx TERMINFO_DIRS "$TERMINFO_DIRS:$HOME/.local/share/terminfo"
