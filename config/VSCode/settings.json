@@ -19,6 +19,8 @@
   "vim.incsearch": true,
   "vim.leader": "\\",
 
+  "vim.modeKeyBindingsIndicator": true,
+
   // For vim extension remap ; to :
   "vim.normalModeKeyBindingsNonRecursive": [
     {
