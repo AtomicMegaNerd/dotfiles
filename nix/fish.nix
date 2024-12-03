@@ -41,11 +41,6 @@ in {
     # Just use ripgrep
     grep = "rg";
 
-    tl = "tmux list-sessions";
-    ta = "tmux attach";
-    tk = "tmux kill-session";
-    tka = "tmux kill-server";
-
     # Zellij
     zl = "zellij ls";
     za = "zellij a";

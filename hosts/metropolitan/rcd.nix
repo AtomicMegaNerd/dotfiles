@@ -13,7 +13,6 @@ in {
     home-manager.enable = true;
     neovim = import ../../nix/neovim.nix { inherit pkgs; };
     fish = import ../../nix/fish.nix { inherit pkgs; };
-    tmux = import ../../nix/tmux.nix;
     starship = import ../../nix/starship.nix;
     zellij = import ../../nix/zellij.nix;
     bat = import ../../nix/bat.nix;
