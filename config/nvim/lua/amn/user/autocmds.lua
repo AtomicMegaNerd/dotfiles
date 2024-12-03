@@ -55,5 +55,5 @@ vim.api.nvim_create_autocmd("Filetype", {
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	command = "setf sh",
 	group = fto_grp,
-	pattern = "env.list",
+	pattern = { "env.list", ".envrc" },
 })

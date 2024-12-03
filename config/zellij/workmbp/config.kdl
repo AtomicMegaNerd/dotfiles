@@ -241,10 +241,7 @@ theme "catppuccin-macchiato"
 //
 default_mode "locked"
 
-// The name of the default layout to load on startup
-// Default: "default"
-//
-// default_layout "compact"
+default_layout "compact"
 
 // Whether to show the frames around each pane
 pane_frames false
