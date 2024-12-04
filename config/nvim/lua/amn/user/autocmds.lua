@@ -18,7 +18,7 @@ local fto_grp = vim.api.nvim_create_augroup("FileTypeOptions", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
 	command = "set tabstop=2 shiftwidth=2",
 	group = fto_grp,
-	pattern = { "haskell", "lua", "typescript", "javascript", "terraform", "nix" },
+	pattern = { "haskell", "lua", "typescript", "javascript", "terraform", "nix", "markdown" },
 })
 
 vim.api.nvim_create_autocmd("Filetype", {
