@@ -32,6 +32,11 @@ in {
     };
   };
 
+  systemd.user.services.podman = {
+    enable = true;
+    wantedBy = [ "default.target" ];
+  };
+
   environment.systemPackages = (import ../../nix/packages.nix { inherit pkgs; })
     ++ (with pkgs; [ neovim starship git ]);
 

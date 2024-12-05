@@ -246,8 +246,8 @@ default_layout "compact"
 // Whether to show the frames around each pane
 pane_frames false
 
-// The utility to use for copying text to the clipboard, on macOS this should be "pbcopy"
-copy_command "pbcopy"
+// On WSL we use clip.exe to copy to the clipboard
+copy_command "clip.exe"
 
 // Plugins to load in the background when a new session starts
 // eg. "file:/path/to/my-plugin.wasm"
