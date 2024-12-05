@@ -16,7 +16,7 @@ in {
       isNormalUser = true;
       description = "Chris Dunphy";
       shell = pkgs.fish;
-      extraGroups = [ "wheel" "docker" ];
+      extraGroups = [ "wheel" "docker" "podman" ];
       openssh.authorizedKeys.keys = [ rcd_pub_key ];
     };
   };
