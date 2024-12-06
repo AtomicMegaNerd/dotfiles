@@ -2,6 +2,8 @@
 let
   piholeUid = 888;
   piholeGid = 888;
+  freshrssUid = 889;
+  freshrssGid = 889;
   rcd_pub_key = builtins.readFile ../../static/rcd_pub_key;
 in {
 
@@ -34,16 +36,25 @@ in {
       openssh.authorizedKeys.keys = [ rcd_pub_key ];
     };
     groups.pihole = { gid = piholeGid; };
+    groups.freshrss = { gid = freshrssGid; };
     users.pihole = {
       isSystemUser = true;
       uid = piholeUid;
       group = "pihole";
+    };
+    users.freshrss = {
+      isSystemUser = true;
+      uid = freshrssUid;
+      group = "freshrss";
     };
   };
 
   systemd.tmpfiles.rules = [
     "Z /etc/pihole 0775 ${toString piholeUid} ${toString piholeGid} -"
     "Z /etc/dnsmasq.d 0775 ${toString piholeUid} ${toString piholeGid} -"
+    "Z /etc/freshrss/data 0755 ${toString freshrssUid} ${
+      toString freshrssGid
+    } -"
   ];
 
   virtualisation.containers.enable = true;
@@ -72,10 +83,7 @@ in {
           autoStart = true;
           image = "freshrss/freshrss:latest";
           ports = [ "8080:80/tcp" ];
-          volumes = [
-            "freshrss_data:/var/www/FreshRSS/data"
-            "fresrss_extensions:/var/www/FreshRSS/extensions"
-          ];
+          volumes = [ "/etc/freshrss/data:/var/www/FreshRSS/data" ];
           environment = { TZ = "America/Edmonton"; };
         };
       };
