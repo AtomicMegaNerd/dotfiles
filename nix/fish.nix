@@ -14,19 +14,7 @@ in {
     flavor = "macchiato";
   };
 
-  shellInit = if pkgs.stdenv.isDarwin then ''
-    ${commonShellInit}
-
-    # Fixes color bug on MacOS
-    set -gx TERMINFO_DIRS $TERMINFO_DIRS:$HOME/.local/share/terminfo
-
-    # Enable Homebrew for casks
-    fish_add_path /opt/homebrew/bin
-    fish_add_path /opt/homebrew/sbin
-    fish_add_path ~/.nix-profile/bin
-    fish_add_path /nix/var/nix/profiles/default/bin
-  '' else
-    commonShellInit;
+  shellInit = commonShellInit;
 
   interactiveShellInit = ''
     set fish_greeting # Disable greeting
