@@ -31,7 +31,7 @@
 
   // Workbench settings
   "workbench.startupEditor": "none",
-  "workbench.iconTheme": "catppuccin-mocha",
+  "workbench.iconTheme": "catppuccin-macchiato",
   "workbench.layoutControl.enabled": false,
   "workbench.settings.editor": "ui",
   "workbench.colorTheme": "Gruvbox Dark Soft",
