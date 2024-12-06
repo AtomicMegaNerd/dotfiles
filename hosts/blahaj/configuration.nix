@@ -65,7 +65,7 @@ in {
           environment = {
             TZ = "America/Edmonton";
             FTLCONF_LOCAL_IPV4 = "192.168.1.232";
-            FTLCONF_LOCAL_IPV6 = "2604:3d09:676:2d40:1741:4ef9:2d04:ee1b";
+            FTLCONF_LOCAL_IPV6 = "2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4";
             PIHOLE_UID = toString piholeUid;
             PIHOLE_GID = toString piholeGid;
             BLOCK_ICLOUD_PR = "false";
