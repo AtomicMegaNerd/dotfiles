@@ -16,7 +16,7 @@ in {
   networking = {
     hostName = "blahaj";
     networkmanager.enable = true;
-    firewall.allowedTCPPorts = [ 8081 53 ];
+    firewall.allowedTCPPorts = [ 8080 8081 53 ];
     firewall.allowedUDPPorts = [ 53 ];
     nameservers = [ "9.9.9.9" "149.112.112.112" "2620:fe::fe" "2620:fe::9" ];
     interfaces.enp0s31f6 = { useDHCP = true; };
