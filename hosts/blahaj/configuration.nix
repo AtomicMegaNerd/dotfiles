@@ -71,6 +71,16 @@ in {
             BLOCK_ICLOUD_PR = "false";
           };
         };
+        freshrss = {
+          autoStart = true;
+          image = "freshrss/freshrss:latest";
+          ports = [ "8080:80/tcp" ];
+          volumes = [
+            "freshrss_data:/var/www/FreshRSS/data"
+            "fresrss_extensions:/var/www/FreshRSS/extensions"
+          ];
+          environment = { TZ = "America/Edmonton"; };
+        };
       };
     };
   };
