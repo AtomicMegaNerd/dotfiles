@@ -46,14 +46,11 @@ in {
     "Z /etc/dnsmasq.d 0775 ${toString piholeUid} ${toString piholeGid} -"
   ];
 
+  virtualisation.containers.enable = true;
   virtualisation = {
-    podman = {
-      enable = true;
-      dockerCompat = true;
-      dockerSocket.enable = true;
-    };
+    docker = { enable = true; };
     oci-containers = {
-      backend = "podman";
+      backend = "docker";
       containers = {
         pihole = {
           user = "root";
@@ -89,11 +86,6 @@ in {
         };
       };
     };
-  };
-
-  systemd.user.services.podman = {
-    enable = true;
-    wantedBy = [ "default.target" ];
   };
 
   environment.systemPackages = (import ../../nix/packages.nix { inherit pkgs; })
