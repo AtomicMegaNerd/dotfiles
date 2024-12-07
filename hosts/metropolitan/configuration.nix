@@ -24,18 +24,7 @@ in {
   programs.fish.enable = true;
 
   virtualisation.containers.enable = true;
-  virtualisation = {
-    podman = {
-      enable = true;
-      dockerCompat = true;
-      dockerSocket.enable = true;
-    };
-  };
-
-  systemd.user.services.podman = {
-    enable = true;
-    wantedBy = [ "default.target" ];
-  };
+  virtualisation = { docker = { enable = true; }; };
 
   environment.systemPackages = (import ../../nix/packages.nix { inherit pkgs; })
     ++ (with pkgs; [ neovim starship git ]);
