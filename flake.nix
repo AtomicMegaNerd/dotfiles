@@ -52,13 +52,13 @@
 
     in {
       nixosConfigurations = {
-        blahaj = buildNixOsConf sysLinux "blahaj" false false;
+        blahaj = buildNixOsConf sysLinux "blahaj" true false;
         metropolitan = buildNixOsConf sysLinux "metropolitan" false true;
         arcology = buildNixOsConf sysLinux "arcology" true false;
       };
 
       homeConfigurations = {
-        "rcd@blahaj" = buildHomeMgrConf sysLinux "blahaj" false;
+        "rcd@blahaj" = buildHomeMgrConf sysLinux "blahaj" true;
         "rcd@metropolitan" = buildHomeMgrConf sysLinux "metropolitan" false;
         "rcd@arcology" = buildHomeMgrConf sysLinux "arcology" true;
       };
