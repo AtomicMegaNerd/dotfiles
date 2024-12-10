@@ -29,13 +29,6 @@
       ];
     };
     selection = { save_to_clipboard = true; };
-    window = {
-      decorations = "None";
-      padding = {
-        x = 3;
-        y = 3;
-      };
-    };
   };
   catppuccin = {
     enable = true;
