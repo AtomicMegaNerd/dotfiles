@@ -1,11 +1,15 @@
 {
   description = "AtomicMegaNerd's NixOS Flake";
   inputs = {
-    nixos.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    home-manager-unstable = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL";
@@ -15,29 +19,30 @@
     atuin = { url = "github:atuinsh/atuin"; };
   };
 
-  outputs =
-    { self, nixos, nixpkgs, home-manager, catppuccin, nixos-wsl, atuin }:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager
+    , home-manager-unstable, catppuccin, nixos-wsl, atuin }:
     let
       sysLinux = "x86_64-linux";
 
-      buildPkgsConf = system: isNixos:
-        import (if isNixos then nixos else nixpkgs) {
+      buildPkgsConf = system: stable:
+        import (if stable then nixpkgs else nixpkgs-unstable) {
           inherit system;
           config.allowUnfree = true;
         };
 
-      buildNixOsConf = system: hostname: isWsl:
-        nixos.lib.nixosSystem {
-          pkgs = buildPkgsConf system true;
+      buildNixOsConf = system: hostname: stable: isWsl:
+        nixpkgs.lib.nixosSystem {
+          pkgs = buildPkgsConf system stable;
           modules = [
             ./hosts/${hostname}/configuration.nix
             catppuccin.nixosModules.catppuccin
           ] ++ (if isWsl then [ nixos-wsl.nixosModules.wsl ] else [ ]);
         };
 
-      buildHomeMgrConf = system: hostname:
-        home-manager.lib.homeManagerConfiguration {
-          pkgs = buildPkgsConf system false;
+      buildHomeMgrConf = system: hostname: stable:
+        let hm = if stable then home-manager else home-manager-unstable;
+        in hm.lib.homeManagerConfiguration {
+          pkgs = buildPkgsConf system stable;
           modules = [
             ./hosts/${hostname}/rcd.nix
             catppuccin.homeManagerModules.catppuccin
@@ -47,13 +52,15 @@
 
     in {
       nixosConfigurations = {
-        blahaj = buildNixOsConf sysLinux "blahaj" false;
-        metropolitan = buildNixOsConf sysLinux "metropolitan" true;
+        blahaj = buildNixOsConf sysLinux "blahaj" false false;
+        metropolitan = buildNixOsConf sysLinux "metropolitan" false true;
+        arcology = buildNixOsConf sysLinux "arcology" true false;
       };
 
       homeConfigurations = {
-        "rcd@blahaj" = buildHomeMgrConf sysLinux "blahaj";
-        "rcd@metropolitan" = buildHomeMgrConf sysLinux "metropolitan";
+        "rcd@blahaj" = buildHomeMgrConf sysLinux "blahaj" false;
+        "rcd@metropolitan" = buildHomeMgrConf sysLinux "metropolitan" false;
+        "rcd@arcology" = buildHomeMgrConf sysLinux "arcology" true;
       };
     };
 }
