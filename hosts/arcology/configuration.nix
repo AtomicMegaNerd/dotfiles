@@ -56,7 +56,7 @@
     };
   };
 
-  serivces = { openssh.enable = true; };
+  services = { openssh.enable = true; };
 
   virtualisation = {
     containers.enable = true;
