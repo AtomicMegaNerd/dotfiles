@@ -36,7 +36,7 @@
   users.users.rcd = {
     isNormalUser = true;
     description = "Chris Dunphy";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     shell = pkgs.fish;
   };
 
