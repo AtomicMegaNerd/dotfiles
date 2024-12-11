@@ -3,6 +3,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -11,12 +12,16 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+
     catppuccin = { url = "github:catppuccin/nix"; };
+
     atuin = { url = "github:atuinsh/atuin"; };
+
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager
@@ -53,14 +58,14 @@
     in {
       nixosConfigurations = {
         blahaj = buildNixOsConf sysLinux "blahaj" true false;
-        metropolitan = buildNixOsConf sysLinux "metropolitan" false true;
         arcology = buildNixOsConf sysLinux "arcology" true false;
+        metropolitan = buildNixOsConf sysLinux "metropolitan" false true;
       };
 
       homeConfigurations = {
         "rcd@blahaj" = buildHomeMgrConf sysLinux "blahaj" true;
-        "rcd@metropolitan" = buildHomeMgrConf sysLinux "metropolitan" false;
         "rcd@arcology" = buildHomeMgrConf sysLinux "arcology" true;
+        "rcd@metropolitan" = buildHomeMgrConf sysLinux "metropolitan" false;
       };
     };
 }

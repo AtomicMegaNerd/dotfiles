@@ -16,7 +16,7 @@ in {
       isNormalUser = true;
       description = "Chris Dunphy";
       shell = pkgs.fish;
-      extraGroups = [ "wheel" "docker" "podman" ];
+      extraGroups = [ "wheel" "docker" ];
       openssh.authorizedKeys.keys = [ rcd_pub_key ];
     };
   };
@@ -44,5 +44,5 @@ in {
     flavor = "macchiato";
   };
 
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.11";
 }

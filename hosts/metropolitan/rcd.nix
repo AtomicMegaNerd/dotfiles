@@ -5,7 +5,7 @@ in {
   home = {
     username = "rcd";
     homeDirectory = "/home/rcd";
-    stateVersion = "22.11";
+    stateVersion = "24.11";
     packages = import ../../nix/packages.nix { inherit pkgs; };
   };
 
