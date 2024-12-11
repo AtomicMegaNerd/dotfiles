@@ -22,10 +22,12 @@
 
     atuin = { url = "github:atuinsh/atuin"; };
 
+    zed = { url = "github:zed-industries/zed"; };
+
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager
-    , home-manager-unstable, catppuccin, nixos-wsl, atuin }:
+    , home-manager-unstable, catppuccin, nixos-wsl, atuin, zed }:
     let
       sysLinux = "x86_64-linux";
       sysDarwin = "aarch64-darwin";
@@ -45,14 +47,17 @@
           ] ++ (if isWsl then [ nixos-wsl.nixosModules.wsl ] else [ ]);
         };
 
-      buildHomeMgrConf = system: hostname: stable:
+      buildHomeMgrConf = system: hostname: stable: addZed:
         let hm = if stable then home-manager else home-manager-unstable;
         in hm.lib.homeManagerConfiguration {
           pkgs = buildPkgsConf system stable;
           modules = [
             ./hosts/${hostname}/rcd.nix
             catppuccin.homeManagerModules.catppuccin
-            { home.packages = [ atuin.packages.${system}.default ]; }
+            {
+              home.packages = [ atuin.packages.${system}.default ]
+                ++ (if addZed then [ zed.packages.${system}.default ] else [ ]);
+            }
           ];
         };
 
@@ -65,9 +70,10 @@
       };
 
       homeConfigurations = {
-        "rcd@blahaj" = buildHomeMgrConf sysLinux "blahaj" true;
-        "rcd@arcology" = buildHomeMgrConf sysLinux "arcology" true;
-        "rcd@metropolitan" = buildHomeMgrConf sysLinux "metropolitan" true;
+        "rcd@blahaj" = buildHomeMgrConf sysLinux "blahaj" true false;
+        "rcd@arcology" = buildHomeMgrConf sysLinux "arcology" true true;
+        "rcd@metropolitan" =
+          buildHomeMgrConf sysLinux "metropolitan" true false;
       };
     };
 }
