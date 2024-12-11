@@ -8,6 +8,7 @@
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     home-manager-unstable = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -71,7 +72,7 @@
 
       homeConfigurations = {
         "rcd@blahaj" = buildHomeMgrConf sysLinux "blahaj" true false;
-        "rcd@arcology" = buildHomeMgrConf sysLinux "arcology" true true;
+        "rcd@arcology" = buildHomeMgrConf sysLinux "arcology" true false;
         "rcd@metropolitan" =
           buildHomeMgrConf sysLinux "metropolitan" true false;
       };
