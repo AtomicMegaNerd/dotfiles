@@ -56,6 +56,7 @@
         };
 
     in {
+
       nixosConfigurations = {
         blahaj = buildNixOsConf sysLinux "blahaj" true false;
         arcology = buildNixOsConf sysLinux "arcology" true false;

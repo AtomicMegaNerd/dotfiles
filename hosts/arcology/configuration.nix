@@ -24,8 +24,6 @@
     variant = "";
   };
 
-  services.printing.enable = true;
-
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -57,6 +55,15 @@
       polkitPolicyOwners = [ "rcd" ];
     };
   };
+
+  serivces = { openssh.enable = true; };
+
+  virtualisation = {
+    containers.enable = true;
+    docker = { enable = true; };
+    vmware.guest.enable = true;
+  };
+
   environment.gnome.excludePackages = (with pkgs; [
     gnome-terminal
     gnome-photos
@@ -80,9 +87,7 @@
 
   fonts.packages = with pkgs;
     [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
-
   environment.systemPackages = with pkgs; [ neovim git curl ];
-  virtualisation = { vmware.guest.enable = true; };
 
   nix = {
     gc = {

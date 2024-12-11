@@ -5,6 +5,7 @@ in {
   wsl = {
     enable = true;
     defaultUser = "rcd";
+    useWindowsDriver = true;
     wslConf = { network.hostname = "metropolitan"; };
   };
 
@@ -23,8 +24,10 @@ in {
 
   programs.fish.enable = true;
 
-  virtualisation.containers.enable = true;
-  virtualisation = { docker = { enable = true; }; };
+  virtualisation = {
+    containers.enable = true;
+    docker = { enable = true; };
+  };
 
   environment.systemPackages = (import ../../nix/packages.nix { inherit pkgs; })
     ++ (with pkgs; [ neovim starship git ]);
@@ -35,7 +38,7 @@ in {
       dates = "weekly";
       options = "--delete-older-than 7d";
     };
-    package = pkgs.nixVersions.stable;
+    package = pkgs.nixVersions.latest;
     extraOptions = "experimental-features = nix-command flakes";
   };
 
