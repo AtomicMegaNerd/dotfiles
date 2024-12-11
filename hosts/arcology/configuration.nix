@@ -1,14 +1,19 @@
 { pkgs, ... }:
 
-{
+let rcd_pub_key = builtins.readFile ../../static/rcd_pub_key;
+in {
   imports = [ ./hardware-configuration.nix ];
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
+  };
 
-  networking.hostName = "arcology";
-
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "arcology";
+    networkmanager.enable = true;
+  };
 
   time.timeZone = "America/Edmonton";
   i18n.defaultLocale = "en_CA.UTF-8";
@@ -38,6 +43,7 @@
     description = "Chris Dunphy";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     shell = pkgs.fish;
+    openssh.authorizedKeys.keys = [ rcd_pub_key ];
   };
 
   catppuccin = {
