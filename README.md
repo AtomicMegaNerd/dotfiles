@@ -16,8 +16,8 @@ use Nix as a package manager. This repo also contains other configs for non-Nix 
 
 | Host          | OS    | Platform       | Version   | Notes        |
 | ------------- | ----- | -------------- | --------- | ------------ |
-| blahaj        | NixOS | x86-64-linux   | unstable  | Server       |
-| metropolitan  | NixOS | x86-64-linux   | unstable  | WSL          |
+| blahaj        | NixOS | x86-64-linux   | 24.11     | Server       |
+| metropolitan  | NixOS | x86-64-linux   | 24.11     | WSL          |
 | arcology      | NixOS | x86-64-linux   | 24.11     | VMWare Guest |
 
 ### Nix System Upgrade

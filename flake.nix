@@ -28,6 +28,7 @@
     , home-manager-unstable, catppuccin, nixos-wsl, atuin }:
     let
       sysLinux = "x86_64-linux";
+      sysDarwin = "aarch64-darwin";
 
       buildPkgsConf = system: stable:
         import (if stable then nixpkgs else nixpkgs-unstable) {
@@ -60,13 +61,13 @@
       nixosConfigurations = {
         blahaj = buildNixOsConf sysLinux "blahaj" true false;
         arcology = buildNixOsConf sysLinux "arcology" true false;
-        metropolitan = buildNixOsConf sysLinux "metropolitan" false true;
+        metropolitan = buildNixOsConf sysLinux "metropolitan" true true;
       };
 
       homeConfigurations = {
         "rcd@blahaj" = buildHomeMgrConf sysLinux "blahaj" true;
         "rcd@arcology" = buildHomeMgrConf sysLinux "arcology" true;
-        "rcd@metropolitan" = buildHomeMgrConf sysLinux "metropolitan" false;
+        "rcd@metropolitan" = buildHomeMgrConf sysLinux "metropolitan" true;
       };
     };
 }
