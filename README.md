@@ -16,6 +16,7 @@ use Nix as a package manager. This repo also contains other configs for non-Nix 
 
 | Host          | OS    | Platform       | Version   | Notes        |
 | ------------- | ----- | -------------- | --------- | ------------ |
+| Discovery     | MacOS | aarch64-darwin | unstable  | MacBook Pro  |
 | blahaj        | NixOS | x86-64-linux   | 24.11     | Server       |
 | metropolitan  | NixOS | x86-64-linux   | 24.11     | WSL          |
 | arcology      | NixOS | x86-64-linux   | 24.11     | VMWare Guest |
@@ -54,7 +55,8 @@ Then run the following as Administrator:
 
 ## Environment Variables
 
-The following environment variables are used in the different configurations:
+The following environment variables are used in the different configurations, need to be
+set on non-Nix systems:
 
 ```fish
 # Set to "1" in order to enable Mason which can then manage and install
