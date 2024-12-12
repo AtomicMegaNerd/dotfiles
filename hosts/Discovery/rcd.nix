@@ -63,7 +63,7 @@ in {
       target = "nvim";
     };
     zellij = {
-      source = ../../config/zellij/metropolitan;
+      source = ../../config/zellij/discovery;
       target = "zellij";
     };
     ssh = {
