@@ -66,5 +66,9 @@ in {
       source = ../../config/zellij/metropolitan;
       target = "zellij";
     };
+    ssh = {
+      source = ../../config/SSH/Discovery;
+      target = "ssh";
+    };
   };
 }
