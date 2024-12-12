@@ -75,6 +75,7 @@
         "rcd@arcology" = buildHomeMgrConf sysLinux "arcology" true false;
         "rcd@metropolitan" =
           buildHomeMgrConf sysLinux "metropolitan" true false;
+	"rcd@Discovery" = buildHomeMgrConf sysDarwin "Discovery" false false;
       };
     };
 }

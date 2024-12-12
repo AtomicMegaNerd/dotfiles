@@ -14,7 +14,15 @@ in {
     flavor = "macchiato";
   };
 
-  shellInit = commonShellInit;
+  shellInit =
+    if pkgs.stdenv.isDarwin then ''
+      ${commonShellInit}
+
+      # Enable Nix Paths
+      fish_add_path ~/.nix-profile/bin
+      fish_add_path /nix/var/nix/profiles/default/bin
+    '' else
+      commonShellInit;
 
   interactiveShellInit = ''
     set fish_greeting # Disable greeting
