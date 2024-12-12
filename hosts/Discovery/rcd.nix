@@ -6,6 +6,7 @@ in {
     homeDirectory = "/Users/rcd";
     stateVersion = "24.11";
     file.".ssh/allowed_signers".text = "${rcd_pub_key}";
+    file.".ssh/config".source = ../../config/SSH/Discovery/config;
     packages = import ../../nix/packages.nix { inherit pkgs; };
   };
 
@@ -65,10 +66,6 @@ in {
     zellij = {
       source = ../../config/zellij/discovery;
       target = "zellij";
-    };
-    ssh = {
-      source = ../../config/SSH/Discovery;
-      target = "ssh";
     };
   };
 }
