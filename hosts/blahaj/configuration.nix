@@ -84,7 +84,10 @@ in {
           image = "freshrss/freshrss:latest";
           ports = [ "8080:80/tcp" ];
           volumes = [ "/etc/freshrss/data:/var/www/FreshRSS/data" ];
-          environment = { TZ = "America/Edmonton"; };
+          environment = {
+            TZ = "America/Edmonton";
+            CRON_MIN = "15,45";
+          };
         };
       };
     };
