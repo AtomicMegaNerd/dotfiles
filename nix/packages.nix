@@ -28,4 +28,5 @@ with pkgs; [
   bash-language-server
   nodePackages.prettier
   nodejs_22
+  pre-commit
 ]

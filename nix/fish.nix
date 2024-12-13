@@ -46,10 +46,7 @@ in {
     zka = "zellij ka";
   };
 
-  functions = {
-    tn = "tmux new -s (basename (eval pwd))";
-    zn = "zellij -s (basename (eval pwd))";
-  };
+  functions = { zn = "zellij -s (basename (eval pwd))"; };
 
   plugins = [{
     name = "grc";
