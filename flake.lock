@@ -23,11 +23,11 @@
     },
     "catppuccin": {
       "locked": {
-        "lastModified": 1734624488,
-        "narHash": "sha256-swNM0LxzIcyQcyK5SE0Q13qs3MOcJR4KL2+bSv2HHpg=",
+        "lastModified": 1734637345,
+        "narHash": "sha256-wmg3ghpD6TEgnAWQcm6uIrPIBKp4lY4rTqzEzgHRV8g=",
         "owner": "catppuccin",
         "repo": "nix",
-        "rev": "562a0ace199ab59413d5093e31d6745704bd0d11",
+        "rev": "72387df84ad52b0b54b98c3e72a62fa4a510413a",
         "type": "github"
       },
       "original": {
@@ -371,11 +371,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1734619814,
-        "narHash": "sha256-I8z2tvag225Wg7BYcyjuE+oiCBkIqDToYBQ9Va1QeFE=",
+        "lastModified": 1734646561,
+        "narHash": "sha256-mKR0Cx/PLlt1GRMt0IRrD3sJEjJpOxBOZFsViGCVpbg=",
         "owner": "zed-industries",
         "repo": "zed",
-        "rev": "96ad022cd726cfe757cc1df40ad14d0e8854307f",
+        "rev": "f64bfe8c1d1b6e168725aa0a33dfbb43737c1bfd",
         "type": "github"
       },
       "original": {
