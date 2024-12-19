@@ -40,10 +40,6 @@
     fzf = {
       enable = true;
       enableFishIntegration = true;
-      catppuccin = {
-        enable = true;
-        flavor = "macchiato";
-      };
     };
 
     ssh = {
@@ -54,6 +50,11 @@
                 IdentityAgent ~/.1password/agent.sock
       '';
     };
+  };
+
+  catppuccin = {
+    enable = true;
+    flavor = "macchiato";
   };
 
   xdg.configFile = {
