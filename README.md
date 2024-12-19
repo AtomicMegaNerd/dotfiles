@@ -34,18 +34,7 @@ sudo nixos-rebuild switch --flake .#
 We use home-manager on all of our Nix managed machines.
 
 ```fish
-home-manager switch --flake .#USERNAME@HOST	config = function()
-		local utils = require("amn.utils")
-		local oil = utils.do_import("oil")
-		if not oil then
-			return
-		end
-		oil.setup()
-
-		-- Keymaps
-		vim.keymap.set("n", "-", "<Cmd>Oil<CR>", { desc = "Open current directory in Oil" })
-	end,
-
+home-manager switch --flake .#USERNAME@HOST
 ```
 
 ## Windows
