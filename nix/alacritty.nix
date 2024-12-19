@@ -31,8 +31,4 @@
     selection = { save_to_clipboard = true; };
     window = { decorations_theme_variant = "Dark"; };
   };
-  catppuccin = {
-    enable = true;
-    flavor = "macchiato";
-  };
 }

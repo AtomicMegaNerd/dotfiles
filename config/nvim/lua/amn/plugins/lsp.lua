@@ -1,25 +1,24 @@
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
-		"ray-x/lsp_signature.nvim",
-		"hrsh7th/cmp-nvim-lsp",
+		"saghen/blink.cmp",
 	},
 	config = function()
 		local utils = require("amn.utils")
 
 		local nvim_lsp = utils.do_import("lspconfig")
-		local lsp_signature = utils.do_import("lsp_signature")
-		local cmp_nvim_lsp = utils.do_import("cmp_nvim_lsp")
+		local cmp = utils.do_import("blink.cmp")
 		local telescope_builtin = utils.do_import("telescope.builtin")
 
-		if not nvim_lsp or not lsp_signature or not cmp_nvim_lsp or not telescope_builtin then
+		if not nvim_lsp or not cmp or not telescope_builtin then
 			return
 		end
 
-		-- Disable the panda
-		lsp_signature.setup({
-			hint_prefix = "> ",
-		})
+		local capabilities = cmp.get_lsp_capabilities()
+
+		if not capabilities then
+			return
+		end
 
 		local on_attach = function(_, bufnr)
 			utils.nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame", "LSP", bufnr)
@@ -32,8 +31,6 @@ return {
 			utils.nmap("K", vim.lsp.buf.hover, "Hover Documentation", "LSP", bufnr)
 			utils.nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation", "LSP", bufnr)
 		end
-
-		local capabilities = cmp_nvim_lsp.default_capabilities()
 
 		local servers = {
 			"pyright",

@@ -9,11 +9,6 @@ let
 in {
   enable = true;
 
-  catppuccin = {
-    enable = true;
-    flavor = "macchiato";
-  };
-
   shellInit = if pkgs.stdenv.isDarwin then ''
     ${commonShellInit}
 
