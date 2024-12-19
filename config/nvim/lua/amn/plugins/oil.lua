@@ -9,6 +9,6 @@ return {
 		oil.setup()
 
 		-- Keymaps
-		vim.keymap.set("n", "-", "<Cmd>Oil<CR>", { desc = "Open current directory in Oil" })
+		vim.keymap.set("n", "<leader>o", "<Cmd>Oil<CR>", { desc = "Open current directory in Oil" })
 	end,
 }
