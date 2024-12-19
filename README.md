@@ -1,6 +1,6 @@
 # AtomicMegaNerd's NixOS Flake and Other Dotfiles
 
-```
+```text
     ___   __                  _      __  ___                 _   __              __
    /   | / /_____  ____ ___  (_)____/  |/  /__  ____ _____ _/ | / /__  _________/ /
   / /| |/ __/ __ \/ __ `__ \/ / ___/ /|_/ / _ \/ __ `/ __ `/  |/ / _ \/ ___/ __  /
@@ -34,7 +34,18 @@ sudo nixos-rebuild switch --flake .#
 We use home-manager on all of our Nix managed machines.
 
 ```fish
-home-manager switch --flake .#USERNAME@HOST
+home-manager switch --flake .#USERNAME@HOST	config = function()
+		local utils = require("amn.utils")
+		local oil = utils.do_import("oil")
+		if not oil then
+			return
+		end
+		oil.setup()
+
+		-- Keymaps
+		vim.keymap.set("n", "-", "<Cmd>Oil<CR>", { desc = "Open current directory in Oil" })
+	end,
+
 ```
 
 ## Windows
