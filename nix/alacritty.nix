@@ -2,7 +2,7 @@
   enable = true;
   settings = {
     font = {
-      size = 16;
+      size = 18;
       bold = {
         family = "JetBrainsMono Nerd Font";
         style = "Bold";
