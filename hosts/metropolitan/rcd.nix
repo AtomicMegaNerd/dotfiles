@@ -48,13 +48,12 @@ in {
       options = [ "--cmd cd" ];
     };
 
-    fzf = {
-      enable = true;
-      catppuccin = {
-        enable = true;
-        flavor = "macchiato";
-      };
-    };
+    fzf = { enable = true; };
+  };
+
+  catppuccin = {
+    enable = true;
+    flavor = "macchiato";
   };
 
   xdg.configFile = {

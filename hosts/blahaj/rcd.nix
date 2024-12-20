@@ -39,11 +39,12 @@
     fzf = {
       enable = true;
       enableFishIntegration = true;
-      catppuccin = {
-        enable = true;
-        flavor = "macchiato";
-      };
     };
+  };
+
+  catppuccin = {
+    enable = true;
+    flavor = "macchiato";
   };
 
   xdg.configFile = {
