@@ -9,7 +9,6 @@ return {
 		quickfile = { enabled = true },
 		scroll = { enabled = true },
 		rename = { enabled = true },
-		statuscolumn = { enabled = true },
 		words = { enabled = true },
 
 		dashboard = {
