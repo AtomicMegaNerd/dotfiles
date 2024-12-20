@@ -33,6 +33,15 @@ vim.api.nvim_create_autocmd("Filetype", {
 	pattern = { "python" },
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "markdown",
+	group = fto_grp,
+	callback = function()
+		vim.opt_local.wrap = true -- Enable soft wrapping
+		vim.opt_local.linebreak = true -- Break lines at word boundaries
+	end,
+})
+
 vim.api.nvim_create_autocmd("Filetype", {
 	command = "set colorcolumn=100",
 	group = fto_grp,
