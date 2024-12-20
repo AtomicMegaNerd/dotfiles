@@ -93,7 +93,7 @@ in {
 
   fonts.packages = with pkgs;
     [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
-  environment.systemPackages = with pkgs; [ neovim git curl ];
+  environment.systemPackages = with pkgs; [ neovim git curl wl-clipboard ];
 
   nix = {
     gc = {
