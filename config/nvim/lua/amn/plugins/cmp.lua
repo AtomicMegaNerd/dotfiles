@@ -1,20 +1,15 @@
 return {
 	"saghen/blink.cmp",
-
-	version = "*",
-
+	version = "v0.8.1",
 	opts = {
 		keymap = { preset = "default" },
-
 		appearance = {
 			nerd_font_variant = "normal",
 		},
-
 		sources = {
 			default = { "lsp", "path", "buffer" },
 		},
-
-		opts_extend = { "sources.default" },
+		signature = { enabled = true },
 	},
 	opts_extend = { "sources.default" },
 }
