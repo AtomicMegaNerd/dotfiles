@@ -13,7 +13,8 @@ return {
 		sources = {
 			default = { "lsp", "path", "buffer" },
 		},
-	},
 
-	signature = { enabled = true },
+		opts_extend = { "sources.default" },
+	},
+	opts_extend = { "sources.default" },
 }

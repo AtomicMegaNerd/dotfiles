@@ -1,81 +1,70 @@
 {
   description = "AtomicMegaNerd's NixOS Flake";
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    home-manager-unstable = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     catppuccin = { url = "github:catppuccin/nix"; };
 
     atuin = { url = "github:atuinsh/atuin"; };
 
-    zed = { url = "github:zed-industries/zed"; };
-
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager
-    , home-manager-unstable, catppuccin, nixos-wsl, atuin, zed }:
+  outputs = { self, nixpkgs, home-manager, catppuccin, nixos-wsl, atuin }:
     let
-      sysLinux = "x86_64-linux";
-      sysDarwin = "aarch64-darwin";
+      systems = {
+        linux = "x86_64-linux";
+        darwin = "aarch64-darwin";
+      };
 
-      buildPkgsConf = system: stable:
-        import (if stable then nixpkgs else nixpkgs-unstable) {
+      buildPkgsConf = system:
+        import nixpkgs {
           inherit system;
           config.allowUnfree = true;
         };
 
-      buildNixOsConf = system: hostname: stable: isWsl:
+      buildOsConf = system: hostname: extraModules:
         nixpkgs.lib.nixosSystem {
-          pkgs = buildPkgsConf system stable;
+          pkgs = buildPkgsConf system;
           modules = [
             ./hosts/${hostname}/configuration.nix
             catppuccin.nixosModules.catppuccin
-          ] ++ (if isWsl then [ nixos-wsl.nixosModules.wsl ] else [ ]);
+          ] ++ extraModules;
         };
 
-      buildHomeMgrConf = system: hostname: stable: addZed:
-        let hm = if stable then home-manager else home-manager-unstable;
-        in hm.lib.homeManagerConfiguration {
-          pkgs = buildPkgsConf system stable;
+      buildHomeMgrConf = system: hostname:
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = buildPkgsConf system;
           modules = [
             ./hosts/${hostname}/rcd.nix
             catppuccin.homeManagerModules.catppuccin
-            {
-              home.packages = [ atuin.packages.${system}.default ]
-                ++ (if addZed then [ zed.packages.${system}.default ] else [ ]);
-            }
+            { home.packages = [ atuin.packages.${system}.default ]; }
           ];
         };
 
     in {
 
       nixosConfigurations = {
-        blahaj = buildNixOsConf sysLinux "blahaj" true false;
-        arcology = buildNixOsConf sysLinux "arcology" true false;
-        metropolitan = buildNixOsConf sysLinux "metropolitan" true true;
+        blahaj = buildOsConf systems.linux "blahaj" [ ];
+        arcology = buildOsConf systems.linux "arcology" [ ];
+        metropolitan = buildOsConf systems.linux "metropolitan"
+          [ nixos-wsl.nixOsModules.wsl ];
       };
 
       homeConfigurations = {
-        "rcd@blahaj" = buildHomeMgrConf sysLinux "blahaj" true false;
-        "rcd@arcology" = buildHomeMgrConf sysLinux "arcology" true false;
-        "rcd@metropolitan" =
-          buildHomeMgrConf sysLinux "metropolitan" true false;
-        "rcd@Discovery" = buildHomeMgrConf sysDarwin "Discovery" false false;
+        "rcd@blahaj" = buildHomeMgrConf systems.linux "blahaj";
+        "rcd@arcology" = buildHomeMgrConf systems.linux "arcology";
+        "rcd@metropolitan" = buildHomeMgrConf systems.linux "metropolitan";
+        "rcd@Discovery" = buildHomeMgrConf systems.darwin "Discovery";
       };
     };
 }
