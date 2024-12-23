@@ -57,7 +57,7 @@
         blahaj = buildOsConf systems.linux "blahaj" [ ];
         arcology = buildOsConf systems.linux "arcology" [ ];
         metropolitan = buildOsConf systems.linux "metropolitan"
-          [ nixos-wsl.nixOsModules.wsl ];
+          [ nixos-wsl.nixosModules.wsl ];
       };
 
       homeConfigurations = {
