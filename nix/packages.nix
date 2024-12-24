@@ -19,6 +19,8 @@ with pkgs; [
   dos2unix
   pre-commit
   lua-language-server
+  docker-compose
+  lazy-docker
   shellcheck
   stylua
   nixd
