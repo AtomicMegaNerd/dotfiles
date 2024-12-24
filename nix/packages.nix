@@ -20,7 +20,7 @@ with pkgs; [
   pre-commit
   lua-language-server
   docker-compose
-  lazy-docker
+  lazydocker
   shellcheck
   stylua
   nixd
