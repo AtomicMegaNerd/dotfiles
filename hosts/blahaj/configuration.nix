@@ -2,8 +2,6 @@
 let
   piholeUid = 888;
   piholeGid = 888;
-  freshrssUid = 889;
-  freshrssGid = 889;
   rcd_pub_key = builtins.readFile ../../static/rcd_pub_key;
 in {
 
@@ -31,30 +29,17 @@ in {
     users.rcd = {
       isNormalUser = true;
       description = "Chris Dunphy";
-      extraGroups = [ "wheel" "docker" "podman" ];
+      extraGroups = [ "wheel" "docker" ];
       shell = pkgs.fish;
       openssh.authorizedKeys.keys = [ rcd_pub_key ];
-    };
-    groups.pihole = { gid = piholeGid; };
-    groups.freshrss = { gid = freshrssGid; };
-    users.pihole = {
-      isSystemUser = true;
-      uid = piholeUid;
-      group = "pihole";
-    };
-    users.freshrss = {
-      isSystemUser = true;
-      uid = freshrssUid;
-      group = "freshrss";
     };
   };
 
   systemd.tmpfiles.rules = [
-    "Z /etc/pihole 0775 ${toString piholeUid} ${toString piholeGid} -"
-    "Z /etc/dnsmasq.d 0775 ${toString piholeUid} ${toString piholeGid} -"
-    "Z /etc/freshrss/data 0755 ${toString freshrssUid} ${
-      toString freshrssGid
-    } -"
+    "Z /etc/pihole 0775 -"
+    "Z /etc/dnsmasq.d 0775 -"
+    "Z /etc/starfeed 0755 -"
+    "Z /etc/freshrss/data 0755 -"
   ];
 
   virtualisation.containers.enable = true;
@@ -64,7 +49,6 @@ in {
       backend = "docker";
       containers = {
         pihole = {
-          user = "root";
           autoStart = true;
           image = "pihole/pihole:2024.07.0";
           ports = [ "53:53/tcp" "53:53/udp" "8081:80/tcp" ];
@@ -88,6 +72,11 @@ in {
             TZ = "America/Edmonton";
             CRON_MIN = "15,45";
           };
+        };
+        starfeed = {
+          autoStart = true;
+          image = "atomicmeganerd/starfeed:v0.1.0";
+          environmentFiles = [ "/etc/starfeed/.env" ];
         };
       };
     };
