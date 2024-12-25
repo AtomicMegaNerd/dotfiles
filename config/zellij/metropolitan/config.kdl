@@ -231,26 +231,20 @@ plugins {
     tab-bar location="zellij:tab-bar"
 }
 
-// More minimalistic UI
 simplified_ui true
 
 theme "catppuccin-macchiato"
 
-// Choose the base input mode of zellij.
-// Default: normal
-//
 default_mode "locked"
+
+session_serialization false
 
 default_layout "compact"
 
-// Whether to show the frames around each pane
 pane_frames false
 
 // On WSL we use clip.exe to copy to the clipboard
 copy_command "clip.exe"
 
-// Plugins to load in the background when a new session starts
-// eg. "file:/path/to/my-plugin.wasm"
-// eg. "https://example.com/my-plugin.wasm"
 load_plugins {
 }

@@ -246,6 +246,8 @@ default_layout "compact"
 // Whether to show the frames around each pane
 pane_frames false
 
+session_serialization false
+
 // The utility to use for copying text to the clipboard, on macOS this should be "pbcopy"
 copy_command "pbcopy"
 

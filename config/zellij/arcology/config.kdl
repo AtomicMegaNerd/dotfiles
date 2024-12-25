@@ -239,6 +239,8 @@ default_mode "locked"
 
 default_layout "compact"
 
+session_serialization false
+
 copy_command "wl-copy"
 
 pane_frames false
