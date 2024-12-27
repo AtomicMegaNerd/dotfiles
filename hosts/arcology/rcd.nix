@@ -66,5 +66,9 @@
       source = ../../config/zellij/arcology;
       target = "zellij";
     };
+    ghostty = {
+      source = ../../config/ghostty;
+      target = "ghostty";
+    };
   };
 }
