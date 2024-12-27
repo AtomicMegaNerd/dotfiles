@@ -22,11 +22,13 @@
 
     catppuccin = { url = "github:catppuccin/nix"; };
 
+    ghostty = { url = "github:ghostty-org/ghostty"; };
+
     atuin = { url = "github:atuinsh/atuin"; };
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, catppuccin
-    , nixos-wsl, atuin }:
+    , nixos-wsl, ghostty, atuin }:
     let
       systems = {
         linux = "x86_64-linux";
@@ -62,7 +64,10 @@
     in {
       nixosConfigurations = {
         blahaj = buildOsConf systems.linux "blahaj" [ ];
-        arcology = buildOsConf systems.linux "arcology" [ ];
+        arcology = buildOsConf systems.linux "arcology" [{
+          environment.systemPackages =
+            [ ghostty.packages.${systems.linux}.default ];
+        }];
         metropolitan = buildOsConf systems.linux "metropolitan"
           [ nixos-wsl.nixosModules.wsl ];
       };
