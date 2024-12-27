@@ -243,6 +243,8 @@ default_mode "locked"
 
 default_layout "compact"
 
+session_serialization false
+
 // Whether to show the frames around each pane
 pane_frames false
 

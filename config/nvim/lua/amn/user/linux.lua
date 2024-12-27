@@ -15,7 +15,7 @@ local is_wayland = function()
 	if xdg_session_type == nil then
 		return false
 	end
-	if string.find(xdg_session_type, "wayland") then
+	if string.find(tostring(xdg_session_type), "wayland") then
 		return true
 	end
 	return false

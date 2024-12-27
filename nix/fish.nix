@@ -5,17 +5,16 @@ let
     set -gx GOPATH $HOME/.local/go
     set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
     set -gx CLI_THEME "catppuccin"
+
+    fish_add_path $GOPATH/bin
+    fish_add_path $HOME/.local/bin
   '';
 in {
   enable = true;
 
   shellInit = if pkgs.stdenv.isDarwin then ''
     ${commonShellInit}
-
-    # Homebrew
     fish_add_path /opt/homebrew/bin
-
-    # Enable Nix Paths
     fish_add_path ~/.nix-profile/bin
     fish_add_path /nix/var/nix/profiles/default/bin
   '' else

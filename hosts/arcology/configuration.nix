@@ -91,15 +91,15 @@ in {
     atomix # puzzle game
   ]);
 
+  fonts.packages = with pkgs;
+    [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
+
   environment.systemPackages = with pkgs; [
     neovim
     git
     curl
     wl-clipboard
     gnomeExtensions.appindicator
-    nerd-fonts.jetbrains-mono
-    nerd-fonts.departure-mono
-    nerd-fonts.caskaydia-cove
   ];
 
   nix = {

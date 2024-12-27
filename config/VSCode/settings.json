@@ -1,6 +1,6 @@
 {
   // Editor settings
-  "editor.fontSize": 18,
+  "editor.fontSize": 16,
   "editor.semanticHighlighting.enabled": true,
   "editor.lineNumbers": "relative",
   "editor.formatOnSave": true,
@@ -9,7 +9,7 @@
 
   // Terminal settings
   "terminal.integrated.fontFamily": "Cascadia Code",
-  "terminal.integrated.fontSize": 18,
+  "terminal.integrated.fontSize": 16,
   "terminal.integrated.cursorStyle": "block",
   "terminal.integrated.cursorBlinking": true,
 
