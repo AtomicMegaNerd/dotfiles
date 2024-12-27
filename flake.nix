@@ -17,7 +17,7 @@
     # Other inputs
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     catppuccin = { url = "github:catppuccin/nix"; };
