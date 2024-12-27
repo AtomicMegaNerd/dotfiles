@@ -3,7 +3,7 @@
 
   inputs = {
     # Stable nixpkgs for NixOS configuration
-    nixpkgs-stable.url = "github:nixos/nixpkgs/release-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/release-24.11";
 
     # Unstable nixpkgs for development tools and Home Manager
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
@@ -25,7 +25,7 @@
     atuin = { url = "github:atuinsh/atuin"; };
   };
 
-  outputs = { self, nixpkgs-stable, nixpkgs-unstable, home-manager, catppuccin
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, catppuccin
     , nixos-wsl, atuin }:
     let
       systems = {
@@ -40,8 +40,8 @@
         };
 
       buildOsConf = system: hostname: extraModules:
-        nixpkgs-stable.lib.nixosSystem {
-          pkgs = buildPkgsConf system nixpkgs-stable;
+        nixpkgs.lib.nixosSystem {
+          pkgs = buildPkgsConf system nixpkgs;
           modules = [
             ./hosts/${hostname}/configuration.nix
             catppuccin.nixosModules.catppuccin
@@ -50,6 +50,7 @@
 
       buildHomeMgrConf = system: hostname:
         home-manager.lib.homeManagerConfiguration {
+          # Use unstable for home-manager
           pkgs = buildPkgsConf system nixpkgs-unstable;
           modules = [
             ./hosts/${hostname}/rcd.nix
