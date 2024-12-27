@@ -35,12 +35,38 @@ in {
     };
   };
 
-  systemd.tmpfiles.rules = [
-    "Z /etc/pihole 0775 -"
-    "Z /etc/dnsmasq.d 0775 -"
-    "Z /etc/starfeed 0755 -"
-    "Z /etc/freshrss/data 0755 -"
-  ];
+  environment.etc = {
+    "pihole" = {
+      source = "/etc/pihole";
+      mode = "0775";
+      user = "root";
+      group = "root";
+    };
+    "dnsmasq.d" = {
+      source = "/etc/dnsmasq.d";
+      mode = "0775";
+      user = "root";
+      group = "root";
+    };
+    "starfeed" = {
+      source = "/etc/starfeed";
+      mode = "0755";
+      user = "root";
+      group = "root";
+    };
+    "freshrss/data" = {
+      source = "/etc/freshrss/data";
+      mode = "0755";
+      user = "root";
+      group = "root";
+    };
+    "freshrss/extensions" = {
+      source = "/etc/freshrss/extensions";
+      mode = "0755";
+      user = "root";
+      group = "root";
+    };
+  };
 
   virtualisation.containers.enable = true;
   virtualisation = {
@@ -67,7 +93,10 @@ in {
           autoStart = true;
           image = "freshrss/freshrss:latest";
           ports = [ "8080:80/tcp" ];
-          volumes = [ "/etc/freshrss/data:/var/www/FreshRSS/data" ];
+          volumes = [
+            "/etc/freshrss/data:/var/www/FreshRSS/data"
+            "/etc/freshrss/extensions:/var/www/FreshRSS/extensions"
+          ];
           environment = {
             TZ = "America/Edmonton";
             CRON_MIN = "15,45";
