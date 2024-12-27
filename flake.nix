@@ -2,23 +2,15 @@
   description = "AtomicMegaNerd's NixOS Flake";
 
   inputs = {
-    # Stable nixpkgs for NixOS configuration
     nixpkgs.url = "github:nixos/nixpkgs/release-24.11";
-
-    # Unstable nixpkgs for development tools and Home Manager
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
-    # Stable Home Manager release
     home-manager = {
       url = "github:nix-community/home-manager/";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    # Other inputs
-    nixos-wsl = {
-      url = "github:nix-community/NixOS-WSL";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixos-wsl = { url = "github:nix-community/NixOS-WSL"; };
 
     catppuccin = { url = "github:catppuccin/nix"; };
 
