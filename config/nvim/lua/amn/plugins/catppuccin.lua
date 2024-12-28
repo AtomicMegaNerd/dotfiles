@@ -21,7 +21,6 @@ if vim.fn.getenv("CLI_THEME") == "catppuccin" then
 				integrations = {
 					cmp = true,
 					gitsigns = true,
-					treesitter = true,
 					fzf = true,
 					snacks = true,
 				},
