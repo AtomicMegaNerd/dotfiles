@@ -5,7 +5,6 @@ return {
 		"github/copilot.vim",
 		"nvim-lua/plenary.nvim",
 	},
-	event = "VeryLazy",
 	config = function()
 		local utils = require("amn.utils")
 		local chat = utils.do_import("CopilotChat")
