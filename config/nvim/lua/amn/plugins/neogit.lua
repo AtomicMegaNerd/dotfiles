@@ -3,7 +3,7 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"sindrets/diffview.nvim",
-		"nvim-telescope/telescope.nvim",
+		"ibhagwan/fzf-lua",
 	},
 	config = function()
 		local utils = require("amn.utils")
@@ -16,7 +16,7 @@ return {
 		neogit.setup({
 			integrations = {
 				diffview = true,
-				telescope = true,
+				fzf_lua = true,
 			},
 		})
 		utils.nmap("<leader>ng", neogit.open, "Open [N]eo[G]it")
