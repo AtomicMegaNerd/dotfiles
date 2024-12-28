@@ -13,7 +13,6 @@ if status is-interactive
     alias vconf "nvim ~/.config/nvim/init.lua"
     alias fconf "nvim ~/.config/fish/config.fish"
     alias cconf "nvim ~/.config/fish/conf.d/credentials.fish"
-    alias aconf "nvim ~/.config/alacritty/alacritty.yml"
 
     # Terraform
     alias tf terraform

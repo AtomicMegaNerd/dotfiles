@@ -16,7 +16,6 @@ in {
     neovim = import ../../nix/neovim.nix { inherit pkgs; };
     starship = import ../../nix/starship.nix;
     zellij = import ../../nix/zellij.nix;
-    alacritty = import ../../nix/alacritty.nix;
     bat = import ../../nix/bat.nix;
 
     direnv = {
