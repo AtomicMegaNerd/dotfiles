@@ -3,18 +3,17 @@ return {
 	dependencies = {
 		"saghen/blink.cmp",
 	},
+
 	config = function()
 		local utils = require("amn.utils")
 
 		local nvim_lsp = utils.do_import("lspconfig")
 		local cmp = utils.do_import("blink.cmp")
-
 		if not nvim_lsp or not cmp then
 			return
 		end
 
 		local capabilities = cmp.get_lsp_capabilities()
-
 		if not capabilities then
 			return
 		end
