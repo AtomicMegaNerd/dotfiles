@@ -8,7 +8,6 @@ return {
 
 		local nvim_lsp = utils.do_import("lspconfig")
 		local cmp = utils.do_import("blink.cmp")
-		local telescope_builtin = utils.do_import("telescope.builtin")
 
 		if not nvim_lsp or not cmp or not telescope_builtin then
 			return
@@ -26,7 +25,6 @@ return {
 			utils.nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition", "LSP", bufnr)
 			utils.nmap("gl", vim.lsp.buf.declaration, "[G]oto [D]eclaration", "LSP", bufnr)
 			utils.nmap("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation", "LSP", bufnr)
-			utils.nmap("gr", telescope_builtin.lsp_references, "[G]oto [R]eferences", "LSP", bufnr)
 			utils.nmap("gt", vim.lsp.buf.type_definition, "Type [D]efinition", "LSP", bufnr)
 			utils.nmap("K", vim.lsp.buf.hover, "Hover Documentation", "LSP", bufnr)
 			utils.nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation", "LSP", bufnr)

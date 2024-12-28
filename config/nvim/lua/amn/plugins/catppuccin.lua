@@ -22,9 +22,8 @@ if vim.fn.getenv("CLI_THEME") == "catppuccin" then
 					cmp = true,
 					gitsigns = true,
 					treesitter = true,
-					alpha = true,
-					telescope = true,
-					fidget = true,
+					fzf = true,
+					snacks = true,
 				},
 			})
 
