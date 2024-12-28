@@ -9,7 +9,7 @@ return {
 		local nvim_lsp = utils.do_import("lspconfig")
 		local cmp = utils.do_import("blink.cmp")
 
-		if not nvim_lsp or not cmp or not telescope_builtin then
+		if not nvim_lsp or not cmp then
 			return
 		end
 
