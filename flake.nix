@@ -16,11 +16,10 @@
 
     ghostty = { url = "github:ghostty-org/ghostty"; };
 
-    atuin = { url = "github:atuinsh/atuin"; };
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, catppuccin
-    , nixos-wsl, ghostty, atuin }:
+    , nixos-wsl, ghostty }:
     let
       systems = {
         linux = "x86_64-linux";
@@ -49,7 +48,6 @@
           modules = [
             ./hosts/${hostname}/rcd.nix
             catppuccin.homeManagerModules.catppuccin
-            { home.packages = [ atuin.packages.${system}.default ]; }
           ];
         };
 
