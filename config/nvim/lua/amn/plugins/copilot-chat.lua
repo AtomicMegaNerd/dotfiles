@@ -17,11 +17,6 @@ return {
 		chat.setup({
 			show_help = false,
 			context = "buffers",
-			mappings = {
-				complete = {
-					insert = "",
-				},
-			},
 		})
 
 		utils.nmap("<leader>pc", function()

@@ -44,7 +44,7 @@ o.ignorecase = true
 o.smartcase = true
 
 -- Better completion experience
-o.completeopt = "menuone,noselect"
+o.completeopt = "menuone,noselect,popup,noinsert"
 
 -- Enable spell checking
 o.spell = true
