@@ -9,17 +9,22 @@
                                              /____/
 ```
 
+![AtomicMegaNerd](https://github.com/AtomicMegaNerd/AtomicMegaNerd/blob/main/img/RCD-AtomicMegaNerd-Beard-400.png)
+
 This is my core flake for my Nix-managed machines as well as any other machines that
 use Nix as a package manager. This repo also contains other configs for non-Nix systems.
 
 ## Nix Systems
 
-| Host          | OS    | Platform       | Version   | Notes        |
-| ------------- | ----- | -------------- | --------- | ------------ |
-| Discovery     | MacOS | aarch64-darwin | unstable  | MacBook Pro  |
-| blahaj        | NixOS | x86-64-linux   | 24.11     | Server       |
-| metropolitan  | NixOS | x86-64-linux   | 24.11     | WSL          |
-| arcology      | NixOS | x86-64-linux   | 24.11     | VMWare Guest |
+| Host          | OS    | Platform       | OS Version | HM Version   | Notes        |
+| ------------- | ----- | -------------- | ---------- | ------------ | ------------ |
+| blahaj        | NixOS | x86-64-linux   | 24.11      | unstable     | Server       |
+| metropolitan  | NixOS | x86-64-linux   | 24.11      | unstable     | WSL          |
+| arcology      | NixOS | x86-64-linux   | 24.11      | unstable     | VMWare Guest |
+| Discovery     | MacOS | aarch64-darwin | N/A        | unstable     | MacBook Pro  |
+
+In all NixOS instances the core OS is the latest stable release. However, we use unstable packages
+for the home-manager configuration in order to keep my development tooling up-to-date.
 
 ### Nix System Upgrade
 
@@ -51,15 +56,4 @@ Then run the following as Administrator:
 
 ```powershell
 .\scripts\CreateSymlinks.ps1
-```
-
-## Environment Variables
-
-The following environment variables are used in the different configurations, need to be
-set on non-Nix systems:
-
-```fish
-# Set to "1" in order to enable Mason which can then manage and install
-# LSP servers and linters for Neovim.
-set -gx NVIM_ENABLE_MASON 1
 ```
