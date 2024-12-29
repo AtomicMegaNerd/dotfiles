@@ -5,7 +5,7 @@
       line-number = "relative";
       true-color = true;
       rulers = [ 100 ];
-      scrolloff = 8;
+      scrolloff = 10;
       gutters = [ "diagnostics" "line-numbers" ];
       auto-format = true;
 

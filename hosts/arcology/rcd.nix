@@ -14,6 +14,7 @@
     starship = import ../../nix/starship.nix;
     zellij = import ../../nix/zellij.nix;
     bat = import ../../nix/bat.nix;
+    helix = import ../../nix/helix.nix;
 
     direnv = {
       enable = true;
