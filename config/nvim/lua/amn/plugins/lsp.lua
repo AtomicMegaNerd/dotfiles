@@ -31,7 +31,7 @@ return {
 
 		local servers = {
 			"pyright",
-			"nixd",
+			"nil_ls",
 			"ruff",
 			"bashls",
 			"gopls",

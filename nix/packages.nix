@@ -22,7 +22,7 @@ with pkgs; [
   lazydocker
   shellcheck
   stylua
-  nixd
+  nil
   bash-language-server
   haskellPackages.nixfmt
   nodePackages.markdownlint-cli
