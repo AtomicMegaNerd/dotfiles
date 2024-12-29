@@ -19,13 +19,11 @@ return {
 				json = { "prettier" },
 				nix = { "nixfmt" },
 			},
-		})
-
-		vim.api.nvim_create_autocmd("BufWritePre", {
-			pattern = "*",
-			callback = function(args)
-				conform.format({ bufnr = args.buf })
-			end,
+			format_on_save = {
+				-- I recommend these options. See :help conform.format for details.
+				lsp_format = "fallback",
+				timeout_ms = 500,
+			},
 		})
 	end,
 }
