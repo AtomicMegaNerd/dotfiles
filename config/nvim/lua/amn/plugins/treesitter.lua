@@ -16,6 +16,7 @@ return {
 			},
 			indent = {
 				enable = true,
+				disable = { "go" },
 			},
 		})
 	end,
