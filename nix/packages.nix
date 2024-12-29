@@ -3,7 +3,6 @@ with pkgs; [
   fastfetch
   glow
   tldr
-  wget
   curl
   du-dust
   duf
@@ -24,11 +23,10 @@ with pkgs; [
   shellcheck
   stylua
   nixd
+  bash-language-server
   haskellPackages.nixfmt
   nodePackages.markdownlint-cli
   nodePackages.yaml-language-server
-  bash-language-server
   nodePackages.prettier
   nodejs_22
-  pre-commit
 ]
