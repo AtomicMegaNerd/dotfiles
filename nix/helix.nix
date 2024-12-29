@@ -1,6 +1,8 @@
 {
   enable = true;
   settings = {
+    theme = "catppuccin-macchiato";
+
     editor = {
       line-number = "relative";
       true-color = true;
