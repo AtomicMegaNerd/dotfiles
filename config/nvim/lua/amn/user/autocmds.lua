@@ -15,24 +15,28 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 ----------------------------------------------------------------
 local fto_grp = vim.api.nvim_create_augroup("FileTypeOptions", { clear = true })
 
+-- Set tabstop and shiftwidth to 2 for these file types
 vim.api.nvim_create_autocmd("FileType", {
 	command = "set tabstop=2 shiftwidth=2",
 	group = fto_grp,
 	pattern = { "haskell", "lua", "typescript", "javascript", "terraform", "nix", "markdown" },
 })
 
+-- Do not convert tabs to spaces in these file types
 vim.api.nvim_create_autocmd("Filetype", {
 	command = "set noexpandtab",
 	group = fto_grp,
 	pattern = { "bash", "sh", "go" },
 })
 
+-- The black Python formatter uses 88 characters as the line length
 vim.api.nvim_create_autocmd("Filetype", {
 	command = "set colorcolumn=88",
 	group = fto_grp,
 	pattern = { "python" },
 })
 
+-- Enable soft wrapping and line breaking in markdown files
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "markdown",
 	group = fto_grp,
@@ -42,27 +46,9 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
-vim.api.nvim_create_autocmd("Filetype", {
-	command = "set colorcolumn=100",
-	group = fto_grp,
-	pattern = {
-		"go",
-		"yaml",
-		"markdown",
-		"json",
-		"sh",
-		"bash",
-		"nix",
-		"lua",
-		"typescript",
-		"javascript",
-		"haskell",
-		"terraform",
-	},
-})
-
+-- Treat these files as shell scripts
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	command = "setf sh",
 	group = fto_grp,
-	pattern = { "env.list", ".envrc" },
+	pattern = { "env.list", ".envrc", "*.env" },
 })
