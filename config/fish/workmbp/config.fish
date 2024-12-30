@@ -87,10 +87,6 @@ status is-interactive; and zoxide init fish --cmd cd | source
 # ===================================
 status is-interactive; and fzf --fish | source
 
-# Atuin
-# ===================================
-status is-interactive; and atuin init fish | source
-
 # Direnv
 # ===================================
 direnv hook fish | source
