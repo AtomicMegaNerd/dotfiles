@@ -20,8 +20,8 @@ vim.wo.signcolumn = "yes"
 -- scrolling
 vim.o.scrolloff = 10
 
--- Enable mouse mode
-vim.o.mouse = "a"
+-- Disable mouse support
+vim.o.mouse = ""
 
 -- Blinking block cursor!
 vim.o.guicursor = "a:blinkon100"

@@ -231,28 +231,21 @@ plugins {
     tab-bar location="zellij:tab-bar"
 }
 
-// More minimalistic UI
 simplified_ui true
 
 theme "catppuccin-macchiato"
 
-// Choose the base input mode of zellij.
-// Default: normal
-//
 default_mode "locked"
 
 default_layout "compact"
 
+// Don't save the sessions
 session_serialization false
 
-// Whether to show the frames around each pane
 pane_frames false
 
 // The utility to use for copying text to the clipboard, on macOS this should be "pbcopy"
 copy_command "pbcopy"
 
-// Plugins to load in the background when a new session starts
-// eg. "file:/path/to/my-plugin.wasm"
-// eg. "https://example.com/my-plugin.wasm"
 load_plugins {
 }
