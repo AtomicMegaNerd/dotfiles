@@ -4,6 +4,7 @@ with pkgs; [
   glow
   tldr
   curl
+  wget
   du-dust
   duf
   htop
