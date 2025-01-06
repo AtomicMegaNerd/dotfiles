@@ -60,6 +60,7 @@ in {
       enable = true;
       polkitPolicyOwners = [ "rcd" ];
     };
+    nix-ld.enable = true;
   };
 
   services = { openssh.enable = true; };

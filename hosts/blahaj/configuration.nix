@@ -117,6 +117,7 @@ in {
 
   services.openssh.enable = true;
   programs.fish.enable = true;
+  programs.nix-ld.enable = true;
 
   nix = {
     package = pkgs.nixVersions.stable;
