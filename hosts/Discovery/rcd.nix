@@ -13,6 +13,7 @@ in {
   programs = {
     home-manager.enable = true;
     fish = import ../../nix/fish.nix { inherit pkgs; };
+    helix = import ../../nix/helix.nix;
     neovim = import ../../nix/neovim.nix { inherit pkgs; };
     starship = import ../../nix/starship.nix;
     zellij = import ../../nix/zellij.nix;
