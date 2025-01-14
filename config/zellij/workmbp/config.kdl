@@ -237,7 +237,7 @@ theme "catppuccin-macchiato"
 
 default_mode "locked"
 
-default_layout "compact"
+default_layout "compact_with_nvim"
 
 // Don't save the sessions
 session_serialization false

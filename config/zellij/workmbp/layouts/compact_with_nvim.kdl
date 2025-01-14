@@ -1,0 +1,15 @@
+layout {
+    default_tab_template {
+        children
+        pane size=1 borderless=true {
+            plugin location="compact-bar"
+        }
+    }
+    tab name="vim" {
+        pane command="nvim"
+    }
+    tab name="shell" split_direction="vertical"{
+        pane command="fish"
+        pane command="fish"
+    }
+}
