@@ -58,7 +58,7 @@ keybinds clear-defaults=true {
 
     tab {
         // Switch tabs
-        bind "<" { GoToPreviousTab; switchToMode "locked"; }
+        bind "<" { GoToPreviousTab; SwitchToMode "locked"; }
         bind ">" { GoToNextTab; SwitchToMode "locked"; }
         bind "1" { GoToTab 1; SwitchToMode "locked"; }
         bind "2" { GoToTab 2; SwitchToMode "locked"; }
