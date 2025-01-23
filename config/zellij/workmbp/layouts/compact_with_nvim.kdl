@@ -8,7 +8,7 @@ layout {
     tab name="vim" {
         pane command="nvim"
     }
-    tab name="shell" split_direction="vertical"{
+    tab name="shell" split_direction="vertical" {
         pane command="fish"
         pane command="fish"
     }
