@@ -19,8 +19,6 @@
   "vim.incsearch": true,
   "vim.leader": "\\",
 
-  "vim.modeKeyBindingsIndicator": true,
-
   // For vim extension remap ; to :
   "vim.normalModeKeyBindingsNonRecursive": [
     {
@@ -34,7 +32,6 @@
   "workbench.iconTheme": "catppuccin-macchiato",
   "workbench.layoutControl.enabled": false,
   "workbench.settings.editor": "ui",
-  "workbench.colorTheme": "Gruvbox Dark Soft",
 
   // Catppuccin settings
   "catppuccin.italicKeywords": false,
@@ -70,5 +67,6 @@
   "extensions.ignoreRecommendations": true,
   "git.openRepositoryInParentFolders": "always",
   "window.commandCenter": false,
-  "security.workspace.trust.enabled": false
+  "security.workspace.trust.enabled": false,
+  "workbench.colorTheme": "Catppuccin Macchiato"
 }
