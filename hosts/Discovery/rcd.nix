@@ -8,6 +8,7 @@ in {
     file.".ssh/allowed_signers".text = "${rcd_pub_key}";
     file.".ssh/config".source = ../../config/SSH/Discovery/config;
     packages = import ../../nix/packages.nix { inherit pkgs; };
+    shell.enableShellIntegration = true;
   };
 
   programs = {
@@ -45,7 +46,6 @@ in {
 
     zoxide = {
       enable = true;
-      enableFishIntegration = true;
       options = [ "--cmd cd" ];
     };
 

@@ -64,8 +64,6 @@
 
       homeConfigurations = {
         "rcd@blahaj" = buildHomeMgrConf systems.linux "blahaj";
-        "rcd@arcology" = buildHomeMgrConf systems.linux "arcology";
-        "rcd@metropolitan" = buildHomeMgrConf systems.linux "metropolitan";
         "rcd@Discovery" = buildHomeMgrConf systems.darwin "Discovery";
       };
     };
