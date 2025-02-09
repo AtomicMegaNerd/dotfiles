@@ -1,1 +1,4 @@
-{ enable = true; }
+{
+  enable = true;
+  enableFishIntegration = false;
+}
