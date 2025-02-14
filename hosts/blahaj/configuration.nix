@@ -112,8 +112,7 @@ in {
     };
   };
 
-  environment.systemPackages = (import ../../nix/packages.nix { inherit pkgs; })
-    ++ (with pkgs; [ neovim starship git dig ]);
+  environment.systemPackages = with pkgs; [ neovim starship git dig ];
 
   services.openssh.enable = true;
   programs.fish.enable = true;
