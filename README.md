@@ -19,8 +19,7 @@ use Nix as a package manager. This repo also contains other configs for non-Nix 
 | Host          | OS    | Platform       | OS Version | HM Version   | Notes        |
 | ------------- | ----- | -------------- | ---------- | ------------ | ------------ |
 | blahaj        | NixOS | x86-64-linux   | 24.11      | unstable     | Server       |
-| metropolitan  | NixOS | x86-64-linux   | 24.11      | unstable     | WSL          |
-| arcology      | NixOS | x86-64-linux   | 24.11      | unstable     | VMWare Guest |
+| metropolitan  | NixOS | x86-64-linux   | 24.11      | unstable     | Workstation  |
 | Discovery     | MacOS | aarch64-darwin | N/A        | unstable     | MacBook Pro  |
 
 In all NixOS instances the core OS is the latest stable release. However, we use unstable packages
@@ -40,20 +39,4 @@ We use home-manager on all of our Nix managed machines.
 
 ```fish
 home-manager switch --flake .#USERNAME@HOST
-```
-
-## Windows
-
-Configuration files for my Windows programs:
-
-- Windows Terminal
-- VSCode
-- Powershell
-- Neovim (shared with Nix)
-
-To install the configs, first make sure you have the required programs installed.
-Then run the following as Administrator:
-
-```powershell
-.\scripts\CreateSymlinks.ps1
 ```
