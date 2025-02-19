@@ -17,9 +17,6 @@ if status is-interactive
     # Terraform
     alias tf terraform
 
-    # Podman
-    alias docker podman
-
     # Zellij
     alias zl "zellij ls"
     alias za "zellij a"
@@ -67,13 +64,8 @@ set -gx NVIM_LOG_FILE ~/.local/share/nvim/nvim.log
 # ===================================
 fish_add_path $HOME/bin
 fish_add_path $HOME/.local/bin
-fish_add_path $HOME/.pyenv/bin
 fish_add_path $HOME/go/bin
-
-# Pyenv
-# ===================================
-status is-interactive; and pyenv init --path | source
-pyenv init - | source
+fish_add_path /opt/homebrew/bin
 
 # Starship prompt
 # ===================================
