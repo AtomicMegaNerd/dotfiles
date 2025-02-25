@@ -10,6 +10,5 @@ layout {
     }
     tab name="shell" split_direction="vertical" {
         pane command="fish"
-        pane command="fish"
     }
 }
