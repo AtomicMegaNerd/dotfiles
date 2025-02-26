@@ -60,5 +60,9 @@ in {
       source = ../../config/zellij/linux;
       target = "zellij";
     };
+    ghostty = {
+      source = ../../config/ghostty;
+      target = "ghostty";
+    };
   };
 }
