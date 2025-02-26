@@ -29,7 +29,11 @@ in {
       extraConfig = {
         init.defaultBranch = "main";
         pull.rebase = false;
-        user.signingkey = "${rcd_pub_key}";
+        credential = {
+          helper = "manager";
+          "https://github.com".username = "AtomicMegaNerd";
+          credentialStore = "cache";
+        };
       };
     };
 
