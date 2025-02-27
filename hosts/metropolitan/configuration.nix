@@ -8,6 +8,7 @@ in {
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "metropolitan"; # Define your hostname.
 
@@ -74,6 +75,7 @@ in {
     git
     neovim
     git-credential-manager
+    wl-clipboard
   ];
 
   services.openssh.enable = true;
