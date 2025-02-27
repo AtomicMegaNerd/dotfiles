@@ -1,14 +1,14 @@
 { pkgs, ... }:
 let rcd_pub_key = builtins.readFile ../../static/rcd_pub_key;
 in {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "metropolitan"; # Define your hostname.
 
@@ -61,10 +61,21 @@ in {
   programs.fish.enable = true;
   programs.steam.enable = true;
 
+  # 1Password
+  programs._1password.enable = true;
+  programs._1password-gui = {
+    enable = true;
+    # Certain features, including CLI integration and system authentication support,
+    # require enabling PolKit integration on some desktop environments (e.g. Plasma).
+    polkitPolicyOwners = [ "rcd" ];
+  };
+
   environment.systemPackages = with pkgs; [
-  	curl
-	git
-	neovim
+    curl
+    git
+    neovim
+    git-credential-manager
+    wl-clipboard
   ];
 
   services.openssh.enable = true;
