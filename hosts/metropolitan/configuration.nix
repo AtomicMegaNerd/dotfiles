@@ -80,6 +80,23 @@ in {
     gnome-tweaks
   ];
 
+  # GNOME exclusions
+  environment.gnome.excludePackages = (with pkgs; [
+    atomix # puzzle game
+    cheese # webcam tool
+    epiphany # web browser
+    geary # email reader
+    gnome-music
+    gnome-maps
+    snapshot
+    gnome-terminal
+    gnome-tour
+    hitori # sudoku game
+    iagno # go game
+    tali # poker game
+    totem # video player
+  ]);
+
   services.openssh.enable = true;
 
   nix = {
