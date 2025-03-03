@@ -76,6 +76,8 @@ in {
     neovim
     git-credential-manager
     wl-clipboard
+    bottles
+    gnome-tweaks
   ];
 
   services.openssh.enable = true;
