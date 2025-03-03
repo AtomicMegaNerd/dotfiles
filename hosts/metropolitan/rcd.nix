@@ -16,6 +16,7 @@ in {
     starship = import ../../nix/starship.nix;
     zellij = import ../../nix/zellij.nix;
     bat = import ../../nix/bat.nix;
+    zed-editor = import ../../nix/zed.nix;
 
     direnv = {
       enable = true;
@@ -44,6 +45,7 @@ in {
     };
 
     fzf = { enable = true; };
+
   };
 
   catppuccin = {

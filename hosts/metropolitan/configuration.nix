@@ -82,19 +82,17 @@ in {
 
   # GNOME exclusions
   environment.gnome.excludePackages = (with pkgs; [
-    atomix # puzzle game
+    gnome-text-editor
     cheese # webcam tool
     epiphany # web browser
     geary # email reader
     gnome-music
     gnome-maps
+    gnome-contacts
+    gnome-calendar
     snapshot
-    gnome-terminal
+    gnome-console
     gnome-tour
-    hitori # sudoku game
-    iagno # go game
-    tali # poker game
-    totem # video player
   ]);
 
   services.openssh.enable = true;
