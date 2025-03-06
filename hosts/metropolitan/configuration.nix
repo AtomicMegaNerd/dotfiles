@@ -40,14 +40,11 @@ in {
     openssh.authorizedKeys.keys = [ rcd_pub_key ];
   };
 
-  programs.firefox.enable = true;
   programs.fish.enable = true;
   programs.steam.enable = true;
   programs._1password.enable = true;
   programs._1password-gui = {
     enable = true;
-    # Certain features, including CLI integration and system authentication support,
-    # require enabling PolKit integration on some desktop environments (e.g. Plasma).
     polkitPolicyOwners = [ "rcd" ];
   };
 
@@ -78,6 +75,8 @@ in {
   ]);
 
   services.openssh.enable = true;
+  services.flatpak.enable = true;
+  services.gnome.gnome-browser-connector.enable = true;
 
   nix = {
     gc = {
@@ -94,11 +93,5 @@ in {
     flavor = "macchiato";
   };
 
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.11"; # Did you read the comment?
+  system.stateVersion = "24.11";
 }

@@ -18,6 +18,8 @@ in {
     bat = import ../../nix/bat.nix;
     zed-editor = import ../../nix/zed.nix;
 
+    firefox = { enable = true; };
+
     direnv = {
       enable = true;
       nix-direnv.enable = true;
