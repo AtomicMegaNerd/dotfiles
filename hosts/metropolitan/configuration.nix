@@ -76,7 +76,24 @@ in {
     neovim
     git-credential-manager
     wl-clipboard
+    bottles
+    gnome-tweaks
   ];
+
+  # GNOME exclusions
+  environment.gnome.excludePackages = (with pkgs; [
+    gnome-text-editor
+    cheese # webcam tool
+    epiphany # web browser
+    geary # email reader
+    gnome-music
+    gnome-maps
+    gnome-contacts
+    gnome-calendar
+    snapshot
+    gnome-console
+    gnome-tour
+  ]);
 
   services.openssh.enable = true;
 

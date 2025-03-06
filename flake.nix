@@ -14,7 +14,8 @@
     ghostty = { url = "github:ghostty-org/ghostty"; };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, catppuccin, ghostty }:
+  outputs =
+    { self, nixpkgs, nixpkgs-unstable, home-manager, catppuccin, ghostty }:
     let
       systems = {
         linux = "x86_64-linux";
@@ -49,7 +50,7 @@
     in {
       nixosConfigurations = {
         blahaj = buildOsConf systems.linux "blahaj" [ ];
-	metropolitan = buildOsConf systems.linux "metropolitan" [{
+        metropolitan = buildOsConf systems.linux "metropolitan" [{
           environment.systemPackages =
             [ ghostty.packages.${systems.linux}.default ];
         }];
@@ -57,7 +58,7 @@
 
       homeConfigurations = {
         "rcd@blahaj" = buildHomeMgrConf systems.linux "blahaj";
-	"rcd@metropolitan" = buildHomeMgrConf systems.linux "metropolitan";
+        "rcd@metropolitan" = buildHomeMgrConf systems.linux "metropolitan";
         "rcd@Discovery" = buildHomeMgrConf systems.darwin "Discovery";
       };
     };
