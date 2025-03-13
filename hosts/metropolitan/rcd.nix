@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-let rcd_pub_key = builtins.readFile ../../static/rcd_pub_key;
-in {
+{ pkgs, ... }: {
 
   home = {
     username = "rcd";
