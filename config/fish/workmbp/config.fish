@@ -17,6 +17,9 @@ if status is-interactive
     # Terraform
     alias tf terraform
 
+    # Podman
+    alias docker podman
+
     # Zellij
     alias zl "zellij ls"
     alias za "zellij a"
@@ -59,6 +62,9 @@ set -gx NODE_TLS_REJECT_UNAUTHORIZED 0
 
 # Logging for Neovim
 set -gx NVIM_LOG_FILE ~/.local/share/nvim/nvim.log
+
+# Set Docker host path
+set -gx DOCKER_HOST 'unix:///var/folders/bj/77t80hr144bf0n6vrdtw_1t00000gp/T/podman/podman-machine-default-api.sock'
 
 # PATH
 # ===================================
