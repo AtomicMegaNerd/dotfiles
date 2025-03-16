@@ -4,7 +4,8 @@
     username = "rcd";
     homeDirectory = "/home/rcd";
     stateVersion = "24.11";
-    packages = import ../../nix/packages.nix { inherit pkgs; };
+    packages = import ../../nix/packages.nix { inherit pkgs; }
+      ++ [ pkgs.obsidian ];
   };
 
   programs = {
@@ -17,6 +18,7 @@
     zed-editor = import ../../nix/zed.nix;
 
     firefox = { enable = true; };
+    brave = { enable = true; };
 
     direnv = {
       enable = true;
