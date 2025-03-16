@@ -19,7 +19,7 @@ with pkgs; [
   dos2unix
   pre-commit
   lua-language-server
-  docker-compose
+  podman-compose
   lazydocker
   shellcheck
   stylua
