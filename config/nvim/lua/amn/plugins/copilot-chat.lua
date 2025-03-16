@@ -65,7 +65,6 @@ return {
 			group = chat_grp,
 			callback = function()
 				vim.opt_local.relativenumber = true
-				vim.bo.filetype = "markdown"
 			end,
 		})
 	end,
