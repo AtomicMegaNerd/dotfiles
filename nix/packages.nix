@@ -30,4 +30,5 @@ with pkgs; [
   nodePackages.yaml-language-server
   nodePackages.prettier
   nodejs_22
+  dockerfile-language-server-nodejs
 ]
