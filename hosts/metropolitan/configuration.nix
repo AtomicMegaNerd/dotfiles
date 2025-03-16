@@ -36,7 +36,7 @@ in {
     isNormalUser = true;
     description = "Chris Dunphy";
     shell = pkgs.fish;
-    extraGroups = [ "wheel" "docker" "networkmanager" ];
+    extraGroups = [ "wheel" "podman" "networkmanager" ];
     openssh.authorizedKeys.keys = [ rcd_pub_key ];
   };
 
@@ -46,6 +46,15 @@ in {
   programs._1password-gui = {
     enable = true;
     polkitPolicyOwners = [ "rcd" ];
+  };
+
+  virtualisation.containers.enable = true;
+  virtualisation = {
+    podman = {
+      enable = true;
+      dockerCompat = true;
+      defaultNetwork.settings.dns_enabled = true;
+    };
   };
 
   environment.systemPackages = with pkgs; [
