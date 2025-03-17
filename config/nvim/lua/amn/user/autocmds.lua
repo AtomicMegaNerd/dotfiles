@@ -52,3 +52,10 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	group = fto_grp,
 	pattern = { "env.list", ".envrc", "*.env" },
 })
+
+-- Disable spelling for these file types
+vim.api.nvim_create_autocmd("FileType", {
+	command = "set nospell",
+	group = fto_grp,
+	pattern = { "yaml", "json", "toml", "xml" },
+})

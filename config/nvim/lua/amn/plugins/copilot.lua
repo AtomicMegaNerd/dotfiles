@@ -1,8 +1,6 @@
 return {
 	"github/copilot.vim",
 	init = function()
-		vim.g.copilot_enabled = false
-
 		local utils = require("amn.utils")
 
 		local function enable_copilot()
