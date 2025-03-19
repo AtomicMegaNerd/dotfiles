@@ -17,7 +17,6 @@
     bat = import ../../nix/bat.nix;
     zed-editor = import ../../nix/zed.nix;
 
-    firefox = { enable = true; };
     brave = { enable = true; };
 
     direnv = {
