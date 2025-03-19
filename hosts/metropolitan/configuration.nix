@@ -66,6 +66,7 @@ in {
     bottles
     gnome-tweaks
     gnomeExtensions.appindicator
+    solaar
   ];
 
   # GNOME exclusions
