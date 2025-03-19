@@ -22,6 +22,7 @@ in {
   };
 
   hardware.pulseaudio.enable = false;
+  hardware.logitech.wireless.enable = true;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
