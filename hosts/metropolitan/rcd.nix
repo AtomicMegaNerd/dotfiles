@@ -6,6 +6,13 @@
     stateVersion = "24.11";
     packages = import ../../nix/packages.nix { inherit pkgs; }
       ++ [ pkgs.obsidian ];
+    sessionVariables = {
+      GDK_BACKEND = "wayland";
+      QT_QPA_PLATFORM = "wayland";
+      ELECTRON_OZONE_PLATFORM_HINT = "wayland";
+      OZONE_PLATFORM = "wayland";
+      NIXOS_OZONE_WL = 1;
+    };
   };
 
   programs = {
@@ -17,7 +24,7 @@
     bat = import ../../nix/bat.nix;
     zed-editor = import ../../nix/zed.nix;
 
-    brave = { enable = true; };
+    firefox = { enable = true; };
 
     direnv = {
       enable = true;
