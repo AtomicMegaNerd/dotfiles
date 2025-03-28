@@ -82,6 +82,7 @@ in {
     bottles
     gnome-tweaks
     gnomeExtensions.appindicator
+    gnomeExtensions.paperwm
     solaar
   ];
 
