@@ -7,7 +7,8 @@ in {
     stateVersion = "24.11";
     file.".ssh/allowed_signers".text = "${rcd_pub_key}";
     file.".ssh/config".source = ../../config/SSH/Discovery/config;
-    packages = import ../../nix/packages.nix { inherit pkgs; };
+    packages = import ../../nix/packages.nix { inherit pkgs; }
+      ++ [ pkgs.git-credential-manager ];
     shell.enableShellIntegration = true;
   };
 
