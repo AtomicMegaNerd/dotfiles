@@ -25,6 +25,7 @@
     zed-editor = import ../../nix/zed.nix;
 
     firefox = { enable = true; };
+    brave = { enable = true; };
 
     direnv = {
       enable = true;
