@@ -4,8 +4,6 @@
     username = "rcd";
     homeDirectory = "/home/rcd";
     stateVersion = "24.11";
-    packages = import ../../nix/packages.nix { inherit pkgs; }
-      ++ [ pkgs.obsidian ];
     sessionVariables = {
       GDK_BACKEND = "wayland";
       QT_QPA_PLATFORM = "wayland";
@@ -13,6 +11,10 @@
       OZONE_PLATFORM = "wayland";
       NIXOS_OZONE_WL = 1;
     };
+
+    packages = import ../../nix/packages.nix { inherit pkgs; }
+      ++ [ pkgs.obsidian pkgs.signal-desktop ];
+
   };
 
   programs = {
