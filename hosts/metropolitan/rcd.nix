@@ -14,7 +14,6 @@
 
     packages = import ../../nix/packages.nix { inherit pkgs; }
       ++ [ pkgs.obsidian pkgs.signal-desktop ];
-
   };
 
   programs = {
@@ -56,7 +55,6 @@
     };
 
     fzf = { enable = true; };
-
   };
 
   catppuccin = {
