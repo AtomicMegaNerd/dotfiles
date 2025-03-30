@@ -49,6 +49,8 @@ in {
 
   programs.fish.enable = true;
   programs.steam.enable = true;
+  programs.steam.gamescopeSession.enable = true;
+  programs.gamemode.enable = true;
   programs._1password.enable = true;
   programs._1password-gui = {
     enable = true;
