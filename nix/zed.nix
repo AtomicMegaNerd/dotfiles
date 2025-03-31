@@ -1,6 +1,4 @@
 {
   enable = true;
-  userSettings = {
-
-  };
+  userSettings = { ui_font_size = 18; };
 }

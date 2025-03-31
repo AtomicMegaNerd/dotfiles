@@ -7,7 +7,8 @@ in {
     stateVersion = "24.11";
     file.".ssh/allowed_signers".text = "${rcd_pub_key}";
     file.".ssh/config".source = ../../config/SSH/Discovery/config;
-    packages = import ../../nix/packages.nix { inherit pkgs; };
+    packages = import ../../nix/packages.nix { inherit pkgs; }
+      ++ [ pkgs.git-credential-manager ];
     shell.enableShellIntegration = true;
   };
 
@@ -32,15 +33,11 @@ in {
       extraConfig = {
         init.defaultBranch = "main";
         pull.rebase = false;
-        core.editor = "nvim";
-        gpg.format = "ssh";
-        gpg.ssh = {
-          allowedSignersFile = "/Users/rcd/.ssh/allowed_signers";
-          program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+        credential = {
+          helper = "manager";
+          "https://github.com".username = "AtomicMegaNerd";
+          credentialStore = "cache";
         };
-        user.signingkey = "${rcd_pub_key}";
-        commit.gpgsign = true;
-        push.autoSetupRemote = true;
       };
     };
 

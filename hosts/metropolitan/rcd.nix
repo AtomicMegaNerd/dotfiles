@@ -4,8 +4,16 @@
     username = "rcd";
     homeDirectory = "/home/rcd";
     stateVersion = "24.11";
+    sessionVariables = {
+      GDK_BACKEND = "wayland";
+      QT_QPA_PLATFORM = "wayland";
+      ELECTRON_OZONE_PLATFORM_HINT = "wayland";
+      OZONE_PLATFORM = "wayland";
+      NIXOS_OZONE_WL = 1;
+    };
+
     packages = import ../../nix/packages.nix { inherit pkgs; }
-      ++ [ pkgs.obsidian ];
+      ++ [ pkgs.obsidian pkgs.signal-desktop ];
   };
 
   programs = {
@@ -17,6 +25,7 @@
     bat = import ../../nix/bat.nix;
     zed-editor = import ../../nix/zed.nix;
 
+    firefox = { enable = true; };
     brave = { enable = true; };
 
     direnv = {
@@ -46,7 +55,6 @@
     };
 
     fzf = { enable = true; };
-
   };
 
   catppuccin = {

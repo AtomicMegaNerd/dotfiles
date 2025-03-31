@@ -53,7 +53,7 @@
       target = "nvim";
     };
     zellij = {
-      source = ../../config/zellij/metropolitan;
+      source = ../../config/zellij/linux;
       target = "zellij";
     };
   };
