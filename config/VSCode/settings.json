@@ -1,6 +1,6 @@
 {
   // Editor settings
-  "editor.fontSize": 16,
+  "editor.fontSize": 14,
   "editor.semanticHighlighting.enabled": true,
   "editor.lineNumbers": "relative",
   "editor.formatOnSave": true,
