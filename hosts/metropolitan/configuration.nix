@@ -15,13 +15,11 @@ in {
 
   services.xserver = {
     enable = true;
-    displayManager = {
-      gdm = {
-        enable = true;
-        wayland = true;
-      };
-      gnome.enable = true;
+    displayManager.gdm = {
+      enable = true;
+      wayland = true;
     };
+    desktopManager.gnome = { enable = true; };
   };
 
   hardware.pulseaudio.enable = false;
