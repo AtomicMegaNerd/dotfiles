@@ -41,10 +41,8 @@
         home-manager.lib.homeManagerConfiguration {
           # Use unstable for home-manager
           pkgs = buildPkgsConf system nixpkgs-unstable;
-          modules = [
-            ./hosts/${hostname}/rcd.nix
-            catppuccin.homeManagerModules.catppuccin
-          ];
+          modules =
+            [ ./hosts/${hostname}/rcd.nix catppuccin.homeModules.catppuccin ];
         };
 
     in {
