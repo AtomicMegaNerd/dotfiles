@@ -22,8 +22,6 @@ in {
     desktopManager.gnome = { enable = true; };
   };
 
-  hardware.pulseaudio.enable = false;
-  hardware.logitech.wireless.enable = true;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -31,6 +29,8 @@ in {
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+
+  hardware.logitech.wireless.enable = true;
 
   users.users.rcd = {
     isNormalUser = true;

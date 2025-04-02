@@ -22,8 +22,8 @@
         darwin = "aarch64-darwin";
       };
 
-      buildPkgsConf = system: nixpkgs:
-        import nixpkgs {
+      buildPkgsConf = system: pkg_src:
+        import pkg_src {
           inherit system;
           config.allowUnfree = true;
         };
