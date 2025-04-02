@@ -28,6 +28,31 @@ in {
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    extraConfig.pipewire."92-low-latency" = {
+      "context.properties" = {
+        "default.clock.rate" = 48000;
+        "default.clock.quantum" = 64;
+        "default.clock.min-quantum" = 32;
+        "default.clock.max-quantum" = 128;
+      };
+    };
+    extraConfig.pipewire-pulse."92-low-latency" = {
+      "context.properties" = [{
+        name = "libpipewire-module-protocol-pulse";
+        args = { };
+      }];
+      "pulse.properties" = {
+        "pulse.min.req" = "32/48000";
+        "pulse.default.req" = "64/48000";
+        "pulse.max.req" = "128/48000";
+        "pulse.min.quantum" = "32/48000";
+        "pulse.max.quantum" = "128/48000";
+      };
+      "stream.properties" = {
+        "node.latency" = "64/48000";
+        "resample.quality" = 1;
+      };
+    };
   };
 
   hardware.logitech.wireless.enable = true;
