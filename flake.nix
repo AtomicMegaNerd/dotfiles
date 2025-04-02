@@ -28,9 +28,12 @@
           config.allowUnfree = true;
         };
 
-      buildOsConf = system: hostname: extraModules:
+      buildOsConf = system: hostname: extraModules: useStable:
         nixpkgs.lib.nixosSystem {
-          pkgs = buildPkgsConf system nixpkgs;
+          pkgs = if useStable then
+            buildPkgsConf system nixpkgs
+          else
+            buildPkgsConf system nixpkgs-unstable;
           modules = [
             ./hosts/${hostname}/configuration.nix
             catppuccin.nixosModules.catppuccin
@@ -47,11 +50,11 @@
 
     in {
       nixosConfigurations = {
-        blahaj = buildOsConf systems.linux "blahaj" [ ];
+        blahaj = buildOsConf systems.linux "blahaj" [ ] true;
         metropolitan = buildOsConf systems.linux "metropolitan" [{
           environment.systemPackages =
             [ ghostty.packages.${systems.linux}.default ];
-        }];
+        }] true;
       };
 
       homeConfigurations = {
