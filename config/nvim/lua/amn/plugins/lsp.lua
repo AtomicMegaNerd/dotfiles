@@ -38,6 +38,7 @@ return {
 			"ruff",
 			"golangci_lint_ls",
 			"dockerls",
+			"marksman",
 		}
 
 		for _, lsp in ipairs(servers) do

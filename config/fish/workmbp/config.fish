@@ -85,10 +85,6 @@ status is-interactive; and zoxide init fish --cmd cd | source
 # ===================================
 status is-interactive; and fzf --fish | source
 
-# Pyenv
-# ===================================
-status is-interactive; and pyenv init - fish | source
-
 # Direnv
 # ===================================
 direnv hook fish | source
