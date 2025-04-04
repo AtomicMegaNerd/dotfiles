@@ -31,4 +31,5 @@ with pkgs; [
   nodePackages.prettier
   nodejs_22
   dockerfile-language-server-nodejs
+  marksman
 ]
