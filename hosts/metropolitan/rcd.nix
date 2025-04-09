@@ -72,7 +72,7 @@
       target = "zellij";
     };
     ghostty = {
-      source = ../../config/ghostty;
+      source = ../../config/ghostty/metropolitan;
       target = "ghostty";
     };
   };
