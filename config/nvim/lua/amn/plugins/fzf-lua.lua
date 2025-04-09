@@ -34,5 +34,8 @@ return {
 			utils.nmap("<leader>fw", fzf_lua.lsp_workspace_symbols, "[F]ind [W]orkspace symbols"),
 			utils.nmap("<leader>fr", fzf_lua.lsp_references, "[F]ind [R]eferences"),
 		})
+
+		-- Use fzf-lua as the default ui selector
+		fzf_lua.register_ui_select()
 	end,
 }

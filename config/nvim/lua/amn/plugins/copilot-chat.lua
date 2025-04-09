@@ -17,6 +17,14 @@ return {
 		chat.setup({
 			show_help = false,
 			context = "buffers",
+			selection = select.buffer,
+			chat_autocomplete = true,
+			-- This hack is needed to make Tab work for autocomplete in the chat window
+			mappings = {
+				complete = {
+					insert = "<C-t>",
+				},
+			},
 		})
 
 		utils.nmap("<leader>pc", function()
@@ -58,14 +66,5 @@ return {
 		utils.vmap("<leader>pos", function()
 			chat.ask("Please optimize this code", { selection = select.visual })
 		end, "Co[P]ilot [O]ptimize [S]election")
-
-		local chat_grp = vim.api.nvim_create_augroup("CopilotChat", { clear = true })
-		vim.api.nvim_create_autocmd("BufEnter", {
-			pattern = "copilot-chat",
-			group = chat_grp,
-			callback = function()
-				vim.opt_local.relativenumber = true
-			end,
-		})
 	end,
 }
