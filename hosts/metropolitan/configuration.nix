@@ -95,6 +95,7 @@ in {
     gnomeExtensions.appindicator
     gnomeExtensions.paperwm
     solaar
+    newsflash
   ];
 
   # GNOME exclusions
