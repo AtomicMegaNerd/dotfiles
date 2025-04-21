@@ -50,6 +50,7 @@ return {
       "golangci_lint_ls",
       "dockerls",
       "marksman",
+      "ruff",
     }
 
     for _, lsp in ipairs(servers) do
@@ -65,16 +66,6 @@ return {
       settings = {
         yaml = {
           keyOrdering = false,
-        },
-      },
-    })
-
-    nvim_lsp.ruff.setup({
-      on_attach = on_attach,
-      capabilities = capabilities,
-      init_options = {
-        settings = {
-          -- Ruff language server settings go here
         },
       },
     })
