@@ -36,6 +36,25 @@ vim.api.nvim_create_autocmd("Filetype", {
   pattern = { "python" },
 })
 
+vim.api.nvim_create_autocmd("Filetype", {
+  command = "set colorcolumn=100",
+  group = fto_grp,
+  pattern = {
+    "markdown",
+    "lua",
+    "go",
+    "dockerfile",
+    "shell",
+    "sh",
+    "bash",
+    "javascript",
+    "typescript",
+    "yaml",
+    "json",
+    "toml",
+  },
+})
+
 -- Enable soft wrapping and line breaking in markdown files
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "markdown",
