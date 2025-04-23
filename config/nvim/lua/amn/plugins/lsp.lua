@@ -31,26 +31,16 @@ return {
         local current = vim.diagnostic.config().virtual_text
         vim.diagnostic.config({ virtual_text = not current })
       end, "[T]oggle [D]iagnostics", "LSP", bufnr)
-
-      -- Enable LSP formatting
-      vim.api.nvim_create_augroup("LspFormatting", { clear = true })
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        group = "LspFormatting",
-        callback = function()
-          vim.lsp.buf.format({ async = false })
-        end,
-      })
     end
 
     local servers = {
+      "ruff",
       "nil_ls",
       "bashls",
       "gopls",
-      "ruff",
       "golangci_lint_ls",
       "dockerls",
       "marksman",
-      "ruff",
     }
 
     for _, lsp in ipairs(servers) do
