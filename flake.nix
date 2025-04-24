@@ -10,12 +10,12 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
+    nixos-wsl = { url = "github:nix-community/NixOS-WSL"; };
     catppuccin = { url = "github:catppuccin/nix"; };
-    ghostty = { url = "github:ghostty-org/ghostty"; };
   };
 
   outputs =
-    { self, nixpkgs, nixpkgs-unstable, home-manager, catppuccin, ghostty }:
+    { self, nixpkgs, nixpkgs-unstable, home-manager, catppuccin, nixos-wsl }:
     let
       systems = {
         linux = "x86_64-linux";
@@ -51,10 +51,8 @@
     in {
       nixosConfigurations = {
         blahaj = buildOsConf systems.linux "blahaj" [ ] true;
-        metropolitan = buildOsConf systems.linux "metropolitan" [{
-          environment.systemPackages =
-            [ ghostty.packages.${systems.linux}.default ];
-        }] true;
+	metropolitan = buildOsConf systems.linux "metropolitan"
+          [ nixos-wsl.nixosModules.wsl ] true;
       };
 
       homeConfigurations = {

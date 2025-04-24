@@ -1,114 +1,43 @@
+# Edit this configuration file to define what should be installed on
+# your system. Help is available in the configuration.nix(5) man page, on
+# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
+
+# NixOS-WSL specific options are documented on the NixOS-WSL repository:
+# https://github.com/nix-community/NixOS-WSL
+
 { pkgs, ... }:
-let rcd_pub_key = builtins.readFile ../../static/rcd_pub_key;
-in {
-  imports = [ ./hardware-configuration.nix ];
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+{
 
-  networking.hostName = "metropolitan";
-  networking.networkmanager.enable = true;
+  wsl = {
+	  enable = true;
+	  defaultUser = "rcd";
+	  wslConf = {
+	    network.hostname = "metropolitan";
+	  };
+  };
 
-  time.timeZone = "America/Edmonton";
+     time.timeZone = "America/Edmonton";
   i18n.defaultLocale = "en_CA.UTF-8";
 
-  services.xserver = {
-    enable = true;
-    displayManager.gdm = {
-      enable = true;
-      wayland = true;
+   users = {
+    users.rcd = {
+      isNormalUser = true;
+      description = "Chris Dunphy";
+      shell = pkgs.fish;
+      extraGroups = [ "wheel" ];
     };
-    desktopManager.gnome = { enable = true; };
-  };
-
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    extraConfig.pipewire."92-low-latency" = {
-      "context.properties" = {
-        "default.clock.rate" = 48000;
-        "default.clock.quantum" = 64;
-        "default.clock.min-quantum" = 32;
-        "default.clock.max-quantum" = 128;
-      };
-    };
-    extraConfig.pipewire-pulse."92-low-latency" = {
-      "context.properties" = [{
-        name = "libpipewire-module-protocol-pulse";
-        args = { };
-      }];
-      "pulse.properties" = {
-        "pulse.min.req" = "32/48000";
-        "pulse.default.req" = "64/48000";
-        "pulse.max.req" = "128/48000";
-        "pulse.min.quantum" = "32/48000";
-        "pulse.max.quantum" = "128/48000";
-      };
-      "stream.properties" = {
-        "node.latency" = "64/48000";
-        "resample.quality" = 1;
-      };
-    };
-  };
-
-  hardware.logitech.wireless.enable = true;
-
-  users.users.rcd = {
-    isNormalUser = true;
-    description = "Chris Dunphy";
-    shell = pkgs.fish;
-    extraGroups = [ "wheel" "podman" "networkmanager" ];
-    openssh.authorizedKeys.keys = [ rcd_pub_key ];
   };
 
   programs.fish.enable = true;
-  programs.steam.enable = true;
-  programs.gamemode.enable = true;
-  programs._1password.enable = true;
-  programs._1password-gui = {
-    enable = true;
-    polkitPolicyOwners = [ "rcd" ];
-  };
-
-  virtualisation.containers.enable = true;
-  virtualisation = {
-    podman = {
-      enable = true;
-      dockerCompat = true;
-      dockerSocket.enable = true;
-      defaultNetwork.settings.dns_enabled = true;
-    };
-  };
+  programs.nix-ld.enable = true;
 
   environment.systemPackages = with pkgs; [
     curl
     git
     neovim
     git-credential-manager
-    wl-clipboard
-    bottles
-    gnome-tweaks
-    gnomeExtensions.appindicator
-    gnomeExtensions.paperwm
-    solaar
-    newsflash
   ];
-
-  # GNOME exclusions
-  environment.gnome.excludePackages = (with pkgs; [
-    cheese # webcam tool
-    epiphany # web browser
-    gnome-music
-    snapshot
-  ]);
-
-  services.openssh.enable = true;
-  services.flatpak.enable = true;
-  services.gnome.gnome-browser-connector.enable = true;
 
   nix = {
     gc = {
@@ -125,5 +54,11 @@ in {
     flavor = "macchiato";
   };
 
-  system.stateVersion = "24.11";
+  # This value determines the NixOS release from which the default
+  # settings for stateful data, like file locations and database versions
+  # on your system were taken. It's perfectly fine and recommended to leave
+  # this value at the release version of the first install of this system.
+  # Before changing this value read the documentation for this option
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  system.stateVersion = "24.11"; # Did you read the comment?
 }
