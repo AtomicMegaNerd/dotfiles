@@ -30,7 +30,7 @@
         init.defaultBranch = "main";
         pull.rebase = false;
         credential = {
-          helper = "manager";
+         helper = "/mnt/c/Program\ Files/Git/mingw64/bin/git-credential-manager.exe";
           "https://github.com".username = "AtomicMegaNerd";
           credentialStore = "cache";
         };

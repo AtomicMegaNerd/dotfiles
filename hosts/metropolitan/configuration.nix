@@ -36,7 +36,6 @@
     curl
     git
     neovim
-    git-credential-manager
   ];
 
   nix = {
