@@ -42,7 +42,6 @@
 
       buildHomeMgrConf = system: hostname:
         home-manager.lib.homeManagerConfiguration {
-          # Use unstable for home-manager
           pkgs = buildPkgsConf system nixpkgs-unstable;
           modules =
             [ ./hosts/${hostname}/rcd.nix catppuccin.homeModules.catppuccin ];
@@ -51,14 +50,14 @@
     in {
       nixosConfigurations = {
         blahaj = buildOsConf systems.linux "blahaj" [ ] true;
-	metropolitan = buildOsConf systems.linux "metropolitan"
+        metropolitan = buildOsConf systems.linux "metropolitan"
           [ nixos-wsl.nixosModules.wsl ] true;
       };
 
       homeConfigurations = {
         "rcd@blahaj" = buildHomeMgrConf systems.linux "blahaj";
         "rcd@metropolitan" = buildHomeMgrConf systems.linux "metropolitan";
-        "rcd@Discovery" = buildHomeMgrConf systems.darwin "Discovery";
+        "rcd@Discovery.local" = buildHomeMgrConf systems.darwin "Discovery.local";
       };
     };
 }
