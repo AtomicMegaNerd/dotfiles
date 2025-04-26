@@ -15,6 +15,13 @@
     zellij = import ../../nix/zellij.nix;
     bat = import ../../nix/bat.nix;
 
+
+		nh = { 
+      enable = true;
+      clean.enable = true;
+      clean.extraArgs = "--keep-since 4d --keep 3";
+    };  
+
     direnv = {
       enable = true;
       nix-direnv.enable = true;
