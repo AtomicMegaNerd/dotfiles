@@ -32,4 +32,5 @@ with pkgs; [
   nodejs_22
   dockerfile-language-server-nodejs
   marksman
+  newsboat
 ]

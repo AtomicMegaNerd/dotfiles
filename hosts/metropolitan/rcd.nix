@@ -5,8 +5,7 @@
     homeDirectory = "/home/rcd";
     stateVersion = "24.11";
 
-    packages = import ../../nix/packages.nix { inherit pkgs; }
-      ++ [ pkgs.obsidian pkgs.signal-desktop ];
+    packages = import ../../nix/packages.nix { inherit pkgs; };
   };
 
   programs = {
