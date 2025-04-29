@@ -1,16 +1,16 @@
 { pkgs, ... }: {
-
   home = {
     username = "rcd";
     homeDirectory = "/home/rcd";
     stateVersion = "24.11";
-
+    shell.enableShellIntegration = true;
     packages = import ../../nix/packages.nix { inherit pkgs; };
   };
 
   programs = {
     home-manager.enable = true;
     neovim = import ../../nix/neovim.nix { inherit pkgs; };
+    helix = import ../../nix/helix.nix;
     fish = import ../../nix/fish.nix { inherit pkgs; };
     starship = import ../../nix/starship.nix;
     zellij = import ../../nix/zellij.nix;
