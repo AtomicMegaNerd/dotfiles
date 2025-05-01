@@ -38,7 +38,6 @@ return {
       "nil_ls",
       "bashls",
       "gopls",
-      "golangci_lint_ls",
       "dockerls",
       "marksman",
     }
