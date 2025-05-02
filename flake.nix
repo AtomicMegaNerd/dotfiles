@@ -57,7 +57,7 @@
       homeConfigurations = {
         "rcd@blahaj" = buildHomeMgrConf systems.linux "blahaj";
         "rcd@metropolitan" = buildHomeMgrConf systems.linux "metropolitan";
-        "rcd@Discovery.local" = buildHomeMgrConf systems.darwin "Discovery.local";
+        "rcd@Discovery" = buildHomeMgrConf systems.darwin "Discovery";
       };
     };
 }
