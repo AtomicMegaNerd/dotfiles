@@ -257,9 +257,6 @@ default_layout "compact_with_nvim"
 
 session_serialization false
 
-// wl-copy is the clipboard management for Wayland sessions
-copy_command "wl-copy"
-
 pane_frames false
 
 load_plugins {

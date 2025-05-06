@@ -10,7 +10,6 @@
   programs = {
     home-manager.enable = true;
     neovim = import ../../nix/neovim.nix { inherit pkgs; };
-    helix = import ../../nix/helix.nix;
     fish = import ../../nix/fish.nix { inherit pkgs; };
     starship = import ../../nix/starship.nix;
     zellij = import ../../nix/zellij.nix;
@@ -54,6 +53,9 @@
   catppuccin = {
     enable = true;
     flavor = "macchiato";
+
+    # Workaround for https://github.com/catppuccin/nix/issues/552
+    mako.enable = false;
   };
 
   xdg.configFile = {
