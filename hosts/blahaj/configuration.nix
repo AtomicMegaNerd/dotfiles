@@ -89,25 +89,25 @@ in {
             BLOCK_ICLOUD_PR = "false";
           };
         };
-        freshrss = {
-          autoStart = true;
-          image = "freshrss/freshrss:latest";
-          ports = [ "8080:80/tcp" ];
-          volumes = [
-            "/etc/freshrss/data:/var/www/FreshRSS/data"
-            "/etc/freshrss/extensions:/var/www/FreshRSS/extensions"
-          ];
-          environment = {
-            TZ = "America/Edmonton";
-            CRON_MIN = "15,45";
-          };
-        };
-        starfeed = {
-          autoStart = true;
-          image = "atomicmeganerd/starfeed:v0.1.2";
-          environmentFiles = [ "/etc/starfeed/.env" ];
-          dependsOn = [ "freshrss" ];
-        };
+      #   freshrss = {
+      #     autoStart = true;
+      #     image = "freshrss/freshrss:latest";
+      #     ports = [ "8080:80/tcp" ];
+      #     volumes = [
+      #       "/etc/freshrss/data:/var/www/FreshRSS/data"
+      #       "/etc/freshrss/extensions:/var/www/FreshRSS/extensions"
+      #     ];
+      #     environment = {
+      #       TZ = "America/Edmonton";
+      #       CRON_MIN = "15,45";
+      #     };
+      #   };
+      #   starfeed = {
+      #     autoStart = true;
+      #     image = "atomicmeganerd/starfeed:v0.1.2";
+      #     environmentFiles = [ "/etc/starfeed/.env" ];
+      #     dependsOn = [ "freshrss" ];
+      #   };
       };
     };
   };
