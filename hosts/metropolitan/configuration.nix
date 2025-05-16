@@ -28,7 +28,6 @@
     git
     neovim
     wget
-    zed-editor
   ];
 
   nix = {
