@@ -10,12 +10,11 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    nixos-wsl = { url = "github:nix-community/NixOS-WSL"; };
     catppuccin = { url = "github:catppuccin/nix"; };
   };
 
   outputs =
-    { self, nixpkgs, nixpkgs-unstable, home-manager, catppuccin, nixos-wsl }:
+    { self, nixpkgs, nixpkgs-unstable, home-manager, catppuccin }:
     let
       systems = {
         linux = "x86_64-linux";
@@ -50,13 +49,10 @@
     in {
       nixosConfigurations = {
         blahaj = buildOsConf systems.linux "blahaj" [ ] true;
-        metropolitan = buildOsConf systems.linux "metropolitan"
-          [ nixos-wsl.nixosModules.wsl ] true;
       };
 
       homeConfigurations = {
         "rcd@blahaj" = buildHomeMgrConf systems.linux "blahaj";
-        "rcd@metropolitan" = buildHomeMgrConf systems.linux "metropolitan";
         "rcd@Discovery" = buildHomeMgrConf systems.darwin "Discovery";
       };
     };
