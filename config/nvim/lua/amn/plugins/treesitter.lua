@@ -5,21 +5,12 @@ return {
   build = ":TSUpdate",
   config = function()
     local utils = require("amn.utils")
-    local configs = utils.do_import("nvim-treesitter.configs")
+    local ts = utils.do_import("nvim-treesitter")
 
-    if not configs then
+    if not ts then
       return
     end
 
-    configs.setup({
-      auto_install = false,
-      highlight = {
-        enable = true,
-      },
-      indent = {
-        enable = true,
-        disable = { "go" },
-      },
-    })
+    ts.setup()
   end,
 }
