@@ -1,0 +1,107 @@
+{
+  // AI
+  // ----------------------------------------------------------------------
+  "agent": {
+    "always_allow_tool_actions": true,
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-4.1"
+    },
+    "version": "2"
+  },
+  "edit_predictions": {
+    "enabled": true,
+    "provider": "copilot",
+    "model": "gpt-4o",
+    "mode": "subtle"
+  },
+  // UI
+  // ----------------------------------------------------------------------
+  "ui_font_size": 15,
+  // Editor
+  // ----------------------------------------------------------------------
+  "buffer_font_size": 15,
+  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "relative_line_numbers": true,
+  "preferred_line_length": 100,
+  "wrap_guides": [100],
+  // Theme
+  // ----------------------------------------------------------------------
+  "theme": {
+    "mode": "dark",
+    "light": "Catppuccin Latte",
+    "dark": "Catppuccin Macchiato"
+  },
+  "icon_theme": "Catppuccin Macchiato",
+  // Languages
+  // ----------------------------------------------------------------------
+  "languages": {
+    "Python": {
+      "language_servers": ["ruff", "pyright"],
+      "format_on_save": "on",
+      "wrap_guides": [88], // Default for black/ruff
+      "formatter": [
+        {
+          "code_actions": {
+            "source.organizeImports.ruff": true,
+            "source.fixAll.ruff": true
+          }
+        },
+        {
+          "language_server": {
+            "name": "ruff"
+          }
+        }
+      ]
+    },
+    "Go": {
+      "format_on_save": "on",
+      "language_servers": ["gopls", "golangci-lint"]
+    }
+  },
+  // LSP
+  // ----------------------------------------------------------------------
+  "lsp": {
+    "golangci-lint": {
+      "initialization_options": {
+        "command": [
+          "golangci-lint",
+          "run",
+          "--output.json.path=stdout",
+          "--issues-exit-code=1",
+          "--show-stats=false"
+        ]
+      }
+    },
+    "gopls": {
+      "hints": {
+        "assignVariableTypes": true,
+        "compositeLiteralFields": true,
+        "compositeLiteralTypes": true,
+        "constantValues": true,
+        "functionTypeParameters": true,
+        "parameterNames": true,
+        "rangeVariableTypes": true
+      }
+    }
+  },
+  // Terminal
+  // ----------------------------------------------------------------------
+  "terminal": {
+    "font_family": "JetBrainsMono Nerd Font",
+    "font_size": 14,
+    "blinking": "on",
+    "shell": {
+      "program": "fish"
+    },
+    "detect_venv": {
+      "on": {
+        "activate_script": "fish"
+      }
+    }
+  },
+  // Misc
+  // ----------------------------------------------------------------------
+  "vim_mode": true,
+  "load_direnv": "shell_hook"
+}
