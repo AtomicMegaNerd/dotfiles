@@ -13,8 +13,7 @@
     catppuccin = { url = "github:catppuccin/nix"; };
   };
 
-  outputs =
-    { self, nixpkgs, nixpkgs-unstable, home-manager, catppuccin }:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, catppuccin }:
     let
       systems = {
         linux = "x86_64-linux";
