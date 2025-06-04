@@ -67,6 +67,11 @@
     "Go": {
       "format_on_save": "on",
       "language_servers": ["gopls", "golangci-lint"]
+    },
+
+    "Nix": {
+      "format_on_save": "on",
+      "language_servers": ["nil"]
     }
   },
   // LSP
@@ -92,6 +97,13 @@
         "functionTypeParameters": true,
         "parameterNames": true,
         "rangeVariableTypes": true
+      }
+    },
+    "nil": {
+      "initialization_options": {
+        "formatting": {
+          "command": ["nixfmt", "--quiet", "--"]
+        }
       }
     }
   },
