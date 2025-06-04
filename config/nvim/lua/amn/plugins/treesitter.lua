@@ -12,5 +12,20 @@ return {
     end
 
     ts.setup()
+
+    ts.install({
+      "bash",
+      "dockerfile",
+      "go",
+      "json",
+      "lua",
+      "markdown",
+      "python",
+      "sql",
+      "vim",
+      "yaml",
+      "toml",
+      "nix",
+    })
   end,
 }
