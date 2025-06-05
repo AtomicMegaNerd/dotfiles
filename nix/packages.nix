@@ -33,4 +33,6 @@ with pkgs; [
   dockerfile-language-server-nodejs
   marksman
   newsboat
+  gh
+  aider-chat
 ]

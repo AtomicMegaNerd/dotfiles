@@ -21,7 +21,7 @@ in {
     zellij = import ../../nix/zellij.nix;
     bat = import ../../nix/bat.nix;
 
-		nh = { 
+    nh = {
       enable = true;
       clean.enable = true;
       clean.extraArgs = "--keep-since 4d --keep 3";
@@ -70,4 +70,6 @@ in {
       target = "zellij";
     };
   };
+
+
 }
