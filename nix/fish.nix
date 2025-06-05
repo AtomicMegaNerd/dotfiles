@@ -5,6 +5,8 @@ let
     set -gx GOPATH $HOME/.local/go
     set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
     set -gx CLI_THEME "catppuccin"
+    # See https://github.com/nix-community/nh/issues/305
+    set -gx NH_NO_CHECKS 1
 
     fish_add_path $GOPATH/bin
     fish_add_path $HOME/.local/bin
