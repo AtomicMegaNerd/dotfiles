@@ -18,24 +18,22 @@ with pkgs; [
   jq
   dos2unix
   pre-commit
-  gopls
-  golangci-lint
-  ruff
-  lua-language-server
   podman-compose
   lazydocker
+  gh
+  # Linters
+  golangci-lint
+  ruff
   shellcheck
+  # Formatters
   stylua
+  alejandra
+  # LSP
+  gopls
   nil
   bash-language-server
-  alejandra
+  lua-language-server
   nodePackages.markdownlint-cli
   nodePackages.yaml-language-server
   nodePackages.prettier
-  nodejs_22
-  dockerfile-language-server-nodejs
-  marksman
-  newsboat
-  gh
-  aider-chat
 ]
