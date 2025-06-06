@@ -35,38 +35,13 @@ in {
     };
   };
 
-  environment.etc = {
-    "pihole" = {
-      source = "/etc/pihole";
-      mode = "0775";
-      user = "root";
-      group = "root";
-    };
-    "dnsmasq.d" = {
-      source = "/etc/dnsmasq.d";
-      mode = "0775";
-      user = "root";
-      group = "root";
-    };
-    "starfeed" = {
-      source = "/etc/starfeed";
-      mode = "0755";
-      user = "root";
-      group = "root";
-    };
-    "freshrss/data" = {
-      source = "/etc/freshrss/data";
-      mode = "0755";
-      user = "root";
-      group = "root";
-    };
-    "freshrss/extensions" = {
-      source = "/etc/freshrss/extensions";
-      mode = "0755";
-      user = "root";
-      group = "root";
-    };
-  };
+  systemd.tmpfiles.rules = [
+    "d /var/lib/pihole 0775 root root -"
+    "d /var/lib/dnsmasq.d 0775 root root -"
+    "d /var/lib/freshrss/data 0755 root root -"
+    "d /var/lib/freshrss/extensions 0755 root root -"
+    "d /var/lib/starfeed 0755 root root -"
+  ];
 
   virtualisation.containers.enable = true;
   virtualisation = {
