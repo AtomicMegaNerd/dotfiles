@@ -41,6 +41,9 @@ in {
     "d /var/lib/freshrss/data 0755 root root -"
     "d /var/lib/freshrss/extensions 0755 root root -"
     "d /var/lib/starfeed 0755 root root -"
+    "d /data/backups 0755 root root -"
+    "d /data/backups/pihole 0755 root root -"
+    "d /data/backups/freshrss 0755 root root -"
   ];
 
   virtualisation.containers.enable = true;
