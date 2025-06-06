@@ -90,7 +90,7 @@ in {
     };
   };
 
-  environment.systemPackages = with pkgs; [ neovim starship git dig ];
+  environment.systemPackages = with pkgs; [ neovim starship git dig rsync ];
 
   services.openssh.enable = true;
   programs.fish.enable = true;
