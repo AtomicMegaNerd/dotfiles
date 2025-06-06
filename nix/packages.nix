@@ -28,7 +28,7 @@ with pkgs; [
   stylua
   nil
   bash-language-server
-  haskellPackages.nixfmt
+  alejandra
   nodePackages.markdownlint-cli
   nodePackages.yaml-language-server
   nodePackages.prettier
