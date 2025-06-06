@@ -76,7 +76,7 @@ in {
       containers = {
         pihole = {
           autoStart = true;
-          image = "pihole/pihole:2025.05.1";
+          image = "pihole/pihole:2025.06.0";
           ports = [ "53:53/tcp" "53:53/udp" "8081:80/tcp" ];
           volumes =
             [ "/etc/pihole:/etc/pihole" "/etc/dnsmasq.d:/etc/dnsmasq.d" ];
@@ -91,7 +91,7 @@ in {
         };
         freshrss = {
           autoStart = true;
-          image = "freshrss/freshrss:latest";
+          image = "freshrss/freshrss:1.26.3";
           ports = [ "8080:80/tcp" ];
           volumes = [
             "/etc/freshrss/data:/var/www/FreshRSS/data"
@@ -104,7 +104,7 @@ in {
         };
         starfeed = {
           autoStart = true;
-          image = "atomicmeganerd/starfeed:v0.1.2";
+          image = "atomicmeganerd/starfeed:v0.1.5";
           environmentFiles = [ "/etc/starfeed/.env" ];
           dependsOn = [ "freshrss" ];
         };
