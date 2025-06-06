@@ -3,6 +3,13 @@ let
   piholeUid = 888;
   piholeGid = 888;
   rcd_pub_key = builtins.readFile ../../static/rcd_pub_key;
+
+  backupScript = pkgs.writeShellScriptBin "backup-pihole-freshrss" ''
+    ${pkgs.rsync}/bin/rsync -a --delete /etc/pihole/ /data/backups/pihole/
+    ${pkgs.rsync}/bin/rsync -a --delete /etc/dnsmasq.d/ /data/backups/pihole/dnsmasq.d/
+    ${pkgs.rsync}/bin/rsync -a --delete /etc/freshrss/data/ /data/backups/freshrss/data/
+    ${pkgs.rsync}/bin/rsync -a --delete /etc/freshrss/extensions/ /data/backups/freshrss/extensions/
+  '';
 in {
 
   imports = [ ./hardware-configuration.nix ];
@@ -104,15 +111,10 @@ in {
     description = "Backup Pi-hole and FreshRSS data to /data/backups";
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = ''
-        rsync -a --delete /etc/pihole/ /data/backups/pihole/
-        rsync -a --delete /etc/dnsmasq.d/ /data/backups/pihole/dnsmasq.d/
-        rsync -a --delete /etc/freshrss/data/ /data/backups/freshrss/data/
-        rsync -a --delete /etc/freshrss/extensions/ /data/backups/freshrss/extensions/
-      '';
+      ExecStart = "${backupScript}/bin/backup-pihole-freshrss";
     };
   };
-
+  
   systemd.timers.backup-pihole-freshrss = {
     description = "Run backup of Pi-hole and FreshRSS data daily";
     wantedBy = [ "timers.target" ];
