@@ -1,6 +1,17 @@
 {
   // Features
   // ----------------------------------------------------------------------
+  "ssh_connections": [
+    {
+      "host": "blahaj",
+      "username": "rcd",
+      "projects": [
+        {
+          "paths": ["/home/rcd/Code/Configs/dotfiles"]
+        }
+      ]
+    }
+  ],
   "features": {
     "edit_prediction_provider": "copilot"
   },
@@ -102,7 +113,7 @@
     "nil": {
       "initialization_options": {
         "formatting": {
-          "command": ["nixfmt", "--quiet", "--"]
+          "command": ["alejandra", "--quiet", "--"]
         }
       }
     }
