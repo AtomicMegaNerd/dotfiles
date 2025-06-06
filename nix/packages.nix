@@ -18,6 +18,9 @@ with pkgs; [
   jq
   dos2unix
   pre-commit
+  gopls
+  golangci-lint
+  ruff
   lua-language-server
   podman-compose
   lazydocker
