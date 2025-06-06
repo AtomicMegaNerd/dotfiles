@@ -96,6 +96,32 @@ in {
   programs.fish.enable = true;
   programs.nix-ld.enable = true;
 
+  # To restore from backup, run:
+  # sudo rsync -a /data/backups/pihole/ /etc/pihole/
+  # sudo rsync -a /data/backups/freshrss/data/ /etc/freshrss/data/
+
+  systemd.services.backup-pihole-freshrss = {
+    description = "Backup Pi-hole and FreshRSS data to /data/backups";
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = ''
+        rsync -a --delete /etc/pihole/ /data/backups/pihole/
+        rsync -a --delete /etc/dnsmasq.d/ /data/backups/pihole/dnsmasq.d/
+        rsync -a --delete /etc/freshrss/data/ /data/backups/freshrss/data/
+        rsync -a --delete /etc/freshrss/extensions/ /data/backups/freshrss/extensions/
+      '';
+    };
+  };
+
+  systemd.timers.backup-pihole-freshrss = {
+    description = "Run backup of Pi-hole and FreshRSS data daily";
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "daily";
+      Persistent = true;
+    };
+  };
+
   nix = {
     package = pkgs.nixVersions.stable;
     extraOptions = "experimental-features = nix-command flakes";
