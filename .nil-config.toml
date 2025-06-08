@@ -1,0 +1,3 @@
+[formatting]
+command = "alejandra"
+args = ["-q", "-"]
