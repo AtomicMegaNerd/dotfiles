@@ -1,0 +1,72 @@
+{
+  // Editor settings
+  "editor.fontSize": 16,
+  "editor.semanticHighlighting.enabled": true,
+  "editor.lineNumbers": "relative",
+  "editor.formatOnSave": true,
+  "editor.fontFamily": "Cascadia Code",
+  "editor.minimap.enabled": false,
+  "editor.rulers": [100],
+
+  // Terminal settings
+  "terminal.integrated.fontFamily": "Cascadia Code",
+  "terminal.integrated.fontSize": 16,
+  "terminal.integrated.cursorStyle": "block",
+  "terminal.integrated.cursorBlinking": true,
+
+  // Vim settings
+  "vim.autoindent": true,
+  "vim.hlsearch": true,
+  "vim.incsearch": true,
+  "vim.leader": "\\",
+
+  // For vim extension remap ; to :
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [";"],
+      "after": [":"]
+    }
+  ],
+
+  // Workbench settings
+  "workbench.startupEditor": "none",
+  "workbench.iconTheme": "catppuccin-macchiato",
+  "workbench.layoutControl.enabled": false,
+  "workbench.settings.editor": "json",
+  "workbench.colorTheme": "Catppuccin Macchiato",
+
+  // Catppuccin settings
+  "catppuccin.italicKeywords": false,
+  "catppuccin.italicComments": false,
+  "catppuccin.accentColor": "teal",
+
+  // Python settings
+  "[python]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.rulers": [88]
+  },
+
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "gopls": { "ui.semanticTokens": true },
+
+  // Turn off creepy tracking
+  "telemetry.telemetryLevel": "off",
+
+  // Misc settings
+  "extensions.ignoreRecommendations": true,
+  "git.openRepositoryInParentFolders": "always",
+  "window.commandCenter": false,
+  "security.workspace.trust.enabled": false
+}
