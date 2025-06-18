@@ -1,5 +1,6 @@
 { pkgs }:
-with pkgs; [
+with pkgs;
+[
   fastfetch
   glow
   tldr
@@ -20,20 +21,18 @@ with pkgs; [
   pre-commit
   podman-compose
   lazydocker
-  gh
   # Linters
   golangci-lint
   ruff
   shellcheck
   # Formatters
   stylua
-  alejandra
+  nixfmt-rfc-style
   # LSP
   gopls
+  pyright
   nil
-  bash-language-server
   lua-language-server
   nodePackages.markdownlint-cli
-  nodePackages.yaml-language-server
   nodePackages.prettier
 ]
