@@ -1,6 +1,8 @@
 { pkgs, ... }:
-let rcd_pub_key = builtins.readFile ../../static/rcd_pub_key;
-in {
+let
+  rcd_pub_key = builtins.readFile ../../static/rcd_pub_key;
+in
+{
   home = {
     username = "rcd";
     homeDirectory = "/Users/rcd";
@@ -8,8 +10,7 @@ in {
     file.".ssh/allowed_signers".text = "${rcd_pub_key}";
     file.".ssh/config".source = ../../config/SSH/Discovery/config;
     shell.enableShellIntegration = true;
-    packages = import ../../nix/packages.nix { inherit pkgs; }
-      ++ [ pkgs.git-credential-manager ];
+    packages = import ../../nix/packages.nix { inherit pkgs; } ++ [ pkgs.git-credential-manager ];
   };
 
   programs = {
@@ -52,7 +53,9 @@ in {
       options = [ "--cmd cd" ];
     };
 
-    fzf = { enable = true; };
+    fzf = {
+      enable = true;
+    };
   };
 
   catppuccin = {
@@ -70,6 +73,4 @@ in {
       target = "zellij";
     };
   };
-
-
 }
