@@ -27,6 +27,8 @@ return {
       "yaml",
       "toml",
       "nix",
+      "diff",
+      "jsonc",
     })
   end,
 }
