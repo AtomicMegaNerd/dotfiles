@@ -4,9 +4,10 @@
   defaultEditor = true;
   vimAlias = true;
 
-  # Install gcc to compile tree-sitter grammars
+  # Also include dependencies which are required
   extraPackages = with pkgs; [
     gcc
     tree-sitter
+    nodejs_24
   ];
 }
