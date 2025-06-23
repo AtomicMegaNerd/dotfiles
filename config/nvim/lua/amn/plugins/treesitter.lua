@@ -7,14 +7,7 @@ return {
   config = function()
     local utils = require("amn.utils")
     local ts = utils.do_import("nvim-treesitter")
-
-    if not ts then
-      return
-    end
-
-    ts.setup()
-
-    ts.install({
+    local langs = {
       "bash",
       "dockerfile",
       "go",
@@ -29,6 +22,26 @@ return {
       "nix",
       "diff",
       "jsonc",
-    })
+    }
+
+    if not ts then
+      return
+    end
+
+    ts.setup()
+
+    ts.install(langs)
+
+    -- Enable highlighting for all specified languages
+    local trs_grp = vim.api.nvim_create_augroup("Treesitter", { clear = true })
+    for _, lang in ipairs(langs) do
+      vim.api.nvim_create_autocmd("FileType", {
+        group = trs_grp,
+        pattern = lang,
+        callback = function()
+          vim.treesitter.start()
+        end,
+      })
+    end
   end,
 }
