@@ -30,7 +30,7 @@ return {
       return
     end
 
-    if not neotest then
+    if not nt_golang then
       return
     end
 

@@ -23,20 +23,20 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- Do not convert tabs to spaces in these file types
-vim.api.nvim_create_autocmd("Filetype", {
+vim.api.nvim_create_autocmd("FileType", {
   command = "set noexpandtab",
   group = fto_grp,
   pattern = { "bash", "sh", "go" },
 })
 
 -- The black Python formatter uses 88 characters as the line length
-vim.api.nvim_create_autocmd("Filetype", {
+vim.api.nvim_create_autocmd("FileType", {
   command = "set colorcolumn=88",
   group = fto_grp,
   pattern = { "python" },
 })
 
-vim.api.nvim_create_autocmd("Filetype", {
+vim.api.nvim_create_autocmd("FileType", {
   command = "set colorcolumn=100",
   group = fto_grp,
   pattern = {
