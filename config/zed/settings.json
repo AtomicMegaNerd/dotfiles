@@ -58,6 +58,7 @@
   // ----------------------------------------------------------------------
   "languages": {
     "Python": {
+      "tab_size": 4,
       "language_servers": ["ruff", "pyright"],
       "format_on_save": "on",
       "wrap_guides": [88], // Default for black/ruff
@@ -76,10 +77,14 @@
       ]
     },
     "Go": {
+      "tab_size": 4,
       "format_on_save": "on",
       "language_servers": ["gopls", "golangci-lint"]
     },
-
+    "Lua": {
+      "tab_size": 2,
+      "format_on_save": "on"
+    },
     "Nix": {
       "format_on_save": "on",
       "language_servers": ["nil"]
