@@ -9,48 +9,61 @@
       url = "github:nix-community/home-manager/";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-
-    nixos-wsl = { url = "github:nix-community/NixOS-WSL"; };
-    catppuccin = { url = "github:catppuccin/nix"; };
+    nixos-wsl = {
+      url = "github:nix-community/NixOS-WSL";
+    };
+    catppuccin = {
+      url = "github:catppuccin/nix";
+    };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, catppuccin, nixos-wsl }:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nixpkgs-unstable,
+      home-manager,
+      catppuccin,
+      nixos-wsl,
+    }:
     let
       systems = {
         linux = "x86_64-linux";
         darwin = "aarch64-darwin";
       };
 
-      buildPkgsConf = system: pkg_src:
+      buildPkgsConf =
+        system: pkg_src:
         import pkg_src {
           inherit system;
           config.allowUnfree = true;
         };
 
-      buildOsConf = system: hostname: extraModules: useStable:
+      buildOsConf =
+        system: hostname: extraModules: useStable:
         nixpkgs.lib.nixosSystem {
-          pkgs = if useStable then
-            buildPkgsConf system nixpkgs
-          else
-            buildPkgsConf system nixpkgs-unstable;
+          pkgs = if useStable then buildPkgsConf system nixpkgs else buildPkgsConf system nixpkgs-unstable;
           modules = [
             ./hosts/${hostname}/configuration.nix
             catppuccin.nixosModules.catppuccin
           ] ++ extraModules;
         };
 
-      buildHomeMgrConf = system: hostname:
+      buildHomeMgrConf =
+        system: hostname:
         home-manager.lib.homeManagerConfiguration {
           pkgs = buildPkgsConf system nixpkgs-unstable;
-          modules =
-            [ ./hosts/${hostname}/rcd.nix catppuccin.homeModules.catppuccin ];
+          modules = [
+            ./hosts/${hostname}/rcd.nix
+            catppuccin.homeModules.catppuccin
+          ];
         };
 
-    in {
+    in
+    {
       nixosConfigurations = {
         blahaj = buildOsConf systems.linux "blahaj" [ ] true;
-        metropolitan = buildOsConf systems.linux "metropolitan"
-          [ nixos-wsl.nixosModules.wsl ] true;
+        metropolitan = buildOsConf systems.linux "metropolitan" [ nixos-wsl.nixosModules.wsl ] true;
       };
 
       homeConfigurations = {
