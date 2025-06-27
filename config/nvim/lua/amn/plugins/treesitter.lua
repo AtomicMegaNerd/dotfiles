@@ -22,7 +22,8 @@ return {
       "nix",
       "diff",
       "jsonc",
-      "gomod"
+      "gomod",
+      "fish"
     }
 
     if not ts then
