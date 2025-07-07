@@ -18,5 +18,8 @@ return {
     vim.keymap.set(
       "n", "<leader>pi", "<Cmd>CodeCompanion<CR>", { desc = "Open Code Companion Inline" }
     )
+    vim.keymap.set(
+      "n", "<leader>pa", "<Cmd>CodeCompanionActions<CR>", { desc = "Open Code Companion Actions" }
+    )
   end,
 }
