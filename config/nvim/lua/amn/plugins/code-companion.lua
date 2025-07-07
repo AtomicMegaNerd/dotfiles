@@ -4,6 +4,8 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
+    "ibhagwan/fzf-lua",
+    "nvim-tree/nvim-web-devicons",
   },
   config = function()
     local utils = require("amn.utils")
@@ -11,7 +13,18 @@ return {
     if not codecompanion then
       return
     end
-    codecompanion.setup()
+    codecompanion.setup({
+      display = {
+        action_palette = {
+          prompt = "Prompt ",
+          provider = "fzf_lua",
+          opts = {
+            show_default_actions = true,
+            show_default_prompt_library = true,
+          },
+        },
+      },
+    })
     vim.keymap.set(
       "n", "<leader>pc", "<Cmd>CodeCompanionChat<CR>", { desc = "Open Code Companion Chat" }
     )
