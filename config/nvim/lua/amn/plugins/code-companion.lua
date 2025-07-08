@@ -26,7 +26,7 @@ return {
       },
     })
     vim.keymap.set(
-      "n", "<leader>pc", "<Cmd>CodeCompanionChat<CR>", { desc = "Open Code Companion Chat" }
+      "n", "<leader>pc", "<Cmd>CodeCompanionChat Toggle<CR>", { desc = "Open Code Companion Chat" }
     )
     vim.keymap.set(
       "n", "<leader>pi", "<Cmd>CodeCompanion<CR>", { desc = "Open Code Companion Inline" }
