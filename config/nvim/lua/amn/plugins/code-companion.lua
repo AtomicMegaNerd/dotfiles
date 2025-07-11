@@ -36,6 +36,7 @@ return {
       },
     })
 
+    -- Key mappings
     utils.nmap("<leader>pc", "<Cmd>CodeCompanionChat Toggle<CR>", "Open Code Companion Chat")
     utils.nmap("<leader>pi", "<Cmd>CodeCompanion<CR>", "Open Code Companion Inline")
     utils.nmap("<leader>pa", "<Cmd>CodeCompanionActions<CR>", "Open Code Companion Actions")
