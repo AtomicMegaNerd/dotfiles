@@ -32,7 +32,7 @@
   "ui_font_size": 15,
   // Editor
   // ----------------------------------------------------------------------
-  "buffer_font_size": 15,
+  "buffer_font_size": null,
   "buffer_font_family": "JetBrainsMono Nerd Font",
   "relative_line_numbers": true,
   "preferred_line_length": 100,
