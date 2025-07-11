@@ -24,11 +24,20 @@ return {
             show_default_prompt_library = true,
           },
         },
+        chat = {
+          -- Replace current buffer instead of creating a split
+          window = {
+            layout = "buffer", -- This replaces the current buffer
+          },
+          -- Make sure it shows in buffer list
+          show_settings = true,
+          show_token_count = true,
+        },
       },
     })
 
     utils.nmap("<leader>pc", "<Cmd>CodeCompanionChat Toggle<CR>", "Open Code Companion Chat")
-    utils.namp("<leader>pi", "<Cmd>CodeCompanion<CR>", "Open Code Companion Inline")
+    utils.nmap("<leader>pi", "<Cmd>CodeCompanion<CR>", "Open Code Companion Inline")
     utils.nmap("<leader>pa", "<Cmd>CodeCompanionActions<CR>", "Open Code Companion Actions")
   end,
 }
