@@ -13,6 +13,7 @@ return {
     if not codecompanion then
       return
     end
+
     codecompanion.setup({
       display = {
         action_palette = {
@@ -25,14 +26,9 @@ return {
         },
       },
     })
-    vim.keymap.set(
-      "n", "<leader>pc", "<Cmd>CodeCompanionChat Toggle<CR>", { desc = "Open Code Companion Chat" }
-    )
-    vim.keymap.set(
-      "n", "<leader>pi", "<Cmd>CodeCompanion<CR>", { desc = "Open Code Companion Inline" }
-    )
-    vim.keymap.set(
-      "n", "<leader>pa", "<Cmd>CodeCompanionActions<CR>", { desc = "Open Code Companion Actions" }
-    )
+
+    utils.nmap("<leader>pc", "<Cmd>CodeCompanionChat Toggle<CR>", "Open Code Companion Chat")
+    utils.namp("<leader>pi", "<Cmd>CodeCompanion<CR>", "Open Code Companion Inline")
+    utils.nmap("<leader>pa", "<Cmd>CodeCompanionActions<CR>", "Open Code Companion Actions")
   end,
 }
