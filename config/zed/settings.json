@@ -22,21 +22,17 @@
     "default_model": {
       "provider": "copilot_chat",
       "model": "gpt-4.1"
-    },
-    "version": "2"
+    }
   },
   "edit_predictions": {
-    "enabled": true,
-    "provider": "copilot",
-    "model": "gpt-4o",
     "mode": "subtle"
   },
   // UI
   // ----------------------------------------------------------------------
-  "ui_font_size": 15,
+  "ui_font_size": 14,
   // Editor
   // ----------------------------------------------------------------------
-  "buffer_font_size": 15,
+  "buffer_font_size": 14,
   "buffer_font_family": "JetBrainsMono Nerd Font",
   "relative_line_numbers": true,
   "preferred_line_length": 100,
@@ -102,17 +98,6 @@
           "--issues-exit-code=1",
           "--show-stats=false"
         ]
-      }
-    },
-    "gopls": {
-      "hints": {
-        "assignVariableTypes": true,
-        "compositeLiteralFields": true,
-        "compositeLiteralTypes": true,
-        "constantValues": true,
-        "functionTypeParameters": true,
-        "parameterNames": true,
-        "rangeVariableTypes": true
       }
     },
     "nil": {
