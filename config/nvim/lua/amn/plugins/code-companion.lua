@@ -13,6 +13,7 @@ return {
     if not codecompanion then
       return
     end
+
     codecompanion.setup({
       display = {
         action_palette = {
@@ -23,16 +24,21 @@ return {
             show_default_prompt_library = true,
           },
         },
+        chat = {
+          -- Replace current buffer instead of creating a split
+          window = {
+            layout = "buffer", -- This replaces the current buffer
+          },
+          -- Make sure it shows in buffer list
+          show_settings = true,
+          show_token_count = true,
+        },
       },
     })
-    vim.keymap.set(
-      "n", "<leader>pc", "<Cmd>CodeCompanionChat Toggle<CR>", { desc = "Open Code Companion Chat" }
-    )
-    vim.keymap.set(
-      "n", "<leader>pi", "<Cmd>CodeCompanion<CR>", { desc = "Open Code Companion Inline" }
-    )
-    vim.keymap.set(
-      "n", "<leader>pa", "<Cmd>CodeCompanionActions<CR>", { desc = "Open Code Companion Actions" }
-    )
+
+    -- Key mappings
+    utils.nmap("<leader>pc", "<Cmd>CodeCompanionChat Toggle<CR>", "Open Code Companion Chat")
+    utils.nmap("<leader>pi", "<Cmd>CodeCompanion<CR>", "Open Code Companion Inline")
+    utils.nmap("<leader>pa", "<Cmd>CodeCompanionActions<CR>", "Open Code Companion Actions")
   end,
 }

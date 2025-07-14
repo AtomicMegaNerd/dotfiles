@@ -30,10 +30,6 @@ return {
       return
     end
 
-    if not nt_golang then
-      return
-    end
-
     neotest.setup({
       adapters = {
         nt_python({}),
