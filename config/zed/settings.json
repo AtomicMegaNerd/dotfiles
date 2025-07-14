@@ -12,11 +12,11 @@
       ]
     }
   ],
-  // AI
-  // ----------------------------------------------------------------------
   "features": {
     "edit_prediction_provider": "copilot"
   },
+  // AI
+  // ----------------------------------------------------------------------
   "agent": {
     "always_allow_tool_actions": true,
     "default_model": {
@@ -29,10 +29,10 @@
   },
   // UI
   // ----------------------------------------------------------------------
-  "ui_font_size": 15,
+  "ui_font_size": 14,
   // Editor
   // ----------------------------------------------------------------------
-  "buffer_font_size": null,
+  "buffer_font_size": 14,
   "buffer_font_family": "JetBrainsMono Nerd Font",
   "relative_line_numbers": true,
   "preferred_line_length": 100,
@@ -98,6 +98,13 @@
           "--issues-exit-code=1",
           "--show-stats=false"
         ]
+      }
+    },
+    "nil": {
+      "initialization_options": {
+        "formatting": {
+          "command": ["alejandra", "--quiet", "--"]
+        }
       }
     }
   },
