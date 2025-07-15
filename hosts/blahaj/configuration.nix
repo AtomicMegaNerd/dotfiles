@@ -10,7 +10,8 @@ let
     ${pkgs.rsync}/bin/rsync -a --delete /etc/freshrss/data/ /data/backups/freshrss/data/
     ${pkgs.rsync}/bin/rsync -a --delete /etc/freshrss/extensions/ /data/backups/freshrss/extensions/
   '';
-in {
+in
+{
 
   imports = [ ./hardware-configuration.nix ];
 
@@ -23,10 +24,21 @@ in {
   networking = {
     hostName = "blahaj";
     networkmanager.enable = true;
-    firewall.allowedTCPPorts = [ 8080 8081 53 ];
+    firewall.allowedTCPPorts = [
+      8080
+      8081
+      53
+    ];
     firewall.allowedUDPPorts = [ 53 ];
-    nameservers = [ "9.9.9.9" "149.112.112.112" "2620:fe::fe" "2620:fe::9" ];
-    interfaces.enp0s31f6 = { useDHCP = true; };
+    nameservers = [
+      "9.9.9.9"
+      "149.112.112.112"
+      "2620:fe::fe"
+      "2620:fe::9"
+    ];
+    interfaces.enp0s31f6 = {
+      useDHCP = true;
+    };
   };
 
   time.timeZone = "America/Edmonton";
@@ -36,7 +48,10 @@ in {
     users.rcd = {
       isNormalUser = true;
       description = "Chris Dunphy";
-      extraGroups = [ "wheel" "docker" ];
+      extraGroups = [
+        "wheel"
+        "docker"
+      ];
       shell = pkgs.fish;
       openssh.authorizedKeys.keys = [ rcd_pub_key ];
     };
@@ -55,16 +70,24 @@ in {
 
   virtualisation.containers.enable = true;
   virtualisation = {
-    docker = { enable = true; };
+    docker = {
+      enable = true;
+    };
     oci-containers = {
       backend = "docker";
       containers = {
         pihole = {
           autoStart = true;
-          image = "pihole/pihole:2025.06.2";
-          ports = [ "53:53/tcp" "53:53/udp" "8081:80/tcp" ];
-          volumes =
-            [ "/etc/pihole:/etc/pihole" "/etc/dnsmasq.d:/etc/dnsmasq.d" ];
+          image = "pihole/pihole:2025.07.1";
+          ports = [
+            "53:53/tcp"
+            "53:53/udp"
+            "8081:80/tcp"
+          ];
+          volumes = [
+            "/etc/pihole:/etc/pihole"
+            "/etc/dnsmasq.d:/etc/dnsmasq.d"
+          ];
           environment = {
             TZ = "America/Edmonton";
             FTLCONF_LOCAL_IPV4 = "192.168.1.232";
@@ -97,7 +120,13 @@ in {
     };
   };
 
-  environment.systemPackages = with pkgs; [ neovim starship git dig rsync ];
+  environment.systemPackages = with pkgs; [
+    neovim
+    starship
+    git
+    dig
+    rsync
+  ];
 
   services.openssh.enable = true;
   programs.fish.enable = true;
@@ -114,7 +143,7 @@ in {
       ExecStart = "${backupScript}/bin/backup-pihole-freshrss";
     };
   };
-  
+
   systemd.timers.backup-pihole-freshrss = {
     description = "Run backup of Pi-hole and FreshRSS data daily";
     wantedBy = [ "timers.target" ];
