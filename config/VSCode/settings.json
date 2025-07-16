@@ -68,5 +68,6 @@
   "extensions.ignoreRecommendations": true,
   "git.openRepositoryInParentFolders": "always",
   "window.commandCenter": false,
-  "security.workspace.trust.enabled": false
+  "security.workspace.trust.enabled": false,
+  "containers.containerClient": "com.microsoft.visualstudio.containers.podman"
 }
