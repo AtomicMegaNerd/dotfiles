@@ -35,4 +35,5 @@ with pkgs;
   lua-language-server
   nodePackages.markdownlint-cli
   nodePackages.prettier
+  claude-code
 ]
