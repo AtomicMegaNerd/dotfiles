@@ -19,7 +19,7 @@ use Nix as a package manager. This repo also contains other configs for non-Nix 
 | Host          | OS    | Platform       | OS Version | HM Version   | Notes        |
 | ------------- | ----- | -------------- | ---------- | ------------ | ------------ |
 | blahaj        | NixOS | x86-64-linux   | 24.11      | unstable     | Server       |
-| Discovery     | MacOS | aarch64-darwin | N/A        | unstable     | MacBook Pro  |
+| Schooner      | MacOS | aarch64-darwin | N/A        | unstable     | MacBook Air  |
 
 In all NixOS instances the core OS is the latest stable release. However, we use unstable packages
 for the home-manager configuration in order to keep my development tooling up-to-date.
