@@ -63,7 +63,7 @@
 
       homeConfigurations = {
         "rcd@blahaj" = buildHomeMgrConf systems.linux "blahaj";
-        "rcd@Discovery" = buildHomeMgrConf systems.darwin "Discovery";
+        "rcd@Schooner" = buildHomeMgrConf systems.darwin "Schooner";
       };
     };
 }
