@@ -1,0 +1,130 @@
+{
+  // Features
+  // ----------------------------------------------------------------------
+  "ssh_connections": [
+    {
+      "host": "blahaj",
+      "username": "rcd",
+      "projects": [
+        {
+          "paths": ["/home/rcd/Code/Configs/dotfiles"]
+        }
+      ]
+    }
+  ],
+  "features": {
+    "edit_prediction_provider": "copilot"
+  },
+  // AI
+  // ----------------------------------------------------------------------
+  "agent": {
+    "always_allow_tool_actions": true,
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-4.1"
+    }
+  },
+  "edit_predictions": {
+    "mode": "subtle"
+  },
+  // UI
+  // ----------------------------------------------------------------------
+  "ui_font_size": 14,
+  // Editor
+  // ----------------------------------------------------------------------
+  "buffer_font_size": 14,
+  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "relative_line_numbers": true,
+  "preferred_line_length": 100,
+  "wrap_guides": [100],
+  // Theme
+  // ----------------------------------------------------------------------
+  "theme": {
+    "mode": "dark",
+    "light": "Catppuccin Latte",
+    "dark": "Catppuccin Macchiato (teal) - No Italics"
+  },
+  "icon_theme": "Catppuccin Macchiato",
+  // File Types
+  // ----------------------------------------------------------------------
+  "file_types": {
+    "Shell Script": ["**/env.list", "**/.env", "**/.envrc"]
+  },
+  // Languages
+  // ----------------------------------------------------------------------
+  "languages": {
+    "Python": {
+      "tab_size": 4,
+      "language_servers": ["ruff", "pyright"],
+      "format_on_save": "on",
+      "wrap_guides": [88], // Default for black/ruff
+      "formatter": [
+        {
+          "code_actions": {
+            "source.organizeImports.ruff": true,
+            "source.fixAll.ruff": true
+          }
+        },
+        {
+          "language_server": {
+            "name": "ruff"
+          }
+        }
+      ]
+    },
+    "Go": {
+      "tab_size": 4,
+      "format_on_save": "on",
+      "language_servers": ["gopls", "golangci-lint"]
+    },
+    "Lua": {
+      "tab_size": 2,
+      "format_on_save": "on"
+    },
+    "Nix": {
+      "format_on_save": "on",
+      "language_servers": ["nil"]
+    }
+  },
+  // LSP
+  // ----------------------------------------------------------------------
+  "lsp": {
+    "golangci-lint": {
+      "initialization_options": {
+        "command": [
+          "golangci-lint",
+          "run",
+          "--output.json.path=stdout",
+          "--issues-exit-code=1",
+          "--show-stats=false"
+        ]
+      }
+    },
+    "nil": {
+      "initialization_options": {
+        "formatting": {
+          "command": ["alejandra", "--quiet", "--"]
+        }
+      }
+    }
+  },
+  // Terminal
+  // ----------------------------------------------------------------------
+  "terminal": {
+    "font_family": "JetBrainsMono Nerd Font",
+    "font_size": 14,
+    "blinking": "on",
+    "shell": {
+      "program": "fish"
+    },
+    "detect_venv": {
+      "on": {
+        "activate_script": "fish"
+      }
+    }
+  },
+  // Misc
+  // ----------------------------------------------------------------------
+  "vim_mode": true,
+  "load_direnv": "shell_hook"
+}
