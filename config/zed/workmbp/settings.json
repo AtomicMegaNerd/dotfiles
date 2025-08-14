@@ -21,7 +21,7 @@
     "always_allow_tool_actions": true,
     "default_model": {
       "provider": "copilot_chat",
-      "model": "gpt-4.1"
+      "model": "claude-3.5-sonnet"
     }
   },
   "edit_predictions": {
@@ -41,10 +41,10 @@
   // ----------------------------------------------------------------------
   "theme": {
     "mode": "dark",
-    "light": "Catppuccin Latte",
-    "dark": "Catppuccin Macchiato (teal) - No Italics"
+    "light": "Catppuccin Latte (teal) - No Italics",
+    "dark": "Catppuccin Frappé (teal) - No Italics"
   },
-  "icon_theme": "Catppuccin Macchiato",
+  "icon_theme": "Catppuccin Frappé",
   // File Types
   // ----------------------------------------------------------------------
   "file_types": {
@@ -73,6 +73,8 @@
       ]
     },
     "Go": {
+      "wrap_guides": [100],
+      "preferred_line_length": 100,
       "tab_size": 4,
       "format_on_save": "on",
       "language_servers": ["gopls", "golangci-lint"]
