@@ -12,6 +12,10 @@
     catppuccin = {
       url = "github:catppuccin/nix";
     };
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs =
@@ -21,6 +25,7 @@
       nixpkgs-unstable,
       home-manager,
       catppuccin,
+      nix-darwin,
     }:
     let
       systems = {
@@ -55,15 +60,28 @@
           ];
         };
 
-    in
-    {
-      nixosConfigurations = {
-        blahaj = buildOsConf systems.linux "blahaj" [ ] true;
+    buildDarwinConf =
+      system: hostname:
+      nix-darwin.lib.darwinSystem {
+        system = system;
+        pkgs = buildPkgsConf system nixpkgs-unstable;
+        modules = [
+          ./hosts/${hostname}/darwin.nix
+        ];
       };
-
-      homeConfigurations = {
-        "rcd@blahaj" = buildHomeMgrConf systems.linux "blahaj";
-        "rcd@Schooner" = buildHomeMgrConf systems.darwin "Schooner";
-      };
+  in
+  {
+    nixosConfigurations = {
+      blahaj = buildOsConf systems.linux "blahaj" [ ] true;
     };
+
+    homeConfigurations = {
+      "rcd@blahaj" = buildHomeMgrConf systems.linux "blahaj";
+      "rcd@Schooner" = buildHomeMgrConf systems.darwin "Schooner";
+    };
+
+    darwinConfigurations = {
+      Schooner = buildDarwinConf systems.darwin "Schooner";
+    };
+  };
 }
