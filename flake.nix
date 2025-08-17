@@ -41,14 +41,13 @@
         };
 
       buildOsConf =
-        system: hostname: extraModules: useStable:
+        system: hostname: useStable:
         nixpkgs.lib.nixosSystem {
           pkgs = if useStable then buildPkgsConf system nixpkgs else buildPkgsConf system nixpkgs-unstable;
           modules = [
             ./hosts/${hostname}/configuration.nix
             catppuccin.nixosModules.catppuccin
-          ]
-          ++ extraModules;
+          ];
         };
 
       buildHomeMgrConf =
@@ -73,7 +72,7 @@
     in
     {
       nixosConfigurations = {
-        blahaj = buildOsConf systems.linux "blahaj" [ ] true;
+        blahaj = buildOsConf systems.linux "blahaj" true;
       };
 
       homeConfigurations = {
