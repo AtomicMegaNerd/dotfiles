@@ -47,7 +47,8 @@
           modules = [
             ./hosts/${hostname}/configuration.nix
             catppuccin.nixosModules.catppuccin
-          ] ++ extraModules;
+          ]
+          ++ extraModules;
         };
 
       buildHomeMgrConf =
@@ -60,28 +61,28 @@
           ];
         };
 
-    buildDarwinConf =
-      system: hostname:
-      nix-darwin.lib.darwinSystem {
-        system = system;
-        pkgs = buildPkgsConf system nixpkgs-unstable;
-        modules = [
-          ./hosts/${hostname}/darwin.nix
-        ];
+      buildDarwinConf =
+        system: hostname:
+        nix-darwin.lib.darwinSystem {
+          system = system;
+          pkgs = buildPkgsConf system nixpkgs-unstable;
+          modules = [
+            ./hosts/${hostname}/darwin.nix
+          ];
+        };
+    in
+    {
+      nixosConfigurations = {
+        blahaj = buildOsConf systems.linux "blahaj" [ ] true;
       };
-  in
-  {
-    nixosConfigurations = {
-      blahaj = buildOsConf systems.linux "blahaj" [ ] true;
-    };
 
-    homeConfigurations = {
-      "rcd@blahaj" = buildHomeMgrConf systems.linux "blahaj";
-      "rcd@Schooner" = buildHomeMgrConf systems.darwin "Schooner";
-    };
+      homeConfigurations = {
+        "rcd@blahaj" = buildHomeMgrConf systems.linux "blahaj";
+        "rcd@Schooner" = buildHomeMgrConf systems.darwin "Schooner";
+      };
 
-    darwinConfigurations = {
-      Schooner = buildDarwinConf systems.darwin "Schooner";
+      darwinConfigurations = {
+        Schooner = buildDarwinConf systems.darwin "Schooner";
+      };
     };
-  };
 }
