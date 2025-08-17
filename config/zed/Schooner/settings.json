@@ -12,9 +12,6 @@
       ]
     }
   ],
-  "features": {
-    "edit_prediction_provider": "copilot"
-  },
   // AI
   // ----------------------------------------------------------------------
   "agent": {
@@ -24,8 +21,8 @@
       "model": "gpt-4.1"
     }
   },
-  "edit_predictions": {
-    "mode": "subtle"
+  "features": {
+    "edit_prediction_provider": "copilot"
   },
   // UI
   // ----------------------------------------------------------------------
@@ -41,7 +38,7 @@
   // ----------------------------------------------------------------------
   "theme": {
     "mode": "dark",
-    "light": "Catppuccin Latte",
+    "light": "Catppuccin Latté (teal) - No Italics",
     "dark": "Catppuccin Frappé (teal) - No Italics"
   },
   "icon_theme": "Catppuccin Macchiato",
@@ -98,13 +95,6 @@
           "--issues-exit-code=1",
           "--show-stats=false"
         ]
-      }
-    },
-    "nil": {
-      "initialization_options": {
-        "formatting": {
-          "command": ["alejandra", "--quiet", "--"]
-        }
       }
     }
   },
