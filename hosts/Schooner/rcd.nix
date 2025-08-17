@@ -10,7 +10,7 @@ in
     file.".ssh/allowed_signers".text = "${rcd_pub_key}";
     file.".ssh/config".source = ../../config/SSH/Schooner/config;
     shell.enableShellIntegration = true;
-    packages = import ../../nix/packages.nix { inherit pkgs; } ++ [ pkgs.git-credential-manager ];
+    packages = import ../../nix/packages.nix { inherit pkgs; } ++ [ ];
   };
 
   programs = {
@@ -74,6 +74,10 @@ in
     ghostty = {
       source = ../../config/ghostty/Schooner;
       target = "ghostty";
+    };
+    zed = {
+      source = ../../config/zed/Schooner;
+      target = "zed";
     };
   };
 }
