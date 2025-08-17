@@ -29,9 +29,6 @@
       "zed"
       "zoom"
     ];
-    taps = [
-      "homebrew/cask-fonts"
-    ];
     brews = [ ]; # Add formulae here if needed
     global = {
       autoUpdate = true;
