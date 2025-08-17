@@ -35,12 +35,8 @@
     };
   };
 
-  # Optionally, you can add more darwin options here
-  # For example, enable TouchID for sudo:
-  # security.pam.enableSudoTouchIdAuth = true;
+  security.pam.enableSudoTouchIdAuth = true;
 
   # You can also add system packages here if you want:
   # environment.systemPackages = with pkgs; [ ];
-
-  # Home Manager will be configured via flake.nix
 }
