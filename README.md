@@ -19,17 +19,25 @@ use Nix as a package manager. This repo also contains other configs for non-Nix 
 | Host          | OS    | Platform       | OS Version | HM Version   | Notes        |
 | ------------- | ----- | -------------- | ---------- | ------------ | ------------ |
 | blahaj        | NixOS | x86-64-linux   | 24.11      | unstable     | Server       |
-| Schooner      | MacOS | aarch64-darwin | N/A        | unstable     | MacBook Air  |
+| Schooner      | MacOS | aarch64-darwin | unstable   | unstable     | MacBook Air  |
 
-In all NixOS instances the core OS is the latest stable release. However, we use unstable packages
-for the home-manager configuration in order to keep my development tooling up-to-date.
+We use `nh` which is a wrapper around `nix` to make it easier to manage our Nix systems. See
+[nix helper](https://github.com/nix-community/nh) GitHub repository for more information.
 
-### Nix System Upgrade
+### Nix OS Upgrade
 
 Run the build against the host that you are interested in. This only applies to NixOS machines:
 
 ```fish
-sudo nixos-rebuild switch --flake .#
+nh os rebuild .
+```
+
+### Nix-Darwin Upgrade
+
+For Nix-Darwin systems, you can use the following command to rebuild the system configuration:
+
+```fish
+nh darwin rebuild .
 ```
 
 ### Home-Manager Upgrade
@@ -37,5 +45,5 @@ sudo nixos-rebuild switch --flake .#
 We use home-manager on all of our Nix managed machines.
 
 ```fish
-home-manager switch --flake .#USERNAME@HOST
+nh home rebuild .
 ```
