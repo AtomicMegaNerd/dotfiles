@@ -49,7 +49,8 @@ end
 # This lets us use Go modules hosted on Azure DevOps
 set -gx GOPRIVATE dev.azure.com
 # This is a workaround for the issue with Go modules behind our corporate proxy
-set -gx GOPROXY direct
+set -gx GOPROXY https://proxy.golang.org,direct
+  
 
 # CLI THEME
 # ===================================

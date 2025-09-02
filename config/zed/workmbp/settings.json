@@ -1,17 +1,6 @@
 {
   // Features
   // ----------------------------------------------------------------------
-  "ssh_connections": [
-    {
-      "host": "blahaj",
-      "username": "rcd",
-      "projects": [
-        {
-          "paths": ["/home/rcd/Code/Configs/dotfiles"]
-        }
-      ]
-    }
-  ],
   "features": {
     "edit_prediction_provider": "copilot"
   },
@@ -29,7 +18,7 @@
   },
   // UI
   // ----------------------------------------------------------------------
-  "ui_font_size": 14,
+  "ui_font_size": 16,
   // Editor
   // ----------------------------------------------------------------------
   "buffer_font_size": 14,
@@ -42,7 +31,7 @@
   "theme": {
     "mode": "dark",
     "light": "Catppuccin Latte (teal) - No Italics",
-    "dark": "Catppuccin Frappé (teal) - No Italics"
+    "dark": "Catppuccin Frappé (sky) - No Italics"
   },
   "icon_theme": "Catppuccin Frappé",
   // File Types
@@ -72,6 +61,12 @@
         }
       ]
     },
+    "Markdown": {
+      "format_on_save": "on"
+    },
+    "JSON": {
+      "format_on_save": "on"
+    },
     "Go": {
       "wrap_guides": [100],
       "preferred_line_length": 100,
@@ -96,17 +91,16 @@
         "command": [
           "golangci-lint",
           "run",
-          "--output.json.path=stdout",
-          "--issues-exit-code=1",
-          "--show-stats=false"
+          "--output.json.path",
+          "stdout",
+          "--show-stats=false",
+          "--output.text.path="
         ]
       }
     },
-    "nil": {
+    "gopls": {
       "initialization_options": {
-        "formatting": {
-          "command": ["alejandra", "--quiet", "--"]
-        }
+        "build.buildFlags": ["-tags=integration"]
       }
     }
   },
