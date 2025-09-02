@@ -78,7 +78,7 @@ in
       containers = {
         pihole = {
           autoStart = true;
-          image = "pihole/pihole:2025.07.1";
+          image = "pihole/pihole:2025.08.0";
           ports = [
             "53:53/tcp"
             "53:53/udp"
@@ -99,7 +99,7 @@ in
         };
         freshrss = {
           autoStart = true;
-          image = "freshrss/freshrss:1.26.3";
+          image = "freshrss/freshrss:1.27.0";
           ports = [ "8080:80/tcp" ];
           volumes = [
             "/etc/freshrss/data:/var/www/FreshRSS/data"

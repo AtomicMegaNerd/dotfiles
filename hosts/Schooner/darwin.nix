@@ -7,7 +7,6 @@
   nix.enable = false;
 
   programs.fish.enable = true;
-  programs.zsh.enable = true;
 
   homebrew = {
     enable = true;
@@ -31,6 +30,11 @@
       autoUpdate = true;
     };
   };
+
+  environment.systemPackages = with pkgs; [
+    podman
+    podman-compose
+  ];
 
   security.pam.services.sudo_local.touchIdAuth = true;
 }
