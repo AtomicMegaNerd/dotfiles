@@ -112,7 +112,7 @@ in
         };
         starfeed = {
           autoStart = true;
-          image = "atomicmeganerd/starfeed:v0.1.5";
+          image = "atomicmeganerd/starfeed:v0.1.6";
           environmentFiles = [ "/etc/starfeed/.env" ];
           dependsOn = [ "freshrss" ];
         };
