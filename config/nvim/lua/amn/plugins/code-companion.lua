@@ -3,7 +3,7 @@ return {
   opts = {},
   dependencies = {
     "nvim-lua/plenary.nvim",
-    "nvim-treesitter/nvim-treesitter",
+    { "nvim-treesitter/nvim-treesitter", branch = "main" },
     "ibhagwan/fzf-lua",
     "nvim-tree/nvim-web-devicons",
   },
