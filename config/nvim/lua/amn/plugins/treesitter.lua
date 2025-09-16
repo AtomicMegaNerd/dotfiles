@@ -7,6 +7,11 @@ return {
   config = function()
     local utils = require("amn.utils")
     local ts = utils.do_import("nvim-treesitter")
+
+    if not ts then
+      return
+    end
+
     local langs = {
       "bash",
       "dockerfile",
@@ -25,10 +30,6 @@ return {
       "gomod",
       "fish"
     }
-
-    if not ts then
-      return
-    end
 
     ts.install(langs):wait(300000)
 
