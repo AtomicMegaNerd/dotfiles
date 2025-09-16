@@ -34,6 +34,13 @@ return {
           show_token_count = true,
         },
       },
+      memory = {
+        opts = {
+          chat = {
+            enabled = true,
+          },
+        },
+      },
     })
 
     -- Key mappings

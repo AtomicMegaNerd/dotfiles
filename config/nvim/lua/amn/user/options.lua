@@ -27,8 +27,8 @@ vim.o.mouse = ""
 vim.o.guicursor = "a:blinkon100"
 
 vim.o.expandtab = true -- Use spaces instead of tabs
-vim.o.tabstop = 4 -- Number of spaces tabs count for
-vim.o.shiftwidth = 4 -- Number of spaces to (auto)indent
+vim.o.tabstop = 4      -- Number of spaces tabs count for
+vim.o.shiftwidth = 4   -- Number of spaces to (auto)indent
 
 -- Indentation
 vim.o.autoindent = true
@@ -55,8 +55,12 @@ vim.g.have_nerd_font = true
 
 -- Do not show the mode because it is already in the status line
 vim.opt.showmode = false
+
 -- Highlight the current line
 vim.opt.cursorline = true
 
 -- Clipboard
 vim.opt.clipboard:append({ "unnamed", "unnamedplus" })
+
+-- Disable spelling
+vim.opt.spell = false
