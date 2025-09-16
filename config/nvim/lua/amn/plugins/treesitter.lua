@@ -30,9 +30,7 @@ return {
       return
     end
 
-    ts.setup()
-
-    ts.install(langs)
+    ts.install(langs):wait(300000)
 
     -- Enable highlighting for all specified languages
     local trs_grp = vim.api.nvim_create_augroup("Treesitter", { clear = true })
