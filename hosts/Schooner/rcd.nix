@@ -59,7 +59,7 @@ in
 
   catppuccin = {
     enable = true;
-    flavor = "macchiato";
+    flavor = "frappe";
   };
 
   xdg.configFile = {
