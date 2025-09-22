@@ -3,6 +3,7 @@ return {
 
   config = function()
     local utils = require("amn.utils")
+
     vim.api.nvim_create_autocmd("LspAttach", {
       callback = function(args)
         utils.nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame", "LSP", args.buf)
