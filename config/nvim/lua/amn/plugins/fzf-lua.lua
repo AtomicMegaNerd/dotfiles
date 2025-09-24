@@ -13,6 +13,12 @@ return {
     -- Use fzf-lua as the default UI selector
     fzf_lua.register_ui_select()
 
+    fzf_lua.setup({
+      files = {
+        no_ignore = true, -- do not respect .gitignore
+      },
+    })
+
     utils.nmap("<leader>ff", fzf_lua.files, "[F]ind [F]iles")
     utils.nmap("<leader>fb", fzf_lua.buffers, "[F]ind [B]uffers")
     utils.nmap("<leader>fd", fzf_lua.diagnostics_document, "[F]ind Document [d]iagnostics")
