@@ -1,6 +1,5 @@
 return {
   "neovim/nvim-lspconfig",
-
   config = function()
     local utils = require("amn.utils")
 
