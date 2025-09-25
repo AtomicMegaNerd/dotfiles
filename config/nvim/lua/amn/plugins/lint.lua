@@ -6,7 +6,6 @@ return {
     if not lint then
       return
     end
-
     lint.linters_by_ft = {
       go = { "golangcilint" },
     }
