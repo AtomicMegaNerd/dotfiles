@@ -99,7 +99,7 @@ in
         };
         freshrss = {
           autoStart = true;
-          image = "freshrss/freshrss:1.27.0";
+          image = "freshrss/freshrss:1.27.1";
           ports = [ "8080:80/tcp" ];
           volumes = [
             "/etc/freshrss/data:/var/www/FreshRSS/data"
