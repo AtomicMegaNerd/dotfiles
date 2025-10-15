@@ -22,15 +22,10 @@ with pkgs;
   podman-compose
   lazydocker
   # Linters
-  golangci-lint
-  ruff
-  shellcheck
   # Formatters
   stylua
   nixfmt-rfc-style
   # LSP
-  gopls
-  pyright
   nil
   lua-language-server
   nodePackages.markdownlint-cli

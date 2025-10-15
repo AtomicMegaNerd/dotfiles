@@ -20,7 +20,6 @@
       "amethyst"
       "font-jetbrains-mono-nerd-font"
       "ghostty"
-      "obsidian"
       "raycast"
       "zed"
       "zoom"
