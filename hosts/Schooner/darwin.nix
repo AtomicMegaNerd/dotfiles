@@ -23,6 +23,7 @@
       "raycast"
       "zed"
       "zoom"
+      "obsidian"
     ];
     brews = [ ];
     global = {
