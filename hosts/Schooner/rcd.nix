@@ -34,9 +34,11 @@ in
 
     git = {
       enable = true;
-      userName = "Chris Dunphy";
-      userEmail = "chris@megaparsec.ca";
-      extraConfig = {
+      settings = {
+        user = {
+          name = "Chris Dunphy";
+          email = "chris@megaparsec.ca";
+        };
         init.defaultBranch = "main";
         pull.rebase = false;
         credential = {

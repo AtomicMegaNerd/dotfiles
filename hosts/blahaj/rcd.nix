@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
 
   home = {
     username = "rcd";
@@ -15,12 +16,11 @@
     zellij = import ../../nix/zellij.nix;
     bat = import ../../nix/bat.nix;
 
-
-		nh = { 
+    nh = {
       enable = true;
       clean.enable = true;
       clean.extraArgs = "--keep-since 4d --keep 3";
-    };  
+    };
 
     direnv = {
       enable = true;
@@ -29,9 +29,11 @@
 
     git = {
       enable = true;
-      userName = "Chris Dunphy";
-      userEmail = "chris@megaparsec.ca";
-      extraConfig = {
+      settings = {
+        user = {
+          name = "Chris Dunphy";
+          email = "chris@megaparsec.ca";
+        };
         init.defaultBranch = "main";
         pull.rebase = false;
       };
