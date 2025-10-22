@@ -1,2 +1,4 @@
 theme = Catppuccin Latte
+font-family = Monaspace Neon
 font-size = 16
+macos-option-as-alt=true

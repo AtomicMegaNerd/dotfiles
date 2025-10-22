@@ -10,7 +10,9 @@ in
     file.".ssh/allowed_signers".text = "${rcd_pub_key}";
     file.".ssh/config".source = ../../config/SSH/Schooner/config;
     shell.enableShellIntegration = true;
-    packages = import ../../nix/packages.nix { inherit pkgs; } ++ [ ];
+    packages = import ../../nix/packages.nix { inherit pkgs; } ++ [
+      pkgs.monaspace
+    ];
   };
 
   programs = {
