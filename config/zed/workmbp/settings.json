@@ -18,11 +18,11 @@
   },
   // UI
   // ----------------------------------------------------------------------
-  "ui_font_size": 16,
+  "ui_font_size": 14,
   // Editor
   // ----------------------------------------------------------------------
   "buffer_font_size": 14,
-  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "buffer_font_family": "Monaspace Neon",
   "relative_line_numbers": true,
   "preferred_line_length": 100,
   "wrap_guides": [100],
@@ -99,7 +99,7 @@
   // Terminal
   // ----------------------------------------------------------------------
   "terminal": {
-    "font_family": "JetBrainsMono Nerd Font",
+    "font_family": "Monaspace Neon",
     "font_size": 14,
     "blinking": "on",
     "shell": {

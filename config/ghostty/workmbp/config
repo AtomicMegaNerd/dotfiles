@@ -1,3 +1,4 @@
-theme = Catppuccin Latte
-font-size = 16
+theme = "Catppuccin Latte"
+font-size = 14
+font-family = "Monaspace Neon"
 macos-option-as-alt = true
