@@ -79,9 +79,9 @@ in
       source = ../../config/ghostty/Schooner;
       target = "ghostty";
     };
+    zed = {
+      source = ../../config/zed/Schooner;
+      target = "zed";
+    };
   };
-  home.activation.linkZedConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    rm -rf "$HOME/.config/zed"
-    ln -s "$HOME/Code/Configs/dotfiles/config/zed/Schooner" "$HOME/.config/zed"
-  '';
 }
