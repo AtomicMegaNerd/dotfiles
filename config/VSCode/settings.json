@@ -30,7 +30,7 @@
 
   // Workbench settings
   "workbench.startupEditor": "none",
-  "workbench.iconTheme": "catppuccin-frappe",
+  "workbench.iconTheme": "catppuccin-latte",
   "workbench.layoutControl.enabled": false,
   "workbench.settings.editor": "json",
   "workbench.colorTheme": "Catppuccin Frappé",
