@@ -28,8 +28,8 @@
   "wrap_guides": [100],
   // Theme
   // ----------------------------------------------------------------------
-  "theme": "Lux Light",
-  "icon_theme": "Catppuccin Frappé",
+  "theme": "Catppuccin Latte (sky) - No Italics",
+  "icon_theme": "Catppuccin Latte",
   // File Types
   // ----------------------------------------------------------------------
   "file_types": {

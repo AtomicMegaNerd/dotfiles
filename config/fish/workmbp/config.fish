@@ -50,11 +50,6 @@ end
 set -gx GOPRIVATE dev.azure.com
 # This is a workaround for the issue with Go modules behind our corporate proxy
 set -gx GOPROXY https://proxy.golang.org,direct
-  
-
-# CLI THEME
-# ===================================
-set -gx CLI_THEME "catppuccin"
 
 # Neovim
 # ===================================
@@ -75,4 +70,3 @@ fish_add_path $HOME/bin
 fish_add_path $HOME/.local/bin
 fish_add_path $HOME/go/bin
 fish_add_path /opt/homebrew/bin
-
