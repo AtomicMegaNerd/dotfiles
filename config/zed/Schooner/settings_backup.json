@@ -1,9 +1,6 @@
 {
   // Features
   // ----------------------------------------------------------------------
-  "edit_predictions": {
-    "mode": "subtle"
-  },
   "ssh_connections": [
     {
       "host": "blahaj",
@@ -39,8 +36,8 @@
   "wrap_guides": [100],
   // Theme
   // ----------------------------------------------------------------------
-  "theme": "Catppuccin Latte (sky) - No Italics",
-  "icon_theme": "Catppuccin Latte",
+  "theme": "Noctis Lux",
+  "icon_theme": "Catppuccin Frappé",
   // File Types
   // ----------------------------------------------------------------------
   "file_types": {
@@ -55,8 +52,12 @@
       "format_on_save": "on",
       "wrap_guides": [88], // Default for black/ruff
       "formatter": [
-        { "code_action": "source.organizeImports.ruff" },
-        { "code_action": "source.fixAll.ruff" },
+        {
+          "code_actions": {
+            "source.organizeImports.ruff": true,
+            "source.fixAll.ruff": true
+          }
+        },
         {
           "language_server": {
             "name": "ruff"
