@@ -22,6 +22,7 @@ in
     starship = import ../../nix/starship.nix;
     zellij = import ../../nix/zellij.nix;
     bat = import ../../nix/bat.nix;
+    zed-editor = import ../../nix/zed.nix;
 
     nh = {
       enable = true;
@@ -78,10 +79,6 @@ in
     ghostty = {
       source = ../../config/ghostty/Schooner;
       target = "ghostty";
-    };
-    zed = {
-      source = ../../config/zed/Schooner;
-      target = "zed";
     };
   };
 }
