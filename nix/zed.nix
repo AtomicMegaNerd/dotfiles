@@ -7,6 +7,16 @@
     "nix"
     "lua"
     "toml"
+    "comment"
+    "git-firefly"
+    "golangci-lint"
+    "bash"
+    "dockerfile"
+    "docker-compose"
+    "zig"
+    "sql"
+    "html"
+    "log"
   ];
 
   userSettings = {
