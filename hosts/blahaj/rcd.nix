@@ -25,7 +25,7 @@
   catppuccin = {
     enable = true;
     flavor = "latte";
-    accebt = "sky";
+    accent = "sky";
   };
 
   xdg.configFile = {
