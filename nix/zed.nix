@@ -20,6 +20,7 @@
 
     # MCP Servers
     "mcp-server-context7"
+    "mcp-server-github"
   ];
 
   userSettings = {
