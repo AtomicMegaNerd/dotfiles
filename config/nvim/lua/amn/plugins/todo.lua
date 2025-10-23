@@ -10,7 +10,6 @@ return {
 		end
 
 		todo.setup()
-
 		utils.nmap("<leader>fT", "<cmd>TodoFzfLua<CR>", "[F]ind [T]odos")
 	end,
 }

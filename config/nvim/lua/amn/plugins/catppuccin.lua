@@ -2,29 +2,33 @@
 -- we want to load this plug-in.
 
 return {
-  "catppuccin/nvim",
-  name = "catppuccin",
-  priority = 1000,
-  config = function()
-    local utils = require("amn.utils")
-    local catppuccin = utils.do_import("catppuccin")
+	"catppuccin/nvim",
+	name = "catppuccin",
+	priority = 1000,
 
-    if not catppuccin then
-      return
-    end
+	config = function()
+		local utils = require("amn.utils")
+		local catppuccin = utils.do_import("catppuccin")
 
-    catppuccin.setup({
-      flavour = "latte",
-      no_italic = true,
-      transparent_background = true,
-      integrations = {
-        cmp = true,
-        gitsigns = true,
-        fzf = true,
-        snacks = true,
-      },
-    })
+		if not catppuccin then
+			return
+		end
 
-    vim.cmd.colorscheme("catppuccin")
-  end,
+		catppuccin.setup({
+			flavour = "latte",
+			no_italic = true,
+			transparent_background = true,
+			integrations = {
+				gitsigns = true,
+				fzf = true,
+				snacks = true,
+				which_key = true,
+				trouble = true,
+				neotest = true,
+				neogit = true,
+			},
+		})
+
+		vim.cmd.colorscheme("catppuccin")
+	end,
 }
