@@ -17,6 +17,9 @@
     "sql"
     "html"
     "log"
+
+    # MCP Servers
+    "mcp-server-context7"
   ];
 
   userSettings = {
