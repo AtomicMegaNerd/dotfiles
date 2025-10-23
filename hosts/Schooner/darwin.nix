@@ -18,7 +18,6 @@
     casks = [
       "1password"
       "amethyst"
-      "ghostty"
       "raycast"
       "zoom"
       "obsidian"

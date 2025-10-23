@@ -21,6 +21,7 @@ in
     home-manager.enable = true;
     fish = import ../../nix/fish.nix { inherit pkgs; };
     neovim = import ../../nix/neovim.nix { inherit pkgs; };
+    ghostty = import ../../nix/ghostty.nix { inherit pkgs; };
     starship = import ../../nix/starship.nix;
     zellij = import ../../nix/zellij.nix;
     bat = import ../../nix/bat.nix;
@@ -78,10 +79,6 @@ in
     zellij = {
       source = ../../config/zellij/Schooner;
       target = "zellij";
-    };
-    ghostty = {
-      source = ../../config/ghostty/Schooner;
-      target = "ghostty";
     };
   };
 }
