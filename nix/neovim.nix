@@ -8,6 +8,5 @@
   extraPackages = with pkgs; [
     gcc
     tree-sitter
-    nodejs_24
   ];
 }
