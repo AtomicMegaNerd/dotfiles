@@ -66,6 +66,7 @@ in
   catppuccin = {
     enable = true;
     flavor = "latte";
+    accent = "sky";
   };
 
   xdg.configFile = {
