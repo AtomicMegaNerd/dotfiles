@@ -2,21 +2,23 @@
   enable = true;
 
   extensions = [
-    "HTML"
-    "Catppuccin"
-    "TOML"
-    "Dockerfile"
-    "Git Firefly"
-    "SQL"
-    "Catppuccin Icons"
-    "Lua"
-    "Zig"
-    "XML"
-    "Docker Compose"
-    "Nix"
+    "html"
+    "catppuccin"
+    "catppuccin icons"
+    "toml"
+    "dockerfile"
+    "git firefly"
+    "sql"
+    "lua"
+    "zig"
+    "nix"
+    "xml"
+    "docker compose"
+    "nix"
     "ini"
     "golangci-lint"
-    "Fish"
+    "fish"
+    "comment"
   ];
 
   userSettings = {
