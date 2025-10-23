@@ -47,15 +47,26 @@ return {
     })
 
     local servers = {
+      -- Python
       "ruff",
-      "nil_ls",
-      "bashls",
-      "gopls",
-      "dockerls",
-      "rust_analyzer",
-      "lua_ls",
-      "yamlls",
       "pyright",
+
+      -- Nix
+      "nil_ls",
+
+      -- Lua
+      "lua_ls",
+
+      -- Go
+      "gopls",
+
+      -- Rust
+      "rust_analyzer",
+
+      -- Others
+      "docker_language_server",
+      "yamlls",
+      "bashls",
     }
 
     for _, lsp in ipairs(servers) do
