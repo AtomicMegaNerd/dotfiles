@@ -1,7 +1,23 @@
 {
   enable = true;
 
-  extensions = [ "Catppuccin" ];
+  extensions = [
+    "HTML"
+    "Catppuccin"
+    "TOML"
+    "Dockerfile"
+    "Git Firefly"
+    "SQL"
+    "Catppuccin Icons"
+    "Lua"
+    "Zig"
+    "XML"
+    "Docker Compose"
+    "Nix"
+    "ini"
+    "golangci-lint"
+    "Fish"
+  ];
 
   userSettings = {
     # Features
