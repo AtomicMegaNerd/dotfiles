@@ -1,7 +1,7 @@
 {
   enable = true;
 
-  extensions = [ ];
+  extensions = [ "Catppuccin" ];
 
   userSettings = {
     # Features
