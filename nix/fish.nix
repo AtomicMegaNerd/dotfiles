@@ -11,16 +11,20 @@ let
     fish_add_path $GOPATH/bin
     fish_add_path $HOME/.local/bin
   '';
-in {
+in
+{
   enable = true;
 
-  shellInit = if pkgs.stdenv.isDarwin then ''
-    ${commonShellInit}
-    fish_add_path /opt/homebrew/bin
-    fish_add_path ~/.nix-profile/bin
-    fish_add_path /nix/var/nix/profiles/default/bin
-  '' else
-    commonShellInit;
+  shellInit =
+    if pkgs.stdenv.isDarwin then
+      ''
+        ${commonShellInit}
+        fish_add_path /opt/homebrew/bin
+        fish_add_path ~/.nix-profile/bin
+        fish_add_path /nix/var/nix/profiles/default/bin
+      ''
+    else
+      commonShellInit;
 
   interactiveShellInit = ''
     set fish_greeting # Disable greeting
@@ -31,6 +35,7 @@ in {
     ll = "eza -lah";
     df = "duf";
     cat = "bat --paging=never --style=plain";
+    zed = "zeditor";
 
     # Just use ripgrep
     grep = "rg";
@@ -42,10 +47,14 @@ in {
     zka = "zellij ka";
   };
 
-  functions = { zn = "zellij -s (basename (eval pwd))"; };
+  functions = {
+    zn = "zellij -s (basename (eval pwd))";
+  };
 
-  plugins = [{
-    name = "grc";
-    src = pkgs.fishPlugins.grc.src;
-  }];
+  plugins = [
+    {
+      name = "grc";
+      src = pkgs.fishPlugins.grc.src;
+    }
+  ];
 }
