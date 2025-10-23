@@ -18,7 +18,6 @@
     casks = [
       "1password"
       "amethyst"
-      "font-jetbrains-mono-nerd-font"
       "ghostty"
       "raycast"
       "zoom"

@@ -11,7 +11,8 @@ in
     file.".ssh/config".source = ../../config/SSH/Schooner/config;
     shell.enableShellIntegration = true;
     packages = import ../../nix/packages.nix { inherit pkgs; } ++ [
-      pkgs.monaspace
+      pkgs.nerd-fonts.monaspace
+      pkgs.nerd-fonts.jetbrains-mono
     ];
   };
 

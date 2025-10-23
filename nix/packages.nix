@@ -20,14 +20,8 @@ with pkgs;
   dos2unix
   pre-commit
   podman-compose
-  lazydocker
-  # Linters
-  # Formatters
   stylua
   nixfmt-rfc-style
-  # LSP
   nil
   lua-language-server
-  nodePackages.markdownlint-cli
-  nodePackages.prettier
 ]
