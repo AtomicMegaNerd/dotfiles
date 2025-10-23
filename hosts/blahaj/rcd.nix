@@ -15,45 +15,17 @@
     starship = import ../../nix/starship.nix;
     zellij = import ../../nix/zellij.nix;
     bat = import ../../nix/bat.nix;
-
-    nh = {
-      enable = true;
-      clean.enable = true;
-      clean.extraArgs = "--keep-since 4d --keep 3";
-    };
-
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-    };
-
-    git = {
-      enable = true;
-      settings = {
-        user = {
-          name = "Chris Dunphy";
-          email = "chris@megaparsec.ca";
-        };
-        init.defaultBranch = "main";
-        pull.rebase = false;
-      };
-    };
-
-    zoxide = {
-      enable = true;
-      enableFishIntegration = true;
-      options = [ "--cmd cd" ];
-    };
-
-    fzf = {
-      enable = true;
-      enableFishIntegration = true;
-    };
+    fzf = import ../../nix/fzf.nix;
+    zoxide = import ../../nix/zoxide.nix;
+    nh = import ../../nix/nh.nix;
+    git = import ../../nix/git.nix;
+    direnv = import ../../nix/direnv.nix;
   };
 
   catppuccin = {
     enable = true;
     flavor = "latte";
+    accebt = "sky";
   };
 
   xdg.configFile = {

@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 let
   rcd_pub_key = builtins.readFile ../../static/rcd_pub_key;
 in
@@ -26,43 +26,11 @@ in
     zellij = import ../../nix/zellij.nix;
     bat = import ../../nix/bat.nix;
     zed-editor = import ../../nix/zed.nix;
-
-    nh = {
-      enable = true;
-      clean.enable = true;
-      clean.extraArgs = "--keep-since 4d --keep 3";
-    };
-
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-    };
-
-    git = {
-      enable = true;
-      settings = {
-        user = {
-          name = "Chris Dunphy";
-          email = "chris@megaparsec.ca";
-        };
-        init.defaultBranch = "main";
-        pull.rebase = false;
-        credential = {
-          helper = "manager";
-          "https://github.com".username = "AtomicMegaNerd";
-          credentialStore = "cache";
-        };
-      };
-    };
-
-    zoxide = {
-      enable = true;
-      options = [ "--cmd cd" ];
-    };
-
-    fzf = {
-      enable = true;
-    };
+    fzf = import ../../nix/fzf.nix;
+    zoxide = import ../../nix/zoxide.nix;
+    nh = import ../../nix/nh.nix;
+    git = import ../../nix/git.nix;
+    direnv = import ../../nix/direnv.nix;
   };
 
   catppuccin = {
