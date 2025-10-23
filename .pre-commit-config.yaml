@@ -8,6 +8,6 @@ repos:
       - id: check-yaml
       - id: check-toml
   - repo: https://github.com/JohnnyMorganz/StyLua
-    rev: v0.20.0
+    rev: v2.3.0
     hooks:
       - id: stylua-system
