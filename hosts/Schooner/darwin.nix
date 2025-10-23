@@ -21,7 +21,6 @@
       "font-jetbrains-mono-nerd-font"
       "ghostty"
       "raycast"
-      "zed"
       "zoom"
       "obsidian"
     ];

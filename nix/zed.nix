@@ -2,26 +2,15 @@
   enable = true;
 
   extensions = [
-    "html"
     "catppuccin"
-    "catppuccin icons"
-    "toml"
-    "dockerfile"
-    "git firefly"
-    "sql"
+    "catppuccin-icons"
+    "nix"
     "lua"
-    "zig"
-    "nix"
-    "xml"
-    "docker compose"
-    "nix"
-    "ini"
-    "golangci-lint"
-    "fish"
-    "comment"
+    "toml"
   ];
 
   userSettings = {
+
     # Features
     edit_predictions = {
       mode = "subtle";
