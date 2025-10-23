@@ -32,7 +32,6 @@ in
     nh = import ../../nix/nh.nix;
     git = import ../../nix/git.nix;
     direnv = import ../../nix/direnv.nix;
-    atuin = import ../../nix/atuin.nix;
   };
 
   catppuccin = {
