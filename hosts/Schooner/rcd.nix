@@ -12,6 +12,7 @@ in
     shell.enableShellIntegration = true;
     packages = import ../../nix/packages.nix { inherit pkgs; } ++ [
       pkgs.monaspace
+      pkgs.jetbrains-mono
       pkgs.nerd-fonts.monaspace
       pkgs.nerd-fonts.jetbrains-mono
     ];
