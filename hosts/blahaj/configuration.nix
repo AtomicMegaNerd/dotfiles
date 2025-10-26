@@ -78,7 +78,7 @@ in
       containers = {
         pihole = {
           autoStart = true;
-          image = "pihole/pihole:2025.08.0";
+          image = "pihole/pihole:2025.10.0";
           ports = [
             "53:53/tcp"
             "53:53/udp"
