@@ -11,8 +11,8 @@
     home-manager.enable = true;
     neovim = import ../../nix/neovim.nix { inherit pkgs; };
     fish = import ../../nix/fish.nix { inherit pkgs; };
+    zellij = import ../../nix/zellij.nix { inherit pkgs; };
     starship = import ../../nix/starship.nix;
-    zellij = import ../../nix/zellij.nix;
     bat = import ../../nix/bat.nix;
     fzf = import ../../nix/fzf.nix;
     zoxide = import ../../nix/zoxide.nix;
@@ -33,7 +33,7 @@
       target = "nvim";
     };
     zellij = {
-      source = ../../config/zellij/linux;
+      source = ../../config/zellij;
       target = "zellij";
     };
   };

@@ -23,8 +23,8 @@ in
     fish = import ../../nix/fish.nix { inherit pkgs; };
     neovim = import ../../nix/neovim.nix { inherit pkgs; };
     ghostty = import ../../nix/ghostty.nix { inherit pkgs; };
+    zellij = import ../../nix/zellij.nix { inherit pkgs; };
     starship = import ../../nix/starship.nix;
-    zellij = import ../../nix/zellij.nix;
     bat = import ../../nix/bat.nix;
     zed-editor = import ../../nix/zed.nix;
     fzf = import ../../nix/fzf.nix;
@@ -46,7 +46,7 @@ in
       target = "nvim";
     };
     zellij = {
-      source = ../../config/zellij/Schooner;
+      source = ../../config/zellij;
       target = "zellij";
     };
   };
