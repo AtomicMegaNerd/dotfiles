@@ -1,5 +1,4 @@
 { pkgs, ... }:
-
 {
   networking.hostName = "Schooner";
   system.stateVersion = 4;
