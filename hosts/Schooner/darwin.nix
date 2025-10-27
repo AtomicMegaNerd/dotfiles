@@ -20,6 +20,7 @@
       "raycast"
       "zoom"
       "obsidian"
+      "calibre"
     ];
     brews = [ ];
     global = {
