@@ -6,7 +6,7 @@ with pkgs;
   tldr
   curl
   wget
-  du-dust
+  dust
   duf
   htop
   ripgrep
