@@ -1,3 +1,8 @@
+let
+  fontFamily = "Monaspace Argon";
+  fontSize = 14;
+  defaultTabSize = 4;
+in
 {
   enable = true;
 
@@ -56,14 +61,30 @@
     };
 
     # UI
-    ui_font_size = 14;
+    ui_font_size = fontSize;
 
     # Editor
-    buffer_font_size = 14;
-    buffer_font_family = "Monaspace Neon";
+    buffer_font_size = fontSize;
+    buffer_font_family = fontFamily;
     relative_line_numbers = true;
     preferred_line_length = 100;
     wrap_guides = [ 100 ];
+    tab_size = defaultTabSize;
+
+    # Terminal
+    terminal = {
+      font_family = fontFamily;
+      font_size = fontSize;
+      blinking = "on";
+      shell = {
+        program = "fish";
+      };
+      detect_venv = {
+        on = {
+          activate_script = "fish";
+        };
+      };
+    };
 
     # File Types
     file_types = {
@@ -77,7 +98,6 @@
     # Languages
     languages = {
       Python = {
-        tab_size = 4;
         language_servers = [
           "ruff"
           "pyright"
@@ -95,7 +115,7 @@
         ];
       };
       Go = {
-        tab_size = 4;
+        tab_size = defaultTabSize;
         format_on_save = "on";
         language_servers = [
           "gopls"
@@ -124,21 +144,6 @@
             "--issues-exit-code=1"
             "--show-stats=false"
           ];
-        };
-      };
-    };
-
-    # Terminal
-    terminal = {
-      font_family = "Monaspace Neon";
-      font_size = 14;
-      blinking = "on";
-      shell = {
-        program = "fish";
-      };
-      detect_venv = {
-        on = {
-          activate_script = "fish";
         };
       };
     };
