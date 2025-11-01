@@ -3,7 +3,6 @@ return {
 	config = function()
 		local utils = require("amn.utils")
 		local oil = utils.do_import("oil")
-
 		if not oil then
 			return
 		end
