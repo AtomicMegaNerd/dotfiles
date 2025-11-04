@@ -11,7 +11,6 @@ with pkgs;
   htop
   ripgrep
   fd
-  eza
   grc
   zip
   unzip
