@@ -1,5 +1,5 @@
 let
-  fontFamily = "Monaspace Argon";
+  fontFamily = "Monaspace Argon Var";
   fontSize = 14;
   defaultTabSize = 4;
 in
@@ -66,6 +66,7 @@ in
     # Editor
     buffer_font_size = fontSize;
     buffer_font_family = fontFamily;
+    buffer_font_weight = 500;
     relative_line_numbers = true;
     preferred_line_length = 100;
     wrap_guides = [ 100 ];
