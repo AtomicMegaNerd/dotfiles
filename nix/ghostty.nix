@@ -6,6 +6,8 @@
   settings = {
     font-family = "Monaspace Argon";
     font-size = 14;
+    font-thicken = true;
+    font-feature = "ss01,ss02,ss03,ss04,ss05,ss06,ss07,ss08,ss09,ss10";
     macos-option-as-alt = true;
   };
 }
