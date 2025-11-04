@@ -67,6 +67,18 @@ in
     buffer_font_size = fontSize;
     buffer_font_family = fontFamily;
     buffer_font_weight = 500;
+    buffer_font_features = {
+      ss01 = true;
+      ss02 = true;
+      ss03 = true;
+      ss04 = true;
+      ss05 = true;
+      ss06 = true;
+      ss07 = true;
+      ss08 = true;
+      ss09 = true;
+      ss10 = true;
+    };
     relative_line_numbers = true;
     preferred_line_length = 100;
     wrap_guides = [ 100 ];
