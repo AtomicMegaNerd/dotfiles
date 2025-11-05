@@ -18,6 +18,9 @@ in
     if pkgs.stdenv.isDarwin then
       ''
         ${commonShellInit}
+
+        # See https://github.com/zed-industries/zed/issues/41806
+        set -gx NODE_OPTIONS --experimental-sqlite
         fish_add_path /opt/homebrew/bin
         fish_add_path ~/.nix-profile/bin
         fish_add_path /nix/var/nix/profiles/default/bin

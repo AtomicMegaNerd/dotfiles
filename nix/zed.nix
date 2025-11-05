@@ -30,11 +30,6 @@ in
 
   userSettings = {
 
-    # Features
-    edit_predictions = {
-      mode = "subtle";
-    };
-
     ssh_connections = [
       {
         host = "blahaj";
@@ -47,6 +42,14 @@ in
       }
     ];
 
+    # Features
+    edit_predictions = {
+      mode = "subtle";
+    };
+    features = {
+      edit_prediction_provider = "copilot";
+    };
+
     # AI
     agent = {
       always_allow_tool_actions = true;
@@ -54,10 +57,6 @@ in
         provider = "copilot_chat";
         model = "gpt-4.1";
       };
-    };
-
-    features = {
-      edit_prediction_provider = "copilot";
     };
 
     # UI
