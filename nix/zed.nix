@@ -77,6 +77,8 @@ in
       ss08 = true;
       ss09 = true;
       ss10 = true;
+      liga = true;
+      calt = true;
     };
     relative_line_numbers = true;
     preferred_line_length = 100;
