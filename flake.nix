@@ -16,6 +16,7 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    flake-utils.url = "github:numtide/flake-utils";
   };
 
   outputs =
@@ -26,6 +27,7 @@
       home-manager,
       catppuccin,
       nix-darwin,
+      flake-utils,
     }:
     let
       systems = {
@@ -69,6 +71,31 @@
             ./hosts/${hostname}/darwin.nix
           ];
         };
+
+      # This installs the tooling required for managing
+      # our dotfiles repos. We need tooling for lua
+      # to work on our neovim config, we also need
+      # the Haskell toolchain to enable pre-commit
+      # hooks for nixfmt
+      devShells = flake-utils.lib.eachDefaultSystem (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        {
+          devShells = {
+            default = pkgs.mkShell {
+              buildInputs = with pkgs; [
+                cabal-install
+                ghc
+                stylua
+                lua-language-server
+              ];
+            };
+          };
+        }
+      );
+
     in
     {
       nixosConfigurations = {
@@ -83,5 +110,7 @@
       darwinConfigurations = {
         Schooner = buildDarwinConf systems.darwin "Schooner";
       };
+
+      devShells = devShells.devShells;
     };
 }

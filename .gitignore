@@ -5,3 +5,4 @@ common/nvim/lazy-lock.json
 **/nvim/spell
 **/prompts/
 **/*.bak
+.direnv

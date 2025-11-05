@@ -18,9 +18,7 @@ with pkgs;
   jq
   dos2unix
   pre-commit
-  podman-compose
-  stylua
   nixfmt-rfc-style
   nil
-  lua-language-server
+  podman-compose
 ]
