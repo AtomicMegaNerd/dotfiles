@@ -77,10 +77,10 @@
       # to work on our neovim config, we also need
       # the Haskell toolchain to enable pre-commit
       # hooks for nixfmt
-      devShells = flake-utils.lib.eachDefaultSystem (
+      localDevShell = flake-utils.lib.eachDefaultSystem (
         system:
         let
-          pkgs = nixpkgs.legacyPackages.${system};
+          pkgs = nixpkgs-unstable.legacyPackages.${system};
         in
         {
           devShells = {
@@ -112,6 +112,6 @@
         Schooner = buildDarwinConf systems.darwin "Schooner";
       };
 
-      devShells = devShells.devShells;
+      devShells = localDevShell.devShells;
     };
 }
