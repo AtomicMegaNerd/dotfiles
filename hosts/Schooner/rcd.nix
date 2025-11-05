@@ -8,7 +8,16 @@ in
     homeDirectory = "/Users/rcd";
     stateVersion = "24.11";
     file.".ssh/allowed_signers".text = "${rcd_pub_key}";
-    file.".ssh/config".source = ../../config/SSH/Schooner/config;
+    file.".ssh/config".text = ''
+      Host *
+        IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+
+      Host 192.168.1.*
+          ForwardAgent yes
+
+      Host blahaj
+          ForwardAgent yes
+    '';
     shell.enableShellIntegration = true;
     packages = import ../../nix/packages.nix { inherit pkgs; } ++ [
       pkgs.monaspace
