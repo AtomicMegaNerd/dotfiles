@@ -1,4 +1,4 @@
-# AtomicMegaNerd's NixOS Flake and Other Dotfiles
+# AtomicMegaNerd's NixOS Flake and Related Configs
 
 ```text
     ___   __                  _      __  ___                 _   __              __
@@ -12,7 +12,8 @@
 ![AtomicMegaNerd](https://github.com/AtomicMegaNerd/AtomicMegaNerd/blob/main/img/RCD-AtomicMegaNerd-Beard-400.png)
 
 This is my core flake for my Nix-managed machines as well as any other machines that
-use Nix as a package manager. This repo also contains other configs for non-Nix systems.
+use Nix as a package manager. This repo also contains configurations for apps that
+are installed by my flake but configured externally (i.e. Neovim).
 
 ## Nix Systems
 
@@ -23,6 +24,21 @@ use Nix as a package manager. This repo also contains other configs for non-Nix 
 
 We use `nh` which is a wrapper around `nix` to make it easier to manage our Nix systems. See
 [nix helper](https://github.com/nix-community/nh) GitHub repository for more information.
+
+## Getting Started
+
+Clone this repo to get started:
+
+```fish
+git clone https://github.com/AtomicMegaNerd/dotfiles.git
+cd dotfiles
+```
+
+To enable the `direnv` Nix shell for flake development, run the following command in the dotfiles repo:
+
+```fish
+direnv allow
+```
 
 ### Nix OS Upgrade
 
@@ -47,3 +63,16 @@ We use home-manager on all of our Nix managed machines.
 ```fish
 nh home rebuild .
 ```
+
+## Repository Structure
+
+This is the structure of this repo:
+
+- `flake.nix` - The Nix flake file that defines the NixOS, Nix-Darwin, and
+  Home-Manager configurations.
+- `hosts/` - Directory containing host-specific configurations.
+- `nix/` - Directory containing Nix sources for different apps and common modules.
+- `config/` - Directory containing non-nix configurations.
+- `static/` - Directory containing static files used in configurations.
+
+Over time as more options are added to home-manager and nixos, more of the configuration should be migrated to Nix.
