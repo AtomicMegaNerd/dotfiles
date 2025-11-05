@@ -40,23 +40,25 @@ To enable the `direnv` Nix shell for flake development, run the following comman
 direnv allow
 ```
 
-### Nix OS Upgrade
+To get pre-commit setup for the first time, you may need to run:
 
-Run the build against the host that you are interested in. This only applies to NixOS machines:
+```fish
+pre-commit install
+```
+
+### Nix Commands
+
+Run the build against the host that you are interested in. For NixOS machines:
 
 ```fish
 nh os rebuild .
 ```
-
-### Nix-Darwin Upgrade
 
 For Nix-Darwin systems, you can use the following command to rebuild the system configuration:
 
 ```fish
 nh darwin rebuild .
 ```
-
-### Home-Manager Upgrade
 
 We use home-manager on all of our Nix managed machines.
 
@@ -76,3 +78,7 @@ This is the structure of this repo:
 - `static/` - Directory containing static files used in configurations.
 
 Over time as more options are added to home-manager and nixos, more of the configuration should be migrated to Nix.
+
+## License
+
+See the `LICENSE` files for details.
