@@ -90,6 +90,7 @@
                 ghc
                 stylua
                 lua-language-server
+                bash-language-server
               ];
             };
           };
