@@ -28,11 +28,9 @@ in
   };
 
   programs = (import ../../nix/hm_common.nix { inherit pkgs; }) // {
-    # These are unique to the Mac
     zed-editor = import ../../nix/zed.nix;
     ghostty = import ../../nix/ghostty.nix { inherit pkgs; };
   };
-
   catppuccin = import ../../nix/catppuccin.nix;
   xdg.configFile = import ../../nix/xdg.nix;
 }
