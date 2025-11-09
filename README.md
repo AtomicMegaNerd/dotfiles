@@ -19,7 +19,7 @@ are installed by my flake but configured externally (i.e. Neovim).
 
 | Host          | OS    | Platform       | OS Version | HM Version   | Notes        |
 | ------------- | ----- | -------------- | ---------- | ------------ | ------------ |
-| blahaj        | NixOS | x86-64-linux   | 24.11      | unstable     | Server       |
+| blahaj        | NixOS | x86-64-linux   | 25.05      | unstable     | Server       |
 | Schooner      | MacOS | aarch64-darwin | unstable   | unstable     | MacBook Air  |
 
 We use `nh` which is a wrapper around `nix` to make it easier to manage our Nix systems. See
@@ -77,7 +77,8 @@ This is the structure of this repo:
 - `config/` - Directory containing non-nix configurations.
 - `static/` - Directory containing static files used in configurations.
 
-Over time as more options are added to home-manager and nixos, more of the configuration should be migrated to Nix.
+Over time as more options are added to home-manager and nixos, more of the configuration should be
+migrated to Nix.
 
 ## License
 

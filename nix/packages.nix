@@ -8,7 +8,6 @@ with pkgs;
   wget
   dust
   duf
-  htop
   ripgrep
   fd
   grc

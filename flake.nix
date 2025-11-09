@@ -42,6 +42,8 @@
           config.allowUnfree = true;
         };
 
+      # This is for building NixOS configurations, where we are running the full NixOS Linux
+      # distribution
       buildOsConf =
         system: hostname: useStable:
         nixpkgs.lib.nixosSystem {
@@ -52,6 +54,7 @@
           ];
         };
 
+      # This is for building Home Manager configurations, which can be used on any system
       buildHomeMgrConf =
         system: hostname:
         home-manager.lib.homeManagerConfiguration {
@@ -62,6 +65,7 @@
           ];
         };
 
+      # This is for building nix-darwin configurations, which are used to manage macOS systems
       buildDarwinConf =
         system: hostname:
         nix-darwin.lib.darwinSystem {
@@ -72,10 +76,8 @@
           ];
         };
 
-      # This installs the tooling required for managing
-      # our dotfiles repos. We need tooling for lua
-      # to work on our neovim config, we also need
-      # the Haskell toolchain to enable pre-commit
+      # This installs the tooling required for managing our dotfiles repos. We need tooling for lua
+      # to work on our neovim config, we also need the Haskell toolchain to enable pre-commit
       # hooks for nixfmt
       localDevShell = flake-utils.lib.eachDefaultSystem (
         system:
@@ -99,7 +101,13 @@
     in
     {
       nixosConfigurations = {
+        # Blahaj is my Lenovo ThinkCentre server running NixOS.
         blahaj = buildOsConf systems.linux "blahaj" true;
+      };
+
+      darwinConfigurations = {
+        # My 13-inch M4 MacBook Air
+        Schooner = buildDarwinConf systems.darwin "Schooner";
       };
 
       homeConfigurations = {
@@ -107,10 +115,7 @@
         "rcd@Schooner" = buildHomeMgrConf systems.darwin "Schooner";
       };
 
-      darwinConfigurations = {
-        Schooner = buildDarwinConf systems.darwin "Schooner";
-      };
-
+      # For wiring up our tooling for pre-commit, etc.
       devShells = localDevShell.devShells;
     };
 }
