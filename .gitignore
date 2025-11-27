@@ -6,3 +6,4 @@ common/nvim/lazy-lock.json
 **/prompts/
 **/*.bak
 .direnv
+**/zed/conversations
