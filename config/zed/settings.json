@@ -1,4 +1,6 @@
 {
+    "icon_theme": "Catppuccin Frappé",
+    "theme": "Catppuccin Frappé - No Italics",
     "ssh_connections": [
         {
             "host": "blahaj",

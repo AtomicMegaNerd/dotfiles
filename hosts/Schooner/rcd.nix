@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 let
   rcd_pub_key = builtins.readFile ../../static/rcd_pub_key;
 in
@@ -32,4 +32,10 @@ in
   };
   catppuccin = import ../../nix/catppuccin.nix;
   xdg.configFile = import ../../nix/xdg.nix;
+
+  # Hack for Zed because the directory needs to be readable
+  home.activation.linkZedConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    rm -rf "$HOME/.config/zed"
+    ln -s "$HOME/Code/Configs/dotfiles/config/zed" "$HOME/.config/zed"
+  '';
 }
