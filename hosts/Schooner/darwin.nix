@@ -21,6 +21,7 @@
       "zoom"
       "obsidian"
       "calibre"
+      "zed"
     ];
     brews = [ ];
     global = {

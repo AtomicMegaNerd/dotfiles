@@ -11,4 +11,8 @@
     source = ../config/posting;
     target = "posting";
   };
+  zed = {
+    source = ../config/zed;
+    target = "zed";
+  };
 }
