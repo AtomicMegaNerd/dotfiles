@@ -1,13 +1,13 @@
-{ pkgs, lib, ... }:
+{ pkgs, config, ... }:
 let
-  rcd_pub_key = builtins.readFile ../../static/rcd_pub_key;
+  rcdPubKey = builtins.readFile ../../static/rcd_pub_key;
 in
 {
   home = {
     username = "rcd";
     homeDirectory = "/Users/rcd";
     stateVersion = "24.11";
-    file.".ssh/allowed_signers".text = "${rcd_pub_key}";
+    file.".ssh/allowed_signers".text = "${rcdPubKey}";
     file.".ssh/config".text = ''
       Host *
         IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
@@ -18,6 +18,9 @@ in
       Host blahaj
           ForwardAgent yes
     '';
+    file.".config/zed".source = config.lib.file.mkOutOfStoreSymlink (
+      config.home.homeDirectory + "/Code/Configs/dotfiles/config/zed"
+    );
     shell.enableShellIntegration = true;
     packages = import ../../nix/packages.nix { inherit pkgs; } ++ [
       pkgs.monaspace
@@ -32,10 +35,4 @@ in
   };
   catppuccin = import ../../nix/catppuccin.nix;
   xdg.configFile = import ../../nix/xdg.nix;
-
-  # Hack for Zed because the directory needs to be readable
-  home.activation.linkZedConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    rm -rf "$HOME/.config/zed"
-    ln -s "$HOME/Code/Configs/dotfiles/config/zed" "$HOME/.config/zed"
-  '';
 }
