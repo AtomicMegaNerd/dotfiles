@@ -37,7 +37,6 @@ in
     ll = "eza -lah";
     df = "duf";
     cat = "bat --paging=never --style=plain";
-    zed = "zeditor";
 
     # Just use ripgrep
     grep = "rg";
