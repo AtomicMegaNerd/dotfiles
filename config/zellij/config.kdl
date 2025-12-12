@@ -247,7 +247,7 @@ plugins {
 
 simplified_ui true
 
-theme "catppuccin-latte"
+theme "catppuccin-frappe"
 
 default_mode "locked"
 
