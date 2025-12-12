@@ -22,6 +22,7 @@
       "obsidian"
       "calibre"
       "zed"
+      "claude-code"
     ];
     brews = [ ];
     global = {
