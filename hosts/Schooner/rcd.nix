@@ -29,6 +29,7 @@ in
       pkgs.nerd-fonts.jetbrains-mono
       pkgs.claude-code
       pkgs.crush
+      pkgs.podman-compose
     ];
   };
 

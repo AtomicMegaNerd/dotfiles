@@ -19,5 +19,5 @@ with pkgs;
   pre-commit
   nixfmt-rfc-style
   nil
-  podman-compose
+  superfile
 ]
