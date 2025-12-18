@@ -28,6 +28,7 @@ in
       pkgs.nerd-fonts.monaspace
       pkgs.nerd-fonts.jetbrains-mono
       pkgs.claude-code
+      pkgs.crush
     ];
   };
 
