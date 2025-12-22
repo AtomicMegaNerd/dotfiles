@@ -67,9 +67,6 @@ in
   virtualisation.podman = {
     enable = true;
     dockerCompat = true;
-    defaultNetwork.settings = {
-      ipv6_enabled = true;
-    };
   };
 
   virtualisation.oci-containers = {
@@ -173,6 +170,7 @@ in
       ${pkgs.podman}/bin/podman network exists podman-ipv4 || \
         ${pkgs.podman}/bin/podman network create \
           --driver=bridge \
+          --disable-dns \
           --subnet=10.89.0.0/24 \
           --gateway=10.89.0.1 \
           podman-ipv4
@@ -182,6 +180,7 @@ in
         ${pkgs.podman}/bin/podman network create \
           --driver=bridge \
           --ipv6 \
+          --disable-dns \
           --subnet=fd00::/64 \
           --gateway=fd00::1 \
           podman-ipv6
