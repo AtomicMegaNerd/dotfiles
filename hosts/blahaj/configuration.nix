@@ -79,11 +79,7 @@ in
         pihole = {
           autoStart = true;
           image = "pihole/pihole:2025.11.1";
-          ports = [
-            "53:53/tcp"
-            "53:53/udp"
-            "8081:80/tcp"
-          ];
+          extraOptions = [ "--network=host" ]; # Add this line
           volumes = [
             "/etc/pihole:/etc/pihole"
             "/etc/dnsmasq.d:/etc/dnsmasq.d"
