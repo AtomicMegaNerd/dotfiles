@@ -18,11 +18,6 @@ in
     kernelPackages = pkgs.linuxPackages_latest;
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
-
-    kernel.sysctl = {
-      "net.ipv6.conf.all.forwarding" = true;
-      "net.ipv6.conf.default.forwarding" = true;
-    };
   };
 
   networking = {
@@ -89,7 +84,6 @@ in
 
         ports = [
           "53:53/udp"
-          "53:53/tcp"
           "8081:80/tcp"
         ];
 
