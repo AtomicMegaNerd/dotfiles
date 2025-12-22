@@ -166,15 +166,6 @@ in
       "podman-starfeed.service"
     ];
     script = ''
-      # Create IPv4 network
-      ${pkgs.podman}/bin/podman network exists podman-ipv4 || \
-        ${pkgs.podman}/bin/podman network create \
-          --driver=bridge \
-          --disable-dns \
-          --subnet=10.89.0.0/24 \
-          --gateway=10.89.0.1 \
-          podman-ipv4
-
       # Create IPv6 network
       ${pkgs.podman}/bin/podman network exists podman-ipv6 || \
         ${pkgs.podman}/bin/podman network create \
