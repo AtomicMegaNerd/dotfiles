@@ -132,7 +132,17 @@ in
     rsync
   ];
 
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    settings = {
+      PasswordAuthentication = "no";
+      PermitRootLogin = "no";
+      KbdInteractiveAuthentication = "no";
+      AllowUsers = [ "rcd" ];
+      LoginGraceTime = "30s";
+      MaxAuthTries = "3";
+    };
+  };
   programs.fish.enable = true;
   programs.nix-ld.enable = true;
 
@@ -180,7 +190,10 @@ in
 
   nix = {
     package = pkgs.nixVersions.stable;
-    extraOptions = "experimental-features = nix-command flakes";
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
     gc = {
       automatic = true;
       dates = "weekly";
