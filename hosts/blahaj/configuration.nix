@@ -67,6 +67,9 @@ in
   virtualisation.podman = {
     enable = true;
     dockerCompat = true;
+    defaultNetwork.settings = {
+      ipv6_enabled = true;
+    };
   };
 
   virtualisation.oci-containers = {
@@ -147,6 +150,33 @@ in
       OnCalendar = "daily";
       Persistent = true;
     };
+  };
+
+  systemd.services.create-podman-network = {
+    serviceConfig.Type = "oneshot";
+    wantedBy = [
+      "podman-pihole.service"
+      "podman-freshrss.service"
+      "podman-starfeed.service"
+    ];
+    script = ''
+      # Create IPv4 network
+      ${pkgs.podman}/bin/podman network exists podman-ipv4 || \
+        ${pkgs.podman}/bin/podman network create \
+          --driver=bridge \
+          --subnet=10.89.0.0/24 \
+          --gateway=10.89.0.1 \
+          podman-ipv4
+
+      # Create IPv6 network
+      ${pkgs.podman}/bin/podman network exists podman-ipv6 || \
+        ${pkgs.podman}/bin/podman network create \
+          --driver=bridge \
+          --ipv6 \
+          --subnet=fd00::/64 \
+          --gateway=fd00::1 \
+          podman-ipv6
+    '';
   };
 
   nix = {
