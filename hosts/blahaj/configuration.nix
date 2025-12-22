@@ -53,11 +53,6 @@ in
   };
 
   systemd.tmpfiles.rules = [
-    "d /var/lib/pihole 0775 root root -"
-    "d /var/lib/dnsmasq.d 0775 root root -"
-    "d /var/lib/freshrss/data 0755 root root -"
-    "d /var/lib/freshrss/extensions 0755 root root -"
-    "d /var/lib/starfeed 0755 root root -"
     "d /data/backups 0755 root root -"
     "d /data/backups/pihole 0755 root root -"
     "d /data/backups/freshrss 0755 root root -"
@@ -161,6 +156,11 @@ in
   systemd.services.create-podman-network = {
     serviceConfig.Type = "oneshot";
     wantedBy = [
+      "podman-pihole.service"
+      "podman-freshrss.service"
+      "podman-starfeed.service"
+    ];
+    before = [
       "podman-pihole.service"
       "podman-freshrss.service"
       "podman-starfeed.service"
