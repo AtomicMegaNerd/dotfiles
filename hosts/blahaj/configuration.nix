@@ -23,21 +23,18 @@ in
   networking = {
     hostName = "blahaj";
     networkmanager.enable = true;
-
     firewall.allowedTCPPorts = [
       8080
       8081
       53
     ];
     firewall.allowedUDPPorts = [ 53 ];
-
     nameservers = [
       "9.9.9.9"
       "149.112.112.112"
       "2620:fe::fe"
       "2620:fe::9"
     ];
-
     interfaces.enp0s31f6.useDHCP = true;
   };
 
@@ -49,7 +46,6 @@ in
     description = "Chris Dunphy";
     extraGroups = [
       "wheel"
-      "docker"
       "podman"
     ];
     shell = pkgs.fish;
@@ -68,30 +64,25 @@ in
   ];
 
   virtualisation.containers.enable = true;
-
   virtualisation.podman = {
     enable = true;
     dockerCompat = true;
   };
-
   virtualisation.oci-containers = {
     backend = "podman";
-
     containers = {
       pihole = {
         autoStart = true;
         image = "pihole/pihole:2025.11.1";
-
         ports = [
+          "53:53/tcp"
           "53:53/udp"
           "8081:80/tcp"
         ];
-
         volumes = [
           "/etc/pihole:/etc/pihole"
           "/etc/dnsmasq.d:/etc/dnsmasq.d"
         ];
-
         environment = {
           TZ = "America/Edmonton";
           FTLCONF_LOCAL_IPV4 = "192.168.1.232";
@@ -105,16 +96,13 @@ in
       freshrss = {
         autoStart = true;
         image = "freshrss/freshrss:1.27.1";
-
         ports = [
           "8080:80/tcp"
         ];
-
         volumes = [
           "/etc/freshrss/data:/var/www/FreshRSS/data"
           "/etc/freshrss/extensions:/var/www/FreshRSS/extensions"
         ];
-
         environment = {
           TZ = "America/Edmonton";
           CRON_MIN = "15,45";
