@@ -135,9 +135,9 @@ in
   services.openssh = {
     enable = true;
     settings = {
-      PasswordAuthentication = "no";
+      PasswordAuthentication = false;
       PermitRootLogin = "no";
-      KbdInteractiveAuthentication = "no";
+      KbdInteractiveAuthentication = false;
       AllowUsers = [ "rcd" ];
       LoginGraceTime = "30s";
       MaxAuthTries = "3";
