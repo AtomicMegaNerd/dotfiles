@@ -83,7 +83,7 @@ in
           image = "pihole/pihole:2025.11.1";
           ports = [
             "8081:80/tcp"
-            "53:53/tcp"
+            "53:53/udp"
           ];
           volumes = [
             "/etc/pihole:/etc/pihole"
