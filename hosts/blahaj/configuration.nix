@@ -96,6 +96,9 @@ in
           PIHOLE_GID = toString piholeGid;
           BLOCK_ICLOUD_PR = "false";
         };
+        extraOptions = [
+          "--network=podman-ipv6"
+        ];
       };
 
       freshrss = {
@@ -112,6 +115,9 @@ in
           TZ = "America/Edmonton";
           CRON_MIN = "15,45";
         };
+        extraOptions = [
+          "--network=podman-ipv6"
+        ];
       };
 
       starfeed = {
@@ -119,6 +125,9 @@ in
         image = "atomicmeganerd/starfeed:v0.1.6";
         environmentFiles = [ "/etc/starfeed/.env" ];
         dependsOn = [ "freshrss" ];
+        extraOptions = [
+          "--network=podman-ipv6"
+        ];
       };
     };
   };
