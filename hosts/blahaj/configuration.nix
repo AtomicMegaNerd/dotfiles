@@ -77,19 +77,6 @@ in
   virtualisation.podman = {
     enable = true;
     dockerCompat = true;
-
-    networks = {
-      pihole-ipv6 = {
-        driver = "bridge";
-        ipv6 = true;
-        subnets = [
-          {
-            subnet = "fd42:4242:4242::/64";
-            gateway = "fd42:4242:4242::1";
-          }
-        ];
-      };
-    };
   };
 
   virtualisation.oci-containers = {
@@ -101,15 +88,9 @@ in
         image = "pihole/pihole:2025.11.1";
 
         ports = [
-          "[::]:53:53/udp"
-          "[::]:53:53/tcp"
           "53:53/udp"
           "53:53/tcp"
           "8081:80/tcp"
-        ];
-
-        extraOptions = [
-          "--network=pihole-ipv6"
         ];
 
         volumes = [
