@@ -80,25 +80,25 @@ in
     dockerCompat = true;
     defaultNetwork.settings = {
       dns_enabled = true;
-      ipv6_enabled = true;
-      subnets = [
-        {
-          subnet = "10.88.0.0/16";
-          gateway = "10.88.0.1";
-        }
-        {
-          subnet = "fd00:podman::/64";
-          gateway = "fd00:podman::1";
-        }
-      ];
     };
   };
+
+  # Create Quadlet network file for IPv6 bridge
+  environment.etc."containers/systemd/podman-ipv6.network".text = ''
+    [Network]
+    IPv6=true
+    Subnet=10.88.0.0/16
+    Gateway=10.88.0.1
+    Subnet=fd00:podman::/64
+    Gateway=fd00:podman::1
+  '';
   virtualisation.oci-containers = {
     backend = "podman";
     containers = {
       pihole = {
         autoStart = true;
         image = "pihole/pihole:2025.11.1";
+        extraOptions = [ "--network=systemd-podman-ipv6" ];
         ports = [
           "53:53/tcp"
           "53:53/udp"
@@ -122,6 +122,7 @@ in
       freshrss = {
         autoStart = true;
         image = "freshrss/freshrss:1.27.1";
+        extraOptions = [ "--network=systemd-podman-ipv6" ];
         ports = [
           "8080:80/tcp"
         ];
@@ -138,6 +139,7 @@ in
       starfeed = {
         autoStart = true;
         image = "atomicmeganerd/starfeed:v0.1.6";
+        extraOptions = [ "--network=systemd-podman-ipv6" ];
         environmentFiles = [ "/etc/starfeed/.env" ];
         dependsOn = [ "freshrss" ];
       };
