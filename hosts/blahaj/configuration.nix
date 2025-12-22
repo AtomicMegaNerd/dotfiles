@@ -51,6 +51,7 @@ in
       extraGroups = [
         "wheel"
         "docker"
+        "podman"
       ];
       shell = pkgs.fish;
       openssh.authorizedKeys.keys = [ rcd_pub_key ];
@@ -70,11 +71,12 @@ in
 
   virtualisation.containers.enable = true;
   virtualisation = {
-    docker = {
+    podman = {
       enable = true;
+      dockerCompat = true;
     };
     oci-containers = {
-      backend = "docker";
+      backend = "podman";
       containers = {
         pihole = {
           autoStart = true;
