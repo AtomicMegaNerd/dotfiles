@@ -12,50 +12,53 @@ let
   '';
 in
 {
-
   imports = [ ./hardware-configuration.nix ];
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
+
+    kernel.sysctl = {
+      "net.ipv6.conf.all.forwarding" = true;
+      "net.ipv6.conf.default.forwarding" = true;
+    };
   };
 
   networking = {
     hostName = "blahaj";
     networkmanager.enable = true;
+
     firewall.allowedTCPPorts = [
       8080
       8081
       53
     ];
     firewall.allowedUDPPorts = [ 53 ];
+
     nameservers = [
       "9.9.9.9"
       "149.112.112.112"
       "2620:fe::fe"
       "2620:fe::9"
     ];
-    interfaces.enp0s31f6 = {
-      useDHCP = true;
-    };
+
+    interfaces.enp0s31f6.useDHCP = true;
   };
 
   time.timeZone = "America/Edmonton";
   i18n.defaultLocale = "en_CA.UTF-8";
 
-  users = {
-    users.rcd = {
-      isNormalUser = true;
-      description = "Chris Dunphy";
-      extraGroups = [
-        "wheel"
-        "docker"
-        "podman"
-      ];
-      shell = pkgs.fish;
-      openssh.authorizedKeys.keys = [ rcd_pub_key ];
-    };
+  users.users.rcd = {
+    isNormalUser = true;
+    description = "Chris Dunphy";
+    extraGroups = [
+      "wheel"
+      "docker"
+      "podman"
+    ];
+    shell = pkgs.fish;
+    openssh.authorizedKeys.keys = [ rcd_pub_key ];
   };
 
   systemd.tmpfiles.rules = [
@@ -70,57 +73,84 @@ in
   ];
 
   virtualisation.containers.enable = true;
-  virtualisation = {
-    podman = {
-      enable = true;
-      dockerCompat = true;
+
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+
+    networks = {
+      pihole-ipv6 = {
+        driver = "bridge";
+        ipv6 = true;
+        subnets = [
+          {
+            subnet = "fd42:4242:4242::/64";
+            gateway = "fd42:4242:4242::1";
+          }
+        ];
+      };
     };
-    oci-containers = {
-      backend = "podman";
-      containers = {
-        pihole = {
-          autoStart = true;
-          image = "pihole/pihole:2025.11.1";
-          ports = [
-            "8081:80/tcp"
-            "53:53/tcp"
-            "53:53/udp"
-          ];
-          extraOptions = [
-            "--network=podman:ipv6=true" # Enable IPv6 on the default network
-          ];
-          volumes = [
-            "/etc/pihole:/etc/pihole"
-            "/etc/dnsmasq.d:/etc/dnsmasq.d"
-          ];
-          environment = {
-            TZ = "America/Edmonton";
-            FTLCONF_LOCAL_IPV4 = "192.168.1.232";
-            FTLCONF_LOCAL_IPV6 = "2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4";
-            PIHOLE_UID = toString piholeUid;
-            PIHOLE_GID = toString piholeGid;
-            BLOCK_ICLOUD_PR = "false";
-          };
+  };
+
+  virtualisation.oci-containers = {
+    backend = "podman";
+
+    containers = {
+      pihole = {
+        autoStart = true;
+        image = "pihole/pihole:2025.11.1";
+
+        ports = [
+          "[::]:53:53/udp"
+          "[::]:53:53/tcp"
+          "53:53/udp"
+          "53:53/tcp"
+          "8081:80/tcp"
+        ];
+
+        extraOptions = [
+          "--network=pihole-ipv6"
+        ];
+
+        volumes = [
+          "/etc/pihole:/etc/pihole"
+          "/etc/dnsmasq.d:/etc/dnsmasq.d"
+        ];
+
+        environment = {
+          TZ = "America/Edmonton";
+          FTLCONF_LOCAL_IPV4 = "192.168.1.232";
+          FTLCONF_LOCAL_IPV6 = "2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4";
+          PIHOLE_UID = toString piholeUid;
+          PIHOLE_GID = toString piholeGid;
+          BLOCK_ICLOUD_PR = "false";
         };
-        freshrss = {
-          autoStart = true;
-          image = "freshrss/freshrss:1.27.1";
-          ports = [ "8080:80/tcp" ];
-          volumes = [
-            "/etc/freshrss/data:/var/www/FreshRSS/data"
-            "/etc/freshrss/extensions:/var/www/FreshRSS/extensions"
-          ];
-          environment = {
-            TZ = "America/Edmonton";
-            CRON_MIN = "15,45";
-          };
+      };
+
+      freshrss = {
+        autoStart = true;
+        image = "freshrss/freshrss:1.27.1";
+
+        ports = [
+          "8080:80/tcp"
+        ];
+
+        volumes = [
+          "/etc/freshrss/data:/var/www/FreshRSS/data"
+          "/etc/freshrss/extensions:/var/www/FreshRSS/extensions"
+        ];
+
+        environment = {
+          TZ = "America/Edmonton";
+          CRON_MIN = "15,45";
         };
-        starfeed = {
-          autoStart = true;
-          image = "atomicmeganerd/starfeed:v0.1.6";
-          environmentFiles = [ "/etc/starfeed/.env" ];
-          dependsOn = [ "freshrss" ];
-        };
+      };
+
+      starfeed = {
+        autoStart = true;
+        image = "atomicmeganerd/starfeed:v0.1.6";
+        environmentFiles = [ "/etc/starfeed/.env" ];
+        dependsOn = [ "freshrss" ];
       };
     };
   };
@@ -136,10 +166,6 @@ in
   services.openssh.enable = true;
   programs.fish.enable = true;
   programs.nix-ld.enable = true;
-
-  # To restore from backup, run:
-  # sudo rsync -a /data/backups/pihole/ /etc/pihole/
-  # sudo rsync -a /data/backups/freshrss/data/ /etc/freshrss/data/
 
   systemd.services.backup-pihole-freshrss = {
     description = "Backup Pi-hole and FreshRSS data to /data/backups";
