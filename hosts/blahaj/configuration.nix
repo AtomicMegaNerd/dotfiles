@@ -18,17 +18,6 @@ in
     kernelPackages = pkgs.linuxPackages_latest;
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
-
-    # Enable br_netfilter for Podman IPv6 support
-    kernelModules = [ "br_netfilter" ];
-
-    # Sysctl settings for Podman IPv6 networking
-    kernel.sysctl = {
-      "net.bridge.bridge-nf-call-ip6tables" = 1;
-      "net.bridge.bridge-nf-call-iptables" = 1;
-      "net.ipv4.ip_forward" = 1;
-      "net.ipv6.conf.all.forwarding" = 1;
-    };
   };
 
   networking = {
@@ -79,7 +68,6 @@ in
     enable = true;
     dockerCompat = true;
     defaultNetwork.settings = {
-      dns_enabled = true;
       ipv6_enabled = true;
       subnets = [
         {
@@ -87,8 +75,8 @@ in
           gateway = "10.88.0.1";
         }
         {
-          subnet = "fd00:podman::/64";
-          gateway = "fd00:podman::1";
+          subnet = "fd00::/64";
+          gateway = "fd00::1";
         }
       ];
     };
