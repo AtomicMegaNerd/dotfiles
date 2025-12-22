@@ -91,6 +91,7 @@ in
             PIHOLE_UID = toString piholeUid;
             PIHOLE_GID = toString piholeGid;
             BLOCK_ICLOUD_PR = "false";
+            WEB_PORT = "8081";
           };
         };
         freshrss = {
