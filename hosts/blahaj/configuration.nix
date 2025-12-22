@@ -67,20 +67,8 @@ in
   virtualisation.podman = {
     enable = true;
     dockerCompat = true;
-    defaultNetwork.settings = {
-      ipv6_enabled = true;
-      subnets = [
-        {
-          subnet = "10.88.0.0/16";
-          gateway = "10.88.0.1";
-        }
-        {
-          subnet = "fd00::/64";
-          gateway = "fd00::1";
-        }
-      ];
-    };
   };
+
   virtualisation.oci-containers = {
     backend = "podman";
     containers = {
