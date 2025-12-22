@@ -79,7 +79,10 @@ in
         pihole = {
           autoStart = true;
           image = "pihole/pihole:2025.11.1";
-          extraOptions = [ "--network=host" ]; # Add this line
+          ports = [
+            "8081:80/tcp"
+            "53:53/tcp"
+          ];
           volumes = [
             "/etc/pihole:/etc/pihole"
             "/etc/dnsmasq.d:/etc/dnsmasq.d"
@@ -91,7 +94,6 @@ in
             PIHOLE_UID = toString piholeUid;
             PIHOLE_GID = toString piholeGid;
             BLOCK_ICLOUD_PR = "false";
-            WEB_PORT = "8081";
           };
         };
         freshrss = {
