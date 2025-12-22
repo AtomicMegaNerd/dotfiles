@@ -83,7 +83,11 @@ in
           image = "pihole/pihole:2025.11.1";
           ports = [
             "8081:80/tcp"
+            "53:53/tcp"
             "53:53/udp"
+          ];
+          extraOptions = [
+            "--network=podman:ipv6=true" # Enable IPv6 on the default network
           ];
           volumes = [
             "/etc/pihole:/etc/pihole"
