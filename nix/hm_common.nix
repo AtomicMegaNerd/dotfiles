@@ -13,4 +13,5 @@
   git = import ./git.nix;
   direnv = import ./direnv.nix;
   bottom = import ./bottom.nix;
+  crush = import ./crush.nix;
 }

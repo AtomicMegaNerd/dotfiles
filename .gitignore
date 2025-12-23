@@ -7,3 +7,5 @@ common/nvim/lazy-lock.json
 **/*.bak
 .direnv
 **/zed/conversations
+.crush
+.claude
