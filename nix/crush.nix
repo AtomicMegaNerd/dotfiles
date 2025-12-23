@@ -1,3 +1,4 @@
+{ context7Key }:
 {
   enable = true;
   settings = {
@@ -33,6 +34,21 @@
       bash = {
         command = "bash-language-server";
         args = [ "start" ];
+      };
+    };
+    mcp = {
+      github = {
+        command = "github-mcp-server";
+        type = "stdio";
+        args = [ "stdio" ];
+      };
+
+      context7 = {
+        type = "http";
+        url = "https://mcp.context7.com/mcp";
+        headers = {
+          CONTEXT7_API_KEY = context7Key;
+        };
       };
     };
   };

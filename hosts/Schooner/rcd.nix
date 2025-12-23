@@ -1,6 +1,8 @@
 { pkgs, config, ... }:
 let
   rcdPubKey = builtins.readFile ../../static/rcd_pub_key;
+  # Read CONTEXT7_API_KEY environment variable
+  context7Key = builtins.getEnv "CONTEXT7_API_KEY";
 in
 {
   home = {
@@ -29,12 +31,13 @@ in
       pkgs.nerd-fonts.jetbrains-mono
       pkgs.claude-code
       pkgs.podman-compose
+      pkgs.github-mcp-server
     ];
   };
 
   programs = (import ../../nix/hm_common.nix { inherit pkgs; }) // {
     ghostty = import ../../nix/ghostty.nix { inherit pkgs; };
-    crush = import ../../nix/crush.nix;
+    crush = import ../../nix/crush.nix { inherit context7Key; };
   };
   catppuccin = import ../../nix/catppuccin.nix;
   xdg.configFile = import ../../nix/xdg.nix;
