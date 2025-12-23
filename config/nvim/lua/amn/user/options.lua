@@ -42,7 +42,7 @@ vim.opt.undofile = true
 
 -- Case insensitive searching UNLESS /C or capital in search
 vim.o.ignorecase = true
-vim.smartcase = true
+vim.o.smartcase = true
 
 -- Better completion experience
 vim.o.completeopt = "menuone,noselect,popup,noinsert"
