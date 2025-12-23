@@ -66,8 +66,6 @@
           modules = [
             ./hosts/${hostname}/rcd.nix
             catppuccin.homeModules.catppuccin
-
-            # Use Charm’s module directly (not via pkgs.nur)
             charm.homeModules.crush
           ];
         };
