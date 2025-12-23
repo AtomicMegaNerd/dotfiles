@@ -27,8 +27,8 @@ vim.o.mouse = ""
 vim.o.guicursor = "a:blinkon100"
 
 vim.o.expandtab = true -- Use spaces instead of tabs
-vim.o.tabstop = 4      -- Number of spaces tabs count for
-vim.o.shiftwidth = 4   -- Number of spaces to (auto)indent
+vim.o.tabstop = 4 -- Number of spaces tabs count for
+vim.o.shiftwidth = 4 -- Number of spaces to (auto)indent
 
 -- Indentation
 vim.o.autoindent = true

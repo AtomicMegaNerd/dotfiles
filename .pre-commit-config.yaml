@@ -17,3 +17,10 @@ repos:
       rev: v1.1.0
       hooks:
           - id: nixfmt
+    - repo: local
+      hooks:
+          - id: nix-flake-check
+            name: nix flake check
+            entry: nix flake check --no-build
+            language: system
+            pass_filenames: false
