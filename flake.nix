@@ -17,6 +17,10 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     flake-utils.url = "github:numtide/flake-utils";
+    charm = {
+      url = "github:charmbracelet/nur";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs =
@@ -28,6 +32,7 @@
       catppuccin,
       nix-darwin,
       flake-utils,
+      charm,
     }:
     let
       systems = {
@@ -54,7 +59,6 @@
           ];
         };
 
-      # This is for building Home Manager configurations, which can be used on any system
       buildHomeMgrConf =
         system: hostname:
         home-manager.lib.homeManagerConfiguration {
@@ -62,6 +66,9 @@
           modules = [
             ./hosts/${hostname}/rcd.nix
             catppuccin.homeModules.catppuccin
+
+            # Use Charm’s module directly (not via pkgs.nur)
+            charm.homeModules.crush
           ];
         };
 

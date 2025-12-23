@@ -18,6 +18,26 @@
         "type": "github"
       }
     },
+    "charm": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-unstable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1766428585,
+        "narHash": "sha256-sdTxqbxjaS+P6VDNSHwknkGlQ6vMlEpnrLNuLwdep3Y=",
+        "owner": "charmbracelet",
+        "repo": "nur",
+        "rev": "1116a2cbd18cbd95700401926aad9d845a67f8e9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "charmbracelet",
+        "repo": "nur",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -110,11 +130,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1766498861,
-        "narHash": "sha256-fEfo02b4MlmfnUd7bdXWcy8HOxmPn3JrTEJ10ssPmc8=",
+        "lastModified": 1766514141,
+        "narHash": "sha256-L/4EB26JnYvHkmaIwm8PHrVcwLAcPhC8aqKLIiDd2lk=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "063282ae426731716182e2aabd9feb19b8520ca4",
+        "rev": "335495bfff13a00c5e3e6abd340eb8f2438b85ad",
         "type": "github"
       },
       "original": {
@@ -127,6 +147,7 @@
     "root": {
       "inputs": {
         "catppuccin": "catppuccin",
+        "charm": "charm",
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "nix-darwin": "nix-darwin",

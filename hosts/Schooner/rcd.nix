@@ -28,13 +28,13 @@ in
       pkgs.nerd-fonts.monaspace
       pkgs.nerd-fonts.jetbrains-mono
       pkgs.claude-code
-      pkgs.crush
       pkgs.podman-compose
     ];
   };
 
   programs = (import ../../nix/hm_common.nix { inherit pkgs; }) // {
     ghostty = import ../../nix/ghostty.nix { inherit pkgs; };
+    crush = import ../../nix/crush.nix;
   };
   catppuccin = import ../../nix/catppuccin.nix;
   xdg.configFile = import ../../nix/xdg.nix;
