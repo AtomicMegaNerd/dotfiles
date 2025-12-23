@@ -8,6 +8,7 @@ repos:
           - id: check-yaml
           - id: check-toml
           - id: check-json
+            exclude: ^config/zed/settings\.json$
           - id: mixed-line-ending
     - repo: https://github.com/JohnnyMorganz/StyLua
       rev: v2.3.1
