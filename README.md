@@ -25,6 +25,12 @@ are installed by my flake but configured externally (i.e. Neovim).
 We use `nh` which is a wrapper around `nix` to make it easier to manage our Nix systems. See
 [nix helper](https://github.com/nix-community/nh) GitHub repository for more information.
 
+## Prerequisites
+
+Nix has to be installed on the system. On macOS I use the [Determinate Nix Installer](https://github.com/DeterminateSystems/nix-installer).
+Of course on NixOS systems `nix` is pre-installed. [Home Manager](https://github.com/nix-community/home-manager)
+also needs to be installed.
+
 ## Getting Started
 
 Clone this repo to get started:
@@ -34,17 +40,6 @@ git clone https://github.com/AtomicMegaNerd/dotfiles.git
 cd dotfiles
 ```
 
-To enable the `direnv` Nix shell for flake development, run the following command in the dotfiles repo:
-
-```fish
-direnv allow
-```
-
-To get pre-commit setup for the first time, you may need to run:
-
-```fish
-pre-commit install
-```
 
 ### Nix Commands
 
@@ -60,26 +55,60 @@ For Nix-Darwin systems, you can use the following command to rebuild the system 
 nh darwin rebuild .
 ```
 
-We use home-manager on all of our Nix managed machines.
+We use Home Manager on all of our Nix managed machines.
 
 ```fish
 nh home rebuild .
 ```
 
+## Development
+
+To enable the `direnv` Nix shell for flake development, run the following command in the dotfiles repo:
+
+```fish
+direnv allow
+```
+
+To get pre-commit setup for the first time, you may need to run:
+
+```fish
+pre-commit install
+```
+
+Note that `direnv` must be installed before this can be done. It is included in the flake.
+
+
 ## Repository Structure
 
 This is the structure of this repo:
 
-- `flake.nix` - The Nix flake file that defines the NixOS, Nix-Darwin, and
-  Home-Manager configurations.
+- `flake.nix` - The Nix flake file that defines the NixOS, Nix Darwin, and
+  Home Manager configurations.
 - `hosts/` - Directory containing host-specific configurations.
 - `nix/` - Directory containing Nix sources for different apps and common modules.
-- `config/` - Directory containing non-nix configurations.
+- `config/` - Directory containing non-Nix configurations.
 - `static/` - Directory containing static files used in configurations.
 
-Over time as more options are added to home-manager and nixos, more of the configuration should be
+Over time as more options are added to Home Manager and NixOS, more of the configuration should be
 migrated to Nix.
+
+## Secrets as Environment variables
+
+The file `~/.config/fish/conf.d/credentials.fish` will not be stored in Git so put any secrets
+in there as environment variables. MCP servers for github and context7 need the following
+environment variables to be set:
+
+```fish
+set -gx CONTEXT7_API_KEY ""
+set -gx GITHUB_PERSONAL_ACCESS_TOKEN ""
+```
+
+This repository is configured to make use of these secrets.
 
 ## License
 
-See the `LICENSE` files for details.
+See the [LICENSE](./LICENSE) file for details.
+
+## More Information
+
+The [AGENTS.md](./AGENTS.md) file contains more information.
