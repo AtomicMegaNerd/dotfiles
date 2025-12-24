@@ -29,7 +29,8 @@ We use `nh` which is a wrapper around `nix` to make it easier to manage our Nix 
 
 Nix has to be installed on the system. On macOS I use the [Determinate Nix Installer](https://github.com/DeterminateSystems/nix-installer).
 Of course on NixOS systems `nix` is pre-installed. [Home Manager](https://github.com/nix-community/home-manager)
-also needs to be installed.
+also needs to be installed. If you have [Zellij](https://zellij.dev/) installed you can also use
+it to make development of these dotfiles even easier.
 
 ## Getting Started
 
@@ -77,6 +78,13 @@ pre-commit install
 
 Note that `direnv` must be installed before this can be done. It is included in the flake.
 
+Also if `zellij` is installed you can launch neovim and a pair of shells thusly:
+
+```fish
+./scripts/zellij.sh
+```
+
+The zellij KDL configuration is found at `./.zellij/dotfiles.kdl`.
 
 ## Repository Structure
 
