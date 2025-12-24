@@ -1,13 +1,20 @@
 {
     "context_servers": {
-        "mcp-server-context7": {
-            "settings": {},
+        "context7": {
             "enabled": true,
+            "command": "npx",
+            "args": [
+                "-y",
+                "@upstash/context7-mcp"
+            ]
         },
-        "mcp-server-github": {
+        "github-mcp-server": {
             "enabled": true,
-            "settings": {},
-        },
+            "command": "github-mcp-server",
+            "args": [
+                "stdio"
+            ]
+        }
     },
     "cursor_shape": "block",
     "icon_theme": "Catppuccin Frappé",
