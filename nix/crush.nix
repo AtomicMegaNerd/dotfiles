@@ -18,8 +18,11 @@
         command = "rust-analyzer";
       };
       dockerfile = {
-        command = "docker-langserver";
-        args = [ "--stdio" ];
+        command = "docker-language-server";
+        args = [
+          "start"
+          "--stdio"
+        ];
       };
       yaml = {
         command = "yaml-language-server";

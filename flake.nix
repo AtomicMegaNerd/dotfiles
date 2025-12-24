@@ -97,6 +97,7 @@
                 ghc
                 stylua
                 lua-language-server
+                yaml-language-server
               ];
             };
           };
