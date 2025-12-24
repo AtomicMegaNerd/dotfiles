@@ -35,21 +35,21 @@
         args = [ "start" ];
       };
     };
-    mcp = {
-      github = {
-        command = "github-mcp-server";
-        type = "stdio";
-        args = [ "stdio" ];
-      };
+  };
+  mcpServers = {
+    github = {
+      command = "github-mcp-server";
+      type = "stdio";
+      args = [ "stdio" ];
+    };
 
-      context7 = {
-        type = "stdio";
-        command = "npx";
-        args = [
-          "-y"
-          "@upstash/context7-mcp"
-        ];
-      };
+    context7 = {
+      type = "stdio";
+      command = "npx";
+      args = [
+        "-y"
+        "@upstash/context7-mcp"
+      ];
     };
   };
 }
