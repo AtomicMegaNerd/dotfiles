@@ -30,8 +30,6 @@ This repository is a Nix-based dotfiles setup used to manage multiple machines (
   - UI/theme and app modules: catppuccin.nix, ghostty.nix
   - xdg.nix — XDG config file mappings to the repo’s config directory
   - packages.nix — Common user packages list
-  - crush.nix — Enables the Charm “crush” module (via flake input `charm`)
-- config/
   - nvim/, zellij/, posting/, zed/ — Non-Nix app configuration directories used by xdg or explicit symlinks
 - static/
   - rcd_pub_key — Public key used in configurations
