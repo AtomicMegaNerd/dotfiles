@@ -17,10 +17,6 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     flake-utils.url = "github:numtide/flake-utils";
-    charm = {
-      url = "github:charmbracelet/nur";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
   };
 
   outputs =
@@ -32,7 +28,6 @@
       catppuccin,
       nix-darwin,
       flake-utils,
-      charm,
     }:
     let
       systems = {
@@ -66,7 +61,6 @@
           modules = [
             ./hosts/${hostname}/rcd.nix
             catppuccin.homeModules.catppuccin
-            charm.homeModules.crush
           ];
         };
 

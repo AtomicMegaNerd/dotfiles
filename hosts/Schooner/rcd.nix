@@ -33,7 +33,6 @@ in
 
   programs = (import ../../nix/hm_common.nix { inherit pkgs; }) // {
     ghostty = import ../../nix/ghostty.nix { inherit pkgs; };
-    crush = import ../../nix/crush.nix;
     claude-code = import ../../nix/claude.nix;
   };
   catppuccin = import ../../nix/catppuccin.nix;
