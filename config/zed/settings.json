@@ -34,7 +34,7 @@
         "mode": "subtle",
     },
     "features": {
-        "edit_prediction_provider": "copilot",
+        "edit_prediction_provider": "none",
     },
     "agent": {
         "always_allow_tool_actions": true,
