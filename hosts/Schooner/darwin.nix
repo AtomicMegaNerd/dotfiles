@@ -22,6 +22,7 @@
       "obsidian"
       "calibre"
       "zed"
+      "linearmouse"
     ];
     brews = [ ];
     global = {
