@@ -82,7 +82,7 @@ This repository is a Nix-based dotfiles setup used to manage multiple machines (
   - trailing-whitespace, end-of-file-fixer, mixed-line-ending
   - check-yaml, check-toml, check-json
   - stylua (via StyLua)
-  - nixfmt (nixfmt-rfc-style)
+  - nixfmt
 - Commands:
   - pre-commit install
   - pre-commit run --all-files

@@ -17,7 +17,7 @@ with pkgs;
   jq
   dos2unix
   pre-commit
-  nixfmt-rfc-style
+  nixfmt
   nil
   superfile
 ]

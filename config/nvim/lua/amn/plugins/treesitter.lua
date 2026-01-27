@@ -26,7 +26,6 @@ return {
 			"toml",
 			"nix",
 			"diff",
-			"jsonc",
 			"gomod",
 			"fish",
 		}
