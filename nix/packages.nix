@@ -15,8 +15,6 @@ with pkgs;
   unzip
   procs
   jq
-  dos2unix
-  pre-commit
   nixfmt
   nil
   superfile
