@@ -50,7 +50,6 @@
           pkgs = if useStable then buildPkgsConf system nixpkgs else buildPkgsConf system nixpkgs-unstable;
           modules = [
             ./hosts/${hostname}/configuration.nix
-            catppuccin.nixosModules.catppuccin
           ];
         };
 
