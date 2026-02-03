@@ -14,6 +14,7 @@ with pkgs;
   zip
   unzip
   procs
+  pre-commit
   jq
   nixfmt
   nil
