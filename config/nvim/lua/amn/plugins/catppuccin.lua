@@ -24,6 +24,7 @@ return {
 				which_key = true,
 				trouble = true,
 				neogit = true,
+				notify = true,
 			},
 		})
 

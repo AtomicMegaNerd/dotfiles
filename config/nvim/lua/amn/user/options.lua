@@ -47,9 +47,6 @@ vim.o.smartcase = true
 -- Better completion experience
 vim.o.completeopt = "menuone,noselect,popup,noinsert"
 
--- Enable spell checking
-vim.o.spell = true
-
 -- Nerd font
 vim.g.have_nerd_font = true
 
@@ -64,3 +61,6 @@ vim.opt.clipboard:append({ "unnamed", "unnamedplus" })
 
 -- Disable spelling
 vim.opt.spell = false
+
+-- Disable swap file
+vim.opt.swapfile = false
