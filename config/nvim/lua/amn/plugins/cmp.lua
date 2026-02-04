@@ -1,33 +1,37 @@
 return {
 	"saghen/blink.cmp",
 	version = "1.*",
+	dependencies = { "fang2hou/blink-copilot" },
 	opts = {
 		appearance = {
-			nerd_font_variant = "mono",
+			nerd_font_variant = "normal",
+		},
+		keymap = { preset = "enter" },
+		completion = {
+			documentation = {
+				auto_show = true,
+				auto_show_delay_ms = 500,
+			},
 		},
 		sources = {
-			default = { "lsp", "path", "buffer" },
+			default = { "lsp", "copilot", "path", "buffer" },
+			providers = {
+				lsp = {
+					score_offset = 10,
+				},
+				copilot = {
+					name = "copilot",
+					module = "blink-copilot",
+					async = true,
+				},
+				lazydev = {
+					name = "LazyDev",
+					module = "lazydev.integrations.blink",
+					fallbacks = { "lsp" },
+				},
+			},
 		},
 		signature = { enabled = true },
 	},
 	opts_extend = { "sources.default" },
-	config = function(_, opts)
-		local utils = require("amn.utils")
-		local blink = utils.do_import("blink.cmp")
-		if blink then
-			blink.setup(opts)
-		end
-		vim.api.nvim_create_autocmd("User", {
-			pattern = "BlinkCmpMenuOpen",
-			callback = function()
-				vim.b.copilot_suggestion_hidden = true
-			end,
-		})
-		vim.api.nvim_create_autocmd("User", {
-			pattern = "BlinkCmpMenuClose",
-			callback = function()
-				vim.b.copilot_suggestion_hidden = false
-			end,
-		})
-	end,
 }

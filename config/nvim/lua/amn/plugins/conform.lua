@@ -3,16 +3,21 @@ return {
 	opts = {},
 	config = function()
 		local utils = require("amn.utils")
-		local conform = utils.do_import("oil")
+		local conform = utils.do_import("conform")
 		if not conform then
 			return
 		end
-
 		conform.setup({
 			formatters_by_ft = {
-				javascript = { "prettier", stop_after_first = true },
+				javascript = { "prettier" },
 				json = { "prettier" },
 				yaml = { "prettier" },
+				html = { "prettier" },
+				css = { "prettier" },
+			},
+			format_on_save = {
+				timeout_ms = 500,
+				lsp_fallback = true,
 			},
 		})
 	end,

@@ -43,6 +43,41 @@ return {
 			},
 		})
 
+		vim.lsp.config("emmet_ls", {
+			filetypes = {
+				"html",
+				"css",
+				"scss",
+				"javascript",
+				"javascriptreact",
+				"typescript",
+				"typescriptreact",
+			},
+		})
+
+		vim.lsp.config("lua_ls", {
+			settings = {
+				Lua = {
+					diagnostics = {
+						globals = { "vim" },
+					},
+				},
+			},
+		})
+
+		vim.lsp.config("gopls", {
+			settings = {
+				gopls = {
+					analyses = {
+						unusedparams = true,
+						shadow = true,
+					},
+					staticcheck = false,
+					gofumpt = true,
+				},
+			},
+		})
+
 		local servers = {
 			-- Python
 			"ruff",
@@ -64,6 +99,12 @@ return {
 			"docker_language_server",
 			"yamlls",
 			"bashls",
+
+			-- Web
+			"html",
+			"cssls",
+			"emmet_ls",
+			"jsonls",
 		}
 
 		for _, lsp in ipairs(servers) do

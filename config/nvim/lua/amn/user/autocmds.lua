@@ -87,21 +87,10 @@ vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "yaml", "json", "toml", "xml" },
 })
 
--- Enable LSP formatting
-vim.api.nvim_create_augroup("LspFormatting", { clear = true })
-vim.api.nvim_create_autocmd("BufWritePre", {
-	group = "LspFormatting",
-	callback = function()
-		vim.notify("Running auto-format", vim.log.levels.INFO)
-		vim.lsp.buf.format({ async = false })
-	end,
-})
-
 vim.api.nvim_create_augroup("Linting", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePost", {
 	group = "Linting",
 	callback = function()
-		vim.notify("Running linting", vim.log.levels.INFO)
 		local lint = require("lint")
 		lint.try_lint()
 	end,
