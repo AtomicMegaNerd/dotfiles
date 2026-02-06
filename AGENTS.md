@@ -51,7 +51,7 @@ This repository is a Nix-based dotfiles setup used to manage multiple machines (
   - xdg.configFile = import ../../nix/xdg.nix;
   - file.".config/zed".source = mkOutOfStoreSymlink(.../config/zed)
 - The fish shell is the default, with shared init snippet and OS-specific adjustments (PATH additions, NODE_OPTIONS on macOS due to a Zed issue).
-- Catppuccin theme is enabled with flavor "frappe" and accent "sky".
+- Catppuccin theme is enabled with flavor "macchiato" and accent "sky".
 - Ghostty uses `pkgs.ghostty-bin` with specific font settings.
 - Packages are centralized in `nix/packages.nix` and extended per-host as needed.
 

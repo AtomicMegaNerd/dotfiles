@@ -1,5 +1,5 @@
 {
   enable = true;
-  flavor = "frappe";
+  flavor = "macchiato";
   accent = "sky";
 }
