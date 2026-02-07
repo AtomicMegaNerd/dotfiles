@@ -42,7 +42,6 @@
       type = "stdio";
       args = [ "stdio" ];
     };
-
     context7 = {
       type = "stdio";
       command = "npx";
