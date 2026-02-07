@@ -1,6 +1,7 @@
 {
   enable = true;
   settings = {
+    editor = "vim";
     lsp = {
       ruff = {
         command = "ruff-lsp";
