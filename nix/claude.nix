@@ -1,6 +1,7 @@
 {
   enable = true;
   settings = {
+    model = "sonnet";
     editor = "vim";
     lsp = {
       ruff = {
