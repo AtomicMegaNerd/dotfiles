@@ -4,7 +4,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/release-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-
     home-manager = {
       url = "github:nix-community/home-manager/";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -16,7 +15,6 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    flake-utils.url = "github:numtide/flake-utils";
   };
 
   outputs =
@@ -45,9 +43,9 @@
       # This is for building NixOS configurations, where we are running the full NixOS Linux
       # distribution
       buildOsConf =
-        system: hostname: useStable:
+        system: hostname:
         nixpkgs.lib.nixosSystem {
-          pkgs = if useStable then buildPkgsConf system nixpkgs else buildPkgsConf system nixpkgs-unstable;
+          pkgs = buildPkgsConf system nixpkgs;
           modules = [
             ./hosts/${hostname}/configuration.nix
           ];
@@ -102,7 +100,7 @@
     {
       nixosConfigurations = {
         # Blahaj is my Lenovo ThinkCentre server running NixOS.
-        blahaj = buildOsConf systems.linux "blahaj" true;
+        blahaj = buildOsConf systems.linux "blahaj";
       };
 
       darwinConfigurations = {
