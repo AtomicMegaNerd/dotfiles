@@ -5,11 +5,12 @@
     nixpkgs.url = "github:nixos/nixpkgs/release-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     catppuccin = {
       url = "github:catppuccin/nix";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
@@ -25,7 +26,6 @@
       home-manager,
       catppuccin,
       nix-darwin,
-      flake-utils,
     }:
     let
       systems = {
@@ -65,36 +65,12 @@
       buildDarwinConf =
         system: hostname:
         nix-darwin.lib.darwinSystem {
-          system = system;
+          inherit system;
           pkgs = buildPkgsConf system nixpkgs-unstable;
           modules = [
             ./hosts/${hostname}/darwin.nix
           ];
         };
-
-      # This installs the tooling required for managing our dotfiles repos. We need tooling for lua
-      # to work on our neovim config, we also need the Haskell toolchain to enable pre-commit
-      # hooks for nixfmt
-      localDevShell = flake-utils.lib.eachDefaultSystem (
-        system:
-        let
-          pkgs = nixpkgs-unstable.legacyPackages.${system};
-        in
-        {
-          devShells = {
-            default = pkgs.mkShell {
-              buildInputs = with pkgs; [
-                cabal-install
-                ghc
-                stylua
-                lua-language-server
-                yaml-language-server
-                prettier
-              ];
-            };
-          };
-        }
-      );
 
     in
     {
@@ -113,7 +89,26 @@
         "rcd@Schooner" = buildHomeMgrConf systems.darwin "Schooner";
       };
 
-      # For wiring up our tooling for pre-commit, etc.
-      devShells = localDevShell.devShells;
+      # This installs the tooling required for managing our dotfiles repos. We need tooling for lua
+      # to work on our neovim config, we also need the Haskell toolchain to enable pre-commit
+      # hooks for nixfmt
+      devShells = nixpkgs.lib.genAttrs (builtins.attrValues systems) (
+        system:
+        let
+          pkgs = buildPkgsConf system nixpkgs-unstable;
+        in
+        {
+          default = pkgs.mkShell {
+            buildInputs = with pkgs; [
+              cabal-install
+              ghc
+              stylua
+              lua-language-server
+              yaml-language-server
+              prettier
+            ];
+          };
+        }
+      );
     };
 }

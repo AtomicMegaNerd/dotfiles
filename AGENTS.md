@@ -25,8 +25,8 @@ This repository is a Nix-based dotfiles setup used to manage multiple machines (
   - blahaj/ — NixOS host (configuration.nix, hardware-configuration.nix, rcd.nix)
   - Schooner/ — macOS host for nix-darwin (darwin.nix, rcd.nix)
 - nix/ — Modular Home Manager and app configuration modules (imported by host home configs):
-  - hm_common.nix — Aggregates commonly enabled programs (fish, neovim, zellij, starship, eza, bat, fzf, zoxide, nh, git, direnv, bottom)
-  - Individual program modules: fish.nix, neovim.nix, zellij.nix, starship.nix, eza.nix, bat.nix, fzf.nix, zoxide.nix, nh.nix, git.nix, direnv.nix, bottom.nix
+  - hm_base.nix — Shared home-manager base module imported by all host rcd.nix files; defines common programs (fish, neovim, zellij, starship, eza, bat, fzf, zoxide, nh, git, direnv, bottom), catppuccin theme, and xdg config
+  - Individual program modules: fish.nix, neovim.nix, zellij.nix, starship.nix, eza.nix, fzf.nix, zoxide.nix, nh.nix, git.nix
   - UI/theme and app modules: catppuccin.nix, ghostty.nix
   - xdg.nix — XDG config file mappings to the repo’s config directory
   - packages.nix — Common user packages list
@@ -39,9 +39,7 @@ This repository is a Nix-based dotfiles setup used to manage multiple machines (
 - nixpkgs (stable release-25.11) and nixpkgs-unstable
 - home-manager (follows nixpkgs-unstable)
 - nix-darwin (follows nixpkgs-unstable)
-- catppuccin (theme modules)
-- charm (Charm NUR for crush)
-- flake-utils
+- catppuccin (theme modules, follows nixpkgs-unstable)
 
 ## Configuration Patterns and Conventions
 
@@ -73,7 +71,7 @@ This repository is a Nix-based dotfiles setup used to manage multiple machines (
   - `nix.enable = false` (managed via nix-darwin/home-manager and Homebrew)
 
 - Home configurations (hosts/*/rcd.nix):
-  - Import `nix/hm_common.nix` and program-specific modules; include catppuccin and xdg mappings
+  - Import `nix/hm_base.nix` for shared programs, catppuccin, and xdg config
   - macOS home adds fonts and `claude-code`/`podman-compose` packages, and sets SSH config/allowed_signers from static key
 
 ## Pre-commit and Formatting
@@ -90,7 +88,7 @@ This repository is a Nix-based dotfiles setup used to manage multiple machines (
 ## Development Environment
 
 - `.envrc` contains `use flake` to expose the flake dev shell automatically via direnv
-- Flake devShell (per-system via flake-utils) includes: cabal-install, ghc, stylua, lua-language-server
+- Flake devShell (per-system via `nixpkgs.lib.genAttrs`) includes: cabal-install, ghc, stylua, lua-language-server
 
 ## Gotchas and Non-obvious Details
 
@@ -112,7 +110,7 @@ This repository is a Nix-based dotfiles setup used to manage multiple machines (
   - Wire it in `flake.nix` using the existing helpers: `buildOsConf`, `buildDarwinConf`, `buildHomeMgrConf`
 - Add or tweak program configs:
   - Create or edit modules under `nix/*.nix` following the pattern: `{ pkgs, ... }: { enable = true; <settings> = ...; }`
-  - Import via `nix/hm_common.nix` or directly in `hosts/*/rcd.nix`
+  - Add to `nix/hm_common.nix` for all hosts, or directly in `hosts/*/rcd.nix` for host-specific programs
 - App configs under `config/` are mapped via `nix/xdg.nix` or explicit symlinks in host home configs
 
 ## Observability/Validation

@@ -1,8 +1,11 @@
 { pkgs, config, ... }:
+
 let
   rcdPubKey = builtins.readFile ../../static/rcd_pub_key;
 in
 {
+  imports = [ ../../nix/hm_base.nix ];
+
   home = {
     username = "rcd";
     homeDirectory = "/Users/rcd";
@@ -31,10 +34,6 @@ in
     ];
   };
 
-  programs = (import ../../nix/hm_common.nix { inherit pkgs; }) // {
-    ghostty = import ../../nix/ghostty.nix { inherit pkgs; };
-    claude-code = import ../../nix/claude.nix;
-  };
-  catppuccin = import ../../nix/catppuccin.nix;
-  xdg.configFile = import ../../nix/xdg.nix;
+  programs.ghostty = import ../../nix/ghostty.nix { inherit pkgs; };
+  programs.claude-code = import ../../nix/claude.nix;
 }

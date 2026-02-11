@@ -1,22 +1,21 @@
 { pkgs }:
-with pkgs;
 [
-  fastfetch
-  glow
-  tldr
-  curl
-  wget
-  dust
-  duf
-  ripgrep
-  fd
-  grc
-  zip
-  unzip
-  procs
-  pre-commit
-  jq
-  nixfmt
-  nil
-  superfile
+  pkgs.fastfetch
+  pkgs.glow
+  pkgs.tldr
+  pkgs.curl
+  pkgs.wget
+  pkgs.dust
+  pkgs.duf
+  pkgs.ripgrep
+  pkgs.fd
+  pkgs.grc
+  pkgs.zip
+  pkgs.unzip
+  pkgs.procs
+  pkgs.pre-commit
+  pkgs.jq
+  pkgs.nixfmt
+  pkgs.nil
+  pkgs.superfile
 ]
