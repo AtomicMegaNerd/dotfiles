@@ -16,7 +16,7 @@ return {
 		fzf_lua.setup({
 			files = {
 				no_ignore = true, -- do not respect .gitignore
-				fd_opts = [[--hidden --exclude .direnv --exclude .crush --exclude .claude]],
+				fd_opts = [[--hidden --exclude .direnv --exclude .crush --exclude .claude --exclude .git]],
 			},
 		})
 
