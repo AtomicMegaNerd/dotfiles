@@ -1,0 +1,14 @@
+[
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      ";": "command_palette::Toggle"
+    }
+  },
+  {
+    "context": "GitPanel",
+    "bindings": {
+      "ctrl-g a": "git::Add"
+    }
+  }
+]

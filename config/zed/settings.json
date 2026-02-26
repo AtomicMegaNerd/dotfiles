@@ -1,120 +1,123 @@
 {
-    "context_servers": {
-        "context7": {
-            "enabled": true,
-            "command": "npx",
-            "args": ["-y", "@upstash/context7-mcp"],
-        },
-        "github-mcp-server": {
-            "enabled": true,
-            "command": "github-mcp-server",
-            "args": ["stdio"],
-        },
+  "context_servers": {
+    "context7": {
+      "enabled": true,
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp"]
     },
-    "cursor_shape": "block",
-    "icon_theme": "Catppuccin Macchiato",
-    "theme": "Catppuccin Macchiato - No Italics",
-    "ssh_connections": [
+    "github-mcp-server": {
+      "enabled": true,
+      "command": "github-mcp-server",
+      "args": ["stdio"]
+    }
+  },
+  "cursor_shape": "block",
+  "icon_theme": "Catppuccin Macchiato",
+  "theme": "Catppuccin Macchiato - No Italics",
+  "ssh_connections": [
+    {
+      "host": "blahaj",
+      "username": "rcd",
+      "projects": [
         {
-            "host": "blahaj",
-            "username": "rcd",
-            "projects": [
-                {
-                    "paths": ["/home/rcd/Code/Configs/dotfiles"],
-                },
-            ],
-        },
-    ],
-    "edit_predictions": {
-        "mode": "subtle",
+          "paths": ["/home/rcd/Code/Configs/dotfiles"]
+        }
+      ]
+    }
+  ],
+  "edit_predictions": {
+    "mode": "subtle"
+  },
+  "agent": {
+    "tool_permissions": {
+      "default": "allow"
     },
-    "agent": {
-        "tool_permissions": {
-            "default": "allow",
-        },
-        "default_model": {
-            "provider": "copilot_chat",
-            "model": "gpt-5",
-        },
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-5"
+    }
+  },
+  "tab_bar": {
+    "show": false
+  },
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "buffer_font_family": "Monaspace Argon Var",
+  "buffer_font_weight": 500,
+  "buffer_font_features": {
+    "ss01": true,
+    "ss02": true,
+    "ss03": true,
+    "ss04": true,
+    "ss05": true,
+    "ss06": true,
+    "ss07": true,
+    "ss08": true,
+    "ss09": true,
+    "ss10": true,
+    "liga": true,
+    "calt": true
+  },
+  "semantic_tokens": "combined",
+  "relative_line_numbers": "enabled",
+  "preferred_line_length": 100,
+  "wrap_guides": [100],
+  "tab_size": 4,
+  "terminal": {
+    "font_family": "Monaspace Argon Var",
+    "font_size": 14,
+    "blinking": "on",
+    "shell": {
+      "program": "fish"
     },
-    "ui_font_size": 16,
-    "buffer_font_size": 15,
-    "buffer_font_family": "Monaspace Argon Var",
-    "buffer_font_weight": 500,
-    "buffer_font_features": {
-        "ss01": true,
-        "ss02": true,
-        "ss03": true,
-        "ss04": true,
-        "ss05": true,
-        "ss06": true,
-        "ss07": true,
-        "ss08": true,
-        "ss09": true,
-        "ss10": true,
-        "liga": true,
-        "calt": true,
+    "detect_venv": {
+      "on": {
+        "activate_script": "fish"
+      }
+    }
+  },
+  "file_types": {
+    "Shell Script": ["**/env.list", "**/.env", "**/.envrc"]
+  },
+  "languages": {
+    "Python": {
+      "language_servers": ["ruff", "pyright"],
+      "format_on_save": "on",
+      "wrap_guides": [88],
+      "formatter": [
+        { "code_action": "source.organizeImports.ruff" },
+        { "code_action": "source.fixAll.ruff" },
+        { "language_server": { "name": "ruff" } }
+      ]
     },
-    "semantic_tokens": "combined",
-    "relative_line_numbers": "enabled",
-    "preferred_line_length": 100,
-    "wrap_guides": [100],
-    "tab_size": 4,
-    "terminal": {
-        "font_family": "Monaspace Argon Var",
-        "font_size": 14,
-        "blinking": "on",
-        "shell": {
-            "program": "fish",
-        },
-        "detect_venv": {
-            "on": {
-                "activate_script": "fish",
-            },
-        },
+    "Go": {
+      "tab_size": 4,
+      "format_on_save": "on",
+      "language_servers": ["gopls", "golangci-lint"]
     },
-    "file_types": {
-        "Shell Script": ["**/env.list", "**/.env", "**/.envrc"],
+    "Lua": {
+      "tab_size": 2,
+      "format_on_save": "on"
     },
-    "languages": {
-        "Python": {
-            "language_servers": ["ruff", "pyright"],
-            "format_on_save": "on",
-            "wrap_guides": [88],
-            "formatter": [
-                { "code_action": "source.organizeImports.ruff" },
-                { "code_action": "source.fixAll.ruff" },
-                { "language_server": { "name": "ruff" } },
-            ],
-        },
-        "Go": {
-            "tab_size": 4,
-            "format_on_save": "on",
-            "language_servers": ["gopls", "golangci-lint"],
-        },
-        "Lua": {
-            "tab_size": 2,
-            "format_on_save": "on",
-        },
-        "Nix": {
-            "tab_size": 2,
-            "format_on_save": "on",
-            "language_servers": ["nil"],
-        },
-    },
-    "lsp": {
-        "golangci-lint": {
-            "initialization_options": {
-                "command": [
-                    "golangci-lint",
-                    "run",
-                    "--output.json.path=stdout",
-                    "--issues-exit-code=1",
-                    "--show-stats=false",
-                ],
-            },
-        },
-    },
-    "vim_mode": true,
-    "load_direnv": "shell_hook",
+    "Nix": {
+      "tab_size": 2,
+      "format_on_save": "on",
+      "language_servers": ["nil"]
+    }
+  },
+  "lsp": {
+    "golangci-lint": {
+      "initialization_options": {
+        "command": [
+          "golangci-lint",
+          "run",
+          "--output.json.path=stdout",
+          "--issues-exit-code=1",
+          "--show-stats=false"
+        ]
+      }
+    }
+  },
+  "vim_mode": true,
+  "load_direnv": "shell_hook"
 }
