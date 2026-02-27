@@ -29,9 +29,8 @@ in
     packages = import ../../nix/packages.nix { inherit pkgs; } ++ [
       pkgs.monaspace
       pkgs.nerd-fonts.monaspace
-      pkgs.podman-compose
       pkgs.github-mcp-server
-      pkgs.nodejs
+      pkgs.docker-compose
     ];
   };
 
