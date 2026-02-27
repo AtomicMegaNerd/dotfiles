@@ -29,4 +29,5 @@ lazy.setup("amn.plugins", {
 	-- Because of nix systems which make the nvim config directory read-only
 	-- we need to set the lock file for lazy to a writable directory
 	lockfile = vim.fn.stdpath("data") .. "/lazy-lock.json",
+	rocks = { enabled = false },
 })
