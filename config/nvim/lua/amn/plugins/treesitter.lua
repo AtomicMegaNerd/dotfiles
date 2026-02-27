@@ -14,7 +14,6 @@ return {
 
 		local langs = {
 			"bash",
-			"dockerfile",
 			"go",
 			"json",
 			"lua",

@@ -15,7 +15,6 @@ return {
 				icons_enabled = false,
 				globalstatus = true,
 			},
-			extensions = { "fugitive" },
 		})
 	end,
 }
