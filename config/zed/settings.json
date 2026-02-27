@@ -1,4 +1,19 @@
 {
+  // AI and MCP
+  "edit_predictions": {
+    "provider": "copilot",
+    "mode": "subtle",
+  },
+  "agent": {
+    "button": false,
+    "tool_permissions": {
+      "default": "allow",
+    },
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-5",
+    },
+  },
   "context_servers": {
     "context7": {
       "enabled": true,
@@ -11,6 +26,7 @@
       "args": ["stdio"],
     },
   },
+  // Remote connections
   "ssh_connections": [
     {
       "host": "blahaj",
@@ -22,29 +38,10 @@
       ],
     },
   ],
+  // Key help
   "which_key": {
     "delay_ms": 500,
     "enabled": true,
-  },
-  "edit_predictions": {
-    "provider": "copilot",
-    "mode": "subtle",
-  },
-  "agent": {
-    "tool_permissions": {
-      "default": "allow",
-    },
-    "default_model": {
-      "provider": "copilot_chat",
-      "model": "gpt-5",
-    },
-  },
-  "toolbar": {
-    "breadcrumbs": false,
-    "quick_actions": false,
-  },
-  "tab_bar": {
-    "show": false,
   },
   "cursor_shape": "block",
   "icon_theme": "Catppuccin Macchiato",
@@ -76,6 +73,7 @@
   "wrap_guides": [100],
   "tab_size": 4,
   "terminal": {
+    "button": false,
     "font_family": "Monaspace Argon Var",
     "font_size": 14,
     "blinking": "on",
@@ -121,7 +119,6 @@
       "format_on_save": "on",
       "formatter": { "language_server": { "name": "prettier" } },
     },
-
     "TSX": {
       "tab_size": 2,
       "format_on_save": "on",
@@ -137,7 +134,6 @@
       "format_on_save": "on",
       "formatter": { "language_server": { "name": "prettier" } },
     },
-
     "YAML": {
       "format_on_save": "on",
       "formatter": { "language_server": { "name": "prettier" } },
@@ -148,7 +144,6 @@
       "soft_wrap": "preferred_line_length",
       "formatter": { "language_server": { "name": "prettier" } },
     },
-
     "Shell Script": {
       "hard_tabs": true,
     },
@@ -199,6 +194,38 @@
         ],
       },
     },
+  },
+  "title_bar": {
+    "show_branch_icon": true, // Show/hide branch icon beside branch switcher
+    "show_branch_name": true, // Show/hide branch name
+    "show_project_items": true, // Show/hide project host and name
+    "show_onboarding_banner": false, // Show/hide onboarding banners
+    "show_user_picture": false, // Show/hide user avatar
+    "show_user_menu": false, // Show/hide app user button
+    "show_sign_in": false, // Show/hide sign-in button
+    "show_menus": false, // Show/hide menus
+  },
+  "toolbar": {
+    "breadcrumbs": false,
+    "quick_actions": false,
+  },
+  "tab_bar": {
+    "show": false,
+  },
+
+  // Disable all the buttons
+  "project_panel": { "button": false },
+  "outline_panel": { "button": false },
+  "collaboration_panel": { "button": false },
+  "git_panel": { "button": false },
+  "notification_panel": { "button": false },
+  "debugger": { "button": false },
+  "diagnostics": { "button": false },
+  "search": { "button": false },
+  "file_finder": {
+    "file_icons": true,
+    "git_status": true,
+    "modal_max_width": "large",
   },
   "vim_mode": true,
   "vim": {

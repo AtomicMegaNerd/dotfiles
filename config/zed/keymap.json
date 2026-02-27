@@ -25,7 +25,7 @@
       "\\ f c": "command_palette::Toggle", // \fc  find commands
       "\\ n g": "git::Diff", // \ng  open git as buffer (neogit equivalent)
       "\\ g S": "git::StageAll",
-      "\\ g s": "git::StageFile", // \gs  stage file (neogit s)
+      "\\ g s": "git::ToggleStaged", // \gs  stage file (neogit s)
       "\\ g c": "git::Commit", // \gc  commit (neogit cc)
       "\\ g P": "git::Push", // \gP  push (neogit P)
       "\\ g a": "git::Add",
