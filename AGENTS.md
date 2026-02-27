@@ -25,12 +25,7 @@ This repository is a Nix-based dotfiles setup used to manage multiple machines (
   - blahaj/ — NixOS host (configuration.nix, hardware-configuration.nix, rcd.nix)
   - Schooner/ — macOS host for nix-darwin (darwin.nix, rcd.nix)
 - nix/ — Modular Home Manager and app configuration modules (imported by host home configs):
-  - hm_base.nix — Shared home-manager base module imported by all host rcd.nix files; defines common programs (fish, neovim, zellij, starship, eza, bat, fzf, zoxide, nh, git, direnv, bottom), catppuccin theme, and xdg config
-  - Individual program modules: fish.nix, neovim.nix, zellij.nix, starship.nix, eza.nix, fzf.nix, zoxide.nix, nh.nix, git.nix
-  - UI/theme and app modules: catppuccin.nix, ghostty.nix
-  - xdg.nix — XDG config file mappings to the repo’s config directory
-  - packages.nix — Common user packages list
-  - nvim/, zellij/, posting/, zed/ — Non-Nix app configuration directories used by xdg or explicit symlinks
+- configs/ - Configs that are not written in nix.
 - static/
   - rcd_pub_key — Public key used in configurations
 
@@ -43,14 +38,8 @@ This repository is a Nix-based dotfiles setup used to manage multiple machines (
 
 ## Configuration Patterns and Conventions
 
-- Home Manager modules under `nix/*.nix` typically expose an attribute set with `enable = true;` and optional `settings` and `enableFishIntegration` keys.
-- Common Home Manager config is composed via `nix/hm_common.nix` and merged into per-host home configs.
-- xdg.nix maps repo `config/*` directories into `~/.config/*`. On macOS, `hosts/Schooner/rcd.nix` additionally creates an out-of-store symlink for Zed:
-  - xdg.configFile = import ../../nix/xdg.nix;
-  - file.".config/zed".source = mkOutOfStoreSymlink(.../config/zed)
+- xdg.nix maps repo `config/*` directories into `~/.config/*`. On macOS, `hosts/Schooner/rcd.nix` additionally creates an out-of-store symlink for Zed.
 - The fish shell is the default, with shared init snippet and OS-specific adjustments (PATH additions, NODE_OPTIONS on macOS due to a Zed issue).
-- Catppuccin theme is enabled with flavor "macchiato" and accent "sky".
-- Ghostty uses `pkgs.ghostty-bin` with specific font settings.
 - Packages are centralized in `nix/packages.nix` and extended per-host as needed.
 
 ## Host-Specific Notes
@@ -66,13 +55,12 @@ This repository is a Nix-based dotfiles setup used to manage multiple machines (
 
 - macOS (hosts/Schooner/darwin.nix):
   - nix-darwin system with `programs.fish.enable = true`
-  - Homebrew management enabled with casks including 1password, amethyst, raycast, zoom, obsidian, calibre, zed
+  - Homebrew management enabled with casks only
   - Touch ID for sudo enabled
   - `nix.enable = false` (managed via nix-darwin/home-manager and Homebrew)
 
 - Home configurations (hosts/*/rcd.nix):
   - Import `nix/hm_base.nix` for shared programs, catppuccin, and xdg config
-  - macOS home adds fonts and `claude-code`/`podman-compose` packages, and sets SSH config/allowed_signers from static key
 
 ## Pre-commit and Formatting
 
@@ -95,12 +83,10 @@ This repository is a Nix-based dotfiles setup used to manage multiple machines (
 - Hardcoded paths assume the repo lives at `$HOME/Code/Configs/dotfiles`:
   - Fish sets `NH_FLAKE` to that path
   - macOS home config uses `mkOutOfStoreSymlink` to `$HOME/Code/Configs/dotfiles/config/zed`
-  - If cloning elsewhere, update these references accordingly
 - Mixed nixpkgs channels:
   - NixOS host uses stable nixpkgs via `buildOsConf ... true`
   - Home and nix-darwin configurations use nixpkgs-unstable
   - Be mindful when adding modules/options that may only exist on unstable
-- Secrets/keys: `static/rcd_pub_key` is public; avoid committing private keys or secrets. Containers may reference external files (e.g., `/etc/starfeed/.env`).
 - Container networking: New containers needing IPv6 bridge should use the `podman-ipv6` network or extend the `create-podman-network` service dependencies.
 
 ## How to Extend
@@ -112,9 +98,3 @@ This repository is a Nix-based dotfiles setup used to manage multiple machines (
   - Create or edit modules under `nix/*.nix` following the pattern: `{ pkgs, ... }: { enable = true; <settings> = ...; }`
   - Add to `nix/hm_common.nix` for all hosts, or directly in `hosts/*/rcd.nix` for host-specific programs
 - App configs under `config/` are mapped via `nix/xdg.nix` or explicit symlinks in host home configs
-
-## Observability/Validation
-
-- No test suite exists in this repo
-- Validate changes via `nh` rebuild commands listed above
-- Formatting and basic linting enforced by pre-commit hooks
