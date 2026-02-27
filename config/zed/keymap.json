@@ -75,9 +75,4 @@
       ],
     },
   },
-  {
-    "bindings": {
-      "\\ z p": ["task::Spawn", { "task_name": "Open Zellij Pane", "reveal_target": "center" }],
-    },
-  },
 ]
