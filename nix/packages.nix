@@ -18,4 +18,5 @@
   pkgs.nixfmt
   pkgs.nil
   pkgs.superfile
+  pkgs.television
 ]

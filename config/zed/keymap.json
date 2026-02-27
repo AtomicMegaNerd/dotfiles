@@ -16,7 +16,7 @@
   {
     "context": "Workspace",
     "bindings": {
-      "\\ f f": "file_finder::Toggle", // \ff  find files
+      "\\ a p": "agent::Toggle",
       "\\ f b": "tab_switcher::Toggle", // \fb  find buffers
       "\\ f l": "pane::DeploySearch", // \fl  live grep
       "\\ f d": "diagnostics::DeployCurrentFile", // \fd  diagnostics
@@ -47,7 +47,6 @@
   {
     "context": "Editor && vim_mode == normal",
     "bindings": {
-      "\\ f f": "file_finder::Toggle", // \ff  find files
       "\\ f b": "tab_switcher::Toggle", // \fb  find buffers
       "\\ f l": "pane::DeploySearch", // \fl  live grep
       "\\ f d": "diagnostics::Deploy", // \fd  diagnostics
@@ -66,6 +65,19 @@
       "\\ t d": "editor::ToggleDiagnostics", // \td  toggle inline diagnostics
       "g l": "editor::GoToDeclaration", // gl   go to declaration
       "g t": "editor::GoToTypeDefinition", // gt   go to type definition (overrides vim next-tab)
+    },
+  },
+  {
+    "bindings": {
+      "\\ f f": [
+        "task::Spawn",
+        { "task_name": "Television File Finder", "reveal_target": "center" },
+      ],
+    },
+  },
+  {
+    "bindings": {
+      "\\ z p": ["task::Spawn", { "task_name": "Open Zellij Pane", "reveal_target": "center" }],
     },
   },
 ]
