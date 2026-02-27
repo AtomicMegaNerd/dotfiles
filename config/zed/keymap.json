@@ -32,6 +32,16 @@
       "\\ g p": "git::Pull", // \gp  pull (neogit p)
     },
   },
+  // Disable arrow keys in editor (force hjkl)
+  {
+    "context": "Editor",
+    "bindings": {
+      "up": null,
+      "down": null,
+      "left": null,
+      "right": null,
+    },
+  },
   // Editor-only launcher bindings (require open file, override Workspace bindings above)
   // leader = \, find group (\f) -- mirrors fzf-lua bindings
   {

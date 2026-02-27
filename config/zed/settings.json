@@ -23,6 +23,7 @@
     },
   ],
   "which_key": {
+    "delay_ms": 500,
     "enabled": true,
   },
   "edit_predictions": {
@@ -69,6 +70,7 @@
   "semantic_tokens": "combined",
   "relative_line_numbers": "enabled",
   "cursor_blink": true,
+  "scrollbar": { "show": "never" },
   "vertical_scroll_margin": 10,
   "preferred_line_length": 100,
   "wrap_guides": [100],
@@ -201,6 +203,7 @@
   "vim_mode": true,
   "vim": {
     "use_smartcase_find": true,
+    "use_system_clipboard": "always",
   },
   "confirm_quit": false,
   "load_direnv": "shell_hook",
