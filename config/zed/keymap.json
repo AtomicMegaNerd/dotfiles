@@ -1,14 +1,61 @@
 [
+  // ; -> command palette in all vim modes except insert (mirrors nvim's ; -> :)
+  {
+    "context": "Editor && vim_mode != insert",
+    "bindings": {
+      ";": "command_palette::Toggle",
+    },
+  },
+  // Global launcher bindings -- work from anywhere (no open file needed)
+  {
+    "context": "Workspace && !Editor",
+    "bindings": {
+      ";": "command_palette::Toggle",
+    },
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "\\ f f": "file_finder::Toggle", // \ff  find files
+      "\\ f b": "tab_switcher::Toggle", // \fb  find buffers
+      "\\ f l": "pane::DeploySearch", // \fl  live grep
+      "\\ f d": "diagnostics::DeployCurrentFile", // \fd  diagnostics
+      "\\ f D": "diagnostics::Deploy", // \fD  workspace diagnostics
+      "\\ f w": "project_symbols::Toggle", // \fw  workspace symbols
+      "\\ f c": "command_palette::Toggle", // \fc  find commands
+      "\\ n g": "git::Diff", // \ng  open git as buffer (neogit equivalent)
+      "\\ g S": "git::StageAll",
+      "\\ g s": "git::StageFile", // \gs  stage file (neogit s)
+      "\\ g c": "git::Commit", // \gc  commit (neogit cc)
+      "\\ g P": "git::Push", // \gP  push (neogit P)
+      "\\ g a": "git::Add",
+      "\\ g p": "git::Pull", // \gp  pull (neogit p)
+    },
+  },
+  // Editor-only launcher bindings (require open file, override Workspace bindings above)
+  // leader = \, find group (\f) -- mirrors fzf-lua bindings
   {
     "context": "Editor && vim_mode == normal",
     "bindings": {
-      ";": "command_palette::Toggle"
-    }
+      "\\ f f": "file_finder::Toggle", // \ff  find files
+      "\\ f b": "tab_switcher::Toggle", // \fb  find buffers
+      "\\ f l": "pane::DeploySearch", // \fl  live grep
+      "\\ f d": "diagnostics::Deploy", // \fd  diagnostics
+      "\\ f s": "outline::Toggle", // \fs  document symbols
+      "\\ f w": "project_symbols::Toggle", // \fw  workspace symbols
+      "\\ f r": "editor::FindAllReferences", // \fr  find references
+      "\\ f c": "command_palette::Toggle", // \fc  find commands
+      "\\ n g": "git::Diff", // \ng  open git as buffer (neogit equivalent)
+      "\\ g s": "git::StageFile", // \gs  stage file (neogit s)
+      "\\ g c": "git::Commit", // \gc  commit (neogit cc)
+      "\\ g a": "git::Add",
+      "\\ g P": "git::Push", // \gP  push (neogit P)
+      "\\ g p": "git::Pull", // \gp  pull (neogit p)
+      "\\ r n": "editor::Rename", // \rn  rename symbol
+      "\\ c a": "editor::ToggleCodeActions", // \ca  code actions
+      "\\ t d": "editor::ToggleDiagnostics", // \td  toggle inline diagnostics
+      "g l": "editor::GoToDeclaration", // gl   go to declaration
+      "g t": "editor::GoToTypeDefinition", // gt   go to type definition (overrides vim next-tab)
+    },
   },
-  {
-    "context": "GitPanel",
-    "bindings": {
-      "ctrl-g a": "git::Add"
-    }
-  }
 ]

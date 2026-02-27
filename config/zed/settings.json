@@ -3,43 +3,51 @@
     "context7": {
       "enabled": true,
       "command": "npx",
-      "args": ["-y", "@upstash/context7-mcp"]
+      "args": ["-y", "@upstash/context7-mcp"],
     },
     "github-mcp-server": {
       "enabled": true,
       "command": "github-mcp-server",
-      "args": ["stdio"]
-    }
+      "args": ["stdio"],
+    },
   },
-  "cursor_shape": "block",
-  "icon_theme": "Catppuccin Macchiato",
-  "theme": "Catppuccin Macchiato - No Italics",
   "ssh_connections": [
     {
       "host": "blahaj",
       "username": "rcd",
       "projects": [
         {
-          "paths": ["/home/rcd/Code/Configs/dotfiles"]
-        }
-      ]
-    }
+          "paths": ["/home/rcd/Code/Configs/dotfiles"],
+        },
+      ],
+    },
   ],
+  "which_key": {
+    "enabled": true,
+  },
   "edit_predictions": {
-    "mode": "subtle"
+    "provider": "copilot",
+    "mode": "subtle",
   },
   "agent": {
     "tool_permissions": {
-      "default": "allow"
+      "default": "allow",
     },
     "default_model": {
       "provider": "copilot_chat",
-      "model": "gpt-5"
-    }
+      "model": "gpt-5",
+    },
+  },
+  "toolbar": {
+    "breadcrumbs": false,
+    "quick_actions": false,
   },
   "tab_bar": {
-    "show": false
+    "show": false,
   },
+  "cursor_shape": "block",
+  "icon_theme": "Catppuccin Macchiato",
+  "theme": "Catppuccin Macchiato - No Italics",
   "ui_font_size": 16,
   "buffer_font_size": 15,
   "buffer_font_family": "Monaspace Argon Var",
@@ -56,10 +64,12 @@
     "ss09": true,
     "ss10": true,
     "liga": true,
-    "calt": true
+    "calt": true,
   },
   "semantic_tokens": "combined",
   "relative_line_numbers": "enabled",
+  "cursor_blink": true,
+  "vertical_scroll_margin": 10,
   "preferred_line_length": 100,
   "wrap_guides": [100],
   "tab_size": 4,
@@ -68,16 +78,16 @@
     "font_size": 14,
     "blinking": "on",
     "shell": {
-      "program": "fish"
+      "program": "fish",
     },
     "detect_venv": {
       "on": {
-        "activate_script": "fish"
-      }
-    }
+        "activate_script": "fish",
+      },
+    },
   },
   "file_types": {
-    "Shell Script": ["**/env.list", "**/.env", "**/.envrc"]
+    "Shell Script": ["**/env.list", "**/.env", "**/.envrc"],
   },
   "languages": {
     "Python": {
@@ -87,25 +97,95 @@
       "formatter": [
         { "code_action": "source.organizeImports.ruff" },
         { "code_action": "source.fixAll.ruff" },
-        { "language_server": { "name": "ruff" } }
-      ]
+        { "language_server": { "name": "ruff" } },
+      ],
     },
     "Go": {
       "tab_size": 4,
+      "hard_tabs": true,
       "format_on_save": "on",
-      "language_servers": ["gopls", "golangci-lint"]
+      "language_servers": ["gopls", "golangci-lint"],
+    },
+    "Rust": {
+      "format_on_save": "on",
+    },
+    "JavaScript": {
+      "tab_size": 2,
+      "format_on_save": "on",
+      "formatter": { "language_server": { "name": "prettier" } },
+    },
+    "TypeScript": {
+      "tab_size": 2,
+      "format_on_save": "on",
+      "formatter": { "language_server": { "name": "prettier" } },
+    },
+
+    "TSX": {
+      "tab_size": 2,
+      "format_on_save": "on",
+      "formatter": { "language_server": { "name": "prettier" } },
+    },
+    "HTML": {
+      "tab_size": 2,
+      "format_on_save": "on",
+      "formatter": { "language_server": { "name": "prettier" } },
+    },
+    "CSS": {
+      "tab_size": 2,
+      "format_on_save": "on",
+      "formatter": { "language_server": { "name": "prettier" } },
+    },
+
+    "YAML": {
+      "format_on_save": "on",
+      "formatter": { "language_server": { "name": "prettier" } },
+    },
+    "Markdown": {
+      "tab_size": 2,
+      "format_on_save": "on",
+      "soft_wrap": "preferred_line_length",
+      "formatter": { "language_server": { "name": "prettier" } },
+    },
+
+    "Shell Script": {
+      "hard_tabs": true,
     },
     "Lua": {
       "tab_size": 2,
-      "format_on_save": "on"
+      "format_on_save": "on",
     },
     "Nix": {
       "tab_size": 2,
       "format_on_save": "on",
-      "language_servers": ["nil"]
-    }
+      "language_servers": ["nil"],
+    },
+    "JSON": {
+      "tab_size": 2,
+      "format_on_save": "on",
+    },
+    "JSONC": {
+      "tab_size": 2,
+      "format_on_save": "on",
+    },
   },
   "lsp": {
+    "gopls": {
+      "settings": {
+        "gofumpt": true,
+        "analyses": {
+          "unusedparams": true,
+          "shadow": true,
+        },
+        "staticcheck": false,
+      },
+    },
+    "yaml-language-server": {
+      "settings": {
+        "yaml": {
+          "keyOrdering": false,
+        },
+      },
+    },
     "golangci-lint": {
       "initialization_options": {
         "command": [
@@ -113,11 +193,15 @@
           "run",
           "--output.json.path=stdout",
           "--issues-exit-code=1",
-          "--show-stats=false"
-        ]
-      }
-    }
+          "--show-stats=false",
+        ],
+      },
+    },
   },
   "vim_mode": true,
-  "load_direnv": "shell_hook"
+  "vim": {
+    "use_smartcase_find": true,
+  },
+  "confirm_quit": false,
+  "load_direnv": "shell_hook",
 }
