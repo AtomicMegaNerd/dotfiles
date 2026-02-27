@@ -32,7 +32,6 @@
 
   environment.systemPackages = with pkgs; [
     podman
-    podman-compose
   ];
 
   security.pam.services.sudo_local.touchIdAuth = true;

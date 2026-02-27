@@ -5,7 +5,7 @@
     editor = "vim";
     lsp = {
       ruff = {
-        command = "ruff-lsp";
+        command = "ruff";
       };
       nix = {
         command = "nil";
