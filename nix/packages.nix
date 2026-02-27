@@ -13,10 +13,13 @@
   pkgs.zip
   pkgs.unzip
   pkgs.procs
-  pkgs.pre-commit
   pkgs.jq
   pkgs.nixfmt
   pkgs.nil
   pkgs.superfile
   pkgs.television
+  pkgs.stylua
+  pkgs.lua-language-server
+  pkgs.yaml-language-server
+  pkgs.prettier
 ]

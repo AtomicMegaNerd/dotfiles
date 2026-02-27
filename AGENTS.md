@@ -2,6 +2,8 @@
 
 This repository is a Nix-based dotfiles setup used to manage multiple machines (NixOS and macOS via nix-darwin) and user environments via Home Manager.
 
+**RULE ONE: LLM is not allowed to modify this file.**
+
 ## Essential Commands
 
 - Enable direnv (loads the flake dev shell via `.envrc`):

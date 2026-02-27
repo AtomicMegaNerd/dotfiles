@@ -6,6 +6,7 @@ common/nvim/lazy-lock.json
 **/prompts/
 **/*.bak
 .direnv
+.pre-commit-config.yaml
 **/zed/conversations
 .crush
 .claude

@@ -16,6 +16,10 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    git-hooks = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs =
@@ -26,6 +30,7 @@
       home-manager,
       catppuccin,
       nix-darwin,
+      git-hooks,
     }:
     let
       systems = {
@@ -72,6 +77,28 @@
           ];
         };
 
+      buildPreCommitCheck =
+        system:
+        git-hooks.lib.${system}.run {
+          src = ./.;
+          hooks = {
+            trim-trailing-whitespace.enable = true;
+            mixed-line-endings.enable = true;
+            end-of-file-fixer.enable = true;
+            check-yaml.enable = true;
+            check-toml.enable = true;
+            stylua.enable = true;
+            nixfmt-rfc-style.enable = true;
+            nix-flake-check = {
+              enable = true;
+              name = "nix flake check";
+              entry = "nix flake check --no-build";
+              language = "system";
+              pass_filenames = false;
+            };
+          };
+        };
+
     in
     {
       nixosConfigurations = {
@@ -88,5 +115,21 @@
         "rcd@blahaj" = buildHomeMgrConf systems.linux "blahaj";
         "rcd@Schooner" = buildHomeMgrConf systems.darwin "Schooner";
       };
+
+      checks = nixpkgs.lib.genAttrs (builtins.attrValues systems) (system: {
+        pre-commit-check = buildPreCommitCheck system;
+      });
+
+      devShells = nixpkgs.lib.genAttrs (builtins.attrValues systems) (
+        system:
+        let
+          pkgs = buildPkgsConf system nixpkgs-unstable;
+        in
+        {
+          default = pkgs.mkShell {
+            inherit (self.checks.${system}.pre-commit-check) shellHook;
+          };
+        }
+      );
     };
 }
