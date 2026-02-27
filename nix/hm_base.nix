@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   programs = {
     home-manager.enable = true;
@@ -12,6 +12,7 @@
     zoxide = import ./zoxide.nix;
     nh = import ./nh.nix;
     git = import ./git.nix;
+    lazydocker = import ./lazydocker.nix;
     direnv = {
       enable = true;
       nix-direnv.enable = true;

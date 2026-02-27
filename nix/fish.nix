@@ -6,7 +6,6 @@ let
     set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
     set -gx CLI_THEME "catppuccin"
     set -gx NH_FLAKE "$HOME/Code/Configs/dotfiles"
-
     fish_add_path $GOPATH/bin
     fish_add_path $HOME/.local/bin
   '';
@@ -18,6 +17,8 @@ in
     if pkgs.stdenv.isDarwin then
       ''
         ${commonShellInit}
+
+        set -gx DOCKER_HOST unix://(podman machine inspect --format '{{.ConnectionInfo.PodmanSocket.Path}}' 2>/dev/null)
 
         # See https://github.com/zed-industries/zed/issues/41806
         set -gx NODE_OPTIONS --experimental-sqlite

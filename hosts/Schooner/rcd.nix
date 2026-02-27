@@ -8,6 +8,7 @@ in
 
   home = {
     username = "rcd";
+    uid = 501;
     homeDirectory = "/Users/rcd";
     stateVersion = "24.11";
     file.".ssh/allowed_signers".text = "${rcdPubKey}";
