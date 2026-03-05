@@ -30,7 +30,7 @@ in
       pkgs.monaspace
       pkgs.nerd-fonts.monaspace
       pkgs.github-mcp-server
-      pkgs.docker-compose
+      pkgs.podman-compose
     ];
   };
 
