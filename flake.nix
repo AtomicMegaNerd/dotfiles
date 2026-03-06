@@ -79,6 +79,9 @@
 
       buildPreCommitCheck =
         system:
+        let
+          pkgs = buildPkgsConf system nixpkgs-unstable;
+        in
         git-hooks.lib.${system}.run {
           src = ./.;
           hooks = {
@@ -89,6 +92,13 @@
             check-toml.enable = true;
             stylua.enable = true;
             nixfmt-rfc-style.enable = true;
+            markdownlint-cli2 = {
+              enable = true;
+              name = "markdownlint-cli2 --fix";
+              entry = "${pkgs.markdownlint-cli2}/bin/markdownlint-cli2";
+              language = "system";
+              types = [ "markdown" ];
+            };
             nix-flake-check = {
               enable = true;
               name = "nix flake check";

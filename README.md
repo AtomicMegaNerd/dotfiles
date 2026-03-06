@@ -41,7 +41,6 @@ git clone https://github.com/AtomicMegaNerd/dotfiles.git
 cd dotfiles
 ```
 
-
 ### Nix Commands
 
 Run the build against the host that you are interested in. For NixOS machines:
@@ -64,7 +63,8 @@ nh home rebuild .
 
 ## Development
 
-To enable the `direnv` Nix shell for flake development, run the following command in the dotfiles repo:
+To enable the `direnv` Nix shell for flake development, run the following command in the dotfiles
+repo:
 
 ```fish
 direnv allow
