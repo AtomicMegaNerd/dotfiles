@@ -37,6 +37,7 @@
     };
     casks = [
       "1password"
+      "1password-cli"
       "amethyst"
       "raycast"
       "zoom"
@@ -46,6 +47,7 @@
       "linearmouse"
     ];
     brews = [ ];
+    enableFishIntegration = true;
     global = {
       autoUpdate = true;
     };
