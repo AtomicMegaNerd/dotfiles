@@ -19,7 +19,7 @@ are installed by my flake but configured externally (i.e. Neovim).
 
 | Host          | OS    | Platform       | OS Version | HM Version   | Notes        |
 | ------------- | ----- | -------------- | ---------- | ------------ | ------------ |
-| blahaj        | NixOS | x86-64-linux   | 25.05      | unstable     | Server       |
+| blahaj        | NixOS | x86-64-linux   | 25.11      | unstable     | Server       |
 | Schooner      | MacOS | aarch64-darwin | unstable   | unstable     | MacBook Air  |
 
 We use `nh` which is a wrapper around `nix` to make it easier to manage our Nix systems. See
@@ -70,13 +70,7 @@ repo:
 direnv allow
 ```
 
-To get pre-commit setup for the first time, you may need to run:
-
-```fish
-pre-commit install
-```
-
-Note that `direnv` must be installed before this can be done. It is included in the flake.
+The flake will automatically setup the pre-commit hooks.
 
 Also if `zellij` is installed you can launch neovim and a pair of shells thusly:
 
