@@ -28,3 +28,10 @@ utils.nmap("<right>", "<cmd>bn<cr>")
 
 -- Delete without overwriting the clipboard
 utils.nmap("x", '"_x')
+
+-- Disable tab page creation and navigation
+utils.nmap("<C-w>T", "<nop>")
+utils.nmap("gt", "<nop>")
+utils.nmap("gT", "<nop>")
+vim.cmd("cabbrev tabnew <nop>")
+vim.cmd("cabbrev tabe <nop>")

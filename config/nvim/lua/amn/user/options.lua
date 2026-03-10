@@ -64,3 +64,6 @@ vim.opt.spell = false
 
 -- Disable swap file
 vim.opt.swapfile = false
+
+-- Never show the tab line
+vim.o.showtabline = 0
