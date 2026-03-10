@@ -28,6 +28,9 @@ nix-darwin) and user environments via Home Manager.
   - **blahaj/** — NixOS host (configuration.nix, hardware-configuration.nix, rcd.nix)
   - **Schooner/** — macOS host for nix-darwin (darwin.nix, rcd.nix)
 - **nix/** — Modular Home Manager and app configuration modules (imported by host home configs):
+  - catppuccin.nix, claude.nix, eza.nix, fish.nix, fzf.nix, ghostty.nix, git.nix,
+    hm_base.nix (base imports), lazydocker.nix, neovim.nix, nh.nix, packages.nix, starship.nix,
+    xdg.nix, zellij.nix, zoxide.nix
 - **config/** - Configs that are not written in nix (nvim, zellij, zed, etc).
 - **scripts/** - This contains a script for Zellij that has an optimized layout for this repo.
 - **static/**
@@ -93,3 +96,5 @@ pre-commit run
   - Be mindful when adding modules/options that may only exist on unstable
 - Container networking: New containers needing IPv6 bridge should use the `podman-ipv6` network or
   extend the `create-podman-network` service dependencies.
+- Theme is Catppuccin **Macchiato** throughout — use this flavour when configuring new apps, not
+  Mocha, Latte, or Frappé.
