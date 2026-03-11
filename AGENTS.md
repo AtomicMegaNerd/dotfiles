@@ -31,7 +31,7 @@ nix-darwin) and user environments via Home Manager.
   - catppuccin.nix, claude.nix, eza.nix, fish.nix, fzf.nix, ghostty.nix, git.nix,
     hm_base.nix (base imports), lazydocker.nix, nh.nix, packages.nix, starship.nix,
     xdg.nix, zellij.nix, zoxide.nix
-- **config/** - Configs that are not written in nix (nvim, zellij, zed, etc).
+- **config/** - Configs that are not written in nix (zellij, zed, etc).
 - **scripts/** - This contains a script for Zellij that has an optimized layout for this repo.
 - **static/**
   - `rcd_pub_key` — Public key used in configurations

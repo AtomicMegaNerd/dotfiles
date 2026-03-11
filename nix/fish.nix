@@ -1,7 +1,6 @@
 { pkgs, ... }:
 let
   commonShellInit = ''
-    set -gx EDITOR nvim
     set -gx GOPATH $HOME/.local/go
     set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
     set -gx CLI_THEME "catppuccin"
