@@ -13,7 +13,7 @@
 
 This is my core flake for my Nix-managed machines as well as any other machines that
 use Nix as a package manager. This repo also contains configurations for apps that
-are installed by my flake but configured externally (i.e. Neovim).
+are installed by my flake but configured externally (i.e. Zed).
 
 ## Nix Systems
 
