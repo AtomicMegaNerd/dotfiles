@@ -23,6 +23,7 @@
     rcd-nvim = {
       url = "github:AtomicMegaNerd/rcd-nvim";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.git-hooks.follows = "git-hooks";
     };
   };
 
