@@ -93,7 +93,6 @@
             end-of-file-fixer.enable = true;
             check-yaml.enable = true;
             check-toml.enable = true;
-            stylua.enable = true;
             nixfmt-rfc-style.enable = true;
             markdownlint.enable = true;
             flake-checker.enable = true;
