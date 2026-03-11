@@ -1,10 +1,13 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 
 let
   rcdPubKey = builtins.readFile ../../static/rcd_pub_key;
 in
 {
-  imports = [ ../../nix/hm_base.nix ];
+  imports = [
+    ../../nix/hm_base.nix
+    ../../nix/zed.nix
+  ];
 
   home = {
     username = "rcd";
@@ -22,9 +25,6 @@ in
       Host blahaj
           ForwardAgent yes
     '';
-    file.".config/zed".source = config.lib.file.mkOutOfStoreSymlink (
-      config.home.homeDirectory + "/Code/Configs/dotfiles/config/zed"
-    );
     shell.enableShellIntegration = true;
     packages = import ../../nix/packages.nix { inherit pkgs; } ++ [
       pkgs.monaspace
