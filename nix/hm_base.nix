@@ -3,7 +3,6 @@
   programs = {
     home-manager.enable = true;
     fish = import ./fish.nix { inherit pkgs; };
-    neovim = import ./neovim.nix { inherit pkgs; };
     zellij = import ./zellij.nix { inherit pkgs; };
     starship = import ./starship.nix;
     eza = import ./eza.nix;

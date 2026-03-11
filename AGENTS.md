@@ -29,7 +29,7 @@ nix-darwin) and user environments via Home Manager.
   - **Schooner/** — macOS host for nix-darwin (darwin.nix, rcd.nix)
 - **nix/** — Modular Home Manager and app configuration modules (imported by host home configs):
   - catppuccin.nix, claude.nix, eza.nix, fish.nix, fzf.nix, ghostty.nix, git.nix,
-    hm_base.nix (base imports), lazydocker.nix, neovim.nix, nh.nix, packages.nix, starship.nix,
+    hm_base.nix (base imports), lazydocker.nix, nh.nix, packages.nix, starship.nix,
     xdg.nix, zellij.nix, zoxide.nix
 - **config/** - Configs that are not written in nix (nvim, zellij, zed, etc).
 - **scripts/** - This contains a script for Zellij that has an optimized layout for this repo.
@@ -43,6 +43,7 @@ nix-darwin) and user environments via Home Manager.
 - **nix-darwin** (follows nixpkgs-unstable)
 - **catppuccin** (theme modules, follows nixpkgs-unstable)
 - **git-hooks** (pre-commit with nix, follows nixpkgs-unstable)
+- **rcd-nvim** (my neovim config as a flake)
 
 ## Configuration Patterns and Conventions
 

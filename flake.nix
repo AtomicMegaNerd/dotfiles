@@ -20,6 +20,10 @@
       url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    rcd-nvim = {
+      url = "github:AtomicMegaNerd/rcd-nvim";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs =
@@ -31,6 +35,7 @@
       catppuccin,
       nix-darwin,
       git-hooks,
+      rcd-nvim,
     }:
     let
       systems = {
@@ -63,6 +68,7 @@
           modules = [
             ./hosts/${hostname}/rcd.nix
             catppuccin.homeModules.catppuccin
+            rcd-nvim.homeManagerModules.default
           ];
         };
 
