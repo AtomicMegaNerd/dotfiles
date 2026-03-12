@@ -2,7 +2,22 @@
 {
   programs.zed-editor = {
     enable = true;
-    package = null; # Just manage the config
+    package = null; # Installed via Homebrew
+
+    extensions = [
+      "catppuccin"
+      "catppuccin-icons"
+      "comment"
+      "docker-compose"
+      "dockerfile"
+      "emmet"
+      "golangci-lint"
+      "html"
+      "nix"
+      "toml"
+      "xml"
+    ];
+
     userSettings = {
       # AI and MCP
       edit_predictions = {
