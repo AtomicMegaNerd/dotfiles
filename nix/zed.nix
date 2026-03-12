@@ -1,8 +1,8 @@
-{ ... }:
+{ lib, pkgs, ... }:
 {
   programs.zed-editor = {
     enable = true;
-
+    package = null; # Just manage the config
     userSettings = {
       # AI and MCP
       edit_predictions = {
@@ -51,7 +51,7 @@
       # UI
       cursor_shape = "block";
       icon_theme = "Catppuccin Macchiato";
-      theme = "Catppuccin Macchiato - No Italics";
+      theme = lib.mkForce "Catppuccin Macchiato - No Italics";
 
       # Fonts
       ui_font_size = 16;
