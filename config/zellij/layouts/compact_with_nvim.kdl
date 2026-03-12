@@ -5,10 +5,13 @@ layout {
             plugin location="compact-bar"
         }
     }
-    tab name="vim" {
+    tab name="neovim" split_direction="vertical" {
         pane command="nvim"
     }
     tab name="shell" split_direction="vertical" {
+        pane command="fish"
+    }
+    tab name="llm" split_direction="vertical" {
         pane command="fish"
     }
 }
