@@ -18,6 +18,9 @@
   pkgs.nil
   pkgs.superfile
   pkgs.television
+  pkgs.tree
+
+  # Global LSP's and Linters
   pkgs.stylua
   pkgs.lua-language-server
   pkgs.yaml-language-server
