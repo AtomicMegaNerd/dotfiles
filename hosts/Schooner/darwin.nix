@@ -36,15 +36,16 @@
       cleanup = "zap";
     };
     casks = [
-      "1password"
-      "1password-cli"
-      "amethyst"
-      "raycast"
-      "zoom"
-      "obsidian"
-      "calibre"
-      "zed"
-      "linearmouse"
+      "1password" # gui password manager
+      "1password-cli" # cli password manager
+      "amethyst" # window tiling
+      "raycast" # launcher
+      "zoom" # video meetings
+      "obsidian" # markdown notes
+      "calibre" # managing ebooks
+      "zed" # code editor
+      "linearmouse" # better logitech mouse settings
+      "finetune" # per-app volume control
     ];
     brews = [ ];
     enableFishIntegration = true;
