@@ -1,5 +1,6 @@
 {
   enable = true;
+  signing.format = null;
   settings = {
     user = {
       name = "Chris Dunphy";
