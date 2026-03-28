@@ -1,15 +1,5 @@
 { pkgs, config, ... }:
 {
-  # temporary overlay until nixpkgs-unstable finally updates
-  nixpkgs.overlays = [
-    (_: prev: {
-      direnv = prev.direnv.overrideAttrs (old: {
-        postPatch = (old.postPatch or "") + ''
-          substituteInPlace GNUmakefile --replace-fail " -linkmode=external" ""
-        '';
-      });
-    })
-  ];
   programs = {
     home-manager.enable = true;
     fish = import ./fish.nix { inherit pkgs; };
