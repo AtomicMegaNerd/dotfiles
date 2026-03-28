@@ -161,11 +161,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1774738819,
-        "narHash": "sha256-ZeQHVxU8+LvHQFUdwItoWjz8YIIiLRsRQ1P2pWW2DZY=",
+        "lastModified": 1774738939,
+        "narHash": "sha256-N7t4rkEnw+tKIEyniIukeApCNHyMT00g1NoG95OL2IE=",
         "owner": "AtomicMegaNerd",
         "repo": "rcd-nvim",
-        "rev": "12c61c00fecd99392c93083d82739c20417548c1",
+        "rev": "8d9cada6cd18792d5e207f0bd2aea9803684f45b",
         "type": "github"
       },
       "original": {
