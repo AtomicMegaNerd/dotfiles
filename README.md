@@ -27,10 +27,10 @@ We use `nh` which is a wrapper around `nix` to make it easier to manage our Nix 
 
 ## Prerequisites
 
-Nix has to be installed on the system. On macOS I use the [Determinate Nix Installer](https://github.com/DeterminateSystems/nix-installer).
-Of course on NixOS systems `nix` is pre-installed. [Home Manager](https://github.com/nix-community/home-manager)
-also needs to be installed. If you have [Zellij](https://zellij.dev/) installed you can also use
-it to make development of these dotfiles even easier.
+- Nix has to be installed on the system. Of course on NixOS systems `nix` is pre-installed.
+- [Home Manager](https://github.com/nix-community/home-manager) also needs to be installed.
+- If you have [Zellij](https://zellij.dev/) installed you can also use it to make development of
+  these dotfiles even easier.
 
 ## Getting Started
 

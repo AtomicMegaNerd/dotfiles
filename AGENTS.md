@@ -3,7 +3,7 @@
 This repository is a Nix-based dotfiles setup used to manage multiple machines (NixOS and macOS via
 nix-darwin) and user environments via Home Manager.
 
-**RULE ONE: LLM is not allowed to modify this file.**
+**CRITICAL: LLM is not allowed to modify this file!**
 
 ## Essential Commands
 
@@ -11,7 +11,7 @@ nix-darwin) and user environments via Home Manager.
   - `direnv allow`
 - Set up pre-commit hooks:
   - `pre-commit install`
-  - `pre-commit run --all-files`
+  - `pre-commit run --all-files` (this runs all lints too use this)
 - Rebuild systems with nh (nix helper):
   - NixOS: `nh os rebuild .`
   - nix-darwin (macOS): `nh darwin rebuild .`
@@ -27,59 +27,11 @@ nix-darwin) and user environments via Home Manager.
 - **hosts/**
   - **blahaj/** — NixOS host (configuration.nix, hardware-configuration.nix, rcd.nix)
   - **Schooner/** — macOS host for nix-darwin (darwin.nix, rcd.nix)
-- **nix/** — Modular Home Manager and app configuration modules (imported by host home configs):
-  - catppuccin.nix, claude.nix, eza.nix, fish.nix, fzf.nix, ghostty.nix, git.nix,
-    hm_base.nix (base imports), lazydocker.nix, nh.nix, packages.nix, starship.nix,
-    xdg.nix, zellij.nix, zoxide.nix
-- **config/** - Configs that are not written in nix (zellij, zed, etc).
+- **nix/** — Modular Home Manager and app configuration modules (imported by host home configs)
+- **config/** - Configs that are not written in nix.
 - **scripts/** - This contains a script for Zellij that has an optimized layout for this repo.
 - **static/**
   - `rcd_pub_key` — Public key used in configurations
-
-## Flake Inputs (observed)
-
-- **nixpkgs** (stable release-25.11) and nixpkgs-unstable
-- **home-manager** (follows nixpkgs-unstable)
-- **nix-darwin** (follows nixpkgs-unstable)
-- **catppuccin** (theme modules, follows nixpkgs-unstable)
-- **git-hooks** (pre-commit with nix, follows nixpkgs-unstable)
-- **rcd-nvim** (my neovim config as a flake)
-
-## Configuration Patterns and Conventions
-
-- `xdg.nix` maps repo `config/*` directories into `~/.config/*`.
-- On macOS, `hosts/Schooner/rcd.nix` additionally creates an out-of-store symlink for Zed.
-- The fish shell is the default, with shared init snippet and OS-specific adjustments.
-- Packages are centralized in `nix/packages.nix` and extended per-host as needed.
-
-## Host-Specific Notes
-
-- NixOS (hosts/blahaj/configuration.nix):
-  - Enables Podman with dockerCompat and defines containers: pihole, freshrss, starfeed (depends
-    on freshrss)
-  - Creates an IPv6 Podman network `podman-ipv6` via a systemd oneshot service used by containers
-  - Daily backup systemd timer/service for Pi-hole and FreshRSS data to `/data/backups`
-  - Firewall opens ports 53 (TCP/UDP), 8080, 8081; sets Quad9 DNS nameservers
-  - Nix settings enable `nix-command` and `flakes`; weekly GC
-  - User `rcd` with fish shell and SSH key from `static/rcd_pub_key`
-  - Note: `starfeed` container uses `environmentFiles = [ "/etc/starfeed/.env" ];` (not in repo)
-
-- macOS (hosts/Schooner/darwin.nix):
-  - nix-darwin system with `programs.fish.enable = true`
-  - Homebrew management enabled with casks only
-  - Touch ID for sudo enabled
-  - `nix.enable = false` (managed via nix-darwin/home-manager and Homebrew)
-
-- Home configurations (hosts/*/rcd.nix):
-  - Import `nix/hm_base.nix` for shared programs, catppuccin, and xdg config
-
-## Pre-commit and Formatting
-
-- The flake has the list of hooks. You can just run the checks in the flake directory thusly:
-
-```bash
-pre-commit run
-```
 
 ## Development Environment
 
@@ -90,9 +42,8 @@ pre-commit run
 
 - Hardcoded paths assume the repo lives at `$HOME/Code/Configs/dotfiles`:
   - Fish sets `NH_FLAKE` to that path
-  - macOS home config uses `mkOutOfStoreSymlink` to `$HOME/Code/Configs/dotfiles/config/zed`
 - Mixed nixpkgs channels:
-  - NixOS host uses stable nixpkgs via `buildOsConf ... true`
+  - NixOS host uses stable nixpkgs via `buildOsConf`
   - Home and nix-darwin configurations use nixpkgs-unstable
   - Be mindful when adding modules/options that may only exist on unstable
 - Container networking: New containers needing IPv6 bridge should use the `podman-ipv6` network or
