@@ -43,11 +43,10 @@
       "zoom" # video meetings
       "obsidian" # markdown notes
       "calibre" # managing ebooks
-      "zed" # code editor
       "linearmouse" # better logitech mouse settings
       "finetune" # per-app volume control
+      "claude-code" # claude code cli
     ];
-    brews = [ ];
     enableFishIntegration = true;
     global = {
       autoUpdate = true;

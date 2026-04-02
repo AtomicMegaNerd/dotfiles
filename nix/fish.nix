@@ -12,7 +12,6 @@ let
 in
 {
   enable = true;
-
   shellInit =
     if pkgs.stdenv.isDarwin then
       ''
@@ -35,11 +34,7 @@ in
     ll = "eza -lah";
     df = "duf";
     cat = "bat --paging=never --style=plain";
-
-    # Just use ripgrep
     grep = "rg";
-
-    # Zellij
     zl = "zellij ls";
     za = "zellij a";
     zk = "zellij k";

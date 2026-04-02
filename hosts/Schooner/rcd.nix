@@ -6,7 +6,6 @@ in
 {
   imports = [
     ../../nix/hm_base.nix
-    ../../nix/zed.nix
   ];
 
   home = {
@@ -14,6 +13,7 @@ in
     uid = 501;
     homeDirectory = "/Users/rcd";
     stateVersion = "24.11";
+    file.".claude".source = ../../config/claude;
     file.".ssh/allowed_signers".text = "${rcdPubKey}";
     file.".ssh/config".text = ''
       Host *
@@ -35,5 +35,4 @@ in
   };
 
   programs.ghostty = import ../../nix/ghostty.nix { inherit pkgs; };
-  programs.claude-code = import ../../nix/claude.nix;
 }
