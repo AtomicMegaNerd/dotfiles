@@ -25,5 +25,4 @@
   pkgs.lua-language-server
   pkgs.yaml-language-server
   pkgs.prettier
-  pkgs.marksman
 ]
