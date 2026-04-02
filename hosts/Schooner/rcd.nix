@@ -13,7 +13,7 @@ in
     uid = 501;
     homeDirectory = "/Users/rcd";
     stateVersion = "24.11";
-    file.".claude".source = ../../config/claude;
+    file.".claude/settings.json".source = ../../config/claude/settings.json;
     file.".ssh/allowed_signers".text = "${rcdPubKey}";
     file.".ssh/config".text = ''
       Host *

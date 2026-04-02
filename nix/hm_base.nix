@@ -15,7 +15,6 @@
       enable = true;
       nix-direnv.enable = true;
     };
-    bottom.enable = true;
   };
   catppuccin = import ./catppuccin.nix;
   xdg.configFile = import ./xdg.nix;
