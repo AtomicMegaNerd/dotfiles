@@ -13,7 +13,6 @@ in
     uid = 501;
     homeDirectory = "/Users/rcd";
     stateVersion = "24.11";
-    file.".claude/settings.json".source = ../../config/claude/settings.json;
     file.".ssh/allowed_signers".text = "${rcdPubKey}";
     file.".ssh/config".text = ''
       Host *
@@ -35,4 +34,5 @@ in
   };
 
   programs.ghostty = import ../../nix/ghostty.nix { inherit pkgs; };
+  programs.claude-code = import ../../nix/claude.nix;
 }

@@ -45,7 +45,6 @@
       "calibre" # managing ebooks
       "linearmouse" # better logitech mouse settings
       "finetune" # per-app volume control
-      "claude-code" # claude code cli
     ];
     enableFishIntegration = true;
     global = {
