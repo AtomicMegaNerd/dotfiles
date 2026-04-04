@@ -1,5 +1,7 @@
 { pkgs, ... }:
 {
+  imports = [ ./neovim.nix ];
+
   programs = {
     home-manager.enable = true;
     fish = import ./fish.nix { inherit pkgs; };

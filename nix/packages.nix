@@ -25,4 +25,5 @@
   pkgs.lua-language-server
   pkgs.yaml-language-server
   pkgs.prettier
+  pkgs.markdownlint-cli2
 ]
