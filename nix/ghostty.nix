@@ -11,6 +11,7 @@
     macos-option-as-alt = true;
     cursor-style = "block";
     cursor-style-blink = true;
+    cursor-color = "#ffffff";
     shell-integration-features = "no-cursor";
   };
 }

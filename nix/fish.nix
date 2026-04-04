@@ -27,6 +27,7 @@ in
 
   interactiveShellInit = ''
     set fish_greeting # Disable greeting
+    set -g fish_color_cursor ffffff
   '';
 
   shellAliases = {
