@@ -1,7 +1,6 @@
 { pkgs }:
 [
   # Basic cli utilities
-  pkgs.glow
   pkgs.curl
   pkgs.wget
   pkgs.dust
