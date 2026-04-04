@@ -25,5 +25,4 @@
     television.enable = true;
   };
   catppuccin = import ./catppuccin.nix;
-  xdg.configFile = import ./xdg.nix;
 }
