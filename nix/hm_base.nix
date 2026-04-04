@@ -1,7 +1,5 @@
 { pkgs, ... }:
 {
-  imports = [ ./neovim.nix ];
-
   programs = {
     home-manager.enable = true;
 
@@ -21,8 +19,7 @@
     fastfetch.enable = true;
     ripgrep.enable = true;
     fd.enable = true;
-    superfile.enable = true;
-    television.enable = true;
   };
+  imports = [ ./neovim.nix ];
   catppuccin = import ./catppuccin.nix;
 }
