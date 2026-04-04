@@ -19,6 +19,7 @@
   pkgs.superfile
   pkgs.television
   pkgs.tree
+  pkgs.tree-sitter
 
   # Global LSP's and Linters
   pkgs.stylua

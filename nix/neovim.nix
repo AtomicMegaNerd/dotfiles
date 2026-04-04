@@ -13,7 +13,6 @@
       extraPackages = with pkgs; [
         gcc
         nodejs-slim # Smaller nodejs for lsp's which don't need npm or npx
-        tree-sitter
       ];
     };
 
