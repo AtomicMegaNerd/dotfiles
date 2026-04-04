@@ -28,8 +28,6 @@ nix-darwin) and user environments via Home Manager.
   - **blahaj/** — NixOS host (configuration.nix, hardware-configuration.nix, rcd.nix)
   - **Schooner/** — macOS host for nix-darwin (darwin.nix, rcd.nix)
 - **nix/** — Modular Home Manager and app configuration modules (imported by host home configs)
-- **config/** - Configs that are not written in nix.
-- **scripts/** - This contains a script for Zellij that has an optimized layout for this repo.
 - **static/**
   - `rcd_pub_key` — Public key used in configurations
 

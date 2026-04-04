@@ -12,8 +12,10 @@
 ![AtomicMegaNerd](https://github.com/AtomicMegaNerd/AtomicMegaNerd/blob/main/img/RCD-AtomicMegaNerd-Beard-400.png)
 
 This is my core flake for my Nix-managed machines as well as any other machines that
-use Nix as a package manager. This repo also contains configurations for apps that
-are installed by my flake but configured externally (i.e. Zed).
+use Nix as a package manager. The only app which has settings not managed by nix is neovim. We
+have a separate repo for that that we just clone to `~/.config/nvim`:
+
+[https://github.com/AtomicMegaNerd/rcd-nvim](https://github.com/AtomicMegaNerd/rcd-nvim)
 
 ## Nix Systems
 
@@ -84,11 +86,10 @@ The zellij KDL configuration is found at `./.zellij/dotfiles.kdl`.
 
 This is the structure of this repo:
 
-- `flake.nix` - The Nix flake file that defines the NixOS, Nix Darwin, and
-  Home Manager configurations.
+- `flake.nix` - The Nix flake file that defines the NixOS, Nix Darwin, and Home Manager
+  configurations.
 - `hosts/` - Directory containing host-specific configurations.
 - `nix/` - Directory containing Nix sources for different apps and common modules.
-- `config/` - Directory containing non-Nix configurations.
 - `static/` - Directory containing static files used in configurations.
 
 Over time as more options are added to Home Manager and NixOS, more of the configuration should be
@@ -96,9 +97,9 @@ migrated to Nix.
 
 ## Secrets as Environment variables
 
-The file `~/.config/fish/conf.d/credentials.fish` will not be stored in Git so put any secrets
-in there as environment variables. MCP servers for github and context7 need the following
-environment variables to be set:
+The file `~/.config/fish/conf.d/credentials.fish` will not be stored in Git so put any secrets in
+there as environment variables. MCP servers for github and context7 need the following environment
+variables to be set:
 
 ```fish
 set -gx CONTEXT7_API_KEY ""
