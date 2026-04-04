@@ -11,5 +11,6 @@
     macos-option-as-alt = true;
     cursor-style = "block";
     cursor-style-blink = true;
+    shell-integration-features = "no-cursor";
   };
 }
