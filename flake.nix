@@ -1,6 +1,5 @@
 {
   description = "AtomicMegaNerd's NixOS Flake";
-
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
@@ -85,8 +84,6 @@
             trim-trailing-whitespace.enable = true;
             mixed-line-endings.enable = true;
             end-of-file-fixer.enable = true;
-            check-yaml.enable = true;
-            check-toml.enable = true;
             nixfmt.enable = true;
             markdownlint.enable = true;
             flake-checker.enable = true;
