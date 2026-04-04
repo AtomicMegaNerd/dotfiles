@@ -25,7 +25,6 @@ in
       Host blahaj
           ForwardAgent yes
     '';
-    shell.enableShellIntegration = true;
     packages = import ../../nix/packages.nix { inherit pkgs; } ++ [
       pkgs.monaspace
       pkgs.nerd-fonts.monaspace
