@@ -11,7 +11,8 @@
   pkgs.jq
   pkgs.tree
 
-  # tree-sitter 0.26.8 — override until nixpkgs/nixpkgs#506080 lands
+  # TODO: tree-sitter 0.26.8 — override until nixpkgs/nixpkgs#506080 lands
+  # also delete ./nix/tree-sitter-remove-web-interface.patch once this is merged
   (pkgs.tree-sitter.overrideAttrs (old: rec {
     version = "0.26.8";
     src = pkgs.fetchFromGitHub {
