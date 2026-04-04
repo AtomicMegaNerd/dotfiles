@@ -11,7 +11,10 @@
     macos-option-as-alt = true;
     cursor-style = "block";
     cursor-style-blink = true;
+
+    # Remember to disable or change this if we use a light theme
     cursor-color = "#ffffff";
+
     shell-integration-features = "no-cursor";
   };
 }
