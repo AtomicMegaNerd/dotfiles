@@ -15,6 +15,6 @@
     # Remember to disable or change this if we use a light theme
     cursor-color = "#ffffff";
 
-    shell-integration-features = "no-cursor";
+    shell-integration-features = "no-cursor,ssh-env,ssh-terminfo,sudo";
   };
 }
