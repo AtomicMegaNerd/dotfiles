@@ -1,24 +1,17 @@
 { pkgs }:
 [
-  pkgs.fastfetch
+  # Basic cli utilities
   pkgs.glow
-  pkgs.tldr
   pkgs.curl
   pkgs.wget
   pkgs.dust
   pkgs.duf
-  pkgs.ripgrep
-  pkgs.fd
   pkgs.grc
   pkgs.zip
   pkgs.unzip
-  pkgs.procs
   pkgs.jq
-  pkgs.nixfmt
-  pkgs.nil
-  pkgs.superfile
-  pkgs.television
   pkgs.tree
+
   # tree-sitter 0.26.8 — override until nixpkgs/nixpkgs#506080 lands
   (pkgs.tree-sitter.overrideAttrs (old: rec {
     version = "0.26.8";
@@ -37,10 +30,12 @@
     nativeBuildInputs = old.nativeBuildInputs ++ [ pkgs.rustPlatform.bindgenHook ];
   }))
 
-  # Global LSP's and Linters
+  # Global language servers, linters, and formatters
   pkgs.stylua
   pkgs.lua-language-server
   pkgs.yaml-language-server
   pkgs.prettier
   pkgs.markdownlint-cli2
+  pkgs.nixfmt
+  pkgs.nil
 ]

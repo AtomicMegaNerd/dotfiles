@@ -4,6 +4,7 @@ let
   rcdPubKey = builtins.readFile ../../static/rcd_pub_key;
 in
 {
+  # Common home-manager setup
   imports = [
     ../../nix/hm_base.nix
   ];
