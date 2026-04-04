@@ -14,17 +14,15 @@
     zoxide = import ./zoxide.nix;
     nh = import ./nh.nix;
     git = import ./git.nix;
+    direnv = import ./direnv.nix;
 
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-    };
+    # Imports that are more basic
     bat.enable = true;
     fastfetch.enable = true;
     ripgrep.enable = true;
     fd.enable = true;
-    superfile = true;
-    television = true;
+    superfile.enable = true;
+    television.enable = true;
   };
   catppuccin = import ./catppuccin.nix;
   xdg.configFile = import ./xdg.nix;
