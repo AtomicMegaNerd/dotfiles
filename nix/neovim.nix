@@ -10,6 +10,8 @@
       enable = true;
       defaultEditor = true;
       vimAlias = true;
+      withRuby = false;
+      withPython3 = false;
       extraPackages = with pkgs; [
         gcc
         nodejs-slim # Smaller nodejs for lsp's which don't need npm or npx
