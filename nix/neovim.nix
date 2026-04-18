@@ -12,6 +12,7 @@
       vimAlias = true;
       withRuby = false;
       withPython3 = false;
+      sideloadInitLua = true;
       extraPackages = with pkgs; [
         gcc
         nodejs-slim # Smaller nodejs for lsp's which don't need npm or npx
