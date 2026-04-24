@@ -3,7 +3,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nixpkgs-staging.url = "github:nixos/nixpkgs/staging-next";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -27,7 +26,6 @@
       self,
       nixpkgs,
       nixpkgs-unstable,
-      nixpkgs-staging,
       home-manager,
       catppuccin,
       nix-darwin,
@@ -39,21 +37,11 @@
         darwin = "aarch64-darwin";
       };
 
-      # Temporary: tree-sitter 0.26.x is stuck in staging-next behind the 26.05
-      # release freeze while neovim 0.12 in unstable requires it. Remove once
-      # tree-sitter lands in nixpkgs-unstable.
-      stagingOverlay =
-        system:
-        (_final: _prev: {
-          tree-sitter = nixpkgs-staging.legacyPackages.${system}.tree-sitter;
-        });
-
       buildPkgsConf =
         system: pkg_src:
         import pkg_src {
           inherit system;
           config.allowUnfree = true;
-          overlays = [ (stagingOverlay system) ];
         };
 
       # This is for building NixOS configurations, where we are running the full NixOS Linux
