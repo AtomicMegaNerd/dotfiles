@@ -42,6 +42,13 @@
         import pkg_src {
           inherit system;
           config.allowUnfree = true;
+          overlays = [
+            (final: prev: {
+              direnv = prev.direnv.overrideAttrs (_: {
+                doCheck = false;
+              });
+            })
+          ];
         };
 
       # This is for building NixOS configurations, where we are running the full NixOS Linux
