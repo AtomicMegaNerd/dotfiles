@@ -10,6 +10,7 @@
   pkgs.unzip
   pkgs.jq
   pkgs.tree
+  pkgs.glow
 
   # Global language servers, linters, and formatters
   pkgs.stylua
