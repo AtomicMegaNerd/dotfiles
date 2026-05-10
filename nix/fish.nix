@@ -42,7 +42,27 @@ in
   };
 
   functions = {
-    zn = "zellij -s (basename (eval pwd))";
+    zn = ''
+      set -l session_name (string sub -l 12 -- (basename $PWD))
+      set -l layout_file
+
+      if test -d ./.zellij
+          set layout_file (find ./.zellij -maxdepth 1 -type f -name '*.kdl' | head -n 1)
+      end
+
+      if zellij list-sessions 2>/dev/null | awk '{print $1}' | grep -Fq -- "$session_name"
+          echo "Attaching to existing Zellij session: $session_name"
+          zellij attach "$session_name"
+      else
+          echo "Creating new Zellij session: $session_name"
+
+          if test -n "$layout_file"
+              zellij --new-session-with-layout "$layout_file" --session "$session_name"
+          else
+              zellij --session "$session_name"
+          end
+      end
+    '';
   };
 
   plugins = [
