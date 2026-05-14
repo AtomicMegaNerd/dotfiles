@@ -11,18 +11,18 @@
 
 ![AtomicMegaNerd](https://github.com/AtomicMegaNerd/AtomicMegaNerd/blob/main/img/RCD-AtomicMegaNerd-Beard-400.png)
 
-This is my core flake for my Nix-managed machines as well as any other machines that
-use Nix as a package manager. The only app which has settings not managed by nix is neovim. We
-have a separate repo for that that we just clone to `~/.config/nvim`:
+This is my core flake for my Nix-managed machines as well as any other machines that use Nix as a
+package manager. The only app which has settings not managed by nix is neovim. We have a separate
+repo for that that we just clone to `~/.config/nvim`:
 
 [https://github.com/AtomicMegaNerd/rcd-nvim](https://github.com/AtomicMegaNerd/rcd-nvim)
 
 ## Nix Systems
 
-| Host          | OS    | Platform       | OS Version | HM Version   | Notes        |
-| ------------- | ----- | -------------- | ---------- | ------------ | ------------ |
-| blahaj        | NixOS | x86-64-linux   | 25.11      | unstable     | Server       |
-| Schooner      | MacOS | aarch64-darwin | unstable   | unstable     | MacBook Air  |
+| Host     | OS    | Platform       | OS Version | HM Version | Notes       |
+| -------- | ----- | -------------- | ---------- | ---------- | ----------- |
+| blahaj   | NixOS | x86-64-linux   | 25.11      | unstable   | Server      |
+| Schooner | MacOS | aarch64-darwin | unstable   | unstable   | MacBook Air |
 
 We use `nh` which is a wrapper around `nix` to make it easier to manage our Nix systems. See
 [nix helper](https://github.com/nix-community/nh) GitHub repository for more information.

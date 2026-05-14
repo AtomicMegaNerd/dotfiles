@@ -1,0 +1,19 @@
+{
+  // https://oxc.rs/docs/guide/usage/formatter/config.html
+  "overrides": [
+    {
+      // oxfmt already defaults to 100, but let's be explicit for markdown
+      "files": ["*.md"],
+      "options": {
+        "printWidth": 100,
+        "proseWrap": "always"
+      }
+    },
+    {
+      "files": ["*.jsonc"],
+      "options": {
+        "trailingComma": "none"
+      }
+    }
+  ]
+}

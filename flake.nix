@@ -88,6 +88,12 @@
         git-hooks.lib.${system}.run {
           src = ./.;
           hooks = {
+            oxfmt = {
+              enable = true;
+              name = "oxfmt";
+              entry = "oxfmt .";
+              pass_filenames = false;
+            };
             trim-trailing-whitespace.enable = true;
             mixed-line-endings.enable = true;
             end-of-file-fixer.enable = true;
