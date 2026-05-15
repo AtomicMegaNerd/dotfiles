@@ -45,6 +45,7 @@
       "calibre" # managing ebooks
       "linearmouse" # better logitech mouse settings
       "finetune" # per-app volume control
+      "cmux" # another terminal
     ];
     enableFishIntegration = true;
     global = {
