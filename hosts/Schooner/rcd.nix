@@ -31,7 +31,6 @@ in
       pkgs.github-mcp-server
       pkgs.podman-compose
       pkgs.nodejs # for claude-code
-      pkgs.ollama
     ];
   };
 
