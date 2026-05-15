@@ -36,4 +36,5 @@ in
 
   programs.ghostty = import ../../nix/ghostty.nix { inherit pkgs; };
   programs.claude-code = import ../../nix/claude.nix;
+  programs.opencode = import ../../nix/opencode.nix;
 }
