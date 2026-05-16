@@ -95,7 +95,7 @@ in
 
       freshrss = {
         autoStart = true;
-        image = "freshrss/freshrss:1.28.1";
+        image = "freshrss/freshrss:1.29.0";
         ports = [
           "8080:80/tcp"
         ];
