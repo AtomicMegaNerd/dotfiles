@@ -111,8 +111,16 @@
       };
     };
     permission = {
-      bash = "ask";
+      bash = {
+        "*" = "ask";
+        "task *" = "allow";
+        "live-server *" = "allow";
+      };
       edit = "ask";
+      external_directory = {
+        "~/Code/*" = "allow";
+        "~/.config/opencode/*" = "allow";
+      };
     };
   };
   tui = {
