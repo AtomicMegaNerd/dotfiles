@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 let
   piholeUid = 888;
   piholeGid = 888;
@@ -115,7 +115,7 @@ in
       starfeed = {
         autoStart = true;
         image = "atomicmeganerd/starfeed:v0.3.0";
-        environmentFiles = [ "/etc/starfeed/.env" ];
+        environmentFiles = [ config.age.secrets.starfeed-env.path ];
         dependsOn = [ "freshrss" ];
         extraOptions = [
           "--network=podman-ipv6"
@@ -131,6 +131,17 @@ in
     dig
     rsync
   ];
+
+  age.secrets = {
+    duckdns-token.file = ../../secrets/duckdns-token.age;
+    starfeed-env.file = ../../secrets/starfeed-env.age;
+  };
+
+  services.duckdns = {
+    enable = true;
+    tokenFile = config.age.secrets.duckdns-token.path;
+    domains = [ "blahaj" ];
+  };
 
   services.openssh = {
     enable = true;

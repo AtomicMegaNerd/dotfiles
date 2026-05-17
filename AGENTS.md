@@ -36,6 +36,11 @@ nix-darwin) and user environments via Home Manager.
 - `.envrc` contains `use flake` to expose the flake dev shell automatically via direnv
 - Flake devShell just sets up the pre-commit hooks with Nix.
 
+## Secrets
+
+Secrets are managed with [agenix](https://github.com/ryantm/agenix) (age-encrypted files stored in
+Git). Encrypted secrets live in `secrets/`, with recipient keys defined in `secrets/secrets.nix`.
+
 ## Gotchas and Non-obvious Details
 
 - Hardcoded paths assume the repo lives at `$HOME/Code/Configs/dotfiles`:

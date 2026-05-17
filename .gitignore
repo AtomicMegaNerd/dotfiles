@@ -10,4 +10,3 @@ common/nvim/lazy-lock.json
 **/zed/conversations
 .crush
 .claude
-secrets/**

@@ -23,6 +23,10 @@
       url = "github:charmbracelet/nur";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs =
@@ -35,6 +39,7 @@
       nix-darwin,
       git-hooks,
       charmbracelet,
+      agenix,
     }:
     let
       systems = {
@@ -64,6 +69,7 @@
           pkgs = buildPkgsConf system nixpkgs;
           modules = [
             ./hosts/${hostname}/configuration.nix
+            agenix.nixosModules.default
           ];
         };
 
@@ -144,6 +150,7 @@
               pkgs.oxfmt
               pkgs.yaml-language-server
               pkgs.bash-language-server
+              agenix.packages.${system}.default
             ];
           };
         }

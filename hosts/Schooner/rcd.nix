@@ -1,10 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 let
   rcdPubKey = builtins.readFile ../../static/rcd_pub_key;
 in
 {
-  # Common home-manager setup
   imports = [
     ../../nix/hm_base.nix
     ../../nix/zed.nix
@@ -34,6 +33,20 @@ in
       pkgs.nodejs # for claude-code
     ];
   };
+
+  # This will write any secrets that we want to be global variables into
+  # `~/.config/fish/conf.d/credentials.fish` which is in `.gitignore`.
+  # I decided to remove the file each time rather than use --force
+  home.activation.writeCredentials = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    if [[ ! -x "/opt/homebrew/bin/op" ]]; then
+      echo "cannot find op executable.."
+      exit 1
+    fi
+    $DRY_RUN_CMD rm -f "$HOME/.config/fish/conf.d/credentials.fish"
+    $DRY_RUN_CMD /opt/homebrew/bin/op inject \
+      -i ${../../secrets/credentials.fish.tpl} \
+      -o "$HOME/.config/fish/conf.d/credentials.fish"
+  '';
 
   programs.ghostty = import ../../nix/ghostty.nix { inherit pkgs; };
   programs.claude-code = import ../../nix/claude.nix;

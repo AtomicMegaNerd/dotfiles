@@ -95,18 +95,35 @@ This is the structure of this repo:
 Over time as more options are added to Home Manager and NixOS, more of the configuration should be
 migrated to Nix.
 
-## Secrets as Environment variables
+## Secrets
 
-The file `~/.config/fish/conf.d/credentials.fish` will not be stored in Git so put any secrets in
-there as environment variables. MCP servers for github and context7 need the following environment
-variables to be set:
+Secrets are managed differently per host:
 
-```fish
-set -gx CONTEXT7_API_KEY ""
-set -gx GITHUB_PERSONAL_ACCESS_TOKEN ""
+### blahaj
+
+Uses [agenix](https://github.com/ryantm/agenix) with age-encrypted files in `secrets/`. To edit a
+secret:
+
+```bash
+agenix -e secrets/<name>.age
 ```
 
-This repository is configured to make use of these secrets.
+The `.age` files are encrypted in git.
+
+### Schooner
+
+We use op to write any secrets that we want to be user-wide environment variables. For example:
+
+Edit the file `./secrets/credentials.fish.tpl`:
+
+```fish
+set -gx CONTEXT7_API_KEY "op://Private/Context7/api-key"
+```
+
+When we run `nh home switch .` we will have to authenticate to `op` after which it will write the
+secrets to `~/.config/fish/conf.d/credentials.fish`.
+
+**IMPORTANT** the file `~/.config/fish/conf.d/credentials.fish` **MUST** be in `.gitignore`!
 
 ## License
 

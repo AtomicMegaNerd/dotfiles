@@ -1,4 +1,7 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  ...
+}:
 let
   commonShellInit = ''
     set -gx GOPATH $HOME/.local/go
