@@ -140,7 +140,7 @@ in
   services.duckdns = {
     enable = true;
     tokenFile = config.age.secrets.duckdns-token.path;
-    domains = [ "blahaj" ];
+    domains = [ "atomicmeganerd" ];
   };
 
   services.openssh = {
