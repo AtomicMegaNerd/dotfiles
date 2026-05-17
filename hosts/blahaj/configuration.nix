@@ -143,6 +143,11 @@ in
     domains = [ "atomicmeganerd" ];
   };
 
+  systemd.services.duckdns = {
+    after = [ "network-online.target" ];
+    wants = [ "network-online.target" ];
+  };
+
   services.openssh = {
     enable = true;
     hostKeys = [
