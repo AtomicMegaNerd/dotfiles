@@ -118,8 +118,8 @@
       };
       edit = "ask";
       external_directory = {
-        "~/Code/*" = "allow";
-        "~/.config/opencode/*" = "allow";
+        "~/Code/**" = "allow";
+        "~/.config/opencode/**" = "allow";
       };
     };
   };

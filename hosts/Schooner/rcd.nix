@@ -30,7 +30,7 @@ in
       pkgs.monaspace
       pkgs.nerd-fonts.monaspace
       pkgs.github-mcp-server
-      pkgs.podman-compose
+      pkgs.docker-compose
       pkgs.nodejs # for claude-code
     ];
   };
