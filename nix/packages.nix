@@ -11,4 +11,5 @@
   pkgs.jq
   pkgs.tree
   pkgs.glow
+  pkgs.television
 ]
