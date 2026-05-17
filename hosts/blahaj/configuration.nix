@@ -146,6 +146,10 @@ in
   systemd.services.duckdns = {
     after = [ "network-online.target" ];
     wants = [ "network-online.target" ];
+    serviceConfig = {
+      Restart = "on-failure";
+      RestartSec = "10s";
+    };
   };
 
   services.openssh = {
