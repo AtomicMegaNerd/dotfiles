@@ -158,7 +158,7 @@ in
       AllowUsers = [ "rcd" ];
       LoginGraceTime = "30s";
       MaxAuthTries = "3";
-      ForwardX11 = false;
+      X11Forwarding = false;
     };
   };
   programs.fish.enable = true;
