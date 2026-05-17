@@ -150,6 +150,7 @@
               pkgs.oxfmt
               pkgs.yaml-language-server
               pkgs.bash-language-server
+              pkgs.markdownlint-cli2
               agenix.packages.${system}.default
             ];
           };
