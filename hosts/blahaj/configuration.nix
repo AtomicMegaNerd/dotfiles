@@ -114,7 +114,7 @@ in
 
       starfeed = {
         autoStart = true;
-        image = "atomicmeganerd/starfeed:v0.2.0";
+        image = "atomicmeganerd/starfeed:v0.3.0";
         environmentFiles = [ "/etc/starfeed/.env" ];
         dependsOn = [ "freshrss" ];
         extraOptions = [
