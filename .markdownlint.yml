@@ -9,3 +9,7 @@ MD013:
   code_block_line_length: 100
 
 MD040: false
+
+# MD024/no-duplicate-heading - Allow same heading name in different sections
+MD024:
+  siblings_only: true

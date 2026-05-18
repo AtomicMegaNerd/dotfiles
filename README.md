@@ -17,39 +17,128 @@ repo for that that we just clone to `~/.config/nvim`:
 
 [https://github.com/AtomicMegaNerd/rcd-nvim](https://github.com/AtomicMegaNerd/rcd-nvim)
 
-## Nix Systems
+---
+
+## Systems Managed By This Flake
 
 | Host     | OS    | Platform       | OS Version | HM Version | Notes       |
 | -------- | ----- | -------------- | ---------- | ---------- | ----------- |
 | blahaj   | NixOS | x86-64-linux   | 25.11      | unstable   | Server      |
-| Schooner | MacOS | aarch64-darwin | unstable   | unstable   | MacBook Air |
+| Schooner | macOS | aarch64-darwin | unstable   | unstable   | MacBook Air |
 
 We use `nh` which is a wrapper around `nix` to make it easier to manage our Nix systems. See
 [nix helper](https://github.com/nix-community/nh) GitHub repository for more information.
 
+---
+
 ## Prerequisites
 
-- Nix has to be installed on the system. Of course on NixOS systems `nix` is pre-installed.
-- [Home Manager](https://github.com/nix-community/home-manager) also needs to be installed.
-- If you have [Zellij](https://zellij.dev/) installed you can also use it to make development of
-  these dotfiles even easier.
+The following has to be installed and setup before the rest of the guide can be followed:
 
-## Getting Started
+- Nix has to be installed on the system. Of course on NixOS systems `nix` is pre-installed. On
+  non-Nix machines use [nix-installer](https://github.com/NixOS/nix-installer).
+- For the Mac we also need 1Password-CLI `op` installed to unlock the secrets (see
+  [Secrets](./docs/secrets.md) and [op](https://www.1password.dev/cli)). You cannot run the
+  home-manager without it unless you remove the `.tpl` templates from the config.
 
-Clone this repo to get started:
+---
+
+## Setup
+
+Now we can clone the flake and run the setup. We use the following:
+
+- Home-Manager manages dotfiles for users on a Nix managed system
+  [home-manager](https://github.com/nix-community/home-manager)
+- This is Nix for MacOS machines [nix-darwin](https://github.com/nix-darwin/nix-darwin)
+
+For all systems we start by cloning the dotfiles repo and then we `cd` into it:
+
+```bash
+mkdir -p ~/Code/Configs
+cd ~/Code/Configs
+git clone https://github.com/AtomicMegaNerd/dotfiles
+cd dotfiles
+```
+
+### Note for External Users
+
+For external users you need to update the flake to match your infrastructure including:
+
+- Machines
+- Desired tools
+- Users
+- Secrets
+
+The examples (hostnames, usernames) below are for my systems.
+
+### MacOS
+
+We need to bootstrap nix-darwin first. This will enable flake support as well.
+
+```bash
+sudo nix --extra-experimental-features "nix-command flakes" \
+  run nix-darwin -- switch --flake .#Schooner
+```
+
+If this doesn't work, enable experimental features in the config:
+
+```bash
+echo "experimental-features = nix-command flakes" | sudo tee -a /etc/nix/nix.conf
+sudo launchctl stop org.nixos.nix-daemon
+sudo launchctl start org.nixos.nix-daemon
+sudo mv /etc/nix/nix.conf /etc/nix/.before-darwin
+```
+
+Then try the nix command again.
+
+_The last step is needed so nix-darwin can replace nix.conf with its own configuration._
+
+### NixOS
+
+```bash
+sudo nix --extra-experimental-features "nix-command flakes" \
+  run nixos-rebuild -- switch --flake .#blahaj
+```
+
+### Home Manager (all systems)
+
+All systems let you use the same command to bootstrap home-manager with your flake:
+
+```bash
+nix run home-manager -- switch --flake .#rcd@blahaj
+```
+
+---
+
+## Operation
+
+Once the initial bootstrap is done you may need to start a new terminal shell or even logout and log
+back into the system to fully load your new shell config including the updates to the PATH.
+
+### direnv
+
+We use [nix-direnv](https://github.com/nix-community/nix-direnv) to setup a dev shell for this repo.
+It adds linters and LSP's as well as a pre-commit configuration.
+
+To enable the `direnv` Nix shell for flake development, run the following command in the dotfiles
+repo to setup the flake devshell automatically every time you cd into this project directory:
 
 ```fish
-git clone https://github.com/AtomicMegaNerd/dotfiles.git
-cd dotfiles
+direnv allow
 ```
 
 ### Nix Commands
 
-Run the build against the host that you are interested in. For NixOS machines:
+Nix Helper is a replacement for some nix CLI commands that is better engineered and easier to use
+[nh](https://github.com/nix-community/nh)
+
+#### NixOS
 
 ```fish
 nh os rebuild .
 ```
+
+#### Nix-Darwin
 
 For Nix-Darwin systems, you can use the following command to rebuild the system configuration:
 
@@ -57,30 +146,15 @@ For Nix-Darwin systems, you can use the following command to rebuild the system 
 nh darwin rebuild .
 ```
 
+#### Home Manager
+
 We use Home Manager on all of our Nix managed machines.
 
 ```fish
 nh home rebuild .
 ```
 
-## Development
-
-To enable the `direnv` Nix shell for flake development, run the following command in the dotfiles
-repo:
-
-```fish
-direnv allow
-```
-
-The flake will automatically setup the pre-commit hooks.
-
-Also if `zellij` is installed you can launch neovim and a pair of shells thusly:
-
-```fish
-./scripts/zellij.sh
-```
-
-The zellij KDL configuration is found at `./.zellij/dotfiles.kdl`.
+---
 
 ## Repository Structure
 
@@ -88,82 +162,20 @@ This is the structure of this repo:
 
 - `flake.nix` - The Nix flake file that defines the NixOS, Nix Darwin, and Home Manager
   configurations.
+- `docs/` - Documentation
 - `hosts/` - Directory containing host-specific configurations.
 - `nix/` - Directory containing Nix sources for different apps and common modules.
 - `static/` - Directory containing static files used in configurations.
+- `secrets/` - Managing secrets with agenix and op (1Password CLI).
 
 Over time as more options are added to Home Manager and NixOS, more of the configuration should be
 migrated to Nix.
 
-## Secrets
-
-Secrets are managed differently per host:
-
-### blahaj
-
-Uses [agenix](https://github.com/ryantm/agenix) with age-encrypted files in `secrets/`. To edit a
-secret:
-
-```bash
-agenix -e secrets/<name>.age
-```
-
-The `.age` files are encrypted in git.
-
-#### Host Key Backup and Recovery
-
-Agenix uses the host's SSH key to encrypt secrets. If you need to rebuild blahaj from scratch, you
-must restore the host's private SSH key before running `nh os rebuild .` so agenix can decrypt the
-secrets.
-
-Read the keys from 1Password into files:
-
-```bash
-op read op://Private/Blahaj\ Host\ Key/private\ key > ssh_host_ed25519_key
-op read op://Private/Blahaj\ Host\ Key/public\ key > ssh_host_ed25519_key.pub
-```
-
-Copy them to `blahaj` and delete the local copies:
-
-```bash
-scp ssh_host_ed25519_key* blahaj:~
-rm ssh_host_ed25519_key*
-```
-
-Login to Blahaj and then run:
-
-```bash
-sudo mkdir -p /etc/ssh
-sudo mv ~/ssh_host_ed25519_key* /etc/ssh
-sudo chmod 600 /etc/ssh/ssh_host_ed25519_key
-```
-
-Now run `nh os rebuild .` — agenix will be able to decrypt the secrets
-
-##### Lost Key
-
-**If you lose the key:** You can generate a new host key and re-encrypt the secrets by updating
-`static/blahaj_host_key` with the new public key and running `agenix rekey`.
-
-### Schooner
-
-We use op to write any secrets that we want to be user-wide environment variables. For example:
-
-Edit the file `./secrets/credentials.fish.tpl`:
-
-```fish
-set -gx CONTEXT7_API_KEY "op://Private/Context7/api-key"
-```
-
-When we run `nh home switch .` we will have to authenticate to `op` after which it will write the
-secrets to `~/.config/fish/conf.d/credentials.fish`.
-
-**IMPORTANT** the file `~/.config/fish/conf.d/credentials.fish` **MUST** be in `.gitignore`!
-
-## License
-
-See the [LICENSE](./LICENSE) file for details.
+---
 
 ## More Information
 
-The [AGENTS.md](./AGENTS.md) file contains more information.
+- [DNS Setup](./docs/dns.md) How we setup DNS internally and externally.
+- [Secrets](./docs/secrets.md) Managing secrets with `agenix` and `op`.
+- [AGENTS.md](./AGENTS.md) Information for the bots.
+- [LICENSE](./LICENSE) MIT license.
