@@ -41,6 +41,9 @@
       command = "github-mcp-server";
       type = "stdio";
       args = [ "stdio" ];
+      env = {
+        GITHUB_TOKEN = "$${GITHUB_PERSONAL_ACCESS_TOKEN}";
+      };
     };
     context7 = {
       type = "stdio";
