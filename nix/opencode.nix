@@ -98,9 +98,6 @@
           "github-mcp-server"
           "stdio"
         ];
-        env = {
-          GITHUB_TOKEN = "$${GITHUB_PERSONAL_ACCESS_TOKEN}";
-        };
         enabled = true;
       };
       context7 = {
