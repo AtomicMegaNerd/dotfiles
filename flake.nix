@@ -19,10 +19,6 @@
       url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    charmbracelet = {
-      url = "github:charmbracelet/nur";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -38,7 +34,6 @@
       catppuccin,
       nix-darwin,
       git-hooks,
-      charmbracelet,
       agenix,
     }:
     let
@@ -80,7 +75,6 @@
           modules = [
             ./hosts/${hostname}/rcd.nix
             catppuccin.homeModules.catppuccin
-            charmbracelet.homeModules.crush
           ];
         };
 
