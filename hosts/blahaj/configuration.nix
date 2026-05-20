@@ -95,7 +95,7 @@ in
 
       freshrss = {
         autoStart = true;
-        image = "freshrss/freshrss:1.29.0";
+        image = "freshrss/freshrss:1.29.1";
         ports = [
           "8080:80/tcp"
         ];
@@ -114,7 +114,7 @@ in
 
       starfeed = {
         autoStart = true;
-        image = "atomicmeganerd/starfeed:v0.3.0";
+        image = "atomicmeganerd/starfeed:0.4.1";
         environmentFiles = [ config.age.secrets.starfeed-env.path ];
         dependsOn = [ "freshrss" ];
         extraOptions = [
