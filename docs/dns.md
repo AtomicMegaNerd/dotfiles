@@ -72,6 +72,12 @@ services.cloudflare-ddns = {
   domains = [ "megaparsec.ca" ];
   proxied = "false";
 };
+
+# Make sure it does not start before the network is ready
+systemd.services.cloudflare-ddns = {
+  after = [ "network-online.target" ];
+  wants = [ "network-online.target" ];
+};
 ```
 
 Then run the os rebuilt:

@@ -27,6 +27,8 @@ in
   networking = {
     hostName = "blahaj";
     useDHCP = false;
+    # We want to hardcode DNS servers because DHCP from our gateway uses THIS machine running
+    # pihole for DNS. This is the one machine on the network that does not.
     nameservers = [
       "9.9.9.9"
       "149.112.112.112"
@@ -154,6 +156,7 @@ in
   # Services Config
   services = {
 
+    # We have to disable this because it conflicts with pihole
     resolved.enable = false;
 
     openssh = {
