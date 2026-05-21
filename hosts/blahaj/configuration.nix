@@ -1,4 +1,9 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 let
   piholeUid = 888;
   piholeGid = 888;
@@ -52,10 +57,15 @@ in
     openssh.authorizedKeys.keys = [ rcd_pub_key ];
   };
 
-  systemd.tmpfiles.rules = [
-    "d /data/backups 0755 root root -"
-    "d /data/backups/pihole 0755 root root -"
-    "d /data/backups/freshrss 0755 root root -"
+  programs.fish.enable = true;
+  programs.nix-ld.enable = true;
+  programs.neovim.enable = true;
+  programs.starship.enable = true;
+  programs.git.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    dig
+    rsync
   ];
 
   virtualisation.containers.enable = true;
@@ -124,105 +134,118 @@ in
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    neovim
-    starship
-    git
-    dig
-    rsync
-  ];
-
   age.secrets = {
     duckdns-token.file = ../../secrets/duckdns-token.age;
     starfeed-env.file = ../../secrets/starfeed-env.age;
     cloudflare-ddns-token.file = ../../secrets/cloudflare-ddns-token.age;
   };
 
-  services.cloudflare-ddns = {
-    enable = true;
-    credentialsFile = config.age.secrets.cloudflare-ddns-token.path;
-    domains = [ "megaparsec.ca" ];
-    proxied = "false";
-  };
+  # Services Config
+  services = {
 
-  services.duckdns = {
-    enable = true;
-    tokenFile = config.age.secrets.duckdns-token.path;
-    domains = [ "atomicmeganerd" ];
-  };
+    openssh = {
+      enable = true;
+      hostKeys = [
+        {
+          path = "/etc/ssh/ssh_host_ed25519_key";
+          type = "ed25519";
+        }
+      ];
+      settings = {
+        PasswordAuthentication = false;
+        PermitRootLogin = "no";
+        KbdInteractiveAuthentication = false;
+        AllowUsers = [ "rcd" ];
+        LoginGraceTime = "30s";
+        MaxAuthTries = "3";
+        X11Forwarding = false;
+      };
+    };
 
-  systemd.services.duckdns = {
-    after = [ "network-online.target" ];
-    wants = [ "network-online.target" ];
-    serviceConfig = {
-      Restart = "on-failure";
-      RestartSec = "10s";
+    cloudflare-ddns = {
+      enable = true;
+      credentialsFile = config.age.secrets.cloudflare-ddns-token.path;
+      domains = [ "megaparsec.ca" ];
+      proxied = "false";
+    };
+
+    duckdns = {
+      enable = true;
+      tokenFile = config.age.secrets.duckdns-token.path;
+      domains = [ "atomicmeganerd" ];
     };
   };
 
-  services.openssh = {
-    enable = true;
-    hostKeys = [
-      {
-        path = "/etc/ssh/ssh_host_ed25519_key";
-        type = "ed25519";
-      }
+  # Systemd Config
+  systemd = {
+
+    tmpfiles.rules = [
+      "d /data/backups 0755 root root -"
+      "d /data/backups/pihole 0755 root root -"
+      "d /data/backups/freshrss 0755 root root -"
     ];
-    settings = {
-      PasswordAuthentication = false;
-      PermitRootLogin = "no";
-      KbdInteractiveAuthentication = false;
-      AllowUsers = [ "rcd" ];
-      LoginGraceTime = "30s";
-      MaxAuthTries = "3";
-      X11Forwarding = false;
+
+    timers.backup-pihole-freshrss = {
+      description = "Run backup of Pi-hole and FreshRSS data daily";
+      wantedBy = [ "timers.target" ];
+      timerConfig = {
+        OnCalendar = "daily";
+        Persistent = true;
+      };
+    };
+
+    services = {
+
+      duckdns = {
+        after = [ "network-online.target" ];
+        wants = [ "network-online.target" ];
+        serviceConfig = {
+          Restart = "on-failure";
+          RestartSec = "10s";
+        };
+      };
+
+      cloudflare-ddns = {
+        after = [ "network-online.target" ];
+        wants = [ "network-online.target" ];
+      };
+
+      backup-pihole-freshrss = {
+        description = "Backup Pi-hole and FreshRSS data to /data/backups";
+        serviceConfig = {
+          Type = "oneshot";
+          ExecStart = "${backupScript}/bin/backup-pihole-freshrss";
+        };
+      };
+
+      create-podman-network = {
+        serviceConfig.Type = "oneshot";
+        wantedBy = [
+          "podman-pihole.service"
+          "podman-freshrss.service"
+          "podman-starfeed.service"
+        ];
+        before = [
+          "podman-pihole.service"
+          "podman-freshrss.service"
+          "podman-starfeed.service"
+        ];
+        script = ''
+          # Create IPv6 network
+          ${pkgs.podman}/bin/podman network exists podman-ipv6 || \
+            ${pkgs.podman}/bin/podman network create \
+              --driver=bridge \
+              --ipv6 \
+              --disable-dns \
+              --subnet=fd00::/64 \
+              --gateway=fd00::1 \
+              podman-ipv6
+        '';
+      };
     };
   };
-  programs.fish.enable = true;
-  programs.nix-ld.enable = true;
 
-  systemd.services.backup-pihole-freshrss = {
-    description = "Backup Pi-hole and FreshRSS data to /data/backups";
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = "${backupScript}/bin/backup-pihole-freshrss";
-    };
-  };
-
-  systemd.timers.backup-pihole-freshrss = {
-    description = "Run backup of Pi-hole and FreshRSS data daily";
-    wantedBy = [ "timers.target" ];
-    timerConfig = {
-      OnCalendar = "daily";
-      Persistent = true;
-    };
-  };
-
-  systemd.services.create-podman-network = {
-    serviceConfig.Type = "oneshot";
-    wantedBy = [
-      "podman-pihole.service"
-      "podman-freshrss.service"
-      "podman-starfeed.service"
-    ];
-    before = [
-      "podman-pihole.service"
-      "podman-freshrss.service"
-      "podman-starfeed.service"
-    ];
-    script = ''
-      # Create IPv6 network
-      ${pkgs.podman}/bin/podman network exists podman-ipv6 || \
-        ${pkgs.podman}/bin/podman network create \
-          --driver=bridge \
-          --ipv6 \
-          --disable-dns \
-          --subnet=fd00::/64 \
-          --gateway=fd00::1 \
-          podman-ipv6
-    '';
-  };
-
+  # Nix Config
   nix = {
     package = pkgs.nixVersions.stable;
     settings.experimental-features = [
