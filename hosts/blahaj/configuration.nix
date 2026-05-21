@@ -26,20 +26,33 @@ in
 
   networking = {
     hostName = "blahaj";
-    networkmanager.enable = true;
-    firewall.allowedTCPPorts = [
-      8080
-      8081
-      53
-    ];
-    firewall.allowedUDPPorts = [ 53 ];
+    useDHCP = false;
     nameservers = [
       "9.9.9.9"
       "149.112.112.112"
       "2620:fe::fe"
       "2620:fe::9"
     ];
-    interfaces.enp0s31f6.useDHCP = true;
+    firewall.allowedTCPPorts = [
+      8080
+      8081
+      53
+    ];
+    firewall.allowedUDPPorts = [ 53 ];
+  };
+
+  systemd.network = {
+    enable = true;
+    networks."10-wan" = {
+      matchConfig.Name = "enp0s31f6";
+      networkConfig = {
+        DHCP = "ipv4";
+        IPv6AcceptRA = true;
+      };
+      dhcpV4Config.UseDNS = false;
+      ipv6AcceptRAConfig.UseDNS = false;
+      linkConfig.RequiredForOnline = "routable";
+    };
   };
 
   time.timeZone = "America/Edmonton";
@@ -187,8 +200,6 @@ in
     };
 
     services = {
-
-      NetworkManager-wait-online.enable = true;
 
       cloudflare-ddns = {
         after = [ "network-online.target" ];
