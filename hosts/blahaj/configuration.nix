@@ -135,6 +135,14 @@ in
   age.secrets = {
     duckdns-token.file = ../../secrets/duckdns-token.age;
     starfeed-env.file = ../../secrets/starfeed-env.age;
+    cloudflare-ddns-token.file = ../../secrets/cloudflare-ddns-token.age;
+  };
+
+  services.cloudflare-ddns = {
+    enable = true;
+    credentialsFile = config.age.secrets.cloudflare-ddns-token.path;
+    domains = [ "megaparsec.ca" ];
+    proxied = "false";
   };
 
   services.duckdns = {

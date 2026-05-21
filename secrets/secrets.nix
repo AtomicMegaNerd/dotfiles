@@ -11,4 +11,8 @@ in
     user
     blahaj
   ];
+  "cloudflare-ddns-token.age".publicKeys = [
+    user
+    blahaj
+  ];
 }
