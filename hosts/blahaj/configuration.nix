@@ -154,6 +154,8 @@ in
   # Services Config
   services = {
 
+    resolved.enable = false;
+
     openssh = {
       enable = true;
       hostKeys = [
