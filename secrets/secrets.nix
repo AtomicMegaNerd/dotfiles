@@ -3,10 +3,6 @@ let
   blahaj = builtins.readFile ../static/blahaj_host_key;
 in
 {
-  "duckdns-token.age".publicKeys = [
-    user
-    blahaj
-  ];
   "starfeed-env.age".publicKeys = [
     user
     blahaj

@@ -134,7 +134,6 @@ in
   };
 
   age.secrets = {
-    duckdns-token.file = ../../secrets/duckdns-token.age;
     starfeed-env.file = ../../secrets/starfeed-env.age;
     cloudflare-ddns-token.file = ../../secrets/cloudflare-ddns-token.age;
   };
