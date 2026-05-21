@@ -195,19 +195,7 @@ in
 
     services = {
 
-      duckdns = {
-        after = [ "network-online.target" ];
-        wants = [ "network-online.target" ];
-        serviceConfig = {
-          Restart = "on-failure";
-          RestartSec = "10s";
-        };
-      };
-
-      cloudflare-ddns = {
-        after = [ "network-online.target" ];
-        wants = [ "network-online.target" ];
-      };
+      NetworkManager-wait-online.enable = true;
 
       backup-pihole-freshrss = {
         description = "Backup Pi-hole and FreshRSS data to /data/backups";
