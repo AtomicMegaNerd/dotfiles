@@ -25,13 +25,9 @@ in
       Host blahaj
           ForwardAgent yes
     '';
-    packages = import ../../nix/packages.nix { inherit pkgs; } ++ [
-      pkgs.monaspace
-      pkgs.nerd-fonts.monaspace
-      pkgs.github-mcp-server
-      pkgs.docker-compose
-      pkgs.nodejs # for claude-code
-    ];
+    packages =
+      import ../../nix/packages.nix { inherit pkgs; }
+      ++ import ../../nix/packages-darwin.nix { inherit pkgs; };
   };
 
   # This will write any secrets that we want to be global variables into

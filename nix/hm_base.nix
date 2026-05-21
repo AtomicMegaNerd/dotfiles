@@ -1,6 +1,5 @@
 { pkgs, ... }:
 {
-  home.shell.enableFishIntegration = true;
   programs = {
     home-manager.enable = true;
 
