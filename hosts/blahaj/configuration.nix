@@ -167,12 +167,6 @@ in
       domains = [ "megaparsec.ca" ];
       proxied = "false";
     };
-
-    duckdns = {
-      enable = true;
-      tokenFile = config.age.secrets.duckdns-token.path;
-      domains = [ "atomicmeganerd" ];
-    };
   };
 
   # Systemd Config
@@ -196,6 +190,11 @@ in
     services = {
 
       NetworkManager-wait-online.enable = true;
+
+      cloudflare-ddns = {
+        after = [ "network-online.target" ];
+        wants = [ "network-online.target" ];
+      };
 
       backup-pihole-freshrss = {
         description = "Backup Pi-hole and FreshRSS data to /data/backups";
