@@ -16,7 +16,6 @@
 
     # Imports that are more basic
     bat.enable = true;
-    fastfetch.enable = true;
     ripgrep.enable = true;
     fd.enable = true;
   };
