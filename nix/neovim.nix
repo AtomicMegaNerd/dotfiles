@@ -13,9 +13,9 @@
       withRuby = false;
       withPython3 = false;
       sideloadInitLua = true;
+      waylandSupport = false; # On blahaj we don't need this
       extraPackages = with pkgs; [
         gcc
-        nodejs-slim # Smaller nodejs for lsp's which don't need npm or npx
         tree-sitter
       ];
     };
