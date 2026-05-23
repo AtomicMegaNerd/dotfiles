@@ -15,6 +15,7 @@
     direnv = import ./direnv.nix;
 
     # Imports that are more basic
+    btop = import ./btop.nix;
     bat.enable = true;
     ripgrep.enable = true;
     fd.enable = true;
