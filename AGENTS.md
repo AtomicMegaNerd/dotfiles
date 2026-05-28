@@ -23,7 +23,7 @@
 - `hosts/` - contains host configs
 - `nix/` - rest of nix configs
 - `static/` - static files like keys
-- `secrets/` - agenix files and op (1Password cli) tpl templates
+- `secrets/` - agenix files
 
 ## More Information
 

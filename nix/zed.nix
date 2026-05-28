@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, ... }:
 {
   programs.zed-editor = {
     enable = true;
@@ -19,7 +19,6 @@
     ];
 
     userSettings = {
-      # AI and MCP
       edit_predictions = {
         provider = "copilot";
         mode = "subtle";
@@ -27,21 +26,6 @@
       agent = {
         button = false;
         tool_permissions.default = "allow";
-      };
-      context_servers = {
-        context7 = {
-          enabled = true;
-          command = "npx";
-          args = [
-            "-y"
-            "@upstash/context7-mcp"
-          ];
-        };
-        github-mcp-server = {
-          enabled = true;
-          command = "github-mcp-server";
-          args = [ "stdio" ];
-        };
       };
 
       # Remote connections

@@ -91,25 +91,6 @@
         extensions = [ ".py" ];
       };
     };
-    mcp = {
-      github = {
-        type = "local";
-        command = [
-          "github-mcp-server"
-          "stdio"
-        ];
-        enabled = true;
-      };
-      context7 = {
-        type = "local";
-        command = [
-          "npx"
-          "-y"
-          "@upstash/context7-mcp"
-        ];
-        enabled = true;
-      };
-    };
     permission = {
       bash = {
         "*" = "ask";
@@ -117,10 +98,6 @@
         "live-server *" = "allow";
       };
       edit = "ask";
-      external_directory = {
-        "~/Code/**" = "allow";
-        "~/.config/opencode/**" = "allow";
-      };
     };
   };
   tui = {

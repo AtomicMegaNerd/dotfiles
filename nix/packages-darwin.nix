@@ -2,7 +2,7 @@
 [
   pkgs.monaspace
   pkgs.nerd-fonts.monaspace
-  pkgs.github-mcp-server
   pkgs.docker-compose
+  pkgs.gh
   pkgs.nodejs # for claude-code
 ]
