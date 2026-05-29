@@ -13,9 +13,11 @@
     nh = import ./nh.nix;
     git = import ./git.nix;
     direnv = import ./direnv.nix;
+    btop = import ./btop.nix;
+    lazygit = import ./lazygit.nix;
+    lazydocker = import ./lazydocker.nix;
 
     # Imports that are more basic
-    btop = import ./btop.nix;
     bat.enable = true;
     ripgrep.enable = true;
     fd.enable = true;

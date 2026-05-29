@@ -275,7 +275,10 @@
           tab name="neovim" split_direction="vertical" {
               pane command="nvim"
           }
-          tab name="shell" split_direction="vertical" {
+          tab name="lazygit" split_direction="vertical" {
+              pane command="lazygit"
+          }
+          tab name="fish" split_direction="vertical" {
               pane command="fish"
           }
           tab name="llm" split_direction="vertical" {
