@@ -34,6 +34,9 @@
       autoUpdate = true;
       upgrade = true;
       cleanup = "zap";
+      extraFlags = [
+        "--force-cleanup"
+      ];
     };
     casks = [
       "1password" # gui password manager
