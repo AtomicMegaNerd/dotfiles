@@ -105,7 +105,6 @@
             end-of-file-fixer.enable = true;
             nixfmt.enable = true;
             markdownlint.enable = true;
-            flake-checker.enable = true;
           };
         };
 
