@@ -19,6 +19,7 @@
     ];
 
     userSettings = {
+
       edit_predictions = {
         provider = "copilot";
         mode = "subtle";
@@ -69,6 +70,7 @@
       };
 
       # Editor
+      code_lens = "on";
       semantic_tokens = "combined";
       relative_line_numbers = "enabled";
       cursor_blink = true;
