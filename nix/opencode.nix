@@ -1,7 +1,6 @@
 {
   enable = true;
   settings = {
-    autoupdate = false;
     shell = "fish";
     lsp = {
       nix = {
@@ -58,12 +57,8 @@
         command = [ "gofmt" ];
         extensions = [ ".go" ];
       };
-      prettier = {
-        command = [
-          "npx"
-          "prettier"
-          "--write"
-        ];
+      oxfmt = {
+        command = [ "oxfmt" ];
         extensions = [
           ".js"
           ".ts"
