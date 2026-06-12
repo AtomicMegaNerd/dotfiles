@@ -5,8 +5,6 @@
     package = null; # Installed via Homebrew
 
     extensions = [
-      "catppuccin"
-      "catppuccin-icons"
       "comment"
       "docker-compose"
       "dockerfile"
@@ -14,6 +12,7 @@
       "golangci-lint"
       "html"
       "nix"
+      "tokyo-night"
       "toml"
       "xml"
     ];
@@ -46,8 +45,8 @@
 
       # UI
       cursor_shape = "block";
-      icon_theme = "Catppuccin Macchiato";
-      theme = lib.mkForce "Catppuccin Macchiato - No Italics";
+      icon_theme = "Catppuccin Frappé";
+      theme = lib.mkForce "Tokyo Night Moon";
 
       # Fonts
       ui_font_size = 16;

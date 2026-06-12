@@ -5,7 +5,7 @@
 
   settings = {
     simplified_ui = true;
-    theme = "catppuccin-macchiato";
+    theme = "tokyo-night";
     default_mode = "locked";
     default_layout = "compact_with_nvim";
     session_serialization = false;

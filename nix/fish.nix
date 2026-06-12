@@ -3,7 +3,6 @@ let
   commonShellInit = ''
     set -gx GOPATH $HOME/.local/go
     set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
-    set -gx CLI_THEME "catppuccin"
     set -gx XDG_DATA_HOME "$HOME/.local/share"
     set -gx NH_FLAKE "$HOME/Code/Configs/dotfiles"
     fish_add_path $GOPATH/bin
@@ -29,6 +28,7 @@ in
   interactiveShellInit = ''
     set fish_greeting # Disable greeting
     set -e fish_key_bindings
+    fish_config theme choose tokyonight-moon
   '';
 
   shellAliases = {

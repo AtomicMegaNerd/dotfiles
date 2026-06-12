@@ -96,6 +96,6 @@
     };
   };
   tui = {
-    theme = "catppuccin-macchiato";
+    theme = "tokyonight";
   };
 }

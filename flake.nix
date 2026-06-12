@@ -7,10 +7,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    catppuccin = {
-      url = "github:catppuccin/nix";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -31,7 +27,6 @@
       nixpkgs,
       nixpkgs-unstable,
       home-manager,
-      catppuccin,
       nix-darwin,
       git-hooks,
       agenix,
@@ -74,7 +69,6 @@
           pkgs = buildPkgsConf system nixpkgs-unstable;
           modules = [
             ./hosts/${hostname}/rcd.nix
-            catppuccin.homeModules.catppuccin
           ];
         };
 

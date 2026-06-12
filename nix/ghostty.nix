@@ -4,16 +4,17 @@
   package = pkgs.ghostty-bin;
 
   settings = {
+    theme = "TokyoNight Moon";
+
     font-family = "Monaspace Argon";
-    font-size = 17;
-    font-thicken = true;
+    font-size = 16;
     font-feature = "ss01,ss02,ss03,ss04,ss05,ss06,ss07,ss08,ss09,ss10,calt,liga";
-    macos-option-as-alt = true;
+
     cursor-style = "block";
     cursor-style-blink = true;
 
-    # Remember to disable or change this if we use a light theme
-    cursor-color = "#ffffff";
+    fullscreen = true;
+    macos-option-as-alt = true;
 
     shell-integration-features = "no-cursor,ssh-env,ssh-terminfo,sudo";
   };

@@ -22,6 +22,11 @@
     ripgrep.enable = true;
     fd.enable = true;
   };
+
+  # Configure our fish theme
+  xdg.configFile."fish/themes/tokyonight-moon.theme".source =
+    ../static/themes/fish/tokyonight-moon.theme;
+
+  # Neovim is a bit different
   imports = [ ./neovim.nix ];
-  catppuccin = import ./catppuccin.nix;
 }
