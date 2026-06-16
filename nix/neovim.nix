@@ -17,6 +17,7 @@
       extraPackages = with pkgs; [
         gcc
         tree-sitter
+        nodejs-slim
       ];
     };
 
