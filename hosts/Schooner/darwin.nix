@@ -48,7 +48,6 @@
       "calibre" # managing ebooks
       "linearmouse" # better logitech mouse settings
       "finetune" # per-app volume control
-      "zed" # fast GUI editor
     ];
     enableFishIntegration = true;
     global = {
