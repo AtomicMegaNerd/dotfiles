@@ -4,6 +4,7 @@ let
     set -gx GOPATH $HOME/.local/go
     set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
     set -gx XDG_DATA_HOME "$HOME/.local/share"
+    set -gx XDG_CONFIG_HOME "$HOME/.config"
     set -gx NH_FLAKE "$HOME/Code/Configs/dotfiles"
     fish_add_path $GOPATH/bin
     fish_add_path $HOME/.local/bin
@@ -66,11 +67,4 @@ in
       end
     '';
   };
-
-  plugins = [
-    {
-      name = "grc";
-      src = pkgs.fishPlugins.grc.src;
-    }
-  ];
 }

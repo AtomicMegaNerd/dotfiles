@@ -5,9 +5,9 @@
   pkgs.wget
   pkgs.dust
   pkgs.duf
-  pkgs.grc
   pkgs.zip
   pkgs.unzip
+  pkgs.procs
   pkgs.jq
   pkgs.tree
   pkgs.glow
