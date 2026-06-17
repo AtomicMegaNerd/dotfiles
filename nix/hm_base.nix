@@ -23,9 +23,12 @@
     fd.enable = true;
   };
 
-  # Configure our fish theme
-  xdg.configFile."fish/themes/tokyonight-moon.theme".source =
-    ../static/themes/fish/tokyonight-moon.theme;
+  xdg = {
+    enable = true;
+    configFile."fish/themes/tokyonight-moon.theme".source = ../static/themes/fish/tokyonight-moon.theme;
+    configFile."fish/themes/tokyonight-storm.theme".source =
+      ../static/themes/fish/tokyonight-storm.theme;
+  };
 
   # Neovim is a bit different
   imports = [ ./neovim.nix ];

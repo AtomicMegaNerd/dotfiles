@@ -29,7 +29,7 @@ in
   interactiveShellInit = ''
     set fish_greeting # Disable greeting
     set -e fish_key_bindings
-    fish_config theme choose tokyonight-moon
+    fish_config theme choose tokyonight-storm
   '';
 
   shellAliases = {
