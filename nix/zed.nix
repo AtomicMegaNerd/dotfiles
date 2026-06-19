@@ -12,17 +12,19 @@
     "tokyo-night"
     "toml"
     "xml"
+    "zed-icons-colored-theme"
   ];
 
   userSettings = {
+
+    agent = {
+      button = false;
+    };
+
     # Smart tab completion
     edit_predictions = {
       provider = "copilot";
       mode = "subtle";
-    };
-
-    agent = {
-      button = false;
     };
 
     # Remote connections
@@ -42,7 +44,7 @@
 
     # UI
     cursor_shape = "block";
-    icon_theme = "";
+    icon_theme = "Colored Zed Icons Theme Dark";
     theme = "Tokyo Night Moon";
 
     # Fonts
@@ -116,47 +118,55 @@
           "gopls"
           "golangci-lint"
         ];
+        formatter.language_server.name = "gopls";
       };
       Rust.format_on_save = "on";
       JavaScript = {
         tab_size = 2;
         format_on_save = "on";
-        formatter.language_server.name = "prettier";
+        formatter.language_server.name = "biome";
+        language_servers = [
+          "biome"
+          "tsgo"
+        ];
       };
       TypeScript = {
         tab_size = 2;
         format_on_save = "on";
-        formatter.language_server.name = "prettier";
+        formatter.language_server.name = "biome";
+        language_servers = [
+          "biome"
+          "tsgo"
+        ];
       };
       TSX = {
         tab_size = 2;
         format_on_save = "on";
-        formatter.language_server.name = "prettier";
+        formatter.language_server.name = "biome";
+        language_servers = [
+          "biome"
+          "tsgo"
+        ];
       };
       HTML = {
         tab_size = 2;
         format_on_save = "on";
-        formatter.language_server.name = "prettier";
+        formatter.language_server.name = "biome";
       };
       CSS = {
         tab_size = 2;
         format_on_save = "on";
-        formatter.language_server.name = "prettier";
+        formatter.language_server.name = "biome";
       };
       YAML = {
         format_on_save = "on";
-        formatter.language_server.name = "prettier";
+        formatter.language_server.name = "biome";
       };
       Markdown = {
         tab_size = 2;
         format_on_save = "on";
         soft_wrap = "preferred_line_length";
-        formatter.language_server.name = "prettier";
-      };
-      "Shell Script".hard_tabs = true;
-      Lua = {
-        tab_size = 2;
-        format_on_save = "on";
+        formatter.language_server.name = "oxfmt";
       };
       Nix = {
         tab_size = 2;
@@ -166,10 +176,34 @@
       JSON = {
         tab_size = 2;
         format_on_save = "on";
+        formatter.language_server.name = "biome";
       };
       JSONC = {
         tab_size = 2;
         format_on_save = "on";
+        formatter.language_server.name = "biome";
+      };
+      Lua = {
+        tab_size = 2;
+        format_on_save = "on";
+        language_servers = [ "lua_ls" ];
+        formatter.language_server.name = "lua_ls";
+      };
+      "Shell Script" = {
+        tab_size = 2;
+        language_servers = [ "bashls" ];
+      };
+      Dockerfile = {
+        tab_size = 4;
+        language_servers = [ "docker_language_server" ];
+      };
+      XML = {
+        tab_size = 2;
+        language_servers = [ "lemminx" ];
+      };
+      Nushell = {
+        tab_size = 4;
+        language_servers = [ "nushell" ];
       };
     };
 
@@ -181,9 +215,42 @@
           unusedparams = true;
           shadow = true;
         };
+        completeUnimported = true;
+        usePlaceholders = true;
+        deepCompletion = true;
+        matcher = "fuzzy";
+        semanticTokens = true;
         staticcheck = false;
+        codelenses = {
+          generate = true;
+          gc_details = true;
+        };
+        hints = {
+          assignVariableTypes = true;
+          compositeLiteralFields = true;
+          compositeLiteralTypes = true;
+          constantValues = true;
+          functionTypeParameters = true;
+          parameterNames = true;
+          rangeVariableTypes = true;
+        };
       };
-      yaml-language-server.settings.yaml.keyOrdering = false;
+      yaml-language-server.settings.yaml = {
+        keyOrdering = false;
+        validate = false;
+      };
+      lua_ls.settings.Lua = {
+        codeLens.enable = true;
+        hint = {
+          enable = true;
+          semicolon = "Disable";
+        };
+        runtime.version = "LuaJIT";
+        workspace = {
+          checkThirdParty = false;
+          library = [ ];
+        };
+      };
       golangci-lint.initialization_options.command = [
         "golangci-lint"
         "run"
@@ -222,7 +289,6 @@
 
     file_finder = {
       file_icons = true;
-      git_status = true;
       modal_max_width = "large";
     };
 
