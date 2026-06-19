@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
 let
   rcdPubKey = builtins.readFile ../../static/rcd_pub_key;
@@ -29,6 +29,9 @@ in
       ++ import ../../nix/packages-darwin.nix { inherit pkgs; };
   };
 
-  programs.ghostty = import ../../nix/ghostty.nix { inherit pkgs; };
-  programs.opencode = import ../../nix/opencode.nix;
+  programs = {
+    zed-editor = import ../../nix/zed.nix;
+    ghostty = import ../../nix/ghostty.nix { inherit pkgs; };
+    opencode = import ../../nix/opencode.nix;
+  };
 }
