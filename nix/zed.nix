@@ -15,13 +15,14 @@
   ];
 
   userSettings = {
+    # Smart tab completion
     edit_predictions = {
       provider = "copilot";
       mode = "subtle";
     };
+
     agent = {
       button = false;
-      tool_permissions.default = "allow";
     };
 
     # Remote connections
@@ -41,7 +42,7 @@
 
     # UI
     cursor_shape = "block";
-    icon_theme = "Catppuccin Frappé";
+    icon_theme = "";
     theme = "Tokyo Night Moon";
 
     # Fonts
