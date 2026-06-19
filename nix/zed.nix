@@ -262,7 +262,7 @@
 
     # Title bar / chrome
     title_bar = {
-      show_branch_icon = true;
+      show_branch_status_icon = true;
       show_branch_name = true;
       show_project_items = true;
       show_onboarding_banner = false;
