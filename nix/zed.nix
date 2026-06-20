@@ -17,6 +17,12 @@
 
   userSettings = {
 
+    agent_servers = {
+      opencode = {
+        type = "registry";
+      };
+    };
+
     agent = {
       button = false;
     };
@@ -45,27 +51,12 @@
     # UI
     cursor_shape = "block";
     icon_theme = "Colored Zed Icons Theme Dark";
-    theme = "Tokyo Night Moon";
+    theme = "Tokyo Night Storm";
 
     # Fonts
-    ui_font_size = 16;
-    buffer_font_size = 16;
+    ui_font_size = 18;
+    buffer_font_size = 18;
     buffer_font_family = "Monaspace Argon Var";
-    buffer_font_weight = 500;
-    buffer_font_features = {
-      ss01 = true;
-      ss02 = true;
-      ss03 = true;
-      ss04 = true;
-      ss05 = true;
-      ss06 = true;
-      ss07 = true;
-      ss08 = true;
-      ss09 = true;
-      ss10 = true;
-      liga = true;
-      calt = true;
-    };
 
     # Editor
     code_lens = "on";
@@ -82,7 +73,7 @@
     terminal = {
       button = false;
       font_family = "Monaspace Argon Var";
-      font_size = 16;
+      font_size = 18;
       blinking = "on";
       shell.program = "fish";
       detect_venv.on.activate_script = "fish";
@@ -260,6 +251,28 @@
       ];
     };
 
+    # Semantic token overrides
+    global_lsp_settings = {
+      semantic_token_rules = [
+        {
+          token_type = "parameter";
+          foreground_color = "#e0af68";
+        }
+        {
+          token_type = "namespace";
+          foreground_color = "#7aa2f7";
+        }
+        {
+          token_type = "property";
+          foreground_color = "#73daca";
+        }
+        {
+          token_type = "variable.member";
+          foreground_color = "#73daca";
+        }
+      ];
+    };
+
     # Title bar / chrome
     title_bar = {
       show_branch_status_icon = true;
@@ -344,6 +357,7 @@
         "\\ f b" = "tab_switcher::Toggle";
         "\\ f l" = "pane::DeploySearch";
         "\\ f d" = "diagnostics::Deploy";
+        "\\ f f" = "file_finder::Toggle";
         "\\ f s" = "outline::Toggle";
         "\\ f w" = "project_symbols::Toggle";
         "\\ f r" = "editor::FindAllReferences";
@@ -360,24 +374,6 @@
         "g l" = "editor::GoToDeclaration";
         "g t" = "editor::GoToTypeDefinition";
       };
-    }
-    {
-      bindings."\\ f f" = [
-        "task::Spawn"
-        {
-          task_name = "Television File Finder";
-          reveal_target = "center";
-        }
-      ];
-    }
-  ];
-  userTasks = [
-    {
-      label = "Television File Finder";
-      command = "zed \"$(tv files)\"";
-      hide = "always";
-      allow_concurrent_runs = true;
-      use_new_terminal = true;
     }
   ];
 }
