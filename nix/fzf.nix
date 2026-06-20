@@ -1,6 +1,6 @@
 {
   enable = true;
-  enableFishIntegration = true;
+  enableFishIntegration = false;
   defaultOptions = [
     "--highlight-line"
     "--info=inline-right"

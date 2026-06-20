@@ -36,8 +36,8 @@ I use [cloudflare-ddns](https://github.com/favonia/cloudflare-ddns) via the NixO
 `services.cloudflare-ddns` module to automatically update A and AAAA records for `megaparsec.ca`.
 This runs alongside DuckDNS.
 
-**NOTE:** There is no need to manually create A or AAAA records in Cloudflare first. The service
-will automatically create them on first run if they don't already exist.
+**NOTE** There is no need to manually create A or AAAA records in Cloudflare first. The service will
+automatically create them on first run if they don't already exist.
 
 ### Create a Cloudflare API Token
 

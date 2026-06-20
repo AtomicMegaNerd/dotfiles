@@ -16,6 +16,8 @@
     btop = import ./btop.nix;
     lazygit = import ./lazygit.nix;
     lazydocker = import ./lazydocker.nix;
+    television = import ./television.nix;
+    nushell = import ./nushell.nix;
 
     # Imports that are more basic
     bat.enable = true;
