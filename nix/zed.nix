@@ -201,21 +201,16 @@
     # LSP
     lsp = {
       gopls.settings = {
-        gofumpt = true;
+        gofumpt = false;
         analyses = {
           unusedparams = true;
           shadow = true;
         };
         completeUnimported = true;
-        usePlaceholders = true;
         deepCompletion = true;
         matcher = "fuzzy";
         semanticTokens = true;
         staticcheck = false;
-        codelenses = {
-          generate = true;
-          gc_details = true;
-        };
         hints = {
           assignVariableTypes = true;
           compositeLiteralFields = true;
