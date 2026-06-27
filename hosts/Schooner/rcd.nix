@@ -30,7 +30,6 @@ in
   };
 
   programs = {
-    zed-editor = import ../../nix/zed.nix;
     ghostty = import ../../nix/ghostty.nix { inherit pkgs; };
     opencode = import ../../nix/opencode.nix;
   };
