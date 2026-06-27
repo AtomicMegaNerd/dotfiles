@@ -19,6 +19,10 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    superfile = {
+      url = "github:yorukot/superfile";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs =
@@ -30,6 +34,7 @@
       nix-darwin,
       git-hooks,
       agenix,
+      superfile,
     }:
     let
       systems = {
@@ -42,13 +47,6 @@
         import pkg_src {
           inherit system;
           config.allowUnfree = true;
-          overlays = [
-            (final: prev: {
-              direnv = prev.direnv.overrideAttrs (_: {
-                doCheck = false;
-              });
-            })
-          ];
         };
 
       # This is for building NixOS configurations, where we are running the full NixOS Linux
@@ -69,6 +67,9 @@
           pkgs = buildPkgsConf system nixpkgs-unstable;
           modules = [
             ./hosts/${hostname}/rcd.nix
+            {
+              programs.superfile.package = superfile.packages.${system}.default;
+            }
           ];
         };
 
