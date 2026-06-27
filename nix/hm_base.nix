@@ -4,25 +4,26 @@
     home-manager.enable = true;
 
     # Imports with more complex logic
-    fish = import ./fish.nix { inherit pkgs; };
-    zellij = import ./zellij.nix { inherit pkgs; };
-    starship = import ./starship.nix;
-    eza = import ./eza.nix;
-    fzf = import ./fzf.nix;
-    zoxide = import ./zoxide.nix;
-    nh = import ./nh.nix;
-    git = import ./git.nix;
-    direnv = import ./direnv.nix;
     btop = import ./btop.nix;
+    direnv = import ./direnv.nix;
+    eza = import ./eza.nix;
+    fish = import ./fish.nix { inherit pkgs; };
+    fzf = import ./fzf.nix;
+    git = import ./git.nix;
     lazygit = import ./lazygit.nix;
     lazydocker = import ./lazydocker.nix;
-    television = import ./television.nix;
+    nh = import ./nh.nix;
     nushell = import ./nushell.nix;
+    starship = import ./starship.nix;
+    superfile = import ./superfile.nix;
+    television = import ./television.nix;
+    zellij = import ./zellij.nix { inherit pkgs; };
+    zoxide = import ./zoxide.nix;
 
     # Imports that are more basic
     bat.enable = true;
-    ripgrep.enable = true;
     fd.enable = true;
+    ripgrep.enable = true;
   };
 
   xdg = {
