@@ -42,7 +42,6 @@ in
     za = "zellij a";
     zk = "zellij k";
     zka = "zellij ka";
-    zed = "zeditor";
   };
 
   functions = {
