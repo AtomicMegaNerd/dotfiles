@@ -31,7 +31,6 @@
       options = {
         focus_follows_mouse = false;
         mouse_follows_focus = true;
-        window_resize_cycle = false;
         preset_column_widths = [
           0.25
           0.33
@@ -50,8 +49,6 @@
         window_focus_west = "cmd - h";
         window_focus_east = "cmd - l";
         window_resize = "alt - r";
-        window_shrink = "alt - s";
-        window_fullscreen = "shift + alt + f";
         window_center = "alt - c";
         quit = "ctrl + alt - q";
       };
