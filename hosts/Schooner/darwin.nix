@@ -28,11 +28,10 @@
     # Paneru configuration
     # See CONFIGURATION.md for a list of all options
     settings = {
-
       options = {
         focus_follows_mouse = false;
         mouse_follows_focus = true;
-        auto_center = true;
+        window_resize_cycle = false;
         preset_column_widths = [
           0.25
           0.33
@@ -43,12 +42,10 @@
         ];
         animation_speed = 15;
       };
-
       decorations = {
         workspace_menu_status = false;
         workspace_popup_status = false;
       };
-
       bindings = {
         window_focus_west = "cmd - h";
         window_focus_east = "cmd - l";
@@ -56,13 +53,7 @@
         window_center = "alt - c";
         quit = "ctrl + alt - q";
       };
-
       windows = {
-        all = {
-          title = ".*";
-          horizontal_padding = 5;
-        };
-
         ghostty = {
           title = ".*";
           bundle_id = "com.mitchellh.ghostty";
