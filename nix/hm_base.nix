@@ -36,6 +36,5 @@
   # Neovim is a bit different
   imports = [
     ./neovim.nix
-    ./zed.nix
   ];
 }

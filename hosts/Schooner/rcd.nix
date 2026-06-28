@@ -6,6 +6,7 @@ in
 {
   imports = [
     ../../nix/hm_base.nix
+    ../../nix/zed.nix
   ];
 
   home = {
