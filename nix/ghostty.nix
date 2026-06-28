@@ -12,7 +12,6 @@
     cursor-style = "block";
     cursor-style-blink = true;
 
-    fullscreen = true;
     macos-option-as-alt = true;
 
     shell-integration-features = "no-cursor,ssh-env,ssh-terminfo,sudo";
