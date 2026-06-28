@@ -50,6 +50,8 @@
         window_focus_west = "cmd - h";
         window_focus_east = "cmd - l";
         window_resize = "alt - r";
+        window_shrink = "alt - s";
+        window_fullscreen = "shift + alt + f";
         window_center = "alt - c";
         quit = "ctrl + alt - q";
       };
