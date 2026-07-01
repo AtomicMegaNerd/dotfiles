@@ -47,6 +47,7 @@
       "linearmouse" # better logitech mouse settings
       "finetune" # per-app volume control
       "zed" # text editor
+      "amethyst" # tiling WM
     ];
     enableFishIntegration = true;
     global = {
