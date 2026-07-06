@@ -15,7 +15,6 @@
     nh = import ./nh.nix;
     nushell = import ./nushell.nix;
     starship = import ./starship.nix;
-    superfile = import ./superfile.nix;
     television = import ./television.nix;
     zellij = import ./zellij.nix { inherit pkgs; };
     zoxide = import ./zoxide.nix;

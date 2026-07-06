@@ -19,10 +19,6 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    superfile = {
-      url = "github:yorukot/superfile";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
   };
 
   outputs =
@@ -34,7 +30,6 @@
       nix-darwin,
       git-hooks,
       agenix,
-      superfile,
     }:
     let
       systems = {
@@ -67,9 +62,6 @@
           pkgs = buildPkgsConf system nixpkgs-unstable;
           modules = [
             ./hosts/${hostname}/rcd.nix
-            {
-              programs.superfile.package = superfile.packages.${system}.default;
-            }
           ];
         };
 
@@ -81,6 +73,7 @@
           pkgs = buildPkgsConf system nixpkgs-unstable;
           modules = [
             ./hosts/${hostname}/darwin.nix
+
           ];
         };
 
