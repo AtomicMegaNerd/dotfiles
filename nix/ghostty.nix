@@ -7,7 +7,7 @@
     theme = "TokyoNight Storm";
 
     font-family = "Monaspace Argon";
-    font-size = 18;
+    font-size = 16;
 
     cursor-style = "block";
     cursor-style-blink = true;
