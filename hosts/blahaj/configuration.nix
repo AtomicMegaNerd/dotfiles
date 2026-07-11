@@ -9,6 +9,7 @@ let
   rcd_pub_key = builtins.readFile ../../static/rcd_pub_key;
 
   backupScript = pkgs.writeShellScriptBin "backup-pihole-freshrss" ''
+    set -euo pipefail
     ${pkgs.rsync}/bin/rsync -a --delete /etc/pihole/ /data/backups/pihole/
     ${pkgs.rsync}/bin/rsync -a --delete /etc/dnsmasq.d/ /data/backups/pihole/dnsmasq.d/
     ${pkgs.rsync}/bin/rsync -a --delete /etc/freshrss/data/ /data/backups/freshrss/data/
@@ -72,7 +73,7 @@ in
   };
 
   programs.fish.enable = true;
-  programs.nix-ld.enable = true;
+  programs.nix-ld.enable = true; # Allow running unpatched Linux binaries
   programs.neovim.enable = true;
   programs.starship.enable = true;
   programs.git.enable = true;

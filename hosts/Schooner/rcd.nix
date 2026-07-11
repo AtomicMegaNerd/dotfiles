@@ -1,8 +1,5 @@
 { pkgs, ... }:
 
-let
-  rcdPubKey = builtins.readFile ../../static/rcd_pub_key;
-in
 {
   imports = [
     ../../nix/hm_base.nix
@@ -14,7 +11,6 @@ in
     uid = 501;
     homeDirectory = "/Users/rcd";
     stateVersion = "24.11";
-    file.".ssh/allowed_signers".text = "${rcdPubKey}";
     file.".ssh/config".text = ''
       Host *
         IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"

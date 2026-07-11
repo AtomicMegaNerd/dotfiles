@@ -26,6 +26,8 @@
   nix.optimise.automatic = true;
   ids.gids.nixbld = 350;
 
+  launchd.daemons.nix-daemon.environment.ULIMIT = "10240";
+
   programs.fish.enable = true;
 
   homebrew = {

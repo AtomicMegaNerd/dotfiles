@@ -23,7 +23,7 @@ repo for that that we just clone to `~/.config/nvim`:
 
 | Host     | OS    | Platform       | OS Version | HM Version | Notes       |
 | -------- | ----- | -------------- | ---------- | ---------- | ----------- |
-| blahaj   | NixOS | x86-64-linux   | 25.11      | unstable   | Server      |
+| blahaj   | NixOS | x86-64-linux   | 26.05      | unstable   | Server      |
 | Schooner | macOS | aarch64-darwin | unstable   | unstable   | MacBook Air |
 
 We use `nh` which is a wrapper around `nix` to make it easier to manage our Nix systems. See
