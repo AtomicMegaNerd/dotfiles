@@ -8,13 +8,7 @@ in
     text = "${rcdPubKey}\n";
   };
 
-  catppuccin = {
-    autoEnable = true;
-    enable = true;
-    accent = "sky";
-    # Neovim is configured separately
-    nvim.enable = false;
-  };
+  catppuccin = import ./catppuccin.nix;
 
   programs = {
     home-manager.enable = true;

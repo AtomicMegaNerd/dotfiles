@@ -53,7 +53,6 @@
           modules = [
             ./hosts/${hostname}/configuration.nix
             agenix.nixosModules.default
-            catppuccin.nixosModules.catppuccin
           ];
         };
 
