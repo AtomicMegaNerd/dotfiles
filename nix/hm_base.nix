@@ -8,6 +8,14 @@ in
     text = "${rcdPubKey}\n";
   };
 
+  catppuccin = {
+    autoEnable = true;
+    enable = true;
+    accent = "sky";
+    # Neovim is configured separately
+    nvim.enable = false;
+  };
+
   programs = {
     home-manager.enable = true;
 
@@ -36,9 +44,6 @@ in
 
   xdg = {
     enable = true;
-    configFile."fish/themes/tokyonight-moon.theme".source = ../static/themes/fish/tokyonight-moon.theme;
-    configFile."fish/themes/tokyonight-storm.theme".source =
-      ../static/themes/fish/tokyonight-storm.theme;
   };
 
   # Neovim is a bit different

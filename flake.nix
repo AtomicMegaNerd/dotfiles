@@ -19,6 +19,10 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    catppuccin = {
+      url = "github:catppuccin/nix";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs =
@@ -30,6 +34,7 @@
       nix-darwin,
       git-hooks,
       agenix,
+      catppuccin,
     }:
     let
       systems = {
@@ -53,6 +58,7 @@
           modules = [
             ./hosts/${hostname}/configuration.nix
             agenix.nixosModules.default
+            catppuccin.nixosModules.catppuccin
           ];
         };
 
@@ -62,6 +68,7 @@
           pkgs = buildPkgsConf system nixpkgs-unstable;
           modules = [
             ./hosts/${hostname}/rcd.nix
+            catppuccin.homeModules.catppuccin
           ];
         };
 

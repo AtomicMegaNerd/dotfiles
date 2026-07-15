@@ -4,7 +4,6 @@
   package = pkgs.ghostty-bin;
 
   settings = {
-    theme = "TokyoNight Storm";
 
     font-family = "Monaspace Argon";
     font-size = 16;

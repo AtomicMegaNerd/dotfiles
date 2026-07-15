@@ -5,7 +5,6 @@
 
   settings = {
     simplified_ui = true;
-    theme = "tokyonight_storm";
     default_mode = "locked";
     default_layout = "compact_with_nvim";
     session_serialization = false;
@@ -288,25 +287,4 @@
     '';
   };
 
-  themes = {
-    tokyonight_storm = ''
-      themes {
-        tokyonight_storm {
-          fg "#c0caf5"
-          bg "#292e42"
-          // Black should match the terminal background color
-          // This ensures the top and bottom bars are transparent
-          black "#24283b"
-          red "#f7768e"
-          green "#9ece6a"
-          yellow "#e0af68"
-          blue "#7aa2f7"
-          magenta "#bb9af7"
-          cyan "#7dcfff"
-          white "#a9b1d6"
-          orange "#ff9e64"
-        }
-      }
-    '';
-  };
 }
