@@ -1,5 +1,11 @@
 { config, ... }:
 {
+  users.users.starfeed = {
+    isSystemUser = true;
+    uid = 65532;
+    group = "nogroup";
+  };
+
   virtualisation.oci-containers.containers.starfeed = {
     autoStart = true;
     image = "atomicmeganerd/starfeed:0.5.0";
@@ -20,6 +26,7 @@
 
   age.secrets.starfeed-config = {
     file = ../../secrets/starfeed-config.age;
-    mode = "0444";
+    owner = "starfeed";
+    mode = "0400";
   };
 }
