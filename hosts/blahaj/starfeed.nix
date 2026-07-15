@@ -18,5 +18,8 @@
     before = [ "podman-starfeed.service" ];
   };
 
-  age.secrets.starfeed-config.file = ../../secrets/starfeed-config.age;
+  age.secrets.starfeed-config = {
+    file = ../../secrets/starfeed-config.age;
+    mode = "0444";
+  };
 }
