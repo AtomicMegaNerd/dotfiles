@@ -11,10 +11,6 @@
       url = "github:nix-darwin/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    git-hooks = {
-      url = "github:cachix/git-hooks.nix";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -32,7 +28,6 @@
       nixpkgs-unstable,
       home-manager,
       nix-darwin,
-      git-hooks,
       agenix,
       catppuccin,
     }:
@@ -84,25 +79,6 @@
           ];
         };
 
-      buildPreCommitCheck =
-        system:
-        git-hooks.lib.${system}.run {
-          src = ./.;
-          hooks = {
-            oxfmt = {
-              enable = true;
-              name = "oxfmt";
-              entry = "oxfmt .";
-              pass_filenames = false;
-            };
-            trim-trailing-whitespace.enable = true;
-            mixed-line-endings.enable = true;
-            end-of-file-fixer.enable = true;
-            nixfmt.enable = true;
-            markdownlint.enable = true;
-          };
-        };
-
     in
     {
       nixosConfigurations = {
@@ -120,10 +96,6 @@
         "rcd@Schooner" = buildHomeMgrConf systems.darwin "Schooner";
       };
 
-      checks = nixpkgs.lib.genAttrs (builtins.attrValues systems) (system: {
-        pre-commit-check = buildPreCommitCheck system;
-      });
-
       devShells = nixpkgs.lib.genAttrs (builtins.attrValues systems) (
         system:
         let
@@ -131,7 +103,6 @@
         in
         {
           default = pkgs.mkShell {
-            inherit (self.checks.${system}.pre-commit-check) shellHook;
             packages = [
               pkgs.nixfmt
               pkgs.nil

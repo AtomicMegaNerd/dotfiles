@@ -13,7 +13,6 @@
 - Uses [op](https://www.1password.dev/cli)
 - Uses [git-hooks](https://github.com/cachix/git-hooks.nix)
 - LSP's and linters included in flake.
-- Use `pre-commit run` to run all linters
 - Run `nix flake check` to validate nix config.
 
 ## Repo Structure
