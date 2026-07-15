@@ -7,6 +7,10 @@ in
     user
     blahaj
   ];
+  "starfeed-config.age".publicKeys = [
+    user
+    blahaj
+  ];
   "cloudflare-ddns-token.age".publicKeys = [
     user
     blahaj
