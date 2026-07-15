@@ -2,11 +2,14 @@
 {
   virtualisation.oci-containers.containers.starfeed = {
     autoStart = true;
-    image = "atomicmeganerd/starfeed:0.4.1";
-    environmentFiles = [ config.age.secrets.starfeed-env.path ];
+    image = "atomicmeganerd/starfeed:0.5.0";
+    environment = {
+      STARFEED_CONFIG_PATH = "/app/starfeed.toml";
+    };
     dependsOn = [ "freshrss" ];
     extraOptions = [
       "--network=podman-ipv6"
+      "--volume=${config.age.secrets.starfeed-config.path}:/app/starfeed.toml:ro"
     ];
   };
 
@@ -15,5 +18,5 @@
     before = [ "podman-starfeed.service" ];
   };
 
-  age.secrets.starfeed-env.file = ../../secrets/starfeed-env.age;
+  age.secrets.starfeed-config.file = ../../secrets/starfeed-config.age;
 }

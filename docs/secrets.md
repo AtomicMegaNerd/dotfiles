@@ -51,19 +51,18 @@ Now run `nh os rebuild .` — agenix will be able to decrypt the secrets
 **If you lose the key:** You can generate a new host key and re-encrypt the secrets by updating
 `static/blahaj_host_key` with the new public key and running `agenix rekey`.
 
----
-
 ## Schooner
 
-We use op to write any secrets that we want to be user-wide environment variables. For example:
+Typically we keep or private key in 1Password, but we have to temporarily export it to `~/.ssh` to
+edit these encrypted files. We can then delete the private key when done.
 
-Edit the file `./secrets/credentials.fish.tpl`:
-
-```fish
-set -gx CONTEXT7_API_KEY "op://Private/Context7/api-key"
+```bash
+op read op://Private/RCD\ 2022\ SSH\ Key/private\ key > ~/.ssh/id_ed25519
+chmod 600 ~/.ssh/id_ed25519
 ```
 
-When we run `nh home switch .` we will have to authenticate to `op` after which it will write the
-secrets to `~/.config/fish/conf.d/credentials.fish`.
+When done:
 
-**IMPORTANT** the file `~/.config/fish/conf.d/credentials.fish` **MUST** be in `.gitignore`!
+```bash
+rm ~/.ssh/id_ed25519
+```
