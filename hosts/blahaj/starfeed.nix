@@ -1,4 +1,7 @@
 { config, ... }:
+let
+  starfeedConf = "/app/starfeed.toml";
+in
 {
   # This user maps to the UID of the default noroot user in the distroless images like
   # gcr.io/distroless/static-debian13:nonroot. We need to give this user permissions to
@@ -20,12 +23,12 @@
     autoStart = true;
     image = "atomicmeganerd/starfeed:0.5.0";
     environment = {
-      STARFEED_CONFIG_PATH = "/app/starfeed.toml";
+      STARFEED_CONFIG_PATH = starfeedConf;
     };
     dependsOn = [ "freshrss" ];
     extraOptions = [
       "--network=podman-ipv6"
-      "--volume=${config.age.secrets.starfeed-config.path}:/app/starfeed.toml:ro"
+      "--volume=${config.age.secrets.starfeed-config.path}:${starfeedConf}:ro"
     ];
   };
 
