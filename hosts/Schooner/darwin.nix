@@ -16,14 +16,19 @@
     gc = {
       automatic = true;
       interval = {
-        Weekday = 0;
         Hour = 2;
         Minute = 0;
       };
       options = "--delete-older-than 10d";
     };
 
-    optimise.automatic = true;
+    optimise = {
+      automatic = true;
+      interval = {
+        Hour = 3;
+        Minute = 30;
+      };
+    };
   };
 
   ids.gids.nixbld = 350;
