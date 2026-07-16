@@ -21,10 +21,6 @@
         command = [ "lua-language-server" ];
         extensions = [ ".lua" ];
       };
-      python = {
-        command = [ "ruff" ];
-        extensions = [ ".py" ];
-      };
       yaml = {
         command = [ "yaml-language-server" ];
         args = [ "--stdio" ];
@@ -79,13 +75,6 @@
       lua = {
         command = [ "stylua" ];
         extensions = [ ".lua" ];
-      };
-      python = {
-        command = [
-          "ruff"
-          "format"
-        ];
-        extensions = [ ".py" ];
       };
     };
     mcp = {
