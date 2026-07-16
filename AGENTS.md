@@ -22,6 +22,11 @@
 - `static/` - static files like keys
 - `secrets/` - agenix files
 
+## Guidelines
+
+- Write nix whenever possible.
+- Use `gh` to check the sources of any relevant nix modules.
+
 ## More Information
 
 Load these as needed:
