@@ -48,6 +48,7 @@
       "linearmouse" # better logitech mouse settings
       "finetune" # per-app volume control
       "amethyst" # tiling WM
+      "ghostty" # terminal app
     ];
     enableFishIntegration = true;
     global = {

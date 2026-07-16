@@ -27,7 +27,7 @@
   };
 
   programs = {
-    ghostty = import ../../nix/ghostty.nix { inherit pkgs; };
+    ghostty = import ../../nix/ghostty.nix;
     opencode = import ../../nix/opencode.nix { inherit lib; };
   };
 }
