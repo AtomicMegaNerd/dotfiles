@@ -1,5 +1,4 @@
 { pkgs, lib, ... }:
-
 {
   imports = [
     ../../nix/hm_base.nix
@@ -8,7 +7,6 @@
 
   home = {
     username = "rcd";
-    uid = 501;
     homeDirectory = "/Users/rcd";
     stateVersion = "24.11";
     file.".ssh/config".text = ''
@@ -21,13 +19,15 @@
       Host blahaj
           ForwardAgent yes
     '';
-    packages =
-      import ../../nix/packages.nix { inherit pkgs; }
-      ++ import ../../nix/packages-darwin.nix { inherit pkgs; };
+    packages = import ../../nix/packages.nix { inherit pkgs; } ++ [
+      pkgs.docker-compose
+      pkgs.podman
+    ];
   };
 
   programs = {
     ghostty = import ../../nix/ghostty.nix;
     opencode = import ../../nix/opencode.nix { inherit lib; };
+    gh.enable = true;
   };
 }

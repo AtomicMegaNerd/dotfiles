@@ -4,31 +4,35 @@
   system.stateVersion = 4;
   system.primaryUser = "rcd";
 
-  nix.settings = {
-    experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
-    max-jobs = "auto";
-    trusted-users = [ "@admin" ];
-  };
-
-  nix.gc = {
-    automatic = true;
-    interval = {
-      Weekday = 0;
-      Hour = 2;
-      Minute = 0;
+  nix = {
+    settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+      trusted-users = [ "@admin" ];
     };
-    options = "--delete-older-than 30d";
+
+    gc = {
+      automatic = true;
+      interval = {
+        Weekday = 0;
+        Hour = 2;
+        Minute = 0;
+      };
+      options = "--delete-older-than 10d";
+    };
+
+    optimise.automatic = true;
   };
 
-  nix.optimise.automatic = true;
   ids.gids.nixbld = 350;
 
-  launchd.daemons.nix-daemon.environment.ULIMIT = "10240";
-
   programs.fish.enable = true;
+
+  fonts.packages = with pkgs; [
+    monaspace
+  ];
 
   homebrew = {
     enable = true;
@@ -55,10 +59,6 @@
       autoUpdate = true;
     };
   };
-
-  environment.systemPackages = with pkgs; [
-    podman
-  ];
 
   security.pam.services.sudo_local.touchIdAuth = true;
 }
