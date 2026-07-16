@@ -4,8 +4,10 @@
     "bash": {
       "gh *nix-community*": "allow",
       "gh *nixos*": "allow",
-      "nix flake check": "allow"
-      "nh search *": "allow"
+      "nh search *": "allow",
+      "nix flake check *": "allow",
+      "nix flake info *": "allow",
+      "nix flake show *": "allow"
     }
   }
 }

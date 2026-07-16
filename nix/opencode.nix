@@ -143,7 +143,9 @@
         "git log *" = "allow";
         "git diff *" = "allow";
         "git show *" = "allow";
-        "git branch *" = "allow";
+        "git branch" = "allow";
+        "git branch -l *" = "allow";
+        "git branch --list *" = "allow";
         "git remote *" = "allow";
         "git stash list *" = "allow";
       };
