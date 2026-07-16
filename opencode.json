@@ -8,6 +8,7 @@
       "nix flake check *": "allow",
       "nix flake info *": "allow",
       "nix flake show *": "allow"
+      "nixfmt *": "allow",
     }
   }
 }

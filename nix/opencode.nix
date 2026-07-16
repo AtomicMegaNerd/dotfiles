@@ -148,6 +148,10 @@
         "git branch --list *" = "allow";
         "git remote *" = "allow";
         "git stash list *" = "allow";
+        "yamllint *" = "allow";
+        "biome *" = "allow";
+        "markdownlint-cli2 *" = "allow";
+        "oxfmt *" = "allow";
       };
       external_directory = {
         "~/Code/**" = "allow";
