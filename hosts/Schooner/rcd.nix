@@ -22,12 +22,12 @@
     packages = import ../../nix/packages.nix { inherit pkgs; } ++ [
       pkgs.docker-compose
       pkgs.podman
+      pkgs.gh
     ];
   };
 
   programs = {
     ghostty = import ../../nix/ghostty.nix;
     opencode = import ../../nix/opencode.nix { inherit lib; };
-    gh.enable = true;
   };
 }
