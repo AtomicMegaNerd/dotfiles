@@ -4,10 +4,18 @@ let
     set -gx GOPATH $HOME/.local/go
     set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
     set -gx XDG_DATA_HOME "$HOME/.local/share"
+    set -gx XDG_CACHE_HOME "$HOME/.cache"
     set -gx XDG_CONFIG_HOME "$HOME/.config"
+    set -gx CARGO_HOME "$XDG_DATA_HOME/cargo"
+    set -gx RUSTUP_HOME "$XDG_DATA_HOME/rustup"
+    set -gx NPM_CONFIG_USERCONFIG "$XDG_CONFIG_HOME/npm/npmrc"
+    set -gx NPM_CONFIG_CACHE "$XDG_CACHE_HOME/npm"
+    set -gx NPM_CONFIG_PREFIX "$XDG_DATA_HOME/npm"
     set -gx NH_FLAKE "$HOME/Code/Configs/dotfiles"
     fish_add_path $GOPATH/bin
     fish_add_path $HOME/.local/bin
+    fish_add_path $CARGO_HOME/bin
+    fish_add_path $NPM_CONFIG_PREFIX/bin
   '';
 in
 {
