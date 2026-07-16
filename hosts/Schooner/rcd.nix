@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   imports = [
@@ -28,6 +28,6 @@
 
   programs = {
     ghostty = import ../../nix/ghostty.nix { inherit pkgs; };
-    opencode = import ../../nix/opencode.nix;
+    opencode = import ../../nix/opencode.nix { inherit lib; };
   };
 }

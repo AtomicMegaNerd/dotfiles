@@ -1,33 +1,7 @@
+{ lib }:
 {
   enable = true;
-  context = ''
-    # Global OpenCode Guidelines
-
-    - Assume that your knowledge is out of date and needs to be updated.
-
-    ## CLI tooling
-
-    Prefer using CLI tooling.
-
-    - Use `gh` to query github and *not* webfetch
-
-    Example to get source code:
-
-    ```bash
-    gh api repos/nix-community/home-manager/contents/modules/programs/neovim/default.nix \
-      -H "Accept: application/vnd.github.raw+json"
-    ```
-
-    The following modern CLI tools are installed on my systems:
-
-    - ripgrep
-    - fzf
-    - fd
-    - bat
-    - eza (ls is aliased to this)
-
-    Please use the modern replacements when possible as they are more capable.
-  '';
+  context = builtins.readFile ../static/AGENTS.md;
   settings = {
     shell = "fish";
     lsp = {
@@ -148,14 +122,58 @@
         "git branch --list *" = "allow";
         "git remote *" = "allow";
         "git stash list *" = "allow";
+        "gh api repos/*" = "allow";
+        "gh api search/*" = "allow";
+        "gh api users/*" = "allow";
+        "gh api orgs/*" = "allow";
+        "gh api gists/*" = "allow";
+        "gh pr list *" = "allow";
+        "gh pr view *" = "allow";
+        "gh issue list *" = "allow";
+        "gh issue view *" = "allow";
+        "gh run list *" = "allow";
+        "gh run view *" = "allow";
+        "nh search *" = "allow";
+        "nix flake check *" = "allow";
+        "nix flake info *" = "allow";
+        "nix flake show *" = "allow";
+        "nixfmt *" = "allow";
         "yamllint *" = "allow";
         "biome *" = "allow";
         "markdownlint-cli2 *" = "allow";
         "oxfmt *" = "allow";
       };
+      # By default nix will change the order of these keys, but the last rule wins here. So we must
+      # use lib.hm.dag.entryAfter in some cases to ensure that they rule we want comes after another
+      # rule that is being overridden.
       external_directory = {
         "~/Code/**" = "allow";
-        "~/.config/**" = "allow";
+        "~/.config/bat/**" = "allow";
+        "~/.config/btop/**" = "allow";
+        "~/.config/containers/**" = "allow";
+        "~/.config/direnv/**" = "allow";
+        "~/.config/eza/**" = "allow";
+        # For fish we want opencode to have access to all files except the credentials files. We
+        # Have to tell nix to ensure the right ordering as noted above.
+        "~/.config/fish/**" = "allow";
+        "~/.config/fish/conf.d/credentials.fish" = lib.hm.dag.entryAfter [ "~/.config/fish/**" ] "deny";
+        "~/.config/gh/**" = "allow";
+        "~/.config/ghostty/**" = "allow";
+        "~/.config/git/**" = "allow";
+        "~/.config/github-copilot/*.json" = "allow";
+        "~/.config/home-manager/**" = "allow";
+        "~/.config/htop/**" = "allow";
+        "~/.config/lazydocker/**" = "allow";
+        "~/.config/lazygit/**" = "allow";
+        "~/.config/linearmouse/**" = "allow";
+        "~/.config/nushell/**" = "allow";
+        "~/.config/nvim/**" = "allow";
+        "~/.config/op/**" = "allow";
+        "~/.config/opencode/**" = "allow";
+        "~/.config/starship.toml" = "allow";
+        "~/.config/television/**" = "allow";
+        "~/.config/zed/**" = "allow";
+        "~/.config/zellij/**" = "allow";
         "~/.local/share/**" = "allow";
         "~/.cache/**" = "allow";
         "/tmp/**" = "allow";

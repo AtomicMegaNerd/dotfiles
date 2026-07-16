@@ -177,5 +177,7 @@ migrated to Nix.
 
 - [DNS Setup](./docs/dns.md) How we setup DNS internally and externally.
 - [Secrets](./docs/secrets.md) Managing secrets with `agenix` and `op`.
+- [Home Manager Docs](./docs/home-manager.md) Stuff we learned about home-manager that is worth
+  remembering.
 - [AGENTS.md](./AGENTS.md) Information for the bots.
 - [LICENSE](./LICENSE) MIT license.

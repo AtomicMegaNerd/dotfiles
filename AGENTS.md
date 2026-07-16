@@ -12,6 +12,7 @@ We use the following components:
 ### Home Manager
 
 - [home-manager](https://github.com/nix-community/home-manager)
+- [Our HM docs](./docs/home-manager.md)
 
 Try to use home-manager modules and nix configuration whenever possible. Lots of examples in the
 `nix` directory in this repo.
