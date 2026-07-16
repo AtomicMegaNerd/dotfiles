@@ -43,12 +43,10 @@
     casks = [
       "1password" # gui password manager
       "1password-cli" # cli password manager
-      "raycast" # launcher
       "zoom" # video meetings
       "calibre" # managing ebooks
       "linearmouse" # better logitech mouse settings
       "finetune" # per-app volume control
-      "zed" # text editor
       "amethyst" # tiling WM
     ];
     enableFishIntegration = true;
