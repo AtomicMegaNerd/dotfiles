@@ -10,8 +10,6 @@
 - Uses [nh](https://github.com/nix-community/nh)
 - Uses [nix-direnv](https://github.com/nix-community/nix-direnv)
 - Uses [agenix](https://github.com/ryantm/agenix)
-- Uses [op](https://www.1password.dev/cli)
-- Uses [git-hooks](https://github.com/cachix/git-hooks.nix)
 - LSP's and linters included in flake.
 - Run `nix flake check` to validate nix config.
 
