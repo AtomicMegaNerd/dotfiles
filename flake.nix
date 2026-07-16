@@ -19,10 +19,6 @@
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    paneru = {
-      url = "github:karinushka/paneru";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
   };
 
   outputs =
@@ -34,7 +30,6 @@
       nix-darwin,
       agenix,
       catppuccin,
-      paneru,
     }:
     let
       systems = {
@@ -79,7 +74,6 @@
           pkgs = buildPkgsConf system nixpkgs-unstable;
           modules = [
             ./hosts/${hostname}/darwin.nix
-            paneru.darwinModules.paneru
           ];
         };
 
