@@ -3,40 +3,23 @@
 Reference notes on [mightyiam/dendritic](https://github.com/mightyiam/dendritic) — a Nix Flake
 module system usage pattern.
 
-## Summary
+> ![note] Every Heading with ✅ means I understand it and am happy with it. Also LLM's are not
+> allowed to modify this file.
 
-Every Nix file that isn't an entry point (`flake.nix`, `default.nix`) is a **module of a top-level
+## Summary ✅
+
+Every Nix file that isn't an entry point (`flake.nix`, `default.nix`) is a **module of the top-level
 configuration**. Each file implements one feature, the file's path is just that feature's name, and
 lower-level configs (NixOS, home-manager, nix-darwin) are stored as option values in the top-level
 config — not built directly.
-
-## Why it exists
-
-Re-architecting a nix config repeatedly is a known pain. The factors that make it hard (and which
-all apply to this repo):
-
-- Multiple host configurations sharing modules — `blahaj` (NixOS) and `Schooner` (darwin) share most
-  of `nix/*.nix`.
-- Multiple configuration _classes_ that need to coexist — `nixos`, `home-manager`, `darwin`.
-- Nesting — on `blahaj`, home-manager is built standalone (`buildHomeMgr`) but conceptually nests
-  under NixOS; on `Schooner`, it nests under nix-darwin.
-- Cross-cutting features that span multiple config classes — e.g. `git.nix` writes to home-manager,
-  but a future `audio.nix` might want to write to both NixOS (`hardware.pulseaudio`) and
-  home-manager (`programs.beets`).
-- Sharing values (scripts, constants, packages) between files without ugly plumbing — exactly the
-  pain that drove us to write `options.amnOptions.flags`.
-
-The dendritic pattern resolves all of these with one trick: treat the whole flake as a single
-Nixpkgs module evaluation where every file is a module.
 
 ## Core ideas
 
 ### 1. There's a top-level configuration, and every file is a module of it
 
-Usually that top-level config is a [flake-parts](https://flake.parts) config, but it doesn't have to
-be — `lib.evalModules` works too. Every non-entry-point `.nix` file (everything in `nix/` and
-`hosts/`) would be a module of that top-level evaluation — not of NixOS, not of home-manager, of the
-_top level_.
+The top-level config is a [flake-parts](https://flake.parts). Every non-entry-point `.nix` file
+(everything in `modules/`) is a module of that top-level evaluation — not of NixOS, not of
+home-manager, of the _top level_.
 
 ### 2. Each file is one feature, across all configs that feature touches
 
@@ -257,11 +240,50 @@ feature, gated or not.
   into `home-manager` via an inline `{ home.packages = ...; }` module — that'd just be
   `config.agenix.package` readable anywhere.
 
+## Proposed Root Flake
+
+```nix
+{
+  inputs = {
+    # Note that we use nixpkgs (stable) for the core NixOS packages but nixpkgs-unstable
+    # for everything else (home-manager and nix-darwin). This is intentional.
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgslib.follows = "nixpkgs-unstable";
+    };
+    import-tree = {
+      url = "github:vic/import-tree";
+    };
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+    catppuccin = {
+      url = "github:catppuccin/nix";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+  };
+
+  outputs = inputs:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; }
+      (inputs.import-tree ./modules);
+}
+```
+
 ## Links
 
-- Repo: <https://github.com/mightyiam/dendritic>
-- Author's own infra as a real example: <https://github.com/mightyiam/infra>
-- Auto-import lib: <https://github.com/vic/import-tree>
-- Discourse thread that spawned it: "How do you structure your NixOS configs?"
-  <https://discourse.nixos.org/t/how-do-you-structure-your-nixos-configs/65851>
-- Matrix: `#dendritic:matrix.org`
+- Repo: [https://github.com/mightyiam/dendritic](https://github.com/mightyiam/dendritic)
+- Author's own infra as a real example:
+  [https://github.com/mightyiam/infra](https://github.com/mightyiam/infra)
+- Auto-import lib: [https://github.com/vic/import-tree](https://github.com/vic/import-tree)

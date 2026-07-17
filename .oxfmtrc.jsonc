@@ -6,7 +6,10 @@
       "files": ["*.md"],
       "options": {
         "printWidth": 100,
-        "proseWrap": "always"
+        // preserve: respect existing line breaks. Required for callouts/blockquotes
+        // and other line-break-sensitive syntax. Pair with semantic line breaks
+        // (one sentence per line) so you control wrapping, not the formatter.
+        "proseWrap": "preserve"
       }
     },
     {
