@@ -1,6 +1,7 @@
 { pkgs, ... }:
 let
   commonShellInit = ''
+    set -U fish_greeting
     set -gx GOPATH $XDG_DATA_HOME/go
     set -gx CARGO_HOME $XDG_DATA_HOME/cargo
     set -gx RUSTUP_HOME $XDG_DATA_HOME/rustup
