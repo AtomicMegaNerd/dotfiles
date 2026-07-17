@@ -41,7 +41,6 @@
       buildNixOS =
         hostname:
         nixpkgs.lib.nixosSystem {
-          system = linuxX64;
           modules = [
             ./hosts/${hostname}/configuration.nix
             agenix.nixosModules.default
