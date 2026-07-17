@@ -1,20 +1,23 @@
+{ ... }:
 {
-  enable = true;
-  settings = {
-    gui = {
-      showBottomLine = false;
-      theme = {
-        activeBorderColor = [
-          "yellow"
-          "bold"
-        ];
-        inactiveBorderColor = [ "blue" ];
-        selectedLineBgColor = [ "blue" ];
-        optionsTextColor = [ "cyan" ];
+  programs.lazydocker = {
+    enable = true;
+    settings = {
+      gui = {
+        showBottomLine = false;
+        theme = {
+          activeBorderColor = [
+            "yellow"
+            "bold"
+          ];
+          inactiveBorderColor = [ "blue" ];
+          selectedLineBgColor = [ "blue" ];
+          optionsTextColor = [ "cyan" ];
+        };
       };
-    };
-    commandTemplates = {
-      dockerCompose = "docker-compose";
+      commandTemplates = {
+        dockerCompose = "docker-compose";
+      };
     };
   };
 }

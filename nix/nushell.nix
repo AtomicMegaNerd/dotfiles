@@ -1,5 +1,8 @@
+{ ... }:
 {
-  enable = true;
+  programs.nushell = {
+    enable = true;
 
-  # TODO: Add configuration
+    # TODO: Add configuration
+  };
 }

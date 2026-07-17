@@ -6,6 +6,8 @@
 
 - Dotfiles as Nix [flake](./flake.nix).
 - Run `nix flake check` to validate nix config.
+- We use `nixpkgs` (stable) for nixos but `nixpkgs-unstable` for everything else. This is
+  intentional.
 
 We use the following components:
 

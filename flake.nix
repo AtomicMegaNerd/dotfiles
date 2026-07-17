@@ -1,6 +1,8 @@
 {
   description = "AtomicMegaNerd's NixOS Flake";
   inputs = {
+    # Note that we use nixpkgs (stable) for the core NixOS packages but nixpkgs-unstable
+    # for everything else (home-manager and nix-darwin). This is intentional.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     home-manager = {
@@ -56,6 +58,7 @@
             ./hosts/${hostname}/rcd.nix
             catppuccin.homeModules.catppuccin
             agenix.homeManagerModules.default
+            # TODO: Fix this once we are ready to move to the dendritic pattern
             { home.packages = [ agenix.packages.${system}.default ]; }
           ];
         };

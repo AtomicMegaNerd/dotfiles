@@ -1,5 +1,8 @@
+{ ... }:
 {
-  enable = true;
-  options = [ "--cmd cd" ];
-  enableFishIntegration = true;
+  programs.zoxide = {
+    enable = true;
+    options = [ "--cmd cd" ];
+    enableFishIntegration = true;
+  };
 }

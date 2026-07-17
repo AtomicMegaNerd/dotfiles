@@ -1,4 +1,7 @@
+{ ... }:
 {
-  enable = true;
-  enableFishIntegration = true;
+  programs.television = {
+    enable = true;
+    enableFishIntegration = true;
+  };
 }

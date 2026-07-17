@@ -6,12 +6,12 @@
 }:
 let
   # We can declare an alias for our flags even before we define them!
-  flags = config.flags;
+  flags = config.amnOptions.flags;
 in
 {
 
   # We can setup a series of flags for our systems for conditional logic.
-  options.flags = {
+  options.amnOptions.flags = {
     isLinux = lib.mkOption {
       type = lib.types.bool;
       default = pkgs.stdenv.isLinux;
@@ -22,11 +22,27 @@ in
     };
   };
 
-  # Neovim is a bit different than the programs below because I don't want to have to run
-  # `nh home switch .` every time I make a change to the lua config. This flake installs
-  # the neovim package but clones the lua config from github.com/atomicmeganerd/rcd-nvim
+  # Each of these is a self-contained module that sets its own `programs.<name>`
+  # (or `catppuccin` for catppuccin.nix). Host-specific modules (ghostty, opencode)
+  # are imported by the host's rcd.nix instead of here, so a host opts in by import,
+  # not by a runtime flag. See docs/dendritic.md (the `enable` anti-pattern).
   imports = [
+    ./btop.nix
+    ./catppuccin.nix
+    ./direnv.nix
+    ./eza.nix
+    ./fish.nix
+    ./fzf.nix
+    ./git.nix
+    ./lazygit.nix
+    ./lazydocker.nix
     ./neovim.nix
+    ./nh.nix
+    ./nushell.nix
+    ./starship.nix
+    ./television.nix
+    ./zellij.nix
+    ./zoxide.nix
   ];
 
   config = {
@@ -71,37 +87,13 @@ in
         );
     };
 
-    # This is for configuring the catppuccin home manager module.
-    catppuccin = import ./catppuccin.nix;
-
     programs = {
       home-manager.enable = true;
-
-      # Imports with more complex logic
-      btop = import ./btop.nix;
-      direnv = import ./direnv.nix;
-      eza = import ./eza.nix;
-      fzf = import ./fzf.nix;
-      lazygit = import ./lazygit.nix;
-      lazydocker = import ./lazydocker.nix;
-      nh = import ./nh.nix;
-      nushell = import ./nushell.nix;
-      starship = import ./starship.nix;
-      television = import ./television.nix;
-      zoxide = import ./zoxide.nix;
-      # These imports take additional flags
-      fish = import ./fish.nix { inherit flags; };
-      git = import ./git.nix { inherit flags lib; };
-      zellij = import ./zellij.nix { inherit flags lib; };
 
       # Imports that don't need additional configuration
       bat.enable = true;
       fd.enable = true;
       ripgrep.enable = true;
-
-      # We can use our flags to determine if we import these modules or not
-      ghostty = lib.mkIf flags.isMac (import ./ghostty.nix);
-      opencode = lib.mkIf flags.isMac (import ./opencode.nix { inherit lib; });
     };
 
     # We always want to use the XDG standards when possible even on the Mac.

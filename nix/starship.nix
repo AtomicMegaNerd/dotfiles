@@ -1,9 +1,12 @@
+{ ... }:
 {
-  enable = true;
-  enableFishIntegration = true;
-  settings = {
-    username = {
-      show_always = true;
+  programs.starship = {
+    enable = true;
+    enableFishIntegration = true;
+    settings = {
+      username = {
+        show_always = true;
+      };
     };
   };
 }
