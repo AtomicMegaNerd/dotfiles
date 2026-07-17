@@ -32,46 +32,45 @@
       catppuccin,
     }:
     let
-      systems = {
-        linux = "x86_64-linux";
-        darwin = "aarch64-darwin";
-      };
 
-      buildPkgsConf =
-        system: pkg_src:
-        import pkg_src {
-          inherit system;
-          config.allowUnfree = true;
-        };
+      linux = "x86_64-linux";
+      macos = "aarch64-darwin";
+
+      pkgsFor = system: nixpkgs-unstable.legacyPackages.${system};
 
       # This is for building NixOS configurations, where we are running the full NixOS Linux
       # distribution
-      buildOsConf =
-        system: hostname:
+      buildNixOS =
+        hostname:
         nixpkgs.lib.nixosSystem {
-          pkgs = buildPkgsConf system nixpkgs;
+          system = linux;
           modules = [
             ./hosts/${hostname}/configuration.nix
             agenix.nixosModules.default
           ];
         };
 
-      buildHomeMgrConf =
+      # This is for building Home Manager configurations which are used on all of our Nix systems
+      buildHomeMgr =
         system: hostname:
         home-manager.lib.homeManagerConfiguration {
-          pkgs = buildPkgsConf system nixpkgs-unstable;
+          pkgs = pkgsFor system;
           modules = [
             ./hosts/${hostname}/rcd.nix
             catppuccin.homeModules.catppuccin
+            agenix.homeManagerModules.default
+            {
+              home.packages = [ agenix.packages.${system}.default ];
+            }
           ];
         };
 
       # This is for building nix-darwin configurations, which are used to manage macOS systems
       buildDarwinConf =
-        system: hostname:
+        hostname:
         nix-darwin.lib.darwinSystem {
-          inherit system;
-          pkgs = buildPkgsConf system nixpkgs-unstable;
+          system = macos;
+          pkgs = pkgsFor macos;
           modules = [
             ./hosts/${hostname}/darwin.nix
           ];
@@ -81,37 +80,17 @@
     {
       nixosConfigurations = {
         # Blahaj is my Lenovo ThinkCentre server running NixOS.
-        blahaj = buildOsConf systems.linux "blahaj";
+        blahaj = buildNixOS "blahaj";
       };
 
       darwinConfigurations = {
         # My 13-inch M4 MacBook Air
-        Schooner = buildDarwinConf systems.darwin "Schooner";
+        Schooner = buildDarwinConf "Schooner";
       };
 
       homeConfigurations = {
-        "rcd@blahaj" = buildHomeMgrConf systems.linux "blahaj";
-        "rcd@Schooner" = buildHomeMgrConf systems.darwin "Schooner";
+        "rcd@blahaj" = buildHomeMgr linux "blahaj";
+        "rcd@Schooner" = buildHomeMgr macos "Schooner";
       };
-
-      devShells = nixpkgs.lib.genAttrs (builtins.attrValues systems) (
-        system:
-        let
-          pkgs = buildPkgsConf system nixpkgs-unstable;
-        in
-        {
-          default = pkgs.mkShell {
-            packages = [
-              pkgs.nixfmt
-              pkgs.nil
-              pkgs.oxfmt
-              pkgs.yaml-language-server
-              pkgs.bash-language-server
-              pkgs.markdownlint-cli2
-              agenix.packages.${system}.default
-            ];
-          };
-        }
-      );
     };
 }

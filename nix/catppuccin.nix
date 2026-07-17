@@ -1,8 +1,8 @@
 {
   autoEnable = true;
   enable = true;
-  flavor = "latte";
+  flavor = "frappe";
   accent = "sky";
-  # Neovim is configured separately
+  # Neovim is configured separately, see github.com/atomicmeganerd/rcd-nvim
   nvim.enable = false;
 }

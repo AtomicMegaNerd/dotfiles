@@ -19,7 +19,7 @@
       Host blahaj
           ForwardAgent yes
     '';
-    packages = import ../../nix/packages.nix { inherit pkgs; } ++ [
+    packages = import ../../nix/hm_packages.nix { inherit pkgs; } ++ [
       pkgs.docker-compose
       pkgs.podman
       pkgs.gh
