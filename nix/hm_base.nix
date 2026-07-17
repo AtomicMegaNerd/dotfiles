@@ -5,6 +5,7 @@
   ...
 }:
 let
+  # We can declare an alias for our flags even before we define them!
   flags = config.flags;
 in
 {
@@ -21,49 +22,6 @@ in
     };
   };
 
-  home = {
-    packages = lib.mkMerge [
-      (with pkgs; [
-        # Basic cli utilities
-        curl
-        wget
-        dust
-        duf
-        zip
-        unzip
-        procs
-        jq
-        tree
-        glow
-
-        # Common linters and LSP servers
-        # .sh
-        bash-language-server
-        # .yaml
-        yaml-language-server
-        yamllint
-        # .nix
-        nixfmt
-        nil
-        # .json
-        oxfmt
-        # .md
-        biome
-        markdownlint-cli2
-      ])
-      lib.mkIf
-      config.flags.isMac
-      (with pkgs; [
-        docker-compose
-        podman
-        gh
-      ])
-    ];
-  };
-
-  # This is for configuring the catppuccin home manager module.
-  catppuccin = import ./catppuccin.nix;
-
   # Neovim is a bit different than the programs below because I don't want to have to run
   # `nh home switch .` every time I make a change to the lua config. This flake installs
   # the neovim package but clones the lua config from github.com/atomicmeganerd/rcd-nvim
@@ -71,8 +29,52 @@ in
     ./neovim.nix
   ];
 
-  programs = lib.mkMerge [
-    ({
+  config = {
+    home = {
+      packages =
+        (with pkgs; [
+          # Basic cli utilities
+          curl
+          wget
+          dust
+          duf
+          zip
+          unzip
+          procs
+          jq
+          tree
+          glow
+
+          # Common linters and LSP servers
+          # .sh
+          bash-language-server
+          # .yaml
+          yaml-language-server
+          yamllint
+          # .nix
+          nixfmt
+          nil
+          # .json
+          oxfmt
+          # .md
+          biome
+          markdownlint-cli2
+        ])
+        # TODO: See if this is the best way to optionally append items to the list.
+        ++ lib.optionals flags.isMac (
+          with pkgs;
+          [
+            docker-compose
+            podman
+            gh
+          ]
+        );
+    };
+
+    # This is for configuring the catppuccin home manager module.
+    catppuccin = import ./catppuccin.nix;
+
+    programs = {
       home-manager.enable = true;
 
       # Imports with more complex logic
@@ -96,18 +98,15 @@ in
       bat.enable = true;
       fd.enable = true;
       ripgrep.enable = true;
-    })
-    lib.mkIf
-    config.flags.isMac
-    {
-      ghostty = import ./ghostty.nix;
-      opencode = import ./opencode.nix { inherit lib; };
-    }
-  ];
 
-  # We always want to use the XDG standards when possible even on the Mac.
-  xdg = {
-    enable = true;
+      # We can use our flags to determine if we import these modules or not
+      ghostty = lib.mkIf flags.isMac (import ./ghostty.nix);
+      opencode = lib.mkIf flags.isMac (import ./opencode.nix { inherit lib; });
+    };
+
+    # We always want to use the XDG standards when possible even on the Mac.
+    xdg = {
+      enable = true;
+    };
   };
-
 }

@@ -3,18 +3,16 @@
   enable = true;
   enableFishIntegration = false;
 
-  settings = lib.mkMerge [
-    {
-      simplified_ui = true;
-      default_mode = "locked";
-      default_layout = "compact_with_nvim";
-      session_serialization = false;
-      pane_frames = false;
-    }
-    (lib.mkIf flags.isMac {
-      copy_command = "pbcopy";
-    })
-  ];
+  settings = {
+    simplified_ui = true;
+    default_mode = "locked";
+    default_layout = "compact_with_nvim";
+    session_serialization = false;
+    pane_frames = false;
+
+    # If we are on a Mac we want to use pbcopy for copying to the system clipboard
+    copy_command = lib.mkIf flags.isMac "pbcopy";
+  };
 
   extraConfig = ''
     plugins {
