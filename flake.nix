@@ -32,18 +32,16 @@
       catppuccin,
     }:
     let
-
-      linux = "x86_64-linux";
+      # We can add additional system types later if we start using more
+      linuxX64 = "x86_64-linux";
       macos = "aarch64-darwin";
-
-      pkgsFor = system: nixpkgs-unstable.legacyPackages.${system};
 
       # This is for building NixOS configurations, where we are running the full NixOS Linux
       # distribution
       buildNixOS =
         hostname:
         nixpkgs.lib.nixosSystem {
-          system = linux;
+          system = linuxX64;
           modules = [
             ./hosts/${hostname}/configuration.nix
             agenix.nixosModules.default
@@ -54,14 +52,12 @@
       buildHomeMgr =
         system: hostname:
         home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgsFor system;
+          pkgs = nixpkgs-unstable.legacyPackages.${system};
           modules = [
             ./hosts/${hostname}/rcd.nix
             catppuccin.homeModules.catppuccin
             agenix.homeManagerModules.default
-            {
-              home.packages = [ agenix.packages.${system}.default ];
-            }
+            { home.packages = [ agenix.packages.${system}.default ]; }
           ];
         };
 
@@ -69,27 +65,23 @@
       buildDarwinConf =
         hostname:
         nix-darwin.lib.darwinSystem {
-          system = macos;
-          pkgs = pkgsFor macos;
+          pkgs = nixpkgs-unstable.legacyPackages.${macos};
           modules = [
             ./hosts/${hostname}/darwin.nix
           ];
         };
-
     in
     {
       nixosConfigurations = {
-        # Blahaj is my Lenovo ThinkCentre server running NixOS.
         blahaj = buildNixOS "blahaj";
       };
 
       darwinConfigurations = {
-        # My 13-inch M4 MacBook Air
         Schooner = buildDarwinConf "Schooner";
       };
 
       homeConfigurations = {
-        "rcd@blahaj" = buildHomeMgr linux "blahaj";
+        "rcd@blahaj" = buildHomeMgr linuxX64 "blahaj";
         "rcd@Schooner" = buildHomeMgr macos "Schooner";
       };
     };

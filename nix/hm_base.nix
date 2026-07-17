@@ -1,47 +1,113 @@
-{ pkgs, lib, ... }:
-
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 let
-  rcdPubKey = builtins.readFile ../static/rcd_pub_key;
+  flags = config.flags;
 in
 {
-  home.file.".ssh/allowed_signers" = lib.mkIf pkgs.stdenv.isDarwin {
-    text = "${rcdPubKey}\n";
+
+  # We can setup a series of flags for our systems for conditional logic.
+  options.flags = {
+    isLinux = lib.mkOption {
+      type = lib.types.bool;
+      default = pkgs.stdenv.isLinux;
+    };
+    isMac = lib.mkOption {
+      type = lib.types.bool;
+      default = pkgs.stdenv.isDarwin;
+    };
   };
 
+  home = {
+    packages = lib.mkMerge [
+      (with pkgs; [
+        # Basic cli utilities
+        curl
+        wget
+        dust
+        duf
+        zip
+        unzip
+        procs
+        jq
+        tree
+        glow
+
+        # Common linters and LSP servers
+        # .sh
+        bash-language-server
+        # .yaml
+        yaml-language-server
+        yamllint
+        # .nix
+        nixfmt
+        nil
+        # .json
+        oxfmt
+        # .md
+        biome
+        markdownlint-cli2
+      ])
+      lib.mkIf
+      config.flags.isMac
+      (with pkgs; [
+        docker-compose
+        podman
+        gh
+      ])
+    ];
+  };
+
+  # This is for configuring the catppuccin home manager module.
   catppuccin = import ./catppuccin.nix;
 
-  programs = {
-    home-manager.enable = true;
+  # Neovim is a bit different than the programs below because I don't want to have to run
+  # `nh home switch .` every time I make a change to the lua config. This flake installs
+  # the neovim package but clones the lua config from github.com/atomicmeganerd/rcd-nvim
+  imports = [
+    ./neovim.nix
+  ];
 
-    # Imports with more complex logic
-    btop = import ./btop.nix;
-    direnv = import ./direnv.nix;
-    eza = import ./eza.nix;
-    fish = import ./fish.nix { inherit pkgs; };
-    fzf = import ./fzf.nix;
-    git = import ./git.nix { inherit pkgs; };
-    lazygit = import ./lazygit.nix;
-    lazydocker = import ./lazydocker.nix;
-    nh = import ./nh.nix;
-    nushell = import ./nushell.nix;
-    starship = import ./starship.nix;
-    television = import ./television.nix;
-    zellij = import ./zellij.nix { inherit pkgs; };
-    zoxide = import ./zoxide.nix;
+  programs = lib.mkMerge [
+    ({
+      home-manager.enable = true;
 
-    # Imports that are more basic
-    bat.enable = true;
-    fd.enable = true;
-    nix-index.enable = true;
-    ripgrep.enable = true;
-  };
+      # Imports with more complex logic
+      btop = import ./btop.nix;
+      direnv = import ./direnv.nix;
+      eza = import ./eza.nix;
+      fzf = import ./fzf.nix;
+      lazygit = import ./lazygit.nix;
+      lazydocker = import ./lazydocker.nix;
+      nh = import ./nh.nix;
+      nushell = import ./nushell.nix;
+      starship = import ./starship.nix;
+      television = import ./television.nix;
+      zoxide = import ./zoxide.nix;
+      # These imports take additional flags
+      fish = import ./fish.nix { inherit flags; };
+      git = import ./git.nix { inherit flags lib; };
+      zellij = import ./zellij.nix { inherit flags lib; };
 
+      # Imports that don't need additional configuration
+      bat.enable = true;
+      fd.enable = true;
+      ripgrep.enable = true;
+    })
+    lib.mkIf
+    config.flags.isMac
+    {
+      ghostty = import ./ghostty.nix;
+      opencode = import ./opencode.nix { inherit lib; };
+    }
+  ];
+
+  # We always want to use the XDG standards when possible even on the Mac.
   xdg = {
     enable = true;
   };
 
-  # Neovim is a bit different
-  imports = [
-    ./neovim.nix
-  ];
 }

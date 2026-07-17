@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ flags, ... }:
 let
   commonShellInit = ''
     set -U fish_greeting
@@ -14,7 +14,7 @@ in
 {
   enable = true;
   shellInit =
-    if pkgs.stdenv.isDarwin then
+    if flags.isMac then
       ''
         ${commonShellInit}
         set -gx DOCKER_HOST unix://(podman machine inspect --format '{{.ConnectionInfo.PodmanSocket.Path}}' 2>/dev/null)

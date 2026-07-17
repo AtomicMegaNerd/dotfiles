@@ -1,18 +1,20 @@
-{ pkgs, ... }:
+{ flags, lib, ... }:
 {
   enable = true;
   enableFishIntegration = false;
 
-  settings = {
-    simplified_ui = true;
-    default_mode = "locked";
-    default_layout = "compact_with_nvim";
-    session_serialization = false;
-    pane_frames = false;
-  }
-  // pkgs.lib.optionalAttrs pkgs.stdenv.isDarwin {
-    copy_command = "pbcopy";
-  };
+  settings = lib.mkMerge [
+    {
+      simplified_ui = true;
+      default_mode = "locked";
+      default_layout = "compact_with_nvim";
+      session_serialization = false;
+      pane_frames = false;
+    }
+    (lib.mkIf flags.isMac {
+      copy_command = "pbcopy";
+    })
+  ];
 
   extraConfig = ''
     plugins {

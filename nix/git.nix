@@ -1,11 +1,7 @@
-{ pkgs, ... }:
+{ flags, lib, ... }:
 
 {
   enable = true;
-  signing = pkgs.lib.optionalAttrs pkgs.stdenv.isDarwin {
-    format = "ssh";
-    key = builtins.readFile ../static/rcd_pub_key;
-  };
   settings = {
     user = {
       name = "Chris Dunphy";
@@ -18,6 +14,12 @@
       "https://github.com".username = "AtomicMegaNerd";
       credentialStore = "cache";
     };
-    gpg.ssh.allowedSignersFile = pkgs.lib.mkIf pkgs.stdenv.isDarwin "~/.ssh/allowed_signers";
+
+    # Setup Signing for 1Password if this is for macOS
+    signing = lib.optionalAttrs flags.isMac {
+      format = "ssh";
+      key = builtins.readFile ../static/rcd_pub_key;
+    };
+    gpg.ssh.allowedSignersFile = lib.mkIf flags.isMac "~/.ssh/allowed_signers";
   };
 }
