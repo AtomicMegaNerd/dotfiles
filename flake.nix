@@ -34,10 +34,6 @@
       catppuccin,
     }:
     let
-      # We can add additional system types later if we start using more
-      linuxX64 = "x86_64-linux";
-      macos = "aarch64-darwin";
-
       # This is for building NixOS configurations, where we are running the full NixOS Linux
       # distribution
       buildNixOS =
@@ -67,7 +63,7 @@
       buildDarwinConf =
         hostname:
         nix-darwin.lib.darwinSystem {
-          pkgs = nixpkgs-unstable.legacyPackages.${macos};
+          pkgs = nixpkgs-unstable.legacyPackages.${"aarch64-darwin"};
           modules = [
             ./hosts/${hostname}/darwin.nix
           ];
@@ -83,8 +79,8 @@
       };
 
       homeConfigurations = {
-        "rcd@blahaj" = buildHomeMgr linuxX64 "blahaj";
-        "rcd@Schooner" = buildHomeMgr macos "Schooner";
+        "rcd@blahaj" = buildHomeMgr "x86_64-linux" "blahaj";
+        "rcd@Schooner" = buildHomeMgr "aarch64-darwin" "Schooner";
       };
     };
 }

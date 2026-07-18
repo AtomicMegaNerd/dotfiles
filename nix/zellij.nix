@@ -3,9 +3,6 @@
   config,
   ...
 }:
-let
-  flags = config.amnOptions.flags;
-in
 {
   programs.zellij = {
     enable = true;
@@ -19,7 +16,7 @@ in
       pane_frames = false;
 
       # If we are on a Mac we want to use pbcopy for copying to the system clipboard
-      copy_command = lib.mkIf flags.isMac "pbcopy";
+      copy_command = lib.mkIf config.isMac "pbcopy";
     };
 
     extraConfig = ''
@@ -40,7 +37,6 @@ in
       }
 
       keybinds clear-defaults=true {
-
           normal {
               // Tab management
               bind "1" { GoToTab 1; SwitchToMode "locked"; }
@@ -274,10 +270,10 @@ in
       compact_with_nvim = ''
         layout {
             default_tab_template {
-                children
                 pane size=1 borderless=true {
                     plugin location="compact-bar"
                 }
+                children
             }
             tab name="neovim" split_direction="vertical" {
                 pane command="nvim"
@@ -288,7 +284,7 @@ in
             tab name="fish" split_direction="vertical" {
                 pane command="fish"
             }
-            tab name="llm" split_direction="vertical" {
+            tab name="agent" split_direction="vertical" {
                 pane command="fish"
             }
         }

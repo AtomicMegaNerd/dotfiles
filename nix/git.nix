@@ -3,9 +3,6 @@
   config,
   ...
 }:
-let
-  flags = config.amnOptions.flags;
-in
 {
   programs.git = {
     enable = true;
@@ -23,11 +20,11 @@ in
       };
 
       # Setup Signing for 1Password if this is for macOS
-      signing = lib.optionalAttrs flags.isMac {
+      signing = lib.optionalAttrs config.isMac {
         format = "ssh";
         key = builtins.readFile ../static/rcd_pub_key;
       };
-      gpg.ssh.allowedSignersFile = lib.mkIf flags.isMac "~/.ssh/allowed_signers";
+      gpg.ssh.allowedSignersFile = lib.mkIf config.isMac "~/.ssh/allowed_signers";
     };
   };
 }

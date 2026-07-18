@@ -3,7 +3,6 @@
   ...
 }:
 let
-  flags = config.amnOptions.flags;
   commonShellInit = ''
     set -U fish_greeting
     set -gx GOPATH $XDG_DATA_HOME/go
@@ -19,7 +18,7 @@ in
   programs.fish = {
     enable = true;
     shellInit =
-      if flags.isMac then
+      if config.isMac then
         ''
           ${commonShellInit}
           set -gx DOCKER_HOST unix://(podman machine inspect --format '{{.ConnectionInfo.PodmanSocket.Path}}' 2>/dev/null)
