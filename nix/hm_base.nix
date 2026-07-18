@@ -5,7 +5,7 @@
   ...
 }:
 let
-  isMac = config.AmnOptions.isMac;
+  isMac = config.amnOptions.isMac;
 in
 {
 

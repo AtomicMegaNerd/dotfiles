@@ -27,7 +27,7 @@ in
         format = "ssh";
         key = builtins.readFile ../static/rcd_pub_key;
       };
-      gpg.ssh.allowedSignersFile = lib.mkIf config.isMac "~/.ssh/allowed_signers";
+      gpg.ssh.allowedSignersFile = lib.mkIf isMac "~/.ssh/allowed_signers";
     };
   };
 }
