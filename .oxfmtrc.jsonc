@@ -2,17 +2,6 @@
   // https://oxc.rs/docs/guide/usage/formatter/config.html
   "overrides": [
     {
-      // oxfmt already defaults to 100, but let's be explicit for markdown
-      "files": ["*.md"],
-      "options": {
-        "printWidth": 100,
-        // preserve: respect existing line breaks. Required for callouts/blockquotes
-        // and other line-break-sensitive syntax. Pair with semantic line breaks
-        // (one sentence per line) so you control wrapping, not the formatter.
-        "proseWrap": "preserve"
-      }
-    },
-    {
       "files": ["*.jsonc"],
       "options": {
         "trailingComma": "none"

@@ -71,10 +71,11 @@ in
           nixfmt
           nil
           # .json
-          oxfmt
-          # .md
           biome
+          # .md
+          oxfmt
           markdownlint-cli2
+          marksman
         ])
         # TODO: See if this is the best way to optionally append items to the list.
         ++ lib.optionals flags.isMac (

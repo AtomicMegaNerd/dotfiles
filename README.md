@@ -1,19 +1,8 @@
 # AtomicMegaNerd's NixOS Flake and Related Configs
 
-```text
-    ___   __                  _      __  ___                 _   __              __
-   /   | / /_____  ____ ___  (_)____/  |/  /__  ____ _____ _/ | / /__  _________/ /
-  / /| |/ __/ __ \/ __ `__ \/ / ___/ /|_/ / _ \/ __ `/ __ `/  |/ / _ \/ ___/ __  /
- / ___ / /_/ /_/ / / / / / / / /__/ /  / /  __/ /_/ / /_/ / /|  /  __/ /  / /_/ /
-/_/  |_\__/\____/_/ /_/ /_/_/\___/_/  /_/\___/\__, /\__,_/_/ |_/\___/_/   \__,_/
-                                             /____/
-```
-
 ![AtomicMegaNerd](https://github.com/AtomicMegaNerd/AtomicMegaNerd/blob/main/img/RCD-AtomicMegaNerd-Beard-400.png)
 
-This is my core flake for my Nix-managed machines as well as any other machines that use Nix as a
-package manager. The only app which has settings not managed by nix is neovim. We have a separate
-repo for that that we just clone to `~/.config/nvim`:
+This is my core flake for my Nix-managed machines as well as any other machines that use Nix as a package manager. The only app which has settings not managed by nix is neovim. We have a separate repo for that that we just clone to `~/.config/nvim`:
 
 [https://github.com/AtomicMegaNerd/rcd-nvim](https://github.com/AtomicMegaNerd/rcd-nvim)
 
@@ -47,8 +36,9 @@ The following has to be installed and setup before the rest of the guide can be 
 
 Now we can clone the flake and run the setup. We use the following:
 
-- Home-Manager manages dotfiles for users on a Nix managed system
-  [home-manager](https://github.com/nix-community/home-manager)
+- [home-manager](https://github.com/nix-community/home-manager) manages dotfiles for users on a Nix
+  managed system
+
 - This is Nix for MacOS machines [nix-darwin](https://github.com/nix-darwin/nix-darwin)
 
 For all systems we start by cloning the dotfiles repo and then we `cd` into it:
