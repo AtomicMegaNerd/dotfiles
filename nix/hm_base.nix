@@ -1,14 +1,13 @@
 {
   pkgs,
   lib,
+  config,
   ...
 }:
+let
+  isMac = config.AmnOptions.isMac;
+in
 {
-  options = {
-    isMac = lib.mkOption {
-      type = lib.types.bool;
-    };
-  };
 
   # Each of these is a self-contained Nix module that sets its own `programs.<name>`
   # (or `catppuccin` for catppuccin.nix). Host-specific modules (ghostty, opencode)
@@ -34,8 +33,6 @@
   ];
 
   config = {
-
-    isMac = pkgs.stdenv.isDarwin;
 
     home = {
       packages =
@@ -68,7 +65,8 @@
           markdownlint-cli2
           marksman
         ])
-        ++ lib.optionals pkgs.stdenv.isDarwin (
+        # We only install these packages on our Mac systems
+        ++ lib.optionals isMac (
           with pkgs;
           [
             docker-compose

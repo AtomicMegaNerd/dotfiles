@@ -3,6 +3,9 @@
   config,
   ...
 }:
+let
+  isMac = config.amnOptions.isMac;
+in
 {
   programs.git = {
     enable = true;
@@ -20,7 +23,7 @@
       };
 
       # Setup Signing for 1Password if this is for macOS
-      signing = lib.optionalAttrs config.isMac {
+      signing = lib.optionalAttrs isMac {
         format = "ssh";
         key = builtins.readFile ../static/rcd_pub_key;
       };

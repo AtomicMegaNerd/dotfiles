@@ -52,6 +52,7 @@
           pkgs = nixpkgs-unstable.legacyPackages.${system};
           modules = [
             ./hosts/${hostname}/rcd.nix
+            ./nix/options.nix
             catppuccin.homeModules.catppuccin
             agenix.homeManagerModules.default
             # TODO: Fix this once we are ready to move to the dendritic pattern

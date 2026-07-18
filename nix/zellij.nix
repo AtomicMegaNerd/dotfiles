@@ -3,6 +3,9 @@
   config,
   ...
 }:
+let
+  isMac = config.amnOptions.isMac;
+in
 {
   programs.zellij = {
     enable = true;
@@ -16,7 +19,7 @@
       pane_frames = false;
 
       # If we are on a Mac we want to use pbcopy for copying to the system clipboard
-      copy_command = lib.mkIf config.isMac "pbcopy";
+      copy_command = lib.mkIf isMac "pbcopy";
     };
 
     extraConfig = ''

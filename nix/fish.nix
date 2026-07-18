@@ -12,12 +12,14 @@ let
     fish_add_path $HOME/.local/bin
     fish_add_path $CARGO_HOME/bin
   '';
+
+  isMac = config.amnOptions.isMac;
 in
 {
   programs.fish = {
     enable = true;
     shellInit =
-      if config.isMac then
+      if isMac then
         ''
           ${commonShellInit}
           set -gx DOCKER_HOST unix://(podman machine inspect --format '{{.ConnectionInfo.PodmanSocket.Path}}' 2>/dev/null)
