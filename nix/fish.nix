@@ -7,7 +7,6 @@ let
     set -U fish_greeting
     set -gx GOPATH $XDG_DATA_HOME/go
     set -gx CARGO_HOME $XDG_DATA_HOME/cargo
-    set -gx RUSTUP_HOME $XDG_DATA_HOME/rustup
     set -gx NH_FLAKE $HOME/Code/Configs/dotfiles
     fish_add_path $GOPATH/bin
     fish_add_path $HOME/.local/bin
