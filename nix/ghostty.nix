@@ -12,7 +12,10 @@
       cursor-style = "block";
       cursor-style-blink = true;
       macos-option-as-alt = true;
-      shell-integration-features = "no-cursor,ssh-env,ssh-terminfo,sudo,no-title";
+      macos-titlebar-style = "hidden";
+      window-padding-x = 20;
+      window-padding-y = 20;
+      shell-integration-features = "no-cursor,ssh-env,ssh-terminfo,sudo";
     };
   };
 }
