@@ -5,9 +5,11 @@
 let
   commonShellInit = ''
     set -U fish_greeting
+
     set -gx GOPATH $XDG_DATA_HOME/go
     set -gx CARGO_HOME $XDG_DATA_HOME/cargo
     set -gx NH_FLAKE $HOME/Code/Configs/dotfiles
+
     fish_add_path $GOPATH/bin
     fish_add_path $HOME/.local/bin
     fish_add_path $CARGO_HOME/bin
@@ -22,7 +24,11 @@ in
       if isMac then
         ''
           ${commonShellInit}
+          # eza does not use $XDG_CONFIG_HOME by default
+          set -gx EZA_CONFIG_DIR $XDG_CONFIG_HOME/eza
+
           set -gx DOCKER_HOST unix://(podman machine inspect --format '{{.ConnectionInfo.PodmanSocket.Path}}' 2>/dev/null)
+
           fish_add_path /opt/homebrew/bin
           fish_add_path /Applications/Bear.app/Contents/MacOS
         ''
