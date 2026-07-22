@@ -2,7 +2,7 @@
 {
   programs.opencode = {
     enable = true;
-    context = builtins.readFile ../static/AGENTS.md;
+    context = builtins.readFile ../static/opencode-AGENTS.md;
     settings = {
       shell = "fish";
       lsp = {

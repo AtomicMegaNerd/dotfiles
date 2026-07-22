@@ -1,9 +1,8 @@
-# Global OpenCode Guidance
+# Pi Agent Guidance
 
 ## Finding information
 
-- Always try context7 first if you are looking up information on opensource libaries.
-- If you don't know where to find something ask me instead of wasting tokens spinning your wheels
+- If you don't know where to find something, ask me instead of wasting tokens spinning your wheels
   searching the web.
 
 ## GitHub
@@ -46,4 +45,4 @@ Prefer using CLI tooling:
 
 You are allowed to download anything you want or write any files you want to `/tmp`. Use that to
 make your work more efficient. Use the write tool for `/tmp` instead of bash tools like touch or
-echo. You have full edit and read permissions on `/tmp`.
+echo. You have full read and edit permissions on `/tmp`.
