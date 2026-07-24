@@ -5,6 +5,7 @@
     ../../nix/ghostty.nix
     ../../nix/opencode.nix
     ../../nix/pi.nix
+    ../../nix/agent-skills.nix
   ];
 
   home = {

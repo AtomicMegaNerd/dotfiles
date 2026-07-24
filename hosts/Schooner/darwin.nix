@@ -58,7 +58,6 @@
       "finetune" # per-app volume control
       "ghostty" # terminal app
       "amethyst" # tiling WM
-      "zed" # editor
     ];
     enableFishIntegration = true;
     global = {
