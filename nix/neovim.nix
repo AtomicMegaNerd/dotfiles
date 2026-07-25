@@ -33,7 +33,7 @@
     if [ ! -d "$nvim_src" ]; then
       $DRY_RUN_CMD mkdir -p "$(dirname "$nvim_src")"
       $DRY_RUN_CMD ${pkgs.git}/bin/git clone $VERBOSE_ARG \
-        https://github.com/AtomicMegaNerd/rcd-nvim \
+        ssh://github.com/AtomicMegaNerd/rcd-nvim \
         "$nvim_src"
     fi
 
