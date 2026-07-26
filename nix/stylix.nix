@@ -10,8 +10,8 @@ let
 
   # Notes on this hairy bit of Nix:
   #
-  # mapAttrs calls a function on each entry in an AttrSet. The function we pass must take
-  # the name of the entry and its value as arguments.
+  # mapAttrs calls a function on each entry in an AttrSet. The function we pass to mapAttrs  must
+  # take the name of the entry and its value as arguments.
   #
   # In this case we ignore the name of the entry. Because the entries we are interested in are
   # themselves attrSets we call another function: optionalAttrs which takes a bool and an AttrSet
