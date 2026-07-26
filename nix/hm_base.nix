@@ -15,7 +15,6 @@ in
   # not by a runtime flag. See docs/dendritic.md (the `enable` anti-pattern).
   imports = [
     ./btop.nix
-    ./catppuccin.nix
     ./direnv.nix
     ./eza.nix
     ./fish.nix

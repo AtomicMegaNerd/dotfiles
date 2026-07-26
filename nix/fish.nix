@@ -6,6 +6,8 @@ let
   commonShellInit = ''
     set -U fish_greeting
 
+    set -gx COLOR_THEME ${config.amnOptions.theme}
+
     set -gx GOPATH $XDG_DATA_HOME/go
     set -gx CARGO_HOME $XDG_DATA_HOME/cargo
     set -gx NH_FLAKE $HOME/Code/Configs/dotfiles

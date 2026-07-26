@@ -21,6 +21,10 @@
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs =
@@ -32,6 +36,7 @@
       nix-darwin,
       agenix,
       catppuccin,
+      stylix,
     }:
     let
       # This is for building NixOS configurations, where we are running the full NixOS Linux
@@ -54,6 +59,7 @@
             ./hosts/${hostname}/rcd.nix
             ./nix/options.nix
             catppuccin.homeModules.catppuccin
+            stylix.homeModules.stylix
             agenix.homeManagerModules.default
             # TODO: Fix this once we are ready to move to the dendritic pattern
             { home.packages = [ agenix.packages.${system}.default ]; }
