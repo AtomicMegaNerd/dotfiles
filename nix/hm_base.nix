@@ -8,11 +8,6 @@ let
   isMac = config.amnOptions.isMac;
 in
 {
-
-  # Each of these is a self-contained Nix module that sets its own `programs.<name>`
-  # (or `catppuccin` for catppuccin.nix). Host-specific modules (ghostty, opencode)
-  # are imported by the host's rcd.nix instead of here, so a host opts in by import,
-  # not by a runtime flag. See docs/dendritic.md (the `enable` anti-pattern).
   imports = [
     ./btop.nix
     ./direnv.nix
@@ -20,6 +15,8 @@ in
     ./fish.nix
     ./fzf.nix
     ./git.nix
+    ./stylix.nix
+    ./catppuccin.nix
     ./lazygit.nix
     ./lazydocker.nix
     ./neovim.nix

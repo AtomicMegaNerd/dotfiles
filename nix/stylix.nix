@@ -1,10 +1,25 @@
-{ config, lib, ... }:
-lib.mkIf (config.amnOptions.theme == "stylix") {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+let
+  enableStylix = (config.amnOptions.theme == "stylix");
+  themeInput = config.stylix.inputs.tinted-schemes;
+  theme = "gruvbox-dark-soft.yaml";
+in
+{
   stylix = {
-    enable = true;
-    autoEnable = true;
-    base16Scheme = "${config.stylix.inputs.tinted-schemes}/base16/gruvbox-dark-soft.yaml";
-    # Neovim is configured outside Nix; see github.com/atomicmeganerd/rcd-nvim
+    enable = enableStylix;
+    autoEnable = enableStylix;
+    base16Scheme = lib.mkIf enableStylix "${themeInput}/base16/${theme}";
+    fonts = {
+      monospace = {
+        package = pkgs.monaspace;
+        name = "Monaspace Argon";
+      };
+    };
     targets.neovim.enable = false;
   };
 

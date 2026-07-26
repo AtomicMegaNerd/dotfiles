@@ -19,6 +19,5 @@
 
   config = {
     amnOptions.isMac = pkgs.stdenv.isDarwin;
-    amnOptions.theme = "stylix";
   };
 }
