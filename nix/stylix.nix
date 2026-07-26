@@ -1,16 +1,9 @@
-{
-  config,
-  lib,
-  ...
-}:
+{ config, lib, ... }:
 lib.mkIf (config.amnOptions.theme == "stylix") {
   stylix = {
-    enable = config.amnOptions.theme == "stylix";
-    autoEnable = lib.mkIf (config.amnOptions.theme == "stylix") true;
-    base16Scheme = lib.mkIf (
-      config.amnOptions.theme == "stylix"
-    ) "${config.stylix.inputs.tinted-schemes}/base16/gruvbox-dark-soft.yaml";
-
+    enable = true;
+    autoEnable = true;
+    base16Scheme = "${config.stylix.inputs.tinted-schemes}/base16/gruvbox-dark-soft.yaml";
     # Neovim is configured outside Nix; see github.com/atomicmeganerd/rcd-nvim
     targets.neovim.enable = false;
   };

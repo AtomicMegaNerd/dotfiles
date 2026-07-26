@@ -1,10 +1,10 @@
 { config, lib, ... }:
-{
+lib.mkIf (config.amnOptions.theme == "catppuccin") {
   catppuccin = {
-    enable = config.amnOptions.theme == "catppuccin";
-    autoEnable = lib.mkIf (config.amnOptions.theme == "catppuccin") true;
-    flavor = lib.mkIf (config.amnOptions.theme == "catppuccin") "frappe";
-    accent = lib.mkIf (config.amnOptions.theme == "catppuccin") "sapphire";
+    enable = true;
+    autoEnable = true;
+    flavor = "frappe";
+    accent = "sapphire";
     # Neovim is configured separately, see github.com/atomicmeganerd/rcd-nvim
     nvim.enable = false;
   };

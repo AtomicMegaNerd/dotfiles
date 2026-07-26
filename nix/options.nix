@@ -4,6 +4,7 @@
   options = {
     amnOptions.isMac = lib.mkOption {
       type = lib.types.bool;
+      description = "Is the machine a macOS system";
     };
 
     amnOptions.theme = lib.mkOption {
@@ -12,11 +13,12 @@
         "stylix"
       ];
       default = "stylix";
-      description = "Global theme selector. Switches between catppuccin and stylix (base16) theming.";
+      description = "Global theme selector. Switches between catppuccin and stylix theming.";
     };
   };
 
   config = {
     amnOptions.isMac = pkgs.stdenv.isDarwin;
+    amnOptions.theme = "stylix";
   };
 }
