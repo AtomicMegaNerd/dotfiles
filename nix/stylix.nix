@@ -1,29 +1,40 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }:
 let
   enableStylix = (config.amnOptions.theme == "stylix");
   themeInput = config.stylix.inputs.tinted-schemes;
   theme = "gruvbox-dark-soft.yaml";
+
+  # Notes on this hairy bit of Nix:
+  #
+  # mapAttrs calls a function on each entry in an AttrSet. The function we pass must take
+  # the name of the entry and its value as arguments.
+  #
+  # In this case we ignore the name of the entry. Because the entries we are interested in are
+  # themselves attrSets we call another function: optionalAttrs which takes a bool and an AttrSet
+  # as arguments. if the bool is true optionalAttrs returns the AttrSet argument otherwise
+  # returns an empty AttrSet {}.
+  #
+  # We use this function to find every entry in config.stylix.targets
+  # that has a font attribute. We then use this to set fonts.enable to false.
+  disableFonts = lib.mapAttrs (
+    _name: val: lib.optionalAttrs (val ? fonts) { fonts.enable = false; }
+  ) config.stylix.targets;
 in
 {
   stylix = {
     enable = enableStylix;
     autoEnable = enableStylix;
     base16Scheme = lib.mkIf enableStylix "${themeInput}/base16/${theme}";
-    fonts = {
-      monospace = {
-        package = pkgs.monaspace;
-        name = "Monaspace Argon";
-      };
+    targets = disableFonts // {
+      neovim.enable = false;
     };
-    targets.neovim.enable = false;
   };
 
-  # Bridge: expose the active base24 palette to our non-Nix neovim config.
+  # Bridge: expose the active base16 palette to our non-Nix neovim config.
   home.file."${config.xdg.configHome}/nvim/lua/rcd/stylix-colors.lua".text =
     with config.lib.stylix.colors.withHashtag; ''
       return {

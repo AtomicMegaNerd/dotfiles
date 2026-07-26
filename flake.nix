@@ -39,6 +39,7 @@
       stylix,
     }:
     let
+
       # This is for building NixOS configurations, where we are running the full NixOS Linux
       # distribution
       buildNixOS =
