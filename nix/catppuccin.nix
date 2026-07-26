@@ -10,4 +10,6 @@ in
     accent = lib.mkIf enableCatppuccin "sapphire";
     nvim.enable = false;
   };
+
+  home.sessionVariables = lib.mkIf enableCatppuccin { COLOR_THEME = "catppuccin"; };
 }

@@ -36,14 +36,28 @@ in
     };
   };
 
-  # Bridge: expose the active base16 palette to our non-Nix neovim config.
-  home.file."${config.xdg.configHome}/nvim/lua/rcd/stylix-colors.lua".text =
-    with config.lib.stylix.colors.withHashtag; ''
-      return {
-        base00 = "${base00}", base01 = "${base01}", base02 = "${base02}", base03 = "${base03}",
-        base04 = "${base04}", base05 = "${base05}", base06 = "${base06}", base07 = "${base07}",
-        base08 = "${base08}", base09 = "${base09}", base0A = "${base0A}", base0B = "${base0B}",
-        base0C = "${base0C}", base0D = "${base0D}", base0E = "${base0E}", base0F = "${base0F}",
-      }
-    '';
+  # For all of the base16 themes we set each color to an environment variable. We also
+  # set color theme
+  home.sessionVariables = lib.mkIf enableStylix (
+    with config.lib.stylix.colors.withHashtag;
+    {
+      COLOR_THEME = "stylix";
+      BASE16_COLOR_00 = base00;
+      BASE16_COLOR_01 = base01;
+      BASE16_COLOR_02 = base02;
+      BASE16_COLOR_03 = base03;
+      BASE16_COLOR_04 = base04;
+      BASE16_COLOR_05 = base05;
+      BASE16_COLOR_06 = base06;
+      BASE16_COLOR_07 = base07;
+      BASE16_COLOR_08 = base08;
+      BASE16_COLOR_09 = base09;
+      BASE16_COLOR_0A = base0A;
+      BASE16_COLOR_0B = base0B;
+      BASE16_COLOR_0C = base0C;
+      BASE16_COLOR_0D = base0D;
+      BASE16_COLOR_0E = base0E;
+      BASE16_COLOR_0F = base0F;
+    }
+  );
 }
