@@ -18,8 +18,10 @@ let
   # as arguments. if the bool is true optionalAttrs returns the AttrSet argument otherwise
   # returns an empty AttrSet {}.
   #
-  # We use this function to find every entry in config.stylix.targets
-  # that has a font attribute. We then use this to set fonts.enable to false.
+  # (val ? fonts) returns true if the AttrSet named val has an entry named fonts.
+  #
+  # We call this function over config.stylix.targets which will set fonts.enable = false
+  # for any entry that itself contains a fonts entry. The result returned is an AttrSet.
   disableFonts = lib.mapAttrs (
     _name: val: lib.optionalAttrs (val ? fonts) { fonts.enable = false; }
   ) config.stylix.targets;
