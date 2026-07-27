@@ -8,38 +8,29 @@ let
   themeInput = config.stylix.inputs.tinted-schemes;
   theme = "gruvbox-dark-soft.yaml";
 
-  isMac = config.amnOptions.isMac;
-  hasGui = config.amnOptions.hasGui;
-
-  # Notes on this hairy bit of Nix:
-  #
-  # mapAttrs calls a function on each entry in an AttrSet. The function we pass to mapAttrs  must
-  # take the name of the entry and its value as arguments.
-  #
-  # In this case we ignore the name of the entry. Because the entries we are interested in are
-  # themselves attrSets we call another function: optionalAttrs which takes a bool and an AttrSet
-  # as arguments. if the bool is true optionalAttrs returns the AttrSet argument otherwise
-  # returns an empty AttrSet {}.
-  #
-  # (val ? fonts) returns true if the AttrSet named val has an entry named fonts.
-  #
-  # We call this function over config.stylix.targets which will set fonts.enable = false
-  # for any entry that itself contains a fonts entry. The result returned is an AttrSet.
-  disableFonts = lib.mapAttrs (
-    _name: val: lib.optionalAttrs (val ? fonts) { fonts.enable = false; }
-  ) config.stylix.targets;
+  # We will do explicit opt-in for theming here. Also please note we leave neovim out of this
+  # as we do not configure neovim with nix.
+  targetList = [
+    "ghostty"
+    "btop"
+    "fish"
+    "fzf"
+    "lazygit"
+    "opencode"
+    "zellij"
+    "starship"
+  ];
+  enableTargets = lib.genAttrs targetList (_name: {
+    enable = true;
+  });
 
 in
 {
   stylix = {
     enable = enableStylix;
-    autoEnable = enableStylix;
+    autoEnable = false;
     base16Scheme = lib.mkIf enableStylix "${themeInput}/base16/${theme}";
-    targets = disableFonts // {
-      neovim.enable = false;
-      gtk.enable = hasGui && !isMac; # Disable gtk if this system has no gui or is a Mac
-      qt.enable = hasGui && !isMac; # Disable qt if this system has no gui or is a Mac
-    };
+    targets = enableTargets;
   };
 
   # For all of the base16 themes we set each color to an environment variable. We also
