@@ -13,6 +13,9 @@ let
     # on some systems eza may not use $XDG_CONFIG_HOME by default
     set -gx EZA_CONFIG_DIR $XDG_CONFIG_HOME/eza
 
+    # Set man pager to neovim
+    set -gx MANPAGER "nvim +Man!"
+
     fish_add_path $GOPATH/bin
     fish_add_path $HOME/.local/bin
     fish_add_path $CARGO_HOME/bin
