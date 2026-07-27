@@ -19,6 +19,10 @@
         };
       };
 
+      # Sadly this does not appear to work right now? I am leaving it in as this will be really
+      # nice to have once it is fixed:
+      #
+      # See https://github.com/anomalyco/opencode/issues/34040
       references = {
         code = {
           path = "~/Code/";
@@ -53,6 +57,7 @@
           "ls *" = "allow";
           "cat *" = "allow";
           "find *" = "allow";
+          "pwd *" = "allow";
           "grep *" = "allow";
           "dirname *" = "allow";
           "basename *" = "allow";
