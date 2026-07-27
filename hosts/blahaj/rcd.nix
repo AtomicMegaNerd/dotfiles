@@ -1,5 +1,8 @@
 { ... }:
+
 {
+  config.amnOptions.hasGui = false;
+
   imports = [
     ../../nix/hm_base.nix
   ];

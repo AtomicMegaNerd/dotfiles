@@ -8,6 +8,9 @@ let
   themeInput = config.stylix.inputs.tinted-schemes;
   theme = "gruvbox-dark-soft.yaml";
 
+  isMac = config.amnOptions.isMac;
+  hasGui = config.amnOptions.hasGui;
+
   # Notes on this hairy bit of Nix:
   #
   # mapAttrs calls a function on each entry in an AttrSet. The function we pass to mapAttrs  must
@@ -25,6 +28,7 @@ let
   disableFonts = lib.mapAttrs (
     _name: val: lib.optionalAttrs (val ? fonts) { fonts.enable = false; }
   ) config.stylix.targets;
+
 in
 {
   stylix = {
@@ -33,6 +37,8 @@ in
     base16Scheme = lib.mkIf enableStylix "${themeInput}/base16/${theme}";
     targets = disableFonts // {
       neovim.enable = false;
+      gtk.enable = hasGui; # Disable gtk if this system has no gui or is a Mac
+      qt.enable = hasGui; # Disable qt if this system has no gui or is a Mac
     };
   };
 
