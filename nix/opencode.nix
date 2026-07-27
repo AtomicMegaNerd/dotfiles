@@ -75,6 +75,7 @@
           "git remote show *" = "allow";
           "git stash list *" = "allow";
           "gh repo read-file *" = "allow";
+          "gh repo view *" = "allow";
           "gh repo read-dir *" = "allow";
           "gh search *" = "allow";
           "gh pr list *" = "allow";
