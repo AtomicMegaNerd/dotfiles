@@ -18,6 +18,21 @@
           enabled = true;
         };
       };
+
+      references = {
+        code = {
+          path = "~/Code/";
+          description = "My personal code projects directory";
+          hidden = false;
+        };
+
+        opencode-cfg = {
+          path = "~/.config/opencode/";
+          description = "My opencode config";
+          hidden = false;
+        };
+      };
+
       permission = {
         bash = {
           "*" = "ask";

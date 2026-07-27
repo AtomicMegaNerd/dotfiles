@@ -52,8 +52,17 @@ Prefer using CLI tooling:
   - rg (ripgrep)
   - fzf
 
-## /tmp is your playground
+## Permissions
+
+Note that the bash permissions are limited to read-only commands. So if you are writing files to
+`tmp` use the edit tool and not bash commands like `echo` or `touch`.
+
+### /tmp is your playground
 
 You are allowed to download anything you want or write any files you want to `/tmp`. Use that to
 make your work more efficient. Use the write tool for `/tmp` instead of bash tools like touch or
 echo. You have full read and edit permissions on `/tmp`.
+
+## Behaviour
+
+- **NEVER** suggest filing a bug, feature request, or an issue as a solution.
