@@ -49,7 +49,7 @@ Now run `nh os rebuild .` — agenix will be able to decrypt the secrets
 #### Lost Key
 
 **If you lose the key:** You can generate a new host key and re-encrypt the secrets by updating
-`static/blahaj_host_key` with the new public key and running `agenix rekey`.
+`static/blahaj/blahaj_host_key` with the new public key and running `agenix rekey`.
 
 ## Schooner
 
