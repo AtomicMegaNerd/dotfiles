@@ -11,26 +11,34 @@ let
   # We will do explicit opt-in for theming here. Also please note we leave neovim out of this
   # as we do not configure neovim with nix.
   targetList = [
-    "ghostty"
+    "bat"
     "btop"
     "fish"
     "fzf"
+    "ghostty"
     "lazygit"
+    "nushell"
     "opencode"
-    "zellij"
     "starship"
+    "zellij"
   ];
-  enableTargets = lib.genAttrs targetList (_name: {
-    enable = true;
-  });
 
+  # We want to enable all selected targets, but for the targets that have font configurations
+  # we want to disable stylix for managing fonts.
+  enableStylixTargets = lib.genAttrs targetList (
+    name:
+    {
+      enable = true;
+    }
+    // lib.optionalAttrs (config.stylix.targets.${name} ? fonts) { fonts.enable = false; }
+  );
 in
 {
   stylix = {
     enable = enableStylix;
-    autoEnable = false;
+    autoEnable = false; # Do not use autoEnable
     base16Scheme = lib.mkIf enableStylix "${themeInput}/base16/${theme}";
-    targets = enableTargets;
+    targets = enableStylixTargets;
   };
 
   # For all of the base16 themes we set each color to an environment variable. We also
