@@ -37,8 +37,8 @@ in
     base16Scheme = lib.mkIf enableStylix "${themeInput}/base16/${theme}";
     targets = disableFonts // {
       neovim.enable = false;
-      gtk.enable = hasGui; # Disable gtk if this system has no gui or is a Mac
-      qt.enable = hasGui; # Disable qt if this system has no gui or is a Mac
+      gtk.enable = hasGui && !isMac; # Disable gtk if this system has no gui or is a Mac
+      qt.enable = hasGui && !isMac; # Disable qt if this system has no gui or is a Mac
     };
   };
 
