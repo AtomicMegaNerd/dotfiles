@@ -1,45 +1,38 @@
 # AtomicMegaNerd's NixOS Flake and Related Configs
 
-This is my core flake for my Nix-managed machines as well as any other machines that use Nix as a package manager. The only app which has settings not managed by nix is neovim. We have a separate repo for that that we just clone to `~/.config/nvim`:
-
-[rcd-nvim](https://github.com/AtomicMegaNerd/rcd-nvim)
+![AtomicMegaNerd](./static/images/RCD-AtomicMegaNerd-Beard-400.png)
 
 ---
 
-## Systems Managed By This Flake
+## Introduction
+
+This is personal Nix flake for my hardware. I have gradually been improving this flake over time
+as I learn more and more about Nix. This flake is pretty comprehensive at this point and
+manages the large majority of my system configuration from a shell/TUI perspective.
+
+### Core Nix Components
+
+Besides NixOS itself, we use the following in this flake:
+
+- [home-manager](https://github.com/nix-community/home-manager) manages dotfiles for users on a Nix
+  managed system.
+- [nix-darwin](https://github.com/nix-darwin/nix-darwin) is Nix for macOS.
+
+### Systems Managed By This Flake
 
 | Host     | OS    | Platform       | OS Version | HM Version | Notes       |
 | -------- | ----- | -------------- | ---------- | ---------- | ----------- |
 | blahaj   | NixOS | x86-64-linux   | 26.05      | unstable   | Server      |
 | Schooner | macOS | aarch64-darwin | unstable   | unstable   | MacBook Air |
 
-We use `nh` which is a wrapper around `nix` to make it easier to manage our Nix systems. See
-[nix helper](https://github.com/nix-community/nh) GitHub repository for more information.
-
----
-
-## Prerequisites
-
-The following has to be installed and setup before the rest of the guide can be followed:
-
-- Nix has to be installed on the system. Of course on NixOS systems `nix` is pre-installed. On
-  non-Nix machines use [nix-installer](https://github.com/NixOS/nix-installer).
-- For the Mac we also need 1Password-CLI `op` installed to unlock the secrets (see
-  [Secrets](./docs/secrets.md) and [op](https://www.1password.dev/cli)). You cannot run the
-  home-manager without it unless you remove the `.tpl` templates from the config.
-
 ---
 
 ## Setup
 
-Now we can clone the flake and run the setup. We use the following:
+Nix has to be installed on the system. Of course on NixOS systems `nix` is pre-installed. On
+non-Nix machines use [nix-installer](https://github.com/NixOS/nix-installer).
 
-- [home-manager](https://github.com/nix-community/home-manager) manages dotfiles for users on a Nix
-  managed system
-
-- This is Nix for MacOS machines [nix-darwin](https://github.com/nix-darwin/nix-darwin)
-
-For all systems we start by cloning the dotfiles repo and then we `cd` into it:
+For all systems we start by cloning this repo and then we `cd` into it:
 
 ```bash
 mkdir -p ~/Code/Configs
@@ -48,16 +41,8 @@ git clone https://github.com/AtomicMegaNerd/dotfiles
 cd dotfiles
 ```
 
-### Note for External Users
-
-For external users you need to update the flake to match your infrastructure including:
-
-- Machines
-- Desired tools
-- Users
-- Secrets
-
-The examples (hostnames, usernames) below are for my systems.
+> [!note] Note
+> For external users you need to update the flake to match your infrastructure.
 
 ### MacOS
 
@@ -79,7 +64,8 @@ sudo mv /etc/nix/nix.conf /etc/nix/.before-darwin
 
 Then try the nix command again.
 
-_The last step is needed so nix-darwin can replace nix.conf with its own configuration._
+> [!important] Important
+> The last step is needed so nix-darwin can replace nix.conf with its own configuration.
 
 ### NixOS
 
@@ -102,18 +88,6 @@ nix run home-manager -- switch --flake .#rcd@blahaj
 
 Once the initial bootstrap is done you may need to start a new terminal shell or even logout and log
 back into the system to fully load your new shell config including the updates to the PATH.
-
-### direnv
-
-We use [nix-direnv](https://github.com/nix-community/nix-direnv) to setup a dev shell for this repo.
-It adds linters and LSP's as well as a pre-commit configuration.
-
-To enable the `direnv` Nix shell for flake development, run the following command in the dotfiles
-repo to setup the flake devshell automatically every time you cd into this project directory:
-
-```fish
-direnv allow
-```
 
 ### Nix Commands
 
@@ -144,6 +118,30 @@ nh home rebuild .
 
 ---
 
+## Neovim
+
+> [!note] Note
+> My Neovim congiguration is in its own separate repo.
+
+I do use this flake to install neovim and to copy the config to ~/.config. However, the config
+itself is written in Lua and is in its own repo in GitHub.
+See [rcd-nvim](https://github.com/AtomicMegaNerd/rcd-nvim)
+
+---
+
+## Theming
+
+In [options.nix](./nix/options.nix) I have an option called `amnOptions.theme`. This option can be
+set to `stylix` or `catppuccin`. In the case of stylix you can choose which base16 theme to use in
+[stylix.nix](./nix/stylix.nix).
+
+The `COLOR_THEME` environment variable will be set to the current value of `amnOptions.theme`. Also
+when `stylix` is active environment variables will be set from `BASE16_COLOR_00` to
+`BASE16_COLOR_0F` which lets external programs set theme colors dynamically when they cannot be
+configured by nix.
+
+---
+
 ## Repository Structure
 
 This is the structure of this repo:
@@ -167,5 +165,7 @@ migrated to Nix.
 - [Secrets](./docs/secrets.md) Managing secrets with `agenix` and `op`.
 - [Home Manager Docs](./docs/home-manager.md) Stuff we learned about home-manager that is worth
   remembering.
+- [Nix Basics](./docs/nix-basics.md) I am writing down notes as I gradually learn more about how
+  the Nix language works.
 - [AGENTS.md](./AGENTS.md) Information for the bots.
 - [LICENSE](./LICENSE) MIT license.

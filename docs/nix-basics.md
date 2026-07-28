@@ -1,6 +1,8 @@
 # Nix Basics
 
-> [!TIP] Note for LLM’s
+This is a text file I am working on as I learn nix.
+
+> [!important] Note for LLM’s
 > LLM's are not allowed to modify this file.
 
 ## Nix Fundamentals
@@ -70,7 +72,8 @@ In Nix we bind a **Name** to a **Value**. There are two places where this can ha
 - In an **Attribute Set**.
 - In a **Let Expression**.
 
-> [!IMPORTANT] Remember Whenever `=` is encountered in nix the Name is on the left and the assigned
+> [!important] Important
+> Remember Whenever `=` is encountered in nix the Name is on the left and the assigned
 > Value is on the right. This must be terminated with a semi-colon.
 
 ### Primitive Data Types
@@ -107,7 +110,8 @@ person = {
 person.age;
 ```
 
-> [!IMPORTANT] Special case... **Recursive Attribute Sets**
+> [!important] Important
+> Special case... **Recursive Attribute Sets**
 
 **Recursive Attribute Sets** lets you refer to attributes in the same set. Otherwise this would not
 evaluate.
@@ -163,7 +167,8 @@ in
 with a; [ x y z ]
 ```
 
-> [!IMPORTANT] Remember The scope of `width` is limited to the rest of the expression following the
+> [!important] Important
+> Remember The scope of `width` is limited to the rest of the expression following the
 > `with $VAR ;`
 
 ## Links
