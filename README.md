@@ -41,7 +41,7 @@ git clone https://github.com/AtomicMegaNerd/dotfiles
 cd dotfiles
 ```
 
-> [!NOTE] Note
+> [!NOTE]
 > For external users you need to update the flake to match your infrastructure.
 
 ### MacOS
@@ -64,7 +64,7 @@ sudo mv /etc/nix/nix.conf /etc/nix/.before-darwin
 
 Then try the nix command again.
 
-> [!important] Important
+> [!IMPORTANT]
 > The last step is needed so nix-darwin can replace nix.conf with its own configuration.
 
 ### NixOS
@@ -120,7 +120,7 @@ nh home rebuild .
 
 ## Neovim
 
-> [!NOTE] Note
+> [!NOTE]
 > My Neovim congiguration is in its own separate repo.
 
 I do use this flake to install neovim and to copy the config to ~/.config. However, the config
