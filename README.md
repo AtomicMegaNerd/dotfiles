@@ -1,10 +1,8 @@
 # AtomicMegaNerd's NixOS Flake and Related Configs
 
-![AtomicMegaNerd](https://github.com/AtomicMegaNerd/AtomicMegaNerd/blob/main/img/RCD-AtomicMegaNerd-Beard-400.png)
-
 This is my core flake for my Nix-managed machines as well as any other machines that use Nix as a package manager. The only app which has settings not managed by nix is neovim. We have a separate repo for that that we just clone to `~/.config/nvim`:
 
-[https://github.com/AtomicMegaNerd/rcd-nvim](https://github.com/AtomicMegaNerd/rcd-nvim)
+[rcd-nvim](https://github.com/AtomicMegaNerd/rcd-nvim)
 
 ---
 

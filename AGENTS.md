@@ -31,17 +31,11 @@ We also do install some Homebrew packages via nix-darwin but limit them to casks
 
 ```bash
 nh home switch . # Home Manager (all systems)
-nh darwwin switch . # Mac only
+nh darwin switch . # Mac only
 nh os switch . # NiXOS only
 nh search package $PACKAGE
 nh search options $PACKAGE
 ```
-
-### Nix Direnv
-
-- Uses [nix-direnv](https://github.com/nix-community/nix-direnv)
-
-This just autoloads tha flake devShell when we cd into the flake directory.
 
 ### Agenix
 
