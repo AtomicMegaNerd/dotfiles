@@ -1,10 +1,10 @@
 {
   lib,
-  config,
+  pkgs,
   ...
 }:
 let
-  isMac = config.amnOptions.isMac;
+  isMac = pkgs.stdenv.isDarwin;
 in
 {
   programs.git = {
