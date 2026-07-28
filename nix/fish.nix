@@ -1,41 +1,39 @@
 {
   config,
+  lib,
   ...
 }:
 let
-  commonShellInit = ''
-    set -U fish_greeting
-
-    set -gx GOPATH $XDG_DATA_HOME/go
-    set -gx CARGO_HOME $XDG_DATA_HOME/cargo
-    set -gx NH_FLAKE $HOME/Code/Configs/dotfiles
-
-    # on some systems eza may not use $XDG_CONFIG_HOME by default
-    set -gx EZA_CONFIG_DIR $XDG_CONFIG_HOME/eza
-
-    # Set man pager to neovim
-    set -gx MANPAGER "nvim +Man!"
-
-    fish_add_path $GOPATH/bin
-    fish_add_path $HOME/.local/bin
-    fish_add_path $CARGO_HOME/bin
-  '';
-
   isMac = config.amnOptions.isMac;
 in
 {
   programs.fish = {
     enable = true;
-    shellInit =
-      if isMac then
-        ''
-          ${commonShellInit}
-          set -gx DOCKER_HOST unix://(podman machine inspect --format '{{.ConnectionInfo.PodmanSocket.Path}}' 2>/dev/null)
-          fish_add_path /opt/homebrew/bin
-          fish_add_path /Applications/Bear.app/Contents/MacOS
-        ''
-      else
-        commonShellInit;
+    shellInit = ''
+      set -U fish_greeting
+
+      set -gx GOPATH $XDG_DATA_HOME/go
+      set -gx CARGO_HOME $XDG_DATA_HOME/cargo
+      set -gx NH_FLAKE $HOME/Code/Configs/dotfiles
+
+      # on some systems eza may not use $XDG_CONFIG_HOME by default
+      set -gx EZA_CONFIG_DIR $XDG_CONFIG_HOME/eza
+
+      # Set man pager to neovim
+      set -gx MANPAGER "nvim +Man!"
+
+      fish_add_path $GOPATH/bin
+      fish_add_path $HOME/.local/bin
+      fish_add_path $CARGO_HOME/bin
+    ''
+    + lib.optionalString isMac ''
+      set -gx DOCKER_HOST \
+        unix://(podman machine inspect \
+        --format '{{.ConnectionInfo.PodmanSocket.Path}}' \
+        2>/dev/null)
+      fish_add_path /opt/homebrew/bin
+      fish_add_path /Applications/Bear.app/Contents/MacOS
+    '';
 
     shellAliases = {
       ls = "eza";

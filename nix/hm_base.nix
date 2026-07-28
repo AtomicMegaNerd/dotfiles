@@ -44,6 +44,7 @@ in
           jq
           tree
           glow
+          slumber
 
           # Common linters and LSP servers
           # .sh
@@ -52,8 +53,10 @@ in
           yaml-language-server
           yamllint
           # .nix
-          nixfmt
           nil
+          nixfmt
+          # .toml
+          tombi
           # .json
           biome
           # .md
