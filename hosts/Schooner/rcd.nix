@@ -1,13 +1,21 @@
-{ ... }:
+{ pkgs, ... }:
 {
   imports = [
     ../../nix/hm_base.nix
     ../../nix/ghostty.nix
     ../../nix/opencode.nix
+    ../../nix/pi.nix
+    ../../nix/zed.nix
     ../../nix/agent-skills.nix
   ];
 
   home = {
+    packages = with pkgs; [
+      docker-compose
+      podman
+      gh
+    ];
+
     username = "rcd";
     homeDirectory = "/Users/rcd";
     stateVersion = "24.11";

@@ -54,12 +54,13 @@
     casks = [
       "1password" # gui password manager
       "1password-cli" # cli password manager
-      "zoom" # video meetings
+      "amethyst" # tiling WM
       "calibre" # managing ebooks
-      "linearmouse" # better logitech mouse settings
       "finetune" # per-app volume control
       "ghostty" # terminal app
-      "amethyst" # tiling WM
+      "linearmouse" # better logitech mouse settings
+      "zoom" # video meetings
+      "zed" # Fancy GUI code editor
     ];
     enableFishIntegration = true;
     global = {
