@@ -41,7 +41,7 @@ git clone https://github.com/AtomicMegaNerd/dotfiles
 cd dotfiles
 ```
 
-> [!note] Note
+> [!NOTE] Note
 > For external users you need to update the flake to match your infrastructure.
 
 ### MacOS
@@ -120,7 +120,7 @@ nh home rebuild .
 
 ## Neovim
 
-> [!note] Note
+> [!NOTE] Note
 > My Neovim congiguration is in its own separate repo.
 
 I do use this flake to install neovim and to copy the config to ~/.config. However, the config
