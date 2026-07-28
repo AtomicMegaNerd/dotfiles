@@ -102,6 +102,7 @@ in
   # Nix Config
   nix = {
     package = pkgs.nixVersions.stable;
+    channel.enable = false;
     settings.experimental-features = [
       "nix-command"
       "flakes"

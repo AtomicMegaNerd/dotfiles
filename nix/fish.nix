@@ -10,7 +10,7 @@ in
   programs.fish = {
     enable = true;
     shellInit = ''
-      set -U fish_greeting
+      set -g fish_greeting
 
       set -gx GOPATH $XDG_DATA_HOME/go
       set -gx CARGO_HOME $XDG_DATA_HOME/cargo
@@ -22,17 +22,17 @@ in
       # Set man pager to neovim
       set -gx MANPAGER "nvim +Man!"
 
-      fish_add_path $GOPATH/bin
-      fish_add_path $HOME/.local/bin
-      fish_add_path $CARGO_HOME/bin
+      fish_add_path -g $GOPATH/bin
+      fish_add_path -g $HOME/.local/bin
+      fish_add_path -g $CARGO_HOME/bin
     ''
     + lib.optionalString isMac ''
       set -gx DOCKER_HOST \
         unix://(podman machine inspect \
         --format '{{.ConnectionInfo.PodmanSocket.Path}}' \
         2>/dev/null)
-      fish_add_path /opt/homebrew/bin
-      fish_add_path /Applications/Bear.app/Contents/MacOS
+      fish_add_path -g /opt/homebrew/bin
+      fish_add_path -g /Applications/Bear.app/Contents/MacOS
     '';
 
     shellAliases = {

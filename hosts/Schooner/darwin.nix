@@ -13,6 +13,8 @@
       trusted-users = [ "@admin" ];
     };
 
+    channel.enable = false;
+
     gc = {
       automatic = true;
       interval = {
