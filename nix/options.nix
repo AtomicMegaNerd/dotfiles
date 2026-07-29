@@ -1,4 +1,9 @@
-{ lib, config, ... }:
+{
+  lib,
+  config,
+  options,
+  ...
+}:
 let
   # This function pulls the palette from the canonical palette.json that ships with the
   # catppuccin flake. We can then re-use these colours for other apps where catppuccin/nvim
@@ -57,39 +62,18 @@ in
         type = lib.types.str;
       };
       flavor = lib.mkOption {
-        type = lib.types.enum [
-          "latte"
-          "frappe"
-          "macchiato"
-          "mocha"
-        ];
+        type = options.catppuccin.flavor.type;
       };
       accent = lib.mkOption {
-        type = lib.types.enum [
-          "blue"
-          "flamingo"
-          "green"
-          "lavender"
-          "maroon"
-          "mauve"
-          "peach"
-          "pink"
-          "red"
-          "rosewater"
-          "sapphire"
-          "sky"
-          "teal"
-          "yellow"
-        ];
+        type = options.catppuccin.accent.type;
       };
       palette = lib.mkOption {
         type = lib.types.anything;
-        description = "Official catppuccin palette for the active flavor, using catppuccin color names.";
       };
     };
   };
 
-  # Set the values for our confiuration here
+  # Set the values for our configuration here
   config = {
     amnOptions.theme = "catppuccin";
     amnOptions.stylix.theme = "gruvbox-dark-soft";

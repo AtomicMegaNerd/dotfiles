@@ -52,6 +52,7 @@
     thinkingMedium = palette.teal;
     thinkingHigh = palette.mauve;
     thinkingXhigh = palette.red;
+    thinkingMax = palette.red;
     bashMode = palette.green;
   };
   export = {

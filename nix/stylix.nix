@@ -5,7 +5,7 @@
 }:
 let
   enableStylix = (config.amnOptions.theme == "stylix");
-  theme = "${config.amnOptions.stylix.theme}";
+  theme = config.amnOptions.stylix.theme;
   themeFile = "${config.stylix.inputs.tinted-schemes}/base16/${theme}.yaml";
 
   # We will do explicit opt-in for theming here. Also please note we leave neovim out of this
