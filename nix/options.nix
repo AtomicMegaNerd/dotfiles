@@ -9,6 +9,9 @@
         "stylix"
       ];
     };
+    amnOptions.base16.theme = lib.mkOption {
+      type = lib.types.str;
+    };
     amnOptions.catppuccin.flavor = lib.mkOption {
       type = lib.types.enum [
         "latte"
@@ -37,9 +40,10 @@
     };
   };
 
-  # Here we can set the value we want
+  # Set the values for our confiuration here
   config = {
     amnOptions.theme = "catppuccin";
+    amnOptions.base16.theme = "gruvbox-dark-soft";
     amnOptions.catppuccin.flavor = "frappe";
     amnOptions.catppuccin.accent = "sapphire";
   };

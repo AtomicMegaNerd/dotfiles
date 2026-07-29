@@ -5,8 +5,8 @@
 }:
 let
   enableStylix = (config.amnOptions.theme == "stylix");
-  themeInput = config.stylix.inputs.tinted-schemes;
-  theme = "gruvbox-dark-soft.yaml";
+  theme = "${config.amnOptions.base16.theme}";
+  themeFile = "${config.stylix.inputs.tinted-schemes}/base16/${theme}.yaml";
 
   # We will do explicit opt-in for theming here. Also please note we leave neovim out of this
   # as we do not configure neovim with nix.
@@ -37,7 +37,7 @@ in
   stylix = {
     enable = enableStylix;
     autoEnable = false; # Do not use autoEnable
-    base16Scheme = lib.mkIf enableStylix "${themeInput}/base16/${theme}";
+    base16Scheme = lib.mkIf enableStylix "${themeFile}";
     targets = enableStylixTargets;
   };
 
