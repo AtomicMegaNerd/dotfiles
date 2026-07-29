@@ -2,8 +2,9 @@
 
 This is a text file I am working on as I learn nix.
 
-> [!important] Note for LLM’s
-> LLM's are not allowed to modify this file.
+<!-- prettier-ignore -->
+> [!IMPORTANT]
+> Note for LLM’s LLM's are not allowed to modify this file.
 
 ## Nix Fundamentals
 
@@ -72,9 +73,9 @@ In Nix we bind a **Name** to a **Value**. There are two places where this can ha
 - In an **Attribute Set**.
 - In a **Let Expression**.
 
-> [!important] Important
-> Remember Whenever `=` is encountered in nix the Name is on the left and the assigned
-> Value is on the right. This must be terminated with a semi-colon.
+<!-- prettier-ignore -->
+> [!IMPORTANT]
+> Remember Whenever `=` is encountered in nix the Name is on the left and the assigned Value is on > the right. This must be terminated with a semi-colon.
 
 ### Primitive Data Types
 
@@ -110,7 +111,8 @@ person = {
 person.age;
 ```
 
-> [!important] Important
+<!-- prettier-ignore -->
+> [!IMPORTANT]
 > Special case... **Recursive Attribute Sets**
 
 **Recursive Attribute Sets** lets you refer to attributes in the same set. Otherwise this would not
@@ -167,7 +169,8 @@ in
 with a; [ x y z ]
 ```
 
-> [!important] Important
+<!-- prettier-ignore -->
+> [!IMPORTANT]
 > Remember The scope of `width` is limited to the rest of the expression following the
 > `with $VAR ;`
 

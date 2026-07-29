@@ -2,7 +2,8 @@
   description = "AtomicMegaNerd's NixOS Flake";
   inputs = {
     # Note that we use nixpkgs (stable) for the core NixOS packages but nixpkgs-unstable
-    # for everything else (home-manager and nix-darwin). This is intentional.
+    # for everything else (home-manager and nix-darwin). This is intentional. The core OS
+    # for my server can be more stable but I want all my development tools to be current.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     home-manager = {
@@ -25,6 +26,10 @@
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    git-hooks = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs =
@@ -37,9 +42,16 @@
       agenix,
       catppuccin,
       stylix,
+      git-hooks,
       ...
     }:
     let
+
+      systems = [
+        "x86_64-linux"
+        "aarch64-darwin"
+      ];
+      forAllSystems = nixpkgs.lib.genAttrs systems;
 
       # This is for building NixOS configurations, where we are running the full NixOS Linux
       # distribution
@@ -76,6 +88,33 @@
             ./hosts/${hostname}/darwin.nix
           ];
         };
+      gitHooksConfig = pkgs: {
+        src = ./.;
+        hooks = {
+          nixfmt.enable = true;
+          yaml-lint = {
+            enable = true;
+            name = "yaml lint";
+            entry = "${pkgs.yamllint}/bin/yamllint --strict";
+            language = "system";
+            types = [ "yaml" ];
+          };
+          md-lint = {
+            enable = true;
+            name = "markdown lint";
+            entry = "${pkgs.markdownlint-cli2}/bin/markdownlint-cli2";
+            language = "system";
+            types = [ "markdown" ];
+          };
+          md-format = {
+            enable = true;
+            name = "markdown format";
+            entry = "${pkgs.oxfmt}/bin/oxfmt";
+            language = "system";
+            types = [ "markdown" ];
+          };
+        };
+      };
     in
     {
       nixosConfigurations = {
@@ -91,15 +130,34 @@
         "rcd@Schooner" = buildHomeMgr "aarch64-darwin" "Schooner";
       };
 
-      checks = {
-        x86_64-linux = {
+      checks = forAllSystems (
+        system:
+        let
+          pkgs = nixpkgs-unstable.legacyPackages.${system};
+        in
+        {
+          pre-commit-check = git-hooks.lib.${system}.run (gitHooksConfig pkgs);
+        }
+        // nixpkgs.lib.optionalAttrs (system == "x86_64-linux") {
           nixos-blahaj = self.nixosConfigurations.blahaj.config.system.build.toplevel;
           home-rcd-blahaj = self.homeConfigurations."rcd@blahaj".activationPackage;
-        };
-        aarch64-darwin = {
+        }
+        // nixpkgs.lib.optionalAttrs (system == "aarch64-darwin") {
           darwin-Schooner = self.darwinConfigurations.Schooner.config.system.build.toplevel;
           home-rcd-Schooner = self.homeConfigurations."rcd@Schooner".activationPackage;
-        };
-      };
+        }
+      );
+
+      devShells = forAllSystems (system: {
+        default =
+          let
+            pkgs = nixpkgs.legacyPackages.${system};
+            inherit (self.checks.${system}.pre-commit-check) shellHook enabledPackages;
+          in
+          pkgs.mkShell {
+            inherit shellHook;
+            packages = enabledPackages;
+          };
+      });
     };
 }

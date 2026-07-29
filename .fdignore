@@ -1,0 +1,6 @@
+!.env
+!.envrc
+!.pre-commit-config.yaml
+**/*.png
+**/*.jpg
+**/*.jpeg
