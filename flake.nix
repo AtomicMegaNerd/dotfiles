@@ -37,6 +37,7 @@
       agenix,
       catppuccin,
       stylix,
+      ...
     }:
     let
 
@@ -62,7 +63,6 @@
             catppuccin.homeModules.catppuccin
             stylix.homeModules.stylix
             agenix.homeManagerModules.default
-            # TODO: Fix this once we are ready to move to the dendritic pattern
             { home.packages = [ agenix.packages.${system}.default ]; }
           ];
         };
@@ -89,6 +89,17 @@
       homeConfigurations = {
         "rcd@blahaj" = buildHomeMgr "x86_64-linux" "blahaj";
         "rcd@Schooner" = buildHomeMgr "aarch64-darwin" "Schooner";
+      };
+
+      checks = {
+        x86_64-linux = {
+          nixos-blahaj = self.nixosConfigurations.blahaj.config.system.build.toplevel;
+          home-rcd-blahaj = self.homeConfigurations."rcd@blahaj".activationPackage;
+        };
+        aarch64-darwin = {
+          darwin-Schooner = self.darwinConfigurations.Schooner.config.system.build.toplevel;
+          home-rcd-Schooner = self.homeConfigurations."rcd@Schooner".activationPackage;
+        };
       };
     };
 }
