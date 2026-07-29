@@ -88,33 +88,7 @@
             ./hosts/${hostname}/darwin.nix
           ];
         };
-      gitHooksConfig = pkgs: {
-        src = ./.;
-        hooks = {
-          nixfmt.enable = true;
-          yaml-lint = {
-            enable = true;
-            name = "yaml lint";
-            entry = "${pkgs.yamllint}/bin/yamllint --strict";
-            language = "system";
-            types = [ "yaml" ];
-          };
-          md-lint = {
-            enable = true;
-            name = "markdown lint";
-            entry = "${pkgs.markdownlint-cli2}/bin/markdownlint-cli2";
-            language = "system";
-            types = [ "markdown" ];
-          };
-          md-format = {
-            enable = true;
-            name = "markdown format";
-            entry = "${pkgs.oxfmt}/bin/oxfmt";
-            language = "system";
-            types = [ "markdown" ];
-          };
-        };
-      };
+
     in
     {
       nixosConfigurations = {
@@ -136,7 +110,33 @@
           pkgs = nixpkgs-unstable.legacyPackages.${system};
         in
         {
-          pre-commit-check = git-hooks.lib.${system}.run (gitHooksConfig pkgs);
+          pre-commit-check = git-hooks.lib.${system}.run {
+            src = ./.;
+            hooks = {
+              nixfmt.enable = true;
+              yaml-lint = {
+                enable = true;
+                name = "yaml lint";
+                entry = "${pkgs.yamllint}/bin/yamllint --strict";
+                language = "system";
+                types = [ "yaml" ];
+              };
+              md-lint = {
+                enable = true;
+                name = "markdown lint";
+                entry = "${pkgs.markdownlint-cli2}/bin/markdownlint-cli2";
+                language = "system";
+                types = [ "markdown" ];
+              };
+              md-format = {
+                enable = true;
+                name = "markdown format";
+                entry = "${pkgs.oxfmt}/bin/oxfmt";
+                language = "system";
+                types = [ "markdown" ];
+              };
+            };
+          };
         }
         // nixpkgs.lib.optionalAttrs (system == "x86_64-linux") {
           nixos-blahaj = self.nixosConfigurations.blahaj.config.system.build.toplevel;
