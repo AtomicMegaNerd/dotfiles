@@ -1,5 +1,8 @@
 { lib, config, ... }:
 let
+  # This function pulls the palette from the canonical palette.json that ships with the
+  # catppuccin flake. We can then re-use these colours for other apps where catppuccin/nvim
+  # doesn't yet offer support.
   mkCatppuccinPalette =
     flavor: accent:
     let

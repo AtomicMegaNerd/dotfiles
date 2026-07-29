@@ -1,21 +1,22 @@
 { config, lib, ... }:
 let
-  enableCatppuccin = (config.amnOptions.theme == "catppuccin");
-  catppuccinFlavor = config.amnOptions.catppuccin.flavor;
-  catppuccinAccent = config.amnOptions.catppuccin.accent;
+  enable = (config.amnOptions.theme == "catppuccin");
+  flavor = config.amnOptions.catppuccin.flavor;
+  accent = config.amnOptions.catppuccin.accent;
 in
 {
   catppuccin = {
-    enable = enableCatppuccin;
-    autoEnable = enableCatppuccin;
-    flavor = lib.mkIf enableCatppuccin catppuccinFlavor;
-    accent = lib.mkIf enableCatppuccin catppuccinAccent;
+    enable = enable;
+    autoEnable = enable;
+    flavor = lib.mkIf enable flavor;
+    accent = lib.mkIf enable accent;
+    # Neovim manages its own theme
     nvim.enable = false;
   };
 
-  home.sessionVariables = lib.mkIf enableCatppuccin {
+  home.sessionVariables = lib.mkIf enable {
     COLOR_THEME = "catppuccin";
-    CATPPUCCIN_FLAVOR = "${catppuccinFlavor}";
-    CATPPUCCIN_ACCENT = "${catppuccinAccent}";
+    CATPPUCCIN_FLAVOR = "${flavor}";
+    CATPPUCCIN_ACCENT = "${accent}";
   };
 }
