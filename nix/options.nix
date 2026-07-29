@@ -8,12 +8,39 @@
         "catppuccin"
         "stylix"
       ];
-      description = "Global theme selector. Switches between catppuccin and stylix theming.";
+    };
+    amnOptions.catppuccin.flavor = lib.mkOption {
+      type = lib.types.enum [
+        "latte"
+        "frappe"
+        "macchiato"
+        "mocha"
+      ];
+    };
+    amnOptions.catppuccin.accent = lib.mkOption {
+      type = lib.types.enum [
+        "blue"
+        "flamingo"
+        "green"
+        "lavender"
+        "maroon"
+        "mauve"
+        "peach"
+        "pink"
+        "red"
+        "rosewater"
+        "sapphire"
+        "sky"
+        "teal"
+        "yellow"
+      ];
     };
   };
 
   # Here we can set the value we want
   config = {
     amnOptions.theme = "catppuccin";
+    amnOptions.catppuccin.flavor = "frappe";
+    amnOptions.catppuccin.accent = "sapphire";
   };
 }
