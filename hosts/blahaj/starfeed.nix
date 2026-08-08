@@ -21,7 +21,7 @@ in
 
   virtualisation.oci-containers.containers.starfeed = {
     autoStart = true;
-    image = "atomicmeganerd/starfeed:0.5.0";
+    image = "atomicmeganerd/starfeed:0.6.0";
     environment = {
       STARFEED_CONFIG_PATH = starfeedConf;
     };
