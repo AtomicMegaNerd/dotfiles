@@ -15,7 +15,7 @@
     if [ ! -d "$skills_repo" ]; then
       $DRY_RUN_CMD mkdir -p "$(dirname "$skills_repo")"
       $DRY_RUN_CMD ${pkgs.git}/bin/git clone $VERBOSE_ARG \
-        ssh://github.com/AtomicMegaNerd/agent-skills \
+        git@github.com:AtomicMegaNerd/agent-skills.git \
         "$skills_repo"
     fi
 
