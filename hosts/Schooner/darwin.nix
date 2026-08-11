@@ -62,6 +62,7 @@
       "zoom" # video meetings
       "zed" # Fancy GUI code editor
       "netnewswire" # RSS
+      "obsidian" # Note taking
     ];
     enableFishIntegration = true;
     global = {
