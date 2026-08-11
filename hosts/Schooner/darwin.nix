@@ -61,6 +61,7 @@
       "linearmouse" # better logitech mouse settings
       "zoom" # video meetings
       "zed" # Fancy GUI code editor
+      "netnewswire" # RSS
     ];
     enableFishIntegration = true;
     global = {
