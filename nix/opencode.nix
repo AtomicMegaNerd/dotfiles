@@ -7,6 +7,25 @@
     enable = true;
     context = builtins.readFile ../static/opencode/AGENTS.md;
     settings = {
+
+      provider = {
+        ollama = {
+          npm = "@ai-sdk/openai-compatible";
+          name = "Ollama";
+          options = {
+            baseURL = "http://localhost:11434/v1";
+          };
+          models = {
+            "qwen3.6:27b-q4_k_m" = {
+              name = "Qwen 3.6 27B";
+            };
+            "gemma4:12b" = {
+              name = "Gemma4 12B";
+            };
+          };
+        };
+      };
+
       shell = "fish";
       mcp = {
         context7 = {
