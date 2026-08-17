@@ -5,7 +5,6 @@
     ../../nix/ghostty.nix
     ../../nix/opencode.nix
     ../../nix/pi.nix
-    ../../nix/zed.nix
     ../../nix/agent-skills.nix
   ];
 

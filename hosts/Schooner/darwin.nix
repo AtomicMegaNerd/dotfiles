@@ -60,7 +60,6 @@
       "ghostty" # terminal app
       "linearmouse" # better logitech mouse settings
       "zoom" # video meetings
-      "zed" # Fancy GUI code editor
       "netnewswire" # RSS
       "obsidian" # Note taking
     ];
