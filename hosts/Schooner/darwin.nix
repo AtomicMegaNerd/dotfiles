@@ -41,16 +41,6 @@
     monaspace
   ];
 
-  imports = [ ../../nix/ollama.nix ];
-  services.ollama = {
-    enable = true;
-    environmentVariables = {
-      OLLAMA_CONTEXT_LENGTH = "16384"; # Default context window (in tokens)
-      OLLAMA_NUM_PARALLEL = "1"; # Max concurrent requests per model
-      OLLAMA_KEEP_ALIVE = "10m"; # Keep models loaded in RAM for 10 min
-    };
-  };
-
   homebrew = {
     enable = true;
     onActivation = {
