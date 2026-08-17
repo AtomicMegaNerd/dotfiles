@@ -18,7 +18,6 @@
     ./nh.nix
     ./nushell.nix
     ./starship.nix
-    ./television.nix
     ./zellij.nix
     ./zoxide.nix
   ];
