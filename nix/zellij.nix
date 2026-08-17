@@ -5,7 +5,7 @@
   ...
 }:
 let
-  isMac = pkgs.stdenv.isDarwin;
+  isMac = pkgs.stdenv.hostPlatform.isDarwin;
 in
 {
   programs.zellij = {
