@@ -53,6 +53,15 @@
       ];
       forAllSystems = nixpkgs.lib.genAttrs systems;
 
+      # We intentionally allow unfree packages (e.g. claude-code) on top of
+      # nixpkgs-unstable, which provides all of our development tooling.
+      unstablePkgs =
+        system:
+        import nixpkgs-unstable {
+          inherit system;
+          config.allowUnfree = true;
+        };
+
       # This is for building NixOS configurations, where we are running the full NixOS Linux
       # distribution
       buildNixOS =
@@ -68,7 +77,7 @@
       buildHomeMgr =
         system: hostname:
         home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs-unstable.legacyPackages.${system};
+          pkgs = unstablePkgs system;
           modules = [
             ./hosts/${hostname}/rcd.nix
             ./nix/options.nix
@@ -83,7 +92,7 @@
       buildDarwinConf =
         hostname:
         nix-darwin.lib.darwinSystem {
-          pkgs = nixpkgs-unstable.legacyPackages.${"aarch64-darwin"};
+          pkgs = unstablePkgs "aarch64-darwin";
           modules = [
             ./hosts/${hostname}/darwin.nix
           ];
@@ -107,7 +116,7 @@
       checks = forAllSystems (
         system:
         let
-          pkgs = nixpkgs-unstable.legacyPackages.${system};
+          pkgs = unstablePkgs system;
         in
         {
           pre-commit-check = git-hooks.lib.${system}.run {
