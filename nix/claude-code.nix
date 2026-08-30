@@ -6,7 +6,7 @@
   programs.claude-code = {
     enable = true;
     configDir = "${config.xdg.configHome}/claude";
-    context = builtins.readFile ../static/claude/AGENTS.md;
+    context = builtins.readFile ../static/claude/CLAUDE.md;
 
     # Mirrors the LSP's enabled in ~/Code/Configs/rcd-nvim (lua/lsp.lua).
     # Claude Code only lets one server claim a file extension, so tsc owns
@@ -126,6 +126,9 @@
     settings = {
       theme = "dark";
       includeCoAuthoredBy = false;
+      permissions = {
+        defaultMode = "default";
+      };
     };
   };
 }
