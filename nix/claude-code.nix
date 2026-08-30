@@ -126,6 +126,7 @@
     settings = {
       theme = "dark";
       includeCoAuthoredBy = false;
+      autoMemoryEnabled = false;
       permissions = {
         defaultMode = "default";
       };
