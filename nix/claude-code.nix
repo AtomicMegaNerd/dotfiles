@@ -1,17 +1,21 @@
 {
   config,
+  pkgs,
   ...
 }:
+let
+  mkAgentsMd = import ./lib/agents-md.nix { inherit pkgs; };
+in
 {
   programs.claude-code = {
     enable = true;
     configDir = "${config.xdg.configHome}/claude";
-    context = builtins.readFile ../static/claude/CLAUDE.md;
+    context = mkAgentsMd {
+      template = ../static/agents-template.md;
+      title = "Global Claude Code Guidance";
+      context7Line = "- Always try context7 first if you are looking up information on open-source libraries.";
+    };
 
-    # Mirrors the LSP's enabled in ~/Code/Configs/rcd-nvim (lua/lsp.lua).
-    # Claude Code only lets one server claim a file extension, so tsc owns
-    # js/ts and biome keeps css/json. Python (ty/ruff) and docker are skipped.
-    # The binaries themselves come from hm_base.nix and per-project devshells.
     lspServers = {
       bash = {
         command = "bash-language-server";
@@ -109,16 +113,6 @@
         extensionToLanguage = {
           ".yml" = "yaml";
           ".yaml" = "yaml";
-        };
-      };
-    };
-
-    mcpServers = {
-      context7 = {
-        type = "http";
-        url = "https://mcp.context7.com/mcp";
-        headers = {
-          CONTEXT7_API_KEY = "\${CONTEXT7_API_KEY}";
         };
       };
     };

@@ -1,11 +1,19 @@
 {
   lib,
+  pkgs,
   ...
 }:
+let
+  mkAgentsMd = import ./lib/agents-md.nix { inherit pkgs; };
+in
 {
   programs.opencode = {
     enable = true;
-    context = builtins.readFile ../static/opencode/AGENTS.md;
+    context = mkAgentsMd {
+      template = ../static/agents-template.md;
+      title = "Global OpenCode Guidance";
+      context7Line = "- Always try context7 first if you are looking up information on open-source libraries.";
+    };
     settings = {
 
       shell = "fish";

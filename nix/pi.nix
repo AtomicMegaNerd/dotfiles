@@ -1,5 +1,11 @@
-{ lib, config, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 let
+  mkAgentsMd = import ./lib/agents-md.nix { inherit pkgs; };
   piThemeDir = "${config.xdg.configHome}/pi/agent/themes";
   theme = config.amnOptions.theme;
   stylixTheme = config.amnOptions.stylix.theme;
@@ -42,6 +48,9 @@ in
       };
     };
 
-    context = builtins.readFile ../static/pi/AGENTS.md;
+    context = mkAgentsMd {
+      template = ../static/agents-template.md;
+      title = "Global Pi Agent Guidance";
+    };
   };
 }
