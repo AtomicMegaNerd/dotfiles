@@ -53,8 +53,8 @@
       ];
       forAllSystems = nixpkgs.lib.genAttrs systems;
 
-      # We intentionally allow unfree packages (e.g. claude-code) on top of
-      # nixpkgs-unstable, which provides all of our development tooling.
+      # We intentionally allow unfree packages on top of nixpkgs-unstable,
+      # which provides all of our development tooling.
       unstablePkgs =
         system:
         import nixpkgs-unstable {

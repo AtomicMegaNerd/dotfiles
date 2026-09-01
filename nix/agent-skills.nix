@@ -21,8 +21,7 @@
 
     for skills_dir in \
       "${config.xdg.configHome}/opencode/skills" \
-      "${config.xdg.configHome}/pi/agent/skills" \
-      "~/.claude/skills"
+      "${config.xdg.configHome}/pi/agent/skills"
     do
       if [ ! -e "$skills_dir" ]; then
         $DRY_RUN_CMD mkdir -p "$skills_dir"
