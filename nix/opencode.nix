@@ -15,8 +15,20 @@ in
       context7Line = "- Always try context7 first if you are looking up information on open-source libraries.";
     };
     settings = {
-
       shell = "fish";
+      model = "opencode-go/deepseek-v4-pro";
+      small_model = "opencode-go/mimo-v2.5";
+      agent = {
+        plan = {
+          model = "opencode-go/glm-5.3-flash";
+        };
+        explore = {
+          model = "opencode-go/deepseek-v4-flash";
+        };
+        general = {
+          model = "opencode-go/deepseek-v4-flash";
+        };
+      };
       mcp = {
         context7 = {
           type = "remote";
