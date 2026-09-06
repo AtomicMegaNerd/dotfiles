@@ -3,6 +3,12 @@ let
   theme = config.amnOptions.theme;
 in
 {
+  home.file."${config.xdg.configHome}/opencode/skills/herdr".source =
+    "${config.programs.herdr.package}/share/herdr/skills/herdr";
+
+  home.file."${config.xdg.configHome}/pi/agent/skills/herdr".source =
+    "${config.programs.herdr.package}/share/herdr/skills/herdr";
+
   programs.herdr = {
     enable = true;
 
