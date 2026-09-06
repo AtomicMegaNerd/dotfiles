@@ -10,6 +10,7 @@
     ./fish.nix
     ./fzf.nix
     ./git.nix
+    ./herdr.nix
     ./stylix.nix
     ./catppuccin.nix
     ./lazygit.nix
