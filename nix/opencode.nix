@@ -16,7 +16,7 @@ in
     };
     settings = {
       shell = "fish";
-      model = "opencode-go/glm-5.2";
+      model = "opencode-go/kimi-k2.7-code";
       small_model = "opencode-go/mimo-v2.5";
       agent = {
         plan = {
