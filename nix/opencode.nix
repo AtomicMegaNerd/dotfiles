@@ -16,7 +16,7 @@ in
     };
     settings = {
       shell = "fish";
-      model = "opencode-go/deepseek-v4-pro";
+      model = "opencode-go/glm-5.2";
       small_model = "opencode-go/mimo-v2.5";
       agent = {
         plan = {
