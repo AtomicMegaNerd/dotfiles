@@ -11,7 +11,7 @@ in
 
   virtualisation.oci-containers.containers.freshrss = {
     autoStart = true;
-    image = "freshrss/freshrss:1.29.1";
+    image = "freshrss/freshrss:1.30.0";
     ports = [
       "8080:80/tcp"
     ];
