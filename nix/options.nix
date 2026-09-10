@@ -48,15 +48,6 @@ in
   # These are the custom options for my flake. This let's us exercise more control over how
   # some parts of the system are configured.
   options = {
-    amnOptions.theme = lib.mkOption {
-      type = lib.types.enum [
-        "catppuccin"
-        "stylix"
-      ];
-    };
-    amnOptions.stylix.theme = lib.mkOption {
-      type = lib.types.str;
-    };
     amnOptions.catppuccin = {
       theme = lib.mkOption {
         type = lib.types.str;
@@ -75,8 +66,6 @@ in
 
   # Set the values for our configuration here
   config = {
-    amnOptions.theme = "catppuccin";
-    amnOptions.stylix.theme = "gruvbox-dark-soft";
     amnOptions.catppuccin = rec {
       flavor = "frappe";
       accent = "sapphire";

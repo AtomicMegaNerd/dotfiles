@@ -1,6 +1,6 @@
 { config, lib, ... }:
 let
-  enable = (config.amnOptions.theme == "catppuccin");
+  enable = true;
   flavor = config.amnOptions.catppuccin.flavor;
   accent = config.amnOptions.catppuccin.accent;
 in

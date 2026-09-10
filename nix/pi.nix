@@ -1,5 +1,4 @@
 {
-  lib,
   config,
   pkgs,
   ...
@@ -7,20 +6,10 @@
 let
   mkAgentsMd = import ./lib/agents-md.nix { inherit pkgs; };
   piThemeDir = "${config.xdg.configHome}/pi/agent/themes";
-  theme = config.amnOptions.theme;
-  stylixTheme = config.amnOptions.stylix.theme;
   catppuccinTheme = config.amnOptions.catppuccin.theme;
 in
 {
-  home.file."${piThemeDir}/${stylixTheme}.json" = lib.mkIf (theme == "stylix") {
-    text = builtins.toJSON (
-      import ./pi-stylix.nix {
-        name = stylixTheme;
-        colors = config.lib.stylix.colors.withHashtag;
-      }
-    );
-  };
-  home.file."${piThemeDir}/${catppuccinTheme}.json" = lib.mkIf (theme == "catppuccin") {
+  home.file."${piThemeDir}/${catppuccinTheme}.json" = {
     text = builtins.toJSON (
       import ./pi-catppuccin.nix {
         theme = catppuccinTheme;
@@ -34,7 +23,7 @@ in
     configDir = "${config.xdg.configHome}/pi/agent";
 
     settings = {
-      theme = if theme == "stylix" then stylixTheme else catppuccinTheme;
+      theme = catppuccinTheme;
       defaultProvider = "opencode-go";
       defaultThinkingLevel = "medium";
       compaction = {

@@ -11,7 +11,6 @@
     ./fzf.nix
     ./git.nix
     ./herdr.nix
-    ./stylix.nix
     ./catppuccin.nix
     ./lazygit.nix
     ./lazydocker.nix
@@ -19,7 +18,6 @@
     ./nh.nix
     ./nushell.nix
     ./starship.nix
-    ./zellij.nix
     ./zoxide.nix
   ];
 

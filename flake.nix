@@ -22,10 +22,6 @@
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    stylix = {
-      url = "github:danth/stylix";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
     git-hooks = {
       url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -41,7 +37,6 @@
       nix-darwin,
       agenix,
       catppuccin,
-      stylix,
       git-hooks,
       ...
     }:
@@ -82,7 +77,6 @@
             ./hosts/${hostname}/rcd.nix
             ./nix/options.nix
             catppuccin.homeModules.catppuccin
-            stylix.homeModules.stylix
             agenix.homeManagerModules.default
             { home.packages = [ agenix.packages.${system}.default ]; }
           ];

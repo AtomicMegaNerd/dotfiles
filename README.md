@@ -132,19 +132,6 @@ itself is written in Lua and is in its own repo in GitHub. See
 
 ---
 
-## Theming
-
-In [options.nix](./nix/options.nix) I have an option called `amnOptions.theme`. This option can be
-set to `stylix` or `catppuccin`. In the case of stylix you can choose which base16 theme to use in
-[stylix.nix](./nix/stylix.nix).
-
-The `COLOR_THEME` environment variable will be set to the current value of `amnOptions.theme`. Also
-when `stylix` is active environment variables will be set from `BASE16_COLOR_00` to
-`BASE16_COLOR_0F` which lets external programs set theme colors dynamically when they cannot be
-configured by nix.
-
----
-
 ## Repository Structure
 
 This is the structure of this repo:
