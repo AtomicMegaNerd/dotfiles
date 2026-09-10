@@ -62,12 +62,7 @@ in
         bash = {
           "*" = "ask";
           "jq *" = "allow";
-          "rg *" = "allow";
           "fd *" = "allow";
-          "fzf *" = "allow";
-          "head *" = "allow";
-          "bat *" = "allow";
-          "tail *" = "allow";
           "eza *" = "allow";
           "tree *" = "allow";
           "wc *" = "allow";
@@ -76,18 +71,14 @@ in
           "diff *" = "allow";
           "which *" = "allow";
           "ls *" = "allow";
-          "cat *" = "allow";
           "find *" = "allow";
           "pwd *" = "allow";
-          "grep *" = "allow";
           "dirname *" = "allow";
           "basename *" = "allow";
           "realpath *" = "allow";
           "readlink *" = "allow";
           "git status *" = "allow";
           "git log *" = "allow";
-          "git diff *" = "allow";
-          "git show *" = "allow";
           "git branch" = "allow";
           "git branch -l *" = "allow";
           "git branch --list *" = "allow";
@@ -121,8 +112,6 @@ in
 
         # `external_directory` matches the ABSOLUTE file path, so `~/` expansion works here.
         external_directory = lib.hm.dag.entryAfter [ "read" ] {
-          "~/Code/**" = "allow";
-          "~/.config/opencode/**" = "allow";
           "/tmp/**" = "allow";
         };
 

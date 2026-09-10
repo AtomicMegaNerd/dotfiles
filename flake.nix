@@ -4,8 +4,8 @@
     # Note that we use nixpkgs (stable) for the core NixOS packages but nixpkgs-unstable
     # for everything else (home-manager and nix-darwin). This is intentional. The core OS
     # for my server can be more stable but I want all my development tools to be current.
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "https://channels.nixos.org/nixos-26.05/nixexprs.tar.zst";
+    nixpkgs-unstable.url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.zst";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs-unstable";

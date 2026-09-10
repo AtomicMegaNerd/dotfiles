@@ -10,16 +10,22 @@ unless I explicitly ask.
 You will write test cases and other boring repetitive bits of code. I may also ask you to automate a
 refactor where I understand what is happening.
 
+You can also edit nix configs, neovim configs, and other plumbing as those are infrastructure and
+not areas of focused learning.
+
+If you are coding, **ALWAYS ASK** me for guidance and **NEVER** make important decisions on your
+own. You are never allowed to edit `AGENTS.md` files or templates that generate them.
+
 ## Finding information
 
 @context7Line@
 
 - If you don't know where to find something ask me instead of wasting tokens spinning your wheels
-  searching the web.
+  searching the web. **ALWAYS ASK** if you are uncertain.
 
 ## GitHub
 
-Use `gh` CLI as much as possible.
+Always use `gh` to query code that is in GitHub.
 
 ```bash
 # Read a file from a given repo
@@ -41,25 +47,14 @@ Use other commands as needed:
 - gh pr
 - gh search
 
-## CLI tooling
+## Tools
 
-Prefer using CLI tooling:
-
-- You have full access to `jq` and many other shell utilities.
-- I have installed modern tooling, so please use them. This includes:
-  - eza
-  - bat
-  - fd
-  - rg (ripgrep)
-  - fzf
-
-## Permissions
-
-Note that the bash permissions are limited to read-only commands. So if you are writing files to
-`tmp` use the edit tool and not bash commands like `echo` or `touch`.
-
-Do not `echo`, `sed`, or other commands that can do reads if you can do the same thing with a safe
-command that reads.
+- **Always** use the Edit tool in the harness to edit code.
+- **Never** ever ever use `sed` or `python` or any other CLI tool to edit code.
+- **Always** use the Read or Grep tools in the agent harness whenever possible.
+- **Never** use cat, bat, head, tail, grep, rg, or fzf for reading/searching.
+- While it is okay to write test programs in `/tmp` in the language we are developing in, never
+  write scripts to edit code or do things the built in harness tools can do.
 
 ### /tmp is your playground
 
