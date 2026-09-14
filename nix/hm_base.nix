@@ -36,19 +36,12 @@
     slumber
 
     # Common linters and LSP servers
-    # .sh
     bash-language-server
-    # .yaml
     yaml-language-server
     yamllint
-    # .nix
     nil
     nixfmt
-    # .toml
     tombi
-    # .json
-    biome
-    # .md
     oxfmt
     markdownlint-cli2
     marksman
