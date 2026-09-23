@@ -26,6 +26,10 @@
       url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    nix-skills = {
+      url = "github:olafkfreund/nix-skills";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs =
@@ -37,6 +41,7 @@
       nix-darwin,
       agenix,
       catppuccin,
+      nix-skills,
       git-hooks,
       ...
     }:
@@ -76,6 +81,7 @@
           modules = [
             ./hosts/${hostname}/rcd.nix
             ./nix/options.nix
+            nix-skills.homeManagerModules.default
             catppuccin.homeModules.catppuccin
             agenix.homeManagerModules.default
             { home.packages = [ agenix.packages.${system}.default ]; }

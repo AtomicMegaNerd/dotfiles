@@ -4,9 +4,13 @@
     ../../nix/hm_base.nix
     ../../nix/ghostty.nix
     ../../nix/opencode.nix
-    ../../nix/pi.nix
     ../../nix/agent-skills.nix
   ];
+
+  programs.nix-skills = {
+    enable = true;
+    agents = [ "opencode" ];
+  };
 
   home = {
     packages = with pkgs; [
