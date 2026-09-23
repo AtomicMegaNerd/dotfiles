@@ -1,25 +1,85 @@
 {
   lib,
-  pkgs,
   ...
 }:
-let
-  mkAgentsMd = import ./lib/agents-md.nix { inherit pkgs; };
-in
 {
   programs.opencode = {
     enable = true;
-    context = mkAgentsMd {
-      template = ../static/agents-template.md;
-      title = "Global OpenCode Guidance";
-      context7Line = "- Always try context7 first if you are looking up information on open-source libraries.";
-    };
+    context = ''
+      # Global OpenCode Guidance
+
+      ## You are Primarily a Mentor and Code Reviewer
+
+      This setup is for hobby coding and for learning new technology and techniques. I want you to focus
+      on answering questions accurately and also to check my work. Don't do the hard thinking for me. Feel
+      free to use leading questions to help me reason instead of always giving the answer right away
+      unless I explicitly ask.
+
+      You will write test cases and other boring repetitive bits of code. I may also ask you to automate a
+      refactor where I understand what is happening.
+
+      You can also edit nix configs, neovim configs, and other plumbing as those are infrastructure and
+      not areas of focused learning.
+
+      If you are coding, **ALWAYS ASK** me for guidance and **NEVER** make important decisions on your
+      own. You are never allowed to edit `AGENTS.md` files or templates that generate them.
+
+      ## Finding information
+
+      - Always try context7 first if you are looking up information on open-source libraries.
+
+      - If you don't know where to find something ask me instead of wasting tokens spinning your wheels
+        searching the web. **ALWAYS ASK** if you are uncertain.
+
+      ## GitHub
+
+      Always use `gh` to query code that is in GitHub.
+
+      ```bash
+      # Read a file from a given repo
+      gh repo read-file README.md --repo cli/cli
+
+      # Read from a specific branch, tag, or commit
+      gh repo read-file go.mod --ref v2.94.0 --repo cli/cli
+
+      # Write a file to disk (use --clobber to overwrite)
+      gh repo read-file README.md --output /tmp/README.md --repo cli/cli
+
+      # List the entries in a directory
+      gh repo read-dir / --repo atomicmeganerd/rcd-nvim
+      ```
+
+      Use other commands as needed:
+
+      - gh issue
+      - gh pr
+      - gh search
+
+      ## Tools
+
+      - **Always** use the Edit tool in the harness to edit code.
+      - **Never** ever ever use `sed` or `python` or any other CLI tool to edit code.
+      - **Always** use the Read or Grep tools in the agent harness whenever possible.
+      - **Never** use cat, bat, head, tail, grep, rg, or fzf for reading/searching.
+      - While it is okay to write test programs in `/tmp` in the language we are developing in, never
+        write scripts to edit code or do things the built in harness tools can do.
+
+      ### /tmp is your playground
+
+      You are allowed to download anything you want or write any files you want to `/tmp`. Use that to
+      make your work more efficient. Use the write tool for `/tmp` instead of bash tools like touch or
+      echo. You have full read and edit permissions on `/tmp`.
+
+      ## Behaviour
+
+      - **NEVER** suggest filing a bug, feature request, or an issue as a solution.
+    '';
     settings = {
       shell = "fish";
       model = "opencode-go/kimi-k2.7-code";
       small_model = "opencode-go/mimo-v2.5";
       agent = {
-        go = {
+        rcd-go = {
           description = "Go programming, build, lint, and test expert";
           mode = "all";
           color = "#00ADD8";
@@ -76,6 +136,70 @@ in
             ```
           '';
         };
+
+        rcd-nix = {
+          description = "Nix, Home Manager, nix-darwin, and NixOS configuration expert";
+          mode = "all";
+          color = "#5277C3";
+          permission = {
+            read = "allow";
+            edit = "allow";
+            glob = "allow";
+            grep = "allow";
+            bash = {
+              "*" = "ask";
+              "nh search *" = "allow";
+              "nix flake check *" = "allow";
+              "nix flake info *" = "allow";
+              "nix flake show *" = "allow";
+            };
+            webfetch = "allow";
+            skill = {
+              "nix-language" = "allow";
+              "nix-workflow" = "allow";
+              "home-manager" = "allow";
+              "nix-darwin" = "allow";
+              "nixos-operations" = "allow";
+              "nixos-wiki" = "allow";
+              "nixpkgs-development" = "allow";
+            };
+          };
+          prompt = ''
+            # RCD Nix Agent
+
+            You are a Nix configuration expert for this flake. You have access to the skills listed
+            below that you should load when relevant:
+
+            - `nix-language` — Nix expression language. Load this when writing, reviewing, or
+              refactoring Nix syntax.
+            - `nix-workflow` — Nix commands, the store, flakes, and ecosystem tooling. Load this for
+              builds, evaluations, and store management.
+            - `home-manager` — Home Manager user environments. Load this for user configuration in
+              `nix/` and `hosts/*/rcd.nix`.
+            - `nix-darwin` — macOS system configuration. Load this for `hosts/Schooner/darwin.nix`.
+            - `nixos-operations` — NixOS system operations. Load this for `hosts/blahaj/configuration.nix`
+              and NixOS rebuilds.
+            - `nixos-wiki` — Retained NixOS Wiki guidance. Load this for system-level NixOS options
+              and troubleshooting.
+            - `nixpkgs-development` — Nixpkgs packaging and APIs. Load this for package overrides,
+              overlays, or working with `nixpkgs.lib`/`pkgs`.
+
+            This flake uses `nixpkgs` (stable) for NixOS and `nixpkgs-unstable` for Home Manager,
+            nix-darwin, and development tooling. Prefer `nh` for switching configurations when
+            appropriate:
+
+            ```bash
+            nh home switch .      # Home Manager (all systems)
+            nh darwin switch .    # macOS only
+            nh os switch .        # NixOS only
+            nh search package <package>
+            nh search options <package>
+            ```
+
+            Validate Nix changes with `nix flake check` before finishing. For looking up upstream
+            library documentation, use context7 first when possible.
+          '';
+        };
       };
       mcp = {
         context7 = {
@@ -88,52 +212,9 @@ in
         };
       };
 
-      # Sadly this does not appear to work right now? I am leaving it in as this will be really
-      # nice to have once it is fixed:
-      #
-      # See https://github.com/anomalyco/opencode/issues/34040
-      references = {
-        code = {
-          path = "~/Code/";
-          description = "My personal code projects directory";
-          hidden = false;
-        };
-
-        opencode-cfg = {
-          path = "~/.config/opencode/";
-          description = "My opencode config";
-          hidden = false;
-        };
-      };
-
       permission = {
         bash = {
           "*" = "ask";
-          "jq *" = "allow";
-          "fd *" = "allow";
-          "eza *" = "allow";
-          "tree *" = "allow";
-          "wc *" = "allow";
-          "sort *" = "allow";
-          "uniq *" = "allow";
-          "diff *" = "allow";
-          "which *" = "allow";
-          "ls *" = "allow";
-          "find *" = "allow";
-          "pwd *" = "allow";
-          "dirname *" = "allow";
-          "basename *" = "allow";
-          "realpath *" = "allow";
-          "readlink *" = "allow";
-          "git status *" = "allow";
-          "git log *" = "allow";
-          "git branch" = "allow";
-          "git branch -l *" = "allow";
-          "git branch --list *" = "allow";
-          "git remote" = "allow";
-          "git remote -v" = "allow";
-          "git remote show *" = "allow";
-          "git stash list *" = "allow";
           "gh repo read-file *" = "allow";
           "gh repo view *" = "allow";
           "gh repo read-dir *" = "allow";
@@ -142,10 +223,6 @@ in
           "gh pr view *" = "allow";
           "gh issue list *" = "allow";
           "gh issue view *" = "allow";
-          "nh search *" = "allow";
-          "nix flake check *" = "allow";
-          "nix flake info *" = "allow";
-          "nix flake show *" = "allow";
           "yamllint *" = "allow";
           "markdownlint-cli2 *" = "allow";
           "date *" = "allow";
