@@ -75,9 +75,6 @@
       - **NEVER** suggest filing a bug, feature request, or an issue as a solution.
     '';
     settings = {
-      shell = "fish";
-      model = "opencode-go/kimi-k2.7-code";
-      small_model = "opencode-go/mimo-v2.5";
       agent = {
         rcd-go = {
           description = "Go programming, build, lint, and test expert";
@@ -85,7 +82,7 @@
           color = "#00ADD8";
           permission = {
             read = "allow";
-            edit = "allow";
+            edit = "ask";
             glob = "allow";
             grep = "allow";
             bash = {
@@ -143,7 +140,7 @@
           color = "#5277C3";
           permission = {
             read = "allow";
-            edit = "allow";
+            edit = "ask";
             glob = "allow";
             grep = "allow";
             bash = {
@@ -187,20 +184,10 @@
             This flake uses `nixpkgs` (stable) for NixOS and `nixpkgs-unstable` for Home Manager,
             nix-darwin, and development tooling. Prefer `nh` for switching configurations when
             appropriate:
-
-            ```bash
-            nh home switch .      # Home Manager (all systems)
-            nh darwin switch .    # macOS only
-            nh os switch .        # NixOS only
-            nh search package <package>
-            nh search options <package>
-            ```
-
-            Validate Nix changes with `nix flake check` before finishing. For looking up upstream
-            library documentation, use context7 first when possible.
           '';
         };
       };
+
       mcp = {
         context7 = {
           type = "remote";
