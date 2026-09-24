@@ -1,6 +1,7 @@
 { pkgs, ... }:
 let
   piholeUid = 888;
+  piholeVersion = "2026.09.0";
   piholeGid = 888;
   backupScript = pkgs.writeShellScriptBin "backup-pihole" ''
     set -euo pipefail
@@ -22,7 +23,7 @@ in
 
   virtualisation.oci-containers.containers.pihole = {
     autoStart = true;
-    image = "pihole/pihole:2026.07.2";
+    image = "pihole/pihole:${piholeVersion}";
     ports = [
       "53:53/tcp"
       "53:53/udp"

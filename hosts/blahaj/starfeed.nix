@@ -1,6 +1,7 @@
 { config, ... }:
 let
   starfeedConf = "/app/starfeed.toml";
+  starFeedVersion = "0.6.0";
 in
 {
   # This user maps to the UID of the default noroot user in the distroless images like
@@ -21,7 +22,7 @@ in
 
   virtualisation.oci-containers.containers.starfeed = {
     autoStart = true;
-    image = "atomicmeganerd/starfeed:0.6.0";
+    image = "atomicmeganerd/starfeed:${starFeedVersion}";
     environment = {
       STARFEED_CONFIG_PATH = starfeedConf;
     };

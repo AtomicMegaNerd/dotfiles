@@ -1,5 +1,6 @@
 { pkgs, ... }:
 let
+  freshRssVersion = "1.30.0";
   backupScript = pkgs.writeShellScriptBin "backup-freshrss" ''
     set -euo pipefail
     ${pkgs.rsync}/bin/rsync -a --delete /etc/freshrss/data/ /data/backups/freshrss/data/
@@ -11,7 +12,7 @@ in
 
   virtualisation.oci-containers.containers.freshrss = {
     autoStart = true;
-    image = "freshrss/freshrss:1.30.0";
+    image = "freshrss/freshrss:${freshRssVersion}";
     ports = [
       "8080:80/tcp"
     ];
