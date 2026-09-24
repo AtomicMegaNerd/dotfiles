@@ -193,11 +193,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1790201261,
-        "narHash": "sha256-26YVByWMXrbWEXITFDRAcUtwZqifpCU+sm1wzP/I1Gs=",
+        "lastModified": 1790208557,
+        "narHash": "sha256-pj3grAOhA/Sug6GUlsVpYafD31hgcjzJN0QgPjpcDMQ=",
         "owner": "olafkfreund",
         "repo": "nix-skills",
-        "rev": "4410e91ad3d52398f5d46b5534f05590e94ee92c",
+        "rev": "b5092ef516ea0cff3e2ce4b95adcc2a6f852cac7",
         "type": "github"
       },
       "original": {

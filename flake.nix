@@ -30,10 +30,7 @@
       url = "github:olafkfreund/nix-skills";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    rcd-agent-skills = {
-      url = "github:AtomicMegaNerd/agent-skills";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
+    rcd-agent-skills.url = "github:AtomicMegaNerd/agent-skills";
   };
 
   outputs =
