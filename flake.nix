@@ -30,6 +30,10 @@
       url = "github:olafkfreund/nix-skills";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    rcd-agent-skills = {
+      url = "github:AtomicMegaNerd/agent-skills";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs =
@@ -42,6 +46,7 @@
       agenix,
       catppuccin,
       nix-skills,
+      rcd-agent-skills,
       git-hooks,
       ...
     }:
@@ -82,6 +87,7 @@
             ./hosts/${hostname}/rcd.nix
             ./nix/options.nix
             nix-skills.homeManagerModules.default
+            rcd-agent-skills.homeManagerModules.default
             catppuccin.homeModules.catppuccin
             agenix.homeManagerModules.default
             { home.packages = [ agenix.packages.${system}.default ]; }

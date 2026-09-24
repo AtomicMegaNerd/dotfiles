@@ -232,6 +232,21 @@
         "url": "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.zst"
       }
     },
+    "rcd-agent-skills": {
+      "locked": {
+        "lastModified": 1790208239,
+        "narHash": "sha256-ViYi0py+1BHEJd4Tj+Anj91C+/r5mZnl/9iggAEWFEY=",
+        "owner": "AtomicMegaNerd",
+        "repo": "agent-skills",
+        "rev": "0bdb1cb499a729e9a1ac1b18dfea4b70b0a758eb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AtomicMegaNerd",
+        "repo": "agent-skills",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "agenix": "agenix",
@@ -241,7 +256,8 @@
         "nix-darwin": "nix-darwin",
         "nix-skills": "nix-skills",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-unstable": "nixpkgs-unstable"
+        "nixpkgs-unstable": "nixpkgs-unstable",
+        "rcd-agent-skills": "rcd-agent-skills"
       }
     },
     "systems": {

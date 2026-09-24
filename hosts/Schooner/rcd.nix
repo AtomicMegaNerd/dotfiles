@@ -4,8 +4,12 @@
     ../../nix/hm_base.nix
     ../../nix/ghostty.nix
     ../../nix/opencode.nix
-    ../../nix/agent-skills.nix
   ];
+
+  programs.rcd-agent-skills = {
+    enable = true;
+    agents = [ "opencode" ];
+  };
 
   programs.nix-skills = {
     enable = true;
