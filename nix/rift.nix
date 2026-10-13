@@ -1,18 +1,24 @@
 { ... }:
 {
-  # Rift is installed and started by nix-darwin's Homebrew integration. Home
-  # Manager owns only the user's config, keeping the two generations separate.
   xdg.configFile."rift/config.toml".text = ''
-    # Rift scrolling-column layout. The [keys] table replaces Rift's bundled
-    # map, so the active bindings below mirror the upstream v0.6.9 defaults.
+    [settings]
+    focus_follows_mouse = false
 
     [settings.layout]
     mode = "scrolling"
 
     [settings.layout.scrolling]
-    column_width_ratio = 0.7
+    column_width_ratio = 0.9
     alignment = "center"
     focus_navigation_style = "niri"
+
+    # 5px gaps on the left/right screen edges and between side-by-side windows.
+    [settings.layout.gaps.outer]
+    left = 5.0
+    right = 5.0
+
+    [settings.layout.gaps.inner]
+    horizontal = 5.0
 
     [modifier_combinations]
     comb1 = "Alt + Shift"
@@ -30,15 +36,16 @@
     "comb1 + K" = { move_node = "up" }
     "comb1 + L" = { move_node = "right" }
 
-    "Alt + 0" = { switch_to_workspace = 0 }
-    "Alt + 1" = { switch_to_workspace = 1 }
-    "Alt + 2" = { switch_to_workspace = 2 }
-    "Alt + 3" = { switch_to_workspace = 3 }
+    # Rift's workspace indices are zero-based; keys are shifted to start at 1.
+    "Alt + 1" = { switch_to_workspace = 0 }
+    "Alt + 2" = { switch_to_workspace = 1 }
+    "Alt + 3" = { switch_to_workspace = 2 }
+    "Alt + 4" = { switch_to_workspace = 3 }
 
-    "comb1 + 0" = { move_window_to_workspace = 0 }
-    "comb1 + 1" = { move_window_to_workspace = 1 }
-    "comb1 + 2" = { move_window_to_workspace = 2 }
-    "comb1 + 3" = { move_window_to_workspace = 3 }
+    "comb1 + 1" = { move_window_to_workspace = 0 }
+    "comb1 + 2" = { move_window_to_workspace = 1 }
+    "comb1 + 3" = { move_window_to_workspace = 2 }
+    "comb1 + 4" = { move_window_to_workspace = 3 }
 
     "Alt + Tab" = "switch_to_last_workspace"
 
@@ -58,7 +65,7 @@
     "Alt + Shift + Equal" = "resize_window_grow"
     "Alt + Shift + Minus" = "resize_window_shrink"
 
-    "Alt + Enter" = { exec = [ "/bin/bash", "-c", "open -a \"/System/Applications/Utilities/Terminal.app\"" ] }
+    "Alt + Enter" = { exec = [ "/bin/bash", "-c", "open -a Ghostty" ] }
     "Alt + Shift + D" = "debug"
     "Alt + Ctrl + S" = "serialize"
     "Alt + Ctrl + Q" = "save_and_exit"
