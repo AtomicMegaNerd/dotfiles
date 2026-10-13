@@ -43,6 +43,19 @@
 
   homebrew = {
     enable = true;
+    taps = [
+      {
+        name = "acsandmann/tap";
+        trusted = true;
+      }
+    ];
+    brews = [
+      {
+        name = "rift";
+        start_service = true;
+        restart_service = "changed";
+      }
+    ];
     onActivation = {
       autoUpdate = true;
       upgrade = true;
@@ -54,7 +67,6 @@
     casks = [
       "1password" # gui password manager
       "1password-cli" # cli password manager
-      "amethyst" # tiling WM
       "calibre" # managing ebooks
       "finetune" # per-app volume control
       "ghostty" # terminal app

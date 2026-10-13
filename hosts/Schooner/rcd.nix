@@ -4,6 +4,7 @@
     ../../nix/hm_base.nix
     ../../nix/ghostty.nix
     ../../nix/opencode.nix
+    ../../nix/rift.nix
   ];
 
   programs.rcd-agent-skills = {
