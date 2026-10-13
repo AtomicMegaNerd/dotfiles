@@ -20,6 +20,13 @@
     [settings.layout.gaps.inner]
     horizontal = 5.0
 
+    # Games: leave these windows entirely alone (no tiling, no resizing).
+    [virtual_workspaces]
+    app_rules = [
+      { app_id = "com.factorio", manage = false },
+      { app_id = "io.github.endless-sky", manage = false },
+    ]
+
     [modifier_combinations]
     comb1 = "Alt + Shift"
 
