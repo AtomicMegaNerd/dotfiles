@@ -1,7 +1,7 @@
 { pkgs, ... }:
 let
   piholeUid = 888;
-  piholeVersion = "2026.09.0";
+  piholeVersion = "2026.10.0";
   piholeGid = 888;
   backupScript = pkgs.writeShellScriptBin "backup-pihole" ''
     set -euo pipefail
