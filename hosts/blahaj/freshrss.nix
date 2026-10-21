@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  freshRssVersion = "1.30.2";
+  freshRssVersion = "1.30.3";
   backupScript = pkgs.writeShellScriptBin "backup-freshrss" ''
     set -euo pipefail
     ${pkgs.rsync}/bin/rsync -a --delete /etc/freshrss/data/ /data/backups/freshrss/data/
