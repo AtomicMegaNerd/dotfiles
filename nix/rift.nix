@@ -4,6 +4,7 @@
     [settings]
     focus_follows_mouse = false
     animate = true
+    default_disable = false
 
     [settings.ui.menu_bar]
     enabled = true
