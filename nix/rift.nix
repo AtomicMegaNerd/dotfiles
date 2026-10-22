@@ -3,6 +3,10 @@
   xdg.configFile."rift/config.toml".text = ''
     [settings]
     focus_follows_mouse = false
+    animate = true
+
+    [settings.ui.menu_bar]
+    enabled = true
 
     [settings.layout]
     mode = "master_stack"
@@ -22,7 +26,8 @@
     vertical = 5.0
 
     [virtual_workspaces]
-    enabled = false
+    default_workspace_count = 1
+    workspace_names = [ "Main" ]
     app_rules = [
       { app_id = "com.factorio", manage = false },
       { app_id = "io.github.endless-sky", manage = false },
