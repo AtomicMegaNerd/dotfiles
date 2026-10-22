@@ -5,6 +5,7 @@
 {
   programs.opencode = {
     enable = true;
+    mutableSettings = true;
     context = ''
       # Global OpenCode Guidance
 

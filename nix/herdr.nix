@@ -6,6 +6,7 @@
     "${config.programs.herdr.package}/share/herdr/skills/herdr";
   programs.herdr = {
     enable = true;
+    mutableSettings = true;
     settings = {
       onboarding = false;
       theme.name = "catppuccin";
