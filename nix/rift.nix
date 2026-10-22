@@ -56,6 +56,7 @@
     "Alt + Period" = { adjust_master_count = { delta = -1 } }
 
     "Alt + Shift + Space" = "toggle_window_floating"
+    "Alt + Shift + C" = { toggle_window_floating = { center = true, size = { w = 1024, h = 1409 } } }
     "Alt + F" = "toggle_fullscreen"
     "Alt + Shift + F" = "toggle_fullscreen_within_gaps"
     "comb1 + Ctrl + Space" = "toggle_focus_floating"
