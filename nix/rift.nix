@@ -5,23 +5,24 @@
     focus_follows_mouse = false
 
     [settings.layout]
-    mode = "scrolling"
+    mode = "master_stack"
 
-    [settings.layout.scrolling]
-    column_width_ratio = 0.9
-    alignment = "center"
-    focus_navigation_style = "niri"
+    [settings.layout.master_stack]
+    master_ratio = 0.55
+    master_count = 1
+    master_side = "left"
+    new_window_placement = "stack"
 
-    # 5px gaps on the left/right screen edges and between side-by-side windows.
     [settings.layout.gaps.outer]
     left = 5.0
     right = 5.0
 
     [settings.layout.gaps.inner]
     horizontal = 5.0
+    vertical = 5.0
 
-    # Games: leave these windows entirely alone (no tiling, no resizing).
     [virtual_workspaces]
+    enabled = false
     app_rules = [
       { app_id = "com.factorio", manage = false },
       { app_id = "io.github.endless-sky", manage = false },
@@ -43,36 +44,20 @@
     "comb1 + K" = { move_node = "up" }
     "comb1 + L" = { move_node = "right" }
 
-    # Rift's workspace indices are zero-based; keys are shifted to start at 1.
-    "Alt + 1" = { switch_to_workspace = 0 }
-    "Alt + 2" = { switch_to_workspace = 1 }
-    "Alt + 3" = { switch_to_workspace = 2 }
-    "Alt + 4" = { switch_to_workspace = 3 }
-
-    "comb1 + 1" = { move_window_to_workspace = 0 }
-    "comb1 + 2" = { move_window_to_workspace = 1 }
-    "comb1 + 3" = { move_window_to_workspace = 2 }
-    "comb1 + 4" = { move_window_to_workspace = 3 }
-
-    "Alt + Tab" = "switch_to_last_workspace"
-
-    "Alt + Shift + Left" = { join_window = "left" }
-    "Alt + Shift + Right" = { join_window = "right" }
-    "Alt + Shift + Up" = { join_window = "up" }
-    "Alt + Shift + Down" = { join_window = "down" }
-    "Alt + Comma" = "toggle_stack"
-    "Alt + Slash" = "toggle_orientation"
-    "Alt + Ctrl + E" = "unjoin_windows"
+    "Alt + Enter" = "promote_to_master"
+    "Alt + Slash" = "swap_master_stack"
+    "Alt + Comma" = { adjust_master_count = { delta = 1 } }
+    "Alt + Period" = { adjust_master_count = { delta = -1 } }
 
     "Alt + Shift + Space" = "toggle_window_floating"
     "Alt + F" = "toggle_fullscreen"
     "Alt + Shift + F" = "toggle_fullscreen_within_gaps"
     "comb1 + Ctrl + Space" = "toggle_focus_floating"
 
-    "Alt + Shift + Equal" = "resize_window_grow"
-    "Alt + Shift + Minus" = "resize_window_shrink"
+    "Alt + Shift + Equal" = { adjust_master_ratio = 0.05 }
+    "Alt + Shift + Minus" = { adjust_master_ratio = -0.05 }
 
-    "Alt + Enter" = { exec = [ "/bin/bash", "-c", "open -a Ghostty" ] }
+    "Alt + Shift + Enter" = { exec = [ "/bin/bash", "-c", "open -a Ghostty" ] }
     "Alt + Shift + D" = "debug"
     "Alt + Ctrl + S" = "serialize"
     "Alt + Ctrl + Q" = "save_and_exit"
