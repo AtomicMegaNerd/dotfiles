@@ -8,7 +8,7 @@
     mode = "master_stack"
 
     [settings.layout.master_stack]
-    master_ratio = 0.55
+    master_ratio = 0.5
     master_count = 1
     master_side = "left"
     new_window_placement = "stack"
