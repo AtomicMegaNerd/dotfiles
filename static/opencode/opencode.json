@@ -29,9 +29,7 @@
         { "action": "skill", "effect": "allow", "resource": "nixos-operations" },
         { "action": "skill", "effect": "allow", "resource": "nixos-wiki" },
         { "action": "skill", "effect": "allow", "resource": "nixpkgs-development" },
-        { "action": "shell", "effect": "allow", "resource": "nix-instantiate --parse *" },
         { "action": "shell", "effect": "allow", "resource": "nix flake metadata *" },
-        { "action": "shell", "effect": "allow", "resource": "nix flake check *" },
         { "action": "shell", "effect": "allow", "resource": "nix flake info *" },
         { "action": "shell", "effect": "allow", "resource": "nix flake show *" },
         { "action": "shell", "effect": "allow", "resource": "nh search *" }
@@ -51,6 +49,16 @@
     }
   },
   "permissions": [
+    { "action": "skill", "effect": "deny", "resource": "rcd-golang" },
+    { "action": "skill", "effect": "deny", "resource": "rcd-golangci-lint" },
+    { "action": "skill", "effect": "deny", "resource": "rcd-go-task" },
+    { "action": "skill", "effect": "deny", "resource": "nix-language" },
+    { "action": "skill", "effect": "deny", "resource": "nix-workflow" },
+    { "action": "skill", "effect": "deny", "resource": "home-manager" },
+    { "action": "skill", "effect": "deny", "resource": "nix-darwin" },
+    { "action": "skill", "effect": "deny", "resource": "nixos-operations" },
+    { "action": "skill", "effect": "deny", "resource": "nixos-wiki" },
+    { "action": "skill", "effect": "deny", "resource": "nixpkgs-development" },
     { "action": "external_directory", "resource": "*", "effect": "ask" },
     { "action": "external_directory", "effect": "allow", "resource": "/tmp/*" },
 
