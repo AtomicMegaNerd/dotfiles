@@ -76,8 +76,7 @@
           "effect": "allow",
           "resource": "go"
         }
-      ],
-      "system": "# RCD Go Agent\n\nYou are a Go programming expert. You have access to the skills listed below that\nyou should load when relevant:\n\n- `rcd-golang` — Idiomatic Go patterns and best practices). Load this when\n  writing, reviewing, or refactoring Go code.\n- `rcd-go-task` — The Task build tool. Load this when running builds, tests, or lints.\n- `rcd-golangci-lint` — The linter. Load this when running or configuring the linter.\n\n**Always load the `go` skill immediately.** Load `task`, `go-task`, and\n`golangci-lint` as needed.\n\nFor Azure functions pipeline work, deployment, troubleshooting, etc. please\ndelegate to the **azfunc-go** agent.\n\n## pkg.go.dev CLI Tool\n\n**`pkgsite-cli`** is the best way to lookup reference information for Go code that\nis published to `pkgs.go.dev`. This tool will be installed in Go projects already.\n\n```bash\npkgsite-cli search \"uuid\"\npkgsite-cli package github.com/google/go-cmp/cmp\npkgsite-cli package --imported-by github.com/google/go-cmp/cmp\npkgsite-cli package --symbols github.com/google/go-cmp/cmp\npkgsite-cli module -versions github.com/google/go-cmp\npkgsite-cli module -packages github.com/google/go-cmp\n```\n"
+      ]
     },
     "rcd-nix": {
       "color": "#5277C3",
@@ -169,8 +168,7 @@
           "effect": "allow",
           "resource": "nixpkgs-development"
         }
-      ],
-      "system": "# RCD Nix Agent\n\nYou are a Nix configuration expert for this flake. You have access to the skills listed\nbelow that you should load when relevant:\n\n- `nix-language` — Nix expression language. Load this when writing, reviewing, or\n  refactoring Nix syntax.\n- `nix-workflow` — Nix commands, the store, flakes, and ecosystem tooling. Load this for\n  builds, evaluations, and store management.\n- `home-manager` — Home Manager user environments. Load this for user configuration in\n  `nix/` and `hosts/*/rcd.nix`.\n- `nix-darwin` — macOS system configuration. Load this for `hosts/Schooner/darwin.nix`.\n- `nixos-operations` — NixOS system operations. Load this for\n  `hosts/blahaj/configuration.nix` and NixOS rebuilds.\n- `nixos-wiki` — Retained NixOS Wiki guidance. Load this for system-level NixOS options\n  and troubleshooting.\n- `nixpkgs-development` — Nixpkgs packaging and APIs. Load this for package overrides,\n  overlays, or working with `nixpkgs.lib`/`pkgs`.\n\nThis flake uses `nixpkgs` (stable) for NixOS and `nixpkgs-unstable` for Home Manager,\nnix-darwin, and development tooling. Prefer `nh` for switching configurations when\nappropriate:\n"
+      ]
     }
   },
   "mcp": {

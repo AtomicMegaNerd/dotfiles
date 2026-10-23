@@ -15,6 +15,17 @@ in
       set -gx CARGO_HOME $XDG_DATA_HOME/cargo
       set -gx NH_FLAKE $HOME/Code/Configs/dotfiles
 
+      # Disable Claude Code telemetry and other nonessential traffic
+      set -gx CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC 1
+      set -gx DISABLE_TELEMETRY 1
+      set -gx DISABLE_ERROR_REPORTING 1
+      set -gx DO_NOT_TRACK 1
+      set -gx CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY 1
+      set -gx CLAUDE_CODE_DISABLE_OFFICIAL_MARKETPLACE_AUTOINSTALL 1
+      set -gx CLAUDE_CODE_ATTRIBUTION_HEADER 0
+      set -gx CLAUDE_CODE_GATEWAY_HINT_HEADERS 0
+      set -gx CLAUDE_CODE_MCP_ALLOWLIST_ENV 1
+
       # On some systems eza may not use $XDG_CONFIG_HOME by default
       set -gx EZA_CONFIG_DIR $XDG_CONFIG_HOME/eza
 

@@ -1,3 +1,43 @@
 {
-  "theme": "dark"
+  "theme": "dark",
+  "model": "claude-sonnet-5-5",
+  "disableAutoMode": "disable",
+  "env": {
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
+    "DISABLE_TELEMETRY": "1",
+    "DISABLE_ERROR_REPORTING": "1",
+    "DO_NOT_TRACK": "1",
+    "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1",
+    "CLAUDE_CODE_DISABLE_OFFICIAL_MARKETPLACE_AUTOINSTALL": "1",
+    "CLAUDE_CODE_ATTRIBUTION_HEADER": "0",
+    "CLAUDE_CODE_GATEWAY_HINT_HEADERS": "0",
+    "CLAUDE_CODE_MCP_ALLOWLIST_ENV": "1"
+  },
+  "permissions": {
+    "disableBypassPermissionsMode": "disable",
+    "allow": [
+      "Read",
+      "Glob",
+      "Grep",
+      "WebFetch",
+      "Edit(//tmp/**)",
+      "Read(//tmp/**)",
+      "Bash(gh repo read-file *)",
+      "Bash(gh repo view *)",
+      "Bash(gh repo read-dir *)",
+      "Bash(gh search *)",
+      "Bash(gh pr list *)",
+      "Bash(gh pr view *)",
+      "Bash(gh issue list *)",
+      "Bash(gh issue view *)",
+      "Bash(yamllint *)",
+      "Bash(markdownlint-cli2 *)",
+      "Bash(date *)"
+    ],
+    "deny": [
+      "Read(**/.env)",
+      "Read(**/.envrc)",
+      "Read(**/.env.*)"
+    ]
+  }
 }
