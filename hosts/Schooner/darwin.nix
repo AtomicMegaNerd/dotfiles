@@ -55,6 +55,9 @@
         start_service = true;
         restart_service = "changed";
       }
+      {
+        name = "container";
+      }
     ];
     onActivation = {
       autoUpdate = true;

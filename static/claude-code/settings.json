@@ -16,13 +16,23 @@
   },
   "permissions": {
     "disableBypassPermissionsMode": "disable",
+    "blockReadsOutsideWorkingDirectories": true,
+    "additionalDirectories": ["~/Code", "/tmp"],
+    "ask": ["Edit(~/Code/**)"],
     "allow": [
-      "Read",
+      "Read(~/Code/**)",
+      "Read(//tmp/**)",
       "Glob",
       "Grep",
-      "WebFetch",
       "Edit(//tmp/**)",
-      "Read(//tmp/**)",
+      "Bash(git status *)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(git show *)",
+      "Bash(git branch)",
+      "Bash(git branch --list *)",
+      "Bash(pwd)",
+      "Bash(which *)",
       "Bash(gh repo read-file *)",
       "Bash(gh repo view *)",
       "Bash(gh repo read-dir *)",
@@ -31,21 +41,31 @@
       "Bash(gh pr view *)",
       "Bash(gh issue list *)",
       "Bash(gh issue view *)",
-      "Bash(yamllint *)",
-      "Bash(markdownlint-cli2 *)",
       "Bash(date *)",
       "Bash(task *)",
-      "Bash(go *)",
+      "Bash(go build *)",
+      "Bash(go test *)",
+      "Bash(go vet *)",
+      "Bash(go fix *)",
       "Bash(golangci-lint *)",
       "Bash(nh search *)",
       "Bash(nix flake check *)",
       "Bash(nix flake info *)",
-      "Bash(nix flake show *)"
+      "Bash(nix flake show *)",
+      "Bash(nix flake metadata *)"
     ],
     "deny": [
       "Read(**/.env)",
       "Read(**/.envrc)",
-      "Read(**/.env.*)"
+      "Read(**/.env.*)",
+      "Read(**/*.pem)",
+      "Read(**/*.key)",
+      "Read(**/id_rsa*)",
+      "Read(**/id_ed25519*)",
+      "Read(**/.git-credentials)",
+      "Read(**/.netrc)",
+      "Read(**/credentials*)",
+      "Read(**/secrets/**)"
     ]
   }
 }

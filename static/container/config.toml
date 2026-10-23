@@ -1,0 +1,12 @@
+# Apple container user config
+# Reference: https://github.com/apple/container/blob/main/docs/container-system-config.md
+# Inspect the merged config with: container system property list
+
+# [dns]
+# domain = "test"
+
+# [registry]
+# domain = "docker.io"
+
+# [vminit]
+# image = "..."

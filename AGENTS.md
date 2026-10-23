@@ -23,7 +23,9 @@ Try to use home-manager modules and nix configuration whenever possible. Lots of
 
 - [nix-darwin](https://github.com/nix-darwin/nix-darwin)
 
-We also do install some Homebrew packages via nix-darwin but limit them to casks only.
+We also do install some Homebrew packages via nix-darwin. We prefer casks but formulas without
+dependencies are okay as a last resort. **NOTE** home-manager and darwin are separate. One does not
+update the other when `nh darwin switch .` is run.
 
 ### Nix Helper
 

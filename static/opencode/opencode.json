@@ -5,162 +5,36 @@
       "color": "#00ADD8",
       "mode": "all",
       "permissions": [
-        {
-          "action": "read",
-          "effect": "allow",
-          "resource": "*"
-        },
-        {
-          "action": "edit",
-          "effect": "ask",
-          "resource": "*"
-        },
-        {
-          "action": "glob",
-          "effect": "allow",
-          "resource": "*"
-        },
-        {
-          "action": "grep",
-          "effect": "allow",
-          "resource": "*"
-        },
-        {
-          "action": "shell",
-          "effect": "ask",
-          "resource": "*"
-        },
-        {
-          "action": "shell",
-          "effect": "allow",
-          "resource": "task *"
-        },
-        {
-          "action": "shell",
-          "effect": "allow",
-          "resource": "golangci-lint *"
-        },
-        {
-          "action": "shell",
-          "effect": "allow",
-          "resource": "go *"
-        },
-        {
-          "action": "webfetch",
-          "effect": "allow",
-          "resource": "*"
-        },
-        {
-          "action": "skill",
-          "effect": "allow",
-          "resource": "rcd-golang"
-        },
-        {
-          "action": "skill",
-          "effect": "allow",
-          "resource": "rcd-golangci-lint"
-        },
-        {
-          "action": "skill",
-          "effect": "allow",
-          "resource": "rcd-go-task"
-        },
-        {
-          "action": "subagent",
-          "effect": "allow",
-          "resource": "go"
-        }
+        { "action": "skill", "effect": "deny", "resource": "*" },
+        { "action": "skill", "effect": "allow", "resource": "rcd-golang" },
+        { "action": "skill", "effect": "allow", "resource": "rcd-golangci-lint" },
+        { "action": "skill", "effect": "allow", "resource": "rcd-go-task" },
+        { "action": "shell", "effect": "allow", "resource": "task *" },
+        { "action": "shell", "effect": "allow", "resource": "go build *" },
+        { "action": "shell", "effect": "allow", "resource": "go test *" },
+        { "action": "shell", "effect": "allow", "resource": "go vet *" },
+        { "action": "shell", "effect": "allow", "resource": "go fix *" },
+        { "action": "shell", "effect": "allow", "resource": "golangci-lint *" }
       ]
     },
     "rcd-nix": {
       "color": "#5277C3",
       "mode": "all",
       "permissions": [
-        {
-          "action": "read",
-          "effect": "allow",
-          "resource": "*"
-        },
-        {
-          "action": "edit",
-          "effect": "ask",
-          "resource": "*"
-        },
-        {
-          "action": "glob",
-          "effect": "allow",
-          "resource": "*"
-        },
-        {
-          "action": "grep",
-          "effect": "allow",
-          "resource": "*"
-        },
-        {
-          "action": "shell",
-          "effect": "ask",
-          "resource": "*"
-        },
-        {
-          "action": "shell",
-          "effect": "allow",
-          "resource": "nh search *"
-        },
-        {
-          "action": "shell",
-          "effect": "allow",
-          "resource": "nix flake check *"
-        },
-        {
-          "action": "shell",
-          "effect": "allow",
-          "resource": "nix flake metadata *"
-        },
-        {
-          "action": "shell",
-          "effect": "allow",
-          "resource": "nix flake show *"
-        },
-        {
-          "action": "webfetch",
-          "effect": "allow",
-          "resource": "*"
-        },
-        {
-          "action": "skill",
-          "effect": "allow",
-          "resource": "nix-language"
-        },
-        {
-          "action": "skill",
-          "effect": "allow",
-          "resource": "nix-workflow"
-        },
-        {
-          "action": "skill",
-          "effect": "allow",
-          "resource": "home-manager"
-        },
-        {
-          "action": "skill",
-          "effect": "allow",
-          "resource": "nix-darwin"
-        },
-        {
-          "action": "skill",
-          "effect": "allow",
-          "resource": "nixos-operations"
-        },
-        {
-          "action": "skill",
-          "effect": "allow",
-          "resource": "nixos-wiki"
-        },
-        {
-          "action": "skill",
-          "effect": "allow",
-          "resource": "nixpkgs-development"
-        }
+        { "action": "skill", "effect": "deny", "resource": "*" },
+        { "action": "skill", "effect": "allow", "resource": "nix-language" },
+        { "action": "skill", "effect": "allow", "resource": "nix-workflow" },
+        { "action": "skill", "effect": "allow", "resource": "home-manager" },
+        { "action": "skill", "effect": "allow", "resource": "nix-darwin" },
+        { "action": "skill", "effect": "allow", "resource": "nixos-operations" },
+        { "action": "skill", "effect": "allow", "resource": "nixos-wiki" },
+        { "action": "skill", "effect": "allow", "resource": "nixpkgs-development" },
+        { "action": "shell", "effect": "allow", "resource": "nix-instantiate --parse *" },
+        { "action": "shell", "effect": "allow", "resource": "nix flake metadata *" },
+        { "action": "shell", "effect": "allow", "resource": "nix flake check *" },
+        { "action": "shell", "effect": "allow", "resource": "nix flake info *" },
+        { "action": "shell", "effect": "allow", "resource": "nix flake show *" },
+        { "action": "shell", "effect": "allow", "resource": "nh search *" }
       ]
     }
   },
@@ -177,125 +51,41 @@
     }
   },
   "permissions": [
-    {
-      "action": "external_directory",
-      "effect": "ask",
-      "resource": "*"
-    },
-    {
-      "action": "external_directory",
-      "effect": "allow",
-      "resource": "/tmp/**"
-    },
-    {
-      "action": "shell",
-      "effect": "ask",
-      "resource": "*"
-    },
-    {
-      "action": "shell",
-      "effect": "allow",
-      "resource": "gh repo read-file *"
-    },
-    {
-      "action": "shell",
-      "effect": "allow",
-      "resource": "gh repo view *"
-    },
-    {
-      "action": "shell",
-      "effect": "allow",
-      "resource": "gh repo read-dir *"
-    },
-    {
-      "action": "shell",
-      "effect": "allow",
-      "resource": "gh search *"
-    },
-    {
-      "action": "shell",
-      "effect": "allow",
-      "resource": "gh pr list *"
-    },
-    {
-      "action": "shell",
-      "effect": "allow",
-      "resource": "gh pr view *"
-    },
-    {
-      "action": "shell",
-      "effect": "allow",
-      "resource": "gh issue list *"
-    },
-    {
-      "action": "shell",
-      "effect": "allow",
-      "resource": "gh issue view *"
-    },
-    {
-      "action": "shell",
-      "effect": "allow",
-      "resource": "yamllint *"
-    },
-    {
-      "action": "shell",
-      "effect": "allow",
-      "resource": "markdownlint-cli2 *"
-    },
-    {
-      "action": "shell",
-      "effect": "allow",
-      "resource": "date *"
-    },
-    {
-      "action": "read",
-      "effect": "allow",
-      "resource": "*"
-    },
-    {
-      "action": "read",
-      "effect": "deny",
-      "resource": "*.env"
-    },
-    {
-      "action": "read",
-      "effect": "deny",
-      "resource": "*.envrc"
-    },
-    {
-      "action": "read",
-      "effect": "deny",
-      "resource": "*.env.*"
-    },
-    {
-      "action": "edit",
-      "effect": "ask",
-      "resource": "*"
-    },
-    {
-      "action": "edit",
-      "effect": "allow",
-      "resource": "*/tmp/*"
-    },
-    {
-      "action": "edit",
-      "effect": "allow",
-      "resource": "/tmp/**"
-    },
-    {
-      "action": "glob",
-      "effect": "allow",
-      "resource": "*"
-    },
-    {
-      "action": "grep",
-      "effect": "allow",
-      "resource": "*"
-    },
-    {
-      "action": "webfetch",
-      "effect": "allow",
-      "resource": "*"
-    }
+    { "action": "external_directory", "resource": "*", "effect": "ask" },
+    { "action": "external_directory", "effect": "allow", "resource": "/tmp/*" },
+
+    { "action": "shell", "effect": "ask", "resource": "*" },
+    { "action": "shell", "effect": "allow", "resource": "git status *" },
+    { "action": "shell", "effect": "allow", "resource": "git diff *" },
+    { "action": "shell", "effect": "allow", "resource": "git log *" },
+    { "action": "shell", "effect": "allow", "resource": "git show *" },
+    { "action": "shell", "effect": "allow", "resource": "git branch" },
+    { "action": "shell", "effect": "allow", "resource": "git branch --list *" },
+    { "action": "shell", "effect": "allow", "resource": "pwd" },
+    { "action": "shell", "effect": "allow", "resource": "which *" },
+    { "action": "shell", "effect": "allow", "resource": "gh repo read-file *" },
+    { "action": "shell", "effect": "allow", "resource": "gh repo view *" },
+    { "action": "shell", "effect": "allow", "resource": "gh repo read-dir *" },
+    { "action": "shell", "effect": "allow", "resource": "gh search *" },
+    { "action": "shell", "effect": "allow", "resource": "gh pr list *" },
+    { "action": "shell", "effect": "allow", "resource": "gh pr view *" },
+    { "action": "shell", "effect": "allow", "resource": "gh issue list *" },
+    { "action": "shell", "effect": "allow", "resource": "gh issue view *" },
+    { "action": "shell", "effect": "allow", "resource": "date *" },
+
+    { "action": "read", "effect": "deny", "resource": "*.env" },
+    { "action": "read", "effect": "deny", "resource": "*.envrc" },
+    { "action": "read", "effect": "deny", "resource": "*.env.*" },
+    { "action": "read", "effect": "deny", "resource": "*.pem" },
+    { "action": "read", "effect": "deny", "resource": "*.key" },
+    { "action": "read", "effect": "deny", "resource": "*id_rsa*" },
+    { "action": "read", "effect": "deny", "resource": "*id_ed25519*" },
+    { "action": "read", "effect": "deny", "resource": "*.git-credentials" },
+    { "action": "read", "effect": "deny", "resource": "*.netrc" },
+    { "action": "read", "effect": "deny", "resource": "*credentials*" },
+    { "action": "read", "effect": "deny", "resource": "*secrets/*" },
+
+    { "action": "edit", "effect": "ask", "resource": "*" },
+    { "action": "edit", "effect": "allow", "resource": "/tmp/*" }
   ]
 }
