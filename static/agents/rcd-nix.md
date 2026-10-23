@@ -24,4 +24,4 @@ you should load when relevant:
   working with `nixpkgs.lib`/`pkgs`.
 
 This flake uses `nixpkgs` (stable) for NixOS and `nixpkgs-unstable` for Home Manager, nix-darwin,
-and development tooling. Prefer `nh` for switching configurations when appropriate:
+and development tooling. Prefer `nh` for switching configurations when appropriate.

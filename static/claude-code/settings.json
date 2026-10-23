@@ -33,7 +33,14 @@
       "Bash(gh issue view *)",
       "Bash(yamllint *)",
       "Bash(markdownlint-cli2 *)",
-      "Bash(date *)"
+      "Bash(date *)",
+      "Bash(task *)",
+      "Bash(go *)",
+      "Bash(golangci-lint *)",
+      "Bash(nh search *)",
+      "Bash(nix flake check *)",
+      "Bash(nix flake info *)",
+      "Bash(nix flake show *)"
     ],
     "deny": [
       "Read(**/.env)",

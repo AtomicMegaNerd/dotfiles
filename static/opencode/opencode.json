@@ -3,7 +3,6 @@
   "agents": {
     "rcd-go": {
       "color": "#00ADD8",
-      "description": "Go programming, build, lint, and test expert",
       "mode": "all",
       "permissions": [
         {
@@ -54,22 +53,17 @@
         {
           "action": "skill",
           "effect": "allow",
-          "resource": "go"
+          "resource": "rcd-golang"
         },
         {
           "action": "skill",
           "effect": "allow",
-          "resource": "task"
+          "resource": "rcd-golangci-lint"
         },
         {
           "action": "skill",
           "effect": "allow",
-          "resource": "golangci-lint"
-        },
-        {
-          "action": "skill",
-          "effect": "allow",
-          "resource": "go-task"
+          "resource": "rcd-go-task"
         },
         {
           "action": "subagent",
@@ -80,7 +74,6 @@
     },
     "rcd-nix": {
       "color": "#5277C3",
-      "description": "Nix, Home Manager, nix-darwin, and NixOS configuration expert",
       "mode": "all",
       "permissions": [
         {
@@ -121,7 +114,7 @@
         {
           "action": "shell",
           "effect": "allow",
-          "resource": "nix flake info *"
+          "resource": "nix flake metadata *"
         },
         {
           "action": "shell",
