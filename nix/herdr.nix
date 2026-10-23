@@ -1,7 +1,7 @@
 { config, ... }:
 {
   home.file."${config.home.homeDirectory}/.agents/skills/herdr".source =
-    "${config.programs.herdr.package}/share/herdr/skills/herdr";
+    "${config.programs.herdr.package}/share/skills/herdr/herdr";
   programs.herdr = {
     enable = true;
     mutableSettings = true;

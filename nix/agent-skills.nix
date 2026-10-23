@@ -1,13 +1,13 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 let
-  # Skill packages/paths to install globally with the skills CLI.
-  # Each entry is passed to: skills add <entry> --global --yes
   agentSkills = [
     "olafkfreund/nix-skills/skills/home-manager"
+    "olafkfreund/nix-skills/skills/nix-darwin"
     "olafkfreund/nix-skills/skills/nix-workflow"
     "olafkfreund/nix-skills/skills/nix-language"
     "AtomicMegaNerd/agent-skills/rcd-golang"
@@ -18,11 +18,15 @@ let
   skillName = skill: lib.last (lib.splitString "/" skill);
 in
 {
+  home.packages = [ pkgs.skills ];
+
   home.activation.installAgentSkills = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    if ! command -v skills >/dev/null 2>&1; then
-      echo "warning: 'skills' CLI not found in PATH, skipping agent skill installation"
-      exit 0
-    fi
+    export PATH="${
+      lib.makeBinPath [
+        pkgs.git
+        pkgs.skills
+      ]
+    }:$PATH"
 
     ${lib.concatMapStrings (
       skill:
