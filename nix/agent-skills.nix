@@ -13,12 +13,16 @@ let
     "AtomicMegaNerd/agent-skills/rcd-golang"
     "AtomicMegaNerd/agent-skills/rcd-go-task"
     "AtomicMegaNerd/agent-skills/rcd-golangci-lint"
+    "vercel-labs/skills/skills/find-skills"
   ];
 
   skillName = skill: lib.last (lib.splitString "/" skill);
 in
 {
   home.packages = [ pkgs.skills ];
+
+  home.file.".claude/skills".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.agents/skills";
 
   home.activation.installAgentSkills = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     export PATH="${

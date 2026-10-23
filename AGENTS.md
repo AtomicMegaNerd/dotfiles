@@ -49,12 +49,32 @@ Encrypts secrets that we can store in our flake safely.
 - `docs/` - Documentation
 - `hosts/` - contains host configs
 - `nix/` - rest of nix configs
-- `static/` - static files like keys
+- `static/` - static files like keys and static configs
 - `secrets/` - agenix files
 
-## More Information
+## Notes
 
-Load these as needed:
+### OpenCode
+
+OpenCode config lives in `static/opencode/` as vanilla configs: `opencode.json`, `cli.json`, and
+`AGENTS.md`. `nix/opencode.nix` imports them with:
+
+```nix
+{
+  mutableSettings = true;
+};
+```
+
+Home Manager owns the declarative layers while OpenCode can still mutate the runtime
+`~/.config/opencode/*.json` files.
+
+## Agent Skills
+
+Agent skills are listed in `nix/agent-skills.nix` and installed to `~/.agents/skills/` by the
+[skills](https://skills.sh/docs) CLI during Home Manager activation. We also symlink
+`~/.agents/skills/` to `~/.claude/skills` to support Claude Code.
+
+## More Information
 
 - [README.md](./README.md)
 - [DNS](./docs/dns.md)
