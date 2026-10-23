@@ -9,6 +9,7 @@ in
 {
   programs.nushell = {
     enable = true;
+    loadSessionVariables = true;
 
     environmentVariables = {
       GOPATH = ''($env.XDG_DATA_HOME | path join "go")'';

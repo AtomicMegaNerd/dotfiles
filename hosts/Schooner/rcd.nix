@@ -7,21 +7,12 @@
     ../../nix/rift.nix
   ];
 
-  programs.rcd-agent-skills = {
-    enable = true;
-    agents = [ "opencode" ];
-  };
-
-  programs.nix-skills = {
-    enable = true;
-    agents = [ "opencode" ];
-  };
-
   home = {
     packages = with pkgs; [
       docker-compose
       podman
       gh
+      skills
     ];
 
     username = "rcd";

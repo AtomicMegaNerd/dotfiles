@@ -4,6 +4,7 @@
 }:
 {
   imports = [
+    ./agent-skills.nix
     ./btop.nix
     ./direnv.nix
     ./eza.nix
