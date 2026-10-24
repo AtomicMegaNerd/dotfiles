@@ -34,7 +34,6 @@ The following settings are used to connect my personal `megaparsec.ca` domain to
 
 I use [cloudflare-ddns](https://github.com/favonia/cloudflare-ddns) via the NixOS
 `services.cloudflare-ddns` module to automatically update A and AAAA records for `megaparsec.ca`.
-This runs alongside DuckDNS.
 
 **NOTE** There is no need to manually create A or AAAA records in Cloudflare first. The service will
 automatically create them on first run if they don't already exist.
