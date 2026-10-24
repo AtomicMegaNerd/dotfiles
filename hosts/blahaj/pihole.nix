@@ -74,11 +74,13 @@ in
       FTLCONF_LOCAL_IPV4 = blahajIpv4;
       FTLCONF_LOCAL_IPV6 = blahajIpv6;
       FTLCONF_dns_listeningMode = "all";
-      FTLCONF_misc_dnsmasq_lines = builtins.concatStringsSep ";" dnsmasqLines;
       PIHOLE_UID = toString piholeUid;
       PIHOLE_GID = toString piholeGid;
       BLOCK_ICLOUD_PR = "false";
     };
+    environmentFile = pkgs.writeText "pihole-env" ''
+      FTLCONF_misc_dnsmasq_lines=${builtins.concatStringsSep ";" dnsmasqLines}
+    '';
     extraOptions = [
       "--network=podman-ipv6"
     ];
