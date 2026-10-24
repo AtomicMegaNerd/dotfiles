@@ -6,50 +6,50 @@ let
   backupScript = pkgs.writeShellScriptBin "backup-pihole" ''
     set -euo pipefail
     ${pkgs.rsync}/bin/rsync -a --delete /etc/pihole/ /data/backups/pihole/
-    ${pkgs.rsync}/bin/rsync -a --delete /etc/dnsmasq.d/ /data/backups/pihole/dnsmasq.d/
   '';
+
+  # Internal DNS records passed to Pi-hole via FTLCONF_misc_dnsmasq_lines.
+  # This avoids needing a /etc/dnsmasq.d volume mount (not needed for Pi-hole v6).
+  blahajIpv4 = "192.168.1.232";
+  blahajIpv6 = "2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4";
+  schoonerIpv4 = "192.168.1.238";
+  schoonerIpv6 = "2604:3d09:676:2d40:85b:b73e:966d:2c53";
+
+  dnsmasqLines = [
+    # Blahaj (NixOS server)
+    "address=/blahaj/${blahajIpv4}"
+    "address=/blahaj.megaparsec.ca/${blahajIpv4}"
+    "address=/blahaj/${blahajIpv6}"
+    "address=/blahaj.megaparsec.ca/${blahajIpv6}"
+    # Schooner (macOS)
+    "address=/schooner/${schoonerIpv4}"
+    "address=/schooner.megaparsec.ca/${schoonerIpv4}"
+    "address=/schooner/${schoonerIpv6}"
+    "address=/schooner.megaparsec.ca/${schoonerIpv6}"
+    # Gateway (UCG)
+    "address=/gateway/192.168.1.1"
+    "address=/gateway.megaparsec.ca/192.168.1.1"
+    "address=/gateway/2604:3d09:676:2d40::1"
+    "address=/gateway.megaparsec.ca/2604:3d09:676:2d40::1"
+    # Services (all on blahaj)
+    "address=/freshrss/${blahajIpv4}"
+    "address=/freshrss.megaparsec.ca/${blahajIpv4}"
+    "address=/freshrss/${blahajIpv6}"
+    "address=/freshrss.megaparsec.ca/${blahajIpv6}"
+    "address=/pihole/${blahajIpv4}"
+    "address=/pihole.megaparsec.ca/${blahajIpv4}"
+    "address=/pihole/${blahajIpv6}"
+    "address=/pihole.megaparsec.ca/${blahajIpv6}"
+    "address=/starfeed/${blahajIpv4}"
+    "address=/starfeed.megaparsec.ca/${blahajIpv4}"
+    "address=/starfeed/${blahajIpv6}"
+    "address=/starfeed.megaparsec.ca/${blahajIpv6}"
+  ];
 in
 {
 
   # resolved is a DNS server that will conflict with pihole so we turn it off.
   services.resolved.enable = false;
-
-  # Declarative internal DNS entries for local services and hosts
-  environment.etc."dnsmasq.d/internal-dns.conf".text = ''
-    # Blahaj (NixOS server)
-    address=/blahaj/192.168.1.232
-    address=/blahaj.megaparsec.ca/192.168.1.232
-    address=/blahaj/2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4
-    address=/blahaj.megaparsec.ca/2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4
-
-    # Schooner (macOS)
-    address=/schooner/192.168.1.238
-    address=/schooner.megaparsec.ca/192.168.1.238
-    address=/schooner/2604:3d09:676:2d40:85b:b73e:966d:2c53
-    address=/schooner.megaparsec.ca/2604:3d09:676:2d40:85b:b73e:966d:2c53
-
-    # Gateway (UCG)
-    address=/gateway/192.168.1.1
-    address=/gateway.megaparsec.ca/192.168.1.1
-    address=/gateway/2604:3d09:676:2d40::1
-    address=/gateway.megaparsec.ca/2604:3d09:676:2d40::1
-
-    # Services (all on blahaj)
-    address=/freshrss/192.168.1.232
-    address=/freshrss.megaparsec.ca/192.168.1.232
-    address=/freshrss/2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4
-    address=/freshrss.megaparsec.ca/2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4
-
-    address=/pihole/192.168.1.232
-    address=/pihole.megaparsec.ca/192.168.1.232
-    address=/pihole/2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4
-    address=/pihole.megaparsec.ca/2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4
-
-    address=/starfeed/192.168.1.232
-    address=/starfeed.megaparsec.ca/192.168.1.232
-    address=/starfeed/2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4
-    address=/starfeed.megaparsec.ca/2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4
-  '';
 
   # these are the ports that req required to be open for this service
   networking.firewall.allowedTCPPorts = [
@@ -68,14 +68,13 @@ in
     ];
     volumes = [
       "/etc/pihole:/etc/pihole"
-      "/etc/dnsmasq.d:/etc/dnsmasq.d"
-      "/etc/static/dnsmasq.d:/etc/static/dnsmasq.d"
     ];
     environment = {
       TZ = "America/Edmonton";
-      FTLCONF_LOCAL_IPV4 = "192.168.1.232";
-      FTLCONF_LOCAL_IPV6 = "2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4";
+      FTLCONF_LOCAL_IPV4 = blahajIpv4;
+      FTLCONF_LOCAL_IPV6 = blahajIpv6;
       FTLCONF_dns_listeningMode = "all";
+      FTLCONF_misc_dnsmasq_lines = builtins.concatStringsSep ";" dnsmasqLines;
       PIHOLE_UID = toString piholeUid;
       PIHOLE_GID = toString piholeGid;
       BLOCK_ICLOUD_PR = "false";

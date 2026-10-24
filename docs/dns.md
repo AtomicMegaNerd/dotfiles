@@ -104,6 +104,8 @@ See the [External TLS Guide](./tls-external.md) for setting up Let's Encrypt wit
 
 [Pi-hole](https://pi-hole.net/) runs on blahaj (`192.168.1.232`) as the internal DNS server. DNS entries are managed declaratively via Nix in `hosts/blahaj/pihole.nix`.
 
+Pi-hole v6 no longer uses `/etc/dnsmasq.d`. Instead, DNS records are passed directly to the container via the `FTLCONF_misc_dnsmasq_lines` environment variable as semicolon-separated dnsmasq `address` directives.
+
 ### Internal DNS Records
 
 | Host                                  | IPv4            | IPv6                                     | Purpose          |
