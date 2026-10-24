@@ -11,7 +11,6 @@
   home = {
     packages = with pkgs; [
       docker-compose
-      podman
       gh
       skills
     ];

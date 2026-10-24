@@ -26,9 +26,6 @@ in
       path add ($env.CARGO_HOME | path join "bin")
     ''
     + lib.optionalString isMac ''
-      $env.DOCKER_HOST = (try {
-        ^podman machine inspect --format '{{.ConnectionInfo.PodmanSocket.Path}}'
-      } catch { "" })
       path add "/opt/homebrew/bin"
       path add "/Applications/Bear.app/Contents/MacOS"
     '';

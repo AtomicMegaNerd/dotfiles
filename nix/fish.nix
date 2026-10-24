@@ -44,10 +44,6 @@ in
       fish_add_path -g $CARGO_HOME/bin
     ''
     + lib.optionalString isMac ''
-      set -gx DOCKER_HOST \
-        unix://(podman machine inspect \
-        --format '{{.ConnectionInfo.PodmanSocket.Path}}' \
-        2>/dev/null)
       fish_add_path -g /opt/homebrew/bin
       fish_add_path -g /Applications/Bear.app/Contents/MacOS
     '';
