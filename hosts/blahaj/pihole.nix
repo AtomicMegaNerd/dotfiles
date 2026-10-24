@@ -58,6 +58,11 @@ in
   ];
   networking.firewall.allowedUDPPorts = [ 53 ];
 
+  # Create environment file for long dnsmasq lines (bypasses systemd line length limits)
+  piholeEnvFile = pkgs.writeText "pihole-env" ''
+    FTLCONF_misc_dnsmasq_lines=${builtins.concatStringsSep ";" dnsmasqLines}
+  '';
+
   virtualisation.oci-containers.containers.pihole = {
     autoStart = true;
     image = "pihole/pihole:${piholeVersion}";
@@ -78,11 +83,9 @@ in
       PIHOLE_GID = toString piholeGid;
       BLOCK_ICLOUD_PR = "false";
     };
-    environmentFile = pkgs.writeText "pihole-env" ''
-      FTLCONF_misc_dnsmasq_lines=${builtins.concatStringsSep ";" dnsmasqLines}
-    '';
     extraOptions = [
       "--network=podman-ipv6"
+      "--env-file=${piholeEnvFile}"
     ];
   };
 
