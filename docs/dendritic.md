@@ -1,5 +1,9 @@
 # The Dendritic Flake Pattern
 
+<!-- prettier-ignore -->
+> [!NOTE]
+> This work is planned in the future. None of this is implemented yet.
+
 This is a pattern that many Nix enthusiasts seem to like. Might be worth looking at one day.
 
 ## Links

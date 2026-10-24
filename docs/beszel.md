@@ -1,5 +1,9 @@
 # Beszel Monitoring Guide
 
+<!-- prettier-ignore -->
+> [!NOTE]
+> This work is planned in the future. None of this is implemented yet.
+
 [Beszel](https://github.com/henrygd/beszel) is a lightweight, beautiful server monitoring platform
 written in Go. It provides historical metrics, Docker/Podman container stats, and alerting with a
 clean, modern UI.

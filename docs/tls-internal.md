@@ -1,5 +1,9 @@
 # Internal TLS Guide (Private LAN)
 
+<!-- prettier-ignore -->
+> [!NOTE]
+> This work is planned in the future. None of this is implemented yet.
+
 This guide covers setting up trusted TLS certificates for internal services (e.g., Pi-hole,
 FreshRSS) accessible only on your local network (`192.168.1.0/24`).
 

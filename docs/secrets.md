@@ -16,10 +16,18 @@ agenix -e secrets/<name>.age
 
 The `.age` files are encrypted in git.
 
+<!-- prettier-ignore -->
+> [!IMPORTANT]
+> The recipient rules live in `secrets/secrets.nix`. agenix now prefers `agenix-rules.nix`
+> and deprecates automatic discovery of `secrets.nix`, so the CLI prints a warning. It still works,
+> but support will be removed in a future version. We can rename the file to `agenix-rules.nix` or set
+> `AGENIX_RULES` to silence it. See the
+> [agenix CLI reference](https://ryantm.github.io/agenix/reference/#agenix-cli-reference).
+
 ### Host Key Backup and Recovery
 
 Agenix uses the host's SSH key to encrypt secrets. If you need to rebuild blahaj from scratch, you
-must restore the host's private SSH key before running `nh os rebuild .` so agenix can decrypt the
+must restore the host's private SSH key before running `nh os build .` so agenix can decrypt the
 secrets.
 
 On `Schooner` read the keys from 1Password into files:
@@ -44,12 +52,12 @@ sudo mv ~/ssh_host_ed25519_key* /etc/ssh
 sudo chmod 600 /etc/ssh/ssh_host_ed25519_key
 ```
 
-Now run `nh os rebuild .` — agenix will be able to decrypt the secrets
+Now run `nh os build .` — agenix will be able to decrypt the secrets
 
 #### Lost Key
 
 **If you lose the key:** You can generate a new host key and re-encrypt the secrets by updating
-`static/blahaj/blahaj_host_key` with the new public key and running `agenix rekey`.
+`static/blahaj/blahaj_host_key` with the new public key and running `agenix --rekey`.
 
 ## Schooner
 

@@ -83,7 +83,7 @@ systemd.services.cloudflare-ddns = {
 Then run the os rebuilt:
 
 ```bash
-nh os rebuild .
+nh os build .
 ```
 
 ### Verification
@@ -102,11 +102,19 @@ Verify the DNS records in the [Cloudflare Dashboard](https://dash.cloudflare.com
 
 ## Let's Encrypt
 
+<!-- prettier-ignore -->
+> [!NOTE]
+> This work is planned in the future
+
 See the [External TLS Guide](./tls-external.md) for setting up Let's Encrypt with Caddy.
 
 ---
 
 ## Internal DNS (Pihole)
+
+<!-- prettier-ignore -->
+> [!NOTE]
+> This section needs cleanup. Also I want to move to a static config.
 
 I have [pihole](https://pi-hole.net/) running as my internal DNS server.
 

@@ -6,6 +6,10 @@ This document covers the services and infrastructure components managed on this 
 
 ## Caddy Reverse Proxy
 
+<!-- prettier-ignore -->
+> [!NOTE]
+> This work is planned in the future. None of this is implemented yet.
+
 [Caddy](https://caddyserver.com) is a powerful, extensible web server and reverse proxy written in
 Go. It features automatic HTTPS, simple configuration via the Caddyfile format, and excellent NixOS
 integration.

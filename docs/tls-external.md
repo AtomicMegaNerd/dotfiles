@@ -1,5 +1,9 @@
 # External TLS Guide (Public Internet)
 
+<!-- prettier-ignore -->
+> [!NOTE]
+> This work is planned in the future. None of this is implemented yet.
+
 This guide covers setting up trusted TLS certificates for public-facing services (e.g.,
 `rss.megaparsec.ca`) using **Let's Encrypt** via the **ACME protocol**.
 
