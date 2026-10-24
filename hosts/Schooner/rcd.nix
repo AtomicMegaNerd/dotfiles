@@ -2,6 +2,7 @@
 {
   imports = [
     ../../nix/hm_base.nix
+    ../../nix/agent-skills.nix
     ../../nix/claude-code.nix
     ../../nix/ghostty.nix
     ../../nix/opencode.nix

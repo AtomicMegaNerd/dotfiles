@@ -103,8 +103,14 @@ in
   # Nix Config
   nix = {
     package = pkgs.nixVersions.stable;
-    gc = {
+  };
+
+  programs.nh = {
+    enable = true;
+    clean = {
+      enable = true;
       dates = "weekly";
+      extraArgs = "--keep-since 7d --keep 3";
     };
   };
 

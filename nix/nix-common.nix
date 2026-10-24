@@ -1,5 +1,5 @@
-# Nix settings shared by the NixOS and nix-darwin hosts. The GC schedule differs per
-# platform so it stays in the host configs.
+# Nix settings shared by the NixOS and nix-darwin hosts. Garbage collection differs per
+# platform so it lives in the host configs.
 { ... }:
 {
   nix = {
@@ -8,9 +8,5 @@
       "nix-command"
       "flakes"
     ];
-    gc = {
-      automatic = true;
-      options = "--delete-older-than 7d";
-    };
   };
 }

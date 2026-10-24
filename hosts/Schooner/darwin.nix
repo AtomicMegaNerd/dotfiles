@@ -9,13 +9,6 @@
   nix = {
     settings.trusted-users = [ "@admin" ];
 
-    gc = {
-      interval = {
-        Hour = 2;
-        Minute = 0;
-      };
-    };
-
     optimise = {
       automatic = true;
       interval = {
@@ -28,6 +21,18 @@
   ids.gids.nixbld = 350;
 
   programs.fish.enable = true;
+
+  programs.nh = {
+    enable = true;
+    clean = {
+      enable = true;
+      interval = {
+        Hour = 2;
+        Minute = 0;
+      };
+      extraArgs = "--keep-since 7d --keep 3";
+    };
+  };
 
   fonts.packages = with pkgs; [
     monaspace

@@ -16,7 +16,6 @@
     ./lazygit.nix
     ./lazydocker.nix
     ./neovim.nix
-    ./nh.nix
     ./nushell.nix
     ./starship.nix
     ./zoxide.nix
