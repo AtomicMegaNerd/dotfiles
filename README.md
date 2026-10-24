@@ -125,7 +125,7 @@ nh home build .
 
 <!-- prettier-ignore -->
 > [!NOTE]
-> My Neovim congiguration is in its own separate repo.
+> My Neovim configuration is in its own separate repo.
 
 I do use this flake to install neovim and to copy the config to ~/.config. However, the config
 itself is written in Lua and is in its own repo in GitHub. See

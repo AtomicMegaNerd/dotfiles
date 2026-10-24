@@ -79,7 +79,7 @@ systemd.services.cloudflare-ddns = {
 };
 ```
 
-Then run the os rebuilt:
+Then run the os rebuild:
 
 ```bash
 nh os build .
