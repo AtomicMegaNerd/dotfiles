@@ -76,6 +76,7 @@
       "linearmouse" # better logitech mouse settings
       "zoom" # video meetings
       "netnewswire" # RSS
+      "obsidian" # Note taking
     ];
     enableFishIntegration = true;
     global = {
