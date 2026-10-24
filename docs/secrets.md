@@ -16,14 +16,6 @@ agenix -e secrets/<name>.age
 
 The `.age` files are encrypted in git.
 
-<!-- prettier-ignore -->
-> [!IMPORTANT]
-> The recipient rules live in `secrets/secrets.nix`. agenix now prefers `agenix-rules.nix`
-> and deprecates automatic discovery of `secrets.nix`, so the CLI prints a warning. It still works,
-> but support will be removed in a future version. We can rename the file to `agenix-rules.nix` or set
-> `AGENIX_RULES` to silence it. See the
-> [agenix CLI reference](https://ryantm.github.io/agenix/reference/#agenix-cli-reference).
-
 ### Host Key Backup and Recovery
 
 Agenix uses the host's SSH key to encrypt secrets. If you need to rebuild blahaj from scratch, you
