@@ -1,27 +1,19 @@
 { pkgs, ... }:
 {
+  imports = [ ../../nix/nix-common.nix ];
+
   networking.hostName = "Schooner";
   system.stateVersion = 4;
   system.primaryUser = "rcd";
 
   nix = {
-    settings = {
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
-      trusted-users = [ "@admin" ];
-    };
-
-    channel.enable = false;
+    settings.trusted-users = [ "@admin" ];
 
     gc = {
-      automatic = true;
       interval = {
         Hour = 2;
         Minute = 0;
       };
-      options = "--delete-older-than 10d";
     };
 
     optimise = {

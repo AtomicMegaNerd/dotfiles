@@ -6,6 +6,7 @@ in
 
   imports = [
     ./hardware-configuration.nix
+    ../../nix/nix-common.nix
 
     # The following are services that we deploy on this host
     ./podman-network.nix
@@ -102,15 +103,8 @@ in
   # Nix Config
   nix = {
     package = pkgs.nixVersions.stable;
-    channel.enable = false;
-    settings.experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
     gc = {
-      automatic = true;
       dates = "weekly";
-      options = "--delete-older-than 7d";
     };
   };
 
