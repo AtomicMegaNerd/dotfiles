@@ -78,7 +78,8 @@ sudo nix --extra-experimental-features "nix-command flakes" \
 
 ### Home Manager (all systems)
 
-All systems let you use the same command to bootstrap home-manager with your flake:
+All systems let you use the same command to bootstrap home-manager with your flake. The example
+before is for blahaj:
 
 ```bash
 nix run home-manager -- switch --flake .#rcd@blahaj
@@ -99,7 +100,7 @@ Nix Helper is a replacement for some nix CLI commands that is better engineered 
 #### NixOS
 
 ```fish
-nh os rebuild .
+nh os build .
 ```
 
 #### Nix-Darwin
@@ -107,7 +108,7 @@ nh os rebuild .
 For Nix-Darwin systems, you can use the following command to rebuild the system configuration:
 
 ```fish
-nh darwin rebuild .
+nh darwin build .
 ```
 
 #### Home Manager
@@ -115,7 +116,7 @@ nh darwin rebuild .
 We use Home Manager on all of our Nix managed machines.
 
 ```fish
-nh home rebuild .
+nh home build .
 ```
 
 ---
