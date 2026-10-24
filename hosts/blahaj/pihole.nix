@@ -32,9 +32,18 @@ in
       "/etc/pihole:/etc/pihole"
       "${../../static/blahaj/dnsmasq.conf}:/etc/dnsmasq.d/dnsmasq.conf:ro"
     ];
+    environment = {
+      TZ = "America/Edmonton";
+      FTLCONF_LOCAL_IPV4 = "192.168.1.232";
+      FTLCONF_LOCAL_IPV6 = "2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4";
+      FTLCONF_dns_listeningMode = "all";
+      FTLCONF_misc_etc_dnsmasq_d = "true";
+      PIHOLE_UID = toString piholeUid;
+      PIHOLE_GID = toString piholeGid;
+      BLOCK_ICLOUD_PR = "false";
+    };
     extraOptions = [
       "--network=podman-ipv6"
-      "--env-file=${../../static/blahaj/pihole.env}"
     ];
   };
 
