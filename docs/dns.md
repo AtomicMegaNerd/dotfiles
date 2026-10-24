@@ -100,12 +100,39 @@ See the [External TLS Guide](./tls-external.md) for setting up Let's Encrypt wit
 
 ---
 
-## Internal DNS (Pihole)
+## Internal DNS (Pi-hole)
 
-> [!NOTE]
-> This section needs cleanup. Also I want to move to a static config.
+[Pi-hole](https://pi-hole.net/) runs on blahaj (`192.168.1.232`) as the internal DNS server. DNS entries are managed declaratively via Nix in `hosts/blahaj/pihole.nix`.
 
-I have [pihole](https://pi-hole.net/) running as my internal DNS server.
+### Internal DNS Records
+
+| Host                                  | IPv4            | IPv6                                     | Purpose          |
+| ------------------------------------- | --------------- | ---------------------------------------- | ---------------- |
+| `blahaj` / `blahaj.megaparsec.ca`     | `192.168.1.232` | `2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4` | NixOS server     |
+| `schooner` / `schooner.megaparsec.ca` | `192.168.1.238` | `2604:3d09:676:2d40:85b:b73e:966d:2c53`  | macOS            |
+| `gateway` / `gateway.megaparsec.ca`   | `192.168.1.1`   | `2604:3d09:676:2d40::1`                  | UCG router       |
+| `freshrss` / `freshrss.megaparsec.ca` | `192.168.1.232` | `2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4` | FreshRSS service |
+| `pihole` / `pihole.megaparsec.ca`     | `192.168.1.232` | `2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4` | Pi-hole admin    |
+| `starfeed` / `starfeed.megaparsec.ca` | `192.168.1.232` | `2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4` | Starfeed service |
+
+### Testing DNS
+
+```bash
+# Test against Pi-hole via IPv4
+dig @192.168.1.232 blahaj.megaparsec.ca A
+dig @192.168.1.232 freshrss.megaparsec.ca A
+
+# Test against Pi-hole via IPv6
+dig @2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4 blahaj.megaparsec.ca AAAA
+dig @2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4 freshrss.megaparsec.ca AAAA
+
+# Test IPv6 connectivity to hosts
+ping6 blahaj.megaparsec.ca
+ping6 gateway.megaparsec.ca
+
+# Check if Pi-hole is running
+ssh blahaj "systemctl status podman-pihole"
+```
 
 ---
 

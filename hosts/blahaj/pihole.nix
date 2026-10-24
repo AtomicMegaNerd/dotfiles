@@ -69,6 +69,7 @@ in
     volumes = [
       "/etc/pihole:/etc/pihole"
       "/etc/dnsmasq.d:/etc/dnsmasq.d"
+      "/etc/static/dnsmasq.d:/etc/static/dnsmasq.d"
     ];
     environment = {
       TZ = "America/Edmonton";
