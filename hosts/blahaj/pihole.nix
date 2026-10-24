@@ -45,6 +45,11 @@ let
     "address=/starfeed/${blahajIpv6}"
     "address=/starfeed.megaparsec.ca/${blahajIpv6}"
   ];
+
+  # Create environment file for long dnsmasq lines (bypasses systemd line length limits)
+  piholeEnvFile = pkgs.writeText "pihole-env" ''
+    FTLCONF_misc_dnsmasq_lines=${builtins.concatStringsSep ";" dnsmasqLines}
+  '';
 in
 {
 
@@ -57,11 +62,6 @@ in
     8081
   ];
   networking.firewall.allowedUDPPorts = [ 53 ];
-
-  # Create environment file for long dnsmasq lines (bypasses systemd line length limits)
-  piholeEnvFile = pkgs.writeText "pihole-env" ''
-    FTLCONF_misc_dnsmasq_lines=${builtins.concatStringsSep ";" dnsmasqLines}
-  '';
 
   virtualisation.oci-containers.containers.pihole = {
     autoStart = true;
