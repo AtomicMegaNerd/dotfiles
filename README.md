@@ -6,9 +6,7 @@
 
 ## Introduction
 
-This is personal Nix flake for my hardware. I have gradually been improving this flake over time as
-I learn more and more about Nix. This flake is pretty comprehensive at this point and manages the
-large majority of my system configuration from a shell/TUI perspective.
+This is personal Nix flake for my hardware. I have gradually been improving this flake over time as I learn more and more about Nix. This flake is pretty comprehensive at this point and manages the large majority of my system configuration from a shell/TUI perspective.
 
 ### Core Nix Components
 
@@ -29,8 +27,7 @@ Besides NixOS itself, we use the following in this flake:
 
 ## Setup
 
-Nix has to be installed on the system. Of course on NixOS systems `nix` is pre-installed. On non-Nix
-machines use [nix-installer](https://github.com/NixOS/nix-installer).
+Nix has to be installed on the system. Of course on NixOS systems `nix` is pre-installed. On non-Nix machines use [nix-installer](https://github.com/NixOS/nix-installer).
 
 For all systems we start by cloning this repo and then we `cd` into it:
 
@@ -41,7 +38,6 @@ git clone https://github.com/AtomicMegaNerd/dotfiles
 cd dotfiles
 ```
 
-<!-- prettier-ignore -->
 > [!NOTE]
 > For external users you need to update the flake to match your infrastructure.
 
@@ -65,7 +61,6 @@ sudo mv /etc/nix/nix.conf /etc/nix/.before-darwin
 
 Then try the nix command again.
 
-<!-- prettier-ignore -->
 > [!IMPORTANT]
 > The last step is needed so nix-darwin can replace nix.conf with its own configuration.
 
@@ -78,8 +73,7 @@ sudo nix --extra-experimental-features "nix-command flakes" \
 
 ### Home Manager (all systems)
 
-All systems let you use the same command to bootstrap home-manager with your flake. The example
-before is for blahaj:
+All systems let you use the same command to bootstrap home-manager with your flake. The example below is for blahaj:
 
 ```bash
 nix run home-manager -- switch --flake .#rcd@blahaj
@@ -89,13 +83,11 @@ nix run home-manager -- switch --flake .#rcd@blahaj
 
 ## Operation
 
-Once the initial bootstrap is done you may need to start a new terminal shell or even logout and log
-back into the system to fully load your new shell config including the updates to the PATH.
+Once the initial bootstrap is done you may need to start a new terminal shell or even logout and log back into the system to fully load your new shell config including the updates to the PATH.
 
 ### Nix Commands
 
-Nix Helper is a replacement for some nix CLI commands that is better engineered and easier to use
-[nh](https://github.com/nix-community/nh)
+Nix Helper is a replacement for some nix CLI commands that is better engineered and easier to use [nh](https://github.com/nix-community/nh)
 
 #### NixOS
 
@@ -123,13 +115,10 @@ nh home build .
 
 ## Neovim
 
-<!-- prettier-ignore -->
 > [!NOTE]
 > My Neovim configuration is in its own separate repo.
 
-I do use this flake to install neovim and to copy the config to ~/.config. However, the config
-itself is written in Lua and is in its own repo in GitHub. See
-[rcd-nvim](https://github.com/AtomicMegaNerd/rcd-nvim)
+I do use this flake to install neovim and to copy the config to ~/.config. However, the config itself is written in Lua and is in its own repo in GitHub. See [rcd-nvim](https://github.com/AtomicMegaNerd/rcd-nvim)
 
 ---
 

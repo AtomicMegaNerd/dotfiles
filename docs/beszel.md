@@ -1,12 +1,9 @@
 # Beszel Monitoring Guide
 
-<!-- prettier-ignore -->
 > [!NOTE]
 > This work is planned in the future. None of this is implemented yet.
 
-[Beszel](https://github.com/henrygd/beszel) is a lightweight, beautiful server monitoring platform
-written in Go. It provides historical metrics, Docker/Podman container stats, and alerting with a
-clean, modern UI.
+[Beszel](https://github.com/henrygd/beszel) is a lightweight, beautiful server monitoring platform written in Go. It provides historical metrics, Docker/Podman container stats, and alerting with a clean, modern UI.
 
 ---
 
@@ -23,8 +20,7 @@ For same-system monitoring, the Hub and Agent communicate via a shared Unix sock
 
 ## NixOS Podman Configuration
 
-Add the Hub and Agent containers to `virtualisation.oci-containers.containers` in
-`configuration.nix`. Both containers share a socket directory on the host for local communication.
+Add the Hub and Agent containers to `virtualisation.oci-containers.containers` in `configuration.nix`. Both containers share a socket directory on the host for local communication.
 
 ### Hub Container
 
@@ -144,8 +140,7 @@ The Hub will automatically create the admin account using the credentials from t
 
 ### Get Agent Credentials from Hub UI
 
-Log in to `http://blahaj:8090` and go to **Systems** → **Add System**. Name it `blahaj` and note the
-**Key** and **Token** values.
+Log in to `http://blahaj:8090` and go to **Systems** → **Add System**. Name it `blahaj` and note the **Key** and **Token** values.
 
 ### Create Agenix Secret for Agent
 

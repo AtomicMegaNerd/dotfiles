@@ -2,9 +2,7 @@
 
 Prefix is `C-a` (set in `nix/herdr.nix`). [docs](https://herdr.dev/docs/)
 
-One persistent session; one workspace per project. Detach/reattach keeps processes running. After
-`herdr server stop`, snapshot restore rebuilds the layout and agent conversations resume via
-integrations.
+One persistent session; one workspace per project. Detach/reattach keeps processes running. After `herdr server stop`, snapshot restore rebuilds the layout and agent conversations resume via integrations.
 
 ## Daily
 

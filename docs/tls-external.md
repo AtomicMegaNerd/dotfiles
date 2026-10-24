@@ -1,11 +1,9 @@
 # External TLS Guide (Public Internet)
 
-<!-- prettier-ignore -->
 > [!NOTE]
 > This work is planned in the future. None of this is implemented yet.
 
-This guide covers setting up trusted TLS certificates for public-facing services (e.g.,
-`rss.megaparsec.ca`) using **Let's Encrypt** via the **ACME protocol**.
+This guide covers setting up trusted TLS certificates for public-facing services (e.g., `rss.megaparsec.ca`) using **Let's Encrypt** via the **ACME protocol**.
 
 ---
 
@@ -13,9 +11,7 @@ This guide covers setting up trusted TLS certificates for public-facing services
 
 Ensure your subdomains resolve to your public IP.
 
-Create CNAME records in Cloudflare pointing to your apex domain. Since `cloudflare-ddns` updates the
-A/AAAA records for `megaparsec.ca`, all CNAMEs will automatically resolve to the correct IP without
-needing to modify the DDNS config.
+Create CNAME records in Cloudflare pointing to your apex domain. Since `cloudflare-ddns` updates the A/AAAA records for `megaparsec.ca`, all CNAMEs will automatically resolve to the correct IP without needing to modify the DDNS config.
 
 | Type  | Name | Value         |
 | ----- | ---- | ------------- |
@@ -72,8 +68,7 @@ Certificates are automatically managed by Caddy.
 
 ## Firewall Configuration
 
-Use `services.caddy.openFirewall = true` in your NixOS config to automatically open ports 80, 443
-(TCP and UDP for HTTP/3).
+Use `services.caddy.openFirewall = true` in your NixOS config to automatically open ports 80, 443 (TCP and UDP for HTTP/3).
 
 If you prefer manual control:
 
@@ -91,8 +86,7 @@ networking.firewall.allowedUDPPorts = [
 
 ## Security Considerations
 
-- **Rate Limits:** Let's Encrypt has rate limits. Test with `staging` endpoints if configuring for
-  the first time to avoid hitting limits.
+- **Rate Limits:** Let's Encrypt has rate limits. Test with `staging` endpoints if configuring for the first time to avoid hitting limits.
 
 ---
 

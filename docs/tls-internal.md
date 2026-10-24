@@ -1,11 +1,9 @@
 # Internal TLS Guide (Private LAN)
 
-<!-- prettier-ignore -->
 > [!NOTE]
 > This work is planned in the future. None of this is implemented yet.
 
-This guide covers setting up trusted TLS certificates for internal services (e.g., Pi-hole,
-FreshRSS) accessible only on your local network (`192.168.1.0/24`).
+This guide covers setting up trusted TLS certificates for internal services (e.g., Pi-hole, FreshRSS) accessible only on your local network (`192.168.1.0/24`).
 
 ---
 
@@ -30,8 +28,7 @@ This creates the Root CA files and adds the certificate to the **local machine's
 
 ## Distribute the Root CA via Nix
 
-Copy `rootCA.pem` to `static/` in your dotfiles repo. Then use Nix to install it on both machines
-automatically.
+Copy `rootCA.pem` to `static/` in your dotfiles repo. Then use Nix to install it on both machines automatically.
 
 ### On macOS (Schooner)
 
@@ -75,8 +72,7 @@ nh os rebuild .
 
 ## Generate Service Certificates
 
-Generate certificates for your specific internal services. You can use IP addresses or internal
-hostnames.
+Generate certificates for your specific internal services. You can use IP addresses or internal hostnames.
 
 ```bash
 # Certificate for the server IP
@@ -89,8 +85,7 @@ mkcert blahaj schooner
 mkcert "*.megaparsec.ca"
 ```
 
-**Output:** You will get a cert file (`*.pem`) and a key file (`*-key.pem`) for each. Store these
-securely (e.g., `/etc/ssl/internal/`).
+**Output:** You will get a cert file (`*.pem`) and a key file (`*-key.pem`) for each. Store these securely (e.g., `/etc/ssl/internal/`).
 
 ---
 
@@ -155,8 +150,7 @@ Client (https://pihole.internal)
 ## Maintenance
 
 - **Rotation:** `mkcert` certs are valid for a long time, but you should rotate them periodically.
-- **New Devices:** When adding a new device to the network, add `rootCA.pem` to its Nix config or
-  manually trust it.
+- **New Devices:** When adding a new device to the network, add `rootCA.pem` to its Nix config or manually trust it.
 
 ---
 

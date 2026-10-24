@@ -1,6 +1,5 @@
 # The Dendritic Flake Pattern
 
-<!-- prettier-ignore -->
 > [!NOTE]
 > This work is planned in the future. None of this is implemented yet.
 

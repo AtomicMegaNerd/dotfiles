@@ -6,9 +6,7 @@ This reference information pertains to my DNS setup for my **megaparsec.ca** dom
 
 ## Cloudflare
 
-Even though [Hover](https://hover.com) is my domain registrar I host my domain on
-[Cloudflare](https://dash.cloudflare.com/). To enable this I setup the following name servers on the
-Hover side:
+Even though [Hover](https://hover.com) is my domain registrar I host my domain on [Cloudflare](https://dash.cloudflare.com/). To enable this I setup the following name servers on the Hover side:
 
 ```text
 adi.ns.cloudflare.com
@@ -19,8 +17,7 @@ brodie.ns.cloudflare.com
 
 ## Outlook.com Email
 
-The following settings are used to connect my personal `megaparsec.ca` domain to
-[outlook.com](https://outlook.com) for email.
+The following settings are used to connect my personal `megaparsec.ca` domain to [outlook.com](https://outlook.com) for email.
 
 | Type  | Host         | Value                           | TTL        |
 | ----- | ------------ | ------------------------------- | ---------- |
@@ -32,11 +29,9 @@ The following settings are used to connect my personal `megaparsec.ca` domain to
 
 ## Dynamic DNS - Cloudflare
 
-I use [cloudflare-ddns](https://github.com/favonia/cloudflare-ddns) via the NixOS
-`services.cloudflare-ddns` module to automatically update A and AAAA records for `megaparsec.ca`.
+I use [cloudflare-ddns](https://github.com/favonia/cloudflare-ddns) via the NixOS `services.cloudflare-ddns` module to automatically update A and AAAA records for `megaparsec.ca`.
 
-**NOTE** There is no need to manually create A or AAAA records in Cloudflare first. The service will
-automatically create them on first run if they don't already exist.
+**NOTE** There is no need to manually create A or AAAA records in Cloudflare first. The service will automatically create them on first run if they don't already exist.
 
 ### Create a Cloudflare API Token
 
@@ -51,9 +46,7 @@ automatically create them on first run if they don't already exist.
 
 ### Encrypt the Token with Agenix
 
-Follow the steps [secrets.md](./secrets.md) to save the token securely in the the file
-`secrets/cloudflare-ddns-token.age` in the flake. The contents are the environment variable
-`CLOUDFLARE_API_TOKEN=<token>`.
+Follow the steps [secrets.md](./secrets.md) to save the token securely in the the file `secrets/cloudflare-ddns-token.age` in the flake. The contents are the environment variable `CLOUDFLARE_API_TOKEN=<token>`.
 
 ### Nix Configuration
 
@@ -94,14 +87,12 @@ systemctl status cloudflare-ddns
 journalctl -u cloudflare-ddns -f
 ```
 
-Verify the DNS records in the [Cloudflare Dashboard](https://dash.cloudflare.com) → `megaparsec.ca`
-→ **DNS** — you should see A and AAAA records updated to your current public IPs.
+Verify the DNS records in the [Cloudflare Dashboard](https://dash.cloudflare.com) → `megaparsec.ca` → **DNS** — you should see A and AAAA records updated to your current public IPs.
 
 ---
 
 ## Let's Encrypt
 
-<!-- prettier-ignore -->
 > [!NOTE]
 > This work is planned in the future
 
@@ -111,7 +102,6 @@ See the [External TLS Guide](./tls-external.md) for setting up Let's Encrypt wit
 
 ## Internal DNS (Pihole)
 
-<!-- prettier-ignore -->
 > [!NOTE]
 > This section needs cleanup. Also I want to move to a static config.
 

@@ -6,13 +6,10 @@ This document covers the services and infrastructure components managed on this 
 
 ## Caddy Reverse Proxy
 
-<!-- prettier-ignore -->
 > [!NOTE]
 > This work is planned in the future. None of this is implemented yet.
 
-[Caddy](https://caddyserver.com) is a powerful, extensible web server and reverse proxy written in
-Go. It features automatic HTTPS, simple configuration via the Caddyfile format, and excellent NixOS
-integration.
+[Caddy](https://caddyserver.com) is a powerful, extensible web server and reverse proxy written in Go. It features automatic HTTPS, simple configuration via the Caddyfile format, and excellent NixOS integration.
 
 ### Basic NixOS Configuration
 
@@ -45,8 +42,7 @@ Enable Caddy in your NixOS configuration:
 
 ### Firewall Configuration
 
-Use `openFirewall = true` to automatically open ports 80, 443 (TCP and UDP for HTTP/3). For manual
-control:
+Use `openFirewall = true` to automatically open ports 80, 443 (TCP and UDP for HTTP/3). For manual control:
 
 ```nix
 networking.firewall.allowedTCPPorts = [ 80 443 ];
