@@ -16,6 +16,7 @@ let
     "AtomicMegaNerd/agent-skills/rcd-golang"
     "AtomicMegaNerd/agent-skills/rcd-go-task"
     "AtomicMegaNerd/agent-skills/rcd-golangci-lint"
+    "affaan-m/ecc/skills/homelab-pihole-dns"
     "vercel-labs/skills/skills/find-skills"
   ];
 
