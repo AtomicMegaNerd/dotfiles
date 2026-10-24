@@ -30,6 +30,7 @@ in
     ];
     volumes = [
       "/etc/pihole:/etc/pihole"
+      "${../../static/blahaj/dnsmasq.conf}:/etc/dnsmasq.d/dnsmasq.conf:ro"
     ];
     extraOptions = [
       "--network=podman-ipv6"
