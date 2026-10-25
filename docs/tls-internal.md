@@ -126,7 +126,7 @@ rm secrets/internal*.pem
 
 ### Set Up Caddy Reverse Proxy
 
-Make sure that we setup `caddy`. See [caddy.nix](hosts/blahaj/caddy.nix).
+Make sure that we setup `caddy`. See [caddy.nix](../hosts/blahaj/caddy.nix).
 
 ---
 
