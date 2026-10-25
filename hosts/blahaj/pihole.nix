@@ -25,7 +25,6 @@ in
     ports = [
       "53:53/tcp"
       "53:53/udp"
-      "127.0.0.1:8081:80/tcp"
     ];
     volumes = [
       "/etc/pihole:/etc/pihole"
@@ -43,6 +42,7 @@ in
     };
     extraOptions = [
       "--network=podman-ipv6"
+      "--ip6=fd00::10"
     ];
   };
 

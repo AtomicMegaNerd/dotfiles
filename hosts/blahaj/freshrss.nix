@@ -13,9 +13,6 @@ in
   virtualisation.oci-containers.containers.freshrss = {
     autoStart = true;
     image = "freshrss/freshrss:${freshRssVersion}";
-    ports = [
-      "127.0.0.1:8080:80/tcp"
-    ];
     volumes = [
       "/etc/freshrss/data:/var/www/FreshRSS/data"
       "/etc/freshrss/extensions:/var/www/FreshRSS/extensions"
@@ -26,6 +23,7 @@ in
     };
     extraOptions = [
       "--network=podman-ipv6"
+      "--ip6=fd00::11"
     ];
   };
 

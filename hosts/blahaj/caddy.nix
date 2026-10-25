@@ -11,12 +11,12 @@ let
 
     pihole.megaparsec.ca {
       tls /certs/internal-tls-cert /certs/internal-tls-key
-      reverse_proxy 127.0.0.1:8081
+      reverse_proxy [fd00::10]:80
     }
 
     freshrss.megaparsec.ca {
       tls /certs/internal-tls-cert /certs/internal-tls-key
-      reverse_proxy 127.0.0.1:8080
+      reverse_proxy [fd00::11]:80
     }
   '';
 in
