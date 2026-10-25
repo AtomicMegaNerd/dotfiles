@@ -32,6 +32,11 @@ let
       tls /certs/internal-tls-cert /certs/internal-tls-key
       reverse_proxy [fd00::13]:5006
     }
+
+    git.megaparsec.ca {
+      tls /certs/internal-tls-cert /certs/internal-tls-key
+      reverse_proxy [fd00::14]:3000
+    }
   '';
 in
 {
@@ -74,6 +79,7 @@ in
     ];
     extraOptions = [
       "--network=podman-ipv6"
+      "--ip6=fd00::15"
       "--user=${toString caddyUid}:${toString caddyGid}"
     ];
   };

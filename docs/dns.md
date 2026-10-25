@@ -102,6 +102,7 @@ DNS records are stored in a static config file at [dnsmasq.conf](../static/blaha
 | `gateway` / `gateway.megaparsec.ca`   | `192.168.1.1`   | `2604:3d09:676:2d40::1`                  | UCG router       |
 | `budget` / `budget.megaparsec.ca`     | `192.168.1.232` | `2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4` | Actual Budget    |
 | `freshrss` / `freshrss.megaparsec.ca` | `192.168.1.232` | `2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4` | FreshRSS service |
+| `git` / `git.megaparsec.ca`           | `192.168.1.232` | `2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4` | Git service      |
 | `monitor` / `monitor.megaparsec.ca`   | `192.168.1.232` | `2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4` | Beszel Hub       |
 | `pihole` / `pihole.megaparsec.ca`     | `192.168.1.232` | `2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4` | Pi-hole admin    |
 
