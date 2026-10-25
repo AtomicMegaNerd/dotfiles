@@ -8,8 +8,6 @@ let
   '';
 in
 {
-  networking.firewall.allowedTCPPorts = [ ];
-
   virtualisation.oci-containers.containers.freshrss = {
     autoStart = true;
     image = "freshrss/freshrss:${freshRssVersion}";
