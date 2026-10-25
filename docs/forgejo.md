@@ -1,5 +1,8 @@
 # Forgejo
 
+> [!NOTE]
+> This is not deployed next, still deciding if this is worth the complexity right now.
+
 [Forgejo](https://forgejo.org/) is configured as an internal Git forge at [git.megaparsec.ca](https://git.megaparsec.ca), with one Podman-based Actions runner planned for personal projects.
 
 ## Prerequisites
