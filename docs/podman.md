@@ -21,7 +21,8 @@ Static IPv6 addresses allow Caddy to reach backend containers directly without r
 | freshrss     | `fd00::11`   | None                                       |
 | beszel-hub   | `fd00::12`   | `127.0.0.1:8090:8090/tcp` (localhost only) |
 | actualbudget | `fd00::13`   | None                                       |
-| caddy        | Dynamic      | `443:443/tcp`                              |
+| forgejo      | `fd00::14`   | `2222:2222/tcp`                            |
+| caddy        | `fd00::15`   | `443:443/tcp`                              |
 | starfeed     | Dynamic      | None                                       |
 
 ## Service routing
