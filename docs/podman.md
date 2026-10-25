@@ -2,7 +2,7 @@
 
 We use podman as the container runtime.
 
-## Podman Network
+## Podman network
 
 | Setting | Value                          |
 | ------- | ------------------------------ |
@@ -11,27 +11,24 @@ We use podman as the container runtime.
 | Gateway | `fd00::1`                      |
 | DNS     | Disabled (Pi-hole handles DNS) |
 
-## Container Addresses
+## Container addresses
 
 Static IPv6 addresses allow Caddy to reach backend containers directly without requiring container DNS resolution (which conflicts with Pi-hole on port 53). Because container DNS is disabled, containers cannot resolve each other by name, so a container that talks to another one must use the other's static address from the table below (for example Starfeed reaches FreshRSS at `http://[fd00::11]:80`, not `http://freshrss`).
 
-| Container  | IPv6 Address | Port Mappings                              |
-| ---------- | ------------ | ------------------------------------------ |
-| pihole     | `fd00::10`   | `53:53/tcp`, `53:53/udp`                   |
-| freshrss   | `fd00::11`   | None                                       |
-| beszel-hub | `fd00::12`   | `127.0.0.1:8090:8090/tcp` (localhost only) |
-| caddy      | Dynamic      | `443:443/tcp`                              |
-| starfeed   | Dynamic      | None                                       |
+| Container    | IPv6 Address | Port Mappings                              |
+| ------------ | ------------ | ------------------------------------------ |
+| pihole       | `fd00::10`   | `53:53/tcp`, `53:53/udp`                   |
+| freshrss     | `fd00::11`   | None                                       |
+| beszel-hub   | `fd00::12`   | `127.0.0.1:8090:8090/tcp` (localhost only) |
+| actualbudget | `fd00::13`   | None                                       |
+| caddy        | Dynamic      | `443:443/tcp`                              |
+| starfeed     | Dynamic      | None                                       |
 
-## Communication
+## Service routing
 
-Caddy reverse proxies to backend containers via IPv6:
+Caddy reverse proxies to backend containers via IPv6. See [Caddy](./caddy.md) for the route mapping.
 
-- `pihole.megaparsec.ca` → `[fd00::10]:80`
-- `freshrss.megaparsec.ca` → `[fd00::11]:80`
-- `monitor.megaparsec.ca` → `[fd00::12]:8090` (Beszel Hub; WebSocket read timeout: 360s)
-
-## Container Health Checks
+## Container health checks
 
 > [!NOTE]
 > This is something I will look at afterwards.

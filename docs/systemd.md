@@ -1,4 +1,4 @@
-# Systemd Reference
+# Systemd reference
 
 Some basic reference information on systemd.
 

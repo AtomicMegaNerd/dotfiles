@@ -2,7 +2,7 @@
 
 [Starfeed](https://github.com/AtomicMegaNerd/starfeed) reads the repos you have starred on GitHub and Forgejo-based forges (such as Codeberg), and subscribes [FreshRSS](./freshrss.md) to each repo's releases feed.
 
-## Pre-Requisites
+## Prerequisites
 
 - FreshRSS running, with an API token for its user (see [freshrss.md](./freshrss.md)).
 - `secrets/starfeed-config.age` created with agenix (see [secrets.md](./secrets.md)).

@@ -32,7 +32,7 @@ herdr agent list
 herdr status
 ```
 
-## LLM Agent Integrations
+## LLM agent integrations
 
 ```fish
 herdr integration install pi
@@ -40,7 +40,7 @@ herdr integration install opencode
 herdr integration status
 ```
 
-## Restart With Fresh Shells
+## Restart with fresh shells
 
 If the shell context is stale we can restart herdr which will start with fresh shells
 

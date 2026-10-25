@@ -1,8 +1,8 @@
 # Actual Budget
 
-[Actual Budget](https://actualbudget.org/) runs as a Podman container on Blahaj at `https://budget.megaparsec.ca`. We will use plain passord authentication.
+[Actual Budget](https://actualbudget.org/) runs as a Podman container on Blahaj at `https://budget.megaparsec.ca`. We will use plain password authentication.
 
-## Pre-Requsites
+## Prerequisites
 
 - DNS records for `budget.megaparsec.ca` added to DNS (see [dns.md](./dns.md)).
 - TLS cert generated for `budget.megaparsec.ca` (see [tls-internal.md](./tls-internal.md)).
@@ -78,14 +78,7 @@ in
 
 ## Caddy
 
-In `hosts/blahaj/caddy.nix`:
-
-```caddy
-budget.megaparsec.ca {
-  tls /certs/internal-tls-cert /certs/internal-tls-key
-  reverse_proxy [fd00::13]:5006
-}
-```
+The route is listed in [Caddy](./caddy.md).
 
 ## Initial setup
 

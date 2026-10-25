@@ -1,8 +1,8 @@
-# Home Manager Configuration
+# Home Manager configuration
 
 Reference information on [Home Manager](https://github.com/nix-community/home-manager)
 
-## DAG Ordering for Ordered Settings
+## DAG ordering for ordered settings
 
 Some applications (like OpenCode) use JSON objects where key order matters for evaluation. For example, OpenCode's permission rules use "last matching rule wins" semantics.
 

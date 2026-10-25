@@ -1,8 +1,8 @@
-# Beszel Monitoring
+# Beszel monitoring
 
 Beszel runs a Hub on Blahaj and an Agent on each monitored system. The Blahaj Agent uses a Unix socket to communicate with the Hub.
 
-## Pre-Requisites
+## Prerequisites
 
 - DNS records for `monitor.megaparsec.ca` added to DNS (see [dns.md](./dns.md)).
 - TLS cert generated for `monitor.megaparsec.ca` (see [tls-internal.md](./tls-internal.md)).
@@ -50,18 +50,7 @@ The Hub's port is bound to loopback for the host-network Agent; Caddy reaches it
 
 ## Caddy
 
-The route is configured in `hosts/blahaj/caddy.nix`:
-
-```caddy
-monitor.megaparsec.ca {
-  tls /certs/internal-tls-cert /certs/internal-tls-key
-  reverse_proxy [fd00::12]:8090 {
-    transport http {
-      read_timeout 360s
-    }
-  }
-}
-```
+The route is listed in [Caddy](./caddy.md).
 
 ## Initial setup
 

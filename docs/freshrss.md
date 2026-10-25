@@ -2,7 +2,7 @@
 
 [FreshRSS](https://www.freshrss.org/) is the self-hosted RSS reader at [https://freshrss.megaparsec.ca](https://freshrss.megaparsec.ca). It runs as a Podman container on Blahaj and is the feed backend for [Starfeed](./starfeed.md).
 
-## Pre-Requisites
+## Prerequisites
 
 - DNS records for `freshrss.megaparsec.ca` added to DNS (see [dns.md](./dns.md)).
 - TLS cert generated for `freshrss.megaparsec.ca` (see [tls-internal.md](./tls-internal.md)).

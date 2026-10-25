@@ -1,19 +1,15 @@
-# Internal TLS Guide (Private LAN)
+# Internal TLS guide (private LAN)
 
 This guide covers setting up trusted TLS certificates for internal services accessible only on your local network using hostnames like `freshrss.megaparsec.ca`, `pihole.megaparsec.ca`, etc.
-
----
 
 ## Prerequisites
 
 - Internal DNS must be configured and working. See [DNS Setup](./dns.md).
 - Install `nss.tools` for Firefox before starting.
 
----
-
 ## Procedure
 
-### Create the Root CA
+### Create the root CA
 
 The `mkcert` package is installed via Home Manager on Schooner (see `hosts/Schooner/rcd.nix`).
 
@@ -28,7 +24,7 @@ This creates the Root CA files and adds the certificate to your Mac's trust stor
 - `rootCA.pem` (public cert)
 - `rootCA-key.pem` (private key)
 
-### Secure the Private Key in 1Password
+### Secure the private key in 1Password
 
 Store the private CA key in 1Password and remove it from local disk:
 
@@ -37,7 +33,7 @@ op document create "$(mkcert -CAROOT)/rootCA-key.pem" --title "rcd-rootCA-privat
 rm "$(mkcert -CAROOT)/rootCA-key.pem"
 ```
 
-### Distribute the Root CA
+### Distribute the root CA
 
 Copy `rootCA.pem` to `static/` in your dotfiles repo:
 
@@ -58,7 +54,7 @@ Add to `hosts/Schooner/darwin.nix` and then apply with `nh darwin switch`:
 }
 ```
 
-### On NixOS (blahaj)
+### On NixOS (Blahaj)
 
 Add to `hosts/blahaj/configuration.nix` and then apply with `nh os switch`:
 
@@ -71,7 +67,7 @@ Add to `hosts/blahaj/configuration.nix` and then apply with `nh os switch`:
 }
 ```
 
-### Generate Service Certificates
+### Generate service certificates
 
 When you need to generate certificates, retrieve the private key from 1Password temporarily:
 
@@ -90,7 +86,7 @@ This creates:
 - `internal.pem` - Certificate file
 - `internal-key.pem` - Private key file
 
-### Add Certs to Flake Using `agenix`
+### Add certs to flake using `agenix`
 
 First tell agenix which keys to use by adding the following entries to `secrets/agenix-rules.nix`:
 
@@ -109,7 +105,7 @@ agenix -e internal-tls-cert.age < internal.pem
 agenix -e internal-tls-key.age < internal-key.pem
 ```
 
-### Upload Gateway Certificate
+### Upload gateway certificate
 
 For the UCG gateway admin interface at `gateway.megaparsec.ca`:
 
@@ -117,17 +113,15 @@ For the UCG gateway admin interface at `gateway.megaparsec.ca`:
 2. Upload the certificate and key files (`internal.pem` and `internal-key.pem`)
 3. The gateway will now use your internal CA-signed certificate
 
-### Delete the Internal PEM files
+### Delete the internal PEM files
 
 ```bash
 rm secrets/internal*.pem
 ```
 
-### Set Up Caddy Reverse Proxy
+### Set up Caddy reverse proxy
 
 Make sure that we setup `caddy`. See [caddy.nix](../hosts/blahaj/caddy.nix).
-
----
 
 ## Maintenance
 
@@ -135,9 +129,7 @@ Make sure that we setup `caddy`. See [caddy.nix](../hosts/blahaj/caddy.nix).
 - **New Services:** Add new hostnames to the `mkcert` command and regenerate
 - **New Devices:** Nix-managed hosts (Schooner and blahaj) trust the CA automatically via `security.pki.certificateFiles`. Other devices need `rcd-rootCA-pub.pem` installed manually. See [Install the CA on Other Devices](#install-the-ca-on-other-devices).
 
----
-
-## Install the CA on Other Devices
+## Install the CA on other devices
 
 Without this, browsers show a certificate warning for `*.megaparsec.ca`. Use the file `static/rcd-rootCA-pub.pem`.
 

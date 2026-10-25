@@ -12,7 +12,7 @@ Services running on blahaj. See [Podman](./podman.md) for addresses and [Caddy](
 | Caddy           | Reverse proxy with internal TLS                                   | -                                                                | [caddy.md](./caddy.md)               | [caddy.nix](../hosts/blahaj/caddy.nix)                     |
 | cloudflare-ddns | Keeps Cloudflare DNS records current                              | -                                                                | [dns.md](./dns.md)                   | [cloudflare-ddns.nix](../hosts/blahaj/cloudflare-ddns.nix) |
 
-## Implementation Information
+## Implementation information
 
 ### Backups
 
