@@ -27,6 +27,11 @@ let
         }
       }
     }
+
+    budget.megaparsec.ca {
+      tls /certs/internal-tls-cert /certs/internal-tls-key
+      reverse_proxy [fd00::13]:5006
+    }
   '';
 in
 {
