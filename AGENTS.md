@@ -59,6 +59,13 @@ nh search options $OPTION
 
 ## Notes
 
+### Container Infrastructure
+
+Services run as Podman containers on blahaj using the `podman-ipv6` network with static IPv6 addresses for service discovery. Caddy reverse proxy handles TLS termination for internal hostnames.
+
+- [Container Networking](./docs/containers.md) - Network setup and static IP assignments
+- [Internal TLS](./docs/tls-internal.md) - Certificate generation and Caddy configuration
+
 ### OpenCode
 
 [OpenCode docs](https://opencode.ai/docs/). Config lives in `static/opencode/` as vanilla configs:
@@ -123,5 +130,6 @@ symlinked to `~/.claude/skills` for Claude Code.
 ## More Information
 
 - [README.md](./README.md)
+- [Internal TLS](./docs/tls-internal.md)
 - [DNS](./docs/dns.md)
 - [Secrets](./docs/secrets.md)

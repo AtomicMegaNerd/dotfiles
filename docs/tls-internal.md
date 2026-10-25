@@ -139,5 +139,6 @@ Make sure that we setup `caddy`. See [caddy.nix](hosts/blahaj/caddy.nix).
 ## Links
 
 - [DNS Setup](./dns.md) - Internal DNS and Pi-hole configuration
+- [Container Networking](./containers.md) - Podman network and static IPv6 addresses
 - [mkcert GitHub Repository](https://github.com/FiloSottile/mkcert)
 - [Caddy Documentation](https://caddyserver.com/docs/)

@@ -142,6 +142,8 @@ migrated to Nix.
 ## More Information
 
 - [DNS Setup](./docs/dns.md) How we setup DNS internally and externally.
+- [Container Networking](./docs/containers.md) Podman network and container addresses.
+- [Internal TLS](./docs/tls-internal.md) Setting up trusted TLS certificates for internal services.
 - [Secrets](./docs/secrets.md) Managing secrets with `agenix` and `op`.
 - [Home Manager Docs](./docs/home-manager.md) Stuff we learned about home-manager that is worth
   remembering.
