@@ -134,7 +134,24 @@ Make sure that we setup `caddy`. See [caddy.nix](../hosts/blahaj/caddy.nix).
 
 - **Rotation:** Regenerate certificates with `mkcert`, re-encrypt both `.age` files in `secrets/`, then run `nh os switch .`
 - **New Services:** Add new hostnames to the `mkcert` command and regenerate
-- **New Devices:** Nix-managed hosts (Schooner and blahaj) trust the CA automatically via `security.pki.certificateFiles`. Other devices need `rcd-rootCA-pub.pem` installed manually — copy it from `static/rcd-rootCA-pub.pem` or retrieve it from the dotfiles repo.
+- **New Devices:** Nix-managed hosts (Schooner and blahaj) trust the CA automatically via `security.pki.certificateFiles`. Other devices need `rcd-rootCA-pub.pem` installed manually. See [Install the CA on Other Devices](#install-the-ca-on-other-devices).
+
+---
+
+## Install the CA on Other Devices
+
+Without this, browsers show a certificate warning for `*.megaparsec.ca`. Use the file `static/rcd-rootCA-pub.pem`.
+
+### iPhone / iPad
+
+1. AirDrop or email `rcd-rootCA-pub.pem` to the device and open it.
+2. Go to **Settings > Profile Downloaded** and tap **Install**.
+3. Go to **Settings > General > About > Certificate Trust Settings** and turn on full trust for the certificate.
+
+### Mac
+
+1. Double-click `rcd-rootCA-pub.pem` to add it to Keychain Access.
+2. Double-click the certificate in Keychain Access, expand **Trust**, and set it to **Always Trust**.
 
 ## Links
 
