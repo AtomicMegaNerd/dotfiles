@@ -84,7 +84,6 @@ Then add the Agent to the NixOS module:
 
 ```nix
 age.secrets.beszel-agent.file = ../../secrets/beszel-agent.age;
-virtualisation.podman.dockerSocket.enable = true;
 
 virtualisation.oci-containers.containers.beszel-agent = {
   autoStart = true;
