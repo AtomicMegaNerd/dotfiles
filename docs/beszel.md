@@ -4,13 +4,12 @@ Beszel runs a Hub on Blahaj and an Agent on each monitored system. The Blahaj Ag
 
 ## Pre-Requisites
 
-- DNS records for `monitor.megaparsec.ca` added to DNS (see [dns.md](./dns.md).
-- TLS cert generated for `monitor.megaparsec.ca` (see [tls-internal.md](./tls-internal.md).
+- DNS records for `monitor.megaparsec.ca` added to DNS (see [dns.md](./dns.md)).
+- TLS cert generated for `monitor.megaparsec.ca` (see [tls-internal.md](./tls-internal.md)).
 
 ## Blahaj configuration
 
-The Hub and Blahaj Agent are configured in `hosts/blahaj/beszel.nix`, imported from
-`hosts/blahaj/configuration.nix`.
+The Hub and Blahaj Agent are configured in `hosts/blahaj/beszel.nix`.
 
 ```nix
 { config, ... }:
@@ -137,6 +136,8 @@ In the Hub, create a notification channel and enable the **Failed Services** ale
 
 ## Links
 
+- [Services](./services.md) - Docs common to all services.
+- [Podman](./podman.md) - Podman network and static IPv6 addresses
 - [Beszel Getting Started](https://beszel.dev/guide/getting-started)
 - [Beszel Agent Installation](https://beszel.dev/guide/agent-installation)
 - [Beszel Reverse Proxy](https://beszel.dev/guide/reverse-proxy)

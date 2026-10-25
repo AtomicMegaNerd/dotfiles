@@ -2,9 +2,11 @@
 
 This reference information pertains to my DNS setup for my **megaparsec.ca** domain.
 
---
+---
 
 ## Cloudflare
+
+### Name Servers
 
 Even though [Hover](https://hover.com) is my domain registrar I host my domain on [Cloudflare](https://dash.cloudflare.com/). To enable this I setup the following name servers on the Hover side:
 
@@ -13,27 +15,13 @@ adi.ns.cloudflare.com
 brodie.ns.cloudflare.com
 ```
 
----
-
-## Outlook.com Email
-
-The following settings are used to connect my personal `megaparsec.ca` domain to [outlook.com](https://outlook.com) for email.
-
-| Type  | Host         | Value                           | TTL        |
-| ----- | ------------ | ------------------------------- | ---------- |
-| MX    | @            | 0 202129490.pamx1.hotmail.com   | 15 Minutes |
-| TXT   | @            | v=spf1 include:outlook.com -all | 15 Minutes |
-| CNAME | autodiscover | autodiscover.outlook.com        | 15 Minutes |
-
----
-
-## Dynamic DNS - Cloudflare
+### Cloudflare Dynamic DNS
 
 I use [cloudflare-ddns](https://github.com/favonia/cloudflare-ddns) via the NixOS `services.cloudflare-ddns` module to automatically update A and AAAA records for `megaparsec.ca`.
 
 **NOTE** There is no need to manually create A or AAAA records in Cloudflare first. The service will automatically create them on first run if they don't already exist.
 
-### Create a Cloudflare API Token
+#### Create a Cloudflare API Token
 
 - Go to [Cloudflare API Tokens](https://dash.cloudflare.com/profile/api-tokens)
 - Click **Create Token** → **Use template** → **Edit zone DNS**
@@ -44,11 +32,11 @@ I use [cloudflare-ddns](https://github.com/favonia/cloudflare-ddns) via the NixO
 - Click **Continue to summary**, then **Create token**
 - Copy the token and securely save it — you won't see it again
 
-### Encrypt the Token with Agenix
+#### Encrypt the Token with Agenix
 
 Follow the steps in [Secrets](./secrets.md) to save the token in `secrets/cloudflare-ddns-token.age`. The file contents are the environment variable `CLOUDFLARE_API_TOKEN=<token>`.
 
-### Nix Configuration
+#### Nix Configuration
 
 Add the following to the `blahaj` config:
 
@@ -72,13 +60,13 @@ systemd.services.cloudflare-ddns = {
 };
 ```
 
-Then run the os rebuild:
+Then apply it:
 
 ```bash
 nh os switch .
 ```
 
-### Verification
+#### Verification
 
 Check the service status:
 
@@ -91,24 +79,25 @@ Verify the DNS records in the [Cloudflare Dashboard](https://dash.cloudflare.com
 
 ---
 
-## Let's Encrypt
+## Outlook.com Email
 
-> [!NOTE]
-> This work is planned in the future
+The following settings are used to connect my personal `megaparsec.ca` domain to [outlook.com](https://outlook.com) for email.
 
-See the [External TLS Guide](./tls-external.md) for setting up Let's Encrypt with Caddy.
+| Type  | Host         | Value                           | TTL        |
+| ----- | ------------ | ------------------------------- | ---------- |
+| MX    | @            | 0 202129490.pamx1.hotmail.com   | 15 Minutes |
+| TXT   | @            | v=spf1 include:outlook.com -all | 15 Minutes |
+| CNAME | autodiscover | autodiscover.outlook.com        | 15 Minutes |
 
 ---
 
-## Internal DNS (Pi-hole)
+## Internal DNS for megaparsec.ca
 
-[Pi-hole](https://pi-hole.net/) runs on blahaj (`192.168.1.232`) as the internal DNS server. DNS entries are managed declaratively via Nix.
+[Pi-hole](https://pi-hole.net/) runs on `blahaj` (`192.168.1.232`) as the internal DNS server.
 
 ### Configuration
 
-DNS records are stored in a static config file at `static/blahaj/dnsmasq.conf` and mounted into the Pi-hole container at `/etc/dnsmasq.d/dnsmasq.conf`. The container is configured with `FTLCONF_misc_etc_dnsmasq_d = "true"` to enable reading from `/etc/dnsmasq.d`.
-
-All other Pi-hole environment variables are set directly in the Nix config at `hosts/blahaj/pihole.nix`.
+DNS records are stored in a static config file at [dnsmasq.conf](./static/blahaj/dnsmasq.conf). The container is configured with `FTLCONF_misc_etc_dnsmasq_d = "true"` to enable reading from `/etc/dnsmasq.d`.
 
 ### Internal DNS Records
 

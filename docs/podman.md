@@ -13,7 +13,7 @@ We use podman as the container runtime.
 
 ## Container Addresses
 
-Static IPv6 addresses allow Caddy to reach backend containers directly without requiring container DNS resolution (which conflicts with Pi-hole on port 53).
+Static IPv6 addresses allow Caddy to reach backend containers directly without requiring container DNS resolution (which conflicts with Pi-hole on port 53). Because container DNS is disabled, containers cannot resolve each other by name, so a container that talks to another one must use the other's static address from the table below (for example Starfeed reaches FreshRSS at `http://[fd00::11]:80`, not `http://freshrss`).
 
 | Container  | IPv6 Address | Port Mappings                              |
 | ---------- | ------------ | ------------------------------------------ |

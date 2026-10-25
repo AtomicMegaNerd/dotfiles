@@ -4,12 +4,12 @@
 
 ## Pre-Requsites
 
-- DNS records for `budget.megaparsec.ca` added to DNS (see [dns.md](./dns.md).
-- TLS cert generated for `budget.megaparsec.ca` (see [tls-internal.md](./tls-internal.md).
+- DNS records for `budget.megaparsec.ca` added to DNS (see [dns.md](./dns.md)).
+- TLS cert generated for `budget.megaparsec.ca` (see [tls-internal.md](./tls-internal.md)).
 
 ## Blahaj configuration
 
-Configured in `hosts/blahaj/actualbudget.nix`, imported from `hosts/blahaj/configuration.nix`.
+Configured in `hosts/blahaj/actualbudget.nix`.
 
 ```nix
 { pkgs, ... }:
@@ -97,13 +97,7 @@ Open [https://budget.megaparsec.ca](https://budget.megaparsec.ca) and set the se
 
 ## Backup and restore
 
-A daily timer rsyncs `/var/lib/actualbudget/` to `/data/backups/actualbudget/`. Run it now with `sudo systemctl start backup-actualbudget`. For a portable copy use **More > Settings > Export Data**. To restore:
-
-```bash
-sudo systemctl stop podman-actualbudget
-sudo rsync -a --delete /data/backups/actualbudget/ /var/lib/actualbudget/
-sudo systemctl start podman-actualbudget
-```
+`backup-actualbudget` rsyncs `/var/lib/actualbudget/` to `/data/backups/actualbudget/`; restore as described in [Services](./services.md#backups). For a portable copy use **More > Settings > Export Data**.
 
 ## Links
 
