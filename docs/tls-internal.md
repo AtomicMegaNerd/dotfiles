@@ -77,11 +77,10 @@ When you need to generate certificates, retrieve the private key from 1Password 
 
 ```bash
 op document get "rcd-rootCA-private.pem" --out-file "$(mkcert -CAROOT)/rootCA-key.pem"
-
 mkcert \
   -cert-file internal.pem \
   -key-file internal-key.pem \
-  freshrss.megaparsec.ca pihole.megaparsec.ca gateway.megaparsec.ca blahaj.megaparsec.ca schooner.megaparsec.ca
+  freshrss.megaparsec.ca pihole.megaparsec.ca gateway.megaparsec.ca blahaj.megaparsec.ca schooner.megaparsec.ca monitor.megaparsec.ca budget.megaparsec.ca
 
 rm "$(mkcert -CAROOT)/rootCA-key.pem"
 ```

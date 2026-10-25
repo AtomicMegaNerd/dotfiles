@@ -23,6 +23,5 @@
     stateVersion = "24.11";
     file.".ssh/config".source = ../../static/Schooner/ssh_config;
     file.".ssh/allowed_signers".source = ../../static/rcd_pub_key;
-    file.".ssh/authorized_keys".source = ../../static/rcd_pub_key;
   };
 }

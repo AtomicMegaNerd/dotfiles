@@ -34,6 +34,10 @@
     };
   };
 
+  users.users.rcd.openssh.authorizedKeys.keys = [
+    (builtins.readFile ../../static/rcd_pub_key)
+  ];
+
   services.openssh = {
     enable = true;
     extraConfig = ''

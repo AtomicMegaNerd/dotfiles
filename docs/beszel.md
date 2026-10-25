@@ -1,211 +1,137 @@
-# Beszel Monitoring Guide
+# Beszel Monitoring
 
-> [!NOTE]
-> This work is planned in the future. None of this is implemented yet.
+Beszel runs a Hub on Blahaj and an Agent on each monitored system. The Blahaj Agent uses a Unix socket to communicate with the Hub.
 
-[Beszel](https://github.com/henrygd/beszel) is a lightweight, beautiful server monitoring platform written in Go. It provides historical metrics, Docker/Podman container stats, and alerting with a clean, modern UI.
+## Blahaj configuration
 
----
-
-## Architecture
-
-Beszel consists of two components:
-
-- **Hub:** The web dashboard and database (runs on `blahaj`).
-- **Agent:** A lightweight daemon that collects system metrics (runs on each monitored machine).
-
-For same-system monitoring, the Hub and Agent communicate via a shared Unix socket rather than TCP.
-
----
-
-## NixOS Podman Configuration
-
-Add the Hub and Agent containers to `virtualisation.oci-containers.containers` in `configuration.nix`. Both containers share a socket directory on the host for local communication.
-
-### Hub Container
-
-The Hub stores all monitoring data and serves the web UI.
+Add `hosts/blahaj/beszel.nix` and import it from `hosts/blahaj/configuration.nix`.
 
 ```nix
-beszel-hub = {
-  autoStart = true;
-  image = "henrygd/beszel:latest";
-  ports = [ "8090:8090/tcp" ];
-  volumes = [
-    "/var/lib/beszel/data:/beszel_data"
-    "/var/lib/beszel/socket:/beszel_socket"
-  ];
-  environmentFiles = [ config.age.secrets.beszel-hub.path ];
-  environment = {
-    APP_URL = "http://localhost:8090";
-  };
-  extraOptions = [
-    "--network=podman-ipv6"
-  ];
-};
-```
-
-### Agent Container (Local)
-
-The agent uses `network_mode: host` and communicates with the hub via the shared Unix socket.
-
-```nix
-beszel-agent = {
-  autoStart = true;
-  image = "henrygd/beszel-agent:latest";
-  volumes = [
-    "/var/lib/beszel/agent:/var/lib/beszel-agent"
-    "/var/lib/beszel/socket:/beszel_socket"
-    "/var/run/podman/podman.sock:/var/run/docker.sock:ro"
-  ];
-  environment = {
-    LISTEN = "/beszel_socket/beszel.sock";
-    HUB_URL = "http://localhost:8090";
-  };
-  environmentFiles = [ config.age.secrets.beszel-agent.path ];
-  extraOptions = [
-    "--network=host"
-  ];
-};
-```
-
----
-
-## Setup Steps
-
-### Create Agenix Secrets
-
-Create a secret file for the Hub credentials:
-
-```bash
-agenix -e secrets/beszel-hub.age
-```
-
-Add the following content (using the exact variable names Beszel expects):
-
-```text
-USER_EMAIL=your-email@megaparsec.ca
-USER_PASSWORD=your-secure-password
-```
-
-### Create tmpfiles for Data Directories
-
-```nix
-systemd.tmpfiles.rules = [
-  "d /var/lib/beszel 0755 root root -"
-  "d /var/lib/beszel/data 0755 root root -"
-  "d /var/lib/beszel/socket 0755 root root -"
-  "d /var/lib/beszel/agent 0755 root root -"
-];
-```
-
-### Apply Configuration and Start Hub
-
-Add the Hub container and secret to your configuration:
-
-```nix
-age.secrets = {
-  # ... existing secrets
-  beszel-hub.file = ../../secrets/beszel-hub.age;
-};
-
-virtualisation.oci-containers.containers = {
-  # ... existing containers
-  beszel-hub = {
+{ config, ... }:
+let
+  beszelVersion = "0.21.1";
+in
+{
+  virtualisation.oci-containers.containers.beszel-hub = {
     autoStart = true;
-    image = "henrygd/beszel:latest";
-    ports = [ "8090:8090/tcp" ];
+    image = "henrygd/beszel:${beszelVersion}";
+    ports = [ "127.0.0.1:8090:8090/tcp" ];
     volumes = [
       "/var/lib/beszel/data:/beszel_data"
-      "/var/lib/beszel/socket:/beszel_socket"
+      "/run/beszel_socket:/beszel_socket"
     ];
-    environmentFiles = [ config.age.secrets.beszel-hub.path ];
-    environment = {
-      APP_URL = "http://localhost:8090";
-    };
+    environment.APP_URL = "https://monitor.megaparsec.ca";
     extraOptions = [
       "--network=podman-ipv6"
+      "--ip6=fd00::12"
     ];
   };
-};
+
+  systemd.tmpfiles.rules = [
+    "d /var/lib/beszel 0755 root root -"
+    "d /var/lib/beszel/data 0755 root root -"
+    "d /var/lib/beszel/agent 0755 root root -"
+    "d /run/beszel_socket 0755 root root -"
+  ];
+
+  systemd.services.create-podman-network = {
+    wantedBy = [ "podman-beszel-hub.service" ];
+    before = [ "podman-beszel-hub.service" ];
+  };
+}
 ```
 
-Deploy:
+The Hub's port is bound to loopback for the host-network Agent; Caddy reaches it directly at `fd00::12`.
+
+## Caddy
+
+Add this site to the Caddyfile generated in `hosts/blahaj/caddy.nix`:
+
+```caddy
+monitor.megaparsec.ca {
+  tls /certs/internal-tls-cert /certs/internal-tls-key
+  reverse_proxy [fd00::12]:8090 {
+    transport http {
+      read_timeout 360s
+    }
+  }
+}
+```
+
+Add `monitor.megaparsec.ca` to the internal certificate hostnames in [TLS Internal](./tls-internal.md), and add the `monitor` DNS records in `static/blahaj/dnsmasq.conf`. Record `fd00::12` in [Container Networking](./containers.md) and the route in [Services](./services.md).
+
+## Initial setup
+
+Build and activate the Hub-only configuration, with the Caddy route, DNS record, and certificate in place:
 
 ```bash
-nh os rebuild .
+nh os build .
+nh os switch .
 ```
 
-The Hub will automatically create the admin account using the credentials from the secret.
+Open <https://monitor.megaparsec.ca> and create the first account; Beszel makes this the admin account.
 
-### Get Agent Credentials from Hub UI
+In the Hub, add a system named `blahaj` with **Host / IP** set to `/beszel_socket/beszel.sock`. Copy the `KEY` and `TOKEN` shown for the Agent.
 
-Log in to `http://blahaj:8090` and go to **Systems** → **Add System**. Name it `blahaj` and note the **Key** and **Token** values.
-
-### Create Agenix Secret for Agent
-
-```bash
-agenix -e secrets/beszel-agent.age
-```
-
-Contents:
+Add `beszel-agent.age` to `secrets/agenix-rules.nix`, encrypt it with Agenix, and put those values in it:
 
 ```text
-KEY=<public-key-from-hub>
+KEY=<key-from-hub>
 TOKEN=<token-from-hub>
 ```
 
-Add to configuration:
+Then add the Agent to the NixOS module:
 
 ```nix
 age.secrets.beszel-agent.file = ../../secrets/beszel-agent.age;
+virtualisation.podman.dockerSocket.enable = true;
+
+virtualisation.oci-containers.containers.beszel-agent = {
+  autoStart = true;
+  image = "henrygd/beszel-agent:${beszelVersion}";
+  volumes = [
+    "/var/lib/beszel/agent:/var/lib/beszel-agent"
+    "/run/beszel_socket:/beszel_socket"
+    "/run/podman/podman.sock:/run/podman/podman.sock:ro"
+    "/run/dbus/system_bus_socket:/run/dbus/system_bus_socket:ro"
+  ];
+  environment = {
+    DOCKER_HOST = "unix:///run/podman/podman.sock";
+    HUB_URL = "http://localhost:8090";
+    LISTEN = "/beszel_socket/beszel.sock";
+    SERVICE_PATTERNS = "podman-*";
+  };
+  environmentFiles = [ config.age.secrets.beszel-agent.path ];
+  extraOptions = [ "--network=host" ];
+};
 ```
 
-### Deploy Agent and Verify
+Build and activate again:
 
 ```bash
-nh os rebuild .
+nh os build .
+nh os switch .
 ```
 
-The Hub dashboard should show `blahaj` as **Online** within a few seconds.
+Confirm `blahaj` appears online and that system and Podman container metrics populate.
 
----
+## Signal notifications
 
-## Firewall Configuration
+Run a Signal API server such as [signal-cli-rest-api](https://github.com/bbernhard/signal-cli-rest-api) and register or link it with a Signal account. In the Hub, open **Settings > Notifications** and add a Shoutrrr URL using this format:
 
-Open the Hub port for internal access:
-
-```nix
-networking.firewall.allowedTCPPorts = [ 8090 ];
+```text
+signal://<api-host>:8080/<sender-number>/<recipient-number>
 ```
 
----
+## Failed service alerts
 
-## Monitoring Other Machines
+The D-Bus socket mount lets the Agent monitor systemd services. Beszel polls service status about every 10 minutes, so a service failure may take that long to appear. `SERVICE_PATTERNS="podman-*"` limits the monitored services to Podman units.
 
-To monitor additional machines, run the Agent container on the target machine:
-
-```bash
-podman run -d --name beszel-agent \
-  --network=host \
-  --restart unless-stopped \
-  -v ./beszel_agent_data:/var/lib/beszel-agent \
-  -v /var/run/podman/podman.sock:/var/run/docker.sock:ro \
-  -e LISTEN=45876 \
-  -e HUB_URL=http://192.168.1.232:8090 \
-  -e KEY=<your-key> \
-  -e TOKEN=<your-token> \
-  henrygd/beszel-agent:latest
-```
-
-Add the system in the Hub UI using the Key and Token shown when you created the system entry.
-
----
+In the Hub, create a notification channel and enable the **Failed Services** alert for `blahaj`, selecting that channel. Blahaj cannot send an alert if the whole host is offline, since the Hub and notification delivery run there.
 
 ## Links
 
-- [Beszel GitHub Repository](https://github.com/henrygd/beszel)
-- [Beszel Official Documentation](https://beszel.dev)
 - [Beszel Getting Started](https://beszel.dev/guide/getting-started)
-- [Beszel Environment Variables](https://beszel.dev/guide/environment-variables)
-- [Same-System Docker Compose Reference](https://github.com/henrygd/beszel/blob/main/supplemental/docker/same-system/docker-compose.yml)
+- [Beszel Agent Installation](https://beszel.dev/guide/agent-installation)
+- [Beszel Reverse Proxy](https://beszel.dev/guide/reverse-proxy)
+- [Podman Monitoring](https://beszel.dev/guide/podman)
