@@ -154,7 +154,6 @@ Without this, browsers show a certificate warning for `*.megaparsec.ca`. Use the
 
 ## Links
 
-- [DNS Setup](./dns.md) - Internal DNS and Pi-hole configuration
-- [Container Networking](./containers.md) - Podman network and static IPv6 addresses
+- [Podman](./podman.md) - Podman network and static IPv6 addresses
 - [mkcert GitHub Repository](https://github.com/FiloSottile/mkcert)
 - [Caddy Documentation](https://caddyserver.com/docs/)

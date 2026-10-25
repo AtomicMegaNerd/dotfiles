@@ -142,14 +142,11 @@ migrated to Nix.
 ## More Information
 
 - [DNS Setup](./docs/dns.md) How we setup DNS internally and externally.
-- [Container Networking](./docs/containers.md) Podman network and container addresses.
 - [Internal TLS](./docs/tls-internal.md) Setting up trusted TLS certificates for internal services.
+- [Podman](./docs/podman.md) Podman network and container addresses.
 - [Secrets](./docs/secrets.md) Managing secrets with `agenix` and `op`.
-- [Home Manager Docs](./docs/home-manager.md) Stuff we learned about home-manager that is worth
-  remembering.
-- [Nix Basics](./docs/nix-basics.md) I am writing down notes as I gradually learn more about how the
-  Nix language works.
-- [Beszel](./docs/beszel.md) Beszel Hub, Agent, and alerts.
-- [Services](./docs/services.md) Caddy routes for internal services.
+- [Services](./docs/services.md) Overview of services running on blahaj.
+- [Home Manager](./docs/home-manager.md) Stuff we learned about home-manager that is worth remembering.
+- [Nix Basics](./docs/nix-basics.md) I am writing down notes as I gradually learn more about how the Nix language works.
 - [AGENTS.md](./AGENTS.md) Information for the bots.
 - [LICENSE](./LICENSE) MIT license.

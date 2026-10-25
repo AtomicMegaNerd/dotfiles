@@ -1,4 +1,4 @@
-# Container Networking
+# Podman
 
 We use podman as the container runtime.
 
@@ -13,7 +13,7 @@ We use podman as the container runtime.
 
 ## Container Addresses
 
-Static IPv6 addresses allow Caddy to reach backend containers directly without requiring container DNS resolution (which conflicts with Pi-hole on port 53). Beszel Hub additionally binds its port to host loopback for local-only access.
+Static IPv6 addresses allow Caddy to reach backend containers directly without requiring container DNS resolution (which conflicts with Pi-hole on port 53).
 
 | Container  | IPv6 Address | Port Mappings                              |
 | ---------- | ------------ | ------------------------------------------ |

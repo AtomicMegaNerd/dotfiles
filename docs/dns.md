@@ -126,13 +126,9 @@ All other Pi-hole environment variables are set directly in the Nix config at `h
 ```bash
 # Test against Pi-hole via IPv4
 dig @192.168.1.232 blahaj.megaparsec.ca A
-dig @192.168.1.232 freshrss.megaparsec.ca A
-dig @192.168.1.232 monitor.megaparsec.ca A
 
 # Test against Pi-hole via IPv6
 dig @2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4 blahaj.megaparsec.ca AAAA
-dig @2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4 freshrss.megaparsec.ca AAAA
-dig @2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4 monitor.megaparsec.ca AAAA
 
 # Test IPv6 connectivity to hosts
 ping6 blahaj.megaparsec.ca
@@ -146,6 +142,5 @@ ssh blahaj "systemctl status podman-pihole"
 
 ## See Also
 
-- [External TLS Guide](./tls-external.md) - Let's Encrypt with Caddy for public services
 - [Internal TLS Guide](./tls-internal.md) - Custom CA with Caddy for internal services
-- [Services Guide](./services.md) - Caddy reverse proxy configuration
+- [Services](./services.md) - Overview of services running on blahaj

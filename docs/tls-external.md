@@ -111,7 +111,7 @@ networking.firewall.allowedUDPPorts = [
 ## Links
 
 - [DNS Setup](./dns.md) - Cloudflare DDNS and DNS configuration
-- [Services Guide](./services.md) - Caddy reverse proxy configuration
+- [Services](./services.md) - Overview of services running on blahaj
 - [Internal TLS Guide](./tls-internal.md) - Custom CA for internal services
 - [Caddy Official Documentation](https://caddyserver.com/docs/)
 - [Caddy TLS Documentation](https://caddyserver.com/docs/caddyfile/directives/tls)

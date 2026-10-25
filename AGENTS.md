@@ -59,11 +59,11 @@ nh search options $OPTION
 
 ## Notes
 
-### Container Infrastructure
+### Podman
 
 Services run as Podman containers on blahaj using the `podman-ipv6` network with static IPv6 addresses for service discovery. Caddy reverse proxy handles TLS termination for internal hostnames.
 
-- [Container Networking](./docs/containers.md) - Network setup and static IP assignments
+- [Podman](./docs/podman.md) - Container setup using `podman`.
 - [Internal TLS](./docs/tls-internal.md) - Certificate generation and Caddy configuration
 
 ### OpenCode

@@ -47,7 +47,7 @@ in
 }
 ```
 
-The Hub's port is bound to loopback for the host-network Agent; Caddy reaches it directly at `fd00::12`.
+The Hub's port is bound to loopback for the host-network Agent; Caddy reaches it directly over IPv6 (see [Podman](./podman.md)).
 
 ## Caddy
 
