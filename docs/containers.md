@@ -26,5 +26,3 @@ Caddy reverse proxies to backend containers via IPv6:
 
 - `pihole.megaparsec.ca` → `[fd00::10]:80`
 - `freshrss.megaparsec.ca` → `[fd00::11]:80`
-
-Starfeed communicates with FreshRSS via container name on the podman network.
