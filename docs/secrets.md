@@ -9,7 +9,8 @@ Secrets are managed differently per host. In all cases we **never** store unencr
 Uses [agenix](https://github.com/ryantm/agenix) with age-encrypted files in `secrets/`. To edit a secret:
 
 ```bash
-agenix -e secrets/<name>.age
+cd secrets
+agenix -e <name>.age
 ```
 
 The `.age` files are encrypted in git.

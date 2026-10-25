@@ -1,165 +1,143 @@
 # Internal TLS Guide (Private LAN)
 
-> [!NOTE]
-> This work is planned in the future. None of this is implemented yet.
-
-This guide covers setting up trusted TLS certificates for internal services (e.g., Pi-hole, FreshRSS) accessible only on your local network (`192.168.1.0/24`).
+This guide covers setting up trusted TLS certificates for internal services accessible only on your local network using hostnames like `freshrss.megaparsec.ca`, `pihole.megaparsec.ca`, etc.
 
 ---
 
-## Create the Root CA
+## Prerequisites
 
-Run this on your primary management machine.
+- Internal DNS must be configured and working. See [DNS Setup](./dns.md).
+- `nss.tools` isntalled for firefox before starting the process.
+
+---
+
+## Procedure
+
+### Create the Root CA
+
+The `mkcert` package is installed via Home Manager on Schooner (see `hosts/Schooner/rcd.nix`).
+
+After rebuilding with `nh home switch .`, create and install the Root CA:
 
 ```bash
-# Install mkcert
-nix-shell -p mkcert  # or brew install mkcert on macOS
-
-# Create the Root CA and install it locally
 mkcert -install
 ```
 
-This creates the Root CA files and adds the certificate to the **local machine's** trust store.
+This creates the Root CA files and adds the certificate to your Mac's trust store:
 
-- **Location:** `$(mkcert -CAROOT)`
-- **Files:** `rootCA.pem` (public cert) and `rootCA-key.pem` (private key).
+- `rootCA.pem` (public cert)
+- `rootCA-key.pem` (private key)
 
----
+### Secure the Private Key in 1Password
 
-## Distribute the Root CA via Nix
+Store the private CA key in 1Password and remove it from local disk:
 
-Copy `rootCA.pem` to `static/` in your dotfiles repo. Then use Nix to install it on both machines automatically.
+```bash
+op document create "$(mkcert -CAROOT)/rootCA-key.pem" --title "rcd-rootCA-private.pem"
+rm "$(mkcert -CAROOT)/rootCA-key.pem"
+```
+
+### Distribute the Root CA
+
+Copy `rootCA.pem` to `static/` in your dotfiles repo:
+
+```bash
+cp "$(mkcert -CAROOT)/rootCA.pem" static/rcd-rootCA-pub.pem
+```
 
 ### On macOS (Schooner)
 
-Add to `hosts/Schooner/darwin.nix`:
+Add to `hosts/Schooner/darwin.nix` and then apply with `nh darwin switch`:
 
 ```nix
 { pkgs, ... }:
 {
   security.pki.certificateFiles = [
-    ../../static/rootCA.pem
+    ../../static/rcd-rootCA-pub.pem
   ];
 }
-```
-
-Apply with:
-
-```bash
-nh darwin rebuild .
 ```
 
 ### On NixOS (blahaj)
 
-Add to `hosts/blahaj/configuration.nix`:
+Add to `hosts/blahaj/configuration.nix` and then apply with `nh os switch`:
 
 ```nix
 { pkgs, ... }:
 {
   security.pki.certificateFiles = [
-    ../../static/rootCA.pem
+    ../../static/rcd-rootCA-pub.pem
   ];
 }
 ```
 
-Apply with:
+### Generate Service Certificates
+
+When you need to generate certificates, retrieve the private key from 1Password temporarily:
 
 ```bash
-nh os rebuild .
+op document get "rcd-rootCA-private.pem" --out-file "$(mkcert -CAROOT)/rootCA-key.pem"
+
+mkcert \
+  -cert-file internal.pem \
+  -key-file internal-key.pem \
+  freshrss.megaparsec.ca pihole.megaparsec.ca gateway.megaparsec.ca blahaj.megaparsec.ca schooner.megaparsec.ca
+
+rm "$(mkcert -CAROOT)/rootCA-key.pem"
 ```
 
----
+This creates:
 
-## Generate Service Certificates
+- `internal.pem` - Certificate file
+- `internal-key.pem` - Private key file
 
-Generate certificates for your specific internal services. You can use IP addresses or internal hostnames.
+### Add Certs to Flake Using `agenix`
+
+First tell agenix which keys to use by adding the following entries to `secrets/agenix-rules.nix`:
+
+```nix
+"internal-tls-cert.age".publicKeys = [ user blahaj ];
+"internal-tls-key.age".publicKeys = [ user blahaj ];
+```
+
+Store these securely on in the flake using agenix:
 
 ```bash
-# Certificate for the server IP
-mkcert 192.168.1.232
-
-# Certificate for internal hostnames
-mkcert blahaj schooner
-
-# Certificate for wildcard
-mkcert "*.megaparsec.ca"
+mv internal.pem ../secrets/
+mv internal-key.pem ../secrets/
+cd ./secrets
+agenix -e internal-tls-cert.age < internal.pem
+agenix -e internal-tls-key.age < internal-key.pem
 ```
 
-**Output:** You will get a cert file (`*.pem`) and a key file (`*-key.pem`) for each. Store these securely (e.g., `/etc/ssl/internal/`).
+### Upload Gateway Certificate
 
----
+For the UCG gateway admin interface at `gateway.megaparsec.ca`:
 
-## Internal DNS Setup
+1. Navigate to Settings > Control Plane > Console > Certificates
+2. Upload the certificate and key files (`internal.pem` and `internal-key.pem`)
+3. The gateway will now use your internal CA-signed certificate
 
-For hostnames to work, your internal DNS (Pi-hole) must resolve them to your server IP.
+### Delete the Internal PEM files
 
-### Pi-hole / Dnsmasq
-
-Add custom DNS records via Nix-managed config files:
-
-```nix
-# In blahaj configuration
-environment.etc."dnsmasq.d/internal-tls.conf".text = ''
-  address=/blahaj/192.168.1.232
-  address=/schooner/192.168.1.232
-'';
+```bash
+rm secrets/internal*.pem
 ```
 
----
+### Set Up Caddy Reverse Proxy
 
-## Caddy Reverse Proxy Integration
-
-Configure Caddy to use the generated certificates for internal services.
-
-### NixOS Configuration
-
-Add to your `blahaj` configuration:
-
-```nix
-services.caddy = {
-  enable = true;
-
-  virtualHosts = {
-    "pihole.internal" = {
-      extraConfig = ''
-        tls /etc/ssl/internal/pihole.internal.pem /etc/ssl/internal/pihole.internal-key.pem
-        reverse_proxy localhost:8081
-      '';
-    };
-
-    "rss.internal" = {
-      extraConfig = ''
-        tls /etc/ssl/internal/rss.internal.pem /etc/ssl/internal/rss.internal-key.pem
-        reverse_proxy localhost:8080
-      '';
-    };
-  };
-};
-```
-
-### Example Concept
-
-```text
-Client (https://pihole.internal)
-  -> Caddy (Port 443, uses pihole.internal.pem)
-  -> Pi-hole (http://127.0.0.1:8081)
-```
+Make sure that we setup `caddy`. See [caddy.nix](hosts/blahaj/caddy.nix).
 
 ---
 
 ## Maintenance
 
-- **Rotation:** `mkcert` certs are valid for a long time, but you should rotate them periodically.
-- **New Devices:** When adding a new device to the network, add `rootCA.pem` to its Nix config or manually trust it.
-
----
+- **Rotation:** Regenerate certificates with `mkcert`, re-encrypt both `.age` files in `secrets/`, then run `nh os switch .`
+- **New Services:** Add new hostnames to the `mkcert` command and regenerate
+- **New Devices:** Nix-managed hosts (Schooner and blahaj) trust the CA automatically via `security.pki.certificateFiles`. Other devices need `rcd-rootCA-pub.pem` installed manually — copy it from `static/rcd-rootCA-pub.pem` or retrieve it from the dotfiles repo.
 
 ## Links
 
 - [DNS Setup](./dns.md) - Internal DNS and Pi-hole configuration
-- [Services Guide](./services.md) - Caddy reverse proxy configuration
-- [External TLS Guide](./tls-external.md) - Let's Encrypt for public services
 - [mkcert GitHub Repository](https://github.com/FiloSottile/mkcert)
-- [nix-darwin `security.pki` Manual](https://nix-darwin.github.io/nix-darwin/manual/index.html#opt-security.pki.certificateFiles)
-- [NixOS `security.pki` Manual](https://nixos.org/manual/nixos/stable/#opt-security.pki.certificateFiles)
-- [Pi-hole FTL Configuration](https://docs.pi-hole.net/ftldns/configfile/)
+- [Caddy Documentation](https://caddyserver.com/docs/)

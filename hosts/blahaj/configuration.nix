@@ -14,6 +14,7 @@ in
     ./freshrss.nix
     ./starfeed.nix
     ./cloudflare-ddns.nix
+    ./caddy.nix
   ];
 
   boot = {
@@ -113,6 +114,10 @@ in
       extraArgs = "--keep-since 7d --keep 3";
     };
   };
+
+  security.pki.certificateFiles = [
+    ../../static/rcd-rootCA-pub.pem
+  ];
 
   system.stateVersion = "23.11";
 }

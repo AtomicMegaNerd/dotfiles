@@ -8,13 +8,13 @@ let
   '';
 in
 {
-  networking.firewall.allowedTCPPorts = [ 8080 ];
+  networking.firewall.allowedTCPPorts = [ ];
 
   virtualisation.oci-containers.containers.freshrss = {
     autoStart = true;
     image = "freshrss/freshrss:${freshRssVersion}";
     ports = [
-      "8080:80/tcp"
+      "127.0.0.1:8080:80/tcp"
     ];
     volumes = [
       "/etc/freshrss/data:/var/www/FreshRSS/data"

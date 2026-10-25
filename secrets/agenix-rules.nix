@@ -11,4 +11,12 @@ in
     user
     blahaj
   ];
+  "internal-tls-cert.age".publicKeys = [
+    user
+    blahaj
+  ];
+  "internal-tls-key.age".publicKeys = [
+    user
+    blahaj
+  ];
 }

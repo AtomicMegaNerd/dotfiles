@@ -16,7 +16,6 @@ in
   # these are the ports that req required to be open for this service
   networking.firewall.allowedTCPPorts = [
     53
-    8081
   ];
   networking.firewall.allowedUDPPorts = [ 53 ];
 
@@ -26,7 +25,7 @@ in
     ports = [
       "53:53/tcp"
       "53:53/udp"
-      "8081:80/tcp"
+      "127.0.0.1:8081:80/tcp"
     ];
     volumes = [
       "/etc/pihole:/etc/pihole"

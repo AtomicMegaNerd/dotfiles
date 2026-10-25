@@ -13,6 +13,8 @@
     packages = with pkgs; [
       docker-compose
       gh
+      mkcert
+      nss.tools
       skills
     ];
 

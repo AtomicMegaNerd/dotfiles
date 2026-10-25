@@ -82,4 +82,8 @@
   };
 
   security.pam.services.sudo_local.touchIdAuth = true;
+
+  security.pki.certificateFiles = [
+    ../../static/rcd-rootCA-pub.pem
+  ];
 }

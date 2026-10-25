@@ -5,6 +5,8 @@ common/nvim/lazy-lock.json
 **/nvim/spell
 **/prompts/
 **/*.bak
+**/*.pem
+!static/rcd-rootCA-pub.pem
 .direnv
 .pre-commit-config.yaml
 **/zed/conversations
