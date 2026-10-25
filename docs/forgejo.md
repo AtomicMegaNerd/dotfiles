@@ -30,5 +30,5 @@ The runner configuration lives in [hosts/blahaj/forgejo-runner.nix](../hosts/bla
 
 - [Forgejo Docker installation](https://forgejo.org/docs/latest/admin/installation/docker/)
 - [Forgejo Actions runner registration](https://forgejo.org/docs/latest/admin/actions/registration/)
-- [Forgejo Actions Podman configuration](https://forgejo.org/docs/latest/admin/actions/installation/binary/)
+- [Forgejo runner Docker installation](https://forgejo.org/docs/latest/admin/actions/installation/docker/)
 - [Forgejo runner socket access](https://forgejo.org/docs/latest/admin/actions/docker-access/)
