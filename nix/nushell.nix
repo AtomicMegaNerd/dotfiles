@@ -17,6 +17,7 @@ in
       NH_FLAKE = ''($env.HOME | path join "Code/Configs/dotfiles")'';
       EZA_CONFIG_DIR = ''($env.XDG_CONFIG_HOME | path join "eza")'';
       MANPAGER = "nvim +Man!";
+      NODE_EXTRA_CA_CERTS = "/etc/ssl/certs/ca-certificates.crt";
     };
 
     extraEnv = ''

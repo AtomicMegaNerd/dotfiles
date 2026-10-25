@@ -32,6 +32,9 @@ in
       # Set man pager to neovim
       set -gx MANPAGER "nvim +Man!"
 
+      # Extra CA bundle for Node.js tools
+      set -gx NODE_EXTRA_CA_CERTS /etc/ssl/certs/ca-certificates.crt
+
       if test -f $XDG_CONFIG_HOME/opencode/home-manager.json
         set -gx OPENCODE_CONFIG $XDG_CONFIG_HOME/opencode/home-manager.json
       end
