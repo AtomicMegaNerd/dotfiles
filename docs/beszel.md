@@ -2,9 +2,15 @@
 
 Beszel runs a Hub on Blahaj and an Agent on each monitored system. The Blahaj Agent uses a Unix socket to communicate with the Hub.
 
+## Pre-Requisites
+
+- DNS records for `monitor.megaparsec.ca` added to DNS (see [dns.md](./dns.md).
+- TLS cert generated for `monitor.megaparsec.ca` (see [tls-internal.md](./tls-internal.md).
+
 ## Blahaj configuration
 
-Add `hosts/blahaj/beszel.nix` and import it from `hosts/blahaj/configuration.nix`.
+The Hub and Blahaj Agent are configured in `hosts/blahaj/beszel.nix`, imported from
+`hosts/blahaj/configuration.nix`.
 
 ```nix
 { config, ... }:
@@ -45,7 +51,7 @@ The Hub's port is bound to loopback for the host-network Agent; Caddy reaches it
 
 ## Caddy
 
-Add this site to the Caddyfile generated in `hosts/blahaj/caddy.nix`:
+The route is configured in `hosts/blahaj/caddy.nix`:
 
 ```caddy
 monitor.megaparsec.ca {
@@ -58,20 +64,17 @@ monitor.megaparsec.ca {
 }
 ```
 
-Add `monitor.megaparsec.ca` to the internal certificate hostnames in [TLS Internal](./tls-internal.md), and add the `monitor` DNS records in `static/blahaj/dnsmasq.conf`. Record `fd00::12` in [Container Networking](./containers.md) and the route in [Services](./services.md).
-
 ## Initial setup
 
-Build and activate the Hub-only configuration, with the Caddy route, DNS record, and certificate in place:
+Activate the Hub-only configuration, with the Caddy route, DNS record, and certificate in place:
 
 ```bash
-nh os build .
 nh os switch .
 ```
 
-Open <https://monitor.megaparsec.ca> and create the first account; Beszel makes this the admin account.
+Open [monitor.megaparsec.ca](https://monitor.megaparsec.ca) and create the first account; Beszel makes this the admin account.
 
-In the Hub, add a system named `blahaj` with **Host / IP** set to `/beszel_socket/beszel.sock`. Copy the `KEY` and `TOKEN` shown for the Agent.
+In the Hub, add a system of type `Docker` named `blahaj` with **Host / IP** set to `/beszel_socket/beszel.sock`. Copy the `KEY` and `TOKEN` shown for the Agent.
 
 Add `beszel-agent.age` to `secrets/agenix-rules.nix`, encrypt it with Agenix, and put those values in it:
 
@@ -105,16 +108,20 @@ virtualisation.oci-containers.containers.beszel-agent = {
 };
 ```
 
-Build and activate again:
+Activate again:
 
 ```bash
-nh os build .
 nh os switch .
 ```
 
 Confirm `blahaj` appears online and that system and Podman container metrics populate.
 
-## Signal notifications
+## Notifications
+
+> [!NOTE]
+> Not implemented yet.
+
+### Signal
 
 Run a Signal API server such as [signal-cli-rest-api](https://github.com/bbernhard/signal-cli-rest-api) and register or link it with a Signal account. In the Hub, open **Settings > Notifications** and add a Shoutrrr URL using this format:
 
@@ -122,7 +129,7 @@ Run a Signal API server such as [signal-cli-rest-api](https://github.com/bbernha
 signal://<api-host>:8080/<sender-number>/<recipient-number>
 ```
 
-## Failed service alerts
+### Failed service alerts
 
 The D-Bus socket mount lets the Agent monitor systemd services. Beszel polls service status about every 10 minutes, so a service failure may take that long to appear. `SERVICE_PATTERNS="podman-*"` limits the monitored services to Podman units.
 

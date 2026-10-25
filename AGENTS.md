@@ -127,6 +127,13 @@ Skills are listed in `nix/agent-skills.nix` and installed to `~/.agents/skills/`
 [skills](https://skills.sh/docs) CLI during Home Manager activation. `~/.agents/skills/` is
 symlinked to `~/.claude/skills` for Claude Code.
 
+### Beszel
+
+The Beszel Hub and local Agent run on blahaj. Caddy serves the Hub at `monitor.megaparsec.ca`. Beszel can notify about service failures while blahaj is running, but cannot notify if the host is offline.
+
+- [Beszel](./docs/beszel.md) - Hub, Agent, and alert setup
+- [Services](./docs/services.md) - Caddy routes
+
 ## More Information
 
 - [README.md](./README.md)

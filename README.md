@@ -20,7 +20,7 @@ Besides NixOS itself, we use the following in this flake:
 
 | Host     | OS    | Platform       | OS Version | HM Version | Notes       |
 | -------- | ----- | -------------- | ---------- | ---------- | ----------- |
-| blahaj   | NixOS | x86-64-linux   | 26.05      | unstable   | Server      |
+| blahaj   | NixOS | x86_64-linux   | 26.05      | unstable   | Server      |
 | Schooner | macOS | aarch64-darwin | unstable   | unstable   | MacBook Air |
 
 ---
@@ -92,15 +92,15 @@ Nix Helper is a replacement for some nix CLI commands that is better engineered 
 #### NixOS
 
 ```fish
-nh os build .
+nh os switch .
 ```
 
 #### Nix-Darwin
 
-For Nix-Darwin systems, you can use the following command to rebuild the system configuration:
+For Nix-Darwin systems, you can use the following command to apply the system configuration:
 
 ```fish
-nh darwin build .
+nh darwin switch .
 ```
 
 #### Home Manager
@@ -108,7 +108,7 @@ nh darwin build .
 We use Home Manager on all of our Nix managed machines.
 
 ```fish
-nh home build .
+nh home switch .
 ```
 
 ---
@@ -149,5 +149,7 @@ migrated to Nix.
   remembering.
 - [Nix Basics](./docs/nix-basics.md) I am writing down notes as I gradually learn more about how the
   Nix language works.
+- [Beszel](./docs/beszel.md) Beszel Hub, Agent, and alerts.
+- [Services](./docs/services.md) Caddy routes for internal services.
 - [AGENTS.md](./AGENTS.md) Information for the bots.
 - [LICENSE](./LICENSE) MIT license.

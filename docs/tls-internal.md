@@ -7,7 +7,7 @@ This guide covers setting up trusted TLS certificates for internal services acce
 ## Prerequisites
 
 - Internal DNS must be configured and working. See [DNS Setup](./dns.md).
-- `nss.tools` isntalled for firefox before starting the process.
+- Install `nss.tools` for Firefox before starting.
 
 ---
 
@@ -99,7 +99,7 @@ First tell agenix which keys to use by adding the following entries to `secrets/
 "internal-tls-key.age".publicKeys = [ user blahaj ];
 ```
 
-Store these securely on in the flake using agenix:
+Store these securely in the flake using agenix:
 
 ```bash
 mv internal.pem ../secrets/

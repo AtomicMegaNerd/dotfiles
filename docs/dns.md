@@ -46,7 +46,7 @@ I use [cloudflare-ddns](https://github.com/favonia/cloudflare-ddns) via the NixO
 
 ### Encrypt the Token with Agenix
 
-Follow the steps [secrets.md](./secrets.md) to save the token securely in the the file `secrets/cloudflare-ddns-token.age` in the flake. The contents are the environment variable `CLOUDFLARE_API_TOKEN=<token>`.
+Follow the steps in [Secrets](./secrets.md) to save the token in `secrets/cloudflare-ddns-token.age`. The file contents are the environment variable `CLOUDFLARE_API_TOKEN=<token>`.
 
 ### Nix Configuration
 
@@ -75,7 +75,7 @@ systemd.services.cloudflare-ddns = {
 Then run the os rebuild:
 
 ```bash
-nh os build .
+nh os switch .
 ```
 
 ### Verification
@@ -127,10 +127,12 @@ All other Pi-hole environment variables are set directly in the Nix config at `h
 # Test against Pi-hole via IPv4
 dig @192.168.1.232 blahaj.megaparsec.ca A
 dig @192.168.1.232 freshrss.megaparsec.ca A
+dig @192.168.1.232 monitor.megaparsec.ca A
 
 # Test against Pi-hole via IPv6
 dig @2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4 blahaj.megaparsec.ca AAAA
 dig @2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4 freshrss.megaparsec.ca AAAA
+dig @2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4 monitor.megaparsec.ca AAAA
 
 # Test IPv6 connectivity to hosts
 ping6 blahaj.megaparsec.ca

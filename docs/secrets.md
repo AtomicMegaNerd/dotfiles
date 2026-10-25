@@ -17,7 +17,7 @@ The `.age` files are encrypted in git.
 
 ### Host Key Backup and Recovery
 
-Agenix uses the host's SSH key to encrypt secrets. If you need to rebuild blahaj from scratch, you must restore the host's private SSH key before running `nh os build .` so agenix can decrypt the secrets.
+Agenix uses the host's SSH key to encrypt secrets. If you need to rebuild blahaj from scratch, you must restore the host's private SSH key before running `nh os switch .` so agenix can decrypt the secrets.
 
 On `Schooner` read the keys from 1Password into files:
 
@@ -41,7 +41,7 @@ sudo mv ~/ssh_host_ed25519_key* /etc/ssh
 sudo chmod 600 /etc/ssh/ssh_host_ed25519_key
 ```
 
-Now run `nh os build .` — agenix will be able to decrypt the secrets
+Now run `nh os switch .` — agenix will be able to decrypt the secrets
 
 #### Lost Key
 

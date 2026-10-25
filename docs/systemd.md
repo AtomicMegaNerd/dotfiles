@@ -4,7 +4,7 @@ Some basic reference information on systemd.
 
 ## Targets
 
-These are the targts on my NixOS 26.05 machine
+These are the targets on my NixOS 26.05 machine
 
 ```bash
 ❯ systemctl list-units --type=target

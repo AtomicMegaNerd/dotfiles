@@ -31,6 +31,23 @@ Caddy reverse proxies to backend containers via IPv6:
 - `freshrss.megaparsec.ca` → `[fd00::11]:80`
 - `monitor.megaparsec.ca` → `[fd00::12]:8090` (Beszel Hub; WebSocket read timeout: 360s)
 
+## Container Health Checks
+
+> [!NOTE]
+> This is something I will look at afterwards.
+
+The [Beszel](./beszel.md) Containers view reports `None` when Podman has no healthcheck configured; this does not mean the container is unhealthy. A running container or reported uptime also does not prove its application responds. A healthcheck can come from the image or be configured in the OCI container's `extraOptions` with `--health-cmd`, `--health-interval`, `--health-timeout`, and `--health-retries`. The health command must exist in the image and test the actual application.
+
+See the Podman v5.8 [`podman run` healthcheck options](https://docs.podman.io/en/v5.8.0/markdown/podman-run.1.html) and [`podman healthcheck` management and run commands](https://docs.podman.io/en/v5.8.0/markdown/podman-healthcheck.1.html).
+
+```bash
+# Inspect the current health status
+podman inspect --format '{{.State.Health.Status}}' <container>
+
+# Run the configured healthcheck now
+podman healthcheck run <container>
+```
+
 ## Troubleshooting
 
 ```bash
