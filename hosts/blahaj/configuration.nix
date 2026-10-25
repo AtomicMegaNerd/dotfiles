@@ -17,7 +17,6 @@ in
     ./starfeed.nix
     ./cloudflare-ddns.nix
     ./caddy.nix
-    ./forgejo.nix
   ];
 
   boot = {
