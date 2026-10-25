@@ -13,14 +13,15 @@ We use podman as the container runtime.
 
 ## Container Addresses
 
-Static IPv6 addresses allow Caddy to reach backend containers directly without requiring container DNS resolution (which conflicts with Pi-hole on port 53) or host port mappings.
+Static IPv6 addresses allow Caddy to reach backend containers directly without requiring container DNS resolution (which conflicts with Pi-hole on port 53). Beszel Hub additionally binds its port to host loopback for local-only access.
 
-| Container | IPv6 Address | Port Mappings            |
-| --------- | ------------ | ------------------------ |
-| pihole    | `fd00::10`   | `53:53/tcp`, `53:53/udp` |
-| freshrss  | `fd00::11`   | None                     |
-| caddy     | Dynamic      | `443:443/tcp`            |
-| starfeed  | Dynamic      | None                     |
+| Container  | IPv6 Address | Port Mappings                              |
+| ---------- | ------------ | ------------------------------------------ |
+| pihole     | `fd00::10`   | `53:53/tcp`, `53:53/udp`                   |
+| freshrss   | `fd00::11`   | None                                       |
+| beszel-hub | `fd00::12`   | `127.0.0.1:8090:8090/tcp` (localhost only) |
+| caddy      | Dynamic      | `443:443/tcp`                              |
+| starfeed   | Dynamic      | None                                       |
 
 ## Communication
 
@@ -28,6 +29,7 @@ Caddy reverse proxies to backend containers via IPv6:
 
 - `pihole.megaparsec.ca` → `[fd00::10]:80`
 - `freshrss.megaparsec.ca` → `[fd00::11]:80`
+- `monitor.megaparsec.ca` → `[fd00::12]:8090` (Beszel Hub; WebSocket stream timeout: 360s)
 
 ## Troubleshooting
 

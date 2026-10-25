@@ -12,6 +12,7 @@ in
     ./podman-network.nix
     ./pihole.nix
     ./freshrss.nix
+    ./beszel.nix
     ./starfeed.nix
     ./cloudflare-ddns.nix
     ./caddy.nix
