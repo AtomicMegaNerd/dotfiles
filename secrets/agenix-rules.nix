@@ -19,4 +19,9 @@ in
     user
     blahaj
   ];
+
+  "beszel-agent.age".publicKeys = [
+    user
+    blahaj
+  ];
 }
