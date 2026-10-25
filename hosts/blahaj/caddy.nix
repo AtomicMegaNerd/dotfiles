@@ -22,7 +22,9 @@ let
     monitor.megaparsec.ca {
       tls /certs/internal-tls-cert /certs/internal-tls-key
       reverse_proxy [fd00::12]:8090 {
-        stream_timeout 360s
+        transport http {
+          read_timeout 360s
+        }
       }
     }
   '';

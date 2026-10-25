@@ -29,7 +29,7 @@ Caddy reverse proxies to backend containers via IPv6:
 
 - `pihole.megaparsec.ca` → `[fd00::10]:80`
 - `freshrss.megaparsec.ca` → `[fd00::11]:80`
-- `monitor.megaparsec.ca` → `[fd00::12]:8090` (Beszel Hub; WebSocket stream timeout: 360s)
+- `monitor.megaparsec.ca` → `[fd00::12]:8090` (Beszel Hub; WebSocket read timeout: 360s)
 
 ## Troubleshooting
 

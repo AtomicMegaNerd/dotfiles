@@ -118,6 +118,7 @@ All other Pi-hole environment variables are set directly in the Nix config at `h
 | `schooner` / `schooner.megaparsec.ca` | `192.168.1.238` | `2604:3d09:676:2d40:85b:b73e:966d:2c53`  | macOS            |
 | `gateway` / `gateway.megaparsec.ca`   | `192.168.1.1`   | `2604:3d09:676:2d40::1`                  | UCG router       |
 | `freshrss` / `freshrss.megaparsec.ca` | `192.168.1.232` | `2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4` | FreshRSS service |
+| `monitor` / `monitor.megaparsec.ca`   | `192.168.1.232` | `2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4` | Beszel Hub       |
 | `pihole` / `pihole.megaparsec.ca`     | `192.168.1.232` | `2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4` | Pi-hole admin    |
 
 ### Testing DNS
