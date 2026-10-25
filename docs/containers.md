@@ -1,8 +1,8 @@
 # Container Networking
 
-## Podman Network
+We use podman as the container runtime.
 
-Static IPv6 addresses allow Caddy to reach backend containers directly without requiring container DNS resolution (which conflicts with Pi-hole on port 53) or host port mappings.
+## Podman Network
 
 | Setting | Value                          |
 | ------- | ------------------------------ |
@@ -12,6 +12,8 @@ Static IPv6 addresses allow Caddy to reach backend containers directly without r
 | DNS     | Disabled (Pi-hole handles DNS) |
 
 ## Container Addresses
+
+Static IPv6 addresses allow Caddy to reach backend containers directly without requiring container DNS resolution (which conflicts with Pi-hole on port 53) or host port mappings.
 
 | Container | IPv6 Address | Port Mappings            |
 | --------- | ------------ | ------------------------ |
@@ -26,3 +28,22 @@ Caddy reverse proxies to backend containers via IPv6:
 
 - `pihole.megaparsec.ca` → `[fd00::10]:80`
 - `freshrss.megaparsec.ca` → `[fd00::11]:80`
+
+## Troubleshooting
+
+```bash
+# View logs for a container's systemd service
+journalctl -u podman-starfeed.service
+
+# Follow logs in real-time
+journalctl -u podman-starfeed.service -f
+
+# Show last N lines
+journalctl -u podman-starfeed.service -n 50
+
+# Filter by time
+journalctl -u podman-starfeed.service --since "10 minutes ago"
+
+# See all podman container logs
+journalctl -u "podman-*"
+```
