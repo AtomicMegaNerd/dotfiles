@@ -25,10 +25,6 @@ Static IPv6 addresses allow Caddy to reach backend containers directly without r
 | caddy        | `fd00::15`   | `443:443/tcp`                              |
 | starfeed     | Dynamic      | None                                       |
 
-## Service routing
-
-Caddy reverse proxies to backend containers via IPv6. See [Caddy](./caddy.md) for the route mapping.
-
 ## Container health checks
 
 > [!NOTE]
