@@ -1,17 +1,15 @@
 # FreshRSS
 
-[FreshRSS](https://www.freshrss.org/) is the self-hosted RSS reader at [https://freshrss.megaparsec.ca](https://freshrss.megaparsec.ca). It runs as a Podman container on Blahaj and is the feed backend for [Starfeed](./starfeed.md).
+[FreshRSS](https://www.freshrss.org/) is the self-hosted RSS reader at [freshrss.megaparsec.ca](https://freshrss.megaparsec.ca). It runs as a Podman container.
 
 ## Prerequisites
 
-- DNS records for `freshrss.megaparsec.ca` added to DNS (see [dns.md](./dns.md)).
-- TLS cert generated for `freshrss.megaparsec.ca` (see [tls-internal.md](./tls-internal.md)).
+- DNS and TLS for `freshrss.megaparsec.ca` (see [DNS](./dns.md) and [Internal TLS](./tls-internal.md)).
 
-## Blahaj configuration
+## Nix configuration
 
-Configured in [freshrss.nix](../hosts/blahaj/freshrss.nix).
+Configured in [freshrss.nix](../hosts/blahaj/freshrss.nix):
 
-- **Image:** `freshrss/freshrss`.
 - **Address:** static, no published ports. See [Podman](./podman.md).
 - **Route:** `freshrss.megaparsec.ca` through Caddy. See [Caddy](./caddy.md).
 - **Feed refresh:** the built-in cron runs at minutes 15 and 45 (`CRON_MIN`), in the `America/Edmonton` time zone.
@@ -19,15 +17,14 @@ Configured in [freshrss.nix](../hosts/blahaj/freshrss.nix).
 
 ## Initial setup
 
-```bash
-nh os switch .
-```
-
-Open [https://freshrss.megaparsec.ca](https://freshrss.megaparsec.ca) and finish the installation in the web interface, which creates the admin user. Starfeed needs an API token for that user.
+After applying the configuration open [freshrss.megaparsec.ca](https://freshrss.megaparsec.ca) and finish the installation in the web interface, which creates the admin user.
 
 ## Backup and restore
 
-`backup-freshrss` rsyncs `/etc/freshrss/data/` to `/data/backups/freshrss/data/` and `/etc/freshrss/extensions/` to `/data/backups/freshrss/extensions/`. Restore each directory as described in [Services](./services.md#backups).
+> [!IMPORTANT]
+> I need to validate that this is correct and can be restored.
+
+`backup-freshrss` rsyncs `/etc/freshrss/data/` to `/data/backups/freshrss/data/` and `/etc/freshrss/extensions/` to `/data/backups/freshrss/extensions/`.
 
 ## Links
 

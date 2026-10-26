@@ -1,15 +1,22 @@
 # Beszel monitoring
 
-Beszel runs a Hub on Blahaj and an Agent on each monitored system. The Blahaj Agent uses a Unix socket to communicate with the Hub.
+[Beszel](https://beszel.dev) is a lightweight monitoring system. It consists of a hub and a set of agents.
 
 ## Prerequisites
 
-- DNS records for `monitor.megaparsec.ca` added to DNS (see [dns.md](./dns.md)).
-- TLS cert generated for `monitor.megaparsec.ca` (see [tls-internal.md](./tls-internal.md)).
+- DNS records setup (see [dns.md](./dns.md)).
+- TLS cert generated (see [tls-internal.md](./tls-internal.md)).
 
 ## Blahaj configuration
 
-The Hub and Blahaj Agent are configured in `hosts/blahaj/beszel.nix`.
+The Hub and Agent are configured in [beszel.nix](../hosts/blahaj/beszel.nix).
+
+- The Hub's port is bound to loopback for the host-network Agent
+- [Caddy](./caddy.md) reaches it directly over IPv6 (see [Podman](./podman.md)).
+
+## Initial setup
+
+Activate the Hub configuration first and apply it:
 
 ```nix
 { config, ... }:
@@ -46,68 +53,54 @@ in
 }
 ```
 
-The Hub's port is bound to loopback for the host-network Agent; Caddy reaches it directly over IPv6 (see [Podman](./podman.md)).
+Open [monitor.megaparsec.ca](https://monitor.megaparsec.ca) and create the initial account.
 
-## Caddy
-
-The route is listed in [Caddy](./caddy.md).
-
-## Initial setup
-
-Activate the Hub-only configuration, with the Caddy route, DNS record, and certificate in place:
-
-```bash
-nh os switch .
-```
-
-Open [monitor.megaparsec.ca](https://monitor.megaparsec.ca) and create the first account; Beszel makes this the admin account.
+## Adding an Agent
 
 In the Hub, add a system of type `Docker` named `blahaj` with **Host / IP** set to `/beszel_socket/beszel.sock`. Copy the `KEY` and `TOKEN` shown for the Agent.
 
-Add `beszel-agent.age` to `secrets/agenix-rules.nix`, encrypt it with Agenix, and put those values in it:
+Add `beszel-agent.age` to `secrets` according to the procedure in [secrets.md](./secrets.md) with the KEY and TOKEN:
 
 ```text
 KEY=<key-from-hub>
 TOKEN=<token-from-hub>
 ```
 
-Then add the Agent to the NixOS module:
+Then add the Agent to the NixOS module of the host.
 
 ```nix
-age.secrets.beszel-agent.file = ../../secrets/beszel-agent.age;
+{ config, ... }:
+let
+  beszelVersion = "0.21.1"; # Make sure that this matches version for Hub
+in
+{
+  age.secrets.beszel-agent.file = ../../secrets/beszel-agent.age;
 
-virtualisation.oci-containers.containers.beszel-agent = {
-  autoStart = true;
-  image = "henrygd/beszel-agent:${beszelVersion}";
-  volumes = [
-    "/var/lib/beszel/agent:/var/lib/beszel-agent"
-    "/run/beszel_socket:/beszel_socket"
-    "/run/podman/podman.sock:/run/podman/podman.sock:ro"
-    "/run/dbus/system_bus_socket:/run/dbus/system_bus_socket:ro"
-  ];
-  environment = {
-    DOCKER_HOST = "unix:///run/podman/podman.sock";
-    HUB_URL = "http://localhost:8090";
-    LISTEN = "/beszel_socket/beszel.sock";
-    SERVICE_PATTERNS = "podman-*";
+  virtualisation.oci-containers.containers.beszel-agent = {
+    autoStart = true;
+    image = "henrygd/beszel-agent:${beszelVersion}";
+    volumes = [
+      "/var/lib/beszel/agent:/var/lib/beszel-agent"
+      "/run/beszel_socket:/beszel_socket"
+      "/run/podman/podman.sock:/run/podman/podman.sock:ro"
+      "/run/dbus/system_bus_socket:/run/dbus/system_bus_socket:ro"
+    ];
+    environment = {
+      DOCKER_HOST = "unix:///run/podman/podman.sock";
+      HUB_URL = "http://localhost:8090";
+      LISTEN = "/beszel_socket/beszel.sock";
+      SERVICE_PATTERNS = "podman-*";
+    };
+    environmentFiles = [ config.age.secrets.beszel-agent.path ];
+    extraOptions = [ "--network=host" ];
   };
-  environmentFiles = [ config.age.secrets.beszel-agent.path ];
-  extraOptions = [ "--network=host" ];
-};
+}
 ```
-
-Activate again:
-
-```bash
-nh os switch .
-```
-
-Confirm `blahaj` appears online and that system and Podman container metrics populate.
 
 ## Notifications
 
 > [!NOTE]
-> Not implemented yet.
+> Not implemented yet. This is possible future work.
 
 ### Signal
 
