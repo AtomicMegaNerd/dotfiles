@@ -1,19 +1,78 @@
 # Podman
 
-We use [podman](https://podman.io) as the container runtime.
+> [!NOTE]
+> Some aspects of this guide mention Podman 6 which I have not deployed yet, but which
+> will be coming soon in NixOS 26.11
 
-## Podman network
+This guide explains the core concepts behind deploying and operating Podman v6 on NixOS. It was me
+arguing with LLM's so I could understand these core concepts.
 
-| Setting | Value                          |
-| ------- | ------------------------------ |
-| Name    | `podman-ipv6`                  |
-| Subnet  | `fd00::/64`                    |
-| Gateway | `fd00::1`                      |
-| DNS     | Disabled (Pi-hole handles DNS) |
+> [!WARNING]
+> Before upgrading to Podman 6, run `nh os boot` and reboot instead of switching live.
 
-## Container addresses
+## Podman Core Components
 
-Static IPv6 addresses allow Caddy to reach backend containers directly without requiring container DNS resolution (which conflicts with Pi-hole on port 53). Because container DNS is disabled, containers cannot resolve each other by name, so a container that talks to another one must use the other's static address from the table below (for example Starfeed reaches FreshRSS at `http://[fd00::11]:80`, not `http://freshrss`).
+| Component    | Core Function                                           |
+| ------------ | ------------------------------------------------------- |
+| Podman       | runs and manages containers                             |
+| Netavark     | configures container networking                         |
+| Aardvark DNS | resolves container names and aliases                    |
+| Buildah      | builds the OCI-compliant images that will run in Podman |
+| Skopeo       | inspects, copies, and signs images across registries    |
+
+## NixOS oci-containers module
+
+The module describes each container with typed options and generates a systemd service to run it. A typical example:
+
+```nix
+virtualisation.oci-containers.containers.caddy = {
+  image = "caddy:2.11.7-alpine";
+  ports = [ "443:443/tcp" ];
+  volumes = [ "/path/to/Caddyfile:/etc/caddy/Caddyfile:ro" ];
+  networks = [ "podman-ipv6" ];
+  extraOptions = [ "--ip6=fd00::15" ];
+};
+```
+
+> [!NOTE]
+> Use typed Nix options where available. Note the `networks` property can accept the names of the networks we create for podman as a list. Static IPv6 addresses require the use of `extraOptions`.
+
+- `image` names the container image and tag. Pinning a tag makes the selected version explicit.
+- `ports` publishes host-to-container port mappings; here, host port 443 reaches container port 443 over TCP.
+- `volumes` bind-mounts host paths into the container.
+- `networks` attaches the container to an existing Podman network.
+- `dependsOn` lists other OCI containers that this one depends on.
+- `extraOptions` passes Podman command-line options that do not have a corresponding module option
+
+This is the execution path for the module:
+
+```text
+Nix options
+    │
+    ▼
+NixOS oci-containers module generates a systemd service
+    │
+    ▼
+systemd starts `podman run ...`
+    │
+    ▼
+Podman creates the container; Netavark configures its network
+```
+
+## Container Networking Current Config
+
+The current configuration is as follows:
+
+### Podman network
+
+| Setting  | Value                       |
+| -------- | --------------------------- |
+| Name     | `podman-ipv6`               |
+| Subnets  | `fd00::/64`, `10.89.0.0/24` |
+| Gateways | `fd00::1`, `10.89.0.1`      |
+| DNS      | Disabled                    |
+
+### Container addresses
 
 | Container    | IPv6 Address | Port Mappings                              |
 | ------------ | ------------ | ------------------------------------------ |
@@ -21,28 +80,122 @@ Static IPv6 addresses allow Caddy to reach backend containers directly without r
 | freshrss     | `fd00::11`   | None                                       |
 | beszel-hub   | `fd00::12`   | `127.0.0.1:8090:8090/tcp` (localhost only) |
 | actualbudget | `fd00::13`   | None                                       |
-| forgejo      | `fd00::14`   | `2222:2222/tcp`                            |
 | caddy        | `fd00::15`   | `443:443/tcp`                              |
 | starfeed     | Dynamic      | None                                       |
 
-## Container health checks
+## Container Networking Concepts
 
-> [!NOTE]
-> This is something I will look at afterwards.
+Podman opens the specified ports on the host firewall. This makes `networking.firewall.allowedTCPPorts` redundant for those mappings. A mapping without a host IP binds on all host addresses; `127.0.0.1:8090:8090` limits it to localhost.
 
-The [Beszel](./beszel.md) Containers view reports `None` when Podman has no healthcheck configured; this does not mean the container is unhealthy. A running container or reported uptime also does not prove its application responds. A healthcheck can come from the image or be configured in the OCI container's `extraOptions` with `--health-cmd`, `--health-interval`, `--health-timeout`, and `--health-retries`. The health command must exist in the image and test the actual application.
-
-See the Podman v5.8 [`podman run` healthcheck options](https://docs.podman.io/en/v5.8.0/markdown/podman-run.1.html) and [`podman healthcheck` management and run commands](https://docs.podman.io/en/v5.8.0/markdown/podman-healthcheck.1.html).
+Inspect Caddy's generated service, published port, and firewall rules:
 
 ```bash
-# Inspect the current health status
-podman inspect --format '{{.State.Health.Status}}' <container>
-
-# Run the configured healthcheck now
-podman healthcheck run <container>
+systemctl cat podman-caddy.service  # systemd service generated by NixOS
+sudo podman port caddy             # host-to-container port mappings
+sudo nft list ruleset              # active kernel firewall rules
 ```
 
-## Troubleshooting
+### Host Interfaces
+
+`blahaj` has the following interfaces:
+
+- `enp0s31f6` — physical ethernet. `192.168.1.232`, `2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4/64`.
+- `podman1` — this is a virtual network interface. It is the host-side Podman bridge. It has gateway addresses `fd00::1` and `10.89.0.1`.
+- The `veth*` interfaces — virtual links between `podman1` and container network namespaces. They connect the containers to the bridge.
+- `lo` — localhost `127.0.0.1` or `::1`
+
+### Podman Host Side Network
+
+- `podman-ipv6` puts the containers on the same IPv6 `fd00::/64` and IPv4 `10.89.0.0/24` subnets.
+- This uses the `podman1` bridge networking interface.
+
+```text
+Caddy    fd00::15 ─┐
+FreshRSS fd00::11 ─┼── `podman-ipv6` subnet: fd00::/64 (Gateway: fd00::1)
+Pi-hole  fd00::10 ─┘
+```
+
+To inspect this network:
+
+```fish
+sudo podman network inspect podman-ipv6
+```
+
+To inspect the network for a specific container:
+
+```bash
+sudo podman inspect caddy
+```
+
+### Podman DNS
+
+> [!NOTE]
+> Currently DNS is disabled on this network, so containers cannot use DNS to look each other up by name. pi-hole stopped working with DNS enabled so this will require investigation. Podman can use a different Aardvark port with `network.dns_bind_port`; that port also needs a firewall rule. We need
+> to re-enable DNS before we can use the features below.
+
+Podman's Aardvark DNS service can resolve container names and aliases when podman DNS is not turned off. It forwards other DNS queries to configured upstream resolvers. In this setup, the host uses Quad9; enabling Aardvark does not automatically route external DNS queries through Pi-hole.
+
+```text
+DNS query for "freshrss" ──> Aardvark ──> FreshRSS container address
+DNS query for "example.com" ──> Aardvark ──> upstream resolver (Quad9)
+```
+
+Podman 6 isolates separate Podman networks by default; containers on the same network remain connected. An app that wants to talk to containers on different networks must be added to each network.
+
+We can give containers aliases that can then be used by apps as DNS names which are resolvable. For example:
+
+```nix
+virtualisation.oci-containers.containers.freshrss = {
+  networks = [ "podman-ipv6" ];
+  extraOptions = [ "--network-alias=freshrss" ];
+};
+```
+
+A reverse proxy (i.e. Caddy) could then use `reverse_proxy freshrss:80`.
+
+## Service dependencies
+
+> [!NOTE]
+> The current configuration uses before/wantedBy but based on my current understanding dependsOn
+> in the oci-containers module is clearer and better for _containers_. We still need to use the
+> systemd requires/after for depending on other resources like the network.
+
+Use `dependsOn` when one OCI container depends on another. NixOS translates it into systemd `Requires` and `After` dependencies:
+
+```nix
+virtualisation.oci-containers.containers.starfeed = {
+  dependsOn = [ "freshrss" ];
+};
+```
+
+Use systemd `Requires` and `After` when a container depends on a non-container service, such as `create-podman-network.service`:
+
+```nix
+systemd.services.podman-caddy = {
+  requires = [ "create-podman-network.service" ];
+  after = [ "create-podman-network.service" ];
+};
+```
+
+## Health Checks
+
+### Using Podman Options (via Nix :-))
+
+```nix
+virtualisation.oci-containers.containers.freshrss = {
+  # Example only: use a check command that exists in the FreshRSS image.
+  extraOptions = [
+    "--health-cmd=/path/to/health-check"
+    "--health-interval=30s"
+    "--health-retries=3"
+  ];
+  podman.sdnotify = "healthy";
+};
+```
+
+Setting `sdnotify` to `healthy` delays systemd's “service is ready” state until the health check succeeds.
+
+## Podman Troubleshooting
 
 ```bash
 # View logs for a container's systemd service
@@ -60,3 +213,13 @@ journalctl -u podman-starfeed.service --since "10 minutes ago"
 # See all podman container logs
 journalctl -u "podman-*"
 ```
+
+## Further Reading
+
+| Topic                           | Documentation                                                                                     |
+| ------------------------------- | ------------------------------------------------------------------------------------------------- |
+| Podman 6 release notes          | [Podman 6.1.4](https://github.com/podman-container-tools/podman/blob/v6.1.4/RELEASE_NOTES.md)     |
+| Podman networks, DNS, isolation | [`podman network create`](https://docs.podman.io/en/latest/markdown/podman-network-create.1.html) |
+| Aardvark DNS                    | [Aardvark DNS project](https://github.com/containers/aardvark-dns)                                |
+| Netavark                        | [Netavark project](https://github.com/containers/netavark)                                        |
+| NixOS Podman 6 changes          | [nixpkgs PR #566901](https://github.com/NixOS/nixpkgs/pull/566901)                                |
