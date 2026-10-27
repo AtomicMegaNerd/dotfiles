@@ -9,15 +9,8 @@ let
   '';
 in
 {
-
   # resolved is a DNS server that will conflict with pihole so we turn it off.
   services.resolved.enable = false;
-
-  # these are the ports that req required to be open for this service
-  networking.firewall.allowedTCPPorts = [
-    53
-  ];
-  networking.firewall.allowedUDPPorts = [ 53 ];
 
   virtualisation.oci-containers.containers.pihole = {
     autoStart = true;

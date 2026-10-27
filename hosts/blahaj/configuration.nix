@@ -3,7 +3,6 @@ let
   rcd_pub_key = builtins.readFile ../../static/rcd_pub_key;
 in
 {
-
   imports = [
     ./hardware-configuration.nix
     ../../nix/nix-common.nix

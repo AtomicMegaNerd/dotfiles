@@ -4,6 +4,7 @@ let
   caddyUid = 889;
   caddyGid = 889;
 
+  # TODO: See if there is a Nix way to do this....
   caddyfile = pkgs.writeText "Caddyfile" ''
     {
       auto_https off
@@ -63,8 +64,6 @@ in
       mode = "0400";
     };
   };
-
-  networking.firewall.allowedTCPPorts = [ 443 ];
 
   virtualisation.oci-containers.containers.caddy = {
     autoStart = true;
