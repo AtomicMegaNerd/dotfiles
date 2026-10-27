@@ -1,8 +1,7 @@
 # Podman
 
 > [!NOTE]
-> Some aspects of this guide mention Podman 6 which I have not deployed yet, but which
-> will be coming soon in NixOS 26.11
+> Some aspects of this guide mention Podman 6 which I have not deployed yet, but which will be coming soon in NixOS 26.11
 
 This guide explains the core concepts behind deploying and operating Podman v6 on NixOS. It was me arguing with LLM's so I could understand these core concepts.
 
@@ -221,4 +220,3 @@ journalctl -u "podman-*"
 | Podman networks, DNS, isolation | [`podman network create`](https://docs.podman.io/en/latest/markdown/podman-network-create.1.html) |
 | Aardvark DNS                    | [Aardvark DNS project](https://github.com/containers/aardvark-dns)                                |
 | Netavark                        | [Netavark project](https://github.com/containers/netavark)                                        |
-| NixOS Podman 6 changes          | [nixpkgs PR #566901](https://github.com/NixOS/nixpkgs/pull/566901)                                |
