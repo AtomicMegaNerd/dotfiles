@@ -4,8 +4,7 @@
 > Some aspects of this guide mention Podman 6 which I have not deployed yet, but which
 > will be coming soon in NixOS 26.11
 
-This guide explains the core concepts behind deploying and operating Podman v6 on NixOS. It was me
-arguing with LLM's so I could understand these core concepts.
+This guide explains the core concepts behind deploying and operating Podman v6 on NixOS. It was me arguing with LLM's so I could understand these core concepts.
 
 > [!WARNING]
 > Before upgrading to Podman 6, run `nh os boot` and reboot instead of switching live.
