@@ -16,10 +16,10 @@ in
 
   virtualisation.oci-containers.containers.forgejo = {
     autoStart = true;
-    image = "codeberg.org/forgejo/forgejo:${forgejoVersion}-rootless";
+    image = "codeberg.org/forgejo/forgejo:${forgejoVersion}";
     user = "${toString forgejoUid}:${toString forgejoGid}";
     ports = [ "2222:2222/tcp" ];
-    volumes = [ "/var/lib/forgejo:/var/lib/gitea" ];
+    volumes = [ "/var/lib/forgejo" ];
     environment = {
       USER_UID = toString forgejoUid;
       USER_GID = toString forgejoGid;

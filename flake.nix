@@ -18,6 +18,10 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    microvm = {
+      url = "github:microvm-nix/microvm.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     catppuccin = {
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -36,6 +40,7 @@
       home-manager,
       nix-darwin,
       agenix,
+      microvm,
       catppuccin,
       git-hooks,
       ...
@@ -65,7 +70,12 @@
           modules = [
             ./hosts/${hostname}/configuration.nix
             agenix.nixosModules.default
+            microvm.nixosModules.host
+            { nixpkgs.overlays = [ microvm.overlays.default ]; }
           ];
+          specialArgs = {
+            inherit agenix microvm nixpkgs-unstable;
+          };
         };
 
       # This is for building Home Manager configurations which are used on all of our Nix systems

@@ -23,6 +23,10 @@ own. You are never allowed to edit `AGENTS.md` files or templates that generate 
 - If you don't know where to find something ask me instead of wasting tokens spinning your wheels
   searching the web. **ALWAYS ASK** if you are uncertain.
 
+## Codeberg
+
+Never query Codeberg. They don't like LLM's and will block you anyway. Querying Codeberg is a waste of time.
+
 ## GitHub
 
 Always use `gh` to query code that is in GitHub.

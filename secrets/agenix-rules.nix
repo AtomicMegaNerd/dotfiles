@@ -24,4 +24,12 @@ in
     user
     blahaj
   ];
+  "forgejo-runner-age-key.age".publicKeys = [
+    user
+    blahaj
+  ];
+  "forgejo-runner-token.age".publicKeys = [
+    user
+    (builtins.readFile ../static/forgejo-runner-age.pub)
+  ];
 }

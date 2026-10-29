@@ -47,6 +47,10 @@ Use other commands as needed:
 - gh pr
 - gh search
 
+## Codeberg
+
+Never query Codeberg. They don't like LLM's and will block you anyway. Querying Codeberg is a waste of time.
+
 ## Tools
 
 - **Always** use the Edit tool in the harness to edit code.
