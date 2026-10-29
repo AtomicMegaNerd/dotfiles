@@ -22,6 +22,7 @@ you should load when relevant:
   troubleshooting.
 - `nixpkgs-development` — Nixpkgs packaging and APIs. Load this for package overrides, overlays, or
   working with `nixpkgs.lib`/`pkgs`.
+- `microvm-nix` — Nix project for managing MicroVM's in Nix.
 
 This flake uses `nixpkgs` (stable) for NixOS and `nixpkgs-unstable` for Home Manager, nix-darwin,
 and development tooling. Prefer `nh` for switching configurations when appropriate.

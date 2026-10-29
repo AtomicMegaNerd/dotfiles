@@ -13,6 +13,7 @@ let
     "olafkfreund/nix-skills/skills/nixos-operations"
     "olafkfreund/nix-skills/skills/nixos-wiki"
     "olafkfreund/nix-skills/skills/nixpkgs-development"
+    "olafkfreund/nix-skills/skills/microvm-nix"
     "AtomicMegaNerd/agent-skills/rcd-golang"
     "AtomicMegaNerd/agent-skills/rcd-go-task"
     "AtomicMegaNerd/agent-skills/rcd-golangci-lint"
