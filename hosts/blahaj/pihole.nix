@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   piholeUid = 888;
   piholeVersion = "2026.10.0";
@@ -27,6 +32,8 @@ in
       TZ = "America/Edmonton";
       FTLCONF_LOCAL_IPV4 = "192.168.1.232";
       FTLCONF_LOCAL_IPV6 = "2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4";
+      # Same dual stack upstreams the host uses
+      FTLCONF_dns_upstreams = lib.concatStringsSep ";" config.networking.nameservers;
       FTLCONF_dns_listeningMode = "all";
       FTLCONF_misc_etc_dnsmasq_d = "true";
       PIHOLE_UID = toString piholeUid;
