@@ -59,8 +59,12 @@ jobs:
 
 ## Notes
 
-- `actions/checkout` needs `git` in the runner's `hostPackages`, which is not included yet.
 - To add another microVM, copy the runner module with its own `index`, a tap named `vm-tap-<name>` and a unique MAC. The host needs no changes.
+
+## Todo
+
+- [ ] Setup ability to publish to Docker Hub (if any setup needed).
+- [ ] Setup ability to mirror to GitHub.
 
 ## Links
 

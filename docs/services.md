@@ -18,4 +18,4 @@ Services running on blahaj. See [Podman](./podman.md) for networking and [Caddy]
 
 ### Backups
 
-Pi-hole and FreshRSS each have a daily `backup-<service>` timer that rsyncs their data to `/data/backups/<service>/`. Run one now with `sudo systemctl start backup-<service>`. To restore, stop `podman-<service>`, run `sudo rsync -a --delete` from the backup back into the data directory, and start the unit again. Actual Budget backups are exported manually from the app; see [Actual Budget](./actualbudget.md#backup-and-restore).
+All stateful services are backed up nightly with restic. See [Backups](./backups.md).

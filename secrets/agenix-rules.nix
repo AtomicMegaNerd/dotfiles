@@ -32,4 +32,8 @@ in
     user
     blahaj
   ];
+  "restic-password.age".publicKeys = [
+    user
+    blahaj
+  ];
 }

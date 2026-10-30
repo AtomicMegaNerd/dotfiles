@@ -54,6 +54,7 @@ in
     ./cloudflare-ddns.nix
     ./caddy.nix
     ./forgejo.nix
+    ./backup.nix
     (import ./forgejo-runner.nix { inherit podmanNetwork microVmNet; })
   ];
 

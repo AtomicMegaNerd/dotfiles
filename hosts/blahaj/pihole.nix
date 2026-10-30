@@ -1,17 +1,12 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }:
 let
   piholeUid = 888;
   piholeVersion = "2026.10.0";
   piholeGid = 888;
-  backupScript = pkgs.writeShellScriptBin "backup-pihole" ''
-    set -euo pipefail
-    ${pkgs.rsync}/bin/rsync -a --delete /etc/pihole/ /data/backups/pihole/
-  '';
 in
 {
   # resolved is a DNS server that will conflict with pihole so we turn it off.
@@ -39,28 +34,6 @@ in
       PIHOLE_UID = toString piholeUid;
       PIHOLE_GID = toString piholeGid;
       BLOCK_ICLOUD_PR = "false";
-    };
-  };
-
-  systemd.tmpfiles.rules = [
-    "d /data/backups 0755 root root -"
-    "d /data/backups/pihole 0755 root root -"
-  ];
-
-  systemd.timers.backup-pihole = {
-    description = "Run backup of Pi-hole data daily";
-    wantedBy = [ "timers.target" ];
-    timerConfig = {
-      OnCalendar = "daily";
-      Persistent = true;
-    };
-  };
-
-  systemd.services.backup-pihole = {
-    description = "Backup Pi-hole data to /data/backups";
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = "${backupScript}/bin/backup-pihole";
     };
   };
 }
