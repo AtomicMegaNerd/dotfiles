@@ -4,6 +4,9 @@ let
 
   wan = "enp0s31f6";
 
+  # Pi-hole publishes port 53, so Aardvark DNS listens on another port
+  aardvarkPort = 5353;
+
   podmanNetwork = {
     ipv6_enabled = true;
     subnets = [
@@ -72,7 +75,10 @@ in
       internalInterfaces = [ microVmNet.bridge ];
     };
     # Containers must reach Aardvark DNS on the host
-    firewall.trustedInterfaces = [ "podman0" ];
+    firewall.interfaces.podman0 = {
+      allowedUDPPorts = [ aardvarkPort ];
+      allowedTCPPorts = [ aardvarkPort ];
+    };
     # We want to hardcode DNS servers because DHCP from our gateway uses THIS machine running
     # pihole for DNS. This is the one machine on the network that does not.
     nameservers = [
@@ -146,8 +152,7 @@ in
   ];
 
   virtualisation.containers.enable = true;
-  # Pi-hole publishes port 53, so Aardvark DNS listens on another port
-  virtualisation.containers.containersConf.settings.network.dns_bind_port = 5353;
+  virtualisation.containers.containersConf.settings.network.dns_bind_port = aardvarkPort;
   virtualisation.podman = {
     enable = true;
     dockerCompat = true;
