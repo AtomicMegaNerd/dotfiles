@@ -12,48 +12,12 @@
 The Hub and Agent are configured in [beszel.nix](../hosts/blahaj/beszel.nix).
 
 - The Hub's port is bound to loopback for the host-network Agent
-- [Caddy](./caddy.md) reaches it directly over IPv6 (see [Podman](./podman.md)).
+- [Caddy](./caddy.md) reaches it by the container name `beszel-hub` (see [Podman](./podman.md)).
+- The Forgejo runner VM runs its own Agent, which connects out to the Hub at `https://monitor.megaparsec.ca`. See [Forgejo](./forgejo.md).
 
 ## Initial setup
 
-Activate the Hub configuration first and apply it:
-
-```nix
-{ config, ... }:
-let
-  beszelVersion = "0.21.1";
-in
-{
-  virtualisation.oci-containers.containers.beszel-hub = {
-    autoStart = true;
-    image = "henrygd/beszel:${beszelVersion}";
-    ports = [ "127.0.0.1:8090:8090/tcp" ];
-    volumes = [
-      "/var/lib/beszel/data:/beszel_data"
-      "/run/beszel_socket:/beszel_socket"
-    ];
-    environment.APP_URL = "https://monitor.megaparsec.ca";
-    extraOptions = [
-      "--network=podman-ipv6"
-      "--ip6=fd00::12"
-    ];
-  };
-
-  systemd.tmpfiles.rules = [
-    "d /var/lib/beszel 0755 root root -"
-    "d /var/lib/beszel/data 0755 root root -"
-    "d /var/lib/beszel/agent 0755 root root -"
-    "d /run/beszel_socket 0755 root root -"
-  ];
-
-  systemd.services.create-podman-network = {
-    wantedBy = [ "podman-beszel-hub.service" ];
-    before = [ "podman-beszel-hub.service" ];
-  };
-}
-```
-
-Open [monitor.megaparsec.ca](https://monitor.megaparsec.ca) and create the initial account.
+Activate the Hub configuration in [beszel.nix](../hosts/blahaj/beszel.nix) first and apply it. Then open [monitor.megaparsec.ca](https://monitor.megaparsec.ca) and create the initial account.
 
 ## Adding an Agent
 
@@ -66,36 +30,11 @@ KEY=<key-from-hub>
 TOKEN=<token-from-hub>
 ```
 
-Then add the Agent to the NixOS module of the host.
+Then add the Agent to [beszel.nix](../hosts/blahaj/beszel.nix). Its version must match the Hub's.
 
-```nix
-{ config, ... }:
-let
-  beszelVersion = "0.21.1"; # Make sure that this matches version for Hub
-in
-{
-  age.secrets.beszel-agent.file = ../../secrets/beszel-agent.age;
+### Agent in a microVM
 
-  virtualisation.oci-containers.containers.beszel-agent = {
-    autoStart = true;
-    image = "henrygd/beszel-agent:${beszelVersion}";
-    volumes = [
-      "/var/lib/beszel/agent:/var/lib/beszel-agent"
-      "/run/beszel_socket:/beszel_socket"
-      "/run/podman/podman.sock:/run/podman/podman.sock:ro"
-      "/run/dbus/system_bus_socket:/run/dbus/system_bus_socket:ro"
-    ];
-    environment = {
-      DOCKER_HOST = "unix:///run/podman/podman.sock";
-      HUB_URL = "http://localhost:8090";
-      LISTEN = "/beszel_socket/beszel.sock";
-      SERVICE_PATTERNS = "podman-*";
-    };
-    environmentFiles = [ config.age.secrets.beszel-agent.path ];
-    extraOptions = [ "--network=host" ];
-  };
-}
-```
+The runner VM's Agent is configured in [forgejo-runner.nix](../hosts/blahaj/forgejo-runner.nix). Add a system in the Hub for it. The `KEY` is the Hub's public key, the same for every Agent. The `TOKEN` is unique to each system. Both go in `secrets/runner-beszel-agent.age` as `KEY=` and `TOKEN=` lines.
 
 ## Notifications
 
@@ -119,7 +58,7 @@ In the Hub, create a notification channel and enable the **Failed Services** ale
 ## Links
 
 - [Services](./services.md) - Docs common to all services.
-- [Podman](./podman.md) - Podman network and static IPv6 addresses
+- [Podman](./podman.md) - Podman network and DNS
 - [Beszel Getting Started](https://beszel.dev/guide/getting-started)
 - [Beszel Agent Installation](https://beszel.dev/guide/agent-installation)
 - [Beszel Reverse Proxy](https://beszel.dev/guide/reverse-proxy)

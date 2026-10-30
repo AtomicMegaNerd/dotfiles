@@ -10,7 +10,7 @@
 
 Configured in [freshrss.nix](../hosts/blahaj/freshrss.nix):
 
-- **Address:** static, no published ports. See [Podman](./podman.md).
+- **Network:** default Podman network, no published ports. Other containers reach it as `freshrss`. See [Podman](./podman.md).
 - **Route:** `freshrss.megaparsec.ca` through Caddy. See [Caddy](./caddy.md).
 - **Feed refresh:** the built-in cron runs at minutes 15 and 45 (`CRON_MIN`), in the `America/Edmonton` time zone.
 - **Data:** `/etc/freshrss/data` (config and the SQLite database) and `/etc/freshrss/extensions` are bind-mounted into the container.
@@ -29,6 +29,6 @@ After applying the configuration open [freshrss.megaparsec.ca](https://freshrss.
 ## Links
 
 - [Services](./services.md) - Docs common to all services.
-- [Podman](./podman.md) - Podman network and static IPv6 addresses
+- [Podman](./podman.md) - Podman network and DNS
 - [FreshRSS Docker install](https://github.com/FreshRSS/FreshRSS/blob/edge/Docker/README.md)
 - [FreshRSS documentation](https://freshrss.github.io/FreshRSS/)

@@ -66,6 +66,7 @@ in
         };
 
         systemd.network.networks."20-uplink" = {
+          # Kind "!*" leaves podman's veth interfaces alone
           matchConfig = {
             Kind = "!*";
             Type = "ether";

@@ -15,11 +15,11 @@ Configured in [starfeed.nix](../hosts/blahaj/starfeed.nix).
 
 The container is distroless and runs as uid 65532. The module declares a `starfeed` system user with that uid and makes it the owner of the decrypted file (mode `0400`), which is mounted read-only at `/app/starfeed.toml`.
 
-`rss_server.url` uses FreshRSS's static address from [Podman](./podman.md), on port 80.
+`rss_server.url` is `http://freshrss:80`. Podman's DNS resolves the container name (see [Podman](./podman.md)).
 
 ## Links
 
 - [Services](./services.md) - Docs common to all services.
-- [Podman](./podman.md) - Podman network and static IPv6 addresses
+- [Podman](./podman.md) - Podman network and DNS
 - [Starfeed](https://github.com/AtomicMegaNerd/starfeed) - The GitHub repo
 - [FreshRSS](./freshrss.md) - The RSS service we use with Starfeed

@@ -143,7 +143,7 @@ migrated to Nix.
 
 - [DNS Setup](./docs/dns.md) How we setup DNS internally and externally.
 - [Internal TLS](./docs/tls-internal.md) Setting up trusted TLS certificates for internal services.
-- [Podman](./docs/podman.md) Podman network and container addresses.
+- [Podman](./docs/podman.md) Podman network and container DNS.
 - [Secrets](./docs/secrets.md) Managing secrets with `agenix` and `op`.
 - [Services](./docs/services.md) Overview of services running on blahaj.
 - [Home Manager](./docs/home-manager.md) Stuff we learned about home-manager that is worth remembering.

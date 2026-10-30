@@ -40,29 +40,11 @@ cp "$(mkcert -CAROOT)/rootCA.pem" static/rcd-rootCA-pub.pem
 
 ### On macOS
 
-Add to `darwin.nix` and then apply with `nh darwin switch`:
-
-```nix
-{ pkgs, ... }:
-{
-  security.pki.certificateFiles = [
-    ../../static/rcd-rootCA-pub.pem
-  ];
-}
-```
+The certificate is listed in `security.pki.certificateFiles` in [darwin.nix](../hosts/Schooner/darwin.nix). Apply it with `nh darwin switch`.
 
 ### On NixOS
 
-Add to `configuration.nix` and then apply with `nh os switch`:
-
-```nix
-{ pkgs, ... }:
-{
-  security.pki.certificateFiles = [
-    ../../static/rcd-rootCA-pub.pem
-  ];
-}
-```
+The certificate is listed in `security.pki.certificateFiles` in [configuration.nix](../hosts/blahaj/configuration.nix). Apply it with `nh os switch`. The Forgejo runner VM trusts it too, in [forgejo-runner.nix](../hosts/blahaj/forgejo-runner.nix).
 
 ### Generate certs
 
@@ -90,13 +72,6 @@ This creates:
 - `internal-key.pem` - Private key file
 
 ### Add certs to flake using `agenix`
-
-First tell agenix which keys to use by adding the following entries to `secrets/agenix-rules.nix`:
-
-```nix
-"internal-tls-cert.age".publicKeys = [ user blahaj ];
-"internal-tls-key.age".publicKeys = [ user blahaj ];
-```
 
 Store these securely in the flake using agenix:
 

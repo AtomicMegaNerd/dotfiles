@@ -1,6 +1,6 @@
 # Services
 
-Services running on blahaj. See [Podman](./podman.md) for addresses and [Caddy](./caddy.md) for routes.
+Services running on blahaj. See [Podman](./podman.md) for networking and [Caddy](./caddy.md) for routes.
 
 | Service         | Purpose                                                           | Hostname                                                         | Docs                                 | Config                                                     |
 | --------------- | ----------------------------------------------------------------- | ---------------------------------------------------------------- | ------------------------------------ | ---------------------------------------------------------- |
@@ -10,6 +10,7 @@ Services running on blahaj. See [Podman](./podman.md) for addresses and [Caddy](
 | Beszel          | Monitoring Hub and Agent                                          | [https://monitor.megaparsec.ca](https://monitor.megaparsec.ca)   | [beszel.md](./beszel.md)             | [beszel.nix](../hosts/blahaj/beszel.nix)                   |
 | Actual Budget   | Personal budgeting app                                            | [https://budget.megaparsec.ca](https://budget.megaparsec.ca)     | [actualbudget.md](./actualbudget.md) | [actualbudget.nix](../hosts/blahaj/actualbudget.nix)       |
 | Forgejo         | Internal Git forge                                                | [https://git.megaparsec.ca](https://git.megaparsec.ca)           | [forgejo.md](./forgejo.md)           | [forgejo.nix](../hosts/blahaj/forgejo.nix)                 |
+| Forgejo runner  | Actions runner in a microVM                                       | -                                                                | [forgejo.md](./forgejo.md)           | [forgejo-runner.nix](../hosts/blahaj/forgejo-runner.nix)   |
 | Caddy           | Reverse proxy with internal TLS                                   | -                                                                | [caddy.md](./caddy.md)               | [caddy.nix](../hosts/blahaj/caddy.nix)                     |
 | cloudflare-ddns | Keeps Cloudflare DNS records current                              | -                                                                | [dns.md](./dns.md)                   | [cloudflare-ddns.nix](../hosts/blahaj/cloudflare-ddns.nix) |
 

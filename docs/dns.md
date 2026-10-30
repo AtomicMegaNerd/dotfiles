@@ -75,27 +75,7 @@ Follow the steps in [Secrets](./secrets.md) to save the token in `secrets/cloudf
 
 #### Nix configuration
 
-Add the following to [cloudflare-ddns.nix](../hosts/blahaj/cloudflare-ddns.nix) and apply the configuration:
-
-```nix
-age.secrets = {
-  # other secrets...
-  cloudflare-ddns-token.file = ../../secrets/cloudflare-ddns-token.age;
-};
-
-services.cloudflare-ddns = {
-  enable = true;
-  credentialsFile = config.age.secrets.cloudflare-ddns-token.path;
-  domains = [ "megaparsec.ca" ];
-  proxied = "false";
-};
-
-# Make sure it does not start before the network is ready
-systemd.services.cloudflare-ddns = {
-  after = [ "network-online.target" ];
-  wants = [ "network-online.target" ];
-};
-```
+The service is configured in [cloudflare-ddns.nix](../hosts/blahaj/cloudflare-ddns.nix). It reads the token from the secret and waits for `network-online.target` before it starts. Apply the configuration.
 
 #### Verification
 

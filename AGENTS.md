@@ -61,7 +61,7 @@ nh search options $OPTION
 
 ### Podman
 
-Services run as Podman containers on blahaj using the `podman-ipv6` network with static IPv6 addresses for service discovery. Caddy reverse proxy handles TLS termination for internal hostnames.
+Services run as Podman containers on blahaj on Podman's default dual-stack network and reach each other by container name. Caddy reverse proxy handles TLS termination for internal hostnames.
 
 - [Podman](./docs/podman.md) - Container setup using `podman`.
 - [Internal TLS](./docs/tls-internal.md) - Certificate generation and Caddy configuration
@@ -129,10 +129,16 @@ symlinked to `~/.claude/skills` for Claude Code.
 
 ### Beszel
 
-The Beszel Hub and local Agent run on blahaj. Caddy serves the Hub at `monitor.megaparsec.ca`. Beszel can notify about service failures while blahaj is running, but cannot notify if the host is offline.
+The Beszel Hub runs on blahaj. We have agents on blahaj and on its vm's. Caddy serves the Hub at `monitor.megaparsec.ca`. Beszel can notify about service failures while blahaj is running, but cannot notify if the host is offline.
 
 - [Beszel](./docs/beszel.md) - Hub, Agent, and alert setup
 - [Services](./docs/services.md) - Caddy routes
+
+### Forgejo
+
+Forgejo runs as a rootless Podman image at `git.megaparsec.ca`. Its Actions runner runs in a microVM (nixos-unstable guest) on a NAT bridge, `vm-bridge`, separate from the Podman network. The host's network values are defined in the `let` block of `configuration.nix` and passed into the runner module.
+
+- [Forgejo](./docs/forgejo.md) - Server, runner VM, and networking
 
 ## More Information
 

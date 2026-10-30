@@ -27,18 +27,15 @@ virtualisation.oci-containers.containers.caddy = {
   image = "caddy:2.11.7-alpine";
   ports = [ "443:443/tcp" ];
   volumes = [ "/path/to/Caddyfile:/etc/caddy/Caddyfile:ro" ];
-  networks = [ "podman-ipv6" ];
-  extraOptions = [ "--ip6=fd00::15" ];
 };
 ```
 
 > [!NOTE]
-> Use typed Nix options where available. Note the `networks` property can accept the names of the networks we create for podman as a list. Static IPv6 addresses require the use of `extraOptions`.
+> Use typed Nix options where available. Containers join Podman's default network automatically, so none of ours set `networks`.
 
 - `image` names the container image and tag. Pinning a tag makes the selected version explicit.
 - `ports` publishes host-to-container port mappings; here, host port 443 reaches container port 443 over TCP.
 - `volumes` bind-mounts host paths into the container.
-- `networks` attaches the container to an existing Podman network.
 - `dependsOn` lists other OCI containers that this one depends on.
 - `extraOptions` passes Podman command-line options that do not have a corresponding module option
 
@@ -61,29 +58,32 @@ Podman creates the container; Netavark configures its network
 
 The current configuration is as follows:
 
+All containers share Podman's default network, which is dual stack. The settings live in `podmanNetwork` in [configuration.nix](../hosts/blahaj/configuration.nix).
+
 ### Podman network
 
 | Setting  | Value                       |
 | -------- | --------------------------- |
-| Name     | `podman-ipv6`               |
-| Subnets  | `fd00::/64`, `10.89.0.0/24` |
-| Gateways | `fd00::1`, `10.89.0.1`      |
-| DNS      | Disabled                    |
+| Name     | `podman`                    |
+| Subnets  | `10.88.0.0/16`, `fd00::/64` |
+| Gateways | `10.88.0.1`, `fd00::1`      |
+| DNS      | Aardvark, on port 5353      |
 
-### Container addresses
+Container addresses are dynamic. Containers reach each other by container name, such as `freshrss` or `forgejo`, and never by address.
 
-| Container    | IPv6 Address | Port Mappings                              |
-| ------------ | ------------ | ------------------------------------------ |
-| pihole       | `fd00::10`   | `53:53/tcp`, `53:53/udp`                   |
-| freshrss     | `fd00::11`   | None                                       |
-| beszel-hub   | `fd00::12`   | `127.0.0.1:8090:8090/tcp` (localhost only) |
-| actualbudget | `fd00::13`   | None                                       |
-| caddy        | `fd00::15`   | `443:443/tcp`                              |
-| starfeed     | Dynamic      | None                                       |
+### Port mappings
+
+| Container    | Port Mappings                              |
+| ------------ | ------------------------------------------ |
+| pihole       | `53:53/tcp`, `53:53/udp`                   |
+| freshrss     | None                                       |
+| beszel-hub   | `127.0.0.1:8090:8090/tcp` (localhost only) |
+| actualbudget | None                                       |
+| caddy        | `443:443/tcp`                              |
+| forgejo      | `2222:2222/tcp`                            |
+| starfeed     | None                                       |
 
 ## Container Networking Concepts
-
-Podman opens the specified ports on the host firewall. This makes `networking.firewall.allowedTCPPorts` redundant for those mappings. A mapping without a host IP binds on all host addresses; `127.0.0.1:8090:8090` limits it to localhost.
 
 Inspect Caddy's generated service and published port:
 
@@ -97,25 +97,27 @@ sudo podman port caddy             # host-to-container port mappings
 `blahaj` has the following interfaces:
 
 - `enp0s31f6` — physical ethernet. `192.168.1.232`, `2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4/64`.
-- `podman1` — this is a virtual network interface. It is the host-side Podman bridge. It has gateway addresses `fd00::1` and `10.89.0.1`.
-- The `veth*` interfaces — virtual links between `podman1` and container network namespaces. They connect the containers to the bridge.
+- `podman0` — this is a virtual network interface. It is the host-side Podman bridge. It has gateway addresses `10.88.0.1` and `fd00::1`.
+- The `veth*` interfaces — virtual links between `podman0` and container network namespaces. They connect the containers to the bridge.
+- `vm-bridge` — the bridge for microVMs, with `10.77.0.1` and `fd77::1`. It is separate from the Podman bridge. See [Forgejo](./forgejo.md).
 - `lo` — localhost `127.0.0.1` or `::1`
 
 ### Podman Host Side Network
 
-- `podman-ipv6` puts the containers on the same IPv6 `fd00::/64` and IPv4 `10.89.0.0/24` subnets.
-- This uses the `podman1` bridge networking interface.
+- The default `podman` network puts the containers on the `fd00::/64` and `10.88.0.0/16` subnets.
+- This uses the `podman0` bridge networking interface.
+- Outbound traffic to the internet is NAT'd over both IPv4 and IPv6.
 
 ```text
-Caddy    fd00::15 ─┐
-FreshRSS fd00::11 ─┼── `podman-ipv6` subnet: fd00::/64 (Gateway: fd00::1)
-Pi-hole  fd00::10 ─┘
+Caddy    ─┐
+FreshRSS ─┼── `podman` subnets: 10.88.0.0/16, fd00::/64
+Pi-hole  ─┘
 ```
 
 To inspect this network:
 
 ```bash
-sudo podman network inspect podman-ipv6
+sudo podman network inspect podman
 ```
 
 To inspect a specific container (includes network information):
@@ -126,11 +128,9 @@ sudo podman inspect caddy
 
 ### Podman DNS
 
-> [!NOTE]
-> Currently DNS is disabled on this network, so containers cannot use DNS to look each other up by name. pi-hole stopped working with DNS enabled so this will require investigation. Podman can use a different Aardvark port with `network.dns_bind_port`; that port also needs a firewall rule. We need
-> to re-enable DNS before we can use the features below.
+Podman's Aardvark DNS service resolves container names and aliases. It forwards other DNS queries to configured upstream resolvers. In this setup, the host uses Quad9; Aardvark does not route external DNS queries through Pi-hole.
 
-Podman's Aardvark DNS service can resolve container names and aliases when podman DNS is not turned off. It forwards other DNS queries to configured upstream resolvers. In this setup, the host uses Quad9; enabling Aardvark does not automatically route external DNS queries through Pi-hole.
+Pi-hole publishes port 53, so Aardvark listens on port 5353 instead (`aardvarkPort` in [configuration.nix](../hosts/blahaj/configuration.nix), set with `network.dns_bind_port`). The NixOS podman module only opens UDP 53 on `podman0`, so the host firewall opens the Aardvark port for TCP and UDP on that interface.
 
 ```text
 DNS query for "freshrss" ──> Aardvark ──> FreshRSS container address
@@ -139,16 +139,11 @@ DNS query for "example.com" ──> Aardvark ──> upstream resolver (Quad9)
 
 Podman 6 isolates separate Podman networks by default; containers on the same network remain connected. An app that wants to talk to containers on different networks must be added to each network.
 
-We can give containers aliases that can then be used by apps as DNS names which are resolvable. For example:
+Every container is resolvable by its container name, so Caddy uses `reverse_proxy freshrss:80` and Starfeed uses `http://freshrss:80`. Check it with:
 
-```nix
-virtualisation.oci-containers.containers.freshrss = {
-  networks = [ "podman-ipv6" ];
-  extraOptions = [ "--network-alias=freshrss" ];
-};
+```bash
+sudo podman exec caddy nslookup forgejo
 ```
-
-A reverse proxy (i.e. Caddy) could then use `reverse_proxy freshrss:80`.
 
 ## Service dependencies
 
@@ -165,12 +160,12 @@ virtualisation.oci-containers.containers.starfeed = {
 };
 ```
 
-Use systemd `Requires` and `After` when a container depends on a non-container service, such as `create-podman-network.service`:
+Use systemd `Requires` and `After` when a container depends on a non-container service, such as a mount or a timer:
 
 ```nix
 systemd.services.podman-caddy = {
-  requires = [ "create-podman-network.service" ];
-  after = [ "create-podman-network.service" ];
+  requires = [ "some-other.service" ];
+  after = [ "some-other.service" ];
 };
 ```
 
