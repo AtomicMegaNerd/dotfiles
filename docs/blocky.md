@@ -57,9 +57,6 @@ in
 ## Todo
 
 - [ ] Add `blocky.nix` with a pinned image, port 53 published and the config mounted from Nix.
-- [ ] Move the records in [dnsmasq.conf](../static/blahaj/dnsmasq.conf) to `customDNS.mapping`.
-- [ ] Set the Quad9 IPv4 and IPv6 upstreams.
-- [ ] Check that subdomains of a mapped name resolve the way they did with dnsmasq.
 - [ ] Test next to Pi-hole on another port, then switch and remove Pi-hole.
 - [ ] Remove the `pihole.megaparsec.ca` record, Caddy route and certificate entry, and update [dns.md](./dns.md), [services.md](./services.md), [caddy.md](./caddy.md) and [backups.md](./backups.md).
 
