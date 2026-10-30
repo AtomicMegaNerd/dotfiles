@@ -54,8 +54,7 @@ in
     ./cloudflare-ddns.nix
     ./caddy.nix
     ./forgejo.nix
-    # Add once the runner secrets exist:
-    # (import ./forgejo-runner.nix { inherit podmanNetwork microVmNet; })
+    (import ./forgejo-runner.nix { inherit podmanNetwork microVmNet; })
   ];
 
   boot = {
