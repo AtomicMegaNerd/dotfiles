@@ -56,8 +56,6 @@ in
 
 ## Todo
 
-- [ ] Export the current adlists from Pi-hole:
-      `sudo podman exec pihole pihole-FTL sqlite3 /etc/pihole/gravity.db "select address from adlist where enabled=1"`
 - [ ] Add `blocky.nix` with a pinned image, port 53 published and the config mounted from Nix.
 - [ ] Move the records in [dnsmasq.conf](../static/blahaj/dnsmasq.conf) to `customDNS.mapping`.
 - [ ] Set the Quad9 IPv4 and IPv6 upstreams.
