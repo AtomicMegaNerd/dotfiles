@@ -255,14 +255,12 @@ A second microVM is another module like this one. It needs its own `index`, a ta
 
 ## Remaining work
 
-1. From a container on the default network, check outbound connectivity over both families against an external host (`ping -4` and `ping -6`). FreshRSS, Starfeed and Forgejo all reach the internet this way.
-2. In Pi-hole's settings, check that the upstream DNS servers include IPv6 addresses. They live in `/etc/pihole`, not in Nix.
-3. Create the runner token in Forgejo and the Beszel key and token in the hub. Write `forgejo-runner-token.age` and `runner-beszel-agent.age` with `agenix -e`, then `git add` both.
-4. Uncomment the runner import in `configuration.nix` and redeploy.
-5. From the guest, check `dig` against the host's bridge addresses for `git.megaparsec.ca`, `curl -6` and `curl -4` against `https://git.megaparsec.ca`, and that the VM reaches the internet over both families. If DNS or HTTPS is blocked, open the ports on the bridge with `networking.firewall.interfaces.${microVmNet.bridge} = { allowedTCPPorts = [ 53 443 ]; allowedUDPPorts = [ 53 ]; };`.
-6. From a container in the guest (`podman run --rm <image> curl -6 ...` and `curl -4 ...`), check the full path over both families: build container, guest podman bridge, guest, the microVM bridge's NAT, internet.
-7. Register the runner, put its uuid in the module, then run a job that clones a repo and one that runs `podman build`.
-8. Update caddy.md, beszel.md and services.md.
+1. Create the runner token in Forgejo and the Beszel key and token in the hub. Write `forgejo-runner-token.age` and `runner-beszel-agent.age` with `agenix -e`, then `git add` both.
+2. Uncomment the runner import in `configuration.nix` and redeploy.
+3. From the guest, check `dig` against the host's bridge addresses for `git.megaparsec.ca`, `curl -6` and `curl -4` against `https://git.megaparsec.ca`, and that the VM reaches the internet over both families. If DNS or HTTPS is blocked, open the ports on the bridge with `networking.firewall.interfaces.${microVmNet.bridge} = { allowedTCPPorts = [ 53 443 ]; allowedUDPPorts = [ 53 ]; };`.
+4. From a container in the guest (`podman run --rm <image> curl -6 ...` and `curl -4 ...`), check the full path over both families: build container, guest podman bridge, guest, the microVM bridge's NAT, internet.
+5. Register the runner, put its uuid in the module, then run a job that clones a repo and one that runs `podman build`.
+6. Update caddy.md, beszel.md and services.md.
 
 ## Links
 

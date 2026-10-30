@@ -113,7 +113,7 @@ in
             };
             server.connections.${instance} = {
               url = "https://git.megaparsec.ca";
-              uuid = "00000000-0000-0000-0000-000000000000";
+              uuid = "5ba7684b-abf6-4ac0-adac-db0e28fa5a1a";
             };
           };
           secrets.server.connections.${instance}.token_url = "${guestSecretsDir}/${tokenSecret}";
