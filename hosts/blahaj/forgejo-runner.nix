@@ -128,6 +128,7 @@ in
           environment = {
             HUB_URL = "https://monitor.megaparsec.ca";
             SKIP_GPU = true;
+            SERVICE_PATTERNS = "forgejo-runner-*,podman*";
           };
           environmentFile = "${guestSecretsDir}/${beszelSecret}";
         };
