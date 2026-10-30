@@ -1,8 +1,9 @@
 { ... }:
 let
-  forgejoVersion = "17.0.0";
+  forgejoVersion = "17.0.1";
   forgejoUid = 891;
   forgejoGid = 891;
+  dataDir = "/var/lib/forgejo";
 in
 {
   users.groups.forgejo.gid = forgejoGid;
@@ -16,13 +17,12 @@ in
 
   virtualisation.oci-containers.containers.forgejo = {
     autoStart = true;
-    image = "codeberg.org/forgejo/forgejo:${forgejoVersion}";
+    image = "codeberg.org/forgejo/forgejo:${forgejoVersion}-rootless";
     user = "${toString forgejoUid}:${toString forgejoGid}";
     ports = [ "2222:2222/tcp" ];
-    volumes = [ "/var/lib/forgejo" ];
+    # The rootless image keeps all of its data in /var/lib/gitea
+    volumes = [ "${dataDir}:/var/lib/gitea" ];
     environment = {
-      USER_UID = toString forgejoUid;
-      USER_GID = toString forgejoGid;
       FORGEJO__database__DB_TYPE = "sqlite3";
       FORGEJO__server__DOMAIN = "git.megaparsec.ca";
       FORGEJO__server__ROOT_URL = "https://git.megaparsec.ca/";
@@ -36,6 +36,6 @@ in
   };
 
   systemd.tmpfiles.rules = [
-    "d /var/lib/forgejo 0750 ${toString forgejoUid} ${toString forgejoGid} -"
+    "d ${dataDir} 0750 ${toString forgejoUid} ${toString forgejoGid} -"
   ];
 }
