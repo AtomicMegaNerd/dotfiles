@@ -15,9 +15,9 @@ in
   virtualisation.oci-containers.containers.pihole = {
     autoStart = true;
     image = "pihole/pihole:${piholeVersion}";
-    ports = [
-      "53:53/tcp"
-      "53:53/udp"
+    ports = map (protocol: "53:53/${protocol}") [
+      "tcp"
+      "udp"
     ];
     volumes = [
       "/etc/pihole:/etc/pihole"
@@ -33,15 +33,6 @@ in
       PIHOLE_GID = toString piholeGid;
       BLOCK_ICLOUD_PR = "false";
     };
-    extraOptions = [
-      "--network=podman-ipv6"
-      "--ip6=fd00::10"
-    ];
-  };
-
-  systemd.services.create-podman-network = {
-    wantedBy = [ "podman-pihole.service" ];
-    before = [ "podman-pihole.service" ];
   };
 
   systemd.tmpfiles.rules = [

@@ -28,14 +28,7 @@ in
     };
     dependsOn = [ "freshrss" ];
     extraOptions = [
-      "--network=podman-ipv6"
       "--volume=${config.age.secrets.starfeed-config.path}:${starfeedConf}:ro"
     ];
   };
-
-  systemd.services.create-podman-network = {
-    wantedBy = [ "podman-starfeed.service" ];
-    before = [ "podman-starfeed.service" ];
-  };
-
 }

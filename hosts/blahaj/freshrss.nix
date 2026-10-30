@@ -19,15 +19,6 @@ in
       TZ = "America/Edmonton";
       CRON_MIN = "15,45";
     };
-    extraOptions = [
-      "--network=podman-ipv6"
-      "--ip6=fd00::11"
-    ];
-  };
-
-  systemd.services.create-podman-network = {
-    wantedBy = [ "podman-freshrss.service" ];
-    before = [ "podman-freshrss.service" ];
   };
 
   systemd.tmpfiles.rules = [

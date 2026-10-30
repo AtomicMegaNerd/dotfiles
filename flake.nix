@@ -67,15 +67,13 @@
       buildNixOS =
         hostname:
         nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit microvm nixpkgs-unstable; };
           modules = [
             ./hosts/${hostname}/configuration.nix
             agenix.nixosModules.default
             microvm.nixosModules.host
             { nixpkgs.overlays = [ microvm.overlays.default ]; }
           ];
-          specialArgs = {
-            inherit agenix microvm nixpkgs-unstable;
-          };
         };
 
       # This is for building Home Manager configurations which are used on all of our Nix systems

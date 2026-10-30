@@ -15,10 +15,6 @@
     environment = {
       APP_URL = "https://monitor.megaparsec.ca";
     };
-    extraOptions = [
-      "--network=podman-ipv6"
-      "--ip6=fd00::12"
-    ];
   };
 
   virtualisation.oci-containers.containers.beszel-agent = {
@@ -43,11 +39,6 @@
   systemd.services.podman-beszel-agent = {
     requires = [ "podman-beszel-hub.service" ];
     after = [ "podman-beszel-hub.service" ];
-  };
-
-  systemd.services.create-podman-network = {
-    wantedBy = [ "podman-beszel-hub.service" ];
-    before = [ "podman-beszel-hub.service" ];
   };
 
   systemd.tmpfiles.rules = [

@@ -23,15 +23,8 @@ in
       ACTUAL_ALLOWED_LOGIN_METHODS = "password";
     };
     extraOptions = [
-      "--network=podman-ipv6"
-      "--ip6=fd00::13"
       "--user=${toString actualBudgetUid}:${toString actualBudgetGid}"
     ];
-  };
-
-  systemd.services.create-podman-network = {
-    wantedBy = [ "podman-actualbudget.service" ];
-    before = [ "podman-actualbudget.service" ];
   };
 
   systemd.tmpfiles.rules = [

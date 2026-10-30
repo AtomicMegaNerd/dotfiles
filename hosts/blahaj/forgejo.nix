@@ -33,15 +33,6 @@ in
       FORGEJO__service__DISABLE_REGISTRATION = "true";
       FORGEJO__actions__ENABLED = "true";
     };
-    extraOptions = [
-      "--network=podman-ipv6"
-      "--ip6=fd00::14"
-    ];
-  };
-
-  systemd.services.create-podman-network = {
-    wantedBy = [ "podman-forgejo.service" ];
-    before = [ "podman-forgejo.service" ];
   };
 
   systemd.tmpfiles.rules = [
