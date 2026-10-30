@@ -118,6 +118,8 @@ in
         IPv4Forwarding = true;
         IPv6Forwarding = true;
       };
+      # The bridge has no carrier until a VM attaches
+      linkConfig.RequiredForOnline = "no";
     };
 
     networks."21-microvm-taps" = {
