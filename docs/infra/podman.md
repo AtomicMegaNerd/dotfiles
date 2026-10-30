@@ -99,7 +99,7 @@ sudo podman port caddy             # host-to-container port mappings
 - `enp0s31f6` — physical ethernet. `192.168.1.232`, `2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4/64`.
 - `podman0` — this is a virtual network interface. It is the host-side Podman bridge. It has gateway addresses `10.88.0.1` and `fd00::1`.
 - The `veth*` interfaces — virtual links between `podman0` and container network namespaces. They connect the containers to the bridge.
-- `vm-bridge` — the bridge for microVMs, with `10.77.0.1` and `fd77::1`. It is separate from the Podman bridge. See [Forgejo](./forgejo.md).
+- `vm-bridge` — the bridge for microVMs, with `10.77.0.1` and `fd77::1`. It is separate from the Podman bridge. See [forgeo.nix](../../hosts/blahaj/forgejo.nix).
 - `lo` — localhost `127.0.0.1` or `::1`
 
 ### Podman Host Side Network

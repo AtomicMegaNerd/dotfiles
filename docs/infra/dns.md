@@ -101,4 +101,4 @@ The following settings are used to connect my personal `megaparsec.ca` domain to
 ## Links
 
 - [Internal TLS Guide](./tls-internal.md) - Custom CA with Caddy for internal services
-- [Services](./services.md) - Overview of services running on blahaj
+- [Services](../services/services.md) - Overview of services running on blahaj

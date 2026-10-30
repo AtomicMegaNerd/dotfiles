@@ -2,18 +2,9 @@
 
 [Actual Budget](https://actualbudget.org/) runs as a Podman container at [budget.megaparsec.ca](https://budget.megaparsec.ca).
 
-## Prerequisites
-
-- DNS records setup (see [dns.md](./dns.md)).
-- TLS cert generated and deployed (see [tls-internal.md](./tls-internal.md)).
-
 ## NixOS Server Configuration
 
 Configured in [actualbudget.nix](../hosts/blahaj/actualbudget.nix).
-
-## Caddy
-
-The route is listed in [Caddy](./caddy.md).
 
 ## Initial setup
 
@@ -21,6 +12,9 @@ After applying the configuration open [https://budget.megaparsec.ca](https://bud
 
 ## Links
 
+- [Services](./services.md) - Docs common to all services.
+- [Podman](../infra/podman.md) - Podman network and DNS
+- [Backups](../infra/backups.md) - Backup and restore
 - [Actual Docker install](https://actualbudget.org/docs/install/docker)
 - [Actual server configuration](https://actualbudget.org/docs/config/)
 - [Actual HTTPS](https://actualbudget.org/docs/config/https)

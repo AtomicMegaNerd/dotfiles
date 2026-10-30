@@ -18,10 +18,10 @@ Besides NixOS itself, we use the following in this flake:
 
 ### Systems Managed By This Flake
 
-| Host     | OS    | Platform       | OS Version | HM Version | Notes       |
-| -------- | ----- | -------------- | ---------- | ---------- | ----------- |
-| blahaj   | NixOS | x86_64-linux   | 26.05      | unstable   | Server      |
-| Schooner | macOS | aarch64-darwin | unstable   | unstable   | MacBook Air |
+| Host     | OS    | Platform       | OS Version | HM Version | Notes              |
+| -------- | ----- | -------------- | ---------- | ---------- | ------------------ |
+| blahaj   | NixOS | x86_64-linux   | 26.05      | unstable   | ThinkCentre Server |
+| Schooner | macOS | aarch64-darwin | unstable   | unstable   | MacBook Air        |
 
 ---
 
@@ -89,26 +89,32 @@ Once the initial bootstrap is done you may need to start a new terminal shell or
 
 Nix Helper is a replacement for some nix CLI commands that is better engineered and easier to use [nh](https://github.com/nix-community/nh)
 
+> [!NOTE]
+> If you add the `NH_FLAKE` enviroment variable and point it to your flake, you don't have to
+> provide a path to the commands below.
+>
+> ```fish
+> set -gx NH_FLAKE $HOME/Code/Configs/dotfiles
+> ```
+
+Use the following commands to apply configuration:
+
 #### NixOS
 
 ```fish
-nh os switch .
+nh os switch
 ```
 
 #### Nix-Darwin
 
-For Nix-Darwin systems, you can use the following command to apply the system configuration:
-
 ```fish
-nh darwin switch .
+nh darwin switch
 ```
 
 #### Home Manager
 
-We use Home Manager on all of our Nix managed machines.
-
 ```fish
-nh home switch .
+nh home switch
 ```
 
 ---
@@ -116,9 +122,9 @@ nh home switch .
 ## Neovim
 
 > [!NOTE]
-> My Neovim configuration is in its own separate repo.
+> My Neovim configuration is in its own separate [rcd-nvim](https://github.com/AtomicMegaNerd/rcd-nvim) repo.
 
-I do use this flake to install neovim and to copy the config to ~/.config. However, the config itself is written in Lua and is in its own repo in GitHub. See [rcd-nvim](https://github.com/AtomicMegaNerd/rcd-nvim)
+This flake clones my neovim config repo and deploys it to `~/.config/nvim`. See [neovim.nix](./nix/neovim.nix).
 
 ---
 
@@ -134,19 +140,49 @@ This is the structure of this repo:
 - `static/` - Directory containing static files used in configurations.
 - `secrets/` - Managing secrets with agenix and op (1Password CLI).
 
-Over time as more options are added to Home Manager and NixOS, more of the configuration should be
-migrated to Nix.
-
 ---
+
+## Next Steps
+
+Below are some ideas I want to explore for my homelab.
+
+### Near Term
+
+- [ ] Replace `pihole` with `blocky`.
+- [ ] Deploy `opencode` and `claude` on blahaj.
+- [ ] Re-organize [docs](./docs/) with folders like `services`, `hosts`, `tools`, `reference`.
+- [ ] Extract some common variables out like the container registry to use.
+- [ ] Make ssh forwarding work on `Schooner`.
+- [ ] See if I can send a wakeup packet to `Schooner` from rootshell.
+- [ ] See if I can setup my pi 3 while I wait for the new server, just with blocky for redundancy.
+- [ ] Add second server (as soon as I have the $$$)
+- [ ] Test and document restore from backup for all services on [restic](/docs/infra/backups.md).
+- [ ] Migrate [starfeed](https://github.com/AtomicMegaNerd/starfeed) to my [Forgejo](./docs/services/forgejo.md) instance with CI/CD while using GitHub as a mirror.
+
+### Longer Term
+
+> [!NOTE]
+> No timeline on any of this.
+
+- [ ] Open up some services?
+  - [ ] 2FA/Oauth/both?
+  - [ ] Blog?
+- [ ] NixOS 26.11 upgrade on `blahaj`.
+  - [ ] Podman 6 migration on `blahaj`.
+- [ ] Look at migrating to the [dendritic pattern](./docs/reference/dendritic.md).
+- [ ] Look at setting up posgresql
+- [ ] Add second server
+- [ ] Look at migrating to kubernetes (k3s?) or just using Pods in podman
 
 ## More Information
 
-- [DNS Setup](./docs/dns.md) How we setup DNS internally and externally.
-- [Internal TLS](./docs/tls-internal.md) Setting up trusted TLS certificates for internal services.
-- [Podman](./docs/podman.md) Podman network and container DNS.
-- [Secrets](./docs/secrets.md) Managing secrets with `agenix` and `op`.
-- [Services](./docs/services.md) Overview of services running on blahaj.
-- [Home Manager](./docs/home-manager.md) Stuff we learned about home-manager that is worth remembering.
-- [Nix Basics](./docs/nix-basics.md) I am writing down notes as I gradually learn more about how the Nix language works.
+- [Services](./docs/services/services.md) Overview of services running on my homelab.
+- [DNS Setup](./docs/infra/dns.md) How we setup DNS internally and externally.
+- [Internal TLS](./docs/infra/tls-internal.md) Setting up trusted TLS certificates for internal services.
+- [Podman](./docs/infra/podman.md) Podman network and container DNS.
+- [Secrets](./docs/infra/secrets.md) Managing secrets with `agenix` and `op`.
+- [Home Manager](./docs/reference/home-manager.md) Stuff I learned about `home-manager` that is worth remembering.
+- [Nix Darwin](./docs/reference/nix-darwin.md) Reference information on `nix-darwin`.
+- [Nix Basics](./docs/reference/nix-basics.md) I am writing down notes as I gradually learn more about how the Nix language works.
 - [AGENTS.md](./AGENTS.md) Information for the bots.
 - [LICENSE](./LICENSE) MIT license.
