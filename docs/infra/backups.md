@@ -45,4 +45,4 @@ sudo restic-local snapshots                 # list snapshots
 ## Links
 
 - [restic documentation](https://restic.readthedocs.io/)
-- [Services](./services.md)
+- [Services](../services/services.md)

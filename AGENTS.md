@@ -20,7 +20,7 @@ Try to use home-manager modules and nix configuration whenever possible. Lots of
 
 - [Home Manager manual](https://nix-community.github.io/home-manager/)
 - [Home Manager options](https://nix-community.github.io/home-manager/options.xhtml)
-- [Our HM docs](./docs/home-manager.md)
+- [Our HM docs](./docs/reference/home-manager.md)
 
 ### Nix Darwin
 
@@ -46,7 +46,7 @@ nh search options $OPTION
 ### Agenix
 
 [agenix](https://github.com/ryantm/agenix) encrypts secrets so they can be stored in the flake. See
-[secrets.md](./docs/secrets.md).
+[secrets.md](./docs/infra/secrets.md).
 
 ## Repo Structure
 
@@ -63,8 +63,8 @@ nh search options $OPTION
 
 Services run as Podman containers on blahaj on Podman's default dual-stack network and reach each other by container name. Caddy reverse proxy handles TLS termination for internal hostnames.
 
-- [Podman](./docs/podman.md) - Container setup using `podman`.
-- [Internal TLS](./docs/tls-internal.md) - Certificate generation and Caddy configuration
+- [Podman](./docs/infra/podman.md) - Container setup using `podman`.
+- [Internal TLS](./docs/infra/tls-internal.md) - Certificate generation and Caddy configuration
 
 ### OpenCode
 
@@ -98,7 +98,7 @@ Telemetry is disabled by environment variables in `nix/fish.nix`. See
 ### Herdr
 
 [Herdr docs](https://herdr.dev/docs/). Terminal multiplexer for coding agents, configured with
-`programs.herdr`. See [our herdr docs](./docs/herdr.md) and [herdr.nix](./nix/herdr.nix).
+`programs.herdr`. See [herdr](./docs/tools/herdr.md) and [herdr.nix](./nix/herdr.nix).
 
 ### Catppuccin Theming
 
@@ -131,18 +131,18 @@ symlinked to `~/.claude/skills` for Claude Code.
 
 The Beszel Hub runs on blahaj. We have agents on blahaj and on its vm's. Caddy serves the Hub at `monitor.megaparsec.ca`. Beszel can notify about service failures while blahaj is running, but cannot notify if the host is offline.
 
-- [Beszel](./docs/beszel.md) - Hub, Agent, and alert setup
-- [Services](./docs/services.md) - Caddy routes
+- [Beszel](./docs/services//beszel.md) - Hub, Agent, and alert setup
+- [Services](./docs/services/services.md) - Caddy routes
 
 ### Forgejo
 
 Forgejo runs as a rootless Podman image at `git.megaparsec.ca`. Its Actions runner runs in a microVM (nixos-unstable guest) on a NAT bridge, `vm-bridge`, separate from the Podman network. The host's network values are defined in the `let` block of `configuration.nix` and passed into the runner module.
 
-- [Forgejo](./docs/forgejo.md) - Server, runner VM, and networking
+- [Forgejo](./docs/services/forgejo.md) - Server, runner VM, and networking
 
 ## More Information
 
 - [README.md](./README.md)
-- [Internal TLS](./docs/tls-internal.md)
-- [DNS](./docs/dns.md)
-- [Secrets](./docs/secrets.md)
+- [Internal TLS](./docs/infra/tls-internal.md)
+- [DNS](./docs/infra/dns.md)
+- [Secrets](./docs/infra/secrets.md)

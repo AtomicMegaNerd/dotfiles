@@ -1,13 +1,14 @@
 # Blocky
 
-[Blocky](https://0xerr0r.github.io/blocky/) will replace Pi-hole as the internal DNS server and ad blocker. It runs as a Podman container on blahaj with its config generated from Nix, so it holds no state and a second host can run the same config.
+[Blocky](https://0xerr0r.github.io/blocky/) is a pi-hole alternative that is lightweight and
+is implemented in Go.
 
 > [!NOTE]
-> It's bed-time. Nothing is deployed yet. Pick up from the Todo list below.
+> This has not been deployed yet
 
-## Example
+## Example NixOS Configuration
 
-A sketch for `blocky.nix`, not deployed. The records replace [dnsmasq.conf](../static/blahaj/dnsmasq.conf). A mapped name also resolves its subdomains.
+This needs to be verified and tested:
 
 ```nix
 { config, lib, pkgs, ... }:
@@ -28,7 +29,6 @@ let
 
   settings = {
     ports.dns = 53;
-    # Same dual stack upstreams the host uses
     upstreams.groups.default = config.networking.nameservers;
     # Each short name and its FQDN get the same addresses
     customDNS.mapping = lib.concatMapAttrs (name: addresses: {
@@ -44,7 +44,7 @@ in
 {
   virtualisation.oci-containers.containers.blocky = {
     autoStart = true;
-    image = "ghcr.io/0xerr0r/blocky:${blockyVersion}";
+    image = "docker.io/spx01/blocky:${blockyVersion}";
     ports = map (protocol: "53:53/${protocol}") [
       "tcp"
       "udp"
@@ -54,13 +54,15 @@ in
 }
 ```
 
-## Todo
+## Next Steps
 
 - [ ] Add `blocky.nix` with a pinned image, port 53 published and the config mounted from Nix.
 - [ ] Test next to Pi-hole on another port, then switch and remove Pi-hole.
-- [ ] Remove the `pihole.megaparsec.ca` record, Caddy route and certificate entry, and update [dns.md](./dns.md), [services.md](./services.md), [caddy.md](./caddy.md) and [backups.md](./backups.md).
+- [ ] Remove the `pihole.megaparsec.ca` record, Caddy route and certificate entry, and update docs.
 
 ## Links
 
-- [Blocky documentation](https://0xerr0r.github.io/blocky/)
-- [DNS](./dns.md)
+- [Services](./services.md) - Docs common to all services.
+- [Podman](../infra/podman.md) - Podman network and DNS
+- [DNS](../infra/dns.md)
+- [Caddy](./caddy.md)
