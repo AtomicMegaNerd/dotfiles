@@ -56,7 +56,6 @@ mkcert \
   -cert-file internal.pem \
   -key-file internal-key.pem \
   freshrss.megaparsec.ca \
-  pihole.megaparsec.ca \
   gateway.megaparsec.ca \
   blahaj.megaparsec.ca \
   schooner.megaparsec.ca \

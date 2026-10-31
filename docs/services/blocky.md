@@ -4,11 +4,11 @@
 is implemented in Go.
 
 > [!NOTE]
-> This has not been deployed yet
+> This has not been deployed yet.
 
 ## Example NixOS Configuration
 
-This needs to be verified and tested:
+The NixOS module is in [blocky.nix](../../hosts/blahaj/blocky.nix). It generates the configuration below and mounts it read-only into the container:
 
 ```nix
 { config, lib, pkgs, ... }:
@@ -54,11 +54,11 @@ in
 }
 ```
 
-## Next Steps
+## Deployment checks
 
-- [ ] Add `blocky.nix` with a pinned image, port 53 published and the config mounted from Nix.
-- [ ] Test next to Pi-hole on another port, then switch and remove Pi-hole.
-- [ ] Remove the `pihole.megaparsec.ca` record, Caddy route and certificate entry, and update docs.
+- [ ] Evaluate the NixOS configuration and validate the generated YAML with Blocky v0.35.0.
+- [ ] Deploy and verify DNS responses for A and AAAA records, upstream resolution, and ad blocking.
+- [ ] Regenerate the internal TLS certificate without the removed `pihole.megaparsec.ca` name and update the agenix secret.
 
 ## Links
 

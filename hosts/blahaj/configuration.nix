@@ -4,7 +4,7 @@ let
 
   wan = "enp0s31f6";
 
-  # Pi-hole publishes port 53, so Aardvark DNS listens on another port
+  # Blocky publishes port 53, so Aardvark DNS listens on another port
   aardvarkPort = 5353;
 
   podmanNetwork = {
@@ -46,7 +46,7 @@ in
     ../../nix/nix-common.nix
 
     # The following are services that we deploy on this host
-    ./pihole.nix
+    ./blocky.nix
     ./freshrss.nix
     ./actualbudget.nix
     ./beszel.nix
@@ -80,7 +80,7 @@ in
       allowedTCPPorts = [ aardvarkPort ];
     };
     # We want to hardcode DNS servers because DHCP from our gateway uses THIS machine running
-    # pihole for DNS. This is the one machine on the network that does not.
+    # Blocky for DNS. This is the one machine on the network that does not.
     nameservers = [
       "9.9.9.9"
       "149.112.112.112"

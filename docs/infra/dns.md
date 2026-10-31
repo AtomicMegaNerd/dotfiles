@@ -4,11 +4,11 @@ This documents the implementation of DNS on my network for the `megaparsec.ca` d
 
 ## Internal DNS
 
-[Pi-hole](https://pi-hole.net/) runs on `blahaj` (`192.168.1.232`) as the internal DNS server.
+[Blocky](https://0xerr0r.github.io/blocky/) runs on `blahaj` (`192.168.1.232`) as the internal DNS server.
 
 ### Configuration
 
-DNS records are stored in a static config file at [dnsmasq.conf](../static/blahaj/dnsmasq.conf). The container is configured with `FTLCONF_misc_etc_dnsmasq_d = "true"` to enable reading from `/etc/dnsmasq.d`.
+DNS records and blocklists are configured declaratively in [blocky.nix](../hosts/blahaj/blocky.nix). Nix generates the Blocky YAML configuration and mounts it read-only in the container.
 
 ### Internal DNS records
 
@@ -21,23 +21,22 @@ DNS records are stored in a static config file at [dnsmasq.conf](../static/blaha
 | `freshrss` / `freshrss.megaparsec.ca` | `192.168.1.232` | `2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4` | FreshRSS service |
 | `git` / `git.megaparsec.ca`           | `192.168.1.232` | `2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4` | Git service      |
 | `monitor` / `monitor.megaparsec.ca`   | `192.168.1.232` | `2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4` | Beszel Hub       |
-| `pihole` / `pihole.megaparsec.ca`     | `192.168.1.232` | `2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4` | Pi-hole admin    |
 
 ### Testing DNS
 
 ```bash
-# Test against Pi-hole via IPv4
+# Test against Blocky via IPv4
 dig @192.168.1.232 blahaj.megaparsec.ca A
 
-# Test against Pi-hole via IPv6
+# Test against Blocky via IPv6
 dig @2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4 blahaj.megaparsec.ca AAAA
 
 # Test IPv6 connectivity to hosts
 ping6 blahaj.megaparsec.ca
 ping6 gateway.megaparsec.ca
 
-# Check if Pi-hole is running
-ssh blahaj "systemctl status podman-pihole"
+# Check if Blocky is running
+ssh blahaj "systemctl status podman-blocky"
 ```
 
 ## Cloudflare

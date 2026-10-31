@@ -19,7 +19,6 @@ let
       auto_https off
     }
 
-    ${site "pihole" "reverse_proxy pihole:80"}
     ${site "freshrss" "reverse_proxy freshrss:80"}
     ${site "monitor" ''
       reverse_proxy beszel-hub:8090 {

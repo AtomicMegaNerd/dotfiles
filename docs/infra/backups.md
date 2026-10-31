@@ -8,14 +8,13 @@
 | Actual Budget | `/var/lib/actualbudget` |
 | Beszel        | `/var/lib/beszel`       |
 | FreshRSS      | `/etc/freshrss`         |
-| Pi-hole       | `/etc/pihole`           |
 
 Caddy, Starfeed, cloudflare-ddns and the runner VM keep no state. Their config is in Nix and their secrets are in agenix.
 
 ## How it works
 
 - Runs every night at 03:00 and writes to `/data/backups/restic`, a separate disk from the OS.
-- The containers are stopped for the few seconds the backup takes, so SQLite databases are copied consistently. Pi-hole DNS is briefly unavailable.
+- The stateful containers are stopped for the few seconds the backup takes, so SQLite databases are copied consistently.
 - Keeps 7 daily, 4 weekly and 6 monthly snapshots.
 - The repository password is `secrets/restic-password.age`. Keep a copy in 1Password. Without it the backups can't be read.
 

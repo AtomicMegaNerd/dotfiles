@@ -4,7 +4,6 @@
 
 | Client DNS               | Service Endpoint                                             |
 | ------------------------ | ------------------------------------------------------------ |
-| `pihole.megaparsec.ca`   | `pihole:80`                                                  |
 | `freshrss.megaparsec.ca` | `freshrss:80`                                                |
 | `monitor.megaparsec.ca`  | `beszel-hub:8090` (Beszel Hub; WebSocket read timeout: 360s) |
 | `budget.megaparsec.ca`   | `actualbudget:5006`                                          |

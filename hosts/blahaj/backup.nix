@@ -6,7 +6,6 @@ let
     "forgejo"
     "freshrss"
     "actualbudget"
-    "pihole"
     "beszel-agent"
     "beszel-hub"
   ];
@@ -26,7 +25,6 @@ in
       "/var/lib/actualbudget"
       "/var/lib/beszel"
       "/etc/freshrss"
-      "/etc/pihole"
     ];
 
     backupPrepareCommand = "${systemctl} stop ${unitList}";

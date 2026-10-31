@@ -75,7 +75,7 @@ Container addresses are dynamic. Containers reach each other by container name, 
 
 | Container    | Port Mappings                              |
 | ------------ | ------------------------------------------ |
-| pihole       | `53:53/tcp`, `53:53/udp`                   |
+| blocky       | `53:53/tcp`, `53:53/udp`                   |
 | freshrss     | None                                       |
 | beszel-hub   | `127.0.0.1:8090:8090/tcp` (localhost only) |
 | actualbudget | None                                       |
@@ -111,7 +111,7 @@ sudo podman port caddy             # host-to-container port mappings
 ```text
 Caddy    ─┐
 FreshRSS ─┼── `podman` subnets: 10.88.0.0/16, fd00::/64
-Pi-hole  ─┘
+Blocky    ─┘
 ```
 
 To inspect this network:
@@ -128,9 +128,9 @@ sudo podman inspect caddy
 
 ### Podman DNS
 
-Podman's Aardvark DNS service resolves container names and aliases. It forwards other DNS queries to configured upstream resolvers. In this setup, the host uses Quad9; Aardvark does not route external DNS queries through Pi-hole.
+Podman's Aardvark DNS service resolves container names and aliases. It forwards other DNS queries to configured upstream resolvers. In this setup, the host uses Quad9; Aardvark does not route external DNS queries through Blocky.
 
-Pi-hole publishes port 53, so Aardvark listens on port 5353 instead (`aardvarkPort` in [configuration.nix](../hosts/blahaj/configuration.nix), set with `network.dns_bind_port`). The NixOS podman module only opens UDP 53 on `podman0`, so the host firewall opens the Aardvark port for TCP and UDP on that interface.
+Blocky publishes port 53, so Aardvark listens on port 5353 instead (`aardvarkPort` in [configuration.nix](../hosts/blahaj/configuration.nix), set with `network.dns_bind_port`). The NixOS podman module only opens UDP 53 on `podman0`, so the host firewall opens the Aardvark port for TCP and UDP on that interface.
 
 ```text
 DNS query for "freshrss" ──> Aardvark ──> FreshRSS container address
