@@ -149,8 +149,6 @@ Below are some ideas I want to explore for my homelab.
 ### Near Term
 
 - [x] Replace `pihole` with `blocky`.
-- [ ] Deploy `opencode` and `claude` on blahaj.
-- [ ] Re-organize [docs](./docs/) with folders like `services`, `hosts`, `tools`, `reference`.
 - [ ] Extract some common variables out like the container registry to use.
 - [ ] Make ssh forwarding work on `Schooner`.
 - [ ] See if I can send a wakeup packet to `Schooner` from rootshell.
