@@ -1,4 +1,8 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  microvmGuestPkgs,
+  ...
+}:
 let
   rcd_pub_key = builtins.readFile ../../static/rcd_pub_key;
 
@@ -55,7 +59,13 @@ in
     ./caddy.nix
     ./forgejo.nix
     ./backup.nix
-    (import ./forgejo-runner.nix { inherit podmanNetwork microVmNet; })
+    (import ./forgejo-runner.nix {
+      inherit
+        microVmNet
+        microvmGuestPkgs
+        podmanNetwork
+        ;
+    })
   ];
 
   boot = {

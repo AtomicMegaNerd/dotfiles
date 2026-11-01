@@ -67,12 +67,14 @@
       buildNixOS =
         hostname:
         nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit microvm nixpkgs-unstable; };
+          specialArgs = {
+            # Package set for microVM guests (they need unstable NixOS modules)
+            microvmGuestPkgs = nixpkgs-unstable.legacyPackages.x86_64-linux;
+          };
           modules = [
             ./hosts/${hostname}/configuration.nix
             agenix.nixosModules.default
             microvm.nixosModules.host
-            { nixpkgs.overlays = [ microvm.overlays.default ]; }
           ];
         };
 

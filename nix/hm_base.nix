@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   ...
 }:
@@ -49,6 +50,12 @@
 
   programs = {
     home-manager.enable = true;
+
+    # Cleaning is scheduled by nix-darwin on Schooner, so no clean config here
+    nh = {
+      enable = true;
+      flake = "${config.home.homeDirectory}/Code/Configs/dotfiles";
+    };
 
     # Imports that don't need additional configuration
     bat.enable = true;

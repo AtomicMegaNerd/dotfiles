@@ -13,7 +13,6 @@ in
       set -g fish_greeting
       set -gx GOPATH $XDG_DATA_HOME/go
       set -gx CARGO_HOME $XDG_DATA_HOME/cargo
-      set -gx NH_FLAKE $HOME/Code/Configs/dotfiles
 
       # Disable Claude Code telemetry and other nonessential traffic
       set -gx CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC 1

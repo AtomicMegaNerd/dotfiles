@@ -1,5 +1,8 @@
-{ podmanNetwork, microVmNet }:
-{ microvm, nixpkgs-unstable, ... }:
+{
+  pkgs,
+  microVmNet,
+  podmanNetwork,
+}:
 let
   index = 2;
   vcpu = 2;
@@ -27,10 +30,7 @@ in
 
   microvm.vms.forgejo-runner = {
     autostart = true;
-    pkgs = import nixpkgs-unstable {
-      system = "x86_64-linux";
-      overlays = [ microvm.overlays.default ];
-    };
+    inherit pkgs;
     config =
       { pkgs, ... }:
       {
