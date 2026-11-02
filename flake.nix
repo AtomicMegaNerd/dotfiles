@@ -63,16 +63,27 @@
 
       # This is for building NixOS configurations, where we are running the full NixOS Linux
       # distribution
+      vmPkgs = (nixpkgs-unstable.legacyPackages.x86_64-linux).extend microvm.overlays.default;
+
+      # We can define a set of VM's for each host
+      vmHostModules = {
+        blahaj = [
+          microvm.nixosModules.host
+          ./hosts/blahaj/forgejo-runner.nix
+          {
+            microvm.vms.forgejo-runner.pkgs = vmPkgs;
+          }
+        ];
+      };
+
       buildNixOS =
         hostname:
         nixpkgs.lib.nixosSystem {
           modules = [
-            (import ./hosts/${hostname}/configuration.nix {
-              microvmGuestPkgs = (nixpkgs-unstable.legacyPackages.x86_64-linux).extend microvm.overlays.default;
-            })
+            ./hosts/${hostname}/configuration.nix
             agenix.nixosModules.default
-            microvm.nixosModules.host
-          ];
+          ]
+          ++ (vmHostModules.${hostname} or [ ]);
         };
 
       # This is for building Home Manager configurations which are used on all of our Nix systems
@@ -101,6 +112,8 @@
 
     in
     {
+      formatter = forAllSystems (system: (unstablePkgs system).nixfmt-tree);
+
       nixosConfigurations = {
         blahaj = buildNixOS "blahaj";
       };
