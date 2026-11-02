@@ -1,6 +1,6 @@
 { ... }:
 let
-  actualBudgetVersion = "26.10.0";
+  actualBudgetVersion = "26.11.0";
   actualBudgetUid = 890;
   actualBudgetGid = 890;
 in

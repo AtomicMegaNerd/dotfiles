@@ -1,5 +1,5 @@
 {
-  pkgs,
+  microvmGuestPkgs,
   microVmNet,
   podmanNetwork,
 }:
@@ -30,7 +30,7 @@ in
 
   microvm.vms.forgejo-runner = {
     autostart = true;
-    inherit pkgs;
+    pkgs = microvmGuestPkgs;
     config =
       { pkgs, ... }:
       {

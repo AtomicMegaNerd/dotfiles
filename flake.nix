@@ -46,7 +46,6 @@
       ...
     }:
     let
-
       systems = [
         "x86_64-linux"
         "aarch64-darwin"
@@ -67,12 +66,10 @@
       buildNixOS =
         hostname:
         nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            # Package set for microVM guests (they need unstable NixOS modules)
-            microvmGuestPkgs = nixpkgs-unstable.legacyPackages.x86_64-linux;
-          };
           modules = [
-            ./hosts/${hostname}/configuration.nix
+            (import ./hosts/${hostname}/configuration.nix {
+              microvmGuestPkgs = (nixpkgs-unstable.legacyPackages.x86_64-linux).extend microvm.overlays.default;
+            })
             agenix.nixosModules.default
             microvm.nixosModules.host
           ];
