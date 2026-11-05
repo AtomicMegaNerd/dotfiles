@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 let
-  caddyVersion = "2.11.7-alpine";
+  caddyVersion = "2.11.9-alpine";
   caddyUid = 889;
   caddyGid = 889;
   domain = "megaparsec.ca";
