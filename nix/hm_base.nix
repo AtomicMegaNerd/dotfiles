@@ -59,6 +59,10 @@
 
     # Imports that don't need additional configuration
     bat.enable = true;
+    delta = {
+      enable = true;
+      enableGitIntegration = true;
+    };
     fd.enable = true;
     ripgrep.enable = true;
   };

@@ -1,4 +1,8 @@
-{ ... }:
+{
+  config,
+  lib,
+  ...
+}:
 {
   programs.lazygit = {
     enable = true;
@@ -15,6 +19,9 @@
       git = {
         autoFetch = false;
         autoRefresh = false;
+        diffRenderers = [
+          { command = "${lib.getExe config.programs.delta.package} --dark --paging=never"; }
+        ];
       };
       os.editPreset = "nvim";
       update.method = "never";
