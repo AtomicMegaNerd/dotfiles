@@ -135,6 +135,7 @@
         {
           pre-commit-check = git-hooks.lib.${system}.run {
             src = ./.;
+            package = pkgs.prek;
             hooks = {
               nixfmt.enable = true;
               yaml-lint = {

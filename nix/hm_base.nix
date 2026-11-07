@@ -45,7 +45,6 @@
     tombi
     oxfmt
     markdownlint-cli2
-    marksman
   ];
 
   programs = {

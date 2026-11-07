@@ -1,4 +1,4 @@
-Host *
+Match host * exec "test -z $SSH_TTY"
     IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
 
 Host 192.168.1.*
