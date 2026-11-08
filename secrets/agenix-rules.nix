@@ -36,4 +36,8 @@ in
     user
     blahaj
   ];
+
+  "local-container-registry.age".publicKeys = [
+    user
+  ];
 }
