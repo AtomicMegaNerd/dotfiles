@@ -34,6 +34,7 @@
     jq
     tree
     glow
+    nix-graph
     slumber
 
     # Common linters and LSP servers
