@@ -3,12 +3,19 @@
   imports = [ ../../nix/nix-common.nix ];
 
   networking.hostName = "Schooner";
-  system.stateVersion = 4;
+  system.stateVersion = 7;
   system.primaryUser = "rcd";
+  users.users.rcd.openssh.authorizedKeys.keys = [
+    (builtins.readFile ../../static/rcd_pub_key)
+  ];
+
+  security.pam.services.sudo_local.touchIdAuth = true;
+  security.pki.certificateFiles = [
+    ../../static/rcd-rootCA-pub.pem
+  ];
 
   nix = {
     settings.trusted-users = [ "@admin" ];
-
     optimise = {
       automatic = true;
       interval = {
@@ -18,25 +25,20 @@
     };
   };
 
-  ids.gids.nixbld = 350;
-
-  programs.fish.enable = true;
-
-  programs.nh = {
-    enable = true;
-    clean = {
+  programs = {
+    fish.enable = true;
+    nh = {
       enable = true;
-      interval = {
-        Hour = 2;
-        Minute = 0;
+      clean = {
+        enable = true;
+        interval = {
+          Hour = 2;
+          Minute = 0;
+        };
+        extraArgs = "--keep-since 7d --keep 3";
       };
-      extraArgs = "--keep-since 7d --keep 3";
     };
   };
-
-  users.users.rcd.openssh.authorizedKeys.keys = [
-    (builtins.readFile ../../static/rcd_pub_key)
-  ];
 
   services.openssh = {
     enable = true;
@@ -94,9 +96,4 @@
     };
   };
 
-  security.pam.services.sudo_local.touchIdAuth = true;
-
-  security.pki.certificateFiles = [
-    ../../static/rcd-rootCA-pub.pem
-  ];
 }
