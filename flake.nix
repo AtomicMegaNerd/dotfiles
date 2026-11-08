@@ -180,13 +180,11 @@
       packages.aarch64-darwin =
         let
           pkgs = unstablePkgs "aarch64-linux";
-          buildImage = import ./images/lib/build-image.nix {
-            inherit (nix2container.packages.aarch64-darwin) nix2container;
-          };
         in
         {
-          rcd-dev-claude = import ./images/rcd-dev-claude.nix {
-            inherit pkgs buildImage;
+          rcd-dev-claude = import ./images/rcd-dev-claude {
+            inherit pkgs;
+            inherit (nix2container.packages.aarch64-darwin) nix2container;
             inherit (nixpkgs-unstable.lib) nixosSystem;
           };
         };
