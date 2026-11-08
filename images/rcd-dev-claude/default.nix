@@ -5,12 +5,17 @@
 }:
 let
   version = "0.1.0";
+  caBundle = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
   os =
     (nixosSystem {
       modules = [
         (
-          { pkgs, ... }:
+          { pkgs, modulesPath, ... }:
           {
+            imports = [
+              "${modulesPath}/profiles/minimal.nix"
+            ];
+
             nixpkgs = {
               hostPlatform = "aarch64-linux";
               config.allowUnfree = true;
@@ -18,31 +23,20 @@ let
 
             boot.isContainer = true;
             system.stateVersion = "26.05";
+            system.disableInstallerTools = true;
 
-            users.users.agent = {
-              isNormalUser = true;
-              uid = 1000;
-              home = "/work";
-              createHome = true;
+            nix.settings = {
+              experimental-features = [
+                "nix-command"
+                "flakes"
+              ];
+              build-users-group = "";
+              ssl-cert-file = caBundle;
             };
 
-            nix.settings.experimental-features = [
-              "nix-command"
-              "flakes"
-            ];
-
-            programs.git.enable = true;
-
-            environment.variables.CLAUDE_CONFIG_DIR = "/work/.claude";
-
-            systemd.tmpfiles.rules = [
-              "d /work/.claude 0755 agent users -"
-              "d /work/.claude/agents 0755 agent users -"
-              "L+ /work/.claude/CLAUDE.md - - - - ${../../static/claude-code/CLAUDE.md}"
-              "L+ /work/.claude/settings.json - - - - ${../../static/claude-code/settings.json}"
-              "L+ /work/.claude/agents/rcd-go.md - - - - ${../../static/agents/rcd-go.md}"
-              "L+ /work/.claude/agents/rcd-nix.md - - - - ${../../static/agents/rcd-nix.md}"
-            ];
+            programs.git = {
+              enable = true;
+            };
 
             environment.systemPackages = with pkgs; [
               claude-code
@@ -55,6 +49,29 @@ let
         )
       ];
     }).config;
+
+  claudeConfig = pkgs.linkFarm "rcd-dev-claude-config" [
+    {
+      name = "etc/nix/nix.conf";
+      path = os.environment.etc."nix/nix.conf".source;
+    }
+    {
+      name = "root/.claude/CLAUDE.md";
+      path = ../../static/claude-code/CLAUDE.md;
+    }
+    {
+      name = "root/.claude/settings.json";
+      path = ../../static/claude-code/settings.json;
+    }
+    {
+      name = "root/.claude/agents/rcd-go.md";
+      path = ../../static/agents/rcd-go.md;
+    }
+    {
+      name = "root/.claude/agents/rcd-nix.md";
+      path = ../../static/agents/rcd-nix.md;
+    }
+  ];
 in
 nix2container.buildImage {
   name = "git.megaparsec.ca/atomicmeganerd/rcd-dev-claude";
@@ -62,22 +79,27 @@ nix2container.buildImage {
 
   copyToRoot = [
     (pkgs.buildEnv {
-      name = "shim";
-      paths = with pkgs; [
-        bashInteractive
-        uutils-coreutils-noprefix
-        dockerTools.fakeNss
+      name = "rcd-dev-claude-env";
+      paths = [
+        os.system.path
+        pkgs.dockerTools.fakeNss
       ];
       pathsToLink = [
         "/bin"
         "/etc"
       ];
     })
+    claudeConfig
   ];
 
   config = {
-    Entrypoint = [ "${os.system.build.toplevel}/init" ];
-    StopSignal = "SIGRTMIN+3";
+    Entrypoint = [
+      "/bin/nix"
+      "develop"
+      "--command"
+      "claude"
+    ];
+    WorkingDir = "/work/project";
     Labels = {
       "org.opencontainers.image.title" = "rcd-dev-claude";
       "org.opencontainers.image.version" = version;
