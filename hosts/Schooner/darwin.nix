@@ -16,6 +16,8 @@
 
   nix = {
     settings.trusted-users = [ "@admin" ];
+    # Local aarch64-linux builder VM, used for building OCI images with dockerTools
+    linux-builder.enable = true;
     optimise = {
       automatic = true;
       interval = {

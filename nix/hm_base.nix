@@ -34,8 +34,10 @@
     jq
     tree
     glow
-    nix-graph
     slumber
+
+    nix-graph
+    nix-tree
 
     # Common linters and LSP servers
     bash-language-server
