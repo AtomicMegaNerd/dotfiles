@@ -33,6 +33,17 @@ let
 
             programs.git.enable = true;
 
+            environment.variables.CLAUDE_CONFIG_DIR = "/work/.claude";
+
+            systemd.tmpfiles.rules = [
+              "d /work/.claude 0755 agent users -"
+              "d /work/.claude/agents 0755 agent users -"
+              "L+ /work/.claude/CLAUDE.md - - - - ${../../static/claude-code/CLAUDE.md}"
+              "L+ /work/.claude/settings.json - - - - ${../../static/claude-code/settings.json}"
+              "L+ /work/.claude/agents/rcd-go.md - - - - ${../../static/agents/rcd-go.md}"
+              "L+ /work/.claude/agents/rcd-nix.md - - - - ${../../static/agents/rcd-nix.md}"
+            ];
+
             environment.systemPackages = with pkgs; [
               claude-code
               uutils-coreutils-noprefix
