@@ -30,10 +30,6 @@
       url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    nix2container = {
-      url = "github:nlewo/nix2container";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
   };
 
   outputs =
@@ -47,7 +43,6 @@
       microvm,
       catppuccin,
       git-hooks,
-      nix2container,
       ...
     }:
     let
@@ -176,18 +171,6 @@
           home-rcd-Schooner = self.homeConfigurations."rcd@Schooner".activationPackage;
         }
       );
-
-      packages.aarch64-darwin =
-        let
-          pkgs = unstablePkgs "aarch64-linux";
-        in
-        {
-          rcd-dev-claude = import ./images/rcd-dev-claude {
-            inherit pkgs;
-            inherit (nix2container.packages.aarch64-darwin) nix2container;
-            inherit (nixpkgs-unstable.lib) nixosSystem;
-          };
-        };
 
       devShells = forAllSystems (system: {
         default =

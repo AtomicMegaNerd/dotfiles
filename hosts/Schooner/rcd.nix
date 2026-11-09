@@ -15,6 +15,7 @@
       mkcert
       nss.tools
       skills
+      skopeo
     ];
 
     username = "rcd";
