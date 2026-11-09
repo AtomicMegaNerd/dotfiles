@@ -36,6 +36,7 @@
     glow
     slumber
 
+    # Additional nix tooling
     nix-graph
     nix-tree
 
