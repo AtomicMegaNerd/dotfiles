@@ -5,7 +5,7 @@
   ...
 }:
 let
-  blockyVersion = "v0.35.0";
+  blockyVersion = "v0.36.0";
   domain = "megaparsec.ca";
   blahaj = "192.168.1.232,2604:3d09:676:2d40:6e4b:90ff:fe4f:bed4";
 
