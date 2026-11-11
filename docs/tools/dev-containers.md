@@ -91,6 +91,10 @@ Defines the shared tools for all images as one package. The lock file is generat
         fd
         ripgrep
         bat
+        oxfmt
+        oxlint
+        markdownlint-cli2
+        yamllint
       ];
     in
     {
@@ -189,16 +193,23 @@ ENTRYPOINT ["nix", "develop", ".#agent", "--command", "pi"]
 
 ### Nix
 
-- We use forAllSystems so we can totally use linux devShells on the Mac:
+- We use `forAllSystems` in our project flakes so all image CPU arches are supported.
+- The container runs `nix develop .#agent`, so each project needs an `agent` devShell.
+  - Only put the tools the agent needs in the agent output, this makes the images build much faster.
 
 ```nix
- devShells = forAllSystems (system: {
-        default =
-          pkgs.mkShell {
-            # Nix stuff
-          };
-      });
-    };
+devShells = forAllSystems (
+  system:
+  let
+    pkgs = nixpkgs.legacyPackages.${system};
+    shared = [ pkgs.go_1_27 pkgs.gotools pkgs.golangci-lint pkgs.go-task ];
+    hostOnly = [ pkgs.gopls pkgs.goreleaser pkgs.oxfmt ];
+  in
+  {
+    default = pkgs.mkShell { buildInputs = shared ++ hostOnly; };
+    agent = pkgs.mkShell { buildInputs = shared; };
+  }
+);
 ```
 
 ### Apple container
