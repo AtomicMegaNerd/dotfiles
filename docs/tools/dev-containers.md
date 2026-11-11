@@ -146,7 +146,7 @@ RUN nix profile add path:${HOME_DIR}/.config/amn-image
 FROM amn-agent-base AS amn-claude
 RUN nix profile add path:/home/bot/.config/amn-image#claude-code
 # Need to COPY claude config (settings.json and CLAUDE.md) into ${HOME_DIR}/.claude
-ENTRYPOINT ["nix", "develop", "--command", "claude"]
+ENTRYPOINT ["nix", "develop", ".#agent", "--command", "claude"]
 ```
 
 #### OpenCode
@@ -157,7 +157,7 @@ ENTRYPOINT ["nix", "develop", "--command", "claude"]
 FROM amn-agent-base AS amn-opencode
 RUN nix profile add path:/home/bot/.config/amn-image#opencode
 # Need to COPY opencode config (opencode.json, cli.json, AGENTS.md) into ${HOME_DIR}/.config/opencode
-ENTRYPOINT ["nix", "develop", "--command", "opencode"]
+ENTRYPOINT ["nix", "develop", ".#agent", "--command", "opencode"]
 ```
 
 #### Pi
@@ -168,7 +168,7 @@ ENTRYPOINT ["nix", "develop", "--command", "opencode"]
 FROM amn-agent-base AS amn-pi
 RUN nix profile add path:/home/bot/.config/amn-image#pi-coding-agent
 # Need to COPY pi config (none exists yet)
-ENTRYPOINT ["nix", "develop", "--command", "pi"]
+ENTRYPOINT ["nix", "develop", ".#agent", "--command", "pi"]
 ```
 
 ### Build
