@@ -16,6 +16,8 @@ My laptop is an M4 MacBook Air with 32GB of RAM running macOS 27 and the latest 
   - `amn-pi` <- pass in OpenCode Go subscription as environment variable
     - We are not ready to implement `amn-pi` yet but will do so later.
   - We will bake the configuration into each image from the config files in this flake.
+- All secrets via environment variables only, passed with `--env-file`.
+  - Credentials needed for each agent harness, its subscriptions, and for a read-only tokten for `gh`.
 - Image building:
   - The images must be `linux-aarch64` as they will run on my Apple Silicon Mac.
   - We must be able to build each image on the Mac and push it to `git.megaparsec.ca` which is my local [forgejo](../services/forgejo.md) service which does have a container registry.
@@ -29,10 +31,6 @@ My laptop is an M4 MacBook Air with 32GB of RAM running macOS 27 and the latest 
   - `/nix/` we will need to be able to write to the nix store to make the flake devShells work.
   - All other paths will be restricted (user `bot` will not have write access).
 - We will start with 4GB of memory for each container.
-- All secrets via `-e` only.
-  - Each container will also need to pass in credentials for:
-    - either `gh` (GitHub CLI) or GitHub MCP Server (or both; this is TBD).
-  - Exposure of secrets to the entire container is accepted as being fully stateless and ephemeral has its own advantages for safety.
 - We will not include ssh keys or ssh-agent as we do not want the agents to be able to push. It is okay for them to make commits.
 - Mount **only** the project directory `read/write`. No other files or directories will be mounted.
 - On startup, container reads `flake.nix`, enters the devShell, then starts the agent.
@@ -48,16 +46,65 @@ My laptop is an M4 MacBook Air with 32GB of RAM running macOS 27 and the latest 
 
 One multi-stage `Dockerfile` per agent harness.
 
-The following static files are copied into the image:
+#### Shared Base
 
-#### nix.conf
+The following static files are copied into all images:
+
+##### nix.conf
 
 ```ini
 build-users-group =
 experimental-features = nix-command flakes
 ```
 
-#### Claude
+##### gitconfig
+
+Agents may commit but not push, so commits need an identity.
+
+```ini
+[user]
+  email = "chris@megaparsec.ca"
+  name = "Chris Dunphy"
+```
+
+##### flake.nix
+
+Defines the shared tools for all images as one package. The lock file is generated during the image build.
+
+```nix
+{
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+
+  outputs =
+    { nixpkgs, ... }:
+    let
+      pkgs = import nixpkgs {
+        system = "aarch64-linux";
+        config.allowUnfree = true;
+      };
+      tools = with pkgs; [
+        git
+        gh
+        fd
+        ripgrep
+        bat
+      ];
+    in
+    {
+      packages.aarch64-linux = {
+        default = pkgs.buildEnv {
+          name = "amn-base";
+          paths = tools;
+        };
+        claude-code = pkgs.claude-code;
+        opencode = pkgs.opencode;
+        pi-coding-agent = pkgs.pi-coding-agent;
+      };
+    };
+}
+```
+
+This is the shared code that is shared by all agent images below:
 
 ```Dockerfile
 FROM docker.io/nixos/nix:latest AS amn-agent-base
@@ -72,9 +119,10 @@ ARG WORK_DIR=/work
 ENV HOME=${HOME_DIR}
 ENV USER=${USERNAME}
 ENV PATH=${HOME_DIR}/.nix-profile/bin:${PATH}
-ENV NIXPKGS_ALLOW_UNFREE=1
 
 COPY --chown=${USER_UID}:${USER_GID} nix.conf ${HOME_DIR}/.config/nix/nix.conf
+COPY --chown=${USER_UID}:${USER_GID} gitconfig ${HOME_DIR}/.gitconfig
+COPY --chown=${USER_UID}:${USER_GID} flake.nix ${HOME_DIR}/.config/amn-image/flake.nix
 
 RUN echo "${USERNAME}:x:${USER_UID}:${USER_GID}:${USERNAME}:${HOME_DIR}:/bin/sh" >> /etc/passwd \
  && echo "${USERNAME}:x:${USER_GID}:" >> /etc/group \
@@ -84,63 +132,71 @@ RUN echo "${USERNAME}:x:${USER_UID}:${USER_GID}:${USERNAME}:${HOME_DIR}:/bin/sh"
 USER ${USER_UID}:${USER_GID}
 WORKDIR ${PROJECT_DIR}
 
+RUN nix profile install path:${HOME_DIR}/.config/amn-image
+```
+
+#### Claude
+
+```Dockerfile
+# Add based Dockerfile code above
+
 FROM amn-agent-base AS amn-claude
-RUN nix profile install --impure github:NixOS/nixpkgs/nixpkgs-unstable#claude-code
+RUN nix profile install path:/home/bot/.config/amn-image#claude-code
 # Need to COPY claude config (settings.json and CLAUDE.md) into ${HOME_DIR}/.claude
 ENTRYPOINT ["nix", "develop", "--command", "claude"]
 ```
 
 #### OpenCode
 
-Replace `amn-claude` with:
-
 ```Dockerfile
+# Add based Dockerfile code above
+
 FROM amn-agent-base AS amn-opencode
-RUN nix profile install github:NixOS/nixpkgs/nixpkgs-unstable#opencode
+RUN nix profile install path:/home/bot/.config/amn-image#opencode
 # Need to COPY opencode config (opencode.json, cli.json, AGENTS.md) into ${HOME_DIR}/.config/opencode
 ENTRYPOINT ["nix", "develop", "--command", "opencode"]
 ```
 
 #### Pi
 
-Replace `amn-claude` with:
-
 ```Dockerfile
+# Add based Dockerfile code above
+
 FROM amn-agent-base AS amn-pi
-RUN nix profile install github:NixOS/nixpkgs/nixpkgs-unstable#pi-coding-agent
+RUN nix profile install path:/home/bot/.config/amn-image#pi-coding-agent
 # Need to COPY pi config (none exists yet)
 ENTRYPOINT ["nix", "develop", "--command", "pi"]
 ```
 
-### Build and push
+### Build
 
-- Log in once: `container registry login git.megaparsec.ca`
-- Build one image per target, named for the Forgejo registry:
-  - `container build --target amn-claude -t git.megaparsec.ca/atomicmeganerd/amn-claude .`
-  - `container build --target amn-opencode -t git.megaparsec.ca/atomicmeganerd/amn-opencode .`
-- Push: `container image push git.megaparsec.ca/atomicmeganerd/IMAGE_NAME`
+- Run the following for each Dockerile (paths TBD):
+  - `container build -f <FILE> -t git.megaparsec.ca/atomicmeganerd/<IMAGE_NAME> .`
 
 ### Run shape
 
 - Run: `container run --rm -it --memory 4g --env-file <env-file> -v <project>:/home/bot/project git.megaparsec.ca/atomicmeganerd/IMAGE_NAME`
-- Secrets go in the env file, one `KEY=value` per line (`#` comments and blank lines are ignored). Keep it outside the project directory, since the project is the only mount.
-  - `amn-claude`: `CLAUDE_CODE_OAUTH_TOKEN`
-  - `amn-opencode`: `OPENCODE_API_KEY`
-  - GitHub credentials: TBD (`gh` or the GitHub MCP server).
-- No `--ssh`, no other mounts.
-- Egress open for now.
 
 ## Verification
 
-- Build each image and confirm `nix develop` works inside the guest as `bot` on a project flake that defines a devShell.
-- Confirm `-e VAR` passthrough, and that `bot` can write to `/home/bot`, `/work`, `/tmp`, and `/nix` but nowhere else.
-- Confirm the host is untouched after a run except the mounted project (`git status`, plus a check that nothing else under `$HOME` changed).
-- Push each image to `git.megaparsec.ca` and pull it back.
-- Start one container and run a task that uses sub-agents: confirm edits appear on the host.
-- Credential test per agent: start each agent, confirm it authenticates from env alone, with no auth file written in the guest.
-- Supply-chain smoke test: in the guest, run an install script that tries to read `~/.ssh`, `$HOME`, and other projects; confirm none are reachable.
+- Verify that each agent harness is authenticated even though we only passed in environent variables
+- Verify that each image is authenticated to `gh`.
 
 ## Notes
+
+### Nix
+
+- We use forAllSystems so we can totally use linux devShells on the Mac:
+
+```nix
+ devShells = forAllSystems (system: {
+        default =
+          pkgs.mkShell {
+            # Nix stuff
+          };
+      });
+    };
+```
 
 ### Apple container
 
