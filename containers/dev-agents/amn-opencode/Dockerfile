@@ -1,4 +1,4 @@
-FROM docker.io/nixos/nix:latest AS amn-agent-base
+FROM docker.io/nixos/nix:latest
 
 ARG USERNAME=bot
 ARG USER_UID=1000
@@ -25,7 +25,6 @@ WORKDIR ${PROJECT_DIR}
 
 RUN nix profile add path:${HOME_DIR}/.config/amn-image
 
-FROM amn-agent-base AS amn-opencode
-RUN nix profile add path:/home/bot/.config/amn-image#opencode
-COPY --chown=1000:1000 opencode.json cli.json AGENTS.md /home/bot/.config/opencode/
+COPY --chown=${USER_UID}:${USER_GID} opencode.json cli.json AGENTS.md ${HOME_DIR}/.config/opencode/
+
 ENTRYPOINT ["nix", "develop", ".#agent", "--command", "opencode"]

@@ -24,15 +24,16 @@
         shfmt
         nixfmt
         ast-grep
+        nodejs
+        bun
       ];
     in
     {
       packages.aarch64-linux = {
         default = pkgs.buildEnv {
-          name = "amn-base";
-          paths = tools;
+          name = "amn-opencode";
+          paths = tools ++ [ pkgs.opencode ];
         };
-        opencode = pkgs.opencode;
       };
     };
 }

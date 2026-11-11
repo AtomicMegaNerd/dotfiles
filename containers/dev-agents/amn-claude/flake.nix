@@ -24,15 +24,16 @@
         shfmt
         nixfmt
         ast-grep
+        nodejs
+        bun
       ];
     in
     {
       packages.aarch64-linux = {
         default = pkgs.buildEnv {
-          name = "amn-base";
-          paths = tools;
+          name = "amn-claude";
+          paths = tools ++ [ pkgs.claude-code ];
         };
-        claude-code = pkgs.claude-code;
       };
     };
 }

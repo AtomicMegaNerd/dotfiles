@@ -44,147 +44,22 @@ My laptop is an M4 MacBook Air with 32GB of RAM running macOS 27 and the latest 
 
 ### Image layout
 
-One multi-stage `Dockerfile` per agent harness.
+One `Dockerfile` per agent harness.
 
-#### Shared Base
+#### Image files
 
-The following static files are copied into all images:
+Each image has its own directory under [containers/dev-agents](../../containers/dev-agents/) with everything needed to build it:
 
-##### nix.conf
+- [amn-claude](../../containers/dev-agents/amn-claude/)
+- [amn-opencode](../../containers/dev-agents/amn-opencode/)
+- `amn-pi`: not implemented yet.
 
-```ini
-build-users-group =
-experimental-features = nix-command flakes
-```
-
-##### gitconfig
-
-Agents may commit but not push, so commits need an identity.
-
-```ini
-[user]
-  email = "chris@megaparsec.ca"
-  name = "Chris Dunphy"
-
-[safe]
-  directory = /home/bot/project
-```
-
-##### flake.nix
-
-Defines the shared tools for all images as one package. The lock file is generated during the image build.
-
-```nix
-{
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-
-  outputs =
-    { nixpkgs, ... }:
-    let
-      pkgs = import nixpkgs {
-        system = "aarch64-linux";
-        config.allowUnfree = true;
-      };
-      tools = with pkgs; [
-        git
-        gh
-        fd
-        ripgrep
-        bat
-        oxfmt
-        oxlint
-        markdownlint-cli2
-        yamllint
-        jq
-        tree
-        shellcheck
-        shfmt
-        nixfmt
-        ast-grep
-      ];
-    in
-    {
-      packages.aarch64-linux = {
-        default = pkgs.buildEnv {
-          name = "amn-base";
-          paths = tools;
-        };
-        claude-code = pkgs.claude-code;
-        opencode = pkgs.opencode;
-        pi-coding-agent = pkgs.pi-coding-agent;
-      };
-    };
-}
-```
-
-This is the shared code that is shared by all agent images below:
-
-```Dockerfile
-FROM docker.io/nixos/nix:latest AS amn-agent-base
-
-ARG USERNAME=bot
-ARG USER_UID=1000
-ARG USER_GID=1000
-ARG HOME_DIR=/home/${USERNAME}
-ARG PROJECT_DIR=${HOME_DIR}/project
-ARG WORK_DIR=/work
-
-ENV HOME=${HOME_DIR}
-ENV USER=${USERNAME}
-ENV PATH=${HOME_DIR}/.nix-profile/bin:${PATH}
-
-COPY --chown=${USER_UID}:${USER_GID} nix.conf ${HOME_DIR}/.config/nix/nix.conf
-COPY --chown=${USER_UID}:${USER_GID} gitconfig ${HOME_DIR}/.gitconfig
-COPY --chown=${USER_UID}:${USER_GID} flake.nix ${HOME_DIR}/.config/amn-image/flake.nix
-
-RUN echo "${USERNAME}:x:${USER_UID}:${USER_GID}:${USERNAME}:${HOME_DIR}:/bin/sh" >> /etc/passwd \
- && echo "${USERNAME}:x:${USER_GID}:" >> /etc/group \
- && mkdir -p ${PROJECT_DIR} ${WORK_DIR} \
- && chown -R ${USER_UID}:${USER_GID} /nix ${HOME_DIR} ${WORK_DIR}
-
-USER ${USER_UID}:${USER_GID}
-WORKDIR ${PROJECT_DIR}
-
-RUN nix profile add path:${HOME_DIR}/.config/amn-image
-```
-
-#### Claude
-
-```Dockerfile
-# Add based Dockerfile code above
-
-FROM amn-agent-base AS amn-claude
-RUN nix profile add path:/home/bot/.config/amn-image#claude-code
-# Need to COPY claude config (settings.json and CLAUDE.md) into ${HOME_DIR}/.claude
-ENTRYPOINT ["nix", "develop", ".#agent", "--command", "claude"]
-```
-
-#### OpenCode
-
-```Dockerfile
-# Add based Dockerfile code above
-
-FROM amn-agent-base AS amn-opencode
-RUN nix profile add path:/home/bot/.config/amn-image#opencode
-# Need to COPY opencode config (opencode.json, cli.json, AGENTS.md) into ${HOME_DIR}/.config/opencode
-ENTRYPOINT ["nix", "develop", ".#agent", "--command", "opencode"]
-```
-
-#### Pi
-
-```Dockerfile
-# Add based Dockerfile code above
-
-FROM amn-agent-base AS amn-pi
-RUN nix profile add path:/home/bot/.config/amn-image#pi-coding-agent
-# Need to COPY pi config (none exists yet)
-ENTRYPOINT ["nix", "develop", ".#agent", "--command", "pi"]
-```
+Each directory has a `Dockerfile`, `.dockerignore`, `nix.conf`, `gitconfig`, `flake.nix`, and the agent config files. The `flake.lock` is generated during the image build.
 
 ### Build
 
-- Run the following for each Dockerile (paths TBD):
-  - `container build -f <FILE> -t git.megaparsec.ca/atomicmeganerd/<IMAGE_NAME> .`
+- Run the following from the repo root for each image:
+  - `container build -t git.megaparsec.ca/atomicmeganerd/<IMAGE_NAME> containers/dev-agents/<IMAGE_NAME>`
 
 ### Run shape
 

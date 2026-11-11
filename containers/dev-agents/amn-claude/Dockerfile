@@ -1,4 +1,4 @@
-FROM docker.io/nixos/nix:latest AS amn-agent-base
+FROM docker.io/nixos/nix:latest
 
 ARG USERNAME=bot
 ARG USER_UID=1000
@@ -25,7 +25,6 @@ WORKDIR ${PROJECT_DIR}
 
 RUN nix profile add path:${HOME_DIR}/.config/amn-image
 
-FROM amn-agent-base AS amn-claude
-RUN nix profile add path:/home/bot/.config/amn-image#claude-code
-COPY --chown=1000:1000 settings.json CLAUDE.md /home/bot/.claude/
+COPY --chown=${USER_UID}:${USER_GID} settings.json CLAUDE.md ${HOME_DIR}/.claude/
+
 ENTRYPOINT ["nix", "develop", ".#agent", "--command", "claude"]
