@@ -9,6 +9,21 @@
         { "action": "skill", "effect": "allow", "resource": "rcd-golang" },
         { "action": "skill", "effect": "allow", "resource": "rcd-golangci-lint" },
         { "action": "skill", "effect": "allow", "resource": "rcd-go-task" },
+        {
+          "action": "external_directory",
+          "effect": "allow",
+          "resource": "~/.agents/skills/rcd-golang/*"
+        },
+        {
+          "action": "external_directory",
+          "effect": "allow",
+          "resource": "~/.agents/skills/rcd-golangci-lint/*"
+        },
+        {
+          "action": "external_directory",
+          "effect": "allow",
+          "resource": "~/.agents/skills/rcd-go-task/*"
+        },
         { "action": "shell", "effect": "allow", "resource": "task *" },
         { "action": "shell", "effect": "allow", "resource": "go build *" },
         { "action": "shell", "effect": "allow", "resource": "go test *" },
@@ -29,6 +44,46 @@
         { "action": "skill", "effect": "allow", "resource": "nixos-operations" },
         { "action": "skill", "effect": "allow", "resource": "nixos-wiki" },
         { "action": "skill", "effect": "allow", "resource": "nixpkgs-development" },
+        {
+          "action": "external_directory",
+          "effect": "allow",
+          "resource": "~/.agents/skills/nix-language/*"
+        },
+        {
+          "action": "external_directory",
+          "effect": "allow",
+          "resource": "~/.agents/skills/nix-workflow/*"
+        },
+        {
+          "action": "external_directory",
+          "effect": "allow",
+          "resource": "~/.agents/skills/home-manager/*"
+        },
+        {
+          "action": "external_directory",
+          "effect": "allow",
+          "resource": "~/.agents/skills/nix-darwin/*"
+        },
+        {
+          "action": "external_directory",
+          "effect": "allow",
+          "resource": "~/.agents/skills/nixos-operations/*"
+        },
+        {
+          "action": "external_directory",
+          "effect": "allow",
+          "resource": "~/.agents/skills/nixos-wiki/*"
+        },
+        {
+          "action": "external_directory",
+          "effect": "allow",
+          "resource": "~/.agents/skills/nixpkgs-development/*"
+        },
+        {
+          "action": "external_directory",
+          "effect": "allow",
+          "resource": "~/.agents/skills/microvm-nix/*"
+        },
         { "action": "shell", "effect": "allow", "resource": "nix flake metadata *" },
         { "action": "shell", "effect": "allow", "resource": "nix flake info *" },
         { "action": "shell", "effect": "allow", "resource": "nix flake show *" },

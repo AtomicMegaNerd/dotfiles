@@ -5,6 +5,7 @@
     ../../nix/agent-skills.nix
     ../../nix/ghostty.nix
     ../../nix/opencode.nix
+    ../../nix/claude-code.nix
     ../../nix/rift.nix
   ];
 
