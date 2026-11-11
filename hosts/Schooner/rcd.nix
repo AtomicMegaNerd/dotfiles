@@ -6,6 +6,7 @@
     ../../nix/ghostty.nix
     ../../nix/opencode.nix
     ../../nix/claude-code.nix
+    ../../nix/dev-agents.nix
     ../../nix/rift.nix
   ];
 

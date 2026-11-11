@@ -31,12 +31,39 @@ See the directories below for our images:
 
 ### Build
 
-- Run the following from the repo root for each image:
-  - `container build -t git.megaparsec.ca/atomicmeganerd/<IMAGE_NAME> containers/dev-agents/<IMAGE_NAME>`
+See [dev-agents.nix](../../nix/dev-agents.nix) for our build and run scripts.
+
+- Specify which agent (`claude` or `opencode`)
+- Pushes to [forgejo](../services/forgejo.md] container registry at `git.megaparsec.ca`
+
+```fish
+amn-agent-build claude
+```
 
 ### Run
 
-- Run: `container run --rm -it --memory 4g --env-file <env-file> -v <project>:/home/bot/project git.megaparsec.ca/atomicmeganerd/IMAGE_NAME`
+- Specify which agent (`claude` or `opencode`) and the project path
+
+```fish
+amn-agent opencode .
+```
+
+## Secrets
+
+The env files are agenix secrets, `amn-claude.env.age` and `amn-opencode.env.age`. See [secrets.md](../infra/secrets.md) for how to add and edit them. `amn-agent` decrypts them at launch.
+
+Each file holds `KEY=value` lines:
+
+```text
+# amn-claude.env
+CLAUDE_CODE_OAUTH_TOKEN=...
+GH_TOKEN=...
+
+# amn-opencode.env
+OPENCODE_API_KEY=...
+GH_TOKEN=...
+CONTEXT7_API_KEY=...
+```
 
 ## Verification
 
