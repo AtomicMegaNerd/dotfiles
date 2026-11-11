@@ -52,8 +52,8 @@
 
     "Alt + Enter" = "promote_to_master"
     "Alt + Slash" = "swap_master_stack"
-    "Alt + Comma" = { adjust_master_count = { delta = 1 } }
-    "Alt + Period" = { adjust_master_count = { delta = -1 } }
+    "comb1 + Comma" = { adjust_master_count = { delta = 1 } }
+    "comb1 + Period" = { adjust_master_count = { delta = -1 } }
 
     "Alt + Shift + Space" = "toggle_window_floating"
     "Alt + Shift + C" = { toggle_window_floating = { center = true, size = { w = 1200, h = 1400 }}}
