@@ -1,10 +1,11 @@
 { config, pkgs, ... }:
 let
-  # Every container that keeps state on disk. Stopped during the backup so
-  # that SQLite databases are copied in a consistent state.
+  # These are the services we need to take down briefly during the backup. Starfeed doesn't need
+  # backup but it depends on freshrss, so it has to come down.
   units = map (name: "podman-${name}.service") [
     "forgejo"
     "freshrss"
+    "starfeed"
     "actualbudget"
     "beszel-agent"
     "beszel-hub"
@@ -27,14 +28,15 @@ in
       "/etc/freshrss"
     ];
 
+    # These commands will run before and after the backup is performed
     backupPrepareCommand = "${systemctl} stop ${unitList}";
-    # Runs even when the backup fails
     backupCleanupCommand = "${systemctl} start ${unitList}";
 
     timerConfig = {
       OnCalendar = "03:00";
       Persistent = true;
     };
+
     pruneOpts = [
       "--keep-daily 7"
       "--keep-weekly 4"
