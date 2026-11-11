@@ -65,6 +65,9 @@ Agents may commit but not push, so commits need an identity.
 [user]
   email = "chris@megaparsec.ca"
   name = "Chris Dunphy"
+
+[safe]
+  directory = /home/bot/project
 ```
 
 ##### flake.nix
@@ -132,7 +135,7 @@ RUN echo "${USERNAME}:x:${USER_UID}:${USER_GID}:${USERNAME}:${HOME_DIR}:/bin/sh"
 USER ${USER_UID}:${USER_GID}
 WORKDIR ${PROJECT_DIR}
 
-RUN nix profile install path:${HOME_DIR}/.config/amn-image
+RUN nix profile add path:${HOME_DIR}/.config/amn-image
 ```
 
 #### Claude
@@ -141,7 +144,7 @@ RUN nix profile install path:${HOME_DIR}/.config/amn-image
 # Add based Dockerfile code above
 
 FROM amn-agent-base AS amn-claude
-RUN nix profile install path:/home/bot/.config/amn-image#claude-code
+RUN nix profile add path:/home/bot/.config/amn-image#claude-code
 # Need to COPY claude config (settings.json and CLAUDE.md) into ${HOME_DIR}/.claude
 ENTRYPOINT ["nix", "develop", "--command", "claude"]
 ```
@@ -152,7 +155,7 @@ ENTRYPOINT ["nix", "develop", "--command", "claude"]
 # Add based Dockerfile code above
 
 FROM amn-agent-base AS amn-opencode
-RUN nix profile install path:/home/bot/.config/amn-image#opencode
+RUN nix profile add path:/home/bot/.config/amn-image#opencode
 # Need to COPY opencode config (opencode.json, cli.json, AGENTS.md) into ${HOME_DIR}/.config/opencode
 ENTRYPOINT ["nix", "develop", "--command", "opencode"]
 ```
@@ -163,7 +166,7 @@ ENTRYPOINT ["nix", "develop", "--command", "opencode"]
 # Add based Dockerfile code above
 
 FROM amn-agent-base AS amn-pi
-RUN nix profile install path:/home/bot/.config/amn-image#pi-coding-agent
+RUN nix profile add path:/home/bot/.config/amn-image#pi-coding-agent
 # Need to COPY pi config (none exists yet)
 ENTRYPOINT ["nix", "develop", "--command", "pi"]
 ```
