@@ -1,0 +1,6 @@
+[user]
+  email = "chris@megaparsec.ca"
+  name = "Chris Dunphy"
+
+[safe]
+  directory = /home/bot/project

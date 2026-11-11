@@ -95,6 +95,12 @@ Defines the shared tools for all images as one package. The lock file is generat
         oxlint
         markdownlint-cli2
         yamllint
+        jq
+        tree
+        shellcheck
+        shfmt
+        nixfmt
+        ast-grep
       ];
     in
     {
