@@ -2,15 +2,16 @@
 let
   # These are the services we need to take down briefly during the backup. Starfeed doesn't need
   # backup but it depends on freshrss, so it has to come down.
-  units = map (name: "podman-${name}.service") [
-    "forgejo"
-    "freshrss"
-    "starfeed"
-    "actualbudget"
-    "beszel-agent"
-    "beszel-hub"
-  ];
-  unitList = builtins.concatStringsSep " " units;
+  services = builtins.concatStringsSep " " (
+    map (name: "podman-${name}.service") [
+      "forgejo"
+      "freshrss"
+      "starfeed"
+      "actualbudget"
+      "beszel-agent"
+      "beszel-hub"
+    ]
+  );
   systemctl = "${pkgs.systemd}/bin/systemctl";
 in
 {
@@ -29,8 +30,8 @@ in
     ];
 
     # These commands will run before and after the backup is performed
-    backupPrepareCommand = "${systemctl} stop ${unitList}";
-    backupCleanupCommand = "${systemctl} start ${unitList}";
+    backupPrepareCommand = "${systemctl} stop ${services}";
+    backupCleanupCommand = "${systemctl} start ${services}";
 
     timerConfig = {
       OnCalendar = "03:00";
