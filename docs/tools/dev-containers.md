@@ -15,6 +15,9 @@ My laptop is an M4 MacBook Air with 32GB of RAM running macOS 27 and the latest 
   - `amn-claude` <- pass in Claude Pro subscription as environment variable
   - `amn-pi` <- pass in OpenCode Go subscription as environment variable
   - We will bake the configuration into each image from the config files in this flake.
+- Image building:
+  - The images must be `linux-aarch64` as they will run on my Apple Silicon Mac.
+  - We must be able to build each image on the Mac and push it to `git.megaparsec.ca` which is my local [forgejo](../services/forgejo.md) service which does have a container registry.
 - Regardless of the agent permission setup all containers must use a non-root user
   - User `bot`, UID: `1000`, GID: `1000`.
 - We will use the following directories:
@@ -37,12 +40,11 @@ My laptop is an M4 MacBook Air with 32GB of RAM running macOS 27 and the latest 
 - Fully stateless agents to start with.
 - We will first try Apple's `container` tool. If Apple's tool does not work right now we can re-evaluate.
 
-## Verified facts
+## Verified Facts
 
 ### Apple container
 
 - For defaults, capabilities, `--ssh`, volumes, and run flags, see the [Apple container docs](https://github.com/apple/container/tree/main/docs).
-- Tested on `container` 1.7.1 (2026-11-11): a guest process running as uid 1000 (not the host uid 501) saw bind-mounted files as owned by 1000:1000 and could write to the mount. The new file is owned on the host by uid 501 (the host user) with group 0. The guest uid does not need to match the host uid.
 
 ### Claude Code
 
@@ -55,9 +57,9 @@ My laptop is an M4 MacBook Air with 32GB of RAM running macOS 27 and the latest 
 
 - Both OpenCode providers in pi (pay-as-you-go and Go) read the key from `OPENCODE_API_KEY` (OpenCode's "Pi" page).
 
-### opencode (`anomalyco/opencode`)
+### OpenCode (`anomalyco/opencode`)
 
-- The `opencode` provider is available once you connect an OpenCode Console account or set `OPENCODE_API_KEY` (OpenCode V2 models docs).
+- pass the API key from your OpenCode Go workspace as `OPENCODE_API_KEY` to OpenCode.
 
 ### Other tools
 
@@ -68,9 +70,30 @@ My laptop is an M4 MacBook Air with 32GB of RAM running macOS 27 and the latest 
 
 ### 1. Image layout
 
-- `base`: Linux aarch64, single-user Nix with flakes enabled, git, entrypoint script.
 - `amn-claude`, `amn-opencode`, `amn-pi`: thin layers on `base`, installing each agent from nixpkgs.
 - Entrypoint: `nix develop /home/bot/project --command <agent>`.
+
+Example `base` Dockerfile (tested):
+
+```Dockerfile
+FROM docker.io/nixos/nix:latest
+
+RUN cat /etc/passwd > /tmp/passwd.new && rm -f /etc/passwd && cp /tmp/passwd.new /etc/passwd \
+ && cat /etc/group > /tmp/group.new && rm -f /etc/group && cp /tmp/group.new /etc/group \
+ && echo 'bot:x:1000:1000:bot:/home/bot:/bin/sh' >> /etc/passwd \
+ && echo 'bot:x:1000:' >> /etc/group \
+ && mkdir -p /home/bot/project /work \
+ && chown -R 1000:1000 /nix /home/bot /work
+
+RUN rm -f /etc/nix/nix.conf \
+ && printf 'sandbox = false\nbuild-users-group =\nexperimental-features = nix-command flakes\ntrusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=\n' > /etc/nix/nix.conf
+
+ENV HOME=/home/bot
+ENV USER=bot
+
+USER 1000:1000
+WORKDIR /home/bot/project
+```
 
 ### 2. Run shape
 
@@ -85,11 +108,6 @@ My laptop is an M4 MacBook Air with 32GB of RAM running macOS 27 and the latest 
 - The agent has only a read-only GitHub token and no ssh agent, so it has no credentials to push. The human does all pushes.
 - Sub-agents share one working tree, so their edits are mixed in one `git diff`.
 
-## Unverified
-
-- How to skip Claude Code's first-run setup in a stateless container. The record lives in `~/.claude.json`; the exact key to pre-seed was not found.
-- Whether opencode can use a subscription login via an env var.
-
 ## Verification (spike first, before building three images)
 
 1. Build `base` plus a trivial layer; confirm `nix develop` works inside the guest as non-root on a project flake that defines a devShell. Note anything that breaks.
@@ -102,11 +120,7 @@ My laptop is an M4 MacBook Air with 32GB of RAM running macOS 27 and the latest 
 ## Skills
 
 - [apple/container@container](https://github.com/apple/container)
-- [trailofbits/skills@devcontainer-setup](https://github.com/trailofbits/skills)
 - [github/awesome-copilot@multi-stage-dockerfile](https://github.com/github/awesome-copilot)
-- [bagelhole/devops-security-agent-skills@container-hardening](https://github.com/bagelhole/devops-security-agent-skills)
-- [bagelhole/devops-security-agent-skills@devcontainers-nix](https://github.com/bagelhole/devops-security-agent-skills)
-- [aldoborrero/cc-skills-nix@nix-oci-image](https://github.com/aldoborrero/cc-skills-nix)
 
 ## Links
 

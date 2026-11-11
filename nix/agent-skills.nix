@@ -18,6 +18,8 @@ let
     "AtomicMegaNerd/agent-skills/rcd-go-task"
     "AtomicMegaNerd/agent-skills/rcd-golangci-lint"
     "vercel-labs/skills/skills/find-skills"
+    "apple/container/skills/container"
+    "github/awesome-copilot/skills/multi-stage-dockerfile"
   ];
 
   skillName = skill: lib.last (lib.splitString "/" skill);
