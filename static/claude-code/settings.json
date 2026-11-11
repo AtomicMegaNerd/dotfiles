@@ -17,12 +17,14 @@
   "permissions": {
     "disableBypassPermissionsMode": "disable",
     "blockReadsOutsideWorkingDirectories": true,
-    "additionalDirectories": ["/work"],
-    "ask": ["Edit(//work/**)"],
+    "additionalDirectories": ["~/Code", "/tmp"],
+    "ask": ["Edit(~/Code/**)"],
     "allow": [
-      "Read(//work/**)",
+      "Read(~/Code/**)",
+      "Read(//tmp/**)",
       "Glob",
       "Grep",
+      "Edit(//tmp/**)",
       "Bash(git status *)",
       "Bash(git diff *)",
       "Bash(git log *)",

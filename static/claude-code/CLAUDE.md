@@ -60,12 +60,11 @@ Use other commands as needed:
 - While it is okay to write test programs in `/tmp` in the language we are developing in, never
   write scripts to edit code or do things the built in harness tools can do.
 
-### /work is your playground
+### /tmp is your playground
 
-You must never read, write, or run anything outside of `/work`. The project is mounted at
-`/work/project`. You are allowed to download anything you want or write any files you want to other
-directories under `/work` for experiments. Use the write tool instead of bash tools like touch or
-echo. You have full read and edit permissions on `/work`.
+You are allowed to download anything you want or write any files you want to `/tmp`. Use that to
+make your work more efficient. Use the write tool for `/tmp` instead of bash tools like touch or
+echo. You have full read and edit permissions on `/tmp`.
 
 ## Behaviour
 
