@@ -27,6 +27,21 @@ in
 
   microvm = {
     hypervisor = "qemu";
+    qemu.package = pkgs.qemu_kvm.override {
+      gtkSupport = false;
+      sdlSupport = false;
+      spiceSupport = false;
+      vncSupport = false;
+      pulseSupport = false;
+      pipewireSupport = false;
+      alsaSupport = false;
+      jackSupport = false;
+      smartcardSupport = false;
+      usbredirSupport = false;
+      openGLSupport = false;
+      virglSupport = false;
+      rutabagaSupport = false;
+    };
     inherit (runnerConfig) vcpu mem;
     balloon = true;
     shares = [
