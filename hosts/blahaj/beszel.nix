@@ -19,7 +19,7 @@
 
   virtualisation.oci-containers.containers.beszel-agent = {
     autoStart = true;
-    image = "henrygd/beszel-agent:0.21.1";
+    image = "henrygd/beszel-agent:0.21.2";
     volumes = [
       "/var/lib/beszel/agent:/var/lib/beszel-agent"
       "/run/beszel_socket:/beszel_socket"
