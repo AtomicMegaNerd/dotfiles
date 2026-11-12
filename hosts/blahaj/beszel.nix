@@ -4,7 +4,7 @@
 
   virtualisation.oci-containers.containers.beszel-hub = {
     autoStart = true;
-    image = "henrygd/beszel:0.21.1";
+    image = "henrygd/beszel:0.21.2";
     ports = [
       "127.0.0.1:8090:8090/tcp"
     ];
