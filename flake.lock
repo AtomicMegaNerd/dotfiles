@@ -40,43 +40,6 @@
         "type": "github"
       }
     },
-    "flake-compat": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1767039857,
-        "narHash": "sha256-vNpUSpF5Nuw8xvDLj2KCwwksIbjua2LZCqhV1LNRDns=",
-        "owner": "NixOS",
-        "repo": "flake-compat",
-        "rev": "5edf11c44bc78a0d334f6334cdaf7d60d732daab",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "repo": "flake-compat",
-        "type": "github"
-      }
-    },
-    "git-hooks": {
-      "inputs": {
-        "flake-compat": "flake-compat",
-        "nixpkgs": [
-          "nixpkgs-unstable"
-        ]
-      },
-      "locked": {
-        "lastModified": 1793686154,
-        "narHash": "sha256-Zb/0L3soxrkfcrywpfp0J++0WFLB3tzh0Xtx9up+VNc=",
-        "owner": "cachix",
-        "repo": "git-hooks.nix",
-        "rev": "204b6977e00caac19e2313015a598543ca7be150",
-        "type": "github"
-      },
-      "original": {
-        "owner": "cachix",
-        "repo": "git-hooks.nix",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -153,11 +116,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1793977579,
-        "narHash": "sha256-4/Yzr1fWTh/zBAR1tR84ZQ1Zhmor8AXwgD4AS7sPn60=",
-        "rev": "4fe25e12eb9f4c744966dd3de5a05246cf098601",
+        "lastModified": 1794158174,
+        "narHash": "sha256-FdIy8FR+/hjGqfL/JkSS5NdFsmSrtuc8Jy2vZHzRIvA=",
+        "rev": "f6bf1059f02576e0b913c7b49d5e4eb6dda9cc22",
         "type": "tarball",
-        "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1109744.4fe25e12eb9f/nixexprs.tar.zst"
+        "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1114617.f6bf1059f025/nixexprs.tar.zst"
       },
       "original": {
         "type": "tarball",
@@ -168,7 +131,6 @@
       "inputs": {
         "agenix": "agenix",
         "catppuccin": "catppuccin",
-        "git-hooks": "git-hooks",
         "home-manager": "home-manager",
         "microvm": "microvm",
         "nix-darwin": "nix-darwin",

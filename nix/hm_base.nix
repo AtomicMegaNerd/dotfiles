@@ -34,7 +34,6 @@
     jq
     tree
     glow
-    slumber
 
     # Additional nix tooling
     nix-graph

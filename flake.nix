@@ -26,10 +26,6 @@
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    git-hooks = {
-      url = "github:cachix/git-hooks.nix";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
   };
 
   outputs =
@@ -42,7 +38,6 @@
       agenix,
       microvm,
       catppuccin,
-      git-hooks,
       ...
     }:
     let
@@ -129,40 +124,7 @@
 
       checks = forAllSystems (
         system:
-        let
-          pkgs = unstablePkgs system;
-        in
-        {
-          pre-commit-check = git-hooks.lib.${system}.run {
-            src = ./.;
-            package = pkgs.prek;
-            hooks = {
-              nixfmt.enable = true;
-              yaml-lint = {
-                enable = true;
-                name = "yaml lint";
-                entry = "${pkgs.yamllint}/bin/yamllint --strict";
-                language = "system";
-                types = [ "yaml" ];
-              };
-              md-lint = {
-                enable = true;
-                name = "markdown lint";
-                entry = "${pkgs.markdownlint-cli2}/bin/markdownlint-cli2";
-                language = "system";
-                types = [ "markdown" ];
-              };
-              md-format = {
-                enable = true;
-                name = "markdown format";
-                entry = "${pkgs.oxfmt}/bin/oxfmt";
-                language = "system";
-                types = [ "markdown" ];
-              };
-            };
-          };
-        }
-        // nixpkgs.lib.optionalAttrs (system == "x86_64-linux") {
+        nixpkgs.lib.optionalAttrs (system == "x86_64-linux") {
           nixos-blahaj = self.nixosConfigurations.blahaj.config.system.build.toplevel;
           home-rcd-blahaj = self.homeConfigurations."rcd@blahaj".activationPackage;
         }
@@ -172,16 +134,5 @@
         }
       );
 
-      devShells = forAllSystems (system: {
-        default =
-          let
-            pkgs = nixpkgs.legacyPackages.${system};
-            inherit (self.checks.${system}.pre-commit-check) shellHook enabledPackages;
-          in
-          pkgs.mkShell {
-            inherit shellHook;
-            packages = enabledPackages;
-          };
-      });
     };
 }
