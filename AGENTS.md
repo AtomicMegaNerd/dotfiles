@@ -10,8 +10,6 @@ Always use the `rcd-nix` agent when working with this repo.
   `Schooner` (macOS, `aarch64-darwin`).
 - We use `nixpkgs` (stable) for NixOS but `nixpkgs-unstable` for everything else. This is
   intentional.
-- The [nix-direnv](https://github.com/nix-community/nix-direnv#readme) dev shell installs pre-commit
-  hooks (`nixfmt`, `yamllint`, `markdownlint-cli2`, `oxfmt`) that run on commit.
 
 ### Home Manager
 
