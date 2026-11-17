@@ -27,9 +27,6 @@ in
 {
   home.packages = [ pkgs.skills ];
 
-  home.file.".claude/skills".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.agents/skills";
-
   home.activation.installAgentSkills = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     export PATH="${
       lib.makeBinPath [

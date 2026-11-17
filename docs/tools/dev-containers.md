@@ -2,15 +2,15 @@
 
 ## Goal
 
-Use OCI-compatible containers that run coding agents (claude, opencode) so my Mac can be protected from the agents and from malicious packages from npm, PyPI, and similar registries. AtomicMegaNerd (amn) uses Nix. All of his projects have a `flake.nix` with a devShell.
+Use OCI-compatible containers to run OpenCode so my Mac can be protected from the agent and from malicious packages from npm, PyPI, and similar registries. AtomicMegaNerd (amn) uses Nix. All of his projects have a `flake.nix` with a devShell.
 
 Our initial implementation is very simple. We can add from there.
 
 ## High Level Requirements
 
-- One image for each agentic harness we use.
+- One image for the agentic harness we use.
 - We bake the configuration into each image from the config files in this flake.
-- Pass secrets with env-file only. Creds needed for each agent harness, its subscriptions, and for a read-only tokten for `gh`.
+- Pass secrets with env-file only. Credentials are needed for the agent and for a read-only token for `gh`.
 - We create a user called `bot` which uses the following directories:
   - `/home/bot` the home directory, agent configs live here
   - `/home/bot/project` this is where the project is mounted to.
@@ -26,39 +26,34 @@ Our initial implementation is very simple. We can add from there.
 
 See the directories below for our images:
 
-- [amn-claude](../../containers/dev-agents/amn-claude/)
 - [amn-opencode](../../containers/dev-agents/amn-opencode/)
 
 ### Build
 
 See [dev-agents.nix](../../nix/dev-agents.nix) for our build and run scripts.
 
-- Specify which agent (`claude` or `opencode`)
-- Pushes to [forgejo](../services/forgejo.md] container registry at `git.megaparsec.ca`
+- Build and push the OpenCode image
+- Pushes to the [Forgejo](../services/forgejo.md) container registry at `git.megaparsec.ca`.
 
 ```fish
-amn-agent-build claude
+amn-agent-build
 ```
 
 ### Run
 
-- Specify which agent (`claude` or `opencode`) and the project path
+- Specify the project path
 
 ```fish
-amn-agent opencode .
+amn-agent .
 ```
 
 ## Secrets
 
-The env files are agenix secrets, `amn-claude.env.age` and `amn-opencode.env.age`. See [secrets.md](../infra/secrets.md) for how to add and edit them. `amn-agent` decrypts them at launch.
+The env file is the agenix secret `amn-opencode.env.age`. See [secrets.md](../infra/secrets.md) for how to add and edit it. `amn-agent` decrypts it at launch.
 
-Each file holds `KEY=value` lines:
+The file holds `KEY=value` lines:
 
 ```text
-# amn-claude.env
-CLAUDE_CODE_OAUTH_TOKEN=...
-GH_TOKEN=...
-
 # amn-opencode.env
 OPENCODE_API_KEY=...
 GH_TOKEN=...
@@ -67,8 +62,8 @@ CONTEXT7_API_KEY=...
 
 ## Verification
 
-- Verify that each agent harness is authenticated even though we only passed in environent variables
-- Verify that each image is authenticated to `gh`.
+- Verify that the agent is authenticated even though we only passed in environment variables.
+- Verify that the image is authenticated to `gh`.
 
 ## Notes
 
@@ -93,11 +88,6 @@ devShells = forAllSystems (
 );
 ```
 
-### Claude Code
-
-- `claude setup-token` prints a one-year OAuth token for a Pro plan. Set it as `CLAUDE_CODE_OAUTH_TOKEN`.
-- Permissions are left as is - the container is extra protection.
-
 ### OpenCode
 
 - Pass the API key from the OpenCode Go workspace to OpenCode as `OPENCODE_API_KEY`.
@@ -110,10 +100,6 @@ devShells = forAllSystems (
 ## Links
 
 - [Apple container docs](https://github.com/apple/container/tree/main/docs)
-- [Claude Code authentication](https://code.claude.com/docs/en/authentication)
-- [Anthropic: Claude Code dev containers](https://code.claude.com/docs/en/devcontainer)
 - OpenCode V2: [model credentials](https://opencode.ai/v2/docs/models) and [providers](https://opencode.ai/v2/docs/cli/providers)
 - [GitHub CLI environment variables](https://cli.github.com/manual/gh_help_environment)
-- [PaulDuvall: Claude Code devcontainer guide](https://github.com/PaulDuvall/claude-code/blob/main/docs/devcontainer-guide.md)
-- [sayem314: Run Codex, Claude Code and OpenCode in Docker without giving them your host](https://dev.to/sayem314/run-codex-claude-code-and-opencode-in-docker-without-giving-them-your-host-1i3e)
 - [Signadot: Running coding agents in parallel](https://www.signadot.com/blog/running-coding-agents-in-parallel/)
