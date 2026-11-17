@@ -24,6 +24,7 @@ fade_enabled = true
 enabled = true
 fingers = 3
 skip_empty = false
+invert_horizontal_swipe = true
 
 [settings.layout]
 mode = "master_stack"
