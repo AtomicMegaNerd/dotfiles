@@ -1,0 +1,9 @@
+-- Rex configuration.
+-- Managed by Home Manager from ~/Code/Configs/dotfiles/static/rex/init.lua.
+-- Edit it in the dotfiles flake, not in ~/.config/rex.
+--
+-- Migrated 2026-11-17 from Herdr (~/.config/herdr/config.toml) and Ghostty
+-- (~/.config/ghostty/config). Neither source contributes a key binding:
+-- Herdr set only a prefix (ctrl+a) with no [[keys.command]] entries, and Rex
+-- has no prefix concept; Ghostty set fonts, theme, and terminal behavior only.
+-- cmd+k keeps Rex's default session.switch (user's choice over clear-terminal).

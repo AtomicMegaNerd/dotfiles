@@ -1,3 +1,7 @@
+# See documentation at
+# https://acsandmann.github.io/rift-docs/
+# test config by running: `rift-cli execute config reload`
+
 [settings]
 focus_follows_mouse = false
 animate = true
@@ -5,9 +9,27 @@ default_disable = false
 
 [settings.ui.menu_bar]
 enabled = true
+show_empty = true
+
+[settings.ui.stack_line]
+enabled = false
+
+[settings.ui.mission_control]
+enabled = true
+fade_duration_ms = 50.0
+window_previews = false
+fade_enabled = true
+
+[settings.gestures]
+enabled = true
+fingers = 3
+skip_empty = false
 
 [settings.layout]
-mode = "master_stack"
+mode = "bsp"
+
+[settings.layout.bsp]
+single_window_aspect_ratio = 0.9
 
 [settings.layout.master_stack]
 master_ratio = 0.5
@@ -16,47 +38,98 @@ master_side = "left"
 new_window_placement = "stack"
 
 [settings.layout.gaps.outer]
+top = 5.0
 left = 5.0
 right = 5.0
+bottom = 5.0
 
 [settings.layout.gaps.inner]
 horizontal = 5.0
 vertical = 5.0
 
+[settings.drag_drop]
+enabled = false
+
 [virtual_workspaces]
-default_workspace_count = 1
-workspace_names = ["Main"]
+mode = "global"
+default_workspace_count = 4
+workspace_names = ["Alpha", "Beta", "Gamma", "Development"]
+default_workspace = 1
+prevent_wrapping = false
 app_rules = [
-  { app_id = "com.factorio", manage = false },
-  { app_id = "io.github.endless-sky", manage = false },
+  # Rules for assigning apps to workspaces
+  { app_id = "com.mitchellh.ghostty", workspace = "Development" },
+  { app_id = "com.superlogical.rex", workspace = "Development" },
+
+  # Rules for making smaller windows floating
+  { app_id = "git.acsandmann.rift", title_substring = "Rift Settings", floating = true },
+  { app_id = "com.apple.calculator", floating = true },
+  { app_id = "com.apple.Passwords", floating = true },
+  { app_id = "com.apple.systempreferences", floating = true },
+  { app_id = "com.wireguard.macos", floating = true },
+  { app_id = "com.lujjjh.LinearMouse", floating = true },
+  { app_id = "com.iconfactory.GraphiteLink", floating = true },
+  { app_id = "com.finetuneapp.FineTune", floating = true },
+  { app_id = "com.apple.Stickies", floating = true },
+  { app_id = "com.apple.archiveutility", floating = true },
+  { app_id = "com.apple.DeskCam", floating = true },
+  { app_id = "com.1password.1password", floating = true },
+  { app_id = "com.getcoldturkey.blocker", floating = true },
+
+  # Float dialogs from any app; app-specific rules above are more specific and win
+  { ax_subrole = "AXDialog", floating = true },
 ]
 
+[[virtual_workspaces.workspace_rules]]
+workspace = "Development"
+layout = "master_stack"
+
 [modifier_combinations]
-comb1 = "Alt + Shift"
+mod = "Alt + Shift"
 
 [keys]
+# Enable/disable tiling
 "Alt + Z" = "toggle_space_activated"
 
+# Fix tiling issues
+"Alt + O" = "toggle_orientation"
+"Alt + Equal" = "balance"
+"mod + P" = "promote_to_master"
+
+# Switch Layouts
+"mod + B" = { set_workspace_layout = { mode = "bsp" } }
+"mod + M" = { set_workspace_layout = { mode = "master_stack" } }
+
+# Switch Rift workspaces (indexes are zero-based)
+"Alt + 1" = { switch_to_workspace = 0 }
+"Alt + 2" = { switch_to_workspace = 1 }
+"Alt + 3" = { switch_to_workspace = 2 }
+"Alt + 4" = { switch_to_workspace = 3 }
+"Alt + Left" = "prev_workspace"
+"Alt + Right" = "next_workspace"
+
+# Move the focused window to a Rift workspace
+"mod + 1" = { move_window_to_workspace = 0 }
+"mod + 2" = { move_window_to_workspace = 1 }
+"mod + 3" = { move_window_to_workspace = 2 }
+"mod + 4" = { move_window_to_workspace = 3 }
+
+# Move Focus
 "Alt + H" = { move_focus = "left" }
 "Alt + J" = { move_focus = "down" }
 "Alt + K" = { move_focus = "up" }
 "Alt + L" = { move_focus = "right" }
 
-"comb1 + H" = { move_node = "left" }
-"comb1 + J" = { move_node = "down" }
-"comb1 + K" = { move_node = "up" }
-"comb1 + L" = { move_node = "right" }
+# Move Window within the Space
+"mod + H" = { move_node = "left" }
+"mod + J" = { move_node = "down" }
+"mod + K" = { move_node = "up" }
+"mod + L" = { move_node = "right" }
 
-"Alt + Shift + Equal" = { adjust_master_ratio = 0.05 }
-"Alt + Shift + Minus" = { adjust_master_ratio = -0.05 }
-"Alt + Shift + Space" = "toggle_window_floating"
+# Resize
+"mod + Equal" = { adjust_master_ratio = 0.05 }
+"mod + Minus" = { adjust_master_ratio = -0.05 }
 
-# This turns off floating and makes a window float in the screen on the 4k monitor
-"Alt + Shift + C" = { toggle_window_floating = { center = true, size = { w = 1200, h = 1400 } } }
-
+# Other Window Modifiers
+"mod + Space" = "toggle_window_floating"
 "Alt + F" = "toggle_fullscreen"
-"Alt + Shift + F" = "toggle_fullscreen_within_gaps"
-
-"Alt + Shift + D" = "debug"
-"Alt + Ctrl + S" = "serialize"
-"Alt + Ctrl + Q" = "save_and_exit"

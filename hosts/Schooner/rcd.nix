@@ -7,6 +7,7 @@
     ../../nix/opencode.nix
     ../../nix/dev-agents.nix
     ../../nix/rift.nix
+    ../../nix/rex.nix
   ];
 
   home = {

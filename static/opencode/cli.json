@@ -3,7 +3,8 @@
   "theme": {
     "name": "catppuccin-frappe"
   },
-  "plugins": [
-    "./herdr-tui-session.js"
-  ]
+  "tabs": {
+    "mode": "off"
+  },
+  "plugins": ["./herdr-tui-session.js"]
 }

@@ -28,13 +28,6 @@ in
       # Extra CA bundle for Node.js tools
       set -gx NODE_EXTRA_CA_CERTS /etc/ssl/certs/ca-certificates.crt
 
-      if test -f $XDG_CONFIG_HOME/opencode/home-manager.json
-        set -gx OPENCODE_CONFIG $XDG_CONFIG_HOME/opencode/home-manager.json
-      end
-      if test -f $XDG_CONFIG_HOME/opencode/home-manager-cli.json
-        set -gx OPENCODE_CLI_CONFIG_CONTENT (cat $XDG_CONFIG_HOME/opencode/home-manager-cli.json)
-      end
-
       fish_add_path -g $GOPATH/bin
       fish_add_path -g $HOME/.local/bin
       fish_add_path -g $CARGO_HOME/bin

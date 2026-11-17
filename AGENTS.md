@@ -67,14 +67,12 @@ Services run as Podman containers on blahaj on Podman's default dual-stack netwo
 ### OpenCode
 
 [OpenCode docs](https://opencode.ai/docs/). Config lives in `static/opencode/` as vanilla configs:
-`opencode.json`, `cli.json`, and `AGENTS.md`. `nix/opencode.nix` imports them with
-`mutableSettings = true`, so Home Manager owns the declarative layers while OpenCode can still
-mutate the runtime `~/.config/opencode/*.json` files.
+`opencode.json`, `cli.json`, and `AGENTS.md`. `nix/opencode.nix` imports them and Home Manager
+manages `~/.config/opencode/opencode.json` and `cli.json` directly. There is no mutable layer:
+change `static/opencode/` and rebuild (`nh home switch .`); do not edit the live files, and note
+the TUI settings dialog cannot write through the managed symlinks.
 
-`nix/fish.nix` sets `OPENCODE_CONFIG` and `OPENCODE_CLI_CONFIG_CONTENT` to point OpenCode at
-home-manager's generated configs.
-
-See [opencode.nix](./nix/opencode.nix) and [fish.nix](./nix/fish.nix).
+See [opencode.nix](./nix/opencode.nix).
 
 ### Rift
 
