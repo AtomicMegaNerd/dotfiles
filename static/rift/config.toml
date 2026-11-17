@@ -26,7 +26,7 @@ fingers = 3
 skip_empty = false
 
 [settings.layout]
-mode = "bsp"
+mode = "master_stack"
 
 [settings.layout.bsp]
 single_window_aspect_ratio = 0.9
@@ -79,10 +79,6 @@ app_rules = [
   # Float dialogs from any app; app-specific rules above are more specific and win
   { ax_subrole = "AXDialog", floating = true },
 ]
-
-[[virtual_workspaces.workspace_rules]]
-workspace = "Development"
-layout = "master_stack"
 
 [modifier_combinations]
 mod = "Alt + Shift"
