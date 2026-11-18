@@ -35,6 +35,13 @@ in
     + lib.optionalString isMac ''
       fish_add_path -g /opt/homebrew/bin
       fish_add_path -g /Applications/Bear.app/Contents/MacOS
+    ''
+    + ''
+      # Rex puts rex on the PATH of its own terminals; shells started outside
+      # Rex must re-add it (https://www.superlogical.com/rex/docs/automate/cli)
+      if set -q REX_BIN_DIR; and test -n "$REX_BIN_DIR"
+          fish_add_path --path --prepend --move $REX_BIN_DIR
+      end
     '';
 
     shellAliases = {

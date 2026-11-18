@@ -28,6 +28,11 @@ in
     + lib.optionalString isMac ''
       path add "/opt/homebrew/bin"
       path add "/Applications/Bear.app/Contents/MacOS"
+    ''
+    + ''
+      # Rex puts rex on the PATH of its own terminals; shells started outside
+      # Rex must re-add it (https://www.superlogical.com/rex/docs/automate/cli)
+      if (($env.REX_BIN_DIR? | default "") | is-not-empty) { path add $env.REX_BIN_DIR }
     '';
 
     shellAliases = {
