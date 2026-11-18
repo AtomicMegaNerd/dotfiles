@@ -23,6 +23,10 @@ you should load when relevant:
 - `nixpkgs-development` — Nixpkgs packaging and APIs. Load this for package overrides, overlays, or
   working with `nixpkgs.lib`/`pkgs`.
 - `microvm-nix` — Nix project for managing MicroVM's in Nix.
+- `opencode` — OpenCode itself. Load this when working on OpenCode configuration, agents, skills,
+  plugins, or its API.
+- `rex` — The `rex` CLI for managing Rex sessions. Load this when opening tabs, arranging panes, or
+  controlling connected Rex apps.
 
 This flake uses `nixpkgs` (stable) for NixOS and `nixpkgs-unstable` for Home Manager, nix-darwin,
 and development tooling.

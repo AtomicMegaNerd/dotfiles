@@ -9,6 +9,13 @@
         { "action": "skill", "effect": "allow", "resource": "rcd-golang" },
         { "action": "skill", "effect": "allow", "resource": "rcd-golangci-lint" },
         { "action": "skill", "effect": "allow", "resource": "rcd-go-task" },
+        { "action": "skill", "effect": "allow", "resource": "opencode" },
+        { "action": "skill", "effect": "allow", "resource": "rex" },
+        {
+          "action": "external_directory",
+          "effect": "allow",
+          "resource": "~/.agents/skills/rex/*"
+        },
         {
           "action": "external_directory",
           "effect": "allow",
@@ -44,6 +51,13 @@
         { "action": "skill", "effect": "allow", "resource": "nixos-operations" },
         { "action": "skill", "effect": "allow", "resource": "nixos-wiki" },
         { "action": "skill", "effect": "allow", "resource": "nixpkgs-development" },
+        { "action": "skill", "effect": "allow", "resource": "opencode" },
+        { "action": "skill", "effect": "allow", "resource": "rex" },
+        {
+          "action": "external_directory",
+          "effect": "allow",
+          "resource": "~/.agents/skills/rex/*"
+        },
         {
           "action": "external_directory",
           "effect": "allow",

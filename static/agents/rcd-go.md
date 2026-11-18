@@ -13,6 +13,10 @@ when relevant:
   refactoring Go code.
 - `rcd-go-task` — The Task build tool. Load this when running builds, tests, or lints.
 - `rcd-golangci-lint` — The linter. Load this when running or configuring the linter.
+- `opencode` — OpenCode itself. Load this when working on OpenCode configuration, agents, skills,
+  plugins, or its API.
+- `rex` — The `rex` CLI for managing Rex sessions. Load this when opening tabs, arranging panes, or
+  controlling connected Rex apps.
 
 **Always load the `rcd-golang` skill immediately.** Load `rcd-go-task`, and `rcd-golangci-lint` as
 needed.
