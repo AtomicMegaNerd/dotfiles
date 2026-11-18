@@ -20,12 +20,6 @@ fade_duration_ms = 50.0
 window_previews = false
 fade_enabled = true
 
-[settings.gestures]
-enabled = true
-fingers = 3
-skip_empty = false
-invert_horizontal_swipe = true
-
 [settings.layout]
 mode = "master_stack"
 
@@ -52,18 +46,13 @@ vertical = 5.0
 enabled = false
 
 [virtual_workspaces]
-mode = "global"
-default_workspace_count = 4
-workspace_names = ["Alpha", "Beta", "Gamma", "Development"]
-default_workspace = 1
+default_workspace_count = 1
+workspace_names = ["Main"]
 prevent_wrapping = false
 app_rules = [
-  # Rules for assigning apps to workspaces
-  { app_id = "com.mitchellh.ghostty", workspace = "Development" },
-  { app_id = "com.superlogical.rex", workspace = "Development" },
-
   # Rules for making smaller windows floating
   { app_id = "git.acsandmann.rift", title_substring = "Rift Settings", floating = true },
+  { app_id = "com.entrust.Entrust-Soft-Token", floating = true },
   { app_id = "com.apple.calculator", floating = true },
   { app_id = "com.apple.Passwords", floating = true },
   { app_id = "com.apple.systempreferences", floating = true },
@@ -96,20 +85,6 @@ mod = "Alt + Shift"
 # Switch Layouts
 "mod + B" = { set_workspace_layout = { mode = "bsp" } }
 "mod + M" = { set_workspace_layout = { mode = "master_stack" } }
-
-# Switch Rift workspaces (indexes are zero-based)
-"Alt + 1" = { switch_to_workspace = 0 }
-"Alt + 2" = { switch_to_workspace = 1 }
-"Alt + 3" = { switch_to_workspace = 2 }
-"Alt + 4" = { switch_to_workspace = 3 }
-"Alt + Left" = "prev_workspace"
-"Alt + Right" = "next_workspace"
-
-# Move the focused window to a Rift workspace
-"mod + 1" = { move_window_to_workspace = 0 }
-"mod + 2" = { move_window_to_workspace = 1 }
-"mod + 3" = { move_window_to_workspace = 2 }
-"mod + 4" = { move_window_to_workspace = 3 }
 
 # Move Focus
 "Alt + H" = { move_focus = "left" }
