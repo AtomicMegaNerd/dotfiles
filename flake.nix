@@ -26,6 +26,10 @@
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    rex = {
+      url = "https://pkgs.superlogical.com/rex/nix/preview.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs =
@@ -38,6 +42,7 @@
       agenix,
       microvm,
       catppuccin,
+      rex,
       ...
     }:
     let
@@ -91,6 +96,7 @@
             ./nix/options.nix
             catppuccin.homeModules.catppuccin
             agenix.homeManagerModules.default
+            rex.homeManagerModules.default
             { home.packages = [ agenix.packages.${system}.default ]; }
           ];
         };

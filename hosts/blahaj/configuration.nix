@@ -108,6 +108,8 @@ in
     ];
     shell = pkgs.fish;
     openssh.authorizedKeys.keys = [ rcd_pub_key ];
+    # See: https://www.superlogical.com/rex/docs/linux/remote-access#ssh
+    linger = true;
   };
 
   programs.fish.enable = true;
