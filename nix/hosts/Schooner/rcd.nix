@@ -9,7 +9,7 @@
     ../../rex.nix
   ];
 
-  programs.opencode.settings = builtins.fromJSON (builtins.readFile ../../../static/hosts/Schooner/opencode-superlogical.json);
+  programs.opencode.settings = builtins.fromJSON (builtins.readFile ../../../static/hosts/Schooner/opencode/opencode-superlogical.json);
 
   home = {
     packages = with pkgs; [
