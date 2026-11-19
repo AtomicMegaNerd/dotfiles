@@ -40,6 +40,14 @@
       ]
     }
   },
+  "mcp": {
+    "servers": {
+      "github": {
+        "type": "remote",
+        "url": "https://api.githubcopilot.com/mcp/"
+      }
+    }
+  },
   "permissions": [
     { "action": "skill", "effect": "deny", "resource": "rcd-golang" },
     { "action": "skill", "effect": "deny", "resource": "rcd-golangci-lint" },
