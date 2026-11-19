@@ -10,5 +10,4 @@ common/nvim/lazy-lock.json
 .direnv
 .pre-commit-config.yaml
 **/zed/conversations
-.crush
 result
