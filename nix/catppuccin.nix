@@ -12,14 +12,12 @@ in
     accent = lib.mkIf enable accent;
     # Neovim manages its own theme
     nvim.enable = false;
-    # These programs' themes/settings are owned by static files in
-    # static/common/<program>; the generated files would collide with our
-    # xdg.configFile entries (catppuccin autoEnable otherwise themes
-    # everything it detects).
+    # Lazygit's theme and settings are managed from static/common/lazygit.
     lazygit.enable = false;
     eza.enable = false;
     btop.enable = false;
     starship.enable = false;
+    bat.enable = false;
   };
 
   home.sessionVariables = lib.mkIf enable {

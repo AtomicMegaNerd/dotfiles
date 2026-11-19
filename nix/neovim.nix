@@ -1,19 +1,10 @@
 { pkgs, config, ... }:
 {
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    vimAlias = true;
-    withRuby = false;
-    withPython3 = false;
-    waylandSupport = false; # On blahaj we don't need this
-    extraPackages = with pkgs; [
-      gcc
-      tree-sitter
-      nodejs-slim
-      cargo
-      rustc
-    ];
+  home.packages = [ pkgs.neovim ];
+
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    VISUAL = "nvim";
   };
 
   xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink (
