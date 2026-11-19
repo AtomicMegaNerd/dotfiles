@@ -120,10 +120,9 @@ nh home switch
 
 ## Neovim
 
-> [!NOTE]
-> My Neovim configuration is in its own separate [rcd-nvim](https://github.com/AtomicMegaNerd/rcd-nvim) repo.
-
-This flake clones my neovim config repo and deploys it to `~/.config/nvim`. See [neovim.nix](./nix/neovim.nix).
+The shared Neovim configuration lives in [`static/common/nvim`](./static/common/nvim/). Home
+Manager links it to `~/.config/nvim` on Nix-managed systems. On `workmbp`, link it manually. See
+the [Neovim documentation](./docs/neovim.md).
 
 ---
 
@@ -134,7 +133,7 @@ This is the structure of this repo:
 - `flake.nix` - The Nix flake file that defines the NixOS, Nix Darwin, and Home Manager
   configurations.
 - `docs/` - Documentation
-- `hosts/` - Directory containing host-specific configurations.
+- `nix/hosts/` - Directory containing host-specific Nix configurations.
 - `nix/` - Directory containing Nix sources for different apps and common modules.
 - `static/` - Directory containing static files used in configurations.
 - `secrets/` - Managing secrets with agenix and op (1Password CLI).

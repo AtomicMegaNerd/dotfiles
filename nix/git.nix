@@ -25,7 +25,7 @@ in
       # Setup Signing for 1Password if this is for macOS
       signing = lib.optionalAttrs isMac {
         format = "ssh";
-        key = builtins.readFile ../static/rcd_pub_key;
+        key = builtins.readFile ../static/certs/rcd_pub_key;
       };
       gpg.ssh.allowedSignersFile = lib.mkIf isMac "~/.ssh/allowed_signers";
     };

@@ -1,7 +1,23 @@
 ---
 name: rcd-nix
 description: Nix, Home Manager, nix-darwin, and NixOS configuration
-color: blue
+color: "#5277C3"
+mode: all
+permissions:
+  - { action: skill, effect: allow, resource: nix-language }
+  - { action: skill, effect: allow, resource: nix-workflow }
+  - { action: skill, effect: allow, resource: home-manager }
+  - { action: skill, effect: allow, resource: nix-darwin }
+  - { action: skill, effect: allow, resource: nixos-operations }
+  - { action: skill, effect: allow, resource: nixos-wiki }
+  - { action: skill, effect: allow, resource: nixpkgs-development }
+  - { action: skill, effect: allow, resource: opencode }
+  - { action: skill, effect: allow, resource: rex }
+  - { action: shell, effect: allow, resource: "nix flake metadata *" }
+  - { action: shell, effect: allow, resource: "nix flake info *" }
+  - { action: shell, effect: allow, resource: "nix flake show *" }
+  - { action: shell, effect: allow, resource: "nix-instantiate --parse flake.nix" }
+  - { action: shell, effect: allow, resource: "nh search *" }
 ---
 
 # RCD Nix Agent

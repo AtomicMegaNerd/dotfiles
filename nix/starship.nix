@@ -1,12 +1,10 @@
-{ ... }:
+{ config, ... }:
 {
   programs.starship = {
     enable = true;
     enableFishIntegration = true;
-    settings = {
-      username = {
-        show_always = true;
-      };
-    };
+    configPath = "${config.xdg.configHome}/starship/starship.toml";
   };
+
+  xdg.configFile."starship/starship.toml".source = ../static/common/starship/starship.toml;
 }

@@ -1,0 +1,10 @@
+{
+  "mcp": {
+    "servers": {
+      "superlogical": {
+        "type": "remote",
+        "url": "https://www.superlogical.com/rex/community-mcp"
+      }
+    }
+  }
+}

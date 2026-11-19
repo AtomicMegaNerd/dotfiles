@@ -1,0 +1,77 @@
+tap "acsandmann/tap"
+tap "anomalyco/tap"
+tap "azure/functions", trusted: true
+tap "libkrun/krun", trusted: true
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
+# Resource monitor. C++ version and continuation of bashtop and bpytop
+brew "btop"
+# Get a file from an HTTP, HTTPS or FTP server
+brew "curl"
+# Isolated development environments using Docker
+brew "docker-compose"
+# Convert text between DOS, UNIX, and Mac formats
+brew "dos2unix"
+# Disk Usage/Free Utility - a better 'df' alternative
+brew "duf"
+# More intuitive version of du in rust
+brew "dust"
+# Modern, maintained replacement for ls
+brew "eza"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
+# User-friendly command-line shell for UNIX-like operating systems
+brew "fish"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# GitHub CLI
+brew "gh"
+# Distributed revision control system
+brew "git"
+# Syntax-highlighting pager for git and diff output
+brew "git-delta"
+# Quickly rewrite git repository history
+brew "git-filter-repo"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
+# Simple terminal UI for git commands
+brew "lazygit"
+# Polyglot runtime manager (asdf rust clone)
+brew "mise"
+# Incremental parsing library
+brew "tree-sitter"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
+# Tool for managing OCI containers and pods
+brew "podman"
+# Modern replacement for ps written in Rust
+brew "procs"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# Agent skills manager
+brew "skills"
+# Cross-shell prompt for astronauts
+brew "starship"
+# Display directories as trees (with optional color/HTML output)
+brew "tree"
+# Parser generator tool
+brew "tree-sitter-cli"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
+# Tiling window manager for macOS
+brew "acsandmann/tap/rift", trusted: true
+# OpenCode V2 - the AI coding agent for the terminal
+brew "anomalyco/tap/opencode-v2", trusted: true
+# Microsoft Azure CLI 2.0
+cask "azure-cli"
+# Brings the power of Copilot coding agent directly to your terminal
+cask "copilot-cli"
+cask "font-fira-code-nerd-font"
+cask "font-jetbrains-mono-nerd-font"
+cask "font-monaspace-nf"
+# Cross-platform Git credential storage for multiple hosting providers
+cask "git-credential-manager"
+# Customise mouse behavior
+cask "linearmouse"
+# Knowledge base that works on top of a local folder of plain text Markdown files
+cask "obsidian"

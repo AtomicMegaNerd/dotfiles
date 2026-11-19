@@ -1,6 +1,6 @@
 # Backups
 
-[restic](https://restic.net/) backs up every service that keeps state on blahaj. See [backup.nix](../hosts/blahaj/backup.nix).
+[restic](https://restic.net/) backs up every service that keeps state on blahaj. See [backup.nix](../../nix/hosts/blahaj/backup.nix).
 
 | Service       | Backed up               |
 | ------------- | ----------------------- |

@@ -8,7 +8,7 @@ This documents the implementation of DNS on my network for the `megaparsec.ca` d
 
 ### Configuration
 
-DNS records and blocklists are configured declaratively in [blocky.nix](../hosts/blahaj/blocky.nix). Nix generates the Blocky YAML configuration and mounts it read-only in the container.
+DNS records and blocklists are configured declaratively in [blocky.nix](../../nix/hosts/blahaj/blocky.nix). Nix generates the Blocky YAML configuration and mounts it read-only in the container.
 
 ### Internal DNS records
 
@@ -74,7 +74,7 @@ Follow the steps in [Secrets](./secrets.md) to save the token in `secrets/cloudf
 
 #### Nix configuration
 
-The service is configured in [cloudflare-ddns.nix](../hosts/blahaj/cloudflare-ddns.nix). It reads the token from the secret and waits for `network-online.target` before it starts. Apply the configuration.
+The service is configured in [cloudflare-ddns.nix](../../nix/hosts/blahaj/cloudflare-ddns.nix). It reads the token from the secret and waits for `network-online.target` before it starts. Apply the configuration.
 
 #### Verification
 

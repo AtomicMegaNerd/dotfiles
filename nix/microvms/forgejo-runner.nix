@@ -90,7 +90,7 @@ in
     microVmNet.v4.host
   ];
 
-  security.pki.certificateFiles = [ ../../static/rcd-rootCA-pub.pem ];
+  security.pki.certificateFiles = [ ../../static/certs/rcd-rootCA-pub.pem ];
 
   virtualisation.podman = {
     enable = true;

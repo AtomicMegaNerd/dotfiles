@@ -12,6 +12,8 @@ in
     accent = lib.mkIf enable accent;
     # Neovim manages its own theme
     nvim.enable = false;
+    # Lazygit's theme and settings are managed from static/common/lazygit.
+    lazygit.enable = false;
   };
 
   home.sessionVariables = lib.mkIf enable {

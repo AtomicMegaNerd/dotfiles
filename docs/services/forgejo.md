@@ -2,23 +2,23 @@
 
 [Forgejo](https://forgejo.org/) is the internal Git forge at [git.megaparsec.ca](https://git.megaparsec.ca).
 
-We run Forgejo as a Podman container, [forgejo.nix](../hosts/blahaj/forgejo.nix).
+We run Forgejo as a Podman container, [forgejo.nix](../../nix/hosts/blahaj/forgejo.nix).
 
 ## CI/CD Runner
 
-We run the Forgejo Runner as a NixOS microVM. See [forgejo-runner.nix](../hosts/blahaj/forgejo-runner.nix).
+We run the Forgejo Runner as a NixOS microVM. See [forgejo-runner.nix](../../nix/hosts/blahaj/forgejo-runner.nix).
 
 ## Deploy
 
 ### 1. Server
 
-1. Import [forgejo.nix](../../hosts/blahaj/forgejo.nix) into the configuration for the specified host.
+1. Import [forgejo.nix](../../nix/hosts/blahaj/forgejo.nix) into the configuration for the specified host.
 2. Open [git.megaparsec.ca](https://git.megaparsec.ca) and finish the installer. Keep the prefilled settings, choose SQLite, and create the admin account under **Administrator Account Settings**.
 
 ### 2. Runner
 
 1. In Forgejo, open `/admin/actions/runners` and choose **Create new runner**. Copy the UUID and the token.
-2. Put the UUID in [forgejo-runner.nix](../../hosts/blahaj/forgejo-runner.nix). This is an identifier, not a secret.
+2. Put the UUID in [forgejo-runner.nix](../../nix/hosts/blahaj/forgejo-runner.nix). This is an identifier, not a secret.
 3. Setup the token in `secrets/forgejo-runner-token.age` see [secrets.md](../infra/secrets.md)
 4. In the [Beszel](./beszel.md) Hub, add a system for the VM. Save its `KEY` and `TOKEN` values in `secrets/runner-beszel-agent.age`.
 

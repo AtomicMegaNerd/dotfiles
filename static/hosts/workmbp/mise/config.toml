@@ -1,0 +1,18 @@
+[tools]
+node = "latest"
+bun = "latest"
+markdownlint-cli2 = "latest"
+oxfmt = "latest"
+oxlint = "latest"
+yamllint = "latest"
+tombi = "latest"
+uv = "latest"
+marksman = "latest"
+pre-commit = "latest"
+"npm:yaml-language-server" = "latest"
+"npm:bash-language-server" = "latest"
+"npm:fish-lsp" = "latest"
+
+[tools.rust]
+version = "stable"
+components = ["clippy", "rustfmt"]

@@ -69,7 +69,7 @@
       vmHostModules = {
         blahaj = [
           microvm.nixosModules.host
-          ./hosts/blahaj/forgejo-runner.nix
+          ./nix/hosts/blahaj/forgejo-runner.nix
           {
             microvm.vms.forgejo-runner.pkgs = vmPkgs;
           }
@@ -80,7 +80,7 @@
         hostname:
         nixpkgs.lib.nixosSystem {
           modules = [
-            ./hosts/${hostname}/configuration.nix
+            ./nix/hosts/${hostname}/configuration.nix
             agenix.nixosModules.default
           ]
           ++ (vmHostModules.${hostname} or [ ]);
@@ -92,7 +92,7 @@
         home-manager.lib.homeManagerConfiguration {
           pkgs = unstablePkgs system;
           modules = [
-            ./hosts/${hostname}/rcd.nix
+            ./nix/hosts/${hostname}/rcd.nix
             ./nix/options.nix
             catppuccin.homeModules.catppuccin
             agenix.homeManagerModules.default
@@ -107,7 +107,7 @@
         nix-darwin.lib.darwinSystem {
           pkgs = unstablePkgs "aarch64-darwin";
           modules = [
-            ./hosts/${hostname}/darwin.nix
+            ./nix/hosts/${hostname}/darwin.nix
           ];
         };
 

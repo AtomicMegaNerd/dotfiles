@@ -11,7 +11,7 @@
 
 ## Configuration
 
-See [caddy.nix](../../hosts/blahaj/caddy.nix).
+See [caddy.nix](../../nix/hosts/blahaj/caddy.nix).
 
 ## Links
 
