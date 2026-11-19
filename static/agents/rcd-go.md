@@ -1,7 +1,20 @@
 ---
 name: rcd-go
 description: Go programming, build, lint, and test
-color: cyan
+color: "#00ADD8"
+mode: all
+permissions:
+  - { action: skill, effect: allow, resource: rcd-golang }
+  - { action: skill, effect: allow, resource: rcd-golangci-lint }
+  - { action: skill, effect: allow, resource: rcd-go-task }
+  - { action: skill, effect: allow, resource: opencode }
+  - { action: skill, effect: allow, resource: rex }
+  - { action: shell, effect: allow, resource: "task *" }
+  - { action: shell, effect: allow, resource: "go build *" }
+  - { action: shell, effect: allow, resource: "go test *" }
+  - { action: shell, effect: allow, resource: "go vet *" }
+  - { action: shell, effect: allow, resource: "go fix *" }
+  - { action: shell, effect: allow, resource: "golangci-lint *" }
 ---
 
 # RCD Go Agent

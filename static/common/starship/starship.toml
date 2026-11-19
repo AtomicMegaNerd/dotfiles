@@ -1,0 +1,20 @@
+command_timeout = 5000
+
+[git_branch]
+truncation_length = 30
+
+[shell]
+disabled = false
+
+[[battery.display]]
+threshold = 10
+style = 'bold red'
+discharging_symbol = '😰'
+
+[[battery.display]]
+threshold = 30
+style = 'bold yellow'
+discharging_symbol = '😬'
+
+[username]
+show_always = true

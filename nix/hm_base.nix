@@ -40,10 +40,12 @@
 
     # Common linters and LSP servers
     bash-language-server
+    lua-language-server
     yaml-language-server
     yamllint
     nil
     nixfmt
+    stylua
     tombi
     oxfmt
     markdownlint-cli2
@@ -71,5 +73,6 @@
   # We always want to use the XDG standards when possible even on the Mac.
   xdg = {
     enable = true;
+    configFile."bat".source = ../static/common/bat;
   };
 }

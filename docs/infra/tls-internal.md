@@ -32,19 +32,19 @@ rm "$(mkcert -CAROOT)/rootCA-key.pem"
 
 ### Distribute the root CA
 
-Copy `rootCA.pem` to `static/` in this repo:
+Copy `rootCA.pem` to `static/certs/` in this repo:
 
 ```bash
-cp "$(mkcert -CAROOT)/rootCA.pem" static/rcd-rootCA-pub.pem
+cp "$(mkcert -CAROOT)/rootCA.pem" static/certs/rcd-rootCA-pub.pem
 ```
 
 ### On macOS
 
-The certificate is listed in `security.pki.certificateFiles` in [darwin.nix](../hosts/Schooner/darwin.nix). Apply it with `nh darwin switch`.
+The certificate is listed in `security.pki.certificateFiles` in [darwin.nix](../../nix/hosts/Schooner/darwin.nix). Apply it with `nh darwin switch`.
 
 ### On NixOS
 
-The certificate is listed in `security.pki.certificateFiles` in [configuration.nix](../hosts/blahaj/configuration.nix). Apply it with `nh os switch`. The Forgejo runner VM trusts it too, in [forgejo-runner.nix](../hosts/blahaj/forgejo-runner.nix).
+The certificate is listed in `security.pki.certificateFiles` in [configuration.nix](../../nix/hosts/blahaj/configuration.nix). Apply it with `nh os switch`. The Forgejo runner VM trusts it too, in [forgejo-runner.nix](../../nix/hosts/blahaj/forgejo-runner.nix).
 
 ### Generate certs
 

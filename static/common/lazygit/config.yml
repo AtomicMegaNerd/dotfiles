@@ -1,0 +1,52 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/jesseduffield/lazygit/master/schema/config.json
+gui:
+  mouseEvents: false
+  timeFormat: 2006-01-02
+  shortTimeFormat: 15:04
+  showRandomTip: false
+  showBottomLine: false
+  nerdFontsVersion: "3"
+  commandLogSize: 12
+  theme:
+    activeBorderColor:
+      - "#91d7e3"
+      - bold
+    inactiveBorderColor:
+      - "#a5adcb"
+    searchingActiveBorderColor:
+      - "#eed49f"
+    optionsTextColor:
+      - "#8aadf4"
+    selectedLineBgColor:
+      - "#363a4f"
+    inactiveViewSelectedLineBgColor:
+      - "#6e738d"
+    cherryPickedCommitFgColor:
+      - "#91d7e3"
+    cherryPickedCommitBgColor:
+      - "#494d64"
+    markedBaseCommitFgColor:
+      - "#8aadf4"
+    markedBaseCommitBgColor:
+      - "#eed49f"
+    unstagedChangesColor:
+      - "#ed8796"
+    defaultFgColor:
+      - "#cad3f5"
+    authorColors:
+      "*": "#b7bdf8"
+git:
+  autoFetch: false
+  autoRefresh: false
+  # Append the branch names to the commit
+  commitPrefix:
+    - pattern: "^\\w+\\/(\\w+-\\w+).*"
+      replace: "[$1] "
+    - pattern: ".*"
+      replace: "[$0] "
+  diffRenderers:
+    - command: "delta --dark --paging=never"
+os:
+  editPreset: "nvim"
+update:
+  method: never

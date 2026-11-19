@@ -13,8 +13,8 @@ Before creating a secret we must add an entry to [agenix-rules.nix](../../secret
 
 ```nix
 let
-  user = builtins.readFile ../static/rcd_pub_key;
-  blahaj = builtins.readFile ../static/blahaj/blahaj_host_key;
+  user = builtins.readFile ../static/certs/rcd_pub_key;
+  blahaj = builtins.readFile ../static/hosts/blahaj/blahaj_host_key;
 in
 {
   "secret1.age".publicKeys = [

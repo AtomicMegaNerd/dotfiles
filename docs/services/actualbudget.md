@@ -4,11 +4,11 @@
 
 ## NixOS Server Configuration
 
-Configured in [actualbudget.nix](../hosts/blahaj/actualbudget.nix).
+Configured in [actualbudget.nix](../../nix/hosts/blahaj/actualbudget.nix).
 
 ## Initial setup
 
-After applying the configuration open [https://budget.megaparsec.ca](https://budget.megaparsec.ca) and set the server password. Every device must trust `static/rcd-rootCA-pub.pem`.
+After applying the configuration open [https://budget.megaparsec.ca](https://budget.megaparsec.ca) and set the server password. Every device must trust `static/certs/rcd-rootCA-pub.pem`.
 
 ## Links
 

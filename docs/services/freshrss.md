@@ -4,7 +4,7 @@
 
 ## Nix configuration
 
-Configured in [freshrss.nix](../../hosts/blahaj/freshrss.nix):
+Configured in [freshrss.nix](../../nix/hosts/blahaj/freshrss.nix):
 
 ## Initial setup
 

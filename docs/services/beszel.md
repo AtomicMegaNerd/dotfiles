@@ -4,14 +4,14 @@
 
 ## Blahaj configuration
 
-See [beszel.nix](../hosts/blahaj/beszel.nix).
+See [beszel.nix](../../nix/hosts/blahaj/beszel.nix).
 
 - `blahaj` has its own agent running as a container.
-- The [Forgejo Runner MicroVM](../../hosts/blahaj/forgejo-runner.nix) also runs its own agent.
+- The [Forgejo Runner MicroVM](../../nix/hosts/blahaj/forgejo-runner.nix) also runs its own agent.
 
 ## Initial setup
 
-Activate the Hub configuration in [beszel.nix](../hosts/blahaj/beszel.nix) first and apply it. Then open [monitor.megaparsec.ca](https://monitor.megaparsec.ca) and create the initial account.
+Activate the Hub configuration in [beszel.nix](../../nix/hosts/blahaj/beszel.nix) first and apply it. Then open [monitor.megaparsec.ca](https://monitor.megaparsec.ca) and create the initial account.
 
 ## Adding an Agent
 
@@ -27,7 +27,7 @@ KEY=<key-from-hub>
 TOKEN=<token-from-hub>
 ```
 
-Finally add the Agent to [beszel.nix](../hosts/blahaj/beszel.nix). Its version must match the Hub's.
+Finally add the Agent to [beszel.nix](../../nix/hosts/blahaj/beszel.nix). Its version must match the Hub's.
 
 ## Links
 

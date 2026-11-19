@@ -45,7 +45,7 @@ nh search options $OPTION
 
 - `flake.nix`
 - `docs/` - Documentation
-- `hosts/` - Host configs
+- `nix/hosts/` - Host configs
 - `nix/` - Shared nix configs
 - `static/` - Static files like keys and static configs
 - `secrets/` - agenix files
@@ -61,7 +61,7 @@ Services run as Podman containers on blahaj on Podman's default dual-stack netwo
 
 ### OpenCode
 
-[OpenCode docs](https://opencode.ai/docs/). Config lives in `static/opencode/` as vanilla configs: `opencode.json`, `cli.json`, and `AGENTS.md`. `nix/opencode.nix` imports them and Home Manager manages `~/.config/opencode/opencode.json` and `cli.json` directly. There is no mutable layer: change `static/opencode/` and rebuild (`nh home switch .`); do not edit the live files, and note the TUI settings dialog cannot write through the managed symlinks.
+[OpenCode docs](https://opencode.ai/docs/). Config lives in `static/hosts/Schooner/opencode/` as vanilla configs: `opencode.json`, `cli.json`, and `AGENTS.md`. `nix/opencode.nix` imports them and Home Manager manages `~/.config/opencode/opencode.json` and `cli.json` directly. There is no mutable layer: change `static/hosts/Schooner/opencode/` and rebuild (`nh home switch .`); do not edit the live files, and note the TUI settings dialog cannot write through the managed symlinks.
 
 See [opencode.nix](./nix/opencode.nix).
 
@@ -79,7 +79,7 @@ See [opencode.nix](./nix/opencode.nix).
 
 ### Neovim
 
-[Neovim docs](https://neovim.io/doc/). The Neovim config is **not** in this repo. It lives in [rcd-nvim](https://github.com/AtomicMegaNerd/rcd-nvim) and an activation script in [neovim.nix](./nix/neovim.nix) clones it to `~/Code/Configs/rcd-nvim` and symlinks it to `~/.config/nvim`.
+[Neovim docs](https://neovim.io/doc/). The Neovim config lives in [`static/common/nvim`](./static/common/nvim/) and Home Manager creates a mutable symlink to it at `~/.config/nvim` on Nix-managed systems; `workmbp` uses a manual symlink. See [neovim.nix](./nix/neovim.nix) and [docs/neovim.md](./docs/neovim.md).
 
 ### Shells
 

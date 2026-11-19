@@ -2,10 +2,9 @@
 {
   programs.btop = {
     enable = true;
-
-    settings = {
-      vim_keys = true;
-      theme_background = false;
-    };
   };
+
+  xdg.configFile."btop/btop.conf".source = ../static/common/btop/btop.conf;
+  xdg.configFile."btop/themes/catppuccin_macchiato.theme".source =
+    ../static/common/btop/themes/catppuccin_macchiato.theme;
 }

@@ -9,7 +9,7 @@
 
 ## NixOS configuration
 
-Configured in [starfeed.nix](../hosts/blahaj/starfeed.nix).
+Configured in [starfeed.nix](../../nix/hosts/blahaj/starfeed.nix).
 
 Set `rss_server.url` to `http://freshrss:80`.
 

@@ -1,7 +1,0 @@
-*
-!nix.conf
-!gitconfig
-!flake.nix
-!opencode.json
-!cli.json
-!AGENTS.md

@@ -1,0 +1,7 @@
+[tools]
+lua-language-server = "latest"
+stylua = "latest"
+
+[tools.rust]
+version = "stable"
+components = ["cargo", "rustc"]

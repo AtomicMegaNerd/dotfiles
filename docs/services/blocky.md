@@ -4,7 +4,7 @@
 
 ## Example NixOS Configuration
 
-The NixOS module is in [blocky.nix](../../hosts/blahaj/blocky.nix).
+The NixOS module is in [blocky.nix](../../nix/hosts/blahaj/blocky.nix).
 
 ## Links
 
