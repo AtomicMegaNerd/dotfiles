@@ -12,7 +12,6 @@
     ./fish.nix
     ./fzf.nix
     ./git.nix
-    ./herdr.nix
     ./catppuccin.nix
     ./lazygit.nix
     ./lazydocker.nix

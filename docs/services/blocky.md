@@ -1,7 +1,6 @@
 # Blocky
 
-[Blocky](https://0xerr0r.github.io/blocky/) is a pi-hole alternative that is lightweight and
-is implemented in Go.
+[Blocky](https://0xerr0r.github.io/blocky/) is a pi-hole alternative that is lightweight and is implemented in Go.
 
 ## Example NixOS Configuration
 

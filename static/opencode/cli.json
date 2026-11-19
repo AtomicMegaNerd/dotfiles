@@ -5,6 +5,5 @@
   },
   "tabs": {
     "mode": "off"
-  },
-  "plugins": ["./herdr-tui-session.js"]
+  }
 }

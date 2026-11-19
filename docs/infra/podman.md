@@ -148,9 +148,7 @@ sudo podman exec caddy nslookup forgejo
 ## Service dependencies
 
 > [!NOTE]
-> The current configuration uses before/wantedBy but based on my current understanding dependsOn
-> in the oci-containers module is clearer and better for _containers_. We still need to use the
-> systemd requires/after for depending on other resources like the network.
+> The current configuration uses before/wantedBy but based on my current understanding dependsOn in the oci-containers module is clearer and better for _containers_. We still need to use the systemd requires/after for depending on other resources like the network.
 
 Use `dependsOn` when one OCI container depends on another. NixOS translates it into systemd `Requires` and `After` dependencies:
 

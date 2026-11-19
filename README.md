@@ -90,8 +90,7 @@ Once the initial bootstrap is done you may need to start a new terminal shell or
 Nix Helper is a replacement for some nix CLI commands that is better engineered and easier to use [nh](https://github.com/nix-community/nh)
 
 > [!NOTE]
-> If you add the `NH_FLAKE` enviroment variable and point it to your flake, you don't have to
-> provide a path to the commands below.
+> If you add the `NH_FLAKE` enviroment variable and point it to your flake, you don't have to provide a path to the commands below.
 >
 > ```fish
 > set -gx NH_FLAKE $HOME/Code/Configs/dotfiles

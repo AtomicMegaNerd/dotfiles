@@ -13,8 +13,7 @@ Always use the `rcd-nix` agent when working with this repo.
 
 ### Home Manager
 
-Try to use home-manager modules and nix configuration whenever possible. Lots of examples in the
-`nix` directory in this repo.
+Try to use home-manager modules and nix configuration whenever possible. Lots of examples in the `nix` directory in this repo.
 
 - [Home Manager manual](https://nix-community.github.io/home-manager/)
 - [Home Manager options](https://nix-community.github.io/home-manager/options.xhtml)
@@ -24,14 +23,11 @@ Try to use home-manager modules and nix configuration whenever possible. Lots of
 
 - [nix-darwin manual](https://nix-darwin.github.io/nix-darwin/manual/)
 
-We also install some Homebrew packages via nix-darwin. We prefer casks but formulas without
-dependencies are okay as a last resort. **NOTE** home-manager and darwin are separate. One does not
-update the other when `nh darwin switch .` is run.
+We also install some Homebrew packages via nix-darwin. We prefer casks but formulas without dependencies are okay as a last resort. **NOTE** home-manager and darwin are separate. One does not update the other when `nh darwin switch .` is run.
 
 ### Nix Helper
 
-Use [nh](https://github.com/nix-community/nh) whenever possible as it is faster and provides better
-output.
+Use [nh](https://github.com/nix-community/nh) whenever possible as it is faster and provides better output.
 
 ```bash
 nh home switch . # Home Manager (all systems)
@@ -43,8 +39,7 @@ nh search options $OPTION
 
 ### Agenix
 
-[agenix](https://github.com/ryantm/agenix) encrypts secrets so they can be stored in the flake. See
-[secrets.md](./docs/infra/secrets.md).
+[agenix](https://github.com/ryantm/agenix) encrypts secrets so they can be stored in the flake. See [secrets.md](./docs/infra/secrets.md).
 
 ## Repo Structure
 
@@ -66,62 +61,33 @@ Services run as Podman containers on blahaj on Podman's default dual-stack netwo
 
 ### OpenCode
 
-[OpenCode docs](https://opencode.ai/docs/). Config lives in `static/opencode/` as vanilla configs:
-`opencode.json`, `cli.json`, and `AGENTS.md`. `nix/opencode.nix` imports them and Home Manager
-manages `~/.config/opencode/opencode.json` and `cli.json` directly. There is no mutable layer:
-change `static/opencode/` and rebuild (`nh home switch .`); do not edit the live files, and note
-the TUI settings dialog cannot write through the managed symlinks.
+[OpenCode docs](https://opencode.ai/docs/). Config lives in `static/opencode/` as vanilla configs: `opencode.json`, `cli.json`, and `AGENTS.md`. `nix/opencode.nix` imports them and Home Manager manages `~/.config/opencode/opencode.json` and `cli.json` directly. There is no mutable layer: change `static/opencode/` and rebuild (`nh home switch .`); do not edit the live files, and note the TUI settings dialog cannot write through the managed symlinks.
 
 See [opencode.nix](./nix/opencode.nix).
 
 ### Rift
 
-[Rift docs](https://acsandmann.github.io/rift-docs/). A tiling window manager for macOS. See
-[rift.nix](./nix/rift.nix).
-
-### Claude Code
-
-[Claude Code docs](https://code.claude.com/docs/en/overview). Configured with `programs.claude-code`
-and `mutableSettings = true`. Sources:
-
-- `static/claude-code/CLAUDE.md` - global context
-- `static/claude-code/settings.json` - settings
-- `static/agents/` - subagents (`rcd-go`, `rcd-nix`)
-
-Telemetry is disabled by environment variables in `nix/fish.nix`. See
-[claude-code.nix](./nix/claude-code.nix).
+[Rift docs](https://acsandmann.github.io/rift-docs/). A tiling window manager for macOS. See [rift.nix](./nix/rift.nix).
 
 ### Herdr
 
-[Herdr docs](https://herdr.dev/docs/). Terminal multiplexer for coding agents, configured with
-`programs.herdr`. See [herdr](./docs/tools/herdr.md) and [herdr.nix](./nix/herdr.nix).
+[Herdr docs](https://herdr.dev/docs/). Terminal multiplexer for coding agents, configured with `programs.herdr`. See [herdr](./docs/tools/herdr.md) and [herdr.nix](./nix/herdr.nix).
 
 ### Catppuccin Theming
 
-[catppuccin/nix docs](https://github.com/catppuccin/nix/tree/main/docs). Flavor and accent are set
-once in `nix/options.nix` as `amnOptions.catppuccin.*`. It also exposes a `palette` attrset for
-programs without a Catppuccin module. Neovim is excluded because it manages its own theme. See
-[options.nix](./nix/options.nix) and [catppuccin.nix](./nix/catppuccin.nix).
+[catppuccin/nix docs](https://github.com/catppuccin/nix/tree/main/docs). Flavor and accent are set once in `nix/options.nix` as `amnOptions.catppuccin.*`. It also exposes a `palette` attrset for programs without a Catppuccin module. Neovim is excluded because it manages its own theme. See [options.nix](./nix/options.nix) and [catppuccin.nix](./nix/catppuccin.nix).
 
 ### Neovim
 
-[Neovim docs](https://neovim.io/doc/). The Neovim config is **not** in this repo. It lives in
-[rcd-nvim](https://github.com/AtomicMegaNerd/rcd-nvim) and an activation script in
-[neovim.nix](./nix/neovim.nix) clones it to `~/Code/Configs/rcd-nvim` and symlinks it to
-`~/.config/nvim`.
+[Neovim docs](https://neovim.io/doc/). The Neovim config is **not** in this repo. It lives in [rcd-nvim](https://github.com/AtomicMegaNerd/rcd-nvim) and an activation script in [neovim.nix](./nix/neovim.nix) clones it to `~/Code/Configs/rcd-nvim` and symlinks it to `~/.config/nvim`.
 
 ### Shells
 
-[Fish docs](https://fishshell.com/docs/current/) and [Nushell book](https://www.nushell.sh/book/).
-Fish is the primary shell, but Nushell is also configured. They duplicate their environment
-variables and PATH setup, so keep [fish.nix](./nix/fish.nix) and [nushell.nix](./nix/nushell.nix) in
-sync.
+[Fish docs](https://fishshell.com/docs/current/) and [Nushell book](https://www.nushell.sh/book/). Fish is the primary shell, but Nushell is also configured. They duplicate their environment variables and PATH setup, so keep [fish.nix](./nix/fish.nix) and [nushell.nix](./nix/nushell.nix) in sync.
 
 ### Agent Skills
 
-Skills are listed in `nix/agent-skills.nix` and installed to `~/.agents/skills/` by the
-[skills](https://skills.sh/docs) CLI during Home Manager activation. `~/.agents/skills/` is
-symlinked to `~/.claude/skills` for Claude Code.
+Skills are listed in `nix/agent-skills.nix` and installed to `~/.agents/skills/` by the [skills](https://skills.sh/docs) CLI during Home Manager activation.
 
 ### Beszel
 

@@ -11,5 +11,4 @@ common/nvim/lazy-lock.json
 .pre-commit-config.yaml
 **/zed/conversations
 .crush
-.claude
 result
