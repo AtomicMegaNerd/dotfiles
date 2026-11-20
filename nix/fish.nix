@@ -51,6 +51,7 @@ in
       cat = "bat --paging=never --style=plain";
       grep = "rg";
       vim = "nvim";
+      lg = "lazygit";
     };
   };
 }

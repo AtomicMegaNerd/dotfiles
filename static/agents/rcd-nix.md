@@ -16,6 +16,9 @@ permissions:
   - { action: shell, effect: allow, resource: "nix flake metadata *" }
   - { action: shell, effect: allow, resource: "nix flake info *" }
   - { action: shell, effect: allow, resource: "nix flake show *" }
+  - { action: shell, effect: allow, resource: "nix flake check *" }
+  - { action: shell, effect: allow, resource: "nix flake check" }
+  - { action: shell, effect: allow, resource: "nix log *" }
   - { action: shell, effect: allow, resource: "nix-instantiate --parse flake.nix" }
   - { action: shell, effect: allow, resource: "nh search *" }
 ---
