@@ -10,5 +10,8 @@
   "animations": true,
   "attention": {
     "notifications": true
+  },
+  "session": {
+    "sidebar": "hide"
   }
 }
