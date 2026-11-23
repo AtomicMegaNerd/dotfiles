@@ -14,6 +14,10 @@ in
     nvim.enable = false;
     # Lazygit's theme and settings are managed from static/common/lazygit.
     lazygit.enable = false;
+    eza.enable = false;
+    btop.enable = false;
+    starship.enable = false;
+    bat.enable = false;
   };
 
   home.sessionVariables = lib.mkIf enable {

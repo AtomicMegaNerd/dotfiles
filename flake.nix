@@ -26,6 +26,7 @@
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    fenix.url = "github:nix-community/fenix";
     rex = {
       url = "https://pkgs.superlogical.com/rex/nix/preview.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -42,6 +43,7 @@
       agenix,
       microvm,
       catppuccin,
+      fenix,
       rex,
       ...
     }:
@@ -114,6 +116,28 @@
     in
     {
       formatter = forAllSystems (system: (unstablePkgs system).nixfmt-tree);
+
+      # nvim plugin build tools (treesitter parsers, blink.cmp native fuzzy)
+      devShells = forAllSystems (
+        system:
+        let
+          pkgs = unstablePkgs system;
+          toolchain = fenix.packages.${system}.stable.withComponents [
+            "cargo"
+            "rustc"
+          ];
+        in
+        {
+          default = pkgs.mkShell {
+            packages = with pkgs; [
+              gcc
+              tree-sitter
+              nodejs-slim
+              toolchain
+            ];
+          };
+        }
+      );
 
       nixosConfigurations = {
         blahaj = buildNixOS "blahaj";

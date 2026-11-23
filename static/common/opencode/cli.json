@@ -8,6 +8,9 @@
     "mode": "off"
   },
   "animations": true,
+  "session": {
+    "sidebar": "hide"
+  },
   "attention": {
     "notifications": true
   },
