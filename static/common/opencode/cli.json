@@ -7,14 +7,11 @@
   "tabs": {
     "mode": "off"
   },
-  "animations": true,
   "session": {
     "sidebar": "hide"
   },
+  "animations": true,
   "attention": {
     "notifications": true
-  },
-  "session": {
-    "sidebar": "hide"
   }
 }
