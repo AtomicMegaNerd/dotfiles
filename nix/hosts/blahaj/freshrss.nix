@@ -1,5 +1,5 @@
 let
-  freshRssVersion = "1.30.4";
+  freshRssVersion = "1.31.0";
 in
 {
   virtualisation.oci-containers.containers.freshrss = {
