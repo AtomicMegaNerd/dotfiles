@@ -1,6 +1,6 @@
 { ... }:
 let
-  forgejoVersion = "17.0.1";
+  forgejoVersion = "17.0.2";
   forgejoUid = 891;
   forgejoGid = 891;
   dataDir = "/var/lib/forgejo";
