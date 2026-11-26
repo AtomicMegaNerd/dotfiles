@@ -10,4 +10,6 @@
     homeDirectory = "/home/rcd";
     stateVersion = "22.11";
   };
+
+  services.rex.enable = true;
 }

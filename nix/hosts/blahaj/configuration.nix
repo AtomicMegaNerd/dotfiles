@@ -108,6 +108,7 @@ in
     ];
     shell = pkgs.fish;
     openssh.authorizedKeys.keys = [ rcd_pub_key ];
+    linger = true;
   };
 
   programs.fish.enable = true;
